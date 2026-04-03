@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belastinghulp Zaanstad – Hulp bij belastingaangifte voor senioren &amp; starters</title>
+<meta name="description" content="Persoonlijke hulp bij uw belastingaangifte in Zaanstad. Speciaal voor senioren en starters met een eerste woning. Voorlopige teruggave aanvragen? Wij regelen het. Vaste lage tarieven.">
+<meta name="keywords" content="belastingaangifte Zaanstad, belastinghulp Zaandam, voorlopige teruggave eerste woning, belastingaangifte ouderen, belastinghulp senioren, hypotheekrenteaftrek, Zaandam, Krommenie, Assendelft, Wormerveer">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Belastinghulp Zaanstad">
+<meta property="og:title" content="Belastinghulp Zaanstad – Voor senioren &amp; starters">
+<meta property="og:description" content="Persoonlijke hulp bij uw belastingaangifte. Voorlopige teruggave aanvragen voor uw eerste woning? Wij regelen het snel en voordelig.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://belastinghulpzaanstad.nl">
+<meta property="og:locale" content="nl_NL">
+<link rel="canonical" href="https://belastinghulpzaanstad.nl">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ========================================
+   CSS VARIABLES
+   ======================================== */
+:root {
+  --clr-cream: #faf8f4;
+  --clr-warm-white: #f5f1eb;
+  --clr-sand: #e8e0d4;
+  --clr-stone: #c4b9a8;
+  --clr-bark: #6b5e50;
+  --clr-deep: #2c2520;
+  --clr-midnight: #1a1614;
+
+  --clr-teal: #1a8a7d;
+  --clr-teal-light: #e6f5f3;
+  --clr-teal-dark: #14695f;
+  --clr-orange: #e07a2f;
+  --clr-orange-light: #fef3e8;
+  --clr-orange-dark: #c46820;
+  --clr-green: #3a9e5c;
+  --clr-green-light: #edf7f0;
+  --clr-red-soft: #d94f4f;
+
+  --font-display: 'Source Serif 4', Georgia, serif;
+  --font-body: 'Nunito Sans', -apple-system, sans-serif;
+
+  --shadow-sm: 0 1px 3px rgba(44,37,32,0.06);
+  --shadow-md: 0 4px 16px rgba(44,37,32,0.08);
+  --shadow-lg: 0 8px 32px rgba(44,37,32,0.1);
+  --shadow-glow-teal: 0 4px 24px rgba(26,138,125,0.15);
+  --shadow-glow-orange: 0 4px 24px rgba(224,122,47,0.15);
+
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 100px;
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--clr-cream);
+  color: var(--clr-deep);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+.fade-up-d1 { animation-delay: 0.1s; }
+.fade-up-d2 { animation-delay: 0.2s; }
+.fade-up-d3 { animation-delay: 0.3s; }
+.fade-up-d4 { animation-delay: 0.4s; }
+.fade-up-d5 { animation-delay: 0.5s; }
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(250,248,244,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,185,168,0.3);
+  transition: all 0.3s;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--clr-teal-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--clr-teal);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-weight: 800;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--clr-bark);
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a:hover { color: var(--clr-teal); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--clr-teal);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--clr-teal) !important;
+  color: white !important;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  transition: all 0.3s !important;
+  box-shadow: var(--shadow-glow-teal);
+}
+
+.nav-cta:hover {
+  background: var(--clr-teal-dark) !important;
+  transform: translateY(-1px);
+}
+
+.nav-cta::after { display: none !important; }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--clr-deep);
+  position: absolute;
+  left: 4px;
+  transition: all 0.3s;
+}
+
+.mobile-toggle span:nth-child(1) { top: 8px; }
+.mobile-toggle span:nth-child(2) { top: 15px; }
+.mobile-toggle span:nth-child(3) { top: 22px; }
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(26,138,125,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(224,122,47,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--clr-teal-light);
+  color: var(--clr-teal-dark);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border: 1px solid rgba(26,138,125,0.15);
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--clr-green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--clr-midnight);
+  margin-bottom: 20px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--clr-teal);
+  position: relative;
+}
+
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(26,138,125,0.12);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--clr-bark);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 30px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: var(--clr-teal);
+  color: white;
+  box-shadow: var(--shadow-glow-teal);
+}
+
+.btn-primary:hover {
+  background: var(--clr-teal-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(26,138,125,0.25);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--clr-deep);
+  border: 2px solid var(--clr-sand);
+}
+
+.btn-secondary:hover {
+  border-color: var(--clr-teal);
+  color: var(--clr-teal);
+  transform: translateY(-2px);
+}
+
+.btn-orange {
+  background: var(--clr-orange);
+  color: white;
+  box-shadow: var(--shadow-glow-orange);
+}
+
+.btn-orange:hover {
+  background: var(--clr-orange-dark);
+  transform: translateY(-2px);
+}
+
+/* Hero visual card */
+.hero-visual {
+  position: relative;
+}
+
+.hero-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(200,185,168,0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-card-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--clr-stone);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero-card-amount {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--clr-green);
+  margin-bottom: 4px;
+}
+
+.hero-card-period {
+  color: var(--clr-bark);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.hero-card-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--clr-warm-white);
+  font-size: 0.9rem;
+}
+
+.hero-card-row:last-child { border: none; }
+
+.hero-card-row span:first-child { color: var(--clr-bark); }
+.hero-card-row span:last-child { font-weight: 700; }
+
+.hero-float-badge {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  background: var(--clr-orange);
+  color: white;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  font-weight: 800;
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-glow-orange);
+  animation: float 3s ease-in-out infinite;
+  z-index: 3;
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--clr-sand);
+}
+
+.hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--clr-bark);
+  font-weight: 600;
+}
+
+.hero-trust-icon {
+  font-size: 1.1rem;
+}
+
+/* ========================================
+   SECTION STYLING
+   ======================================== */
+section {
+  padding: 80px 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 52px;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  color: var(--clr-teal);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--clr-midnight);
+  margin-bottom: 14px;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--clr-bark);
+  line-height: 1.8;
+}
+
+/* ========================================
+   VOORLOPIGE TERUGGAVE – HERO SECTION
+   ======================================== */
+.teruggave {
+  background: linear-gradient(135deg, var(--clr-orange-light) 0%, var(--clr-cream) 50%, var(--clr-teal-light) 100%);
+  position: relative;
+}
+
+.teruggave-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.teruggave-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--clr-orange);
+  color: white;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.teruggave h2 {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--clr-midnight);
+  margin-bottom: 16px;
+}
+
+.teruggave h2 strong {
+  color: var(--clr-orange);
+}
+
+.teruggave-body {
+  font-size: 1.05rem;
+  color: var(--clr-bark);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.teruggave-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.teruggave-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--clr-deep);
+  font-weight: 500;
+}
+
+.teruggave-check {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background: var(--clr-green-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-green);
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+/* Example card */
+.teruggave-example {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(200,185,168,0.2);
+}
+
+.teruggave-example-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--clr-midnight);
+}
+
+.teruggave-example-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--clr-warm-white);
+  font-size: 0.9rem;
+}
+
+.teruggave-example-row:last-of-type { border: none; }
+
+.teruggave-example-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0 0;
+  margin-top: 8px;
+  border-top: 2px solid var(--clr-orange);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.teruggave-example-total span:last-child {
+  color: var(--clr-green);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+
+.teruggave-example-note {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: var(--clr-green-light);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  color: var(--clr-teal-dark);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ========================================
+   DOELGROEPEN
+   ======================================== */
+.audiences-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.audience-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(200,185,168,0.15);
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.audience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.audience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.audience-card--seniors::before { background: var(--clr-teal); }
+.audience-card--starters::before { background: var(--clr-orange); }
+
+.audience-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.audience-card--seniors .audience-icon {
+  background: var(--clr-teal-light);
+}
+
+.audience-card--starters .audience-icon {
+  background: var(--clr-orange-light);
+}
+
+.audience-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--clr-midnight);
+}
+
+.audience-card p {
+  color: var(--clr-bark);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.audience-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.audience-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--clr-deep);
+}
+
+.audience-list-icon {
+  color: var(--clr-green);
+  font-size: 1rem;
+  min-width: 20px;
+}
+
+/* ========================================
+   HOE WERKT HET
+   ======================================== */
+.steps {
+  background: white;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 48px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--clr-teal), var(--clr-orange));
+  opacity: 0.2;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 auto 16px;
+  color: white;
+  background: var(--clr-teal);
+  box-shadow: var(--shadow-glow-teal);
+}
+
+.step:nth-child(2) .step-num { background: var(--clr-teal-dark); }
+.step:nth-child(3) .step-num { background: var(--clr-orange); box-shadow: var(--shadow-glow-orange); }
+.step:nth-child(4) .step-num { background: var(--clr-green); }
+
+.step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--clr-midnight);
+}
+
+.step p {
+  font-size: 0.85rem;
+  color: var(--clr-bark);
+  line-height: 1.6;
+}
+
+/* ========================================
+   TARIEVEN
+   ======================================== */
+.tarieven {
+  background: linear-gradient(180deg, var(--clr-warm-white) 0%, var(--clr-cream) 100%);
+}
+
+.tarieven-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tarief-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid transparent;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.tarief-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.tarief-card--popular {
+  border-color: var(--clr-orange);
+}
+
+.tarief-popular-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--clr-orange);
+  color: white;
+  padding: 4px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tarief-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.tarief-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--clr-midnight);
+}
+
+.tarief-for {
+  font-size: 0.82rem;
+  color: var(--clr-stone);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.tarief-price {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--clr-teal);
+  margin-bottom: 4px;
+}
+
+.tarief-card--popular .tarief-price { color: var(--clr-orange); }
+
+.tarief-price-note {
+  font-size: 0.8rem;
+  color: var(--clr-stone);
+  margin-bottom: 24px;
+}
+
+.tarief-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.tarief-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--clr-deep);
+}
+
+.tarief-features li::before {
+  content: '✓';
+  color: var(--clr-green);
+  font-weight: 800;
+  min-width: 16px;
+}
+
+.tarief-btn {
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 2px solid var(--clr-teal);
+  background: transparent;
+  color: var(--clr-teal);
+  font-family: var(--font-body);
+  transition: all 0.3s;
+}
+
+.tarief-btn:hover {
+  background: var(--clr-teal);
+  color: white;
+}
+
+.tarief-card--popular .tarief-btn {
+  background: var(--clr-orange);
+  border-color: var(--clr-orange);
+  color: white;
+}
+
+.tarief-card--popular .tarief-btn:hover {
+  background: var(--clr-orange-dark);
+  border-color: var(--clr-orange-dark);
+}
+
+/* ========================================
+   REGIO
+   ======================================== */
+.regio-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.regio-badge {
+  background: white;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--clr-deep);
+  border: 1px solid var(--clr-sand);
+  transition: all 0.3s;
+}
+
+.regio-badge:hover {
+  border-color: var(--clr-teal);
+  color: var(--clr-teal);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   FAQ
+   ======================================== */
+.faq {
+  background: white;
+}
+
+.faq-grid {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--clr-sand);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--clr-midnight);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: color 0.2s;
+}
+
+.faq-question:hover { color: var(--clr-teal); }
+
+.faq-arrow {
+  font-size: 1.2rem;
+  color: var(--clr-stone);
+  transition: transform 0.3s;
+  min-width: 20px;
+}
+
+.faq-item.active .faq-arrow { transform: rotate(45deg); color: var(--clr-teal); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+}
+
+.faq-item.active .faq-answer { max-height: 300px; }
+
+.faq-answer p {
+  padding-bottom: 22px;
+  color: var(--clr-bark);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* ========================================
+   CTA
+   ======================================== */
+.cta {
+  background: linear-gradient(135deg, var(--clr-teal-dark) 0%, var(--clr-teal) 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+}
+
+.cta h2 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.cta p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.btn-white {
+  background: white;
+  color: var(--clr-teal-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+.cta-phone {
+  margin-top: 28px;
+  position: relative;
+}
+
+.cta-phone a {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  opacity: 0.95;
+}
+
+.cta-phone a:hover { opacity: 1; }
+
+.cta-phone-label {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--clr-midnight);
+  color: rgba(255,255,255,0.6);
+  padding: 60px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.footer-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.footer h4 {
+  font-family: var(--font-display);
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--clr-teal); }
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 900px) {
+  html { font-size: 16px; }
+
+  .hero-grid,
+  .teruggave-grid,
+  .audiences-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero h1 { font-size: 2.4rem; }
+  .section-title { font-size: 1.9rem; }
+  .tarieven-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid::before { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 120px 0 60px; }
+  .hero h1 { font-size: 2rem; }
+  .steps-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+  .hero-trust { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .teruggave h2 { font-size: 1.8rem; }
+  .cta h2 { font-size: 1.8rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======== NAVIGATION ======== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-icon">BZ</span>
+      Belastinghulp Zaanstad
+    </a>
+    <ul class="nav-links">
+      <li><a href="#starters">Eerste woning</a></li>
+      <li><a href="#senioren">Senioren</a></li>
+      <li><a href="#tarieven">Tarieven</a></li>
+      <li><a href="#werkwijze">Hoe werkt het</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Neem contact op</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge fade-up">
+          <span class="hero-badge-dot"></span>
+          Aangifteperiode is gestart &mdash; nog tot 1 mei 2026
+        </div>
+        <h1 class="fade-up fade-up-d1">
+          Uw belastingaangifte<br><em>persoonlijk geregeld</em>
+        </h1>
+        <p class="hero-sub fade-up fade-up-d2">
+          Hulp bij uw aangifte in Zaanstad. Speciaal voor senioren en starters met een eerste koopwoning. Wij zorgen dat u niets laat liggen &mdash; met vaste, eerlijke tarieven.
+        </p>
+        <div class="hero-buttons fade-up fade-up-d3">
+          <a href="#tarieven" class="btn btn-primary">Bekijk tarieven &rarr;</a>
+          <a href="#starters" class="btn btn-secondary">Eerste woning? Lees meer</a>
+        </div>
+        <div class="hero-trust fade-up fade-up-d4">
+          <div class="hero-trust-item">
+            <span class="hero-trust-icon">&#10003;</span> Vaste prijzen
+          </div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-icon">&#10003;</span> Aan huis of online
+          </div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-icon">&#10003;</span> Heel Zaanstad
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up fade-up-d3">
+        <div class="hero-card">
+          <div class="hero-float-badge">Voorbeeld</div>
+          <div class="hero-card-label">Voorlopige teruggave per maand</div>
+          <div class="hero-card-amount">+ &euro; 328</div>
+          <div class="hero-card-period">per maand op uw rekening</div>
+          <div class="hero-card-breakdown">
+            <div class="hero-card-row">
+              <span>Hypotheekrente per jaar</span>
+              <span>&euro; 12.600</span>
+            </div>
+            <div class="hero-card-row">
+              <span>Belastingvoordeel (36,97%)</span>
+              <span>&euro; 4.660</span>
+            </div>
+            <div class="hero-card-row">
+              <span>Eigenwoningforfait</span>
+              <span>- &euro; 725</span>
+            </div>
+            <div class="hero-card-row">
+              <span style="font-weight:700; color: var(--clr-green)">Netto voordeel per maand</span>
+              <span style="color: var(--clr-green)">&rarr; &euro; 328</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== VOORLOPIGE TERUGGAVE ======== -->
+<section class="teruggave" id="starters">
+  <div class="container">
+    <div class="teruggave-grid">
+      <div>
+        <div class="teruggave-tag">&#127968; Voor starters met een eerste woning</div>
+        <h2>Eerste woning gekocht?<br>Vraag <strong>maandelijks geld terug</strong></h2>
+        <p class="teruggave-body">
+          Veel starters weten het niet: als je een huis koopt, kun je een <strong>voorlopige teruggave</strong> aanvragen bij de Belastingdienst. Je krijgt dan maandelijks je belastingvoordeel terug &mdash; in plaats van &eacute;&eacute;n keer per jaar na je aangifte. Dat scheelt honderden euro&apos;s per maand op je rekening.
+        </p>
+        <ul class="teruggave-checklist">
+          <li>
+            <span class="teruggave-check">&#10003;</span>
+            <span><strong>Hypotheekrenteaftrek</strong> &mdash; je betaalt minder belasting over je inkomen</span>
+          </li>
+          <li>
+            <span class="teruggave-check">&#10003;</span>
+            <span><strong>Maandelijks geld terug</strong> &mdash; geen jaar wachten, direct op je rekening</span>
+          </li>
+          <li>
+            <span class="teruggave-check">&#10003;</span>
+            <span><strong>Eigenwoningforfait</strong> &mdash; wij rekenen alles correct door</span>
+          </li>
+          <li>
+            <span class="teruggave-check">&#10003;</span>
+            <span><strong>Overdrachtsbelasting</strong> &mdash; in 2026 verlaagd voor kopers onder 35 jaar</span>
+          </li>
+          <li>
+            <span class="teruggave-check">&#10003;</span>
+            <span><strong>Wij doen het voor je</strong> &mdash; binnen 1 week geregeld</span>
+          </li>
+        </ul>
+        <a href="#contact" class="btn btn-orange">Voorlopige teruggave aanvragen &rarr;</a>
+      </div>
+
+      <div>
+        <div class="teruggave-example">
+          <div class="teruggave-example-title">&#128200; Rekenvoorbeeld &mdash; Starter, eerste woning</div>
+          <div class="teruggave-example-row">
+            <span>Koopsom woning</span><span style="font-weight:600">&euro; 340.000</span>
+          </div>
+          <div class="teruggave-example-row">
+            <span>Hypotheek (100%)</span><span style="font-weight:600">&euro; 340.000</span>
+          </div>
+          <div class="teruggave-example-row">
+            <span>Hypotheekrente (3,7%)</span><span style="font-weight:600">&euro; 12.580 /jaar</span>
+          </div>
+          <div class="teruggave-example-row">
+            <span>Belastingvoordeel</span><span style="font-weight:600; color: var(--clr-green)">&euro; 4.652 /jaar</span>
+          </div>
+          <div class="teruggave-example-row">
+            <span>Min: eigenwoningforfait</span><span style="font-weight:600">- &euro; 714</span>
+          </div>
+          <div class="teruggave-example-total">
+            <span>Maandelijks terug</span>
+            <span>&euro; 328</span>
+          </div>
+          <div class="teruggave-example-note">
+            &#128161; Dit bedrag krijg je elke maand op je rekening als je een voorlopige teruggave aanvraagt
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== DOELGROEPEN ======== -->
+<section id="senioren">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Onze specialisatie</div>
+      <h2 class="section-title">Voor wie zijn wij er?</h2>
+      <p class="section-desc">Wij richten ons op twee groepen die vaak onnodig geld laten liggen bij de Belastingdienst.</p>
+    </div>
+
+    <div class="audiences-grid">
+      <div class="audience-card audience-card--seniors">
+        <div class="audience-icon">&#128116;&#128115;</div>
+        <h3>Senioren &amp; Gepensioneerden</h3>
+        <p>Veel ouderen laten jaarlijks honderden euro&apos;s liggen. Wij helpen u thuis of op locatie &mdash; rustig, geduldig en in begrijpelijke taal.</p>
+        <ul class="audience-list">
+          <li><span class="audience-list-icon">&#10003;</span> Ouderenkorting optimaal benutten</li>
+          <li><span class="audience-list-icon">&#10003;</span> Zorgkosten aftrekken die u zelf betaalt</li>
+          <li><span class="audience-list-icon">&#10003;</span> Huur- en zorgtoeslag controleren</li>
+          <li><span class="audience-list-icon">&#10003;</span> Hulp met DigiD en digitale aangifte</li>
+          <li><span class="audience-list-icon">&#10003;</span> Aan huis in heel Zaanstad</li>
+          <li><span class="audience-list-icon">&#10003;</span> Partner-aangifte in &eacute;&eacute;n sessie</li>
+        </ul>
+        <a href="#tarieven" class="btn btn-primary" style="width:100%;justify-content:center;">Senioren tarieven &rarr;</a>
+      </div>
+
+      <div class="audience-card audience-card--starters">
+        <div class="audience-icon">&#127968;&#128274;</div>
+        <h3>Starters &amp; Eerste Woning</h3>
+        <p>Net je eerste huis gekocht? Vraag een voorlopige teruggave aan en krijg maandelijks geld terug. Wij regelen het snel en makkelijk.</p>
+        <ul class="audience-list">
+          <li><span class="audience-list-icon">&#10003;</span> Voorlopige teruggave aanvragen</li>
+          <li><span class="audience-list-icon">&#10003;</span> Hypotheekrenteaftrek berekenen</li>
+          <li><span class="audience-list-icon">&#10003;</span> Eigenwoningforfait correct verwerken</li>
+          <li><span class="audience-list-icon">&#10003;</span> Advieskosten hypotheek aftrekken</li>
+          <li><span class="audience-list-icon">&#10003;</span> Online via beeldbellen of WhatsApp</li>
+          <li><span class="audience-list-icon">&#10003;</span> Binnen 1 week geregeld</li>
+        </ul>
+        <a href="#tarieven" class="btn btn-orange" style="width:100%;justify-content:center;">Starters tarieven &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== HOE WERKT HET ======== -->
+<section class="steps" id="werkwijze">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Werkwijze</div>
+      <h2 class="section-title">In 4 stappen geregeld</h2>
+      <p class="section-desc">Geen gedoe, geen kleine lettertjes. Zo werkt het bij ons.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Neem contact op</h3>
+        <p>Bel, WhatsApp of mail ons. Wij reageren dezelfde dag nog.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Gegevens aanleveren</h3>
+        <p>Wij vertellen precies welke documenten wij nodig hebben. Geen zoekwerk voor u.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Wij doen de aangifte</h3>
+        <p>Uw aangifte wordt door ons verzorgd &mdash; inclusief alle aftrekposten en toeslagen.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Geld terug</h3>
+        <p>U ontvangt uw teruggave. Bij een voorlopige aanvraag zelfs maandelijks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TARIEVEN ======== -->
+<section class="tarieven" id="tarieven">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Tarieven</div>
+      <h2 class="section-title">Eerlijke, vaste prijzen</h2>
+      <p class="section-desc">Geen verrassingen achteraf. U weet vooraf wat het kost. Alle prijzen zijn inclusief BTW.</p>
+    </div>
+
+    <div class="tarieven-grid">
+      <!-- Senioren -->
+      <div class="tarief-card">
+        <div class="tarief-icon">&#128116;</div>
+        <div class="tarief-name">Senioren Aangifte</div>
+        <div class="tarief-for">65+ / AOW-gerechtigden</div>
+        <div class="tarief-price">&euro; 59</div>
+        <div class="tarief-price-note">per aangifte &middot; incl. BTW</div>
+        <ul class="tarief-features">
+          <li>Complete aangifte inkomstenbelasting</li>
+          <li>Ouderenkorting optimalisatie</li>
+          <li>Zorgkosten &amp; giften aftrek</li>
+          <li>Controle huur- en zorgtoeslag</li>
+          <li>Aan huis of op locatie</li>
+          <li>Met partner: &euro; 89</li>
+        </ul>
+        <button class="tarief-btn" onclick="scrollToContact()">Aangifte aanvragen</button>
+      </div>
+
+      <!-- Starters -->
+      <div class="tarief-card tarief-card--popular">
+        <div class="tarief-popular-badge">Populairst</div>
+        <div class="tarief-icon">&#127968;</div>
+        <div class="tarief-name">Eerste Woning Pakket</div>
+        <div class="tarief-for">Starters met koopwoning</div>
+        <div class="tarief-price">&euro; 109</div>
+        <div class="tarief-price-note">per aangifte &middot; incl. BTW</div>
+        <ul class="tarief-features">
+          <li>Complete aangifte inkomstenbelasting</li>
+          <li>Hypotheekrenteaftrek berekening</li>
+          <li>Eigenwoningforfait verwerking</li>
+          <li><strong>Voorlopige teruggave aanvragen</strong></li>
+          <li>Online via beeldbellen of WhatsApp</li>
+          <li>Met partner: &euro; 149</li>
+        </ul>
+        <button class="tarief-btn" onclick="scrollToContact()">Direct aanvragen &rarr;</button>
+      </div>
+
+      <!-- Standaard -->
+      <div class="tarief-card">
+        <div class="tarief-icon">&#128196;</div>
+        <div class="tarief-name">Standaard Aangifte</div>
+        <div class="tarief-for">Particulieren</div>
+        <div class="tarief-price">&euro; 69</div>
+        <div class="tarief-price-note">per aangifte &middot; incl. BTW</div>
+        <ul class="tarief-features">
+          <li>Complete aangifte inkomstenbelasting</li>
+          <li>Alle aftrekposten meenemen</li>
+          <li>Box 3 vermogen verwerken</li>
+          <li>Correctie eerdere aangiften</li>
+          <li>Op locatie of online</li>
+          <li>Met partner: &euro; 99</li>
+        </ul>
+        <button class="tarief-btn" onclick="scrollToContact()">Aangifte aanvragen</button>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top:32px; color: var(--clr-bark); font-size:0.88rem;">
+      <strong>Alleen voorlopige teruggave aanvragen?</strong> Dat kan ook los, voor &euro; 49 incl. BTW.
+      <br>Overige diensten: toeslagen aanvragen &euro; 30 &middot; spoedaangifte (24u) + &euro; 25
+    </p>
+  </div>
+</section>
+
+<!-- ======== REGIO ======== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Werkgebied</div>
+      <h2 class="section-title">Heel Zaanstad en omgeving</h2>
+      <p class="section-desc">Wij komen bij u thuis of helpen u online. Overal in de gemeente Zaanstad.</p>
+    </div>
+    <div class="regio-badges">
+      <span class="regio-badge">Zaandam</span>
+      <span class="regio-badge">Krommenie</span>
+      <span class="regio-badge">Assendelft</span>
+      <span class="regio-badge">Wormerveer</span>
+      <span class="regio-badge">Koog aan de Zaan</span>
+      <span class="regio-badge">Zaandijk</span>
+      <span class="regio-badge">Westzaan</span>
+      <span class="regio-badge">Wormerland</span>
+      <span class="regio-badge">Oostzaan</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Veelgestelde vragen</div>
+      <h2 class="section-title">Alles wat u wilt weten</h2>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Wat is een voorlopige teruggave precies?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Een voorlopige teruggave is een maandelijkse betaling van de Belastingdienst op basis van een schatting van uw belastingvoordeel. Als u bijvoorbeeld hypotheekrenteaftrek heeft, kunt u dit voordeel maandelijks ontvangen in plaats van &eacute;&eacute;n keer per jaar na uw aangifte. Dit kan honderden euro&apos;s per maand schelen &mdash; ideaal als u net een huis heeft gekocht.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Hoe snel krijg ik mijn voorlopige teruggave?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Nadat wij de aanvraag voor u hebben ingediend, verwerkt de Belastingdienst dit doorgaans binnen 4 tot 8 weken. Daarna ontvangt u maandelijks het bedrag op uw rekening. Wij raden aan dit zo snel mogelijk te regelen na uw woningaankoop.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Komen jullie ook aan huis voor de aangifte?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Ja, wij komen graag bij u thuis &mdash; vooral voor senioren is dit vaak het prettigst. U heeft dan al uw papieren bij de hand en wij helpen u rustig door het hele proces. Dit geldt voor heel Zaanstad: Zaandam, Krommenie, Assendelft, Wormerveer en omstreken.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Welke documenten heb ik nodig?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Dat hangt af van uw situatie, maar denk aan: uw DigiD, jaaropgave(n) van werkgever of pensioen, WOZ-beschikking, jaaroverzicht hypotheek, bankafschriften (voor box 3), en eventueel overzichten van zorgkosten of giften. Na uw aanmelding sturen wij u een persoonlijke checklist.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Wat als ik al een aangifte heb gedaan maar iets ben vergeten?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Geen probleem. U kunt tot 5 jaar terug een correctie indienen. Wij bekijken uw eerdere aangifte en dienen een verbeterde versie in als er aftrekposten gemist zijn. Dit valt onder ons standaard tarief.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Zijn jullie erkend / gecertificeerd?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Wij werken volgens de richtlijnen van het Register Belastingadviseurs (RB). Al onze adviseurs zijn opgeleid en ervaren in de Nederlandse belastingwetgeving. U bent bij ons in goede handen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CTA / CONTACT ======== -->
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Klaar om uw aangifte te regelen?</h2>
+    <p>Neem vandaag nog contact op. Wij reageren dezelfde dag.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/31600000000" class="btn btn-white">&#128172; WhatsApp ons</a>
+      <a href="mailto:info@belastinghulpzaanstad.nl" class="btn btn-outline-white">&#9993; Mail ons</a>
+    </div>
+    <div class="cta-phone">
+      <div class="cta-phone-label">Of bel direct</div>
+      <a href="tel:+31750000000">075 &ndash; 000 00 00</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Belastinghulp Zaanstad</div>
+        <p class="footer-desc">Persoonlijke hulp bij uw belastingaangifte. Speciaal voor senioren en starters met een eerste woning in Zaanstad en omgeving.</p>
+      </div>
+      <div>
+        <h4>Diensten</h4>
+        <ul class="footer-links">
+          <li><a href="#senioren">Aangifte Senioren</a></li>
+          <li><a href="#starters">Eerste Woning Pakket</a></li>
+          <li><a href="#starters">Voorlopige Teruggave</a></li>
+          <li><a href="#tarieven">Standaard Aangifte</a></li>
+          <li><a href="#tarieven">Toeslagen aanvragen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Werkgebied</h4>
+        <ul class="footer-links">
+          <li><a href="#">Zaandam</a></li>
+          <li><a href="#">Krommenie</a></li>
+          <li><a href="#">Assendelft</a></li>
+          <li><a href="#">Wormerveer</a></li>
+          <li><a href="#">Koog aan de Zaan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+31750000000">075 &ndash; 000 00 00</a></li>
+          <li><a href="https://wa.me/31600000000">WhatsApp</a></li>
+          <li><a href="mailto:info@belastinghulpzaanstad.nl">info@belastinghulpzaanstad.nl</a></li>
+          <li><a href="#">KvK: 00000000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Belastinghulp Zaanstad. Alle rechten voorbehouden. &middot; <a href="#" style="color:rgba(255,255,255,0.5)">Privacybeleid</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ======== SCRIPTS ======== -->
+<script>
+// FAQ toggle
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasActive = item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+  if (!wasActive) item.classList.add('active');
+}
+
+// Scroll to contact
+function scrollToContact() {
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Mobile menu toggle
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '100%';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(250,248,244,0.98)';
+    links.style.padding = '20px 24px';
+    links.style.borderBottom = '1px solid rgba(200,185,168,0.3)';
+    links.style.gap = '16px';
+  }
+}
+
+// Navbar shrink on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 60) {
+    nav.style.boxShadow = '0 2px 16px rgba(44,37,32,0.08)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// Scroll animations with IntersectionObserver
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+
+// Structured Data for SEO (JSON-LD)
+const schema = document.createElement('script');
+schema.type = 'application/ld+json';
+schema.text = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Belastinghulp Zaanstad",
+  "description": "Persoonlijke hulp bij belastingaangifte voor senioren en starters met een eerste woning in Zaanstad",
+  "url": "https://belastinghulpzaanstad.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Zaanstad"
+  },
+  "priceRange": "€59 - €149",
+  "serviceType": ["Belastingaangifte", "Voorlopige teruggave", "Belastingadvies"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Zaandam",
+    "addressRegion": "Noord-Holland",
+    "addressCountry": "NL"
+  }
+});
+document.head.appendChild(schema);
+</script>
+
+</body>
+</html>
