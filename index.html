@@ -958,6 +958,114 @@ section {
 }
 
 /* ========================================
+   TESTIMONIALS
+   ======================================== */
+.testimonials {
+  background: var(--clr-warm-white);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--clr-sand);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.4s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.testimonial-stars {
+  color: #f5a623;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+}
+
+.testimonial-quote {
+  font-family: var(--font-display);
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--clr-deep);
+  font-style: italic;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+}
+
+.testimonial-quote::before {
+  content: '\201C';
+  font-size: 3rem;
+  line-height: 0;
+  vertical-align: -0.65rem;
+  color: var(--clr-teal-light);
+  font-style: normal;
+  margin-right: 3px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 4px;
+  border-top: 1px solid var(--clr-sand);
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--clr-teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.testimonial-card:nth-child(2n) .testimonial-avatar,
+.testimonial-card:nth-child(3n) .testimonial-avatar {
+  background: var(--clr-orange);
+}
+
+.testimonial-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--clr-midnight);
+  font-style: normal;
+  display: block;
+}
+
+.testimonial-role {
+  font-size: 0.8rem;
+  color: var(--clr-stone);
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+/* ========================================
    REGIO
    ======================================== */
 .regio-badges {
@@ -1538,6 +1646,104 @@ section {
   </div>
 </section>
 
+<!-- ======== TESTIMONIALS ======== -->
+<section class="testimonials" id="ervaringen">
+  <div class="container">
+    <div class="section-header scroll-reveal">
+      <div class="section-eyebrow">&#10022; Ervaringen</div>
+      <h2 class="section-title">Wat onze klanten zeggen</h2>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card scroll-reveal">
+        <div class="testimonial-stars" aria-label="5 van 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="testimonial-quote">
+          Ik zag altijd zo op tegen de belastingaangifte. Nu komt hij gewoon bij mij thuis, legt alles rustig uit en regelt het helemaal. Bleek dat ik nog recht had op zorgtoeslag ook. Heel fijn!
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">C</div>
+          <div>
+            <cite class="testimonial-name">Corrie de V.</cite>
+            <div class="testimonial-role">Gepensioneerd, Zaandam</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card scroll-reveal">
+        <div class="testimonial-stars" aria-label="5 van 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="testimonial-quote">
+          Net ons eerste huis gekocht en ik had geen idee dat je maandelijks geld terug kon krijgen. Binnen een week was de voorlopige teruggave geregeld. Scheelt ons nu &euro;310 per maand. Had ik dit maar eerder geweten!
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">D</div>
+          <div>
+            <cite class="testimonial-name">Daan van der L.</cite>
+            <div class="testimonial-role">Eerste woning, Assendelft</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card scroll-reveal">
+        <div class="testimonial-stars" aria-label="5 van 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="testimonial-quote">
+          Eindelijk iemand die normaal Nederlands praat en niet in belastingjargon. Mijn zorgkosten bleken voor een groot deel aftrekbaar. Volgend jaar weer!
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">J</div>
+          <div>
+            <cite class="testimonial-name">Jaap S.</cite>
+            <div class="testimonial-role">Gepensioneerd, Koog aan de Zaan</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card scroll-reveal">
+        <div class="testimonial-stars" aria-label="5 van 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="testimonial-quote">
+          Wij lieten onze aangifte altijd door de kinderen doen, maar die hebben het ook druk. Nu worden we persoonlijk geholpen en kregen we meer terug dan voorgaande jaren. De ouderenkorting was niet goed benut, dat is nu opgelost.
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">H</div>
+          <div>
+            <cite class="testimonial-name">Henk en Ria B.</cite>
+            <div class="testimonial-role">Gepensioneerd, Krommenie</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card scroll-reveal">
+        <div class="testimonial-stars" aria-label="5 van 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="testimonial-quote">
+          We hadden allebei nog nooit aangifte gedaan met een koopwoning. Alles werd helder uitgelegd via een videocall. De hypotheekrenteaftrek en het eigenwoningforfait zijn nu goed verwerkt. Echt een aanrader voor andere starters.
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">L</div>
+          <div>
+            <cite class="testimonial-name">Lisa en Tim K.</cite>
+            <div class="testimonial-role">Starters, Wormerveer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card scroll-reveal">
+        <div class="testimonial-stars" aria-label="5 van 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="testimonial-quote">
+          Als alleenstaande starter voelde de belastingaangifte best overweldigend. Alles werd via WhatsApp ingepland en binnen een paar dagen was het geregeld. Mijn voorlopige teruggave loopt nu, super fijn voor mijn maandlasten.
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">F</div>
+          <div>
+            <cite class="testimonial-name">Fleur M.</cite>
+            <div class="testimonial-role">Eerste woning, Zaandam</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ======== REGIO ======== -->
 <section>
   <div class="container">
@@ -1750,7 +1956,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forEach(el => {
+document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .testimonial-card, .scroll-reveal').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -1777,7 +1983,58 @@ schema.text = JSON.stringify({
     "addressLocality": "Zaandam",
     "addressRegion": "Noord-Holland",
     "addressCountry": "NL"
-  }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "6",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Corrie de V." },
+      "reviewBody": "Ik zag altijd zo op tegen de belastingaangifte. Nu komt hij gewoon bij mij thuis, legt alles rustig uit en regelt het helemaal. Bleek dat ik nog recht had op zorgtoeslag ook. Heel fijn!",
+      "itemReviewed": { "@type": "ProfessionalService", "name": "Belastinghulp Zaanstad" }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Henk en Ria B." },
+      "reviewBody": "Wij lieten onze aangifte altijd door de kinderen doen, maar die hebben het ook druk. Nu worden we persoonlijk geholpen en kregen we meer terug dan voorgaande jaren. De ouderenkorting was niet goed benut, dat is nu opgelost.",
+      "itemReviewed": { "@type": "ProfessionalService", "name": "Belastinghulp Zaanstad" }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Daan van der L." },
+      "reviewBody": "Net ons eerste huis gekocht en ik had geen idee dat je maandelijks geld terug kon krijgen. Binnen een week was de voorlopige teruggave geregeld. Scheelt ons nu \u20ac310 per maand. Had ik dit maar eerder geweten!",
+      "itemReviewed": { "@type": "ProfessionalService", "name": "Belastinghulp Zaanstad" }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Lisa en Tim K." },
+      "reviewBody": "We hadden allebei nog nooit aangifte gedaan met een koopwoning. Alles werd helder uitgelegd via een videocall. De hypotheekrenteaftrek en het eigenwoningforfait zijn nu goed verwerkt. Echt een aanrader voor andere starters.",
+      "itemReviewed": { "@type": "ProfessionalService", "name": "Belastinghulp Zaanstad" }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Jaap S." },
+      "reviewBody": "Eindelijk iemand die normaal Nederlands praat en niet in belastingjargon. Mijn zorgkosten bleken voor een groot deel aftrekbaar. Volgend jaar weer!",
+      "itemReviewed": { "@type": "ProfessionalService", "name": "Belastinghulp Zaanstad" }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Fleur M." },
+      "reviewBody": "Als alleenstaande starter voelde de belastingaangifte best overweldigend. Alles werd via WhatsApp ingepland en binnen een paar dagen was het geregeld. Mijn voorlopige teruggave loopt nu, super fijn voor mijn maandlasten.",
+      "itemReviewed": { "@type": "ProfessionalService", "name": "Belastinghulp Zaanstad" }
+    }
+  ]
 });
 document.head.appendChild(schema);
 </script>

@@ -1009,6 +1009,114 @@ section {
 }
 
 /* ========================================
+   TESTIMONIALS
+   ======================================== */
+.testimonials {
+  background: var(--clr-warm-white);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--clr-sand);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.4s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.testimonial-stars {
+  color: #f5a623;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+}
+
+.testimonial-quote {
+  font-family: var(--font-display);
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--clr-deep);
+  font-style: italic;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+}
+
+.testimonial-quote::before {
+  content: '\201C';
+  font-size: 3rem;
+  line-height: 0;
+  vertical-align: -0.65rem;
+  color: var(--clr-teal-light);
+  font-style: normal;
+  margin-right: 3px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 4px;
+  border-top: 1px solid var(--clr-sand);
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--clr-teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.testimonial-card:nth-child(2n) .testimonial-avatar,
+.testimonial-card:nth-child(3n) .testimonial-avatar {
+  background: var(--clr-orange);
+}
+
+.testimonial-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--clr-midnight);
+  font-style: normal;
+  display: block;
+}
+
+.testimonial-role {
+  font-size: 0.8rem;
+  color: var(--clr-stone);
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+/* ========================================
    REGIO
    ======================================== */
 .regio-badges {
