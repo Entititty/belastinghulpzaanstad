@@ -1015,13 +1015,77 @@ section {
   background: var(--clr-warm-white);
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.testimonials-slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.testimonials-viewport {
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+.testimonials-track {
+  display: flex;
   gap: 24px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.testimonials-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-teal);
+  background: white;
+  color: var(--clr-teal);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.testimonials-btn:hover:not(:disabled) {
+  background: var(--clr-teal);
+  color: white;
+}
+
+.testimonials-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.testimonials-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.testimonials-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--clr-sand);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.testimonials-dot.active {
+  background: var(--clr-teal);
+  transform: scale(1.4);
 }
 
 .testimonial-card {
+  flex: 0 0 calc((100% - 48px) / 3);
   background: white;
   border-radius: var(--radius-lg);
   padding: 32px 28px;
@@ -1030,7 +1094,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: all 0.4s;
+  transition: box-shadow 0.4s, transform 0.4s;
 }
 
 .testimonial-card:hover {
@@ -1109,11 +1173,13 @@ section {
 }
 
 @media (max-width: 900px) {
-  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-card { flex: 0 0 calc((100% - 24px) / 2); }
 }
 
 @media (max-width: 600px) {
-  .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .testimonial-card { flex: 0 0 100%; }
+  .testimonials-slider-wrapper { gap: 8px; }
+  .testimonials-btn { width: 36px; height: 36px; font-size: 1rem; }
 }
 
 /* ========================================
