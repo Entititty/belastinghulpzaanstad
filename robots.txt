@@ -1,4 +1,80 @@
+# Belastinghulp Zaanstad – robots.txt
+
+# Algemene zoekmachines
 User-agent: *
 Allow: /
 
+# Google – inclusief AI Overviews / SGE
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: claude-web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Microsoft Copilot / Bing
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# Common Crawl (gebruikt door veel AI-trainingssets)
+User-agent: CCBot
+Allow: /
+
+# Bytespider (TikTok / ByteDance)
+User-agent: Bytespider
+Allow: /
+
+# Apple (Siri / Spotlight)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
 Sitemap: https://belastinghulpzaanstad.nl/sitemap.xml
+Sitemap: https://belastinghulpzaanstad.nl/llms.txt
