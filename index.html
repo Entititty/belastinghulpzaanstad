@@ -1945,6 +1945,70 @@ section {
   </div>
 </section>
 
+
+<!-- ======== BLOG-SECTIE ======== -->
+<section id="blog" style="padding:80px 0;background:var(--clr-warm-white);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Kennisbank</div>
+      <h2 class="section-title">Handige artikelen voor u</h2>
+      <p class="section-desc">Alles over belastingaangifte, toeslagen en kortingen – speciaal voor senioren en woningeigenaren in Zaanstad.</p>
+    </div>
+    <style>
+      .blog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+      .blog-card{display:block;background:#fff;border-radius:12px;padding:26px;text-decoration:none;color:inherit;box-shadow:0 2px 12px rgba(44,37,32,0.07);transition:transform 0.2s ease,box-shadow 0.2s ease;border:1px solid rgba(44,37,32,0.05);}
+      .blog-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(44,37,32,0.12);}
+      .blog-card-tag{font-size:12px;font-weight:700;color:var(--clr-teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+      .blog-card h3{font-size:1rem;font-family:var(--font-display);font-weight:600;color:var(--clr-deep);margin-bottom:10px;line-height:1.45;}
+      .blog-card p{font-size:0.875rem;color:var(--clr-bark);line-height:1.6;margin-bottom:16px;}
+      .blog-card-link{font-size:0.875rem;color:var(--clr-teal);font-weight:700;}
+      @media(max-width:900px){.blog-cards{grid-template-columns:repeat(2,1fr);}}
+      @media(max-width:600px){.blog-cards{grid-template-columns:1fr;}}
+    </style>
+    <div class="blog-cards">
+      <a href="/blog/belastingaangifte-senioren/" class="blog-card">
+        <div class="blog-card-tag">Senioren</div>
+        <h3>Belastingaangifte voor senioren 2026 – complete gids</h3>
+        <p>Wat u moet opgeven, welke kortingen u verdient en waarom aangifte loont – ook bij alleen AOW.</p>
+        <span class="blog-card-link">Lees meer →</span>
+      </a>
+      <a href="/blog/aow-en-belasting/" class="blog-card">
+        <div class="blog-card-tag">AOW</div>
+        <h3>AOW en belasting 2026 – hoeveel betaalt u?</h3>
+        <p>Is AOW belast? Welk tarief geldt, welke kortingen zijn er en wanneer kunt u geld terugkrijgen?</p>
+        <span class="blog-card-link">Lees meer →</span>
+      </a>
+      <a href="/blog/ouderenkorting/" class="blog-card">
+        <div class="blog-card-tag">Heffingskortingen</div>
+        <h3>Ouderenkorting 2026: €2.035 korting op uw belasting</h3>
+        <p>Hoeveel ouderenkorting kunt u ontvangen en hoe zorgt u dat u hem ook echt krijgt?</p>
+        <span class="blog-card-link">Lees meer →</span>
+      </a>
+      <a href="/blog/voorlopige-teruggave/" class="blog-card">
+        <div class="blog-card-tag">Eerste woning</div>
+        <h3>Voorlopige teruggave aanvragen – eerste woning</h3>
+        <p>Hypotheekrenteaftrek maandelijks uitbetaald krijgen. Gemiddeld €800–€1.200 per jaar terug.</p>
+        <span class="blog-card-link">Lees meer →</span>
+      </a>
+      <a href="/blog/woz-bezwaar-zaanstad/" class="blog-card">
+        <div class="blog-card-tag">Zaanstad</div>
+        <h3>WOZ-bezwaar maken Zaanstad 2026 – loont het?</h3>
+        <p>WOZ te hoog vastgesteld? Maak bezwaar binnen 6 weken en bespaar op OZB en eigenwoningforfait.</p>
+        <span class="blog-card-link">Lees meer →</span>
+      </a>
+      <a href="/blog/kwijtschelding-gemeentelijke-belasting/" class="blog-card">
+        <div class="blog-card-tag">Laag inkomen</div>
+        <h3>Kwijtschelding gemeentelijke belasting Zaanstad</h3>
+        <p>Weinig inkomen? U kunt de afvalstoffenheffing en rioolheffing mogelijk niet hoeven betalen.</p>
+        <span class="blog-card-link">Lees meer →</span>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/blog/" class="btn btn-primary" style="display:inline-flex;">Alle artikelen bekijken →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ======== CTA / CONTACT ======== -->
 <section class="cta" id="contact">
   <div class="container">
@@ -1998,6 +2062,7 @@ section {
         <ul class="footer-links">
           <li><a href="tel:+31619711848">06 &ndash; 19 71 18 48</a></li>
           <li><a href="https://wa.me/31619711848">WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=61574368775029" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           <li><a href="mailto:info@belastinghulpzaanstad.nl">info@belastinghulpzaanstad.nl</a></li>
           
         </ul>
@@ -2113,6 +2178,7 @@ schema.text = JSON.stringify({
   "name": "Belastinghulp Zaanstad",
   "description": "Persoonlijke hulp bij belastingaangifte voor senioren en starters met een eerste woning in Zaanstad",
   "url": "https://belastinghulpzaanstad.nl",
+  "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029"],
   "areaServed": {
     "@type": "City",
     "name": "Zaanstad"
