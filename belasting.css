@@ -1754,3 +1754,89 @@ section {
   .income-table { font-size: 0.82rem; }
   .income-table td, .income-table th { padding: 8px 10px; }
 }
+
+/* ========================================
+   WHATSAPP FLOATING BUTTON
+   ======================================== */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  height: 52px;
+  padding: 0 20px 0 14px;
+  gap: 10px;
+  background: #25D366;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wa-label {
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+}
+.wa-float svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.wa-float::before {
+  content: "Stuur ons een berichtje";
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1a1614;
+  color: #fff;
+  font-size: 13px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 7px 13px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+.wa-float::after {
+  content: "";
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: #1a1614;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.wa-float:hover::before,
+.wa-float:hover::after { opacity: 1; }
+
+@media (max-width: 600px) {
+  .wa-float {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    bottom: 20px;
+    right: 16px;
+    border-radius: 50%;
+  }
+  .wa-float svg { width: 34px; height: 34px; }
+  .wa-label { display: none; }
+  .wa-float::before,
+  .wa-float::after { display: none; }
+}
