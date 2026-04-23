@@ -1588,13 +1588,17 @@ section {
 
 .blog-article strong { color: var(--clr-deep); }
 
-.blog-article a {
+.blog-article a:not(.btn) {
   color: var(--clr-teal);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.blog-article a:hover { color: var(--clr-teal-dark); }
+.blog-article a:not(.btn):hover { color: var(--clr-teal-dark); }
+
+.blog-article a.btn { text-decoration: none; }
+.blog-article a.btn-primary { color: #fff; }
+.blog-article a.btn-orange { color: #fff; }
 
 .info-box {
   background: var(--clr-teal-light);
