@@ -192,4 +192,43 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- ===== ENGLISH PAGES ===== -->
+  <url>
+    <loc>https://belastinghulpzaanstad.nl/en/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/about-us/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/zaandam/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/krommenie/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/assendelft/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/wormerveer/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/koog-aan-de-zaan/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/zaandijk/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/westzaan/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/wormerland/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/oostzaan/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/</loc><lastmod>2026-04-27</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/rent-benefit/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/healthcare-benefit/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/tax-return-deadline-2025/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/tax-return-extension-2025/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/tax-return-seniors/</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/late-tax-return/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/tax-return-tips/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/preliminary-tax-refund/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/mortgage-interest-deduction/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/aow-and-tax/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/elderly-tax-credit/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/tax-credits/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/healthcare-costs-deduction/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/donations-deduction/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/box-3-savings/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/childcare-benefit/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/woz-objection-zaanstad/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/municipal-tax-waiver/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/pension-tax-return/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://belastinghulpzaanstad.nl/en/blog/tax-refund/</loc><lastmod>2026-04-27</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
 </urlset>
