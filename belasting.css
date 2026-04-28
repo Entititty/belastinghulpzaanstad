@@ -133,6 +133,8 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-logo-icon {
@@ -152,8 +154,9 @@ a { text-decoration: none; color: inherit; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 22px;
   list-style: none;
+  flex-wrap: nowrap;
 }
 
 .nav-links a {
@@ -162,6 +165,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--clr-bark);
   transition: color 0.2s;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-links a:hover { color: var(--clr-teal); }
