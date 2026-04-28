@@ -1846,7 +1846,8 @@ section {
 }
 
 /* ========================================
-   LANGUAGE TOGGLE
+   LANGUAGE TOGGLE — sits right after the nav-logo so it never competes
+   with the main menu items for horizontal space
    ======================================== */
 .lang-toggle {
   display: inline-flex;
@@ -1854,22 +1855,24 @@ section {
   background: rgba(44,37,32,0.06);
   border-radius: 100px;
   padding: 3px;
-  margin-right: 12px;
+  margin-left: 14px;
+  margin-right: auto; /* pushes nav-links to the right edge */
   font-family: var(--font-body);
+  flex-shrink: 0;
 }
 .lang-toggle a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 12px;
+  padding: 5px 11px;
   border-radius: 100px;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--clr-bark);
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: all 0.2s;
-  min-width: 32px;
+  min-width: 28px;
 }
 .lang-toggle a:hover { color: var(--clr-deep); }
 .lang-toggle a.active {
@@ -1878,6 +1881,6 @@ section {
   box-shadow: 0 2px 6px rgba(26,138,125,0.25);
 }
 @media(max-width:900px){
-  .lang-toggle{margin-right:8px;}
-  .lang-toggle a{padding:5px 9px;font-size:0.72rem;}
+  .lang-toggle{margin-left:10px;}
+  .lang-toggle a{padding:4px 9px;font-size:0.7rem;min-width:26px;}
 }

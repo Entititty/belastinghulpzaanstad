@@ -1409,6 +1409,13 @@ section {
   .teruggave h2 { font-size: 1.8rem; }
   .cta h2 { font-size: 1.8rem; }
 }
+
+/* Language toggle — sits next to logo, never crowds the menu items */
+.lang-toggle{display:inline-flex;align-items:center;background:rgba(44,37,32,0.06);border-radius:100px;padding:3px;margin-left:14px;margin-right:auto;font-family:var(--font-body);flex-shrink:0;}
+.lang-toggle a{display:inline-flex;align-items:center;justify-content:center;padding:5px 11px;border-radius:100px;font-size:0.74rem;font-weight:700;color:var(--clr-bark);text-decoration:none;letter-spacing:0.5px;transition:all 0.2s;min-width:28px;}
+.lang-toggle a:hover{color:var(--clr-deep);}
+.lang-toggle a.active{background:var(--clr-teal);color:#fff;box-shadow:0 2px 6px rgba(26,138,125,0.25);}
+@media(max-width:900px){.lang-toggle{margin-left:10px;}.lang-toggle a{padding:4px 9px;font-size:0.7rem;min-width:26px;}}
 </style>
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -1464,9 +1471,9 @@ section {
       <span class="nav-logo-icon">BZ</span>
       Belastinghulp Zaanstad
     </a>
+      <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/">EN</a></div>
     <ul class="nav-links">
-      <li class="nav-lang-item"><div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/">EN</a></div></li>
-      <li><a href="#starters">Eerste woning</a></li>
+<li><a href="#starters">Eerste woning</a></li>
       <li><a href="#senioren">Senioren</a></li>
       <li><a href="#tarieven">Tarieven</a></li>
       <li><a href="#werkwijze">Hoe werkt het</a></li>
