@@ -167,6 +167,8 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-logo-icon {
@@ -181,13 +183,15 @@ a { text-decoration: none; color: inherit; }
   font-size: 1.1rem;
   font-family: var(--font-body);
   font-weight: 800;
+  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 22px;
   list-style: none;
+  flex-wrap: nowrap;
 }
 
 .nav-links a {
@@ -196,6 +200,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--clr-bark);
   transition: color 0.2s;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-links a:hover { color: var(--clr-teal); }
@@ -222,6 +227,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.85rem !important;
   transition: all 0.3s !important;
   box-shadow: var(--shadow-glow-teal);
+  white-space: nowrap;
 }
 
 .nav-cta:hover {
@@ -1396,6 +1402,13 @@ section {
   .steps-grid::before { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+}
+
+/* English labels are longer than the Dutch originals; switch to hamburger earlier
+   so the brand and CTA never get pushed onto a second line. */
+@media (max-width: 1100px) {
   .nav-links { display: none; }
   .mobile-toggle { display: block; }
 }
