@@ -5,8 +5,6 @@
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <link rel="dns-prefetch" href="https://www.facebook.com">
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
-<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Donations deduction from tax in 2026: threshold &amp; maximum amount | Belastinghulp Zaanstad</title>
 <meta name="description" content="Donations deduction 2026: threshold €67, max. 10% of income. Periodic donation to an ANBI is fully deductible. How much does it save you? With example calculations.">
@@ -545,7 +543,9 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forE
   observer.observe(el);
 });
 
-const articleSchema = {
+</script>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Donations deduction from tax: how it works in 2026",
@@ -557,9 +557,10 @@ const articleSchema = {
   "url": "https://belastinghulpzaanstad.nl/en/blog/donations-deduction/",
   "inLanguage": "en",
   "mainEntityOfPage": "https://belastinghulpzaanstad.nl/en/blog/donations-deduction/"
-};
-
-const faqSchema = {
+}
+</script>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -584,14 +585,7 @@ const faqSchema = {
       "acceptedAnswer": { "@type": "Answer", "text": "In the income tax return you enter your donations under 'Donations'. You state the name, the RSIN number of the ANBI and the amount. With a periodic donation you also provide the duration of the agreement." }
     }
   ]
-};
-
-[articleSchema, faqSchema].forEach(s => {
-  const el = document.createElement('script');
-  el.type = 'application/ld+json';
-  el.text = JSON.stringify(s);
-  document.head.appendChild(el);
-});
+}
 </script>
 
 <a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer" aria-label="Send us a WhatsApp message" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#25D366;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">

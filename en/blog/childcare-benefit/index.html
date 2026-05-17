@@ -5,8 +5,6 @@
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <link rel="dns-prefetch" href="https://www.facebook.com">
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
-<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Childcare benefit 2026: when are you entitled and how much? Calculation | Belastinghulp Zaanstad</title>
 <meta name="description" content="Childcare benefit (kinderopvangtoeslag) 2026: reimbursement up to 96% of costs. Income limits, hours registration and how to report changes on time. Avoid having to pay back.">
@@ -536,7 +534,9 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forE
   observer.observe(el);
 });
 
-const articleSchema = {
+</script>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Childcare benefit (kinderopvangtoeslag) 2026: when are you entitled and how much do you get?",
@@ -548,9 +548,10 @@ const articleSchema = {
   "url": "https://belastinghulpzaanstad.nl/en/blog/childcare-benefit/",
   "inLanguage": "en",
   "mainEntityOfPage": "https://belastinghulpzaanstad.nl/en/blog/childcare-benefit/"
-};
-
-const faqSchema = {
+}
+</script>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -575,14 +576,7 @@ const faqSchema = {
       "acceptedAnswer": { "@type": "Answer", "text": "You are entitled to benefit for a maximum of the number of hours that the least working partner works, multiplied by 140%. If you work 20 hours per week, you are entitled to benefit for a maximum of 28 hours of childcare per week." }
     }
   ]
-};
-
-[articleSchema, faqSchema].forEach(s => {
-  const el = document.createElement('script');
-  el.type = 'application/ld+json';
-  el.text = JSON.stringify(s);
-  document.head.appendChild(el);
-});
+}
 </script>
 
 <a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer" aria-label="Send us a WhatsApp message" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#25D366;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">
