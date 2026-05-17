@@ -1418,6 +1418,14 @@ section {
 .lang-toggle a:hover{color:var(--clr-deep);}
 .lang-toggle a.active{background:var(--clr-teal);color:#fff;box-shadow:0 2px 6px rgba(26,138,125,0.25);}
 @media(max-width:900px){.lang-toggle{margin-left:10px;}.lang-toggle a{padding:4px 9px;font-size:0.7rem;min-width:26px;}}
+
+/* Compact mid-page CTA bar — repeats phone/WhatsApp between major sections */
+.mid-cta{background:linear-gradient(135deg,var(--clr-warm-white) 0%,var(--clr-cream) 100%);border-top:1px solid rgba(200,185,168,0.4);border-bottom:1px solid rgba(200,185,168,0.4);padding:22px 24px;text-align:center;color:var(--clr-deep);font-size:1.05rem;font-weight:600;line-height:1.5;}
+.mid-cta-phone,.mid-cta-wa{color:#fff !important;padding:8px 16px;border-radius:100px;text-decoration:none;font-weight:700;display:inline-block;margin:4px 4px;transition:transform 0.15s;white-space:nowrap;}
+.mid-cta-phone{background:var(--clr-teal);box-shadow:0 2px 8px rgba(26,138,125,0.25);}
+.mid-cta-wa{background:#25D366;box-shadow:0 2px 8px rgba(37,211,102,0.3);}
+.mid-cta-phone:hover,.mid-cta-wa:hover{transform:translateY(-1px);}
+@media(max-width:600px){.mid-cta{font-size:0.98rem;padding:20px 16px;}.mid-cta-phone,.mid-cta-wa{display:block;width:100%;max-width:260px;margin:6px auto;}}
 </style>
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -1723,6 +1731,12 @@ section {
   </div>
 </section>
 
+<!-- ======== MID-CTA #1 ======== -->
+<div class="mid-cta">
+  Twijfelt u nog? Bel <a href="tel:+31619711848" class="mid-cta-phone">06 &ndash; 19 71 18 48</a>
+  of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag." class="mid-cta-wa">stuur een WhatsApp &rarr;</a>
+</div>
+
 <!-- ======== DOELGROEPEN ======== -->
 <section id="senioren">
   <div class="container">
@@ -1905,6 +1919,12 @@ section {
   </div>
 </section>
 
+<!-- ======== MID-CTA #2 ======== -->
+<div class="mid-cta">
+  Liever direct contact? Bel <a href="tel:+31619711848" class="mid-cta-phone">06 &ndash; 19 71 18 48</a>
+  of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20een%20afspraak%20maken." class="mid-cta-wa">stuur een WhatsApp &rarr;</a>
+</div>
+
 <!-- ======== EARLY-CUSTOMER OFFER (was testimonials) ======== -->
 <section id="ervaringen" style="padding:80px 0;background:var(--clr-warm-white);">
   <div class="container">
@@ -2031,6 +2051,11 @@ section {
   </div>
 </section>
 
+<!-- ======== MID-CTA #3 ======== -->
+<div class="mid-cta">
+  Vraag niet beantwoord? Bel <a href="tel:+31619711848" class="mid-cta-phone">06 &ndash; 19 71 18 48</a>
+  of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20mijn%20situatie." class="mid-cta-wa">stuur een WhatsApp &rarr;</a>
+</div>
 
 <!-- ======== BLOG-SECTIE ======== -->
 <section id="blog" style="padding:80px 0;background:var(--clr-warm-white);">
@@ -2059,10 +2084,10 @@ section {
         <p>Inkomensgrenzen, huurgrens &amp; vermogenstoets voor 2026. Wij rekenen het binnen 5 minuten gratis voor u uit — ook als u geen DigiD heeft.</p>
         <span class="blog-card-link">Gratis check starten →</span>
       </a>
-      <a href="/blog/einddatum-belastingaangifte-2025/" class="blog-card">
-        <div class="blog-card-tag" style="color:#d97706;">⏰ Te laat? Lees dit</div>
-        <h3>Te laat met aangifte 2025? Wat nu — zo voorkomt u boetes</h3>
-        <p>De deadline van 1 mei is verstreken. Wat gebeurt er nu? Hoe krijgt u alsnog uitstel? Wij regelen het voor €59.</p>
+      <a href="/blog/einddatum-belastingaangifte-2026/" class="blog-card">
+        <div class="blog-card-tag" style="color:#d97706;">⏰ Deadline 2026</div>
+        <h3>Einddatum belastingaangifte 2026 — deadline 1 mei 2027</h3>
+        <p>Wanneer is de deadline? Wat als u te laat bent? Hoe krijgt u uitstel? Wij regelen uw aangifte voor €59.</p>
         <span class="blog-card-link">Lees meer →</span>
       </a>
       <a href="/blog/uitstel-belastingaangifte-2025/" class="blog-card">
