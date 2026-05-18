@@ -1896,3 +1896,49 @@ section {
   .lang-toggle{margin-left:10px;}
   .lang-toggle a{padding:4px 9px;font-size:0.7rem;min-width:26px;}
 }
+
+/* ========================================
+   COMPACT MID-CTA BAR
+   Repeats phone/WhatsApp between major sections.
+   Used on homepage + inside blog articles.
+   ======================================== */
+.mid-cta {
+  background: linear-gradient(135deg, var(--clr-warm-white) 0%, var(--clr-cream) 100%);
+  border-top: 1px solid rgba(200,185,168,0.4);
+  border-bottom: 1px solid rgba(200,185,168,0.4);
+  padding: 22px 24px;
+  text-align: center;
+  color: var(--clr-deep);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 36px 0;
+  border-radius: 12px;
+}
+.mid-cta-phone,
+.mid-cta-wa {
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  margin: 4px 4px;
+  transition: transform 0.15s;
+  white-space: nowrap;
+}
+.mid-cta-phone {
+  background: var(--clr-teal);
+  box-shadow: 0 2px 8px rgba(26,138,125,0.25);
+}
+.mid-cta-wa {
+  background: #25D366;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.3);
+}
+.mid-cta-phone:hover,
+.mid-cta-wa:hover { transform: translateY(-1px); }
+@media(max-width:600px){
+  .mid-cta { font-size: 0.98rem; padding: 20px 16px; }
+  .mid-cta-phone,
+  .mid-cta-wa { display: block; width: 100%; max-width: 260px; margin: 6px auto; }
+}
