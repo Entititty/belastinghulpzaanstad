@@ -35,14 +35,28 @@ Open de crontab van de gebruiker die eigenaar is van `/var/www/...`
 crontab -e
 ```
 
-Voeg onderaan deze regel toe en sla op:
+Voeg onderaan **één** van deze regels toe en sla op:
 
 ```cron
-*/2 * * * * /var/www/belastinghulpzaanstad.nl/server-setup/auto-deploy.sh
+# Aanbevolen: elk uur checken (live binnen ~1 uur na een push)
+0 * * * * /var/www/belastinghulpzaanstad.nl/server-setup/auto-deploy.sh
 ```
 
-Klaar. Vanaf nu is publiceren = **alleen pushen naar GitHub**; binnen ~2 minuten
-staat het live.
+Of, als je liever maar één keer per dag pullt (bijv. elke ochtend om 07:00):
+
+```cron
+0 7 * * * /var/www/belastinghulpzaanstad.nl/server-setup/auto-deploy.sh
+```
+
+> Let op bij 1×/dag: push je een artikel ná dat tijdstip, dan staat het pas de
+> volgende dag live. Voor dagelijks publiceren is "elk uur" daarom handiger.
+
+Klaar. Vanaf nu is publiceren = **alleen pushen naar GitHub**; bij de eerstvolgende
+check haalt de server het automatisch op.
+
+> **Sneller nodig?** De check is zo licht dat frequenter geen probleem is voor de
+> server (het draait op de achtergrond, buiten het serveren van pagina's om). Wil je
+> het bijna-direct: `*/2 * * * *` (elke 2 min) of `*/5 * * * *` (elke 5 min).
 
 ## Controleren of het loopt
 
