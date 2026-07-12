@@ -1,0 +1,2 @@
+# Shell-scripts moeten altijd LF houden, anders breken ze op de Linux-VPS
+*.sh text eol=lf
