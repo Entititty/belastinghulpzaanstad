@@ -24,7 +24,7 @@ Daarna committen en de site opnieuw deployen.
 |-----|-------|---------|------|--------|
 | 1 | 2026-07-12 | Hoeveel spaargeld belastingvrij | `hoeveel-spaargeld-belastingvrij` | ✅ LIVE |
 | 2 | 2026-07-13 | Belastingaangifte voor 1 april (deadline) | `belastingaangifte-voor-1-april` | ✅ LIVE |
-| 3 | 2026-07-14 | Aangifte inkomstenbelasting (complete gids) | `aangifte-inkomstenbelasting` | concept |
+| 3 | 2026-07-14 | Aangifte inkomstenbelasting (complete gids) | `aangifte-inkomstenbelasting` | ✅ LIVE |
 | 4 | 2026-07-15 | Uitstel belastingaangifte aanvragen | `uitstel-belastingaangifte-aanvragen` | concept |
 | 5 | 2026-07-16 | Huurtoeslag grens 2026 | `huurtoeslag-grens` | concept |
 | 6 | 2026-07-17 | Kindgebonden budget | `kindgebonden-budget` | concept |
