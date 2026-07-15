@@ -1,8 +1,8 @@
 # Auto-deploy instellen (eenmalig, op de VPS)
 
 Doel: na een `git push` naar GitHub wordt de live site **automatisch** bijgewerkt,
-zonder handmatig `git pull`. Een cron-job op de server checkt elke 2 minuten of er
-nieuwe commits zijn en spiegelt dan `/var/www/belastinghulpzaanstad.nl` aan GitHub.
+zonder handmatig `git pull`. Een cron-job op de server checkt periodiek of er
+nieuwe commits zijn en spiegelt dan `/var/www/belastinghulpzaanstad.nl/html` aan GitHub.
 
 Je hoeft dit **maar één keer** te doen.
 
@@ -12,7 +12,7 @@ SSH naar de server en pull nog één keer handmatig, zodat `auto-deploy.sh` op d
 server staat:
 
 ```bash
-cd /var/www/belastinghulpzaanstad.nl
+cd /var/www/belastinghulpzaanstad.nl/html
 git pull origin main
 chmod +x server-setup/auto-deploy.sh
 ```
@@ -39,13 +39,13 @@ Voeg onderaan **één** van deze regels toe en sla op:
 
 ```cron
 # Aanbevolen: elk uur checken (live binnen ~1 uur na een push)
-0 * * * * /var/www/belastinghulpzaanstad.nl/server-setup/auto-deploy.sh
+0 * * * * /var/www/belastinghulpzaanstad.nl/html/server-setup/auto-deploy.sh
 ```
 
 Of, als je liever maar één keer per dag pullt (bijv. elke ochtend om 07:00):
 
 ```cron
-0 7 * * * /var/www/belastinghulpzaanstad.nl/server-setup/auto-deploy.sh
+0 7 * * * /var/www/belastinghulpzaanstad.nl/html/server-setup/auto-deploy.sh
 ```
 
 > Let op bij 1×/dag: push je een artikel ná dat tijdstip, dan staat het pas de
@@ -67,7 +67,8 @@ tail -n 5 /tmp/belasting-deploy.log   # toont de laatste deploys
 
 ## Handig om te weten
 
-- **Vertraging:** maximaal ~2 minuten. Sneller nodig? Zet `*/2` op `*/1`.
+- **Vertraging:** hangt af van je cron-interval (aanbevolen: ~1 uur). Sneller nodig?
+  Gebruik `*/5 * * * *` (elke 5 min) of `*/2 * * * *` (elke 2 min).
 - **Veilig:** er gaat geen poort open en er staan geen sleutels in GitHub. De server
   haalt zelf op via het publieke GitHub-repo (HTTPS).
 - **Terugdraaien:** verwijder de cron-regel met `crontab -e` om auto-deploy te stoppen.

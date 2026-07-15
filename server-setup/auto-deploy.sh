@@ -13,7 +13,7 @@
 set -euo pipefail
 export PATH=/usr/local/bin:/usr/bin:/bin
 
-REPO_DIR="/var/www/belastinghulpzaanstad.nl"
+REPO_DIR="/var/www/belastinghulpzaanstad.nl/html"
 BRANCH="main"
 LOG="/tmp/belasting-deploy.log"
 
