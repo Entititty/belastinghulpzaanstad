@@ -27,7 +27,7 @@ Daarna committen en de site opnieuw deployen.
 | 3 | 2026-07-14 | Aangifte inkomstenbelasting (complete gids) | `aangifte-inkomstenbelasting` | ✅ LIVE |
 | 4 | 2026-07-15 | Uitstel belastingaangifte aanvragen | `uitstel-belastingaangifte-aanvragen` | ✅ LIVE |
 | 5 | 2026-07-16 | Huurtoeslag grens 2026 | `huurtoeslag-grens` | ✅ LIVE |
-| 6 | 2026-07-17 | Kindgebonden budget | `kindgebonden-budget` | concept |
+| 6 | 2026-07-18 | Kindgebonden budget | `kindgebonden-budget` | ✅ LIVE |
 | 7 | 2026-07-18 | Zorgtoeslag aanvragen (wanneer/hoeveel) | `zorgtoeslag-aanvragen` | concept |
 | 8 | 2026-07-19 | Box 3 bezwaar 2026 | `box-3-bezwaar-2026` | concept |
 | 9 | 2026-07-20 | Belastingaangifte laten doen (kosten) | `belastingaangifte-laten-doen-kosten` | concept |
