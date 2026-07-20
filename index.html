@@ -2325,20 +2325,27 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
   go(0);
 })();
 
-// Structured Data for SEO (JSON-LD)
-const schema = document.createElement('script');
-schema.type = 'application/ld+json';
-schema.text = JSON.stringify({
+</script>
+
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Belastinghulp Zaanstad",
   "description": "Belastinghulp voor senioren en woningbezitters in Zaanstad. Voorlopige teruggave, correctie aangiften, Box 3 bezwaar, erfbelasting en toeslagen. Vaste prijzen, aan huis, het hele jaar actief.",
   "url": "https://belastinghulpzaanstad.nl",
+  "telephone": "+31619711848",
   "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029"],
-  "areaServed": {
-    "@type": "City",
-    "name": "Zaanstad"
-  },
+  "areaServed": [
+    {"@type": "City", "name": "Zaanstad"},
+    {"@type": "City", "name": "Zaandam"},
+    {"@type": "City", "name": "Zaandijk"},
+    {"@type": "City", "name": "Koog aan de Zaan"},
+    {"@type": "City", "name": "Wormerveer"},
+    {"@type": "City", "name": "Krommenie"},
+    {"@type": "City", "name": "Assendelft"},
+    {"@type": "City", "name": "Wormerland"}
+  ],
   "priceRange": "€0 - €149",
   "serviceType": ["Voorlopige teruggave", "Belastingaangifte", "Correctie aangiften", "Bezwaar box 3", "Erfbelasting", "Toeslagen"],
   "address": {
@@ -2348,8 +2355,7 @@ schema.text = JSON.stringify({
     "addressCountry": "NL"
   },
   "foundingDate": "2026"
-});
-document.head.appendChild(schema);
+}
 </script>
 
 <script type="application/ld+json">
