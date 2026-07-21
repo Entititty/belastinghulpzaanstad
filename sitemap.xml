@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://belastinghulpzaanstad.nl/blog/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -177,6 +177,12 @@
   <url>
     <loc>https://belastinghulpzaanstad.nl/blog/zorgtoeslag-aanvragen/</loc>
     <lastmod>2026-07-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://belastinghulpzaanstad.nl/blog/box-3-bezwaar-2026/</loc>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
