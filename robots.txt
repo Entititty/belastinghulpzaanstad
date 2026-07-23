@@ -77,4 +77,3 @@ User-agent: FacebookBot
 Allow: /
 
 Sitemap: https://belastinghulpzaanstad.nl/sitemap.xml
-Sitemap: https://belastinghulpzaanstad.nl/llms.txt
