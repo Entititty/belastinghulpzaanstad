@@ -254,4 +254,22 @@ Belastingadvies is **YMYL** ("Your Money or Your Life"); Google weegt aantoonbar
 
 ---
 
+## 10. Nieuwe bevinding (tijdens uitvoering) — verouderde huurtoeslag-cijfers in blogcontent
+
+Tijdens de fixes ontdekt: twee blogartikelen bevatten nog **pre-2026 huurtoeslagcijfers** die de deze week gecorrigeerde rekentool (`huurtoeslag-berekenen`, met officiële 2026-cijfers) **tegenspreken**. Interne tegenstrijdigheid + feitelijke staleness.
+
+**`blog/huurtoeslag-grens/`** (bewijs):
+- meta + tabel + FAQ: huurgrens **€900,07** → officieel 2026 **€932,93** (regels 10, 127, 247)
+- vermogensgrens **€37.395 / €74.790** → officieel 2026 **€36.952 / €73.904** (regels 128-129, 162, 256, en JSON-LD r.446)
+- r.137: *"Woont u in een te dure woning, dan heeft u geen recht op huurtoeslag — ook niet gedeeltelijk"* → **onjuist voor 2026**: hoge huur diskwalificeert niet meer, er wordt afgetopt op €932,93.
+
+**`blog/huurtoeslag-aanvragen/`** (bewijs):
+- meta/og/twitter: huurgrens/vermogen impliciet oud; "Inkomensgrens €32.975" en "tot €522/mnd" zijn 2025-cijfers (r.10/16/22)
+- r.151: huur **€900,07**, vermogen **€37.395**
+- r.180: "liberalisatiegrens niet overschrijden" → herzien i.v.m. 2026-aftopregel
+
+**Advies:** deze twee artikelen gelijktrekken met de officiële 2026-cijfers uit de rekentool (huurgrens €932,93; vermogen €36.952/€73.904; aftopping i.p.v. diskwalificatie; servicekosten tellen niet meer mee). **Dit is content — ik lever een voorstel en wacht op je akkoord** (staat niet in de vrijgegeven lijst van deze ronde).
+
+---
+
 **Ik stop de rapportage hier.** De **overlap-analyse (§7)** en het **consent-rapport (§8)** wachten op jouw reactie voordat ik respectievelijk stadspagina-content en de consent-aanpak aanraak. Ik ga nu wél verder met de door jou vrijgegeven punten (mojibake, robots.txt, datePublished, homepage-schema, llms.txt, diensten-links, fonts self-hosten, Clarity-fix) op branch `seo-performance-audit`, elk als aparte commit.
