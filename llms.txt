@@ -44,7 +44,10 @@ Senioren met AOW, gepensioneerden, en starters met een eerste koopwoning die hyp
 Bij een eerste woning kunt u hypotheekrenteaftrek maandelijks laten uitbetalen via een voorlopige teruggave bij de Belastingdienst. Gemiddeld levert dit €800–€1.200 per jaar op.
 
 ### Wat is de zorgtoeslag grens in 2026?
-In 2026 is de inkomensgrens voor zorgtoeslag circa €38.500 voor alleenstaanden en €49.500 voor toeslagpartners.
+In 2026 is de inkomensgrens voor zorgtoeslag circa €38.520 voor alleenstaanden en €48.224 voor toeslagpartners.
+
+### Wat is de huurtoeslag grens in 2026?
+In 2026 wordt huurtoeslag berekend tot een maximale rekenhuur van €932,93. De vermogensgrens is circa €36.952 (alleenstaand) of €73.904 (met toeslagpartner). Er is geen harde inkomensgrens meer; de toeslag bouwt af naarmate het inkomen stijgt. Servicekosten tellen vanaf 2026 niet meer mee.
 
 ### Wat is de ouderenkorting in 2026?
 De ouderenkorting in 2026 bedraagt €2.035 voor personen met een inkomen tot €44.770. De alleenstaande ouderenkorting is €478.
@@ -74,20 +77,50 @@ Eerste verzuim: €385 boete. Herhaald verzuim tot €5.514. Daarnaast 6,5% bela
 - [Belastinghulp Wormerland](https://belastinghulpzaanstad.nl/wormerland/)
 - [Belastinghulp Oostzaan](https://belastinghulpzaanstad.nl/oostzaan/)
 
+## Rekentools
+
+- [Huurtoeslag berekenen 2026 (indicatie)](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/) — check of u recht heeft en hoeveel per maand, o.b.v. kale huur en inkomen
+- [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/) — maandelijks belastingvoordeel van de hypotheekrenteaftrek
+
 ## Blog artikelen
 
-- [Einddatum belastingaangifte 2026 – deadline 1 mei 2027](https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte-2026/)
-- [Uitstel belastingaangifte 2025 aanvragen – tot 1 september 2026](https://belastinghulpzaanstad.nl/blog/uitstel-belastingaangifte-2025/)
+### Toeslagen
+- [Huurtoeslag aanvragen 2026 – stap voor stap](https://belastinghulpzaanstad.nl/blog/huurtoeslag-aanvragen/)
+- [Huurtoeslag grens 2026 – inkomen, huur en vermogen](https://belastinghulpzaanstad.nl/blog/huurtoeslag-grens/)
 - [Zorgtoeslag grens 2026 – inkomensgrenzen en bedragen](https://belastinghulpzaanstad.nl/blog/zorgtoeslag-grens/)
+- [Zorgtoeslag aanvragen: wanneer en hoeveel?](https://belastinghulpzaanstad.nl/blog/zorgtoeslag-aanvragen/)
+- [Kindgebonden budget – wat is het en heeft u er recht op?](https://belastinghulpzaanstad.nl/blog/kindgebonden-budget/)
+- [Kinderopvangtoeslag aanvragen en controleren](https://belastinghulpzaanstad.nl/blog/kinderopvangtoeslag/)
+- [Kwijtschelding gemeentelijke belasting](https://belastinghulpzaanstad.nl/blog/kwijtschelding-gemeentelijke-belasting/)
+
+### Aangifte & deadlines
+- [Belastingaangifte laten doen: wat kost het?](https://belastinghulpzaanstad.nl/blog/belastingaangifte-laten-doen-kosten/)
+- [Aangifte inkomstenbelasting – hoe doet u het?](https://belastinghulpzaanstad.nl/blog/aangifte-inkomstenbelasting/)
+- [Belastingaangifte voor 1 april – waarom en hoe](https://belastinghulpzaanstad.nl/blog/belastingaangifte-voor-1-april/)
+- [Einddatum belastingaangifte 2026 – deadline 1 mei 2027](https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte-2026/)
+- [Uitstel belastingaangifte aanvragen](https://belastinghulpzaanstad.nl/blog/uitstel-belastingaangifte-aanvragen/)
+- [Te laat met belastingaangifte – boetes en uitstel](https://belastinghulpzaanstad.nl/blog/te-laat-belastingaangifte/)
+- [Belastingaangifte tips 2026](https://belastinghulpzaanstad.nl/blog/belastingaangifte-tips/)
+
+### Woning & vermogen
+- [Hoeveel spaargeld is belastingvrij in 2026?](https://belastinghulpzaanstad.nl/blog/hoeveel-spaargeld-belastingvrij/)
+- [Box 3 bezwaar maken in 2026](https://belastinghulpzaanstad.nl/blog/box-3-bezwaar-2026/)
+- [Box 3 sparen en beleggen 2026](https://belastinghulpzaanstad.nl/blog/box-3-sparen/)
+- [Hypotheekrenteaftrek – hoe werkt het?](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek/)
+- [Voorlopige teruggave aanvragen – eerste woning](https://belastinghulpzaanstad.nl/blog/voorlopige-teruggave/)
+- [WOZ-bezwaar Zaanstad](https://belastinghulpzaanstad.nl/blog/woz-bezwaar-zaanstad/)
+
+### Senioren & kortingen
+- [Ouderenkorting 2026 – bedragen en voorwaarden](https://belastinghulpzaanstad.nl/blog/ouderenkorting/)
+- [Heffingskortingen 2026 – overzicht en bedragen](https://belastinghulpzaanstad.nl/blog/heffingskortingen/)
+- [AOW en belasting](https://belastinghulpzaanstad.nl/blog/aow-en-belasting/)
+- [Belastingaangifte voor senioren](https://belastinghulpzaanstad.nl/blog/belastingaangifte-senioren/)
+
+### Aftrekposten
 - [Giften aftrekken van de belasting](https://belastinghulpzaanstad.nl/blog/giften-aftrekken/)
 - [Zorgkosten aftrekken – wat mag en hoeveel?](https://belastinghulpzaanstad.nl/blog/zorgkosten-aftrekken/)
-- [Huurtoeslag aanvragen 2026 – stap voor stap](https://belastinghulpzaanstad.nl/blog/huurtoeslag-aanvragen/)
-- [Hypotheekrenteaftrek – hoe werkt het?](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek/)
-- [Belastingaangifte tips 2026](https://belastinghulpzaanstad.nl/blog/belastingaangifte-tips/)
-- [Kinderopvangtoeslag aanvragen en controleren](https://belastinghulpzaanstad.nl/blog/kinderopvangtoeslag/)
-- [Voorlopige teruggave aanvragen – eerste woning](https://belastinghulpzaanstad.nl/blog/voorlopige-teruggave/)
-- [Ouderenkorting 2026 – bedragen en voorwaarden](https://belastinghulpzaanstad.nl/blog/ouderenkorting/)
 - [Belastingteruggave – wanneer en hoeveel?](https://belastinghulpzaanstad.nl/blog/belastingteruggave/)
-- [Box 3 sparen en beleggen 2026](https://belastinghulpzaanstad.nl/blog/box-3-sparen/)
-- [Te laat met belastingaangifte – boetes en uitstel](https://belastinghulpzaanstad.nl/blog/te-laat-belastingaangifte/)
-- [Heffingskortingen 2026 – overzicht en bedragen](https://belastinghulpzaanstad.nl/blog/heffingskortingen/)
+
+## Engelstalige informatie
+
+Een Engelstalige versie van de belangrijkste pagina's staat op [/en/](https://belastinghulpzaanstad.nl/en/) (o.a. tax return, rent benefit, healthcare benefit, mortgage interest deduction).
