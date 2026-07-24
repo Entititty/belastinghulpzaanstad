@@ -26,5 +26,18 @@ Elke wijziging als aparte commit; na elke wijziging JSON-LD/HTML-sanitycheck ged
 7. **Fonts self-hosten** — Google Fonts weg; 2 self-hosted variabele woff2 (149,8 KB) via @font-face in de al-geladen CSS + preload display-font. VOOR: 3 externe requests / 2 hosts. NA: 0 externe font-requests. Inline @font-face op 3 CSS-loze pagina's.
 8. **Clarity** — ontbrekend tag-script toegevoegd op uitstel-belastingaangifte-2025.
 
-### Nieuwe bevinding tijdens uitvoering (nog niet gefixt — zie AUDIT.md §10)
-Verouderde huurtoeslag-cijfers in blogcontent (`huurtoeslag-grens`, mogelijk `huurtoeslag-aanvragen`) die de gecorrigeerde rekentool tegenspreken. Content — wacht op akkoord.
+## 2026-07-24
+
+### §10 — Verouderde huurtoeslag-cijfers gecorrigeerd (na akkoord "fix de voorstellen")
+`blog/huurtoeslag-grens/` + `blog/huurtoeslag-aanvragen/` gelijkgetrokken met de officiële 2026-cijfers uit de rekentool:
+- maximale rekenhuur €900,07 → **€932,93**; huurgrens-tabel (23 jaar/€454,47/€808,06) → **21 jaar/€498,20 en 21+/€932,93**
+- vermogensgrens €37.395/€74.790 → **€36.952/€73.904**
+- "te dure woning = geen recht" → **2026-aftopregel** (huur boven €932,93 diskwalificeert niet meer, telt alleen niet mee)
+- servicekosten: "meestal niet mee" → **vanaf 2026 niet meer mee**
+- leeftijdsgrens jongeren 23 → **21 jaar**; meta-descriptions bijgewerkt; JSON-LD FAQ's mee gecorrigeerd
+- Beide bestanden: JSON-LD geverifieerd valide; geen oude cijfers meer sitebreed.
+
+### Nog open (jouw input nodig)
+- **§7 stadspagina-content** — aanpak-keuze (echte lokale cijfers opzoeken of kwalitatief)
+- **§8 consent** — beslissing Meta Pixel (adverteer je?) + juridische gegevens privacypagina
+- **§9 auteur** — naam/kwalificatie/bio (mag ik niet verzinnen)
