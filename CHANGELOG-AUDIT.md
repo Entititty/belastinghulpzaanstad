@@ -37,7 +37,13 @@ Elke wijziging als aparte commit; na elke wijziging JSON-LD/HTML-sanitycheck ged
 - leeftijdsgrens jongeren 23 → **21 jaar**; meta-descriptions bijgewerkt; JSON-LD FAQ's mee gecorrigeerd
 - Beide bestanden: JSON-LD geverifieerd valide; geen oude cijfers meer sitebreed.
 
-### Nog open (jouw input nodig)
-- **§7 stadspagina-content** — aanpak-keuze (echte lokale cijfers opzoeken of kwalitatief)
-- **§8 consent** — beslissing Meta Pixel (adverteer je?) + juridische gegevens privacypagina
-- **§9 auteur** — naam/kwalificatie/bio (mag ik niet verzinnen)
+### Beslissingen (jouw akkoord 2026-07-24)
+§7 → nu doen met echte lokale feiten · §8 Pixel → verwijderen · §8 consent → bouwen mét Consent Mode v2 · §9 → organisatie blijft auteur (geen persoon).
+
+### §8a — Meta Pixel verwijderd
+Pixel-init + noscript + facebook dns-prefetches van alle 77 pagina's verwijderd (3 verschillende blok-formaten). fbq/connect.facebook.net/facebook.com/tr = 0. Footer-profiellink behouden. GA4 + Clarity blijven staan tot de consent-gate er is.
+
+### Nog te doen deze reeks
+- **§8b — consent-gate + Consent Mode v2** (grote refactor over 77 pagina's: Clarity gaten, gtag consent-defaults 'denied', banner). **Nodig van jou:** juridische gegevens voor de privacypagina — **bedrijfsnaam, KvK-nummer, (post)adres of "geen bezoekadres", contact-e-mail**. Zonder die bouw ik de gate + een privacypagina met duidelijke placeholders.
+- **§7 — 4 stadspagina's** (zaandam, assendelft, krommenie, zaandijk) uniek maken met echte lokale content. Aparte ronde.
+- **§9 — organisatie blijft auteur**: geen actie (Organization-schema is al verrijkt in Fix 4).
