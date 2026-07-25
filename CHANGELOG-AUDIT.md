@@ -43,7 +43,18 @@ Elke wijziging als aparte commit; na elke wijziging JSON-LD/HTML-sanitycheck ged
 ### §8a — Meta Pixel verwijderd
 Pixel-init + noscript + facebook dns-prefetches van alle 77 pagina's verwijderd (3 verschillende blok-formaten). fbq/connect.facebook.net/facebook.com/tr = 0. Footer-profiellink behouden. GA4 + Clarity blijven staan tot de consent-gate er is.
 
+## 2026-07-25
+
+### §8b — Consent-gate + Google Consent Mode v2 + privacypagina
+Gegevens van eigenaar: geen KvK/bezoekadres (nieuw initiatief 2026), contact `info@belastinghulpzaanstad.nl`. Op de privacypagina staat "Belastinghulp Zaanstad" als verwerkingsverantwoordelijke, expliciet zonder KvK/adres; geen verzonnen bedrijfsdata.
+- **`/js/consent.js`** (nieuw): zelf-gehoste, tweetalige (NL/EN) consent-banner. Zet Consent Mode v2 defaults op `denied` (analytics_storage, ad_storage, ad_user_data, ad_personalization, personalization_storage) vóór `gtag('config')`. GA4 laadt daardoor cookieloos tot toestemming.
+- **Microsoft Clarity** wordt niet meer standaard geladen: de inline IIFE is van alle 78 pagina's verwijderd en de clarity dns-prefetch weg. Clarity wordt alleen geïnjecteerd ná 'Accepteren'.
+- Keuze onthouden in `localStorage` (`bhz_consent_v1`); balk verschijnt niet meer na een keuze. `window.bhzResetConsent()` reset de keuze.
+- **`consent.js`** ingehangen vóór de gtag-loader op alle 80 pagina's.
+- **Privacypagina's** `/privacy/` (NL) + `/en/privacy/` (EN): verantwoordelijke, welke gegevens/grondslag, cookies (GA4 + Clarity), delen met derden, bewaartermijn, rechten (incl. AP-klacht), knop 'cookievoorkeur wijzigen'. Toegevoegd aan sitemap.xml.
+- **Dode/verkeerd gerichte footer-link 'Privacybeleid'** (`href="#"` op index, `href="../"`/`"../../"` op 10 stad-/dienstpagina's) → `/privacy/` op alle 11 NL-pagina's.
+- Sanity: 80 HTML-pagina's, 292 JSON-LD-blokken valide, exact 1 `<head>`/`<body>` + 1 consent.js per pagina; `node --check` op consent.js OK.
+
 ### Nog te doen deze reeks
-- **§8b — consent-gate + Consent Mode v2** (grote refactor over 77 pagina's: Clarity gaten, gtag consent-defaults 'denied', banner). **Nodig van jou:** juridische gegevens voor de privacypagina — **bedrijfsnaam, KvK-nummer, (post)adres of "geen bezoekadres", contact-e-mail**. Zonder die bouw ik de gate + een privacypagina met duidelijke placeholders.
 - **§7 — 4 stadspagina's** (zaandam, assendelft, krommenie, zaandijk) uniek maken met echte lokale content. Aparte ronde.
 - **§9 — organisatie blijft auteur**: geen actie (Organization-schema is al verrijkt in Fix 4).
