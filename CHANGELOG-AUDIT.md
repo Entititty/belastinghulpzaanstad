@@ -63,6 +63,16 @@ De twee echt-lokale blokken per kern (LOCAL INTRO + "Belastingtips specifiek voo
 - **Zaandam**: 75.000→**84.461** inw, €340.000→**€370.266** WOZ; distinctief **52% huurwoningen** → toeslagen/kwijtschelding. Onjuiste "€9.000 aftrek (bron: CBS)" en "€343.000" verwijderd.
 - Stat-grids: de niet-verifieerbare velden 'Gem. woningprijs' + 'Gem. maandelijkse teruggave' vervangen door **'Gem. WOZ-waarde'** + **'% koop/huur'** (echte cijfers). Gedeelde dienst-/tarief-/FAQ-secties bewust ongemoeid (zelfde aanbod = terecht identiek). Sanity: JSON-LD valide, 1 head/body per pagina.
 
+### §7-vervolg — overige 5 stadspagina's rechtgetrokken (na akkoord "ga zo door")
+Zelfde CBS/AlleCijfers-behandeling toegepast op wormerveer, koog-aan-de-zaan, westzaan, wormerland, oostzaan (inwoners 2026, gem. WOZ 2025, % koop/huur):
+- **Wormerveer**: 16.000→**12.735** inw, €280.000→**€338.000** WOZ, **51%** koop. Laagste WOZ van de Zaanse kernen; Wessanen-historie; 49% huurders → toeslagen.
+- **Koog aan de Zaan**: 8.000→**11.306** inw, €310.000→**€388.878** WOZ, **61%** koop. Duyvis/Molenmuseum; verhuur bij Zaanse Schans.
+- **Westzaan**: 8.000/4.500→**5.131** inw, €350.000→**€510.000** WOZ, **79%** koop (hoogste aandeel van de streek); stolpen/monumenten → WOZ.
+- **Oostzaan**: 9.000→**9.778** inw, €375.000→**€522.000** WOZ (hoogste), **67%** koop. **Eigen gemeente** — WOZ/OZB/kwijtschelding via gemeente Oostzaan.
+- **Wormerland**: 16.500→**16.328** inw, €340.000→**€441.000** WOZ, **63%** koop. **Eigen gemeente**; kernen gecorrigeerd (Neck → Wijdewormer/Oostknollendam); verzonnen per-kern woningwaardes (€352k/€418k/€310k) verwijderd.
+- **Feitfixes**: onjuiste "auto-reiskostenaftrek >10 km" (bestaat niet voor werknemers) en achterhaalde "zonnepaneel-btw teruggave" vervangen door kloppende WOZ/toeslag-content. Niet te verifiëren claims ("30% is 65-plusser", "veel ZZP'ers", specifieke ouderenkorting €2.035) geschrapt.
+- Alle 9 stadspagina's dragen nu **'Gem. WOZ-waarde' + '% koopwoningen'** i.p.v. de oude niet-verifieerbare velden. Sanity: JSON-LD valide, 1 head/body per pagina.
+
 ### Nog te doen / aandachtspunt
-- **Overige 5 stadspagina's** (wormerveer, koog-aan-de-zaan, westzaan, wormerland, oostzaan) dragen nog dezelfde soort **niet-geverifieerde stat-cijfers** ('Gem. woningprijs'/'maandelijkse teruggave'). Lagere overlap (40-49% uniek) dus lagere prioriteit, maar dezelfde CBS/WOZ-behandeling is aan te raden — buiten de goedgekeurde §7-scope gehouden.
 - **§9 — organisatie blijft auteur**: geen actie (Organization-schema is al verrijkt in Fix 4).
+- **Herverificatie stadspagina-overlap** (audit §7 mat 18-25% uniek vóór deze ronde) kan opnieuw gedraaid worden om het effect te kwantificeren — optioneel.
