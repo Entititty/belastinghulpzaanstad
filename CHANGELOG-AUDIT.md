@@ -55,6 +55,14 @@ Gegevens van eigenaar: geen KvK/bezoekadres (nieuw initiatief 2026), contact `in
 - **Dode/verkeerd gerichte footer-link 'Privacybeleid'** (`href="#"` op index, `href="../"`/`"../../"` op 10 stad-/dienstpagina's) → `/privacy/` op alle 11 NL-pagina's.
 - Sanity: 80 HTML-pagina's, 292 JSON-LD-blokken valide, exact 1 `<head>`/`<body>` + 1 consent.js per pagina; `node --check` op consent.js OK.
 
-### Nog te doen deze reeks
-- **§7 — 4 stadspagina's** (zaandam, assendelft, krommenie, zaandijk) uniek maken met echte lokale content. Aparte ronde.
+### §7 — 4 stadspagina's uniek gemaakt met geverifieerde lokale cijfers
+De twee echt-lokale blokken per kern (LOCAL INTRO + "Belastingtips specifiek voor…") herschreven met onderscheidende, kloppende feiten. Bron cijfers: CBS/AlleCijfers.nl (inwoners 2026, gemiddelde WOZ-waarde 2025, % koop/huur).
+- **Assendelft**: 22.000→**25.460** inw, €385.000→**€470.045** WOZ, 60%→**72%** koop. Invalshoek: hoogste huizenwaarde + meeste koopwoningen van Zaanstad; nieuwbouwwijk Saendelft (starters/jonge gezinnen); eigenwoningforfait + hypotheekrenteaftrek.
+- **Krommenie**: 17.000→**17.237** inw, €305.000→**€386.390** WOZ, **53%** koop/47% huur. Invalshoek: Forbo-linoleumhistorie; oudere woningen → WOZ-bezwaar; huurders → toeslagen/kwijtschelding; senioren.
+- **Zaandijk**: 8.500→**8.868** inw, €330.000→**€382.923** WOZ, **53%** koop. Invalshoek: historische Zaanse panden/Lagedijk/Zaanse Schans → WOZ/monumenten; Rooswijk; senioren. Niet-verifieerbare ANBI-claim (Doopsgezinde kerk) verwijderd.
+- **Zaandam**: 75.000→**84.461** inw, €340.000→**€370.266** WOZ; distinctief **52% huurwoningen** → toeslagen/kwijtschelding. Onjuiste "€9.000 aftrek (bron: CBS)" en "€343.000" verwijderd.
+- Stat-grids: de niet-verifieerbare velden 'Gem. woningprijs' + 'Gem. maandelijkse teruggave' vervangen door **'Gem. WOZ-waarde'** + **'% koop/huur'** (echte cijfers). Gedeelde dienst-/tarief-/FAQ-secties bewust ongemoeid (zelfde aanbod = terecht identiek). Sanity: JSON-LD valide, 1 head/body per pagina.
+
+### Nog te doen / aandachtspunt
+- **Overige 5 stadspagina's** (wormerveer, koog-aan-de-zaan, westzaan, wormerland, oostzaan) dragen nog dezelfde soort **niet-geverifieerde stat-cijfers** ('Gem. woningprijs'/'maandelijkse teruggave'). Lagere overlap (40-49% uniek) dus lagere prioriteit, maar dezelfde CBS/WOZ-behandeling is aan te raden — buiten de goedgekeurde §7-scope gehouden.
 - **§9 — organisatie blijft auteur**: geen actie (Organization-schema is al verrijkt in Fix 4).
