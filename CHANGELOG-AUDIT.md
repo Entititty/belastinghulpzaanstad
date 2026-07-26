@@ -76,3 +76,22 @@ Zelfde CBS/AlleCijfers-behandeling toegepast op wormerveer, koog-aan-de-zaan, we
 ### Nog te doen / aandachtspunt
 - **§9 — organisatie blijft auteur**: geen actie (Organization-schema is al verrijkt in Fix 4).
 - **Herverificatie stadspagina-overlap** (audit §7 mat 18-25% uniek vóór deze ronde) kan opnieuw gedraaid worden om het effect te kwantificeren — optioneel.
+
+## 2026-07-26 — SEO/GEO/CTR-ronde (branch `seo-geo-ctr-round2`)
+
+Uitgevoerd n.a.v. de P0–P2-opdracht. STAP 0-inventarisatie eerst gedraaid; al aanwezige zaken overgeslagen.
+
+**Al aanwezig (overgeslagen):** Taak 2 (FAQPage home) ✅ · Taak 3 (BreadcrumbList + zichtbaar kruimelpad) ✅ · Taak 7 grotendeels (1 `<h1>`/pagina, 0 content-afbeeldingen dus geen alt/lazy/WebP nodig, kern-titles/descriptions 9/9 uniek) ✅.
+
+**Uitgevoerd:**
+- **Taak 6** — `meta name="keywords"` van 77 paginas verwijderd.
+- **Taak 9** — `## Contact`-blok (telefoon/WhatsApp, e-mail, website, Facebook, privacy) toegevoegd aan llms.txt.
+- **Taak 1** — canoniek `LocalBusiness`+`AccountingService`-blok (`@id #business`, areaServed, serviceType, priceRange €49–€109, sameAs, openingHours, geen storefront-adres) op alle 80→84 paginas; oude losse `#localbusiness`-blokken (9 kernen) verwijderd om dubbele entiteiten te voorkomen.
+- **Taak 4** — `mainEntityOfPage` toegevoegd aan 36 Article-schema's; nu 52/52 compleet (headline, author=Organization, publisher, datePublished, dateModified, mainEntityOfPage).
+- **Taak 5** — 4 indexeerbare servicepagina's: `/diensten/voorlopige-teruggave/`, `/box-3-bezwaar/`, `/correctie-late-aangifte/`, `/erfbelasting-schenking/`. Eigen title/description/H1, `Service`-schema, kruimelpad + `BreadcrumbList`, FAQ (zichtbaar + `FAQPage`), `#business`-blok. In sitemap; intern gelinkt vanaf home-footer + onderlinge kruislinks.
+- **Taak 8** — na jouw keuze: **organisatie blijft auteur**, geen persoonsnaam/Beconnummer (niets verzonnen). Geen wijziging.
+- **Taak 10** — (a) zichtbare "Laatst bijgewerkt"/"Last updated" op alle 52 artikelen gekoppeld aan `dateModified` (met `<time>`); (b) "Direct antwoord"/"Quick answer"-TL;DR met harde cijfers bovenaan alle 52 artikelen (NL+EN), elk gebaseerd op de eigen cijfers van dat artikel.
+
+**Sanity:** eindstand 84 HTML-paginas, 383 JSON-LD-blokken, 0 ongeldig, 1 `<head>`/`<body>` + 1 `<h1>` per pagina, sitemap 83 URLs.
+
+**Buiten code (jouw actie):** Google Business Profile aanmaken (grootste lokale klikbron); reviews pas verzamelen en dán `Review`/`AggregateRating` toevoegen.
