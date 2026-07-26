@@ -271,7 +271,25 @@ window.addEventListener('scroll',()=>{document.getElementById('nav').style.boxSh
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Municipal tax waiver in Zaanstad 2026 – how do you apply?","description":"Low income in Zaanstad? Apply for a tax waiver for waste collection and sewerage charges. Income limits and step-by-step plan.","author":{"@type":"Organization","name":"Belastinghulp Zaanstad"},"publisher":{"@type":"Organization","name":"Belastinghulp Zaanstad","url":"https://belastinghulpzaanstad.nl"},"dateModified":"2026-04-15","url":"https://belastinghulpzaanstad.nl/en/blog/municipal-tax-waiver/","inLanguage":"en"}
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Municipal tax waiver in Zaanstad 2026 – how do you apply?",
+  "description": "Low income in Zaanstad? Apply for a tax waiver for waste collection and sewerage charges. Income limits and step-by-step plan.",
+  "author": {
+    "@type": "Organization",
+    "name": "Belastinghulp Zaanstad"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Belastinghulp Zaanstad",
+    "url": "https://belastinghulpzaanstad.nl"
+  },
+  "dateModified": "2026-04-15",
+  "url": "https://belastinghulpzaanstad.nl/en/blog/municipal-tax-waiver/",
+  "inLanguage": "en",
+  "mainEntityOfPage": "https://belastinghulpzaanstad.nl/en/blog/municipal-tax-waiver/"
+}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Who can apply for a tax waiver in Zaanstad?","acceptedAnswer":{"@type":"Answer","text":"Residents of Zaanstad with low income (at or around welfare level) and little wealth. Both renters and owners can apply for a tax waiver for waste collection and sewerage charges."}},{"@type":"Question","name":"Can I get a tax waiver if I receive AOW?","acceptedAnswer":{"@type":"Answer","text":"Yes, AOW recipients can also apply for a tax waiver if their income and wealth fall below the set limits."}},{"@type":"Question","name":"How much savings can I have for a tax waiver in Zaanstad?","acceptedAnswer":{"@type":"Answer","text":"The assets limit is around €6,000 for single people and €12,000 for cohabiting couples (indicative 2026)."}},{"@type":"Question","name":"Do I have to apply for a tax waiver every year?","acceptedAnswer":{"@type":"Answer","text":"Yes, the application has to be submitted every year. Do you receive welfare? Then it can be granted automatically."}},{"@type":"Question","name":"Can I apply for a tax waiver for my OZB?","acceptedAnswer":{"@type":"Answer","text":"No. OZB for homeowners falls outside the tax waiver scheme. Only waste collection and sewerage charges can be waived."}},{"@type":"Question","name":"What do I need for the tax waiver application?","acceptedAnswer":{"@type":"Answer","text":"You need: your assessment number, recent bank statements, proof of income and your DigiD for an online application to the municipality of Zaanstad."}}]}
