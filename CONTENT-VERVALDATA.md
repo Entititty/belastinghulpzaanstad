@@ -70,6 +70,24 @@ Het **maximale aftrektarief eigen woning** (tariefsaanpassing) 2026 = **37,56%**
 - **Verwijzing:** "aanslagen 2021–2024". **Actie:** uitbreiden zodra nieuwe aanslagjaren/uitspraken
   relevant worden (bijv. aanslag 2025).
 
+### ✅ Volledige cijferaudit uitgevoerd (2026-07-27) — geverifieerde 2026-referentiewaarden
+Alle onderstaande waarden zijn geverifieerd bij belastingdienst.nl / rijksoverheid.nl en
+sitebreed doorgevoerd (NL + EN). Gebruik ze als ijkpunt bij de volgende jaarupdate:
+
+| Onderwerp | 2026-waarde |
+|---|---|
+| Box 1 schijven (< AOW) | 35,75% (tot €38.883) · 37,56% (–€78.426) · 49,50% |
+| Max. aftrektarief eigen woning | 37,56% · eigenwoningforfait 0,35% (WOZ ≤ €1.350.000) |
+| Algemene heffingskorting | max €3.115 · afbouw €29.736→€78.426 (6,398%) |
+| Arbeidskorting | max €5.685 · IACK max €3.032 · jonggehandicapten €923 |
+| Ouderenkorting | €2.067 (grens €46.002, afbouw 15% tot €59.783) · alleenstaand €540 |
+| AOW-er box 1 schijf 1 | ca. 17,85% |
+| Zorgtoeslag | inkomensgrens €40.857 / €51.142 · vermogensgrens €146.011 / €184.633 |
+| Huurtoeslag | rekenhuur €932,93 · vermogen €36.952 / €73.904 |
+| Kinderopvangtoeslag max uurtarief | dagopvang €11,23 · bso €9,98 · gastouder €8,49 |
+| Kindgebonden budget vermogensgrens | €146.011 / €184.633 |
+| Box 3 | heffingvrij €59.357 / €118.714 · forfait spaargeld 1,28% · beleggingen 6,00% · schulden 2,70% · schuldendrempel €3.800 / €7.600 · tarief 36% |
+
 ## 7. Vaste bedragen die kunnen wijzigen — HANDMATIG
 - **Verzuimboete €385** (uitstel-strip + te-laat-blogs) — controleren bij Belastingdienst-wijziging.
 - **"Vaste prijs €59" / tarieven** (€59/€69/€109/€49/€30, spoedtoeslag €25) — bij prijswijziging
