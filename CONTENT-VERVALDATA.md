@@ -44,10 +44,16 @@ herzien moeten worden, zodat niets stilletjes veroudert. Bijgehouden sinds ronde
 - **Actie — Q4 2026 / Q1 2027:** zodra de **2027-cijfers** van de Belastingdienst bekend zijn,
   bijwerken en `dateModified` + zichtbare "Laatst bijgewerkt" ophogen.
 
-## ⚠️ OPEN — verouderd box 1-tarief "36,93%" op 15 pagina's (P1, wacht op go)
+## ✅ OPGELOST (2026-07-27) — box 1-tarief "36,93%" sitebreed geactualiseerd
 
-**Bevinding ronde 2 (geverifieerd bij Belastingdienst):** de site gebruikt overal
-**36,93%** als "het tarief van box 1 / de eerste schijf". Dat is het **2023-tarief**.
+De site gebruikte overal **36,93%** (= 2023-tarief). Nu sitebreed vervangen door de
+geverifieerde 2026-tarieven; **0 resterende treffers** van 36,93%. Per context toegepast:
+hypotheek-/schijf 2-voorbeelden → 37,56% (incl. homepage-hero, nu **€295/maand**, en de
+9 kernpaginas met elk hun eigen herrekende bedragen); algemene aftrek/eerste schijf →
+35,75% (giften, zorgkosten, belastingaangifte-tips); AOW-tarieventabel herbouwd naar de
+2026-schijven (€38.883 / €78.426; AOW-er ca. 17,85% / 37,56% / 49,50%). Blijft jaarlijks
+te controleren — zie de 2026-referentiewaarden hieronder.
+
 De **2026**-tarieven (beneden AOW) zijn:
 
 | Schijf | Grens 2026 | Tarief 2026 |
@@ -57,17 +63,6 @@ De **2026**-tarieven (beneden AOW) zijn:
 | Schijf 3 | boven € 78.426 | 49,50% |
 
 Het **maximale aftrektarief eigen woning** (tariefsaanpassing) 2026 = **37,56%**.
-
-**Al gecorrigeerd:** `blog/hypotheekrenteaftrek/` (36,93%→37,56%, rekenvoorbeeld + wet Hillen-grens €1.350.000).
-
-**Nog te doen (15 pagina's) — vereist per context het juiste tarief + hercalculatie van
-voorbeeldbedragen; daarom voorgelegd i.p.v. blind vervangen:**
-- **Hypotheek-/schijf 2-context → 37,56%:** `index.html` (hero: €12.600 × 37,56% = €4.733;
-  netto €289 → **€295**/mnd), de 9 kernpagina's (zelfde hero-blok), `blog/voorlopige-teruggave/`.
-  ⚠️ Dit wijzigt het zichtbare kerncijfer "€289/maand" op de homepage — vandaar akkoord nodig.
-- **Algemene aftrek / eerste schijf → 35,75%:** `blog/giften-aftrekken/`, `blog/zorgkosten-aftrekken/`,
-  `blog/belastingaangifte-tips/`.
-- **Tarieventabel herbouwen (3 schijven i.p.v. 2):** `blog/aow-en-belasting/`.
 
 ## 6. Box 3 / rechtsherstel-jaren — HANDMATIG
 - **Bestanden:** `diensten/box-3-bezwaar/`, `blog/box-3-bezwaar-2026/`, `blog/box-3-sparen/`,
