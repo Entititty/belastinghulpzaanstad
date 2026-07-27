@@ -1593,11 +1593,11 @@ section {
   <div class="container">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
       <div style="flex:1;min-width:280px;">
-        <div style="display:inline-block;background:#FFD166;color:#3A1A0A;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:5px 12px;border-radius:4px;margin-bottom:12px;">⏰ GEEN AANGIFTE 2025 GEDAAN?</div>
-        <h2 style="color:#fff;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.25;margin:0 0 10px 0;">
+        <div id="uitstel-badge" style="display:inline-block;background:#FFD166;color:#3A1A0A;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:5px 12px;border-radius:4px;margin-bottom:12px;">⏰ GEEN AANGIFTE 2025 GEDAAN?</div>
+        <h2 id="uitstel-title" style="color:#fff;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.25;margin:0 0 10px 0;">
           Uitstel nog mogelijk tot 1 september &mdash; <strong style="color:#FFD166;">wij regelen het kosteloos</strong>
         </h2>
-        <p style="color:rgba(255,255,255,0.92);font-size:1rem;line-height:1.55;margin:0 0 0 0;max-width:620px;">
+        <p id="uitstel-desc" style="color:rgba(255,255,255,0.92);font-size:1rem;line-height:1.55;margin:0 0 0 0;max-width:620px;">
           Voorkom een verzuimboete van €385. Stuur ons een bericht, wij dienen uw uitstel vandaag nog in bij de Belastingdienst. Aangifte doen we daarna rustig samen.
         </p>
       </div>
@@ -1608,10 +1608,27 @@ section {
     </div>
     <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:22px;color:rgba(255,255,255,0.88);font-size:0.88rem;">
       <span>✓ 100% gratis (geen verplichting)</span>
-      <span>✓ Uitstel tot 1 september 2026</span>
+      <span id="uitstel-chip">✓ Uitstel tot 1 september 2026</span>
       <span>✓ Aangifte daarna rustig samen</span>
     </div>
   </div>
+  <script>
+  (function(){
+    /* Datumgestuurde uitstel-strip — zie CONTENT-VERVALDATA.md.
+       Vóór 1 sep 2026: persoonlijk uitstel (standaard in de HTML).
+       Ná 1 sep 2026: automatisch de Beconregeling-boodschap (tot 1 mei 2027). */
+    var cutoff = new Date(2026, 8, 1); /* 1 september 2026 (maand is 0-based) */
+    if (new Date() < cutoff) return;
+    var badge = document.getElementById('uitstel-badge');
+    var title = document.getElementById('uitstel-title');
+    var desc  = document.getElementById('uitstel-desc');
+    var chip  = document.getElementById('uitstel-chip');
+    if (badge) badge.textContent = '⏰ AANGIFTE 2025 NOG NIET GEDAAN?';
+    if (title) title.innerHTML = 'Via onze Beconregeling nog uitstel tot 1 mei 2027 &mdash; <strong style="color:#FFD166;">wij regelen het</strong>';
+    if (desc)  desc.textContent = 'De persoonlijke uitsteldatum is verstreken, maar als belastingadviseur kunnen wij u aanmelden voor de Beconregeling. Zo krijgt u alsnog uitstel tot 1 mei 2027. Stuur ons een bericht — wij regelen het vandaag nog.';
+    if (chip)  chip.textContent = '✓ Uitstel tot 1 mei 2027 via Beconregeling';
+  })();
+  </script>
 </section>
 
 <!-- ======== WAT KAN IK NU NOG REGELEN ======== -->
