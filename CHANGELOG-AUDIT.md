@@ -95,3 +95,27 @@ Uitgevoerd n.a.v. de P0–P2-opdracht. STAP 0-inventarisatie eerst gedraaid; al 
 **Sanity:** eindstand 84 HTML-paginas, 383 JSON-LD-blokken, 0 ongeldig, 1 `<head>`/`<body>` + 1 `<h1>` per pagina, sitemap 83 URLs.
 
 **Buiten code (jouw actie):** Google Business Profile aanmaken (grootste lokale klikbron); reviews pas verzamelen en dán `Review`/`AggregateRating` toevoegen.
+
+## 2026-07-27 — Ronde 2: template-consistentie + CTR + content (branch `ronde-2-templates`)
+
+STAP 0-inventarisatie eerst gedraaid en teruggekoppeld. Al kloppende zaken overgeslagen
+(keywords al weg, datePublished al aanwezig, privacy-link al gefixt, Facebook-pixel bestaat
+niet — alleen `sameAs`-link, Clarity via consent.js-injectie i.p.v. hardcoded).
+
+**P0 — consistentie**
+- **Taak 1** — één canonieke footer (root-relatief) op alle 83 paginas (NL + EN elk identiek). Diensten-kolom overal `/diensten/*` (was op over-ons+blogs verouderde `#`-ankers); dubbele "Voorlopige teruggave"-link weg; 9 kernen overal; privacy overal.
+- **Taak 3** — canonieke nav + nieuwe **Diensten-dropdown** (CSS-only, hover desktop / inline mobiel) op alle 83 paginas; dode lokale `#tarieven/#werkwijze/#faq`-ankers op dienstenpaginas gefixt naar `/#...`; logo-href genormaliseerd. Visueel geverifieerd (headless Edge).
+- **Taak 2** — 43 blog-body-CTA's omgelegd: 12 naar `/diensten/*` (seniorenpakket→aangifte, eerste-woning→voorlopige-teruggave, aangifte→aangifte, bezwaar→box-3), rest root-relatief (`/#contact`, `/#tarieven`); EN-blogs root-relatief.
+
+**P1 — CTR & social**
+- **Taak 4** — 9 merk-og:images (1200×630, eigen fonts/kleuren, geen foto's): NL+EN default + 5 diensten + 2 rekentools. `og:image`(+secure_url/type/width/height/alt) en `twitter:image` op alle 83 paginas; `twitter:card` overal `summary` → `summary_large_image`. 2 privacypaginas kregen alsnog een twitter:card.
+- **Taak 5** — 9 kern-descriptions (meta+og+twitter) waren bijna identiek → per kern uniek herschreven met feitelijke lokale invalshoek. hreflang: 3 niet-wederkerige gevallen gefixt → 100% wederkerig (checker: 0 issues). keywords al weg.
+- **Taak 6** — homepage uitstel-strip datumgestuurd: wisselt ná 1-9-2026 automatisch naar Beconregeling (tot 1-5-2027); standaardtekst blijft in HTML (crawler-veilig). Beide staten visueel geverifieerd. **CONTENT-VERVALDATA.md** toegevoegd (alle datumgebonden content + controlemomenten).
+
+**P2 — restant**
+- **Taak 8** — llms.txt: `## Diensten` (5 paginas), volledige tariefstructuur, 2 FAQ's (box 3, erfbelasting).
+- **Taak 9** — kernartikelen tegen belastingdienst.nl geverifieerd en gecorrigeerd: **ouderenkorting** (€2.035→€2.067, €478→€540, grens €44.770→€46.002, nul €57.310→€59.783; NL+EN+llms), **hypotheekrenteaftrek** (box 1-tarief 36,93%(2023!)→37,56%(2026) + voorbeeld herrekend + wet-Hillen-grens €1,35M + wording), **zorgtoeslag** (grens €38.520/€48.224→€40.857/€51.142; NL+EN+llms). huurtoeslag was al correct. **OPEN (wacht op go):** stale 36,93% staat nog op 15 andere paginas (o.a. homepage-hero €289) — per context 35,75%/37,56% + hercalculatie; gedocumenteerd in CONTENT-VERVALDATA.md.
+- **Taak 10** — geverifieerd, **geen wijziging nodig**: geen Facebook-pixel (premisse onjuist); GA4+Clarity laden consistent op alle 84 paginas via Consent Mode v2 (consent.js vóór gtag); NL+EN privacybeleid dekt beide correct incl. intrekken.
+- **Taak 7 (E-E-A-T)** — **geblokkeerd**: wacht op eigenaar-gegevens (naam adviseur + achtergrond, Beconnummer, KvK-nummer). Niets verzonnen.
+
+**Buiten code (jouw actie / open):** (1) naam/Becon/KvK aanleveren voor Taak 7; (2) go voor de 36,93%→2026-tarieven-sweep op 15 paginas (raakt zichtbaar homepage-cijfer €289); (3) stadspagina-overlap §7 en definitief og-beeld blijven jouw call.
