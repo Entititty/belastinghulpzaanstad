@@ -1,15 +1,26 @@
 # Belastinghulp Zaanstad
 
-> Belastinghulp Zaanstad helpt senioren en starters met eerste woning bij belastingaangifte en toeslagen in de gemeente Zaanstad. Vaste prijs €59, hulp aan huis, zelfde dag reactie.
+> Belastinghulp Zaanstad helpt senioren, starters en woningbezitters bij belastingaangifte, voorlopige teruggave, toeslagen, box 3-bezwaar, correctie van oude aangiften en erf-/schenkbelasting in de gemeente Zaanstad. Vaste prijs vanaf €59, hulp aan huis, zelfde dag reactie.
 
 ## Over ons
 
 Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisaties zijn:
-- Belastingaangifte invullen (vaste prijs €59, inclusief alles)
-- Voorlopige teruggave aanvragen voor eerste kopers (hypotheekrenteaftrek — gemiddeld €800–€1.200 terug per jaar)
-- Toeslagen aanvragen en controleren: huurtoeslag, zorgtoeslag, kinderopvangtoeslag
+- Belastingaangifte invullen (vaste prijs vanaf €59, inclusief toeslagencontrole)
+- Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek — gemiddeld €800–€1.200 terug per jaar)
+- Toeslagen aanvragen en controleren: huurtoeslag, zorgtoeslag, kinderopvangtoeslag, kindgebonden budget
 - Ouderenkorting en AOW-aangifte voor senioren
-- Bezwaar indienen bij de Belastingdienst
+- Box 3-bezwaar (spaartaks): pro forma bezwaar gratis, hoofdbezwaar op basis van no cure no pay
+- Correctie en late aangifte tot 5 jaar terug (2021–2024), uitstel kosteloos inbegrepen
+- Aangifte erfbelasting en schenkbelasting (prijs op maat)
+
+## Diensten
+
+Vaste servicepagina's met uitgebreide uitleg per dienst:
+- [Belastingaangifte laten doen](https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/) — volledige aangifte inkomstenbelasting, vaste prijs vanaf €59, aan huis in Zaanstad
+- [Voorlopige teruggave aanvragen](https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/) — hypotheekrenteaftrek maandelijks laten uitbetalen; los vanaf €49 of pakket €109
+- [Box 3 bezwaar (spaartaks)](https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/) — bezwaar tegen de box 3-heffing 2021–2024; pro forma gratis, no cure no pay
+- [Correctie & late aangifte](https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/) — gemiste aftrekposten alsnog terugvragen tot 5 jaar terug; €69, uitstel gratis inbegrepen
+- [Erfbelasting & schenkbelasting](https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/) — aangifte en advies bij nalaten en schenken; prijs op maat, vrijblijvend gesprek
 
 ## Werkgebied
 
@@ -17,10 +28,20 @@ Zaandam, Krommenie, Assendelft, Wormerveer, Koog aan de Zaan, Zaandijk, Westzaan
 
 ## Prijzen en praktisch
 
-- Vaste prijs: €59 voor volledige belastingaangifte, geen verborgen kosten
-- Service: wij komen bij u thuis (geen kantoorbezoek nodig)
-- Reactietijd: zelfde dag na contact
-- Aangifte ingediend: binnen 1 week
+Alle bedragen zijn inclusief BTW en vast vooraf (geen verborgen kosten):
+- Senioren aangifte (65+ / AOW): **€59** per aangifte · met partner €89
+- Correctie & late aangifte: **€69** per aangifte · met partner €99 · uitstel-aanvraag gratis inbegrepen
+- Voorlopige teruggave pakket (woningbezitters, hele jaar): **€109** eenmalig · met partner €149
+- Alleen voorlopige teruggave aanvragen/wijzigen (los): **€49**
+- Toeslagen check: **gratis** · toeslagen aanvragen: **€30**
+- Box 3-bezwaar: pro forma bezwaar **gratis**, hoofdbezwaar **no cure no pay**
+- Erfbelasting & schenkbelasting: prijs op maat (vrijblijvend gesprek)
+- Spoedaanvraag (binnen 24 uur): **+€25**
+- Startkorting 2026: onze eerste klanten krijgen **€20 korting** op iedere aangifte of voorlopige teruggave (automatisch, geen code)
+
+Praktisch:
+- Service: wij komen bij u thuis (geen kantoorbezoek nodig), of online
+- Reactietijd: zelfde dag na contact · aangifte ingediend binnen 1 week
 - Benodigde documenten: DigiD, jaaropgaven werkgever/uitkering, hypotheekopgave (indien van toepassing), WOZ-beschikking, toeslagbeschikking
 
 ## Contact
@@ -72,6 +93,12 @@ Uitstel vraagt u gratis aan via Mijn Belastingdienst (DigiD) of de BelastingTele
 
 ### Wat gebeurt er als ik te laat ben met de aangifte?
 Eerste verzuim: €385 boete. Herhaald verzuim tot €5.514. Daarnaast 6,5% belastingrente vanaf 1 juli 2026 over verschuldigde belasting.
+
+### Kan ik bezwaar maken tegen de box 3-heffing (spaartaks)?
+Ja. De Hoge Raad oordeelde dat de box 3-heffing over 2021–2024 voor veel spaarders en beleggers te hoog uitviel. Was uw werkelijke rendement lager dan het forfaitair berekende rendement, dan kunt u belasting terugkrijgen. Wij dienen kosteloos pro forma bezwaar in; het hoofdbezwaar doen wij op basis van no cure no pay.
+
+### Kunnen jullie helpen met erfbelasting of schenkbelasting?
+Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over nalaten en schenken. De prijs is op maat; een eerste gesprek is vrijblijvend.
 
 ## Pagina's
 
