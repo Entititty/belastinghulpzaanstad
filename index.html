@@ -1588,47 +1588,31 @@ section {
   </div>
 </section>
 
-<!-- ======== SEIZOENSBANNER (mei–juni: uitstel) ======== -->
+<!-- ======== SEIZOENSBANNER (datumgestuurd via /js/seizoen.js — teksten in /data/seizoen.json) ======== -->
 <section id="uitstel-strip" style="padding:38px 0;background:linear-gradient(135deg,#B8421A 0%,#8E2F10 100%);border-top:3px solid #FFD166;">
   <div class="container">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
       <div style="flex:1;min-width:280px;">
-        <div id="uitstel-badge" style="display:inline-block;background:#FFD166;color:#3A1A0A;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:5px 12px;border-radius:4px;margin-bottom:12px;">⏰ GEEN AANGIFTE 2025 GEDAAN?</div>
-        <h2 id="uitstel-title" style="color:#fff;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.25;margin:0 0 10px 0;">
-          Uitstel nog mogelijk tot 1 september &mdash; <strong style="color:#FFD166;">wij regelen het kosteloos</strong>
+        <div id="seizoen-badge" style="display:inline-block;background:#FFD166;color:#3A1A0A;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:5px 12px;border-radius:4px;margin-bottom:12px;">⏰ AANGIFTE 2025 NOG NIET GEDAAN?</div>
+        <h2 id="seizoen-title" style="color:#fff;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.25;margin:0 0 10px 0;">
+          Aangifte 2025 nog niet gedaan? <strong style="color:#FFD166;">Dat is nog op te lossen</strong>
         </h2>
-        <p id="uitstel-desc" style="color:rgba(255,255,255,0.92);font-size:1rem;line-height:1.55;margin:0 0 0 0;max-width:620px;">
-          Voorkom een verzuimboete van €385. Stuur ons een bericht, wij dienen uw uitstel vandaag nog in bij de Belastingdienst. Aangifte doen we daarna rustig samen.
+        <p id="seizoen-desc" style="color:rgba(255,255,255,0.92);font-size:1rem;line-height:1.55;margin:0 0 0 0;max-width:620px;">
+          Zolang u nog geen aanmaning van de Belastingdienst heeft ontvangen, blijft een verzuimboete meestal uit. Hoe eerder u aangifte doet, hoe kleiner het risico. Al een herinnering of aanmaning binnen? Ook dan kijken we samen wat de beste stap is.
         </p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;min-width:240px;">
-        <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20mijn%20aangifte%202025%20nog%20niet%20gedaan.%20Kunnen%20jullie%20gratis%20uitstel%20voor%20mij%20regelen%3F" style="background:#25D366;color:#fff;text-decoration:none;padding:16px 26px;border-radius:100px;font-weight:800;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1.02rem;box-shadow:0 6px 22px rgba(37,211,102,0.45);" rel="nofollow">💬 Gratis uitstel regelen →</a>
+        <a id="seizoen-cta" href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20mijn%20aangifte%202025%20nog%20niet%20gedaan.%20Kunnen%20jullie%20helpen%3F" style="background:#25D366;color:#fff;text-decoration:none;padding:16px 26px;border-radius:100px;font-weight:800;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1.02rem;box-shadow:0 6px 22px rgba(37,211,102,0.45);" rel="nofollow">💬 Aangifte alsnog indienen — €69 →</a>
         <a href="tel:+31619711848" style="background:rgba(255,255,255,0.12);color:#fff;text-decoration:none;padding:13px 26px;border-radius:100px;font-weight:700;text-align:center;border:2px solid rgba(255,255,255,0.35);display:inline-flex;align-items:center;justify-content:center;gap:8px;" rel="nofollow">📞 Bel direct: 06 – 19 71 18 48</a>
       </div>
     </div>
     <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:22px;color:rgba(255,255,255,0.88);font-size:0.88rem;">
-      <span>✓ 100% gratis (geen verplichting)</span>
-      <span id="uitstel-chip">✓ Uitstel tot 1 september 2026</span>
-      <span>✓ Aangifte daarna rustig samen</span>
+      <span>✓ Persoonlijk, aan huis in Zaanstad</span>
+      <span id="seizoen-chip">✓ Hoe eerder, hoe kleiner het risico</span>
+      <span>✓ Aangifte rustig samen</span>
     </div>
   </div>
-  <script>
-  (function(){
-    /* Datumgestuurde uitstel-strip — zie CONTENT-VERVALDATA.md.
-       Vóór 1 sep 2026: persoonlijk uitstel (standaard in de HTML).
-       Ná 1 sep 2026: automatisch de Beconregeling-boodschap (tot 1 mei 2027). */
-    var cutoff = new Date(2026, 8, 1); /* 1 september 2026 (maand is 0-based) */
-    if (new Date() < cutoff) return;
-    var badge = document.getElementById('uitstel-badge');
-    var title = document.getElementById('uitstel-title');
-    var desc  = document.getElementById('uitstel-desc');
-    var chip  = document.getElementById('uitstel-chip');
-    if (badge) badge.textContent = '⏰ AANGIFTE 2025 NOG NIET GEDAAN?';
-    if (title) title.innerHTML = 'Via onze Beconregeling nog uitstel tot 1 mei 2027 &mdash; <strong style="color:#FFD166;">wij regelen het</strong>';
-    if (desc)  desc.textContent = 'De persoonlijke uitsteldatum is verstreken, maar als belastingadviseur kunnen wij u aanmelden voor de Beconregeling. Zo krijgt u alsnog uitstel tot 1 mei 2027. Stuur ons een bericht — wij regelen het vandaag nog.';
-    if (chip)  chip.textContent = '✓ Uitstel tot 1 mei 2027 via Beconregeling';
-  })();
-  </script>
+  <script src="/js/seizoen.js" defer></script>
 </section>
 
 <!-- ======== WAT KAN IK NU NOG REGELEN ======== -->
@@ -1652,9 +1636,9 @@ section {
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid #B8421A;">
         <div style="font-size:1.6rem;margin-bottom:12px;">⏰</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Uitstel &amp; te late aangifte 2025</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Nog geen aangifte 2025 gedaan? Via ons kunt u nog uitstel krijgen — tot 1 september 2026 via persoonlijk uitstel, of tot 1 mei 2027 via onze Beconregeling.</p>
-        <p style="font-size:0.85rem;color:#B8421A;font-weight:700;margin-bottom:16px;">Wij vragen kosteloos uitstel aan en voorkomen een verzuimboete van €385 of meer.</p>
-        <a href="#uitstel-strip" style="color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Gratis uitstel aanvragen →</a>
+        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Nog geen aangifte 2025 gedaan? Dat is nog op te lossen. Zolang u nog geen aanmaning van de Belastingdienst heeft ontvangen, blijft een verzuimboete meestal uit — hoe eerder u aangifte doet, hoe kleiner het risico. Wij doen de aangifte rustig samen met u.</p>
+        <p style="font-size:0.85rem;color:#B8421A;font-weight:700;margin-bottom:16px;">Hoe eerder u indient, hoe kleiner de kans op een verzuimboete (die de eerste keer €469 bedraagt).</p>
+        <a href="#uitstel-strip" style="color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Aangifte alsnog indienen →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-green);">
@@ -2072,7 +2056,7 @@ section {
           <span class="faq-arrow">+</span>
         </button>
         <div class="faq-answer">
-          <p>Geen paniek. U kunt nog steeds aangifte doen. Via ons vraagt u kosteloos uitstel aan — tot 1 september 2026 via persoonlijk uitstel, of tot 1 mei 2027 via onze Beconregeling. Zo voorkomt u een verzuimboete van €385 of meer. Wij regelen het uitstel vandaag nog en doen de aangifte daarna rustig samen.</p>
+          <p>Geen paniek. U kunt nog steeds aangifte doen. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469, bij herhaling meer). Hoe eerder u indient, hoe kleiner het risico. Heeft u al een herinnering of aanmaning ontvangen? Ook dan dienen we uw aangifte snel voor u in.</p>
         </div>
       </div>
 
@@ -2175,7 +2159,7 @@ section {
       <a href="/blog/uitstel-belastingaangifte-2025/" class="blog-card">
         <div class="blog-card-tag" style="color:#d97706;">Uitstel</div>
         <h3>Uitstel belastingaangifte 2025 aanvragen</h3>
-        <p>Gratis uitstel tot 1 september 2026. Via onze beconregeling zelfs tot 1 mei 2027.</p>
+        <p>Te laat met uw aangifte 2025? Zo dient u hem alsnog in en beperkt u het risico op een boete.</p>
         <span class="blog-card-link">Lees meer →</span>
       </a>
       <a href="/blog/zorgtoeslag-grens/" class="blog-card">
@@ -2462,7 +2446,7 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
       "name": "Ik heb mijn aangifte 2025 niet gedaan vóór 1 mei — wat nu?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Geen paniek. U kunt nog steeds aangifte doen. Via ons vraagt u kosteloos uitstel aan — tot 1 september 2026 via persoonlijk uitstel, of tot 1 mei 2027 via onze Beconregeling. Zo voorkomt u een verzuimboete van €385 of meer. Wij regelen het uitstel vandaag nog en doen de aangifte daarna rustig samen."
+        "text": "Geen paniek. U kunt nog steeds aangifte doen. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469, bij herhaling meer). Hoe eerder u indient, hoe kleiner het risico. Heeft u al een herinnering of aanmaning ontvangen? Ook dan dienen we uw aangifte snel voor u in."
       }
     },
     {
