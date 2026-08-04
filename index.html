@@ -1644,7 +1644,7 @@ section {
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-green);">
         <div style="font-size:1.6rem;margin-bottom:12px;">🔍</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Correctie eerdere aangiften (tot 5 jaar terug)</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Heeft u aftrekposten gemist? Zorgkosten, giften, studiekosten of partneralimentatie worden vaak vergeten. Wij kijken uw aangiften van 2021–2024 gratis na.</p>
+        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Heeft u aftrekposten gemist? Zorgkosten, giften, studiekosten of partneralimentatie worden vaak vergeten. Wij kijken uw aangiften van 2021–2024 gratis na; een correctie indienen kost €69 per jaaraangifte.</p>
         <p style="font-size:0.85rem;color:var(--clr-green);font-weight:700;margin-bottom:16px;">Dit kan u duizenden euro's opleveren aan gemiste teruggaven.</p>
         <a href="#tarieven" style="color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Gratis laten nakijken →</a>
       </div>
@@ -1807,7 +1807,7 @@ section {
           <li><span class="audience-list-icon">&#10003;</span> Ouderenkorting optimaal benutten</li>
           <li><span class="audience-list-icon">&#10003;</span> Zorgkosten aftrekken die u zelf betaalt</li>
           <li><span class="audience-list-icon">&#10003;</span> Huur- en zorgtoeslag controleren</li>
-          <li><span class="audience-list-icon">&#10003;</span> Hulp met DigiD en digitale aangifte</li>
+          <li><span class="audience-list-icon">&#10003;</span> Hulp bij de digitale aangifte (wij nemen uw DigiD nooit over)</li>
           <li><span class="audience-list-icon">&#10003;</span> Aan huis in heel Zaanstad</li>
           <li><span class="audience-list-icon">&#10003;</span> Partner-aangifte in &eacute;&eacute;n sessie</li>
         </ul>
@@ -1906,10 +1906,11 @@ section {
           <li>Voorlopige teruggave 2026 aanvragen</li>
           <li>Hypotheekrenteaftrek berekening</li>
           <li>Eigenwoningforfait verwerking</li>
-          <li><strong>Maandelijks €100–€400 extra netto</strong></li>
+          <li><strong>Maandelijks vaak €100–€400 extra netto*</strong></li>
           <li>Ook bij verhuizing of salariswijziging</li>
           <li>Met partner: &euro; 149</li>
         </ul>
+        <div style="font-size:0.72rem;color:var(--clr-bark);line-height:1.4;margin:-6px 0 12px;text-align:left;">* Indicatie &mdash; het werkelijke bedrag hangt af van uw hypotheek, inkomen en belastingschijf. Wij berekenen uw exacte maandbedrag vooraf.</div>
         <button class="tarief-btn" onclick="scrollToContact()">Teruggave aanvragen &rarr;</button>
       </div>
 
@@ -1955,10 +1956,10 @@ section {
 
       <div style="background:#fff;border-radius:12px;padding:24px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);text-align:center;">
         <div style="font-size:1.8rem;margin-bottom:8px;">📋</div>
-        <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Toeslagen check</div>
-        <div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">Zorgtoeslag, huurtoeslag, kindgebonden budget. Wij checken gratis of u recht heeft op meer.</div>
-        <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-teal);">€30</div>
-        <div style="font-size:0.78rem;color:var(--clr-bark);">per aanvraag · incl. BTW</div>
+        <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Toeslagen</div>
+        <div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">Zorgtoeslag, huurtoeslag, kindgebonden budget.</div>
+        <div style="font-size:0.92rem;color:var(--clr-deep);"><strong style="color:var(--clr-teal);">Check of u recht heeft: gratis</strong></div>
+        <div style="font-size:0.92rem;color:var(--clr-deep);margin-top:2px;">Aanvraag indienen: <strong>€30</strong> <span style="font-size:0.78rem;color:var(--clr-bark);">· incl. BTW</span></div>
         <a href="#contact" style="display:inline-block;margin-top:14px;color:var(--clr-orange);font-weight:700;font-size:0.9rem;text-decoration:none;">Gratis check starten →</a>
       </div>
 
@@ -2057,6 +2058,16 @@ section {
         </button>
         <div class="faq-answer">
           <p>Geen paniek. U kunt nog steeds aangifte doen. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469, bij herhaling meer). Hoe eerder u indient, hoe kleiner het risico. Heeft u al een herinnering of aanmaning ontvangen? Ook dan dienen we uw aangifte snel voor u in.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Krijgen jullie mijn DigiD-inloggegevens?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Nee — wij vragen of gebruiken uw DigiD-inloggegevens nooit.</strong> Dat mag niet en dat is ook niet nodig. We werken op twee veilige manieren: u geeft ons een <strong>machtiging</strong> via de Belastingdienst (met een machtigingscode die u zelf aanvraagt), óf we doen de aangifte <strong>samen aan uw keukentafel</strong> terwijl u zelf inlogt. Zo houdt u altijd zelf de controle over uw gegevens.</p>
         </div>
       </div>
 
@@ -2447,6 +2458,14 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Geen paniek. U kunt nog steeds aangifte doen. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469, bij herhaling meer). Hoe eerder u indient, hoe kleiner het risico. Heeft u al een herinnering of aanmaning ontvangen? Ook dan dienen we uw aangifte snel voor u in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Krijgen jullie mijn DigiD-inloggegevens?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee — wij vragen of gebruiken uw DigiD-inloggegevens nooit. Dat mag niet en dat is ook niet nodig. We werken op twee veilige manieren: u geeft ons een machtiging via de Belastingdienst (met een machtigingscode die u zelf aanvraagt), óf we doen de aangifte samen aan uw keukentafel terwijl u zelf inlogt. Zo houdt u altijd zelf de controle over uw gegevens."
       }
     },
     {
