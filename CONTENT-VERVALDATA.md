@@ -102,3 +102,12 @@ sitebreed doorgevoerd (NL + EN). Gebruik ze als ijkpunt bij de volgende jaarupda
 | **2027-01** | belastingjaar-framing 2025→2026 (§3); deadline-2027-artikel aanmaken (§4) |
 | **2027-04-15** | uitstel-strip laten pivoten na afloop Becon-deadline (§1) |
 | **jaarlijks mei** | na afloop aangifteseizoen: hero/strip/blogs herijken |
+
+
+---
+
+## Eén bron van waarheid voor fiscale cijfers (Taak 3)
+- **data/fiscale-cijfers.json** — alle 2026-cijfers met bron + 'verouderd'-lijst.
+- **data/plaatsen.json** — inwoners + woningprijs per kern (bron nog TODO; sommige pagina's tonen meerdere bedragen).
+- **scripts/check-fiscale-cijfers.js** — `node scripts/check-fiscale-cijfers.js`; faalt (exit 1) als een verouderde waarde weer in de HTML staat. Draai dit vóór elke push.
+- Let op: de site is statische HTML zonder build, dus cijfers worden NIET automatisch uit de JSON gegenereerd. Wijzig je een cijfer: pas het aan in de JSON én in de HTML, en zet de oude waarde in 'verouderd'.
