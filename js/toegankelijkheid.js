@@ -77,8 +77,21 @@
     }
   }
 
+  function buildMobileBar() {
+    if (document.querySelector('.bhz-mobilebar')) return;
+    var bar = document.createElement('nav');
+    bar.className = 'bhz-mobilebar';
+    bar.setAttribute('aria-label', 'Snel contact');
+    bar.innerHTML =
+      '<a href="tel:+31619711848" rel="nofollow"><span class="ic" aria-hidden="true">📞</span>Bellen</a>' +
+      '<a href="/contact/#terugbellen"><span class="ic" aria-hidden="true">📅</span>Terugbellen</a>' +
+      '<a class="wa" href="https://wa.me/31619711848" rel="nofollow"><span class="ic" aria-hidden="true">💬</span>WhatsApp</a>';
+    document.body.appendChild(bar);
+  }
+
   function init() {
     buildSwitcher();
+    buildMobileBar();
     wireFaq();
     try { hideDecorativeEmoji(); } catch (e) {}
   }
