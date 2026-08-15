@@ -1,0 +1,37 @@
+# Geheimen — NOOIT committen.
+# Deze site wordt met "git reset --hard" op de server uitgerold en de
+# webroot is de repo-root. Alles wat hier in git komt, staat publiek online.
+*.json.key
+*-service-account*.json
+*credentials*.json
+*client_secret*.json
+.secrets/
+secrets/
+.env
+.env.*
+
+# Google / Bing verificatiebestanden mogen juist wel mee:
+!google*.html
+!BingSiteAuth.xml
+
+# Meetgegevens blijven lokaal.
+# De webroot is de repo-root en de server doet "git reset --hard", dus alles wat
+# hier in git komt, is publiek op te vragen. Zoekwoorden, posities en klikcijfers
+# zijn bedrijfsgegevens; die horen niet online. Maak hier zelf een back-up van,
+# buiten deze map — Search Console bewaart maar 16 maanden.
+data/gsc/
+data/crawl.csv
+data/baseline-*.md
+reports/
+
+# Lokale rommel
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+*.bak
+~$*
+
+# Node
+node_modules/
