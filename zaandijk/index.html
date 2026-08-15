@@ -56,9 +56,16 @@
   "url": "https://belastinghulpzaanstad.nl/",
   "telephone": "+31619711848",
   "email": "info@belastinghulpzaanstad.nl",
-  "priceRange": "€49–€109",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Zaandam",
+    "addressRegion": "Noord-Holland",
+    "addressCountry": "NL"
+  },
+  "priceRange": "€59–€149",
   "foundingDate": "2026",
   "areaServed": [
+    {"@type":"City","name":"Zaanstad"},
     {"@type":"City","name":"Zaandam"},
     {"@type":"City","name":"Krommenie"},
     {"@type":"City","name":"Assendelft"},
@@ -105,6 +112,7 @@
           <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
+          <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
         </ul>
       </li>
       <li><a href="/#senioren">Senioren</a></li>
@@ -154,6 +162,7 @@
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <div class="local-intro">
@@ -371,7 +380,6 @@
 
     </div>
 
-    <p style="text-align:center;margin-top:32px;color:var(--clr-bark);font-size:0.88rem;"><strong>Alleen voorlopige teruggave aanvragen of wijzigen?</strong> Dat kan ook los, voor €49 incl. BTW.</p>
   </div>
 </section>
 
@@ -504,6 +512,7 @@
           <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
+          <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
         </ul>
       </div>
       <div>
@@ -545,9 +554,6 @@ function toggleMenu(){const links=document.querySelector('.nav-links');if(links.
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';observer.observe(el);});
-const schema=document.createElement('script');schema.type='application/ld+json';
-schema.text=JSON.stringify({"@context":"https://schema.org","@type":"ProfessionalService","name":"Belastinghulp Zaanstad – Zaandijk","description":"Belastinghulp voor senioren en woningbezitters in Zaandijk. Voorlopige teruggave, correctie aangiften, Box 3 bezwaar, erfbelasting en toeslagen. Vaste prijzen, aan huis, het hele jaar actief.","url":"https://belastinghulpzaanstad.nl/zaandijk/","areaServed":{"@type":"City","name":"Zaandijk"},"priceRange":"€0 - €149","serviceType":["Voorlopige teruggave","Belastingaangifte","Correctie aangiften","Bezwaar box 3","Erfbelasting","Toeslagen"],"address":{"@type":"PostalAddress","addressLocality":"Zaandijk","addressRegion":"Noord-Holland","addressCountry":"NL"}});
-document.head.appendChild(schema);
 </script>
 <script type="application/ld+json">
 {

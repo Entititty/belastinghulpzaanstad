@@ -56,9 +56,16 @@
   "url": "https://belastinghulpzaanstad.nl/",
   "telephone": "+31619711848",
   "email": "info@belastinghulpzaanstad.nl",
-  "priceRange": "€49–€109",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Zaandam",
+    "addressRegion": "Noord-Holland",
+    "addressCountry": "NL"
+  },
+  "priceRange": "€59–€149",
   "foundingDate": "2026",
   "areaServed": [
+    {"@type":"City","name":"Zaanstad"},
     {"@type":"City","name":"Zaandam"},
     {"@type":"City","name":"Krommenie"},
     {"@type":"City","name":"Assendelft"},
@@ -105,6 +112,7 @@
           <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
+          <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
         </ul>
       </li>
       <li><a href="/#senioren">Senioren</a></li>
@@ -154,6 +162,7 @@
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <div class="local-intro">
@@ -303,7 +312,7 @@
     <div class="section-header"><div class="section-eyebrow">◆ Tarieven</div><h2 class="section-title">Eerlijke, vaste prijzen</h2><p class="section-desc">Geen verrassingen achteraf. Alle prijzen zijn inclusief BTW.</p></div>
     <div class="tarieven-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
       <div class="tarief-card">
-        <div class="tarief-icon">💰</div><div class="tarief-name">Voorlopige teruggave</div><div class="tarief-for">Losse aanvraag</div><div class="tarief-price">€49</div><div class="tarief-price-note">per aanvraag · incl. BTW</div>
+        <div class="tarief-icon">💰</div><div class="tarief-name">Voorlopige teruggave</div><div class="tarief-for">Compleet pakket</div><div class="tarief-price">€109</div><div class="tarief-price-note">met partner €149 · incl. BTW</div>
         <ul class="tarief-features"><li>Hypotheekrenteaftrek berekening</li><li>Eigenwoningforfait verwerking</li><li>Aanvraag bij Belastingdienst</li><li>Maandelijks geld terug</li></ul>
         <button class="tarief-btn" onclick="scrollToContact()">Teruggave aanvragen</button>
       </div>
@@ -462,6 +471,7 @@
           <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
+          <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
         </ul>
       </div>
       <div>
@@ -503,9 +513,6 @@ function toggleMenu(){const links=document.querySelector('.nav-links');if(links.
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';observer.observe(el);});
-const schema=document.createElement('script');schema.type='application/ld+json';
-schema.text=JSON.stringify({"@context":"https://schema.org","@type":"ProfessionalService","name":"Belastinghulp Westzaan – Voorlopige teruggave & meer","url":"https://belastinghulpzaanstad.nl/westzaan/","areaServed":{"@type":"City","name":"Westzaan"},"priceRange":"€49 - €149","address":{"@type":"PostalAddress","addressLocality":"Westzaan","addressRegion":"Noord-Holland","addressCountry":"NL"}});
-document.head.appendChild(schema);
 </script>
 <script type="application/ld+json">
 {

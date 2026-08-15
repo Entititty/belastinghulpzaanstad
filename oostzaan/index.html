@@ -56,9 +56,16 @@
   "url": "https://belastinghulpzaanstad.nl/",
   "telephone": "+31619711848",
   "email": "info@belastinghulpzaanstad.nl",
-  "priceRange": "€49–€109",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Zaandam",
+    "addressRegion": "Noord-Holland",
+    "addressCountry": "NL"
+  },
+  "priceRange": "€59–€149",
   "foundingDate": "2026",
   "areaServed": [
+    {"@type":"City","name":"Zaanstad"},
     {"@type":"City","name":"Zaandam"},
     {"@type":"City","name":"Krommenie"},
     {"@type":"City","name":"Assendelft"},
@@ -105,6 +112,7 @@
           <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
+          <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
         </ul>
       </li>
       <li><a href="/#senioren">Senioren</a></li>
@@ -154,6 +162,7 @@
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <section class="wat-regelen" id="wat-regelen">
@@ -335,7 +344,7 @@
       <div style="background:#fff;border-radius:12px;padding:24px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);text-align:center;"><div style="font-size:1.8rem;margin-bottom:8px;">📜</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Erfbelasting-aangifte</div><div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">Aangifte erfbelasting na overlijden. Schenkbelasting bij schenkingen aan kinderen of kleinkinderen.</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-teal);">Op offerte</div><div style="font-size:0.78rem;color:var(--clr-bark);">vrijblijvend · prijs op maat</div><a href="#contact" style="display:inline-block;margin-top:14px;color:var(--clr-orange);font-weight:700;font-size:0.9rem;text-decoration:none;">Vrijblijvend offerte aanvragen →</a></div>
       <div style="background:#fff;border-radius:12px;padding:24px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);text-align:center;"><div style="font-size:1.8rem;margin-bottom:8px;">📋</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Toeslagen check</div><div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">Zorgtoeslag, huurtoeslag, kindgebonden budget. Wij checken gratis of u recht heeft op meer.</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-teal);">€30</div><div style="font-size:0.78rem;color:var(--clr-bark);">per aanvraag · incl. BTW</div><a href="#contact" style="display:inline-block;margin-top:14px;color:var(--clr-orange);font-weight:700;font-size:0.9rem;text-decoration:none;">Gratis check starten →</a></div>
     </div>
-    <p style="text-align:center;margin-top:32px;color:var(--clr-bark);font-size:0.88rem;"><strong>Alleen voorlopige teruggave aanvragen of wijzigen?</strong> Dat kan ook los, voor €49 incl. BTW.<br>Overige diensten: toeslagen aanvragen €30 · spoedaanvraag (24u) + €25</p>
+    <p style="text-align:center;margin-top:32px;color:var(--clr-bark);font-size:0.88rem;">Overige diensten: toeslagen aanvragen €30 · spoedaanvraag (24u) + €25</p>
   </div>
 </section>
 
@@ -467,6 +476,7 @@
           <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
+          <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
         </ul>
       </div>
       <div>
@@ -508,9 +518,6 @@ function toggleMenu(){const links=document.querySelector('.nav-links');if(links.
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';observer.observe(el);});
-const schema=document.createElement('script');schema.type='application/ld+json';
-schema.text=JSON.stringify({"@context":"https://schema.org","@type":"ProfessionalService","name":"Belastinghulp Zaanstad – Oostzaan","description":"Voorlopige teruggave, correctie aangiften & Box 3 bezwaar in Oostzaan. Persoonlijk aan huis. Vaste prijs €59.","url":"https://belastinghulpzaanstad.nl/oostzaan/","areaServed":{"@type":"City","name":"Oostzaan"},"priceRange":"€49 - €149","serviceType":"Voorlopige teruggave, correctie aangifte, Box 3 bezwaar, belastingaangifte","address":{"@type":"PostalAddress","addressLocality":"Oostzaan","addressRegion":"Noord-Holland","addressCountry":"NL"}});
-document.head.appendChild(schema);
 </script>
 <script type="application/ld+json">
 {

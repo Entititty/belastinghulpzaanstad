@@ -119,3 +119,69 @@ niet — alleen `sameAs`-link, Clarity via consent.js-injectie i.p.v. hardcoded)
 - **Taak 7 (E-E-A-T)** — **geblokkeerd**: wacht op eigenaar-gegevens (naam adviseur + achtergrond, Beconnummer, KvK-nummer). Niets verzonnen.
 
 **Buiten code (jouw actie / open):** (1) naam/Becon/KvK aanleveren voor Taak 7; (2) go voor de 36,93%→2026-tarieven-sweep op 15 paginas (raakt zichtbaar homepage-cijfer €289); (3) stadspagina-overlap §7 en definitief og-beeld blijven jouw call.
+
+---
+
+## 2026-08-09 t/m 2026-08-15 — SEO/GEO-plan, fase 0 t/m 3 (branch `seo-geo-2026-08`)
+
+Uitgevoerd n.a.v. het SEO/GEO-plan. Volgorde aangehouden: eerst meten, dan techniek,
+dan content, dan CTR.
+
+### Beveiliging
+- `.gitignore` was een **map** in plaats van een bestand; de Search Console-sleutel
+  stond erin. Omdat de webroot de repo-root is en de server `git reset --hard` doet,
+  had een `git add .` die sleutel publiek gezet. Sleutel verplaatst naar
+  `~/.secrets/`, echte `.gitignore` aangelegd, nginx weigert nu `/data/gsc/`,
+  `/reports/`, `data/crawl.csv` en `data/baseline-*.md`.
+- Meetgegevens blijven bewust buiten git: het zijn bedrijfsgegevens.
+
+### Schema
+- **Dubbele bedrijfsentiteit weg** (20 pagina's). Naast de canonieke `#business`-knoop
+  stond een tweede `ProfessionalService` zonder `@id`, met een afwijkende prijs.
+  Op 19 pagina's zat die alleen in JavaScript — onzichtbaar voor GPTBot,
+  OAI-SearchBot, PerplexityBot en ClaudeBot, die geen JS uitvoeren.
+- Adres en `Zaanstad` als `areaServed` samengevoegd in de canonieke knoop.
+- `/en/` kreeg de ontbrekende `Organization` en `WebSite`.
+- Schema-gaten t.o.v. plan §4.2: van 58 naar 5, en die 5 zijn terechte weglatingen.
+
+### E-E-A-T
+- Echte auteur op 52 artikelen: `Person`-schema, `meta author` en een zichtbare
+  byline naar `/over-ons/#stan`. Auteurskaart met foto en LinkedIn op `/over-ons/`
+  en `/en/about-us/`.
+
+### Prijzen
+- De losse tier "alleen voorlopige teruggave aanvragen" (€49) is vervallen; die
+  dienst is nu €109, met partner €149. 34 vindplaatsen in NL en EN bijgewerkt.
+- `priceRange` overal €59–€149; stond eerst op twee verschillende waarden.
+- Prijsbadge van €59 uit `og-voorlopige-teruggave.png` gehaald (dienst kost €109).
+
+### Interne links
+- "Lees ook"-blok op 46 artikelen, drie inhoudelijk verwante links per stuk,
+  gekozen op onderwerp én op hoe arm de doelpagina aan links was.
+- De 10 dienstpagina's linkten naar géén enkel artikel; dat is nu wel zo.
+- Pagina's met minder dan 5 interne in-links: van 21 naar 1.
+
+### Content
+- Nieuwe pillar `/diensten/toeslagen/` (1.172 woorden). Search Console wees dit aan:
+  18 van de 26 beste content-kansen zijn huurtoeslag-zoekopdrachten. Alle bedragen
+  komen uit `data/fiscale-cijfers.json`, dus de bestaande checker bewaakt ze.
+
+### CTR
+- 50 meta descriptions ingekort naar 140–155 tekens. Boven de 160: nu 0.
+
+### Techniek
+- Alle 18 plaatspagina's misten één `</div>` in de hero. Stond al zo in git.
+- Sitemap opgesplitst in diensten, kennisbank, lokaal en overig, met index.
+- IndexNow ingericht (sleutelbestand + `scripts/indexnow.js`).
+
+### Meten
+- `scripts/gsc-export.js` en `scripts/gsc-report.js` (Node, geen npm-pakketten).
+- **Let op bij het lezen van de cijfers:** vraag je de dimensie `query` op, dan laat
+  Search Console zeldzame zoekopdrachten weg. Je ziet dan maar ~56% van de
+  vertoningen en ~14% van de klikken. De KPI's komen daarom uit `data/gsc/totals.csv`,
+  opgehaald zonder query-dimensie.
+- Nulmeting in `data/baseline-2026-08.md`: 105 klikken, 30.511 vertoningen,
+  CTR 0,34%, positie 30,5 over 2026-05-10 t/m 2026-08-07.
+
+### Nieuwe scripts
+`crawl-audit.js`, `gsc-export.js`, `gsc-report.js`, `build-sitemap.js`, `indexnow.js`.

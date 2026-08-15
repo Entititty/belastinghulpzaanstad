@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tax return Krommenie | Belastinghulp Zaanstad</title>
-<meta name="description" content="Tax return in Krommenie? We come to your home. Seniors & first-time buyers. Deduct healthcare costs, calculate the elderly tax credit, apply for a preliminary tax refund. Call today.">
+<meta name="description" content="Dutch tax return in Krommenie? We come to your home. Healthcare costs, the elderly tax credit and preliminary tax refunds. Call for a same-day reply.">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Belastinghulp Zaanstad">
@@ -57,9 +57,16 @@
   "url": "https://belastinghulpzaanstad.nl/",
   "telephone": "+31619711848",
   "email": "info@belastinghulpzaanstad.nl",
-  "priceRange": "€49–€109",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Zaandam",
+    "addressRegion": "Noord-Holland",
+    "addressCountry": "NL"
+  },
+  "priceRange": "€59–€149",
   "foundingDate": "2026",
   "areaServed": [
+    {"@type":"City","name":"Zaanstad"},
     {"@type":"City","name":"Zaandam"},
     {"@type":"City","name":"Krommenie"},
     {"@type":"City","name":"Assendelft"},
@@ -174,6 +181,7 @@
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <div class="local-intro">
@@ -357,8 +365,7 @@
       </div>
     </div>
     <p style="text-align:center; margin-top:32px; color: var(--clr-bark); font-size:0.88rem;">
-      <strong>Only need a preliminary tax refund?</strong> That can be ordered separately for €49 incl. VAT.
-      <br>Other services: benefits applications €30 · rush tax return (24h) + €25
+      Other services: benefits applications €30 · rush tax return (24h) + €25
     </p>
   </div>
 </section>
@@ -586,9 +593,6 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
   addEventListener('resize', function() { go(cur); });
   go(0);
 })();
-const schema = document.createElement('script'); schema.type = 'application/ld+json';
-schema.text = JSON.stringify({ "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Belastinghulp Zaanstad – Krommenie", "description": "In-person tax return help for seniors and first-time buyers in Krommenie", "url": "https://belastinghulpzaanstad.nl/en/krommenie/", "areaServed": { "@type": "City", "name": "Krommenie" }, "priceRange": "€59 - €149", "address": { "@type": "PostalAddress", "addressLocality": "Krommenie", "addressRegion": "Noord-Holland", "addressCountry": "NL" } });
-document.head.appendChild(schema);
 </script>
 <script type="application/ld+json">
 {

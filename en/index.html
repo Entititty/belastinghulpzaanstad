@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tax Help Zaanstad – year-round tax help | €59</title>
-<meta name="description" content="Preliminary tax refund, corrected tax returns & Box 3 objection in Zaanstad. Personal, at your home. Fixed price €59. Active all year. Free no-obligation check. Same-day reply.">
+<meta name="description" content="Preliminary tax refund, corrected returns and box 3 objections in Zaanstad. At your home, fixed price from €59. Call or WhatsApp for a same-day reply.">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Belastinghulp Zaanstad">
@@ -1459,9 +1459,16 @@ section {
   "url": "https://belastinghulpzaanstad.nl/",
   "telephone": "+31619711848",
   "email": "info@belastinghulpzaanstad.nl",
-  "priceRange": "€49–€109",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Zaandam",
+    "addressRegion": "Noord-Holland",
+    "addressCountry": "NL"
+  },
+  "priceRange": "€59–€149",
   "foundingDate": "2026",
   "areaServed": [
+    {"@type":"City","name":"Zaanstad"},
     {"@type":"City","name":"Zaandam"},
     {"@type":"City","name":"Krommenie"},
     {"@type":"City","name":"Assendelft"},
@@ -1508,6 +1515,44 @@ html[data-fontscale="xl"]{font-size:23px}
 .ts-switch button[aria-pressed="true"]{background:var(--clr-teal);color:#fff;border-color:var(--clr-teal)}
 @media(max-width:600px){.ts-switch{right:8px;bottom:80px;padding:4px 6px;gap:3px}.ts-switch-label{display:none}.ts-switch button{min-width:40px;min-height:40px;font-size:0.9rem}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://belastinghulpzaanstad.nl/#organization",
+  "name": "Belastinghulp Zaanstad",
+  "url": "https://belastinghulpzaanstad.nl",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://belastinghulpzaanstad.nl/favicon.png"
+  },
+  "image": "https://belastinghulpzaanstad.nl/favicon.png",
+  "email": "info@belastinghulpzaanstad.nl",
+  "telephone": "+31619711848",
+  "areaServed": {
+    "@type": "City",
+    "name": "Zaanstad"
+  },
+  "foundingDate": "2026",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61574368775029",
+    "https://share.google/xdHHoqulKkgYD4XPA"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://belastinghulpzaanstad.nl/en/#website",
+  "url": "https://belastinghulpzaanstad.nl/en/",
+  "name": "Belastinghulp Zaanstad",
+  "inLanguage": "en",
+  "publisher": {
+    "@id": "https://belastinghulpzaanstad.nl/#organization"
+  }
+}
+</script>
 </head>
 
 <body>
@@ -2360,30 +2405,6 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
 })();
 
 // Structured Data for SEO (JSON-LD)
-const schema = document.createElement('script');
-schema.type = 'application/ld+json';
-schema.text = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Belastinghulp Zaanstad",
-  "description": "Personal tax help at home in Zaanstad. Preliminary tax refund, corrected returns, Box 3 objections and benefits checks. Fixed prices, all year round.",
-  "url": "https://belastinghulpzaanstad.nl",
-  "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029", "https://share.google/xdHHoqulKkgYD4XPA"],
-  "areaServed": {
-    "@type": "City",
-    "name": "Zaanstad"
-  },
-  "priceRange": "€59 - €149",
-  "serviceType": ["Tax return", "Preliminary tax refund", "Tax advice"],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Zaandam",
-    "addressRegion": "Noord-Holland",
-    "addressCountry": "NL"
-  },
-  "foundingDate": "2026"
-});
-document.head.appendChild(schema);
 </script>
 
 <script type="application/ld+json">
