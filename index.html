@@ -1346,6 +1346,43 @@ html[data-fontscale="xl"]{font-size:23px}
 .btn-wa:hover{background:#136c34;border-color:#136c34;color:#fff}
 .hero-bereikbaar{margin-top:18px;font-size:0.95rem;line-height:1.55;color:var(--clr-bark);max-width:46ch}
 .hero-bereikbaar a{color:var(--clr-teal);font-weight:700}
+/* nieuwe secties: zelf uitzoeken, wie, klaarleggen, terugbellen */
+.zelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.zelf-card{display:block;background:#fff;border:1px solid rgba(44,37,32,0.08);border-radius:16px;padding:26px 24px;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .15s ease,box-shadow .15s ease}
+.zelf-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.zelf-card h3{font-family:var(--font-display);font-size:1.2rem;color:var(--clr-deep);margin:0 0 10px}
+.zelf-card p{color:var(--clr-bark);font-size:0.96rem;line-height:1.6;margin:0 0 14px}
+.zelf-link{color:var(--clr-teal);font-weight:700;font-size:0.95rem}
+.zelf-noot{margin-top:28px;text-align:center;color:var(--clr-bark);font-size:1rem}
+.zelf-noot a{color:var(--clr-teal);font-weight:700}
+.wie-grid{display:grid;grid-template-columns:220px 1fr;gap:44px;align-items:center;max-width:900px;margin:0 auto}
+.wie-foto img{width:100%;height:auto;border-radius:20px;display:block;box-shadow:var(--shadow-md)}
+.wie-grid h2{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);color:var(--clr-deep);margin:0 0 4px}
+.wie-naam{color:var(--clr-teal);font-weight:800;margin:0 0 16px;font-size:1rem}
+.wie-grid p{color:var(--clr-bark);line-height:1.7;margin:0 0 14px}
+.wie-link{color:var(--clr-teal);font-weight:700}
+.klaar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 44px;max-width:900px;margin:0 auto}
+.klaar-lijst{list-style:none;margin:0;padding:0}
+.klaar-lijst li{position:relative;padding:9px 0 9px 30px;color:var(--clr-deep);line-height:1.55;border-bottom:1px solid var(--clr-sand)}
+.klaar-lijst li::before{content:"\2713";position:absolute;left:0;top:9px;color:var(--clr-green);font-weight:800}
+.klaar-noot{margin-top:32px;text-align:center}
+.tb-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;max-width:960px;margin:0 auto}
+.tb-grid h2{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);color:var(--clr-deep);margin:0 0 14px}
+.tb-grid p{color:var(--clr-bark);line-height:1.7;margin:0 0 16px}
+.tb-tijden{background:var(--clr-teal-light);border-radius:12px;padding:16px 18px;color:var(--clr-deep) !important;line-height:1.7}
+.tb-of a{color:var(--clr-teal);font-weight:700}
+/* formulier, zelfde stijl als /contact/ */
+.form-field{margin-bottom:16px}
+.form-field label{display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;font-size:0.95rem}
+.form-field input,.form-field select{width:100%;padding:13px 14px;border:1px solid rgba(44,37,32,0.25);border-radius:10px;font-family:var(--font-body);font-size:1rem;color:var(--clr-deep);background:#fff;min-height:44px}
+.form-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-consent{display:flex;gap:10px;align-items:flex-start;font-size:0.9rem;color:var(--clr-bark);line-height:1.5}
+.form-consent input{width:22px;height:22px;min-height:22px;margin-top:2px;flex:none}
+.form-consent a{color:var(--clr-teal);font-weight:700}
+.form-submit{background:var(--clr-teal);color:#fff;border:none;border-radius:100px;padding:15px 30px;font-weight:800;font-size:1.02rem;cursor:pointer;font-family:var(--font-body);min-height:48px}
+.form-submit:hover{background:var(--clr-teal-dark)}
+.form-card{background:#fff;border-radius:16px;padding:28px 30px;box-shadow:0 4px 24px rgba(44,37,32,0.06);border:1px solid rgba(44,37,32,0.05)}
+@media(max-width:900px){.zelf-grid{grid-template-columns:1fr}.wie-grid{grid-template-columns:1fr;gap:28px;text-align:center}.wie-foto{max-width:200px;margin:0 auto}.klaar-grid{grid-template-columns:1fr}.tb-grid{grid-template-columns:1fr;gap:32px}}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--clr-teal);color:#fff;padding:12px 20px;border-radius:0 0 8px 0;font-weight:700;text-decoration:none}.skip-link:focus{left:0}
 .bhz-mobilebar{display:none}
 @media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#188741;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
@@ -1552,7 +1589,6 @@ html[data-fontscale="xl"]{font-size:23px}
   </div>
 </section>
 
-
 <!-- ======== VOORLOPIGE TERUGGAVE ======== -->
 <section class="teruggave" id="starters">
   <div class="container">
@@ -1629,80 +1665,31 @@ html[data-fontscale="xl"]{font-size:23px}
   of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag." class="mid-cta-wa" rel="nofollow">stuur een WhatsApp &rarr;</a>
 </div>
 
-<!-- ======== DOELGROEPEN ======== -->
-<section id="senioren">
+<!-- ======== ZOEK HET ZELF UIT ======== -->
+<section id="zelf-uitzoeken" style="padding:80px 0;">
   <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">&#9670; Onze specialisatie</div>
-      <h2 class="section-title">Voor wie zijn wij er?</h2>
-      <p class="section-desc">Wij richten ons op twee groepen die vaak onnodig geld laten liggen bij de Belastingdienst.</p>
+    <div class="section-head">
+      <h2>Eerst zelf uitzoeken? Dat kan</h2>
+      <p>U hoeft niet te bellen om te beginnen. Op deze pagina&rsquo;s staan de bedragen en grenzen voor 2026, met tabellen waarin u uw eigen situatie kunt opzoeken.</p>
     </div>
-
-    <div class="audiences-grid">
-      <div class="audience-card audience-card--seniors">
-        <div class="audience-icon">&#128116;&#128115;</div>
-        <h3>Senioren &amp; Gepensioneerden</h3>
-        <p>Veel ouderen laten jaarlijks honderden euro&apos;s liggen. Wij helpen u thuis of op locatie &mdash; rustig, geduldig en in begrijpelijke taal.</p>
-        <ul class="audience-list">
-          <li><span class="audience-list-icon">&#10003;</span> Ouderenkorting optimaal benutten</li>
-          <li><span class="audience-list-icon">&#10003;</span> Zorgkosten aftrekken die u zelf betaalt</li>
-          <li><span class="audience-list-icon">&#10003;</span> Huur- en zorgtoeslag controleren</li>
-          <li><span class="audience-list-icon">&#10003;</span> Hulp bij de digitale aangifte (wij nemen uw DigiD nooit over)</li>
-          <li><span class="audience-list-icon">&#10003;</span> Aan huis in heel Zaanstad</li>
-          <li><span class="audience-list-icon">&#10003;</span> Partner-aangifte in &eacute;&eacute;n sessie</li>
-        </ul>
-        <a href="#tarieven" class="btn btn-primary" style="width:100%;justify-content:center;">Senioren tarieven &rarr;</a>
-      </div>
-
-      <div class="audience-card audience-card--starters">
-        <div class="audience-icon">&#127968;&#128274;</div>
-        <h3>Starters &amp; Eerste Woning</h3>
-        <p>Net je eerste huis gekocht? Vraag een voorlopige teruggave aan en krijg maandelijks geld terug. Wij regelen het snel en makkelijk.</p>
-        <ul class="audience-list">
-          <li><span class="audience-list-icon">&#10003;</span> Voorlopige teruggave aanvragen</li>
-          <li><span class="audience-list-icon">&#10003;</span> Hypotheekrenteaftrek berekenen</li>
-          <li><span class="audience-list-icon">&#10003;</span> Eigenwoningforfait correct verwerken</li>
-          <li><span class="audience-list-icon">&#10003;</span> Advieskosten hypotheek aftrekken</li>
-          <li><span class="audience-list-icon">&#10003;</span> Online via beeldbellen of WhatsApp</li>
-          <li><span class="audience-list-icon">&#10003;</span> Binnen 1 week geregeld</li>
-        </ul>
-        <a href="#tarieven" class="btn btn-orange" style="width:100%;justify-content:center;">Starters tarieven &rarr;</a>
-      </div>
+    <div class="zelf-grid">
+      <a href="/blog/hypotheekrenteaftrek-berekenen/" class="zelf-card">
+        <h3>Heeft u een koopwoning?</h3>
+        <p>Wat u per maand terug kunt krijgen van de rente die u over uw hypotheek betaalt, met voorbeelden per inkomen.</p>
+        <span class="zelf-link">Bekijk de tabellen &rarr;</span>
+      </a>
+      <a href="/blog/huurtoeslag-berekenen/" class="zelf-card">
+        <h3>Huurt u een woning?</h3>
+        <p>De huurgrenzen en inkomensgrenzen voor huurtoeslag in 2026, en hoeveel u ongeveer krijgt.</p>
+        <span class="zelf-link">Bekijk de grenzen &rarr;</span>
+      </a>
+      <a href="/blog/ouderenkorting/" class="zelf-card">
+        <h3>Krijgt u AOW?</h3>
+        <p>De kortingen waar u vanaf uw AOW-leeftijd recht op heeft, en wat dat scheelt op uw aanslag.</p>
+        <span class="zelf-link">Bekijk de bedragen &rarr;</span>
+      </a>
     </div>
-  </div>
-</section>
-
-<!-- ======== HOE WERKT HET ======== -->
-<section class="steps" id="werkwijze">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">&#9670; Werkwijze</div>
-      <h2 class="section-title">In 4 stappen geregeld</h2>
-      <p class="section-desc">Geen gedoe, geen kleine lettertjes. Zo werkt het bij ons.</p>
-    </div>
-
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Neem contact op</h3>
-        <p>Bel, WhatsApp of mail ons. Wij reageren dezelfde dag nog.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Gegevens aanleveren</h3>
-        <p>Wij vertellen precies welke documenten wij nodig hebben. Geen zoekwerk voor u.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Wij doen de aangifte</h3>
-        <p>Uw aangifte wordt door ons verzorgd &mdash; inclusief alle aftrekposten en toeslagen.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Geld terug</h3>
-        <p>U ontvangt uw teruggave. Bij een voorlopige aanvraag zelfs maandelijks.</p>
-      </div>
-    </div>
+    <p class="zelf-noot">Komt u er niet uit, of wilt u het zeker weten? Wij kijken vrijblijvend met u mee. <a href="tel:+31619711848" rel="nofollow">Bel 06 &ndash; 19 71 18 48</a> of <a href="#terugbellen">laat uw nummer achter</a>.</p>
   </div>
 </section>
 
@@ -1811,36 +1798,6 @@ html[data-fontscale="xl"]{font-size:23px}
   </div>
 </section>
 
-<!-- ======== MID-CTA #2 ======== -->
-<div class="mid-cta">
-  Liever direct contact? Bel <a href="tel:+31619711848" class="mid-cta-phone" rel="nofollow">06 &ndash; 19 71 18 48</a>
-  of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20een%20afspraak%20maken." class="mid-cta-wa" rel="nofollow">stuur een WhatsApp &rarr;</a>
-</div>
-
-
-<!-- ======== REGIO ======== -->
-<section>
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">&#9670; Werkgebied</div>
-      <h2 class="section-title">Heel Zaanstad en omgeving</h2>
-      <p class="section-desc">Wij komen bij u thuis of helpen u online. Overal in de gemeente Zaanstad.</p>
-    </div>
-    <div class="regio-badges">
-      <a href="zaandam/" class="regio-badge">Zaandam</a>
-      <a href="krommenie/" class="regio-badge">Krommenie</a>
-      <a href="assendelft/" class="regio-badge">Assendelft</a>
-      <a href="wormerveer/" class="regio-badge">Wormerveer</a>
-      <a href="koog-aan-de-zaan/" class="regio-badge">Koog aan de Zaan</a>
-      <a href="zaandijk/" class="regio-badge">Zaandijk</a>
-      <a href="westzaan/" class="regio-badge">Westzaan</a>
-      <a href="wormerland/" class="regio-badge">Wormerland</a>
-      <a href="oostzaan/" class="regio-badge">Oostzaan</a>
-    </div>
-  </div>
-</section>
-
-<!-- ======== FAQ ======== -->
 <!-- ======== UW GEGEVENS ZIJN VEILIG ======== -->
 <section id="veiligheid" style="padding:72px 0;background:var(--clr-warm-white);">
   <div class="container">
@@ -1872,6 +1829,149 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
     </div>
     <!-- TODO eigenaar: beroepsaansprakelijkheidsverzekering hier vermelden zodra afgesloten (verzekeraar + dekking). -->
+  </div>
+</section>
+
+<!-- ======== WIE HET VOOR U DOET ======== -->
+<section id="wie" style="padding:80px 0;background:var(--clr-warm-white);">
+  <div class="container">
+    <div class="wie-grid">
+      <div class="wie-foto">
+        <img src="/img/stan-van-der-hoeven.jpg" width="400" height="400" loading="lazy" decoding="async"
+             alt="Stan van der Hoeven, oprichter van Belastinghulp Zaanstad">
+      </div>
+      <div>
+        <h2>Wie er bij u langskomt</h2>
+        <p class="wie-naam">Stan van der Hoeven &middot; oprichter</p>
+        <p>Ik ben Stan. Ik kom zelf bij u thuis en doe zelf uw aangifte. U krijgt dus geen wisselende medewerkers aan de deur, en u praat met dezelfde persoon die uw papieren heeft gezien.</p>
+        <p>Ik werk in heel Zaanstad en de Zaanstreek, het hele jaar door. Vooraf spreken we een vaste prijs af. Komt u er met mij niet uit, dan zeg ik dat ook &mdash; dan bent u beter geholpen bij het Sociaal Wijkteam of de Bibliotheek, en die hulp is gratis.</p>
+        <a href="/over-ons/" class="wie-link">Meer over mij en hoe ik werk &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== HOE WERKT HET ======== -->
+<section class="steps" id="werkwijze">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Werkwijze</div>
+      <h2 class="section-title">In 4 stappen geregeld</h2>
+      <p class="section-desc">Geen gedoe, geen kleine lettertjes. Zo werkt het bij ons.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Neem contact op</h3>
+        <p>Bel, WhatsApp of mail ons. Wij reageren dezelfde dag nog.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Gegevens aanleveren</h3>
+        <p>Wij vertellen precies welke documenten wij nodig hebben. Geen zoekwerk voor u.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Wij doen de aangifte</h3>
+        <p>Uw aangifte wordt door ons verzorgd &mdash; inclusief alle aftrekposten en toeslagen.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Geld terug</h3>
+        <p>U ontvangt uw teruggave. Bij een voorlopige aanvraag zelfs maandelijks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== WAT MOET U KLAARLEGGEN ======== -->
+<section id="klaarleggen" style="padding:80px 0;">
+  <div class="container">
+    <div class="section-head">
+      <h2>Wat moet u klaarleggen?</h2>
+      <p>Niet veel. Wat u niet kunt vinden, zoeken wij samen op. Dit is het meest gevraagde:</p>
+    </div>
+    <div class="klaar-grid">
+      <ul class="klaar-lijst">
+        <li>Uw DigiD &mdash; die blijft van u, wij nemen hem niet over</li>
+        <li>Uw jaaropgave of laatste loonstrook</li>
+        <li>Bij AOW of pensioen: de jaaropgave van de SVB en het pensioenfonds</li>
+        <li>Bij een koopwoning: de jaaropgave van de hypotheek en de WOZ-beschikking</li>
+      </ul>
+      <ul class="klaar-lijst">
+        <li>Jaaroverzichten van uw bank- en spaarrekeningen</li>
+        <li>Bonnen van zorgkosten of giften, als u die heeft</li>
+        <li>Uw laatste aanslag of beschikking van de Belastingdienst</li>
+        <li>Bij toeslagen: uw huurcontract of de laatste huurverhoging</li>
+      </ul>
+    </div>
+    <p class="klaar-noot"><a href="/checklist/" class="btn btn-secondary">Bekijk de volledige checklist</a></p>
+  </div>
+</section>
+
+<!-- ======== DOELGROEPEN ======== -->
+<section id="senioren">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Onze specialisatie</div>
+      <h2 class="section-title">Voor wie zijn wij er?</h2>
+      <p class="section-desc">Wij richten ons op twee groepen die vaak onnodig geld laten liggen bij de Belastingdienst.</p>
+    </div>
+
+    <div class="audiences-grid">
+      <div class="audience-card audience-card--seniors">
+        <div class="audience-icon">&#128116;&#128115;</div>
+        <h3>Senioren &amp; Gepensioneerden</h3>
+        <p>Veel ouderen laten jaarlijks honderden euro&apos;s liggen. Wij helpen u thuis of op locatie &mdash; rustig, geduldig en in begrijpelijke taal.</p>
+        <ul class="audience-list">
+          <li><span class="audience-list-icon">&#10003;</span> Ouderenkorting optimaal benutten</li>
+          <li><span class="audience-list-icon">&#10003;</span> Zorgkosten aftrekken die u zelf betaalt</li>
+          <li><span class="audience-list-icon">&#10003;</span> Huur- en zorgtoeslag controleren</li>
+          <li><span class="audience-list-icon">&#10003;</span> Hulp bij de digitale aangifte (wij nemen uw DigiD nooit over)</li>
+          <li><span class="audience-list-icon">&#10003;</span> Aan huis in heel Zaanstad</li>
+          <li><span class="audience-list-icon">&#10003;</span> Partner-aangifte in &eacute;&eacute;n sessie</li>
+        </ul>
+        <a href="#tarieven" class="btn btn-primary" style="width:100%;justify-content:center;">Senioren tarieven &rarr;</a>
+      </div>
+
+      <div class="audience-card audience-card--starters">
+        <div class="audience-icon">&#127968;&#128274;</div>
+        <h3>Starters &amp; Eerste Woning</h3>
+        <p>Net je eerste huis gekocht? Vraag een voorlopige teruggave aan en krijg maandelijks geld terug. Wij regelen het snel en makkelijk.</p>
+        <ul class="audience-list">
+          <li><span class="audience-list-icon">&#10003;</span> Voorlopige teruggave aanvragen</li>
+          <li><span class="audience-list-icon">&#10003;</span> Hypotheekrenteaftrek berekenen</li>
+          <li><span class="audience-list-icon">&#10003;</span> Eigenwoningforfait correct verwerken</li>
+          <li><span class="audience-list-icon">&#10003;</span> Advieskosten hypotheek aftrekken</li>
+          <li><span class="audience-list-icon">&#10003;</span> Online via beeldbellen of WhatsApp</li>
+          <li><span class="audience-list-icon">&#10003;</span> Binnen 1 week geregeld</li>
+        </ul>
+        <a href="#tarieven" class="btn btn-orange" style="width:100%;justify-content:center;">Starters tarieven &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== REGIO ======== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Werkgebied</div>
+      <h2 class="section-title">Heel Zaanstad en omgeving</h2>
+      <p class="section-desc">Wij komen bij u thuis of helpen u online. Overal in de gemeente Zaanstad.</p>
+    </div>
+    <div class="regio-badges">
+      <a href="zaandam/" class="regio-badge">Zaandam</a>
+      <a href="krommenie/" class="regio-badge">Krommenie</a>
+      <a href="assendelft/" class="regio-badge">Assendelft</a>
+      <a href="wormerveer/" class="regio-badge">Wormerveer</a>
+      <a href="koog-aan-de-zaan/" class="regio-badge">Koog aan de Zaan</a>
+      <a href="zaandijk/" class="regio-badge">Zaandijk</a>
+      <a href="westzaan/" class="regio-badge">Westzaan</a>
+      <a href="wormerland/" class="regio-badge">Wormerland</a>
+      <a href="oostzaan/" class="regio-badge">Oostzaan</a>
+    </div>
   </div>
 </section>
 
@@ -1972,20 +2072,6 @@ html[data-fontscale="xl"]{font-size:23px}
       @media(max-width:600px){.blog-cards{grid-template-columns:1fr;}}
     </style>
     <div class="blog-cards">
-      <a href="/blog/hypotheekrenteaftrek-berekenen/" class="blog-card" style="border:2px solid #1A8A7D;box-shadow:0 8px 28px rgba(26,138,125,0.18);position:relative;">
-        <div style="position:absolute;top:-10px;right:16px;background:#1A8A7D;color:#fff;font-size:11px;font-weight:800;letter-spacing:0.5px;padding:4px 10px;border-radius:4px;">REKENTOOL</div>
-        <div class="blog-card-tag" style="color:#1A8A7D;">🧮 Hypotheekrenteaftrek</div>
-        <h3>Bereken je maandelijkse belastingvoordeel</h3>
-        <p>Vul je hypotheek, rente en WOZ-waarde in en zie direct wat de hypotheekrenteaftrek je per maand oplevert.</p>
-        <span class="blog-card-link">Naar de rekentool →</span>
-      </a>
-      <a href="/blog/huurtoeslag-berekenen/" class="blog-card" style="border:2px solid #1A8A7D;box-shadow:0 8px 28px rgba(26,138,125,0.18);position:relative;">
-        <div style="position:absolute;top:-10px;right:16px;background:#1A8A7D;color:#fff;font-size:11px;font-weight:800;letter-spacing:0.5px;padding:4px 10px;border-radius:4px;">REKENTOOL</div>
-        <div class="blog-card-tag" style="color:#1A8A7D;">🧮 Huurtoeslag berekenen</div>
-        <h3>Krijgt u huurtoeslag en hoeveel?</h3>
-        <p>Vul uw kale huur en inkomen in en zie een indicatie van uw huurtoeslag per maand — met de officiële cijfers voor 2026.</p>
-        <span class="blog-card-link">Naar de rekentool →</span>
-      </a>
       <a href="/blog/huurtoeslag-aanvragen/" class="blog-card" style="border:2px solid #1A8A7D;box-shadow:0 8px 28px rgba(26,138,125,0.18);position:relative;">
         <div style="position:absolute;top:-10px;right:16px;background:#E97C3C;color:#fff;font-size:11px;font-weight:800;letter-spacing:0.5px;padding:4px 10px;border-radius:4px;">POPULAIR</div>
         <div class="blog-card-tag" style="color:#1A8A7D;">💰 Huurtoeslag – tot €522/mnd</div>
@@ -2005,28 +2091,10 @@ html[data-fontscale="xl"]{font-size:23px}
         <p>Te laat met uw aangifte 2025? Zo dient u hem alsnog in en beperkt u het risico op een boete.</p>
         <span class="blog-card-link">Lees meer →</span>
       </a>
-      <a href="/blog/zorgtoeslag-grens/" class="blog-card">
-        <div class="blog-card-tag" style="color:#1A8A7D;">💰 Zorgtoeslag</div>
-        <h3>Zorgtoeslag 2026: tot €129/mnd – inkomensgrenzen</h3>
-        <p>Heeft u recht op zorgtoeslag? Inkomensgrens, vermogenstoets en hoe u het aanvraagt — of laat ons het gratis checken.</p>
-        <span class="blog-card-link">Lees meer →</span>
-      </a>
       <a href="/blog/belastingaangifte-senioren/" class="blog-card">
         <div class="blog-card-tag">Senioren</div>
         <h3>Belastingaangifte voor senioren 2026 – complete gids</h3>
         <p>Wat u moet opgeven, welke kortingen u verdient en waarom aangifte loont – ook bij alleen AOW.</p>
-        <span class="blog-card-link">Lees meer →</span>
-      </a>
-      <a href="/blog/aow-en-belasting/" class="blog-card">
-        <div class="blog-card-tag">AOW</div>
-        <h3>AOW en belasting 2026 – hoeveel betaalt u?</h3>
-        <p>Is AOW belast? Welk tarief geldt, welke kortingen zijn er en wanneer kunt u geld terugkrijgen?</p>
-        <span class="blog-card-link">Lees meer →</span>
-      </a>
-      <a href="/blog/ouderenkorting/" class="blog-card">
-        <div class="blog-card-tag">Heffingskortingen</div>
-        <h3>Ouderenkorting 2026: €2.067 korting op uw belasting</h3>
-        <p>Hoeveel ouderenkorting kunt u ontvangen en hoe zorgt u dat u hem ook echt krijgt?</p>
         <span class="blog-card-link">Lees meer →</span>
       </a>
       <a href="/blog/voorlopige-teruggave/" class="blog-card">
@@ -2041,15 +2109,47 @@ html[data-fontscale="xl"]{font-size:23px}
         <p>WOZ te hoog vastgesteld? Maak bezwaar binnen 6 weken en bespaar op OZB en eigenwoningforfait.</p>
         <span class="blog-card-link">Lees meer →</span>
       </a>
-      <a href="/blog/kwijtschelding-gemeentelijke-belasting/" class="blog-card">
-        <div class="blog-card-tag">Laag inkomen</div>
-        <h3>Kwijtschelding gemeentelijke belasting Zaanstad</h3>
-        <p>Weinig inkomen? U kunt de afvalstoffenheffing en rioolheffing mogelijk niet hoeven betalen.</p>
-        <span class="blog-card-link">Lees meer →</span>
-      </a>
     </div>
     <div style="text-align:center;margin-top:40px;">
       <a href="/blog/" class="btn btn-primary" style="display:inline-flex;">Alle artikelen bekijken →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TERUGBELVERZOEK ======== -->
+<section id="terugbellen" style="padding:80px 0;background:var(--clr-warm-white);">
+  <div class="container">
+    <div class="tb-grid">
+      <div>
+        <h2>Liever niet zelf bellen?</h2>
+        <p>Laat uw naam en nummer achter. Wij bellen u terug, dezelfde dag als u het voor 21:00 doorgeeft. Meer hoeft u niet in te vullen.</p>
+        <p class="tb-tijden"><strong>Wij bellen</strong><br>maandag t/m vrijdag 18:00&ndash;21:00<br>zaterdag 10:00&ndash;16:00</p>
+        <p class="tb-of">Liever direct? Bel <a href="tel:+31619711848" rel="nofollow">06 &ndash; 19 71 18 48</a> of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag." rel="nofollow">stuur een WhatsApp</a>.</p>
+      </div>
+      <div class="form-card">
+        <form action="/contact.php" method="POST" novalidate>
+          <input type="hidden" name="formtype" value="terugbelverzoek">
+          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="form-field">
+            <label for="hp-naam">Uw naam</label>
+            <input type="text" id="hp-naam" name="naam" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="hp-tel">Telefoonnummer</label>
+            <input type="tel" id="hp-tel" name="telefoon" required autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="hp-dagdeel">Wanneer kunnen wij u het beste bereiken?</label>
+            <select id="hp-dagdeel" name="dagdeel">
+              <option value="Maakt niet uit">Maakt niet uit</option>
+              <option value="Avond (18:00-21:00)">Op een avond, 18:00&ndash;21:00</option>
+              <option value="Zaterdag (10:00-16:00)">Op zaterdag, 10:00&ndash;16:00</option>
+            </select>
+          </div>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</label>
+          <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -2070,7 +2170,6 @@ html[data-fontscale="xl"]{font-size:23px}
   </div>
 </section>
 
-<!-- ======== FOOTER ======== -->
 </main>
 
 <footer class="footer">
