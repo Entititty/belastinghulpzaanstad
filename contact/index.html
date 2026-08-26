@@ -136,8 +136,7 @@
     </div>
 
     <div style="background:var(--clr-warm-white);border-radius:12px;padding:16px 20px;margin-bottom:36px;font-size:0.92rem;color:var(--clr-bark);line-height:1.6;">
-      <strong style="color:var(--clr-deep);">Bereikbaarheid:</strong> wij reageren doorgaans dezelfde dag. Zijn we in gesprek of op bezoek bij een klant, dan bellen we u zo snel mogelijk terug.
-      <!-- TODO eigenaar: vul hier concrete bereikbaarheidstijden in, bijv. "Ma t/m vr 9:00–18:00, za op afspraak", en pas dan ook de openingsuren in de LocalBusiness-schema aan (nu staat die op 24/7). -->
+      <strong style="color:var(--clr-deep);">Bereikbaarheid:</strong> doordeweeks 18:00&ndash;21:00, in het weekend 09:00&ndash;21:00. Wij reageren dezelfde dag. Zijn we in gesprek of op bezoek bij een klant, dan bellen we u zo snel mogelijk terug.
     </div>
 
     <div style="display:grid;grid-template-columns:1fr;gap:28px;">
@@ -161,9 +160,10 @@
             <label for="tb-dagdeel">Wanneer kunnen wij u het beste bereiken?</label>
             <select id="tb-dagdeel" name="dagdeel">
               <option value="Maakt niet uit">Maakt niet uit</option>
-              <option value="Ochtend">Ochtend</option>
-              <option value="Middag">Middag</option>
-              <option value="Avond">Avond</option>
+              <option value="Doordeweeks avond (18:00-21:00)">Doordeweeks &rsquo;s avonds, 18:00&ndash;21:00</option>
+              <option value="Weekend ochtend (09:00-13:00)">Weekend, ochtend 09:00&ndash;13:00</option>
+              <option value="Weekend middag (13:00-17:00)">Weekend, middag 13:00&ndash;17:00</option>
+              <option value="Weekend avond (17:00-21:00)">Weekend, avond 17:00&ndash;21:00</option>
             </select>
           </div>
           <label class="form-consent"><input type="checkbox" name="akkoord" required> Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</label>

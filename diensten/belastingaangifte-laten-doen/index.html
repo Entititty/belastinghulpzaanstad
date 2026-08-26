@@ -116,12 +116,20 @@
   ],
   "serviceType": ["Belastingaangifte","Voorlopige teruggave","Correctie aangiften","Bezwaar box 3","Erfbelasting en schenkbelasting","Toeslagen aanvragen","WOZ-bezwaar","Kwijtschelding gemeentelijke belasting"],
   "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029", "https://share.google/xdHHoqulKkgYD4XPA"],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "00:00",
-    "closes": "23:59"
-  }
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "18:00",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    }
+  ]
 }
 </script>
 <script src="/js/consent.js"></script>

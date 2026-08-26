@@ -1317,9 +1317,9 @@ section {
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "10:00",
-      "closes": "16:00"
+      "dayOfWeek": ["Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
     }
   ]
 }
@@ -1452,7 +1452,7 @@ html[data-fontscale="xl"]{font-size:23px}
           <a href="tel:+31619711848" class="btn btn-secondary">Bel 06 &ndash; 19 71 18 48</a>
         </div>
         <p class="hero-bereikbaar fade-up fade-up-d3">
-          Bereikbaar ma t/m vr 18:00&ndash;21:00 en za 10:00&ndash;16:00.
+          Bereikbaar doordeweeks 18:00&ndash;21:00, in het weekend 09:00&ndash;21:00.
           Wij bellen u dezelfde dag terug. Liever niet zelf bellen?
           <a href="/contact/#terugbellen">Laat uw nummer achter</a>.
         </p>
@@ -2123,7 +2123,7 @@ html[data-fontscale="xl"]{font-size:23px}
       <div>
         <h2>Liever niet zelf bellen?</h2>
         <p>Laat uw naam en nummer achter. Wij bellen u terug, dezelfde dag als u het voor 21:00 doorgeeft. Meer hoeft u niet in te vullen.</p>
-        <p class="tb-tijden"><strong>Wij bellen</strong><br>maandag t/m vrijdag 18:00&ndash;21:00<br>zaterdag 10:00&ndash;16:00</p>
+        <p class="tb-tijden"><strong>Wij bellen</strong><br>doordeweeks 18:00&ndash;21:00<br>zaterdag en zondag 09:00&ndash;21:00</p>
         <p class="tb-of">Liever direct? Bel <a href="tel:+31619711848" rel="nofollow">06 &ndash; 19 71 18 48</a> of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag." rel="nofollow">stuur een WhatsApp</a>.</p>
       </div>
       <div class="form-card">
@@ -2142,8 +2142,10 @@ html[data-fontscale="xl"]{font-size:23px}
             <label for="hp-dagdeel">Wanneer kunnen wij u het beste bereiken?</label>
             <select id="hp-dagdeel" name="dagdeel">
               <option value="Maakt niet uit">Maakt niet uit</option>
-              <option value="Avond (18:00-21:00)">Op een avond, 18:00&ndash;21:00</option>
-              <option value="Zaterdag (10:00-16:00)">Op zaterdag, 10:00&ndash;16:00</option>
+              <option value="Doordeweeks avond (18:00-21:00)">Doordeweeks &rsquo;s avonds, 18:00&ndash;21:00</option>
+              <option value="Weekend ochtend (09:00-13:00)">Weekend, ochtend 09:00&ndash;13:00</option>
+              <option value="Weekend middag (13:00-17:00)">Weekend, middag 13:00&ndash;17:00</option>
+              <option value="Weekend avond (17:00-21:00)">Weekend, avond 17:00&ndash;21:00</option>
             </select>
           </div>
           <label class="form-consent"><input type="checkbox" name="akkoord" required> Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</label>
