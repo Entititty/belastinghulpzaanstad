@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://belastinghulpzaanstad.nl/algemene-voorwaarden/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://belastinghulpzaanstad.nl/checklist/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://belastinghulpzaanstad.nl/contact/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -38,19 +38,25 @@
   </url>
   <url>
     <loc>https://belastinghulpzaanstad.nl/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://belastinghulpzaanstad.nl/over-ons/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://belastinghulpzaanstad.nl/privacy/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://belastinghulpzaanstad.nl/senioren/</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
