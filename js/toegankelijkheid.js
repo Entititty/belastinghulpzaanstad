@@ -23,6 +23,36 @@
     }
   }
 
+  /* De CSS hoort bij dit bestand, niet bij elke pagina apart. Stond eerder
+     inline in maar 2 van de 93 pagina's; op de rest was de balk onopgemaakt
+     en deed de tekstgrootte-schakelaar niets. */
+  function injectCss() {
+    if (document.getElementById('bhz-a11y-css')) return;
+    var regels = [
+    'html[data-fontscale="l"]{font-size:20px}',
+    'html[data-fontscale="xl"]{font-size:23px}',
+    '.ts-switch{position:fixed;right:16px;bottom:88px;z-index:9998;display:flex;align-items:center;gap:5px;background:#fff;border:1px solid rgba(44,37,32,0.15);border-radius:100px;padding:5px 9px;box-shadow:0 4px 16px rgba(44,37,32,0.18)}',
+    '.ts-switch-label{font-size:0.78rem;color:#6b5e50}',
+    '.ts-switch button{min-width:44px;min-height:44px;border:1px solid rgba(44,37,32,0.18);background:#faf8f4;border-radius:8px;font-weight:700;color:#2c2520;cursor:pointer;line-height:1}',
+    '.ts-switch button[aria-pressed="true"]{background:#15756a;color:#fff;border-color:#15756a}',
+    '.bhz-mobilebar{display:none}',
+    '@media(max-width:600px){.ts-switch{right:8px;bottom:80px;padding:4px 6px;gap:3px}.ts-switch-label{display:none}.ts-switch button{min-width:40px;min-height:40px;font-size:0.9rem}}',
+    '@media(max-width:768px){',
+    '.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}',
+    '.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:#2c2520;font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}',
+    '.bhz-mobilebar a:last-child{border-right:none}',
+    '.bhz-mobilebar a.wa{background:#188741;color:#fff}',
+    '.bhz-mobilebar .ic{font-size:1.2rem}',
+    'body{padding-bottom:56px}',
+    '.wa-float{display:none !important}',
+    '.ts-switch{bottom:64px}',
+    '}'
+    ].join('');
+    var st = document.createElement('style');
+    st.id = 'bhz-a11y-css';
+    st.textContent = regels;
+    document.head.appendChild(st);
+  }
   function buildSwitcher() {
     if (document.querySelector('.ts-switch')) return;
     var box = document.createElement('div');
@@ -90,6 +120,7 @@
   }
 
   function init() {
+    injectCss();
     buildSwitcher();
     buildMobileBar();
     wireFaq();
