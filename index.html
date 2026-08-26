@@ -51,10 +51,10 @@
   --clr-teal-dark: #14695f;
   --clr-orange: #a85e17;
   --clr-orange-light: #fef3e8;
-  --clr-orange-dark: #c46820;
+  --clr-orange-dark: #b4601d;
   --clr-green: #2f7d49;
   --clr-green-light: #edf7f0;
-  --clr-red-soft: #d94f4f;
+  --clr-red-soft: #cc4a4a;
 
   --font-display: 'Source Serif 4', Georgia, serif;
   --font-body: 'Nunito Sans', -apple-system, sans-serif;
@@ -430,7 +430,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -898,7 +898,7 @@ section {
 
 .tarief-for {
   font-size: 0.82rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   font-weight: 600;
   margin-bottom: 16px;
 }
@@ -915,7 +915,7 @@ section {
 
 .tarief-price-note {
   font-size: 0.8rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   margin-bottom: 24px;
 }
 
@@ -1133,7 +1133,7 @@ section {
 
 .testimonial-role {
   font-size: 0.8rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   margin-top: 2px;
 }
 
@@ -1214,7 +1214,7 @@ section {
 
 .faq-arrow {
   font-size: 1.2rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   transition: transform 0.3s;
   min-width: 20px;
 }
@@ -1506,6 +1506,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .faq-question{min-height:44px}
 html[data-fontscale="l"]{font-size:20px}
 html[data-fontscale="xl"]{font-size:23px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--clr-teal);color:#fff;padding:12px 20px;border-radius:0 0 8px 0;font-weight:700;text-decoration:none}.skip-link:focus{left:0}
 .bhz-mobilebar{display:none}
 @media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#25D366;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
 .ts-switch{position:fixed;right:16px;bottom:88px;z-index:9998;display:flex;align-items:center;gap:5px;background:#fff;border:1px solid rgba(44,37,32,0.15);border-radius:100px;padding:5px 9px;box-shadow:0 4px 16px rgba(44,37,32,0.18)}
@@ -1518,6 +1519,8 @@ html[data-fontscale="xl"]{font-size:23px}
 
 <body>
 
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
+
 <!-- ======== NAVIGATION ======== -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -1526,7 +1529,7 @@ html[data-fontscale="xl"]{font-size:23px}
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -1544,11 +1547,13 @@ html[data-fontscale="xl"]{font-size:23px}
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <!-- ======== HERO ======== -->
 <section class="hero" id="home">
@@ -1622,7 +1627,7 @@ html[data-fontscale="xl"]{font-size:23px}
         <h2 id="seizoen-title" style="color:#fff;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.25;margin:0 0 10px 0;">
           Aangifte 2025 nog niet gedaan? <strong style="color:#FFD166;">Dat is nog op te lossen</strong>
         </h2>
-        <p id="seizoen-desc" style="color:rgba(255,255,255,0.92);font-size:1rem;line-height:1.55;margin:0 0 0 0;max-width:620px;">
+        <p id="seizoen-desc" style="color:#fff;font-size:1rem;line-height:1.55;margin:0 0 0 0;max-width:620px;">
           Zolang u nog geen aanmaning van de Belastingdienst heeft ontvangen, blijft een verzuimboete meestal uit. Hoe eerder u aangifte doet, hoe kleiner het risico. Al een herinnering of aanmaning binnen? Ook dan kijken we samen wat de beste stap is.
         </p>
       </div>
@@ -1711,7 +1716,7 @@ html[data-fontscale="xl"]{font-size:23px}
         <h2 style="color:#fff;font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;margin-bottom:14px;">
           Huurtoeslag 2026: tot <strong style="color:#FFD166;">€522 per maand</strong> mogelijk
         </h2>
-        <p style="color:rgba(255,255,255,0.92);font-size:1.05rem;line-height:1.6;margin-bottom:22px;max-width:560px;">
+        <p style="color:#fff;font-size:1.05rem;line-height:1.6;margin-bottom:22px;max-width:560px;">
           Duizenden huurders in Zaanstad lopen toeslag mis. Twijfelt u over de inkomensgrens, huurgrens of vermogenstoets? Wij rekenen het <strong style="color:#fff;">gratis</strong> voor u uit — en helpen bij de aanvraag, ook zonder DigiD.
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;">
@@ -2110,7 +2115,7 @@ html[data-fontscale="xl"]{font-size:23px}
 
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Ik heb mijn aangifte 2025 niet gedaan vóór 1 mei — wat nu?
           <span class="faq-arrow">+</span>
         </button>
@@ -2120,7 +2125,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Krijgen jullie mijn DigiD-inloggegevens?
           <span class="faq-arrow">+</span>
         </button>
@@ -2130,7 +2135,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Kan ik een voorlopige teruggave nu nog aanvragen voor 2026?
           <span class="faq-arrow">+</span>
         </button>
@@ -2140,7 +2145,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Tot hoever terug kunnen jullie aangiften corrigeren?
           <span class="faq-arrow">+</span>
         </button>
@@ -2150,7 +2155,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Wat is bezwaar Box 3 en kom ik in aanmerking?
           <span class="faq-arrow">+</span>
         </button>
@@ -2160,7 +2165,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Wij verwachten een erfenis of willen schenken — kunnen jullie helpen?
           <span class="faq-arrow">+</span>
         </button>
@@ -2297,6 +2302,8 @@ html[data-fontscale="xl"]{font-size:23px}
 </section>
 
 <!-- ======== FOOTER ======== -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -2353,8 +2360,15 @@ html[data-fontscale="xl"]{font-size:23px}
 function toggleFaq(btn) {
   const item = btn.parentElement;
   const wasActive = item.classList.contains('active');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-  if (!wasActive) item.classList.add('active');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('active');
+    const b = i.querySelector('.faq-question');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  });
+  if (!wasActive) {
+    item.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+  }
 }
 
 // Scroll to contact
@@ -2365,6 +2379,8 @@ function scrollToContact() {
 // Mobile menu toggle
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
+  const knop = document.querySelector('.mobile-toggle');
+  if (knop) knop.setAttribute('aria-expanded', links.style.display === 'flex' ? 'false' : 'true');
   if (links.style.display === 'flex') {
     links.style.display = 'none';
   } else {
