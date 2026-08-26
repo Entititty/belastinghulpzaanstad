@@ -1254,7 +1254,7 @@ section {
 .mid-cta{background:linear-gradient(135deg,var(--clr-warm-white) 0%,var(--clr-cream) 100%);border-top:1px solid rgba(200,185,168,0.4);border-bottom:1px solid rgba(200,185,168,0.4);padding:22px 24px;text-align:center;color:var(--clr-deep);font-size:1.05rem;font-weight:600;line-height:1.5;}
 .mid-cta-phone,.mid-cta-wa{color:#fff !important;padding:8px 16px;border-radius:100px;text-decoration:none;font-weight:700;display:inline-block;margin:4px 4px;transition:transform 0.15s;white-space:nowrap;}
 .mid-cta-phone{background:var(--clr-teal);box-shadow:0 2px 8px rgba(26,138,125,0.25);}
-.mid-cta-wa{background:#25D366;box-shadow:0 2px 8px rgba(37,211,102,0.3);}
+.mid-cta-wa{background:#188741;box-shadow:0 2px 8px rgba(37,211,102,0.3);}
 .mid-cta-phone:hover,.mid-cta-wa:hover{transform:translateY(-1px);}
 @media(max-width:600px){.mid-cta{font-size:0.98rem;padding:20px 16px;}.mid-cta-phone,.mid-cta-wa{display:block;width:100%;max-width:260px;margin:6px auto;}}
 .nav-links .nav-dropdown{position:relative}.nav-dropdown-toggle{cursor:pointer;display:inline-flex;align-items:center;gap:4px}.nav-dropdown-caret{font-size:.7em;line-height:1}.nav-dropdown-menu{list-style:none;margin:0;padding:8px 0;position:absolute;top:100%;left:0;min-width:240px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);border-radius:12px;z-index:200;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .15s ease,transform .15s ease,visibility .15s ease}.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}.nav-dropdown-menu li{margin:0}.nav-dropdown-menu a{display:block;padding:9px 18px;white-space:nowrap;font-size:.9rem}.nav-dropdown-menu a::after{display:none!important}@media(max-width:900px){.nav-dropdown-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border-radius:0;background:transparent;min-width:0;padding:2px 0 6px 14px}.nav-dropdown-caret{display:none}}</style>
@@ -1342,9 +1342,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .faq-question{min-height:44px}
 html[data-fontscale="l"]{font-size:20px}
 html[data-fontscale="xl"]{font-size:23px}
+.btn-wa{background:#188741;color:#fff;border:2px solid #188741}
+.btn-wa:hover{background:#136c34;border-color:#136c34;color:#fff}
+.hero-bereikbaar{margin-top:18px;font-size:0.95rem;line-height:1.55;color:var(--clr-bark);max-width:46ch}
+.hero-bereikbaar a{color:var(--clr-teal);font-weight:700}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--clr-teal);color:#fff;padding:12px 20px;border-radius:0 0 8px 0;font-weight:700;text-decoration:none}.skip-link:focus{left:0}
 .bhz-mobilebar{display:none}
-@media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#25D366;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
+@media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#188741;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
 .ts-switch{position:fixed;right:16px;bottom:88px;z-index:9998;display:flex;align-items:center;gap:5px;background:#fff;border:1px solid rgba(44,37,32,0.15);border-radius:100px;padding:5px 9px;box-shadow:0 4px 16px rgba(44,37,32,0.18)}
 .ts-switch-label{font-size:0.78rem;color:var(--clr-bark)}
 .ts-switch button{min-width:44px;min-height:44px;border:1px solid rgba(44,37,32,0.18);background:var(--clr-cream);border-radius:8px;font-weight:700;color:var(--clr-deep);cursor:pointer;font-family:var(--font-body);line-height:1}
@@ -1398,27 +1402,32 @@ html[data-fontscale="xl"]{font-size:23px}
       <div>
         <div class="hero-badge fade-up">
           <span class="hero-badge-dot"></span>
-          Het hele jaar actief, persoonlijk en vrijblijvend
+          Het hele jaar door, ook buiten het aangifteseizoen
         </div>
         <h1 class="fade-up fade-up-d1">
-          Elke maand meer<br><em>belastingvoordeel</em> in Zaanstad
+          Laat u elke maand<br><em>geld liggen</em>?
         </h1>
         <p class="hero-sub fade-up fade-up-d2">
-          Of u nu een koopwoning heeft, uw aangifte 2025 nog niet deed, of wilt weten of u geld laat liggen: wij kijken vrijblijvend met u mee. Persoonlijk, aan huis in de Zaanstreek, met vaste prijzen.
+          Veel mensen in de Zaanstreek betalen te veel belasting. Wij kijken vrijblijvend of u geld terugkrijgt &mdash; over dit jaar en over de vijf jaar daarvoor. Wij komen bij u thuis.
         </p>
         <div class="hero-buttons fade-up fade-up-d3">
-          <a href="#wat-regelen" class="btn btn-primary">Ontdek wat u nu kunt regelen →</a>
-          <a href="#tarieven" class="btn btn-secondary">Bekijk tarieven</a>
+          <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20een%20gratis%20check%20of%20ik%20geld%20terugkrijg." class="btn btn-wa">Vraag een gratis check aan</a>
+          <a href="tel:+31619711848" class="btn btn-secondary">Bel 06 &ndash; 19 71 18 48</a>
         </div>
+        <p class="hero-bereikbaar fade-up fade-up-d3">
+          Bereikbaar ma t/m vr 18:00&ndash;21:00 en za 10:00&ndash;16:00.
+          Wij bellen u dezelfde dag terug. Liever niet zelf bellen?
+          <a href="/contact/#terugbellen">Laat uw nummer achter</a>.
+        </p>
         <div class="hero-trust fade-up fade-up-d4">
           <div class="hero-trust-item">
-            <span class="hero-trust-icon">&#10003;</span> Vaste prijzen
+            <span class="hero-trust-icon">&#10003;</span> Vaste prijs vanaf &euro;&nbsp;59
           </div>
           <div class="hero-trust-item">
-            <span class="hero-trust-icon">&#10003;</span> Aan huis of online
+            <span class="hero-trust-icon">&#10003;</span> Wij komen bij u thuis
           </div>
           <div class="hero-trust-item">
-            <span class="hero-trust-icon">&#10003;</span> Heel Zaanstad
+            <span class="hero-trust-icon">&#10003;</span> Uw DigiD blijft van u
           </div>
         </div>
       </div>
@@ -1426,28 +1435,28 @@ html[data-fontscale="xl"]{font-size:23px}
       <div class="hero-visual fade-up fade-up-d3">
         <div class="hero-card">
           <div class="hero-float-badge">Voorbeeld</div>
-          <div class="hero-card-label">Uw voorlopige teruggave per maand</div>
+          <div class="hero-card-label">Koopwoning in Zaandam &mdash; wat dat per maand oplevert</div>
           <div class="hero-card-amount">+ &euro; 295</div>
           <div class="hero-card-period">elke maand op uw rekening &mdash; het hele jaar door</div>
           <div class="hero-card-breakdown">
             <div class="hero-card-row">
-              <span>Hypotheekrente per jaar</span>
+              <span>Rente die u betaalt over uw hypotheek</span>
               <span>&euro; 12.600</span>
             </div>
             <div class="hero-card-row">
-              <span>Belastingvoordeel (37,56%)</span>
+              <span>Daarvan krijgt u terug (37,56%)</span>
               <span>&euro; 4.733</span>
             </div>
             <div class="hero-card-row">
-              <span>Eigenwoningforfait (0,35% WOZ)</span>
+              <span>Bijtelling voor uw eigen woning</span>
               <span>- &euro; 1.190</span>
             </div>
             <div class="hero-card-row">
-              <span style="font-weight:700; color: var(--clr-green)">Netto voordeel per maand</span>
+              <span style="font-weight:700; color: var(--clr-green)">U houdt over, per maand</span>
               <span style="color: var(--clr-green)">&rarr; &euro; 295</span>
             </div>
           </div>
-          <p class="hero-card-disclaimer">* Indicatief voorbeeld &mdash; werkelijk bedrag hangt af van uw inkomen en situatie. U kunt het hele jaar door een voorlopige teruggave aanvragen of wijzigen.</p>
+          <p class="hero-card-disclaimer">* Voorbeeld. Wat u krijgt hangt af van uw inkomen en uw woning. U kunt dit het hele jaar door aanvragen of wijzigen.</p>
         </div>
       </div>
     </div>
@@ -1468,7 +1477,7 @@ html[data-fontscale="xl"]{font-size:23px}
         </p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;min-width:240px;">
-        <a id="seizoen-cta" href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20mijn%20aangifte%202025%20nog%20niet%20gedaan.%20Kunnen%20jullie%20helpen%3F" style="background:#25D366;color:#fff;text-decoration:none;padding:16px 26px;border-radius:100px;font-weight:800;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1.02rem;box-shadow:0 6px 22px rgba(37,211,102,0.45);" rel="nofollow">💬 Aangifte alsnog indienen — €69 →</a>
+        <a id="seizoen-cta" href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20mijn%20aangifte%202025%20nog%20niet%20gedaan.%20Kunnen%20jullie%20helpen%3F" style="background:#188741;color:#fff;text-decoration:none;padding:16px 26px;border-radius:100px;font-weight:800;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1.02rem;box-shadow:0 6px 22px rgba(37,211,102,0.45);" rel="nofollow">💬 Aangifte alsnog indienen — €69 →</a>
         <a href="tel:+31619711848" style="background:rgba(255,255,255,0.12);color:#fff;text-decoration:none;padding:13px 26px;border-radius:100px;font-weight:700;text-align:center;border:2px solid rgba(255,255,255,0.35);display:inline-flex;align-items:center;justify-content:center;gap:8px;" rel="nofollow">📞 Bel direct: 06 – 19 71 18 48</a>
       </div>
     </div>
@@ -1543,41 +1552,6 @@ html[data-fontscale="xl"]{font-size:23px}
   </div>
 </section>
 
-<!-- ======== HUURTOESLAG STRIP ======== -->
-<section id="huurtoeslag-strip" style="padding:50px 0;background:linear-gradient(135deg,#1A8A7D 0%,#146B61 100%);">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;">
-      <div>
-        <div style="display:inline-block;background:rgba(255,255,255,0.15);color:#FFD166;font-weight:700;font-size:0.8rem;letter-spacing:0.5px;padding:6px 14px;border-radius:100px;margin-bottom:16px;">★ MEEST GEZOCHT IN ZAANSTAD</div>
-        <h2 style="color:#fff;font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;margin-bottom:14px;">
-          Huurtoeslag 2026: tot <strong style="color:#FFD166;">€522 per maand</strong> mogelijk
-        </h2>
-        <p style="color:#fff;font-size:1.05rem;line-height:1.6;margin-bottom:22px;max-width:560px;">
-          Duizenden huurders in Zaanstad lopen toeslag mis. Twijfelt u over de inkomensgrens, huurgrens of vermogenstoets? Wij rekenen het <strong style="color:#fff;">gratis</strong> voor u uit — en helpen bij de aanvraag, ook zonder DigiD.
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:12px;">
-          <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20een%20gratis%20huurtoeslag-check." style="background:#25D366;color:#fff;text-decoration:none;padding:14px 26px;border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(37,211,102,0.4);" rel="nofollow">💬 Gratis check via WhatsApp</a>
-          <a href="/blog/huurtoeslag-berekenen/" style="background:#fff;color:#146B61;text-decoration:none;padding:14px 26px;border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(0,0,0,0.12);">🧮 Bereken je huurtoeslag</a>
-          <a href="/blog/huurtoeslag-aanvragen/" style="background:rgba(255,255,255,0.12);color:#fff;text-decoration:none;padding:14px 26px;border-radius:100px;font-weight:700;border:2px solid rgba(255,255,255,0.3);display:inline-flex;align-items:center;gap:8px;">Lees de complete gids →</a>
-        </div>
-      </div>
-      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:26px;backdrop-filter:blur(4px);">
-        <div style="color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:600;letter-spacing:0.5px;margin-bottom:10px;">REKENVOORBEELD</div>
-        <div style="color:#fff;font-size:0.95rem;line-height:1.9;">
-          <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:8px;margin-bottom:8px;"><span>Kale huur</span><strong>€ 680</strong></div>
-          <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:8px;margin-bottom:8px;"><span>Inkomen alleenstaand</span><strong>€ 22.000</strong></div>
-          <div style="display:flex;justify-content:space-between;padding-top:10px;font-size:1.1rem;"><span style="color:#FFD166;">Huurtoeslag p/mnd</span><strong style="color:#FFD166;font-size:1.3rem;">± €415</strong></div>
-        </div>
-        <div style="margin-top:14px;font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.5;">Indicatief (cijfers 2026). <a href="/blog/huurtoeslag-berekenen/" style="color:#FFD166;text-decoration:underline;">Bereken uw eigen situatie →</a></div>
-      </div>
-    </div>
-    <style>
-      @media(max-width:900px){
-        #huurtoeslag-strip > .container > div{grid-template-columns:1fr !important;}
-      }
-    </style>
-  </div>
-</section>
 
 <!-- ======== VOORLOPIGE TERUGGAVE ======== -->
 <section class="teruggave" id="starters">
@@ -1843,47 +1817,6 @@ html[data-fontscale="xl"]{font-size:23px}
   of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20een%20afspraak%20maken." class="mid-cta-wa" rel="nofollow">stuur een WhatsApp &rarr;</a>
 </div>
 
-<!-- ======== EARLY-CUSTOMER OFFER (was testimonials) ======== -->
-<section id="ervaringen" style="padding:80px 0;background:var(--clr-warm-white);">
-  <div class="container">
-    <div style="max-width:780px;margin:0 auto;text-align:center;">
-      <div style="display:inline-block;background:#FFF3D6;color:#8B5A00;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:6px 14px;border-radius:100px;margin-bottom:20px;">★ NIEUW IN 2026</div>
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.2;color:var(--clr-deep);margin-bottom:18px;">
-        Wees een van onze eerste klanten — <em style="color:#E97C3C;">€20 korting</em>
-      </h2>
-      <p style="font-size:1.05rem;line-height:1.65;color:var(--clr-bark);margin-bottom:28px;">
-        Belastinghulp Zaanstad is dit seizoen gestart. We kiezen er bewust voor om geen verzonnen reviews te plaatsen — we bouwen liever een eerlijke praktijk op. Als dank voor uw vertrouwen krijgen onze <strong>eerste klanten van 2026 automatisch €20 korting</strong> op iedere aangifte of voorlopige teruggave. Geen code nodig — wordt toegepast bij aanmelding.
-      </p>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:28px 0 32px;text-align:left;">
-        <div style="background:#fff;border-radius:12px;padding:20px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);">
-          <div style="font-size:1.8rem;margin-bottom:6px;">🏡</div>
-          <div style="font-weight:700;color:var(--clr-deep);margin-bottom:4px;">Lokaal Zaanstad</div>
-          <div style="font-size:0.9rem;color:var(--clr-bark);line-height:1.5;">Hulp aan huis in Zaandam, Krommenie, Assendelft en omliggende kernen.</div>
-        </div>
-        <div style="background:#fff;border-radius:12px;padding:20px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);">
-          <div style="font-size:1.8rem;margin-bottom:6px;">💶</div>
-          <div style="font-weight:700;color:var(--clr-deep);margin-bottom:4px;">Vaste prijs vooraf</div>
-          <div style="font-size:0.9rem;color:var(--clr-bark);line-height:1.5;">U weet wat het kost voordat we beginnen. Geen verrassingen.</div>
-        </div>
-        <div style="background:#fff;border-radius:12px;padding:20px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);">
-          <div style="font-size:1.8rem;margin-bottom:6px;">🤝</div>
-          <div style="font-weight:700;color:var(--clr-deep);margin-bottom:4px;">Persoonlijk contact</div>
-          <div style="font-size:0.9rem;color:var(--clr-bark);line-height:1.5;">Direct via WhatsApp of telefoon — geen callcenter, geen keuzemenu.</div>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
-        <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20interesse%20in%20jullie%20belastinghulp.%20Kunnen%20jullie%20vrijblijvend%20met%20mij%20meekijken%3F" class="btn btn-primary" style="background:#1A8A7D;color:#fff !important;text-decoration:none;padding:15px 30px;border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 22px rgba(26,138,125,0.3);" rel="nofollow">💬 Claim uw €20 korting</a>
-        <a href="over-ons/" class="btn btn-secondary" style="background:#fff;color:#2C2520 !important;text-decoration:none;padding:15px 30px;border-radius:100px;font-weight:700;border:2px solid #C8B9A8;display:inline-flex;align-items:center;gap:8px;">Lees meer over ons →</a>
-      </div>
-
-      <div style="margin-top:22px;font-size:0.85rem;color:var(--clr-bark);">
-        Eerlijk opstarten &middot; geen verzonnen reviews &middot; actie geldig voor elke nieuwe klant in 2026
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ======== REGIO ======== -->
 <section>
@@ -2362,7 +2295,7 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
   height: 52px;
   padding: 0 20px 0 14px;
   gap: 10px;
-  background: #25D366;
+  background: #188741;
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -2439,7 +2372,7 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
   .wa-float::after { display: none; }
 }
 </style>
-<a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer nofollow" aria-label="Stuur ons een WhatsApp berichtje" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#25D366;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">
+<a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer nofollow" aria-label="Stuur ons een WhatsApp berichtje" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#188741;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="white" aria-hidden="true">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
