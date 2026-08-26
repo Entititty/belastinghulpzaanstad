@@ -15,8 +15,7 @@ doet `git fetch` en, als er nieuwe commits zijn, `git reset --hard
 origin/main`. De webroot is dus een spiegel van GitHub. Een `git push` naar
 `main` is daarmee de uitrol; er is geen aparte stap.
 
-**De stylesheet heeft een content-hash in de naam.** De HTML verwijst naar
-`belasting.ce719130.min.css`. Verandert de inhoud, dan verandert de naam
+**De stylesheet heeft een content-hash in de naam.** De HTML verwijst naar `belasting.<hash>.min.css`. Verandert de inhoud, dan verandert de naam
 (`node scripts/hash-css.js`). Oude en nieuwe HTML verwijzen dus nooit naar
 dezelfde URL met verschillende inhoud. **Daardoor is de CSS zelf-bustend en
 maakt het niet uit of nginx eerder of later live gaat.** Dat was vóór deze
@@ -69,8 +68,9 @@ cat /tmp/belasting-deploy.log | tail -3
 Controleer dat de nieuwe CSS er staat en de oude weg is:
 
 ```bash
-curl -o /dev/null -w "%{http_code}\n" https://belastinghulpzaanstad.nl/belasting.ce719130.min.css   # 200
-curl -o /dev/null -w "%{http_code}\n" https://belastinghulpzaanstad.nl/belasting.min.css            # 404
+CSS=$(ls belasting.*.min.css)   # bijv. belasting.1dbc5d84.min.css
+curl -o /dev/null -w "%{http_code}\n" "https://belastinghulpzaanstad.nl/$CSS"              # 200
+curl -o /dev/null -w "%{http_code}\n" https://belastinghulpzaanstad.nl/belasting.min.css   # 404
 ```
 
 Krijg je 404 op de eerste: de deploy is nog niet langs geweest, of de hash in
@@ -140,7 +140,7 @@ sudo systemctl reload nginx
 curl -sI https://belastinghulpzaanstad.nl/ \
   | grep -i "cache-control\|strict-transport"
 
-curl -sI https://belastinghulpzaanstad.nl/belasting.ce719130.min.css \
+curl -sI "https://belastinghulpzaanstad.nl/$(ls belasting.*.min.css)" \
   | grep -i "cache-control\|strict-transport"
 
 curl -sI https://belastinghulpzaanstad.nl/fonts/nunito-sans.woff2 \

@@ -35,9 +35,14 @@ function walk(dir, acc) {
   return acc;
 }
 
-/* ---------- huidige stylesheet vinden ---------- */
+/* ---------- huidige stylesheet vinden ----------
+ * Twee vormen: belasting.min.css (nog niet gehasht) en
+ * belasting.<8 hex>.min.css (al gehasht). Bewust een vaste reguliere
+ * expressie en geen samengestelde string: een eerdere versie bouwde die
+ * met replace() en vond de gehashte vorm daardoor niet terug. */
+const HASHED = /^belasting\.[0-9a-f]{8}\.min\.css$/;
 const kandidaten = fs.readdirSync(ROOT).filter(function (f) {
-  return f === BASIS + STAART || new RegExp('^' + BASIS + '\\.[0-9a-f]{8}\\' + STAART.replace('.', '\\.') + '$').test(f);
+  return f === BASIS + STAART || HASHED.test(f);
 });
 if (!kandidaten.length) {
   console.error('Geen ' + BASIS + STAART + ' of gehashte variant gevonden in ' + ROOT);
