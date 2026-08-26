@@ -973,179 +973,6 @@ section {
   border-color: var(--clr-orange-dark);
 }
 
-/* ========================================
-   TESTIMONIALS
-   ======================================== */
-.testimonials {
-  background: var(--clr-warm-white);
-}
-
-.testimonials-slider-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.testimonials-viewport {
-  overflow: hidden;
-  flex: 1;
-  min-width: 0;
-}
-
-.testimonials-track {
-  display: flex;
-  gap: 24px;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.testimonials-btn {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--clr-teal);
-  background: white;
-  color: var(--clr-teal);
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s;
-  line-height: 1;
-}
-
-.testimonials-btn:hover:not(:disabled) {
-  background: var(--clr-teal);
-  color: white;
-}
-
-.testimonials-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.testimonials-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.testimonials-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: var(--clr-sand);
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.testimonials-dot.active {
-  background: var(--clr-teal);
-  transform: scale(1.4);
-}
-
-.testimonial-card {
-  flex: 0 0 calc((100% - 48px) / 3);
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 32px 28px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--clr-sand);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: box-shadow 0.4s, transform 0.4s;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.testimonial-stars {
-  color: #f5a623;
-  font-size: 1.15rem;
-  letter-spacing: 3px;
-}
-
-.testimonial-quote {
-  font-family: var(--font-display);
-  font-size: 0.97rem;
-  line-height: 1.75;
-  color: var(--clr-deep);
-  font-style: italic;
-  flex: 1;
-  margin: 0;
-  padding: 0;
-  border: none;
-  position: relative;
-}
-
-.testimonial-quote::before {
-  content: '\201C';
-  font-size: 3rem;
-  line-height: 0;
-  vertical-align: -0.65rem;
-  color: var(--clr-teal-light);
-  font-style: normal;
-  margin-right: 3px;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-top: 4px;
-  border-top: 1px solid var(--clr-sand);
-}
-
-.testimonial-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--clr-teal);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-.testimonial-card:nth-child(2n) .testimonial-avatar,
-.testimonial-card:nth-child(3n) .testimonial-avatar {
-  background: var(--clr-orange);
-}
-
-.testimonial-name {
-  font-weight: 700;
-  font-size: 0.92rem;
-  color: var(--clr-midnight);
-  font-style: normal;
-  display: block;
-}
-
-.testimonial-role {
-  font-size: 0.8rem;
-  color: var(--clr-bark);
-  margin-top: 2px;
-}
-
-@media (max-width: 900px) {
-  .testimonial-card { flex: 0 0 calc((100% - 24px) / 2); }
-}
-
-@media (max-width: 600px) {
-  .testimonial-card { flex: 0 0 100%; }
-  .testimonials-slider-wrapper { gap: 8px; }
-  .testimonials-btn { width: 36px; height: 36px; font-size: 1rem; }
-}
 
 /* ========================================
    REGIO
@@ -1480,12 +1307,21 @@ section {
   ],
   "serviceType": ["Belastingaangifte","Voorlopige teruggave","Correctie aangiften","Bezwaar box 3","Erfbelasting en schenkbelasting","Toeslagen aanvragen","WOZ-bezwaar","Kwijtschelding gemeentelijke belasting"],
   "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029", "https://share.google/xdHHoqulKkgYD4XPA"],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "00:00",
-    "closes": "23:59"
-  }
+  "founder": { "@id": "https://belastinghulpzaanstad.nl/over-ons/#stan" },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "18:00",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "16:00"
+    }
+  ]
 }
 </script>
 <script src="/js/consent.js"></script>
@@ -2424,39 +2260,6 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
   observer.observe(el);
 });
 
-// Testimonials slider
-(function() {
-  var w = document.querySelector('.testimonials-slider-wrapper');
-  if (!w) return;
-  var track = w.querySelector('.testimonials-track');
-  var cards = Array.from(track.children);
-  var prev = w.querySelector('.testimonials-btn--prev');
-  var next = w.querySelector('.testimonials-btn--next');
-  var dotsEl = document.querySelector('.testimonials-dots');
-  var GAP = 24, cur = 0;
-  function vis() { return innerWidth >= 900 ? 3 : innerWidth >= 600 ? 2 : 1; }
-  function maxIdx() { return Math.max(0, cards.length - vis()); }
-  function go(n) {
-    cur = Math.min(Math.max(0, n), maxIdx());
-    track.style.transform = 'translateX(-' + (cur * (cards[0].offsetWidth + GAP)) + 'px)';
-    prev.disabled = cur === 0;
-    next.disabled = cur >= maxIdx();
-    dotsEl.innerHTML = '';
-    for (var i = 0; i <= maxIdx(); i++) {
-      (function(i) {
-        var d = document.createElement('button');
-        d.className = 'testimonials-dot' + (i === cur ? ' active' : '');
-        d.setAttribute('aria-label', 'Testimonial ' + (i + 1));
-        d.onclick = function() { go(i); };
-        dotsEl.appendChild(d);
-      })(i);
-    }
-  }
-  prev.onclick = function() { go(cur - 1); };
-  next.onclick = function() { go(cur + 1); };
-  addEventListener('resize', function() { go(cur); });
-  go(0);
-})();
 
 </script>
 
