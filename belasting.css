@@ -15,7 +15,7 @@
   --clr-teal-dark: #14695f;
   --clr-orange: #a85e17;
   --clr-orange-light: #fef3e8;
-  --clr-orange-dark: #c46820;
+  --clr-orange-dark: #b4601d;
   --clr-green: #2f7d49;
   --clr-green-light: #edf7f0;
   --clr-red-soft: #d94f4f;
@@ -240,7 +240,7 @@ a { text-decoration: none; color: inherit; }
   margin: 0 auto;
   padding: 0 24px;
   font-size: 0.82rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
 }
 
 .breadcrumb-inner a {
@@ -420,7 +420,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -937,7 +937,7 @@ section {
 
 .tarief-for {
   font-size: 0.82rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   font-weight: 600;
   margin-bottom: 16px;
 }
@@ -954,7 +954,7 @@ section {
 
 .tarief-price-note {
   font-size: 0.8rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   margin-bottom: 24px;
 }
 
@@ -1172,7 +1172,7 @@ section {
 
 .testimonial-role {
   font-size: 0.8rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   margin-top: 2px;
 }
 
@@ -1260,7 +1260,7 @@ section {
 
 .faq-arrow {
   font-size: 1.2rem;
-  color: var(--clr-stone);
+  color: var(--clr-bark);
   transition: transform 0.3s;
   min-width: 20px;
 }
@@ -1782,7 +1782,7 @@ section {
   height: 52px;
   padding: 0 20px 0 14px;
   gap: 10px;
-  background: #25D366;
+  background: #188741;
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -1932,7 +1932,7 @@ section {
   box-shadow: 0 2px 8px rgba(26,138,125,0.25);
 }
 .mid-cta-wa {
-  background: #25D366;
+  background: #188741;
   box-shadow: 0 2px 8px rgba(37,211,102,0.3);
 }
 .mid-cta-phone:hover,
@@ -1972,13 +1972,19 @@ section {
 
 /* ===== TOEGANKELIJKHEID (Taak 9) ===== */
 :focus-visible{outline:3px solid var(--clr-orange);outline-offset:2px}
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 10000;
+  background: var(--clr-teal); color: #fff; padding: 12px 20px;
+  border-radius: 0 0 8px 0; font-weight: 700; text-decoration: none;
+}
+.skip-link:focus { left: 0; }
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--clr-orange);outline-offset:2px;border-radius:4px}
 .footer-links a{display:inline-block;padding:5px 0}
 .faq-question{min-height:44px}
 html[data-fontscale="l"]{font-size:20px}
 html[data-fontscale="xl"]{font-size:23px}
 .bhz-mobilebar{display:none}
-@media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#25D366;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
+@media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#188741;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
 .ts-switch{position:fixed;right:16px;bottom:88px;z-index:9998;display:flex;align-items:center;gap:5px;background:#fff;border:1px solid rgba(44,37,32,0.15);border-radius:100px;padding:5px 9px;box-shadow:0 4px 16px rgba(44,37,32,0.18)}
 .ts-switch-label{font-size:0.78rem;color:var(--clr-bark)}
 .ts-switch button{min-width:44px;min-height:44px;border:1px solid rgba(44,37,32,0.18);background:var(--clr-cream);border-radius:8px;font-weight:700;color:var(--clr-deep);cursor:pointer;font-family:var(--font-body);line-height:1}
