@@ -35,3 +35,8 @@ desktop.ini
 
 # Node
 node_modules/
+
+# Interne analyses en werkdocumenten. De webroot IS de repo-root, dus alles
+# wat hier in git komt is publiek te downloaden. Concurrentieanalyse en
+# prijsstrategie horen niet op het web.
+docs/
