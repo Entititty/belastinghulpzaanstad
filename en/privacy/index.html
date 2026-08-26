@@ -90,6 +90,8 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Skip to content</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo">
@@ -97,7 +99,7 @@
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="/privacy/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -114,11 +116,13 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
@@ -201,6 +205,8 @@
   </div>
 </section>
 
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -253,6 +259,8 @@
 <script>
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
+  const knop = document.querySelector('.mobile-toggle');
+  if (knop) knop.setAttribute('aria-expanded', links.style.display === 'flex' ? 'false' : 'true');
   if (links.style.display === 'flex') {
     links.style.display = 'none';
   } else {

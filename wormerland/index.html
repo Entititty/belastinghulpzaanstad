@@ -107,11 +107,13 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/wormerland/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -129,9 +131,11 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner"><a href="../">Belastinghulp Zaanstad</a> <span>›</span> <strong>Wormerland</strong></div>
@@ -454,23 +458,23 @@
     <div class="section-header"><div class="section-eyebrow">◆ Veelgestelde vragen</div><h2 class="section-title">Vragen over uw belastingzaken in Wormerland</h2></div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kan ik nu nog voorlopige teruggave aanvragen?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kan ik nu nog voorlopige teruggave aanvragen?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja, u kunt het hele jaar door een voorlopige teruggave aanvragen. Het hele jaar door. Bij een Wormerland-woning van €340.000 ontvangt u circa €288 per maand belastingvoordeel op uw rekening. Wij regelen het binnen 1 week voor u.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat als mijn eerdere aangifte niet klopt?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat als mijn eerdere aangifte niet klopt?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Wij kunnen oude aangiften controleren en corrigeren. De Belastingdienst accepteert correcties tot 5 jaar terug. Heeft u te weinig aftrekposten opgegeven? Dan kunt u geld terugkrijgen. Wij berekenen hoeveel u tegoed heeft.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat is een Box 3 bezwaar?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat is een Box 3 bezwaar?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Heeft u spaargeld of beleggingen en is de heffing in Box 3 te hoog? Sinds de nieuwe wetgeving kunt u bezwaar maken tegen de aanslag op basis van uw werkelijke rendement. Dit kan u veel geld schelen. Wij helpen u met het bezwaarschrift.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Werken jullie alleen tijdens de aangifteperiode?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Werken jullie alleen tijdens de aangifteperiode?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Nee, wij zijn het hele jaar actief. Het hele jaar helpen wij met voorlopige teruggave, correcties van oude aangiften, Box 3 bezwaar en reguliere aangiften. U kunt altijd bij ons terecht — wij komen aan huis in heel Wormerland.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Hoe snel heb ik mijn belastingvoordeel?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Hoe snel heb ik mijn belastingvoordeel?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Bij een voorlopige teruggave ontvangt u doorgaans binnen 4 tot 8 weken de eerste maandelijkse betaling van de Belastingdienst. Een correctie van uw aangifte duurt gemiddeld 8-12 weken. Wij zorgen voor een complete en foutloze aanvraag om vertraging te voorkomen.</p></div>
       </div>
     </div>
@@ -510,6 +514,8 @@
     <div class="cta-phone"><div class="cta-phone-label">Of bel direct</div><a href="tel:+31619711848" rel="nofollow">06 – 19 71 18 48</a></div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -562,9 +568,9 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
 function scrollToContact(){document.getElementById('contact').scrollIntoView({behavior:'smooth'});}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';observer.observe(el);});

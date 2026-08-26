@@ -130,6 +130,8 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
+
 <!-- NAVIGATION -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -138,7 +140,7 @@
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -156,11 +158,13 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
@@ -395,23 +399,23 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat is box 3 en waarom kan ik bezwaar maken?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat is box 3 en waarom kan ik bezwaar maken?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Box 3 is de belasting over uw vermogen (spaargeld en beleggingen). De Belastingdienst rekende met een forfaitair (verondersteld) rendement dat vaak hoger lag dan het werkelijke. De Hoge Raad oordeelde dat wie een lager werkelijk rendement had, recht heeft op herstel over 2021 tot en met 2024.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kom ik in aanmerking?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kom ik in aanmerking?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Vooral als u uw vermogen grotendeels op een spaarrekening had, is de kans groot dat u te veel betaalde. Wij beoordelen kosteloos uw situatie per belastingjaar.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat kost het mij?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost het mij?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Het pro forma bezwaar dienen wij gratis in. Voor het hoofdbezwaar werken wij op basis van no cure no pay: u betaalt alleen een vergoeding als het bezwaar daadwerkelijk geld oplevert.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Tot wanneer kan ik bezwaar maken?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Tot wanneer kan ik bezwaar maken?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Voor bezwaar gelden wettelijke termijnen, gekoppeld aan de datum van uw aanslag. Met een tijdig pro forma bezwaar houden wij uw rechten open. Neem daarom op tijd contact op.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat heb ik nodig?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat heb ik nodig?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Uw definitieve aanslagen inkomstenbelasting over 2021–2024 en een overzicht van uw vermogen (spaarsaldi en beleggingen) op 1 januari van elk jaar. Wij vertellen u precies wat we nodig hebben.</p></div>
       </div>
     </div>
@@ -434,6 +438,8 @@
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -485,8 +491,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.step, .faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});

@@ -95,11 +95,13 @@
 </script>
 </head>
 <body>
+
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/blog/woz-objection-zaanstad/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -117,9 +119,11 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="../../">Belastinghulp Zaanstad</a><span>›</span><a href="../">Blog</a><span>›</span><strong>WOZ-bezwaar Zaanstad 2026</strong></div></div>
 
 <div class="blog-hero">
@@ -290,27 +294,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Hoe lang heb ik om bezwaar te maken tegen mijn WOZ-waarde?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Hoe lang heb ik om bezwaar te maken tegen mijn WOZ-waarde?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>U heeft 6 weken na de datum op de WOZ-beschikking om bezwaar in te dienen. Ontvangt u de beschikking begin januari, dan is de deadline doorgaans medio februari.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat kost het om bezwaar te maken?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost het om bezwaar te maken?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Bezwaar maken bij de gemeente is gratis. U kunt het zelf doen via de website van Zaanstad of schriftelijk. Schakelt u een professioneel bureau in, dan rekenen die soms een percentage van de besparing.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Hoeveel bespaar ik als de WOZ-waarde daalt?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Hoeveel bespaar ik als de WOZ-waarde daalt?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Bij een verlaging van €20.000 bespaart u gemiddeld €40–€80 per jaar aan OZB en minder eigenwoningforfait in de inkomstenbelasting. De exacte besparing hangt af van het OZB-tarief van Zaanstad en uw belastingschijf.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat is de peildatum voor de WOZ-waarde 2026?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat is de peildatum voor de WOZ-waarde 2026?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>De WOZ-waarde op de aanslag 2026 is gebaseerd op de marktwaarde van uw woning op 1 januari 2025 (de peildatum).</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kan ik mijn WOZ-waarde online controleren?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kan ik mijn WOZ-waarde online controleren?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja. Via het WOZ-waardeloket (wozwaardeloket.nl) kunt u gratis de WOZ-waarde van uw woning en omliggende woningen opzoeken. Dit helpt u beoordelen of uw waarde redelijk is.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Heeft een WOZ-verlaging gevolgen voor mijn belastingaangifte?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Heeft een WOZ-verlaging gevolgen voor mijn belastingaangifte?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja. Een lagere WOZ-waarde verlaagt het eigenwoningforfait in uw aangifte inkomstenbelasting. Wij verwerken dit voor u zodat u de maximale besparing ontvangt.</p></div>
       </div>
     </div>
@@ -382,6 +386,8 @@
   </div>
 </div>
 
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -433,8 +439,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{document.getElementById('nav').style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

@@ -96,11 +96,13 @@
 </script>
 </head>
 <body>
+
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/blog/municipal-tax-waiver/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -118,9 +120,11 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="../../">Belastinghulp Zaanstad</a><span>›</span><a href="../">Blog</a><span>›</span><strong>Kwijtschelding gemeentelijke belasting Zaanstad</strong></div></div>
 
 <div class="blog-hero">
@@ -281,27 +285,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wie kan kwijtschelding aanvragen in Zaanstad?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wie kan kwijtschelding aanvragen in Zaanstad?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Inwoners van Zaanstad met een laag inkomen (op of rond bijstandsniveau) en weinig vermogen. Zowel huurders als eigenaren kunnen kwijtschelding aanvragen voor de afvalstoffenheffing en rioolheffing.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kan ik kwijtschelding krijgen als ik AOW ontvang?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kan ik kwijtschelding krijgen als ik AOW ontvang?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja, ook AOW-gerechtigden kunnen kwijtschelding aanvragen als hun inkomen en vermogen onder de gestelde grenzen vallen. De norm voor AOW-ers ligt iets hoger dan voor jongere bijstandsgerechtigden.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Hoeveel spaargeld mag ik hebben voor kwijtschelding?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Hoeveel spaargeld mag ik hebben voor kwijtschelding?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>De vermogensgrens ligt rond €6.000 voor alleenstaanden en €12.000 voor samenwonenden (indicatief 2026). Heeft u meer spaargeld? Dan komt u waarschijnlijk niet in aanmerking.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Moet ik elk jaar opnieuw kwijtschelding aanvragen?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Moet ik elk jaar opnieuw kwijtschelding aanvragen?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja, u moet de aanvraag elk jaar opnieuw indienen. De gemeente beoordeelt elk jaar uw actuele inkomen en vermogen. Ontvangt u bijstand? Dan kan dit automatisch gaan.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kan ik kwijtschelding aanvragen voor mijn OZB?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kan ik kwijtschelding aanvragen voor mijn OZB?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Nee. OZB (onroerendezaakbelasting) voor woningeigenaren valt buiten de kwijtscheldingsregeling. Alleen afvalstoffenheffing en rioolheffing kunnen worden kwijtgescholden.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat heb ik nodig voor de aanvraag?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat heb ik nodig voor de aanvraag?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>U heeft nodig: uw aanslagnummer (staat op de belastingaanslag), recente bankafschriften, bewijs van inkomen (jaaropgave of uitkeringsspecificatie) en uw DigiD voor een online aanvraag.</p></div>
       </div>
     </div>
@@ -373,6 +377,8 @@
   </div>
 </div>
 
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -424,8 +430,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{document.getElementById('nav').style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

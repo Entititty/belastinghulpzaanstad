@@ -95,11 +95,13 @@
 </script>
 </head>
 <body>
+
+<a href="#inhoud" class="skip-link">Skip to content</a>
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="/blog/kwijtschelding-gemeentelijke-belasting/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -116,9 +118,11 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/en/">Belastinghulp Zaanstad</a><span>›</span><a href="/en/">Blog</a><span>›</span><strong>Municipal tax waiver in Zaanstad</strong></div></div>
 
 <div class="blog-hero">
@@ -245,27 +249,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Who can apply for a tax waiver in Zaanstad?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Who can apply for a tax waiver in Zaanstad?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Residents of Zaanstad with a low income (at or around welfare level) and little wealth. Both tenants and homeowners can apply for a tax waiver for the waste collection charge and sewerage charge.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Can I get a tax waiver if I receive AOW?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can I get a tax waiver if I receive AOW?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes, AOW recipients can also apply for a tax waiver if their income and wealth fall below the set limits. The norm for AOW recipients is slightly higher than for younger people on welfare.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How much savings can I have for a tax waiver?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How much savings can I have for a tax waiver?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>The assets limit is around €6,000 for single people and €12,000 for cohabiting couples (indicative 2026). If you have more savings? Then you probably don't qualify.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do I have to apply for a tax waiver every year?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Do I have to apply for a tax waiver every year?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes, you have to submit the application every year. The municipality assesses your current income and wealth annually. Do you receive welfare? Then this can be automatic.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Can I apply for a tax waiver for my OZB?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can I apply for a tax waiver for my OZB?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>No. OZB (property tax) for homeowners falls outside the tax waiver scheme. Only waste collection and sewerage charges can be waived.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What do I need for the application?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What do I need for the application?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>You need: your assessment number (on the tax assessment), recent bank statements, proof of income (annual statement or benefit specification) and your DigiD for an online application.</p></div>
       </div>
     </div>
@@ -304,6 +308,8 @@
     <div class="cta-phone"><div class="cta-phone-label">Or call directly</div><a href="tel:+31619711848" rel="nofollow">06 – 19 71 18 48</a></div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -355,8 +361,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{document.getElementById('nav').style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

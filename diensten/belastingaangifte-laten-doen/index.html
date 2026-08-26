@@ -145,6 +145,8 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
+
 <!-- NAVIGATION -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -153,7 +155,7 @@
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -171,11 +173,13 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
@@ -493,7 +497,7 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Wat kost het om mijn belastingaangifte te laten doen?
           <span class="faq-arrow">+</span>
         </button>
@@ -502,7 +506,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Komen jullie echt bij mij thuis?
           <span class="faq-arrow">+</span>
         </button>
@@ -511,7 +515,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Hoe snel kunt u mijn aangifte doen?
           <span class="faq-arrow">+</span>
         </button>
@@ -520,7 +524,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Ik heb mijn aangifte 2025 nog niet gedaan — kan dat nog?
           <span class="faq-arrow">+</span>
         </button>
@@ -529,7 +533,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Wat als ik vroeger aftrekposten heb gemist?
           <span class="faq-arrow">+</span>
         </button>
@@ -538,7 +542,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Wat moet ik aanleveren?
           <span class="faq-arrow">+</span>
         </button>
@@ -547,7 +551,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Wat is het verschil met een accountant of belastingadviseur?
           <span class="faq-arrow">+</span>
         </button>
@@ -556,7 +560,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Wat als ik moet bijbetalen aan de Belastingdienst?
           <span class="faq-arrow">+</span>
         </button>
@@ -584,6 +588,8 @@
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -638,14 +644,23 @@
 function toggleFaq(btn) {
   const item = btn.parentElement;
   const wasActive = item.classList.contains('active');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-  if (!wasActive) item.classList.add('active');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('active');
+    const b = i.querySelector('.faq-question');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  });
+  if (!wasActive) {
+    item.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+  }
 }
 function scrollToContact() {
   document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 }
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
+  const knop = document.querySelector('.mobile-toggle');
+  if (knop) knop.setAttribute('aria-expanded', links.style.display === 'flex' ? 'false' : 'true');
   if (links.style.display === 'flex') {
     links.style.display = 'none';
   } else {

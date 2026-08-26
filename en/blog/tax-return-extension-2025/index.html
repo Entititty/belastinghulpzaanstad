@@ -98,11 +98,13 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Skip to content</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="/en/blog/tax-return-extension-2025/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -119,9 +121,11 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
@@ -280,27 +284,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Until when can I request an extension for my 2025 tax return?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Until when can I request an extension for my 2025 tax return?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>You can request a free extension yourself until at the latest 1 May 2026, via Mijn Belastingdienst. If you still don't file after that and have no extension, fines will follow.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Does requesting an extension cost anything?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Does requesting an extension cost anything?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>No, an extension from the Belastingdienst (Dutch tax authority) is free. You can do it yourself via My Belastingdienst or by phone via 0800-0543. If you'd like us to arrange it for you together with the tax return, that costs €59.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Will I get a fine if I have requested an extension?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Will I get a fine if I have requested an extension?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>No, if you have requested an extension before 1 May 2026 and file within the extension period (until 1 September 2026 or via adviser until 1 May 2027), you don't get a default fine.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do I have to pay tax interest if I have an extension?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Do I have to pay tax interest if I have an extension?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes, tax interest continues to accrue from 1 July 2026 if you have to pay extra tax. In 2026 the rate is 6.5% per year. An extension only prevents a fine, not the interest. If you get a refund, you receive no interest on the refund amount.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Can I request an extension if I am already late?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can I request an extension if I am already late?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>No. An extension must be requested before 1 May. If you are already late, file as soon as possible — the sooner you file, the smaller the risk of a penalty.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What if I don't have DigiD for an extension?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What if I don't have DigiD for an extension?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Without DigiD you can request an extension by phone via 0800-0543. We can also arrange it for you via authorisation. Many seniors in Zaanstad choose this because it removes the DigiD hassle.</p></div>
       </div>
     </div>
@@ -356,6 +360,8 @@
   </div>
 </section>
 
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -406,8 +412,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

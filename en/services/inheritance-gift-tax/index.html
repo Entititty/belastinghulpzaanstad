@@ -130,6 +130,8 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Skip to content</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo">
@@ -137,7 +139,7 @@
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -154,11 +156,13 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
@@ -359,23 +363,23 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Within how long must I file an inheritance tax return?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Within how long must I file an inheritance tax return?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>After a death, the inheritance tax return generally has to be filed within eight months. We monitor that deadline and make sure everything is done on time and correctly.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How much can I give my child tax-free?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How much can I give my child tax-free?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>There is an annual exemption for gifts to children, and under conditions a one-off increased exemption. The exact amounts are set each year — we calculate the current exemptions for your situation.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What does your help with inheritance or gift tax cost?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What does your help with inheritance or gift tax cost?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Because every estate and gift is different, we work on quote. You receive a clear, no-obligation price upfront, so you are never caught out.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do I need a civil-law notary for this?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Do I need a civil-law notary for this?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>For the tax return itself a notary is not always needed. For certain matters (such as a will or a paper gift) it is. We tell you honestly when a notary is required and work with one where needed.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What do I need?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What do I need?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>For inheritance tax: details of the estate (assets, debts, the WOZ value of a home) and the heirs. For a gift: the amount and your relationship to the recipient. We tell you exactly what we need.</p></div>
       </div>
     </div>
@@ -396,6 +400,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -447,8 +453,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.step, .faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});

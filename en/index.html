@@ -1515,6 +1515,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .faq-question{min-height:44px}
 html[data-fontscale="l"]{font-size:20px}
 html[data-fontscale="xl"]{font-size:23px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--clr-teal);color:#fff;padding:12px 20px;border-radius:0 0 8px 0;font-weight:700;text-decoration:none}.skip-link:focus{left:0}
 .bhz-mobilebar{display:none}
 @media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#25D366;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
 .ts-switch{position:fixed;right:16px;bottom:88px;z-index:9998;display:flex;align-items:center;gap:5px;background:#fff;border:1px solid rgba(44,37,32,0.15);border-radius:100px;padding:5px 9px;box-shadow:0 4px 16px rgba(44,37,32,0.18)}
@@ -1565,6 +1566,8 @@ html[data-fontscale="xl"]{font-size:23px}
 
 <body>
 
+<a href="#inhoud" class="skip-link">Skip to content</a>
+
 <!-- ======== NAVIGATION ======== -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -1573,7 +1576,7 @@ html[data-fontscale="xl"]{font-size:23px}
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -1590,11 +1593,13 @@ html[data-fontscale="xl"]{font-size:23px}
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <!-- ======== HERO ======== -->
 <section class="hero" id="home">
@@ -2100,7 +2105,7 @@ html[data-fontscale="xl"]{font-size:23px}
 
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           What exactly is a preliminary tax refund?
           <span class="faq-arrow">+</span>
         </button>
@@ -2110,7 +2115,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           How quickly do I get my preliminary tax refund?
           <span class="faq-arrow">+</span>
         </button>
@@ -2120,7 +2125,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Do you also come to my home for the tax return?
           <span class="faq-arrow">+</span>
         </button>
@@ -2130,7 +2135,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Which documents do I need?
           <span class="faq-arrow">+</span>
         </button>
@@ -2140,7 +2145,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           What if I already filed but forgot something?
           <span class="faq-arrow">+</span>
         </button>
@@ -2150,7 +2155,7 @@ html[data-fontscale="xl"]{font-size:23px}
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Can I apply for a preliminary tax refund year-round?
           <span class="faq-arrow">+</span>
         </button>
@@ -2268,6 +2273,8 @@ html[data-fontscale="xl"]{font-size:23px}
 </section>
 
 <!-- ======== FOOTER ======== -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -2323,8 +2330,15 @@ html[data-fontscale="xl"]{font-size:23px}
 function toggleFaq(btn) {
   const item = btn.parentElement;
   const wasActive = item.classList.contains('active');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-  if (!wasActive) item.classList.add('active');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('active');
+    const b = i.querySelector('.faq-question');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  });
+  if (!wasActive) {
+    item.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+  }
 }
 
 // Scroll to contact
@@ -2335,6 +2349,8 @@ function scrollToContact() {
 // Mobile menu toggle
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
+  const knop = document.querySelector('.mobile-toggle');
+  if (knop) knop.setAttribute('aria-expanded', links.style.display === 'flex' ? 'false' : 'true');
   if (links.style.display === 'flex') {
     links.style.display = 'none';
   } else {

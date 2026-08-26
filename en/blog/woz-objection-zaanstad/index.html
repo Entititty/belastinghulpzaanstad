@@ -95,11 +95,13 @@
 </script>
 </head>
 <body>
+
+<a href="#inhoud" class="skip-link">Skip to content</a>
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="/blog/woz-bezwaar-zaanstad/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -116,9 +118,11 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/en/">Belastinghulp Zaanstad</a><span>›</span><a href="/en/">Blog</a><span>›</span><strong>WOZ objection Zaanstad 2026</strong></div></div>
 
 <div class="blog-hero">
@@ -255,27 +259,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How long do I have to object to my WOZ value?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How long do I have to object to my WOZ value?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>You have 6 weeks after the date on the WOZ valuation (property tax assessment) to file an objection. If you receive the notice in early January, the deadline is usually mid-February.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What does it cost to file an objection?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What does it cost to file an objection?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Filing an objection with the municipality is free. You can do it yourself via the Zaanstad website or in writing. If you hire a professional agency, they sometimes charge a percentage of the savings.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How much do I save if the WOZ value drops?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How much do I save if the WOZ value drops?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>For a reduction of €20,000 you save on average €40–€80 per year in OZB plus less imputed rental value in the income tax. The exact saving depends on the Zaanstad OZB rate and your tax bracket.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What is the reference date for the WOZ value 2026?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What is the reference date for the WOZ value 2026?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>The WOZ value on the 2026 assessment is based on the market value of your home on 1 January 2025 (the reference date).</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Can I check my WOZ value online?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can I check my WOZ value online?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes. Via the WOZ value portal (wozwaardeloket.nl) you can look up the WOZ value of your home and surrounding homes for free. This helps you assess whether your value is reasonable.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Does a WOZ reduction affect my tax return?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Does a WOZ reduction affect my tax return?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes. A lower WOZ value reduces the imputed rental value in your income tax return. We process this for you so that you receive the maximum saving.</p></div>
       </div>
     </div>
@@ -314,6 +318,8 @@
     <div class="cta-phone"><div class="cta-phone-label">Or call directly</div><a href="tel:+31619711848" rel="nofollow">06 – 19 71 18 48</a></div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -365,8 +371,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{document.getElementById('nav').style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

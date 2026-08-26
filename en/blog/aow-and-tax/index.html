@@ -98,11 +98,13 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Skip to content</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="/blog/aow-en-belasting/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -119,9 +121,11 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
@@ -262,27 +266,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Is my AOW payment taxed?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Is my AOW payment taxed?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes, AOW is taxable income (box 1). The SVB withholds payroll tax, but also settles the tax credits. In most cases you therefore pay little to no tax if you only receive AOW.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What tax rate applies to AOW recipients?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What tax rate applies to AOW recipients?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>AOW recipients no longer pay AOW premiums, which means the rate in the first bracket (up to approx. €40,500) is only around 19% instead of 37% for workers. Above that threshold, the same rates of 37% and 49.5% apply.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Can I get tax back as an AOW recipient?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can I get tax back as an AOW recipient?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes. If you have high healthcare costs, have made donations, or if the elderly tax credit has not been fully settled by the SVB, you can get money back via an income tax return.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Do I have to file a tax return if I only receive AOW?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Do I have to file a tax return if I only receive AOW?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Not required if you don't receive a tax return letter. But filing a tax return can be beneficial if you have healthcare costs, donations or other deductions. We can quickly check this for you.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">I receive both AOW and a pension. Will I have to pay extra?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">I receive both AOW and a pension. Will I have to pay extra?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Possibly yes. If both the SVB and your pension fund apply the full tax credit, too little tax has been withheld. You can resolve this by asking the pension fund not to apply the tax credit (doubly).</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How much is the elderly tax credit for AOW recipients in 2026?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How much is the elderly tax credit for AOW recipients in 2026?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>The elderly tax credit is €2,067 at an aggregate income up to €46,002. Above that, the credit is gradually phased out. Single people are additionally entitled to the single person elderly tax credit of €540.</p></div>
       </div>
     </div>
@@ -326,6 +330,8 @@
     <div class="cta-phone"><div class="cta-phone-label">Or call directly</div><a href="tel:+31619711848" rel="nofollow">06 – 19 71 18 48</a></div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -377,8 +383,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

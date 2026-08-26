@@ -98,11 +98,13 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/blog/aow-and-tax/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -120,9 +122,11 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
@@ -283,27 +287,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Is mijn AOW-uitkering belast?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Is mijn AOW-uitkering belast?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja, AOW is een belastbaar inkomen (box 1). De SVB houdt loonheffing in, maar verrekent ook de heffingskortingen. In de meeste gevallen betaalt u daardoor weinig tot geen belasting als u alleen AOW ontvangt.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Welk belastingtarief geldt voor AOW-ers?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Welk belastingtarief geldt voor AOW-ers?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>AOW-gerechtigden betalen geen AOW-premie meer, waardoor het tarief in de eerste schijf (tot ca. €40.500) slechts circa 19% is in plaats van 37% voor werkenden. Boven die grens geldt hetzelfde tarief van 37% en 49,5%.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kan ik belasting terugkrijgen als AOW-er?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kan ik belasting terugkrijgen als AOW-er?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja. Als u hoge zorgkosten heeft, giften heeft gedaan, of als de ouderenkorting niet volledig is verrekend door de SVB, kunt u via aangifte inkomstenbelasting geld terugkrijgen.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Moet ik aangifte doen als ik alleen AOW ontvang?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Moet ik aangifte doen als ik alleen AOW ontvang?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Niet verplicht als u geen aangiftebrief ontvangt. Maar aangifte doen kan voordelig zijn als u zorgkosten, giften of andere aftrekposten heeft. Wij kunnen dit snel voor u controleren.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Ik ontvang AOW én pensioen. Moet ik dan bijbetalen?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Ik ontvang AOW én pensioen. Moet ik dan bijbetalen?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Mogelijk wel. Als zowel de SVB als uw pensioenfonds de volledige heffingskorting toepassen, is er te weinig belasting ingehouden. U kunt dit oplossen door het pensioenfonds te vragen de heffingskorting niet (dubbel) toe te passen.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Hoeveel is de ouderenkorting voor AOW-ers in 2026?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Hoeveel is de ouderenkorting voor AOW-ers in 2026?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>De ouderenkorting bedraagt €2.067 bij een verzamelinkomen tot €46.002. Daarboven bouwt de korting af. Alleenstaanden hebben daarnaast recht op de alleenstaande ouderenkorting van €540.</p></div>
       </div>
     </div>
@@ -380,6 +384,8 @@
   </div>
 </div>
 
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -431,8 +437,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

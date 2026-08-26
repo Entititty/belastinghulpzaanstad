@@ -130,11 +130,13 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/blog/tax-return-extension-2025/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -152,9 +154,11 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
@@ -333,27 +337,27 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Tot wanneer kan ik uitstel aanvragen voor mijn aangifte 2025?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Tot wanneer kan ik uitstel aanvragen voor mijn aangifte 2025?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>U kunt zelf gratis uitstel aanvragen tot uiterlijk 1 mei 2026, via Mijn Belastingdienst. Dient u daarna nog niets in en heeft u geen uitstel, dan volgen boetes.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kost uitstel aanvragen iets?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kost uitstel aanvragen iets?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Nee, uitstel aanvragen bij de Belastingdienst is gratis. U kunt het zelf doen via Mijn Belastingdienst of telefonisch via 0800-0543. Wilt u dat wij het voor u regelen samen met de aangifte, dan kost dat €59.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Krijg ik boete als ik uitstel heb aangevraagd?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Krijg ik boete als ik uitstel heb aangevraagd?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Nee, als u vóór 1 mei 2026 uitstel heeft aangevraagd en binnen de uitsteltermijn (tot 1 september 2026 of via adviseur tot 1 mei 2027) indient, krijgt u geen verzuimboete.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Moet ik belastingrente betalen als ik uitstel heb?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Moet ik belastingrente betalen als ik uitstel heb?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja, belastingrente loopt door vanaf 1 juli 2026 als u belasting moet bijbetalen. In 2026 is het tarief 6,5% per jaar. Uitstel voorkomt alleen een boete, niet de rente. Krijgt u teruggave, dan ontvangt u geen rente over het teruggavebedrag.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Kan ik uitstel aanvragen als ik al te laat ben?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kan ik uitstel aanvragen als ik al te laat ben?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Nee. Uitstel moet u aanvragen vóór 1 mei. Bent u al te laat, dien dan zo snel mogelijk alsnog in — hoe eerder, hoe kleiner de kans op een verzuimboete.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat als ik geen DigiD heb voor uitstel?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat als ik geen DigiD heb voor uitstel?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Zonder DigiD kunt u uitstel telefonisch aanvragen via 0800-0543. Ook kunnen wij het voor u regelen via een machtiging. Veel senioren in Zaanstad kiezen hiervoor omdat het de DigiD-hassle wegneemt.</p></div>
       </div>
     </div>
@@ -441,6 +445,8 @@
   </div>
 </div>
 
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -492,8 +498,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});</script>

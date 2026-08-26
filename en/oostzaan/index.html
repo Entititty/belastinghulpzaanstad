@@ -107,11 +107,13 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Skip to content</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo"><span class="nav-logo-icon">BZ</span>Belastinghulp Zaanstad</a>
       <div class="lang-toggle"><a href="/oostzaan/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -128,9 +130,11 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner"><a href="/en/">Belastinghulp Zaanstad</a> <span>›</span> <strong>Oostzaan</strong></div>
@@ -357,19 +361,19 @@
     <div class="section-header"><div class="section-eyebrow">◆ Frequently asked questions</div><h2 class="section-title">Questions about tax return in Oostzaan</h2></div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">I live in Oostzaan but work in Amsterdam. Does that make a difference for my tax return?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">I live in Oostzaan but work in Amsterdam. Does that make a difference for my tax return?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>No, for most deductions that makes no difference. You file your tax return with the Belastingdienst (Dutch tax authority) based on your home address. We help you deduct travel costs if you commute to Amsterdam by public transport and also check whether other deductions apply to your specific situation.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">What is a preliminary tax refund?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What is a preliminary tax refund?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>A preliminary tax refund is a monthly payment from the Belastingdienst (Dutch tax authority) based on your expected tax benefit. With an Oostzaan home of €375,000 you receive around €318 per month directly into your account — instead of once a year after your tax return.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">How quickly is the preliminary tax refund processed?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How quickly is the preliminary tax refund processed?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Once we have submitted the application for you, the Dutch tax authority usually processes it within 4 to 8 weeks. After that you receive the amount in your account each month. We advise arranging this right after your home purchase.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Which documents do I need?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Which documents do I need?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Think of: your DigiD, annual statement(s), WOZ valuation (property tax assessment), annual mortgage statement, bank statements and possibly healthcare costs or donations. After you sign up we send you a personal checklist.</p></div>
       </div>
     </div>
@@ -387,6 +391,8 @@
     <div class="cta-phone"><div class="cta-phone-label">Or call directly</div><a href="tel:+31619711848" rel="nofollow">06 – 19 71 18 48</a></div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -438,9 +444,9 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
 function scrollToContact(){document.getElementById('contact').scrollIntoView({behavior:'smooth'});}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1});
 document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';observer.observe(el);});

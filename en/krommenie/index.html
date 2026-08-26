@@ -108,6 +108,8 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Skip to content</a>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/en/" class="nav-logo">
@@ -115,7 +117,7 @@
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="/krommenie/">NL</a><a href="#" class="active">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Services <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -132,11 +134,13 @@
       <li><a href="/en/about-us/">About us</a></li>
       <li><a href="/en/#contact" class="nav-cta">Get in touch</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
@@ -448,7 +452,7 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Is Krommenie a good place for first-time buyers to buy their first house?
           <span class="faq-arrow">+</span>
         </button>
@@ -457,7 +461,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           What exactly is a preliminary tax refund?
           <span class="faq-arrow">+</span>
         </button>
@@ -466,7 +470,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           How quickly is the preliminary tax refund arranged?
           <span class="faq-arrow">+</span>
         </button>
@@ -475,7 +479,7 @@
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Which documents do I need?
           <span class="faq-arrow">+</span>
         </button>
@@ -501,6 +505,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer class="footer">
   <div class="container">
@@ -555,12 +561,21 @@
 function toggleFaq(btn) {
   const item = btn.parentElement;
   const wasActive = item.classList.contains('active');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-  if (!wasActive) item.classList.add('active');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('active');
+    const b = i.querySelector('.faq-question');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  });
+  if (!wasActive) {
+    item.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+  }
 }
 function scrollToContact() { document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }
 function toggleMenu() {
   const links = document.querySelector('.nav-links');
+  const knop = document.querySelector('.mobile-toggle');
+  if (knop) knop.setAttribute('aria-expanded', links.style.display === 'flex' ? 'false' : 'true');
   if (links.style.display === 'flex') { links.style.display = 'none'; }
   else { links.style.display = 'flex'; links.style.flexDirection = 'column'; links.style.position = 'absolute'; links.style.top = '100%'; links.style.left = '0'; links.style.right = '0'; links.style.background = 'rgba(250,248,244,0.98)'; links.style.padding = '20px 24px'; links.style.borderBottom = '1px solid rgba(200,185,168,0.3)'; links.style.gap = '16px'; }
 }

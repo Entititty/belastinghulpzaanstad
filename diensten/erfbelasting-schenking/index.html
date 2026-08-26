@@ -130,6 +130,8 @@
 </head>
 <body>
 
+<a href="#inhoud" class="skip-link">Direct naar de inhoud</a>
+
 <!-- NAVIGATION -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -138,7 +140,7 @@
       Belastinghulp Zaanstad
     </a>
       <div class="lang-toggle"><a href="#" class="active">NL</a><a href="/en/">EN</a></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="hoofdmenu">
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" onclick="return false;" aria-haspopup="true">Diensten <span class="nav-dropdown-caret">&#9662;</span></a>
         <ul class="nav-dropdown-menu">
@@ -156,11 +158,13 @@
       <li><a href="/over-ons/">Over ons</a></li>
       <li><a href="/contact/" class="nav-cta">Neem contact op</a></li>
     </ul>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+
+<main id="inhoud">
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
@@ -395,23 +399,23 @@
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Binnen hoeveel tijd moet ik aangifte erfbelasting doen?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Binnen hoeveel tijd moet ik aangifte erfbelasting doen?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Na een overlijden moet de aangifte erfbelasting in de regel binnen 8 maanden worden ingediend. Wij bewaken die termijn en zorgen dat alles op tijd en correct gebeurt.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Hoeveel mag ik belastingvrij schenken aan mijn kind?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Hoeveel mag ik belastingvrij schenken aan mijn kind?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Er geldt jaarlijks een vrijstelling voor schenkingen aan kinderen, en onder voorwaarden een eenmalig verhoogde vrijstelling. De exacte bedragen worden jaarlijks vastgesteld — wij rekenen de actuele vrijstellingen voor uw situatie uit.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat kost jullie hulp bij erf- of schenkbelasting?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost jullie hulp bij erf- of schenkbelasting?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Omdat elke nalatenschap en schenking anders is, werken wij op offerte. U krijgt vooraf een heldere, vrijblijvende prijsopgave zodat u nooit voor verrassingen komt te staan.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Heb ik hiervoor een notaris nodig?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Heb ik hiervoor een notaris nodig?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Voor de belastingaangifte zelf is een notaris niet altijd nodig. Voor bepaalde zaken (zoals een testament of een schenking op papier) wel. Wij vertellen u eerlijk wanneer u een notaris nodig heeft en werken daar zo nodig mee samen.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">Wat heb ik nodig?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat heb ik nodig?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Voor erfbelasting: gegevens over de nalatenschap (bezittingen, schulden, WOZ-waarde van een woning) en de erfgenamen. Voor schenken: het bedrag en de relatie tot de ontvanger. Wij vertellen u precies wat we nodig hebben.</p></div>
       </div>
     </div>
@@ -434,6 +438,8 @@
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -485,8 +491,8 @@
 </footer>
 
 <script>
-function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active');}
-function toggleMenu(){const links=document.querySelector('.nav-links');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
+function toggleFaq(btn){const item=btn.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');const b=i.querySelector('.faq-question');if(b)b.setAttribute('aria-expanded','false');});if(!wasActive){item.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+function toggleMenu(){const links=document.querySelector('.nav-links');const knop=document.querySelector('.mobile-toggle');if(knop)knop.setAttribute('aria-expanded',links.style.display==='flex'?'false':'true');if(links.style.display==='flex'){links.style.display='none';}else{links.style.display='flex';links.style.flexDirection='column';links.style.position='absolute';links.style.top='100%';links.style.left='0';links.style.right='0';links.style.background='rgba(250,248,244,0.98)';links.style.padding='20px 24px';links.style.borderBottom='1px solid rgba(200,185,168,0.3)';links.style.gap='16px';}}
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.opacity='1';entry.target.style.transform='translateY(0)';}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.step, .faq-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el);});
