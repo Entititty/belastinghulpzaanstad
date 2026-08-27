@@ -196,9 +196,11 @@
       <div class="form-card" id="terugbellen">
         <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 6px;">Vraag een terugbelverzoek aan</h2>
         <p style="color:var(--clr-bark);font-size:0.95rem;margin:0 0 18px;">Laat uw naam en nummer achter, wij bellen u terug. Meer hoeft niet.</p>
-        <form action="/contact.php" method="POST" novalidate>
+        <form action="https://formspree.io/f/xrbndagq" method="POST">
           <input type="hidden" name="formtype" value="terugbelverzoek">
-          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/contact/?ok=1">
+<input type="hidden" name="_subject" value="Terugbelverzoek via de website">
+          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-field">
             <label for="tb-naam">Uw naam</label>
             <input type="text" id="tb-naam" name="naam" required autocomplete="name">
@@ -226,9 +228,11 @@
       <div class="form-card" id="bericht">
         <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 6px;">Of stuur een bericht</h2>
         <p style="color:var(--clr-bark);font-size:0.95rem;margin:0 0 18px;">Vertel kort waar het over gaat. Wij nemen dezelfde dag contact met u op.</p>
-        <form action="/contact.php" method="POST" novalidate>
+        <form action="https://formspree.io/f/xrbndagq" method="POST">
           <input type="hidden" name="formtype" value="bericht">
-          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/contact/?ok=1">
+<input type="hidden" name="_subject" value="Bericht via het contactformulier">
+          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-field">
             <label for="c-naam">Uw naam</label>
             <input type="text" id="c-naam" name="naam" required autocomplete="name">
