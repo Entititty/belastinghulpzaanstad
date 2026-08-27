@@ -161,12 +161,16 @@ een eigen `add_header` gekregen; in nginx erft zo'n blok de headers uit het
 server-blok dan niet meer. Zoek met:
 
 ```bash
-sudo nginx -T | grep -n "add_header"
+sudo nginx -T | grep -nE "^[[:space:]]*add_header"
 ```
 
 Er horen precies zes regels te staan: HSTS in het www-redirect-blok, de vier
 security headers in het server-blok, en `Cache-Control $cache_control`. Geen
 enkele binnen een `location`.
+
+Let op de `^[[:space:]]*` in die grep. Zonder die ankering telt hij ook de
+commentaarregel mee die het woord `add_header` bevat, en dan krijg je zeven
+treffers terwijl er zes directives zijn. Dat lijkt op een fout en is het niet.
 
 En de vier paden die dicht moeten:
 
