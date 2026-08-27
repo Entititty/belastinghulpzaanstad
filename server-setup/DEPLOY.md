@@ -266,6 +266,20 @@ kapotte config start hij niet meer op. **Gebruik `reload`, nooit `restart`.**
 Niets kapot. De map staat er, niemand gebruikt hem, de headers blijven zoals
 ze waren. Je mist alleen de caching.
 
+### `unexpected "{" in cache-map.conf`
+
+```
+nginx: [emerg] unexpected "{" in /etc/nginx/conf.d/cache-map.conf:26
+```
+
+nginx ziet `{` en `}` als begin en einde van een blok. Een parameter met een
+accolade erin, zoals de regex `[0-9a-f]{8}`, moet dus tussen aanhalingstekens.
+Zonder quotes leest nginx `{8}` als een nieuw blok en slaat af.
+
+Dit is opgelost in de repo. Zie je het toch: haal de nieuwe versie op met
+`git pull` en kopieer het bestand opnieuw. `nginx -t` slaat hier af voordat
+er iets herlaadt, dus de site merkt er niets van.
+
 ### CSS-wijziging zonder `hash-css.js`
 
 Dan staat er een nieuwe inhoud onder de oude bestandsnaam, en die naam is
