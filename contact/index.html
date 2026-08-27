@@ -198,6 +198,7 @@
         <p style="color:var(--clr-bark);font-size:0.95rem;margin:0 0 18px;">Laat uw naam en nummer achter, wij bellen u terug. Meer hoeft niet.</p>
         <form action="https://formspree.io/f/xrbndagq" method="POST">
           <input type="hidden" name="formtype" value="terugbelverzoek">
+<input type="hidden" name="email" value="noreply@belastinghulpzaanstad.nl">
 <input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/contact/?ok=1">
 <input type="hidden" name="_subject" value="Terugbelverzoek via de website">
           <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
@@ -242,8 +243,8 @@
             <input type="tel" id="c-tel" name="telefoon" required autocomplete="tel">
           </div>
           <div class="form-field">
-            <label for="c-email">E-mailadres <span style="font-weight:400;color:var(--clr-bark);">(optioneel)</span></label>
-            <input type="email" id="c-email" name="email" autocomplete="email">
+            <label for="c-email">E-mailadres</label>
+            <input type="email" id="c-email" name="email" required autocomplete="email">
           </div>
           <div class="form-field">
             <label for="c-onderwerp">Waar gaat het over?</label>
