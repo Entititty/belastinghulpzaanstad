@@ -50,9 +50,9 @@ const VORMEN = [
   {
     taal: 'nl',
     verwacht: 55,
-    zonder: 'Bezoek uitsluitend op afspraak &mdash; wij komen bij u thuis</span>',
+    zonder: 'Bezoek uitsluitend op afspraak. Wij komen bij u thuis</span>',
     met: function (kvk, btw) {
-      return 'Bezoek uitsluitend op afspraak &mdash; wij komen bij u thuis &middot; KvK ' + kvk +
+      return 'Bezoek uitsluitend op afspraak. Wij komen bij u thuis &middot; KvK ' + kvk +
         ' &middot; BTW-id ' + btw +
         '<!-- Verplicht o.g.v. art. 3:15d BW. Bijwerken met scripts/set-kvk.js. --></span>';
     }
@@ -60,9 +60,9 @@ const VORMEN = [
   {
     taal: 'en',
     verwacht: 38,
-    zonder: 'By appointment only &mdash; we come to your home</span>',
+    zonder: 'By appointment only. We come to your home</span>',
     met: function (kvk, btw) {
-      return 'By appointment only &mdash; we come to your home &middot; KvK ' + kvk +
+      return 'By appointment only. We come to your home &middot; KvK ' + kvk +
         ' &middot; VAT ' + btw +
         '<!-- Required under art. 3:15d Dutch Civil Code. Update with scripts/set-kvk.js. --></span>';
     }
@@ -72,8 +72,8 @@ const VORMEN = [
 /* Vormen die eerder in de repo hebben gestaan. Alleen nodig om ze te kunnen
  * herkennen en opruimen; nieuwe uitvoer gebruikt altijd VORMEN hierboven. */
 const OUDE_VORMEN = [
-  'Bezoek uitsluitend op afspraak &mdash; wij komen bij u thuis<!-- TODO eigenaar: KvK-nummer + BTW-id hier tonen zodra ingeschreven bij de KvK (verplicht o.g.v. art. 3:15d BW) --></span>',
-  'By appointment only &mdash; we come to your home<!-- TODO owner: show KvK + VAT number once registered (required under art. 3:15d Dutch Civil Code) --></span>'
+  'Bezoek uitsluitend op afspraak. Wij komen bij u thuis<!-- TODO eigenaar: KvK-nummer + BTW-id hier tonen zodra ingeschreven bij de KvK (verplicht o.g.v. art. 3:15d BW) --></span>',
+  'By appointment only. We come to your home<!-- TODO owner: show KvK + VAT number once registered (required under art. 3:15d Dutch Civil Code) --></span>'
 ];
 
 function walk(dir, acc) {

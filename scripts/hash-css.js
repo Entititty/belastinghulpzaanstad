@@ -53,7 +53,17 @@ if (kandidaten.length > 1) {
   process.exit(1);
 }
 const huidig = kandidaten[0];
-const inhoud = fs.readFileSync(path.join(ROOT, huidig));
+const ruw = fs.readFileSync(path.join(ROOT, huidig));
+
+/* Hash over LF, niet over de werkkopie.
+ * Windows checkt uit met CRLF (core.autocrlf=true), maar git slaat LF op en
+ * de server serveert LF. Hashen we de werkkopie, dan verandert de hash zodra
+ * je van branch wisselt: git schrijft het bestand dan opnieuw en de CRLF's
+ * tellen mee. Gevolg zou zijn dat 92 pagina's een nieuwe stylesheetnaam
+ * krijgen terwijl er inhoudelijk niets veranderd is, en dat iedere bezoeker
+ * de CSS opnieuw ophaalt. Genormaliseerd komt de hash overeen met wat er
+ * werkelijk over de lijn gaat. */
+const inhoud = Buffer.from(ruw.toString('latin1').replace(/\r\n/g, '\n'), 'latin1');
 const hash = crypto.createHash('sha256').update(inhoud).digest('hex').slice(0, 8);
 const nieuw = BASIS + '.' + hash + STAART;
 

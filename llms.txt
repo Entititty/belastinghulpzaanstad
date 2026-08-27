@@ -6,7 +6,7 @@
 
 Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisaties zijn:
 - Belastingaangifte invullen (vaste prijs vanaf €59, inclusief toeslagencontrole)
-- Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek — gemiddeld €800–€1.200 terug per jaar)
+- Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek, gemiddeld €800–€1.200 terug per jaar)
 - Toeslagen aanvragen en controleren: huurtoeslag, zorgtoeslag, kinderopvangtoeslag, kindgebonden budget
 - Ouderenkorting en AOW-aangifte voor senioren
 - Box 3-bezwaar (spaartaks): pro forma bezwaar gratis, hoofdbezwaar op basis van no cure no pay
@@ -16,17 +16,17 @@ Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisatie
 ## Diensten
 
 Vaste servicepagina's met uitgebreide uitleg per dienst:
-- [Belastingaangifte laten doen](https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/) — volledige aangifte inkomstenbelasting, vaste prijs vanaf €59, aan huis in Zaanstad
-- [Voorlopige teruggave aanvragen](https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/) — hypotheekrenteaftrek maandelijks laten uitbetalen; los vanaf €49 of pakket €109
-- [Box 3 bezwaar (spaartaks)](https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/) — bezwaar tegen de box 3-heffing 2021–2024; pro forma gratis, no cure no pay
-- [Correctie & late aangifte](https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/) — gemiste aftrekposten alsnog terugvragen tot 5 jaar terug; €69, uitstel gratis inbegrepen
-- [Erfbelasting & schenkbelasting](https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/) — aangifte en advies bij nalaten en schenken; prijs op maat, vrijblijvend gesprek
+- [Belastingaangifte laten doen](https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/), volledige aangifte inkomstenbelasting, vaste prijs vanaf €59, aan huis in Zaanstad
+- [Voorlopige teruggave aanvragen](https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/), hypotheekrenteaftrek maandelijks laten uitbetalen; los vanaf €49 of pakket €109
+- [Box 3 bezwaar (spaartaks)](https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/), bezwaar tegen de box 3-heffing 2021–2024; pro forma gratis, no cure no pay
+- [Correctie & late aangifte](https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/), gemiste aftrekposten alsnog terugvragen tot 5 jaar terug; €69, uitstel gratis inbegrepen
+- [Erfbelasting & schenkbelasting](https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/), aangifte en advies bij nalaten en schenken; prijs op maat, vrijblijvend gesprek
 
 Engelstalige servicepagina's (voor expats): [Tax return](https://belastinghulpzaanstad.nl/en/services/tax-return/) · [Preliminary refund](https://belastinghulpzaanstad.nl/en/services/preliminary-refund/) · [Box 3 objection](https://belastinghulpzaanstad.nl/en/services/box-3-objection/) · [Correction & late return](https://belastinghulpzaanstad.nl/en/services/late-tax-return/) · [Inheritance & gift tax](https://belastinghulpzaanstad.nl/en/services/inheritance-gift-tax/)
 
 ## Werkgebied
 
-Zaandam, Krommenie, Assendelft, Wormerveer, Koog aan de Zaan, Zaandijk, Westzaan, Wormerland, Oostzaan — alle kernen binnen de gemeente Zaanstad en omgeving.
+Zaandam, Krommenie, Assendelft, Wormerveer, Koog aan de Zaan, Zaandijk, Westzaan, Wormerland, Oostzaan, alle kernen binnen de gemeente Zaanstad en omgeving.
 
 ## Prijzen en praktisch
 
@@ -117,8 +117,8 @@ Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over 
 
 ## Rekentools
 
-- [Huurtoeslag berekenen 2026 (indicatie)](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/) — check of u recht heeft en hoeveel per maand, o.b.v. kale huur en inkomen
-- [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/) — maandelijks belastingvoordeel van de hypotheekrenteaftrek
+- [Huurtoeslag berekenen 2026 (indicatie)](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/). Check of u recht heeft en hoeveel per maand, o.b.v. kale huur en inkomen
+- [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/), maandelijks belastingvoordeel van de hypotheekrenteaftrek
 
 ## Blog artikelen
 

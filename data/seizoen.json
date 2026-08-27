@@ -1,12 +1,12 @@
 {
-  "_comment": "Teksten voor de seizoensbanner op de homepage en plaatspagina's. /js/seizoen.js kiest automatisch de juiste periode op basis van de huidige maand. Hier bewerken volstaat — geen code nodig. Blijf feitelijk juist (zie belastingdienst.nl).",
+  "_comment": "Teksten voor de seizoensbanner op de homepage en plaatspagina's. /js/seizoen.js kiest automatisch de juiste periode op basis van de huidige maand. Hier bewerken volstaat, geen code nodig. Blijf feitelijk juist (zie belastingdienst.nl).",
   "_laatst_gecontroleerd": "2026-08-03",
   "perioden": [
     {
       "van_maand": 1,
       "tot_maand": 4,
       "badge": "AANGIFTESEIZOEN 2025",
-      "titel": "Laat uw aangifte 2025 doen &mdash; <strong style=\"color:#FFD166;\">vaste prijs &euro;59</strong>",
+      "titel": "Laat uw aangifte 2025 doen, <strong style=\"color:#FFD166;\">vaste prijs &euro;59</strong>",
       "desc": "De aangifte inkomstenbelasting over 2025 kan tot 1 mei 2026. Wij doen hem rustig bij u thuis en controleren alle aftrekposten, kortingen en toeslagen.",
       "chip": "Aangifte 2025 vóór 1 mei 2026",
       "cta_label": "Aangifte laten doen",
@@ -19,14 +19,14 @@
       "titel": "Aangifte 2025 nog niet gedaan? <strong style=\"color:#FFD166;\">Dat is nog op te lossen</strong>",
       "desc": "Zolang u nog geen aanmaning van de Belastingdienst heeft ontvangen, blijft een verzuimboete meestal uit. Hoe eerder u aangifte doet, hoe kleiner het risico. Al een herinnering of aanmaning binnen? Ook dan kijken we samen wat de beste stap is.",
       "chip": "Hoe eerder, hoe kleiner het risico",
-      "cta_label": "Aangifte alsnog indienen — €69",
+      "cta_label": "Aangifte alsnog indienen, €69",
       "wa_text": "Hoi!%20Ik%20heb%20mijn%20aangifte%202025%20nog%20niet%20gedaan.%20Kunnen%20jullie%20helpen%3F"
     },
     {
       "van_maand": 9,
       "tot_maand": 12,
       "badge": "WOONT U IN EEN KOOPWONING?",
-      "titel": "Vraag uw voorlopige teruggave aan &mdash; <strong style=\"color:#FFD166;\">elke maand geld terug</strong>",
+      "titel": "Vraag uw voorlopige teruggave aan, <strong style=\"color:#FFD166;\">elke maand geld terug</strong>",
       "desc": "Met een voorlopige teruggave ontvangt u uw hypotheekrenteaftrek maandelijks, in plaats van pas na de aangifte. Wij vragen hem voor u aan, vanaf €49.",
       "chip": "Maandelijks voordeel i.p.v. achteraf",
       "cta_label": "Voorlopige teruggave aanvragen",
