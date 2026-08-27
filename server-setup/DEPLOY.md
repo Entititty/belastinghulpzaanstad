@@ -29,8 +29,13 @@ Zet je het server-blok eerst, dan kent nginx die variabele niet.
 | stap | volgorde-kritisch? | waarom |
 |---|---|---|
 | git push (pagina's + CSS) | nee | hash in de bestandsnaam |
+| kopie onder de oude CSS-naam | eenmalig, na de deploy | oude HTML in browsercaches vraagt die naam nog op, zie §2.2 |
 | nginx map-bestand | **ja, eerst** | definieert `$cache_control` |
 | nginx server-blok | **ja, daarna** | gebruikt `$cache_control` |
+
+De hash lost het probleem op voor HTML die nog gedownload moet worden, niet
+voor HTML die iemand al in zijn cache heeft. Dat verschil is de reden voor
+die tweede regel.
 
 ---
 
@@ -75,6 +80,43 @@ curl -o /dev/null -w "%{http_code}\n" https://belastinghulpzaanstad.nl/belasting
 
 Krijg je 404 op de eerste: de deploy is nog niet langs geweest, of de hash in
 de repo is niet die van het bestand. Draai `node scripts/hash-css.js` opnieuw.
+
+#### Eenmalig bij deze uitrol: de oude bestandsnaam even laten staan
+
+De hash maakt nieuwe HTML zelf-bustend, maar er loopt ook nog **oude** HTML
+rond in browsercaches, en die verwijst naar `belasting.min.css`. Dat bestand
+verdwijnt bij deze uitrol.
+
+Meting op de live site, 27 augustus 2026:
+
+```
+Last-Modified: Sat, 15 Aug 2026 15:48:34 GMT
+(geen Cache-Control)
+```
+
+Zonder `Cache-Control` verzint een browser zelf een houdbaarheid: ongeveer
+10 % van de leeftijd van het document. Twaalf dagen oud betekent ruim
+**een dag** dat een terugkerende bezoeker zijn oude HTML hergebruikt. Die
+HTML vraagt `belasting.min.css` op, krijgt 404, en toont een pagina zonder
+opmaak.
+
+Zet daarom na de deploy eenmalig een kopie onder de oude naam:
+
+```bash
+cd /var/www/belastinghulpzaanstad.nl/html
+cp "$(ls belasting.*.min.css)" belasting.min.css
+```
+
+Dat bestand is niet getrackt en `git reset --hard` verwijdert het niet, dus
+het overleeft de volgende deploys. Haal het na twee dagen weg:
+
+```bash
+rm /var/www/belastinghulpzaanstad.nl/html/belasting.min.css
+```
+
+Dit is eenmalig. Zodra de map uit §2.3 staat, krijgt HTML
+`max-age=0, must-revalidate` en kan dit niet meer gebeuren. Doe §2.3 dus
+snel na de deploy, niet volgende week.
 
 ### 2.3 nginx: eerst de map
 
