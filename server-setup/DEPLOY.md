@@ -31,7 +31,8 @@ Zet je het server-blok eerst, dan kent nginx die variabele niet.
 | git push (pagina's + CSS) | nee | hash in de bestandsnaam |
 | kopie onder de oude CSS-naam | eenmalig, na de deploy | oude HTML in browsercaches vraagt die naam nog op, zie §2.2 |
 | nginx map-bestand | **ja, eerst** | definieert `$cache_control` |
-| nginx server-blok | **ja, daarna** | gebruikt `$cache_control` |
+| nginx map-bestand voor de tellingen | **ja, eerst** | definieert `$tel_dag`, `$tel_mee` en het logformaat |
+| nginx server-blok | **ja, daarna** | gebruikt `$cache_control`, `$tel_dag` en `$tel_mee` |
 
 De hash lost het probleem op voor HTML die nog gedownload moet worden, niet
 voor HTML die iemand al in zijn cache heeft. Dat verschil is de reden voor
@@ -228,7 +229,164 @@ De eerste vier moeten 404 geven, `seizoen.json` moet 200 geven. Die laatste
 is de belangrijkste: hij bewijst dat het blokkeren van `/data/gsc/` de
 seizoensbanner niet heeft meegenomen.
 
-### 2.6 Na de uitrol
+### 2.6 Conversiemeting aanzetten
+
+Dit is het enige deel van deze ronde dat **niet** met de git-deploy meekomt.
+De pagina's en `js/tellingen.js` komen er vanzelf op, maar nginx moet een map
+hebben om in te schrijven, en de maps en het logformaat moeten in de
+http-context staan.
+
+#### Wat er gemeten wordt
+
+Vijf dingen: een klik op WhatsApp, op een telefoonnummer, op een e-mailadres,
+het versturen van een formulier, en het halverwege verlaten van een formulier.
+`js/tellingen.js` stuurt met `sendBeacon` een leeg POST-verzoek naar `/t`,
+nginx antwoordt 204 en schrijft er een regel over weg:
+
+```
+{"t":"2026-08-28T14:00","e":"whatsapp","p":"/senioren/","v":""}
+```
+
+Tijdstip op het hele uur, gebeurtenis, pad, en bij afhaken de naam van het
+laatst aangeraakte veld. **Geen IP-adres, geen user-agent, geen sessie, geen
+verwijzende pagina, geen cookie.** Daarom is er geen toestemming nodig en staat
+deze meting los van de cookiebalk. Veldwaarden gaan er nooit in; alleen namen
+uit de lijst in `js/tellingen.js`, en een naam die daar niet op staat wordt
+`overig`.
+
+Er draait geen programma. Een access_log is append-only: de kernel schrijft met
+`O_APPEND`, dus twee gelijktijdige klikken kunnen elkaar niet overschrijven.
+Dat was de reden om geen JSON-bestand te gebruiken dat elke keer opnieuw wordt
+weggeschreven.
+
+#### 1. Een map om in te schrijven
+
+```bash
+sudo install -d -o www-data -g www-data -m 750 /var/log/belastinghulp/tellingen
+date -I | sudo tee /var/log/belastinghulp/tellingen/START
+```
+
+**Buiten de webroot, en met opzet.** De webroot is de repo-root; een vergeten
+nginx-regel zou de cijfers publiek downloadbaar maken. In `/var/log` kan dat
+niet. Eigenaar `www-data`, want dat is de gebruiker waaronder de
+nginx-workers draaien.
+
+`START` bevat de datum waarop je begint te meten. Het overzicht zet die datum
+bovenaan, zodat je later niet vergelijkt met een periode waarin er nog niets
+gemeten werd.
+
+**Voeg hier geen logrotate-regel voor toe.** nginx maakt zelf al een bestand
+per dag; logrotate zou daar overheen gaan. De bewaartermijn staat verderop.
+
+#### 2. De maps en het logformaat, vóór het server-blok
+
+```bash
+sudo cp server-setup/nginx-tellingen.conf /etc/nginx/conf.d/tellingen.conf
+sudo nginx -t
+```
+
+Zelfde volgorde-eis als bij de cache-map, en om dezelfde reden: het server-blok
+gebruikt `$tel_dag`, `$tel_mee` en het logformaat `tellingen`. Zet je het
+server-blok eerst, dan slaat `nginx -t` af met `unknown "tel_dag" variable`.
+
+#### 3. Je eigen IP-adres, zodat je jezelf niet meetelt
+
+```bash
+curl -s https://api.ipify.org; echo      # IPv4
+curl -s https://api64.ipify.org; echo    # IPv6, als je die hebt
+
+sudo tee /etc/nginx/conf.d/eigen-ip.map <<'IPS'
+198.51.100.24  0;
+IPS
+
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+Let op de puntkomma achter elke regel. Vervang het adres door dat van jezelf.
+Bestaat het bestand niet, dan is dat geen fout: de include in
+`nginx-tellingen.conf` gebruikt een sterretje en nginx slaat een patroon
+zonder treffers over.
+
+**Waarom twee filters voor eigen bezoek.** `?mijzelf=1` zet dit apparaat uit,
+maar dat zit in localStorage en werkt dus per apparaat en per browser. Het
+IP-filter werkt wél voor elk apparaat tegelijk: laptop, telefoon op de wifi,
+tablet. Zit je op 4G, dan valt je telefoon buiten het IP-filter; open daar dan
+eenmalig `https://belastinghulpzaanstad.nl/?mijzelf=1`. Er verschijnt een
+groene balk als het gelukt is. `?mijzelf=0` zet hem weer aan.
+
+Het IP-adres staat bewust niet in git. Het is een persoonsgegeven en de
+repo-root is de webroot.
+
+#### 4. Controleren dat POST wordt aangenomen
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" \
+  -X POST "https://belastinghulpzaanstad.nl/t?e=whatsapp&p=/test/"
+```
+
+Verwacht **204**. Krijg je 405, dan draait de oude config nog; krijg je 404,
+dan mist `location = /t`. Kijk daarna of de regel er staat:
+
+```bash
+sudo cat /var/log/belastinghulp/tellingen/$(date -I).ndjson
+```
+
+Staat er niets, loop dan deze drie langs:
+
+| geen regel omdat | controleer met |
+|---|---|
+| je eigen IP staat in `eigen-ip.map` (dit is de bedoeling) | test vanaf je telefoon op 4G |
+| `curl` telt als bot, want de UA bevat "curl" | gebruik `-A "Mozilla/5.0"` |
+| nginx mag niet in de map schrijven | `sudo -u www-data touch /var/log/belastinghulp/tellingen/x` |
+
+En controleer dat het overzicht niet publiek is:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://belastinghulpzaanstad.nl/intern/tellingen/
+```
+
+Verwacht **404**.
+
+#### 5. Uitlezen
+
+Op de server, als daar Node op staat (`node -v`):
+
+```bash
+cd /var/www/belastinghulpzaanstad.nl/html
+node scripts/tellingen-rapport.js --bron /var/log/belastinghulp/tellingen
+```
+
+Dat drukt de tabellen in de terminal af en schrijft `intern/tellingen/index.html`.
+Staat er geen Node op de server, dan hoeft dat ook niet:
+
+```bash
+# op je eigen machine
+rsync -av <user>@<server>:/var/log/belastinghulp/tellingen/ data/tellingen/
+node scripts/tellingen-rapport.js
+```
+
+Het overzicht komt dan lokaal in `intern/tellingen/index.html`; open dat met
+je browser. `/intern/` geeft op de server met opzet 404, dus in de browser
+kun je er niet bij — dat is de prijs voor niet publiceren. `data/tellingen/`
+en `intern/` staan in `.gitignore`.
+
+#### 6. Bewaartermijn
+
+Ruwe regels blijven **90 dagen** staan. Daarna houdt het script alleen de
+dagtotalen per gebeurtenis over, zonder pagina en zonder veldnaam, in
+`dagtotalen.json`. Wekelijks, als root, want de bestanden zijn van
+`www-data`:
+
+```
+7 4 * * 1 cd /var/www/belastinghulpzaanstad.nl/html && /usr/bin/node scripts/tellingen-rapport.js --bron /var/log/belastinghulp/tellingen --opruimen >/dev/null 2>&1
+```
+
+Draai je het nooit, dan blijven de regels staan. Ze bevatten geen
+persoonsgegevens, dus dat is geen datalek, maar de map groeit wel.
+
+---
+
+### 2.7 Na de uitrol
 
 ```bash
 node scripts/indexnow.js --alles     # Bing, en daarmee ChatGPT-zoek
@@ -279,6 +437,23 @@ Zonder quotes leest nginx `{8}` als een nieuw blok en slaat af.
 Dit is opgelost in de repo. Zie je het toch: haal de nieuwe versie op met
 `git pull` en kopieer het bestand opnieuw. `nginx -t` slaat hier af voordat
 er iets herlaadt, dus de site merkt er niets van.
+
+### Server-blok vóór `tellingen.conf`
+
+```
+nginx: [emerg] unknown "tel_dag" variable
+```
+
+Of `unknown log format "tellingen"`. Zelfde geval als hierboven: `nginx -t`
+slaat af, de draaiende nginx houdt de oude config, de site blijft online. Doe
+§2.6 stap 2 en test opnieuw.
+
+### Wel 204, maar geen regel in het dagbestand
+
+Dat is meestal goed nieuws: je eigen IP staat in `eigen-ip.map`. Zie de tabel
+in §2.6 stap 4 voor de drie oorzaken. De belangrijkste om uit te sluiten is de
+laatste: als nginx niet in de map mag schrijven, staat er in
+`/var/log/nginx/error.log` een regel met `Permission denied`.
 
 ### CSS-wijziging zonder `hash-css.js`
 
@@ -332,6 +507,33 @@ anders is gepusht.
 
 Wacht op de cron of forceer met `auto-deploy.sh`.
 
+### Alleen de meting uit
+
+De meting zit in de pagina's en in nginx. Los van elkaar uit te zetten:
+
+```bash
+# alleen de logregels stoppen, script blijft draaien maar krijgt 404
+sudo rm /etc/nginx/conf.d/tellingen.conf
+# dan MOET ook location = /t uit het server-blok, anders geeft nginx -t
+# unknown "tel_dag" variable
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+Laat je `location = /t` staan en haal je alleen het map-bestand weg, dan
+weigert nginx te herladen. De site blijft draaien op de oude config, maar je
+wijziging is niet actief. Haal ze samen weg, net als bij de cache-map.
+
+De verzoeken van de bezoeker gaan dan naar niets. Dat is geen probleem:
+`sendBeacon` wacht nergens op en de pagina merkt er niets van.
+
+Wil je het script er ook uit:
+
+```bash
+grep -rl 'js/tellingen.js' --include=index.html . | xargs sed -i '/js/tellingen.js/d'
+```
+
+De verzamelde regels blijven staan in `/var/log/belastinghulp/tellingen/`.
+
 ### Alleen de KvK-regel
 
 Die staat er nu niet op. Terugzetten zodra het nummer er is:
@@ -355,6 +557,9 @@ git checkout main && git merge --ff-only homepage-rework && git push
 # server
 cd /var/www/belastinghulpzaanstad.nl/html && ./server-setup/auto-deploy.sh
 sudo cp server-setup/nginx-cache-map.conf /etc/nginx/conf.d/cache-map.conf
+sudo cp server-setup/nginx-tellingen.conf  /etc/nginx/conf.d/tellingen.conf
+sudo install -d -o www-data -g www-data -m 750 /var/log/belastinghulp/tellingen
+date -I | sudo tee /var/log/belastinghulp/tellingen/START
 sudo nginx -t
 sudo cp /etc/nginx/sites-available/belastinghulpzaanstad.nl ~/nginx-backup-$(date +%F).conf
 sudo cp server-setup/nginx-belastinghulpzaanstad.conf \

@@ -40,3 +40,10 @@ node_modules/
 # wat hier in git komt is publiek te downloaden. Concurrentieanalyse en
 # prijsstrategie horen niet op het web.
 docs/
+
+# Conversiemeting. De logregels staan op de server in
+# /var/log/belastinghulp/tellingen/, dus buiten de webroot. Haal je ze op met
+# scp om ze lokaal te bekijken, dan komen ze hier terecht en horen ze niet in
+# git: de webroot IS de repo-root. Het overzicht in intern/ ook niet.
+data/tellingen/
+intern/
