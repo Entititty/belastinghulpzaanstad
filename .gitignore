@@ -36,10 +36,17 @@ desktop.ini
 # Node
 node_modules/
 
-# Interne analyses en werkdocumenten. De webroot IS de repo-root, dus alles
-# wat hier in git komt is publiek te downloaden. Concurrentieanalyse en
-# prijsstrategie horen niet op het web.
-docs/
+# Interne analyses en werkdocumenten. Twee redenen om ze buiten git te
+# houden: de webroot IS de repo-root, en de repo op GitHub is publiek. Een
+# bestand hier in git is dus twee keer openbaar, en de historie blijft ook na
+# verwijderen staan. Zoekdata uit Search Console, concurrentieanalyse en
+# prijsstrategie horen daar niet.
+#
+# Uitzondering: een openstaande TODO die geen cijfers bevat en die niet mag
+# zoekraken. "docs/*" en niet "docs/", want een negatie werkt niet als de map
+# zelf is uitgesloten; git kijkt er dan niet in.
+docs/*
+!docs/TODO-no-cure-no-pay.md
 
 # Conversiemeting. De logregels staan op de server in
 # /var/log/belastinghulp/tellingen/, dus buiten de webroot. Haal je ze op met
