@@ -97,6 +97,7 @@
   .form-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .form-consent{display:flex;gap:10px;align-items:flex-start;font-size:0.9rem;color:var(--clr-bark);line-height:1.5}
   .form-consent input{width:22px;height:22px;min-height:22px;margin-top:2px;flex:none}
+  .form-consent a{color:var(--clr-teal);font-weight:700}
   .form-submit{background:var(--clr-teal);color:#fff;border:none;border-radius:100px;padding:15px 30px;font-weight:800;font-size:1.02rem;cursor:pointer;font-family:var(--font-body);min-height:48px}
   .form-note{font-size:0.82rem;color:var(--clr-bark);margin-top:10px}
   .form-card{background:#fff;border-radius:16px;padding:28px 30px;box-shadow:0 4px 24px rgba(44,37,32,0.06);border:1px solid rgba(44,37,32,0.05)}
@@ -221,7 +222,7 @@
               <option value="Weekend avond (17:00-21:00)">Weekend, avond 17:00&ndash;21:00</option>
             </select>
           </div>
-          <label class="form-consent"><input type="checkbox" name="akkoord" required> Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</label>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
           <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
         </form>
       </div>
@@ -263,7 +264,7 @@
             <label for="c-bericht">Uw bericht</label>
             <textarea id="c-bericht" name="bericht" required></textarea>
           </div>
-          <label class="form-consent"><input type="checkbox" name="akkoord" required> Ik ga ermee akkoord dat mijn gegevens worden gebruikt om mijn vraag te beantwoorden. Zie het <a href="/privacy/">privacybeleid</a>.</label>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om mijn vraag te beantwoorden. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
           <div style="margin-top:18px;"><button type="submit" class="form-submit">Bericht versturen</button></div>
           <p class="form-note">Liever direct? Bel <a href="tel:+31619711848" rel="nofollow">06 – 19 71 18 48</a> of <a href="https://wa.me/31619711848" rel="nofollow">WhatsApp ons</a>.</p>
         </form>
