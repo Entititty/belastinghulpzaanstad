@@ -121,11 +121,6 @@ a { text-decoration: none; color: inherit; }
   50% { transform: scale(1.05); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
 .fade-up {
   opacity: 0;
   animation: fadeUp 0.7s ease-out forwards;
@@ -294,7 +289,7 @@ a { text-decoration: none; color: inherit; }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 720px);
   gap: 60px;
   align-items: center;
 }
@@ -409,79 +404,6 @@ a { text-decoration: none; color: inherit; }
 .btn-orange:hover {
   background: var(--clr-orange-dark);
   transform: translateY(-2px);
-}
-
-/* Hero visual card */
-.hero-visual {
-  position: relative;
-}
-
-.hero-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(200,185,168,0.2);
-  position: relative;
-  z-index: 2;
-}
-
-.hero-card-label {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--clr-bark);
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.hero-card-amount {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--clr-green);
-  margin-bottom: 4px;
-}
-
-.hero-card-period {
-  color: var(--clr-bark);
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-}
-
-.hero-card-breakdown {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.hero-card-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--clr-warm-white);
-  font-size: 0.9rem;
-}
-
-.hero-card-row:last-child { border: none; }
-
-.hero-card-row span:first-child { color: var(--clr-bark); }
-.hero-card-row span:last-child { font-weight: 700; }
-
-.hero-float-badge {
-  position: absolute;
-  top: -16px;
-  right: -16px;
-  background: var(--clr-orange);
-  color: white;
-  padding: 10px 18px;
-  border-radius: var(--radius);
-  font-weight: 800;
-  font-size: 0.85rem;
-  box-shadow: var(--shadow-glow-orange);
-  animation: float 3s ease-in-out infinite;
-  z-index: 3;
 }
 
 .hero-trust {
@@ -1470,63 +1392,8 @@ html[data-fontscale="xl"]{font-size:23px}
           </div>
         </div>
       </div>
-
-      <div class="hero-visual fade-up fade-up-d3">
-        <div class="hero-card">
-          <div class="hero-float-badge">Voorbeeld</div>
-          <div class="hero-card-label">Koopwoning in Zaandam: wat dat per maand oplevert</div>
-          <div class="hero-card-amount">+ &euro; 295</div>
-          <div class="hero-card-period">elke maand op uw rekening, het hele jaar door</div>
-          <div class="hero-card-breakdown">
-            <div class="hero-card-row">
-              <span>Rente die u betaalt over uw hypotheek</span>
-              <span>&euro; 12.600</span>
-            </div>
-            <div class="hero-card-row">
-              <span>Daarvan krijgt u terug (37,56%)</span>
-              <span>&euro; 4.733</span>
-            </div>
-            <div class="hero-card-row">
-              <span>Bijtelling voor uw eigen woning</span>
-              <span>- &euro; 1.190</span>
-            </div>
-            <div class="hero-card-row">
-              <span style="font-weight:700; color: var(--clr-green)">U houdt over, per maand</span>
-              <span style="color: var(--clr-green)">&rarr; &euro; 295</span>
-            </div>
-          </div>
-          <p class="hero-card-disclaimer">* Voorbeeld. Wat u krijgt hangt af van uw inkomen en uw woning. U kunt dit het hele jaar door aanvragen of wijzigen.</p>
-        </div>
-      </div>
     </div>
   </div>
-</section>
-
-<!-- ======== SEIZOENSBANNER (datumgestuurd via /js/seizoen.js, teksten in /data/seizoen.json) ======== -->
-<section id="uitstel-strip" style="padding:38px 0;background:linear-gradient(135deg,#B8421A 0%,#8E2F10 100%);border-top:3px solid #FFD166;">
-  <div class="container">
-    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
-      <div style="flex:1;min-width:280px;">
-        <div id="seizoen-badge" style="display:inline-block;background:#FFD166;color:#3A1A0A;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:5px 12px;border-radius:4px;margin-bottom:12px;">⏰ AANGIFTE 2025 NOG NIET GEDAAN?</div>
-        <h2 id="seizoen-title" style="color:#fff;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.25;margin:0 0 10px 0;">
-          Aangifte 2025 nog niet gedaan? <strong style="color:#FFF3D6;">Dat is nog op te lossen</strong>
-        </h2>
-        <p id="seizoen-desc" style="color:#fff;font-size:1rem;line-height:1.55;margin:0 0 0 0;max-width:620px;">
-          Zolang u nog geen aanmaning van de Belastingdienst heeft ontvangen, blijft een verzuimboete meestal uit. Hoe eerder u aangifte doet, hoe kleiner het risico. Al een herinnering of aanmaning binnen? Ook dan kijken we samen wat de beste stap is.
-        </p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px;min-width:240px;">
-        <a id="seizoen-cta" href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20mijn%20aangifte%202025%20nog%20niet%20gedaan.%20Kunnen%20jullie%20helpen%3F" style="background:#188741;color:#fff;text-decoration:none;padding:16px 26px;border-radius:100px;font-weight:800;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1.02rem;box-shadow:0 6px 22px rgba(37,211,102,0.45);" rel="nofollow">💬 Aangifte alsnog indienen, €69 →</a>
-        <a href="tel:+31619711848" style="background:rgba(255,255,255,0.12);color:#fff;text-decoration:none;padding:13px 26px;border-radius:100px;font-weight:700;text-align:center;border:2px solid rgba(255,255,255,0.35);display:inline-flex;align-items:center;justify-content:center;gap:8px;" rel="nofollow">📞 Bel direct: 06 – 19 71 18 48</a>
-      </div>
-    </div>
-    <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:22px;color:rgba(255,255,255,0.88);font-size:0.88rem;">
-      <span>✓ Persoonlijk, aan huis in Zaanstad</span>
-      <span id="seizoen-chip">✓ Hoe eerder, hoe kleiner het risico</span>
-      <span>✓ Aangifte rustig samen</span>
-    </div>
-  </div>
-  <script src="/js/seizoen.js" defer></script>
 </section>
 
 <!-- ======== WAT KAN IK NU NOG REGELEN ======== -->
