@@ -1,255 +1,255 @@
 {
   "_doc": "Eén bron van waarheid voor de fiscale cijfers (belastingjaar 2026). De site genereert NIET automatisch uit dit bestand (statische HTML); scripts/check-fiscale-cijfers.js faalt als een VEROUDERDE waarde ergens in de HTML terugkomt. Werk je een cijfer bij: pas \"waarde\" aan, zet de oude waarde in \"verouderd\", en vul \"bron_url\" en \"gecontroleerd_op\" (JJJJ-MM-DD) in. Een waarde zonder bron_url mag alleen blijven staan met \"bron_url_todo\": true; het script telt die apart. Waarden ouder dan 12 maanden geven een waarschuwing.",
   "belastingjaar": 2026,
-  "laatst_gecontroleerd": "2026-08-04",
+  "laatst_gecontroleerd": "2026-08-30",
   "bron_algemeen": "https://www.belastingdienst.nl",
   "cijfers": {
     "box1_schijf1_tarief": {
       "waarde": "35,75%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, tarieven inkomstenbelasting 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf2_tarief": {
       "waarde": "37,56%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, tarieven 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [
         "36,93%",
         "36.93%",
         "36,97%",
         "36.97%"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf3_tarief": {
       "waarde": "49,50%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, tarieven 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "max_aftrektarief_eigen_woning": {
       "waarde": "37,56%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, aftrek eigen woning 2026",
+      "bron": "belastingdienst.nl: \"krijgt u in 2026 over al uw aftrekposten in de hoogste belastingschijf maximaal 37,56% belasting terug\"",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/aftrek-en-kortingen/content/afbouw-tarief-aftrekposten-bij-hoog-inkomen"
     },
     "eigenwoningforfait_pct": {
       "waarde": "0,35%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, eigenwoningforfait 2026 (WOZ tot €1.350.000)",
+      "bron": "belastingdienst.nl, eigenwoningforfait: 0,35% van de WOZ-waarde (rekenvoorbeeld €280.000 x 0,0035 = €980)",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/koopwoning/content/hoe-werkt-eigenwoningforfait"
     },
     "algemene_heffingskorting_max": {
       "waarde": "€3.115",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, heffingskortingen 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [
         "€3.362"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "arbeidskorting_max": {
       "waarde": "€5.685",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, arbeidskorting 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [
         "€5.599"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "iack_max": {
       "waarde": "€3.032",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, inkomensafhankelijke combinatiekorting 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: IACK maximaal €3.032 vanaf een arbeidsinkomen van €32.710",
       "verouderd": [
         "€2.950"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "ouderenkorting_max": {
       "waarde": "€2.067",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, ouderenkorting 2026 (grens €46.002)",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [
         "€2.035"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "ouderenkorting_alleenstaande": {
       "waarde": "€540",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, alleenstaandeouderenkorting 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [
         "€478"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "zorgtoeslag_inkomensgrens_alleenstaand": {
       "waarde": "€40.857",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, zorgtoeslag 2026",
+      "bron": "belastingdienst.nl, kan ik zorgtoeslag krijgen: \"niet hoger dan € 40.857 per jaar\"",
       "verouderd": [
         "€38.520"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "zorgtoeslag_inkomensgrens_partners": {
       "waarde": "€51.142",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, zorgtoeslag 2026",
+      "bron": "belastingdienst.nl, kan ik zorgtoeslag krijgen: \"samen niet hoger dan € 51.142 per jaar\"",
       "verouderd": [
         "€48.224"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "zorgtoeslag_vermogensgrens_alleenstaand": {
       "waarde": "€146.011",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, zorgtoeslag vermogen 2026",
+      "bron": "belastingdienst.nl, kan ik zorgtoeslag krijgen: \"niet meer vermogen dan € 146.011\"",
       "verouderd": [
         "€140.213"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "zorgtoeslag_vermogensgrens_partners": {
       "waarde": "€184.633",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, zorgtoeslag vermogen 2026",
+      "bron": "belastingdienst.nl, kan ik zorgtoeslag krijgen: \"samen niet hoger dan € 184.633\"",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "huurtoeslag_rekenhuur_max": {
       "waarde": "€932,93",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, huurtoeslag 2026",
+      "bron": "belastingdienst.nl, berekening huurtoeslag 2026: maximale rekenhuur €932,93 vanaf 21 jaar",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-huurtoeslag-2026"
     },
     "kinderopvang_uurtarief_dagopvang": {
       "waarde": "€11,23",
       "geverifieerd": true,
-      "bron": "rijksoverheid.nl, maximumuurtarieven kinderopvang 2026",
+      "bron": "belastingdienst.nl, maximumuurprijs kinderopvangtoeslag 2026: dagopvang €11,23",
       "verouderd": [
         "€10,25"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang"
     },
     "kinderopvang_uurtarief_bso": {
       "waarde": "€9,98",
       "geverifieerd": true,
-      "bron": "rijksoverheid.nl, maximumuurtarieven 2026",
+      "bron": "belastingdienst.nl, maximumuurprijs kinderopvangtoeslag 2026: buitenschoolse opvang €9,98",
       "verouderd": [
         "€8,80"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang"
     },
     "kinderopvang_uurtarief_gastouder": {
       "waarde": "€8,49",
       "geverifieerd": true,
-      "bron": "rijksoverheid.nl, maximumuurtarieven 2026",
+      "bron": "belastingdienst.nl, maximumuurprijs kinderopvangtoeslag 2026: gastouderopvang €8,49",
       "verouderd": [
         "€7,53"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang"
     },
     "kindgebonden_budget_vermogensgrens_alleenstaand": {
       "waarde": "€146.011",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, kindgebonden budget 2026",
+      "bron": "belastingdienst.nl; zelfde vermogensgrens als de zorgtoeslag, €146.011",
       "verouderd": [
         "€152.000"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "box3_heffingvrij_alleenstaand": {
       "waarde": "€59.357",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, box 3 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026; ook op de box 3-berekenpagina",
       "verouderd": [
         "€57.684"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box3_heffingvrij_partners": {
       "waarde": "€118.714",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, box 3 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box3_forfait_spaargeld": {
       "waarde": "1,28%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, box 3 forfaits 2026",
+      "bron": "belastingdienst.nl, berekening box 3-inkomen 2026. LET OP: het percentage voor banktegoeden is voorlopig en wordt begin 2027 definitief vastgesteld",
       "verouderd": [
         "1,44%"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_forfait_beleggingen": {
       "waarde": "6,00%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, box 3 forfaits 2026",
+      "bron": "belastingdienst.nl, berekening box 3-inkomen 2026; dit percentage staat al vast",
       "verouderd": [
         "5,88%"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_forfait_schulden": {
       "waarde": "2,70%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, box 3 forfaits 2026",
+      "bron": "belastingdienst.nl, berekening box 3-inkomen 2026. LET OP: voorlopig, wordt begin 2027 definitief",
       "verouderd": [
         "2,46%"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_schuldendrempel_alleenstaand": {
       "waarde": "€3.800",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, box 3 2026",
+      "bron": "belastingdienst.nl, berekening box 3-inkomen 2026: drempel van €3.800 per persoon",
       "verouderd": [
         "€3.700"
       ],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_tarief": {
       "waarde": "36%",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl, box 3 2026",
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: 36% over het rendement",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "verzuimboete_eerste": {
       "waarde": "€469",
@@ -278,10 +278,34 @@
     "startkorting_eerste_klanten": {
       "waarde": "€20",
       "geverifieerd": true,
-      "bron": "eigen aanbod Belastinghulp Zaanstad",
+      "bron": "eigen actie, aangekondigd op /over-ons/ en op de plaatspagina's",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-04",
-      "bron_url_todo": true
+      "gecontroleerd_op": "2026-08-30",
+      "bron_url": "https://belastinghulpzaanstad.nl/over-ons/"
+    },
+    "huurtoeslag_vermogensgrens_alleenstaand": {
+      "waarde": "€38.479",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl: \"Iedere bewoner mag op 1 januari 2026 maximaal € 38.479 hebben.\"",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/maximaal-vermogen-huurtoeslag",
+      "gecontroleerd_op": "2026-08-30",
+      "verouderd": [
+        "€36.952",
+        "€ 36.952",
+        "€36,952"
+      ]
+    },
+    "huurtoeslag_vermogensgrens_partners": {
+      "waarde": "€76.958",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl: \"Partners mogen samen op 1 januari 2026 maximaal € 76.958 hebben.\"",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/maximaal-vermogen-huurtoeslag",
+      "gecontroleerd_op": "2026-08-30",
+      "verouderd": [
+        "€73.904",
+        "€ 73.904",
+        "€73,904"
+      ]
     }
   }
 }
