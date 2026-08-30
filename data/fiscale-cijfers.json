@@ -182,12 +182,12 @@
     "kindgebonden_budget_vermogensgrens_alleenstaand": {
       "waarde": "€146.011",
       "geverifieerd": true,
-      "bron": "belastingdienst.nl; zelfde vermogensgrens als de zorgtoeslag, €146.011",
+      "bron": "belastingdienst.nl, kan ik kindgebonden budget krijgen: \"Op 1 januari 2026 mag u niet meer vermogen hebben dan € 146.011\", met toeslagpartner € 184.633",
       "verouderd": [
         "€152.000"
       ],
       "gecontroleerd_op": "2026-08-30",
-      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/kindgebonden-budget/content/kan-ik-kindgebonden-budget-krijgen"
     },
     "box3_heffingvrij_alleenstaand": {
       "waarde": "€59.357",
@@ -320,6 +320,22 @@
         "€73.904",
         "€ 73.904",
         "€73,904"
+      ]
+    },
+    "belastingrente_ib": {
+      "waarde": "5%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, overzicht percentages belastingrente: vanaf 1 januari 2026 is het percentage 5 voor alle belastingen behalve toeslagen en vennootschapsbelasting",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente",
+      "gecontroleerd_op": "2026-08-30",
+      "context": [
+        "belastingrente",
+        "rente"
+      ],
+      "verouderd": [
+        "6,5% belastingrente",
+        "belastingrente (6,5%",
+        "tarief 6,5%"
       ]
     }
   }
