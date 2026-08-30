@@ -897,35 +897,6 @@ section {
 
 
 /* ========================================
-   REGIO
-   ======================================== */
-.regio-badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.regio-badge {
-  background: white;
-  padding: 10px 22px;
-  border-radius: var(--radius-pill);
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--clr-deep);
-  border: 1px solid var(--clr-sand);
-  transition: all 0.3s;
-}
-
-.regio-badge:hover {
-  border-color: var(--clr-teal);
-  color: var(--clr-teal);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-}
-
-/* ========================================
    FAQ
    ======================================== */
 .faq {
@@ -1285,11 +1256,6 @@ html[data-fontscale="xl"]{font-size:23px}
 .wie-naam{color:var(--clr-teal);font-weight:800;margin:0 0 16px;font-size:1rem}
 .wie-grid p{color:var(--clr-bark);line-height:1.7;margin:0 0 14px}
 .wie-link{color:var(--clr-teal);font-weight:700}
-.klaar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 44px;max-width:900px;margin:0 auto}
-.klaar-lijst{list-style:none;margin:0;padding:0}
-.klaar-lijst li{position:relative;padding:9px 0 9px 30px;color:var(--clr-deep);line-height:1.55;border-bottom:1px solid var(--clr-sand)}
-.klaar-lijst li::before{content:"\2713";position:absolute;left:0;top:9px;color:var(--clr-green);font-weight:800}
-.klaar-noot{margin-top:32px;text-align:center}
 .tb-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;max-width:960px;margin:0 auto}
 .tb-grid h2{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);color:var(--clr-deep);margin:0 0 14px}
 .tb-grid p{color:var(--clr-bark);line-height:1.7;margin:0 0 16px}
@@ -1306,7 +1272,7 @@ html[data-fontscale="xl"]{font-size:23px}
 .form-submit{background:var(--clr-teal);color:#fff;border:none;border-radius:100px;padding:15px 30px;font-weight:800;font-size:1.02rem;cursor:pointer;font-family:var(--font-body);min-height:48px}
 .form-submit:hover{background:var(--clr-teal-dark)}
 .form-card{background:#fff;border-radius:16px;padding:28px 30px;box-shadow:0 4px 24px rgba(44,37,32,0.06);border:1px solid rgba(44,37,32,0.05)}
-@media(max-width:900px){.zelf-grid{grid-template-columns:1fr}.wie-grid{grid-template-columns:1fr;gap:28px;text-align:center}.wie-foto{max-width:200px;margin:0 auto}.klaar-grid{grid-template-columns:1fr}.tb-grid{grid-template-columns:1fr;gap:32px}}
+@media(max-width:900px){.zelf-grid{grid-template-columns:1fr}.wie-grid{grid-template-columns:1fr;gap:28px;text-align:center}.wie-foto{max-width:200px;margin:0 auto}.tb-grid{grid-template-columns:1fr;gap:32px}}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--clr-teal);color:#fff;padding:12px 20px;border-radius:0 0 8px 0;font-weight:700;text-decoration:none}.skip-link:focus{left:0}
 .bhz-mobilebar{display:none}
 @media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#188741;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
@@ -1402,7 +1368,7 @@ html[data-fontscale="xl"]{font-size:23px}
     <div class="section-header">
       <div class="section-eyebrow">&#9670; Het hele jaar door</div>
       <h2 class="section-title">Wat kan ik nu nog regelen?</h2>
-      <p class="section-desc">De aangifteperiode is voorbij, maar er zijn nog volop kansen om uw belastingzaken op orde te brengen. Dit zijn de belangrijkste diensten waar u het hele jaar bij ons terecht kunt.</p>
+      <p class="section-desc">Krijgt u AOW, heeft u een koopwoning, of bent u te laat met uw aangifte over 2025? Dat zijn de drie vragen waarmee de meeste mensen bij ons binnenkomen. Hieronder ziet u per situatie wat wij het hele jaar door voor u regelen.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:40px;">
 
@@ -1471,11 +1437,11 @@ html[data-fontscale="xl"]{font-size:23px}
         <ul class="teruggave-checklist">
           <li>
             <span class="teruggave-check">&#10003;</span>
-            <span><strong>Hypotheekrenteaftrek</strong>. Je betaalt minder belasting over je inkomen</span>
+            <span><strong>Hypotheekrenteaftrek</strong>. U betaalt minder belasting over uw inkomen</span>
           </li>
           <li>
             <span class="teruggave-check">&#10003;</span>
-            <span><strong>Maandelijks geld terug</strong>, geen jaar wachten, direct op je rekening</span>
+            <span><strong>Maandelijks geld terug</strong>, geen jaar wachten, direct op uw rekening</span>
           </li>
           <li>
             <span class="teruggave-check">&#10003;</span>
@@ -1487,12 +1453,12 @@ html[data-fontscale="xl"]{font-size:23px}
           </li>
           <li>
             <span class="teruggave-check">&#10003;</span>
-            <span><strong>Wij doen het voor je</strong>, binnen 1 week geregeld</span>
+            <span><strong>Wij doen het voor u</strong>, binnen 1 week geregeld</span>
           </li>
         </ul>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="/diensten/voorlopige-teruggave/" class="btn btn-orange">Voorlopige teruggave aanvragen &rarr;</a>
-          <a href="/blog/hypotheekrenteaftrek-berekenen/" class="btn btn-secondary">🧮 Bereken je voordeel</a>
+          <a href="/blog/hypotheekrenteaftrek-berekenen/" class="btn btn-secondary">🧮 Bereken uw voordeel</a>
         </div>
       </div>
 
@@ -1519,7 +1485,7 @@ html[data-fontscale="xl"]{font-size:23px}
             <span>&euro; 295</span>
           </div>
           <div class="teruggave-example-note">
-            &#128161; Dit bedrag krijg je elke maand op je rekening als je een voorlopige teruggave aanvraagt
+            &#128161; Dit bedrag krijgt u elke maand op uw rekening als u een voorlopige teruggave aanvraagt
           </div>
           <p class="berekening-disclaimer">* Indicatief rekenvoorbeeld op basis van een gemiddelde woningprijs in Zaanstad. Het werkelijke bedrag hangt af van uw inkomen, hypotheekvorm, belastingschijf en persoonlijke situatie. Wij berekenen het exacte bedrag voor u.</p>
         </div>
@@ -1533,34 +1499,6 @@ html[data-fontscale="xl"]{font-size:23px}
   Twijfelt u nog? Bel <a href="tel:+31619711848" class="mid-cta-phone" rel="nofollow">06 &ndash; 19 71 18 48</a>
   of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag." class="mid-cta-wa" rel="nofollow">stuur een WhatsApp &rarr;</a>
 </div>
-
-<!-- ======== ZOEK HET ZELF UIT ======== -->
-<section id="zelf-uitzoeken" style="padding:80px 0;">
-  <div class="container">
-    <div class="section-head">
-      <h2>Eerst zelf uitzoeken? Dat kan</h2>
-      <p>U hoeft niet te bellen om te beginnen. Op deze pagina&rsquo;s staan de bedragen en grenzen voor 2026, met tabellen waarin u uw eigen situatie kunt opzoeken.</p>
-    </div>
-    <div class="zelf-grid">
-      <a href="/blog/hypotheekrenteaftrek-berekenen/" class="zelf-card">
-        <h3>Heeft u een koopwoning?</h3>
-        <p>Wat u per maand terug kunt krijgen van de rente die u over uw hypotheek betaalt, met voorbeelden per inkomen.</p>
-        <span class="zelf-link">Bekijk de tabellen &rarr;</span>
-      </a>
-      <a href="/blog/huurtoeslag-berekenen/" class="zelf-card">
-        <h3>Huurt u een woning?</h3>
-        <p>De huurgrenzen en inkomensgrenzen voor huurtoeslag in 2026, en hoeveel u ongeveer krijgt.</p>
-        <span class="zelf-link">Bekijk de grenzen &rarr;</span>
-      </a>
-      <a href="/blog/ouderenkorting/" class="zelf-card">
-        <h3>Krijgt u AOW?</h3>
-        <p>De kortingen waar u vanaf uw AOW-leeftijd recht op heeft, en wat dat scheelt op uw aanslag.</p>
-        <span class="zelf-link">Bekijk de bedragen &rarr;</span>
-      </a>
-    </div>
-    <p class="zelf-noot">Komt u er niet uit, of wilt u het zeker weten? Wij kijken vrijblijvend met u mee. <a href="tel:+31619711848" rel="nofollow">Bel 06 &ndash; 19 71 18 48</a> of <a href="#terugbellen">laat uw nummer achter</a>.</p>
-  </div>
-</section>
 
 <!-- ======== TARIEVEN ======== -->
 <section class="tarieven" id="tarieven">
@@ -1667,41 +1605,50 @@ html[data-fontscale="xl"]{font-size:23px}
   </div>
 </section>
 
-<!-- ======== UW GEGEVENS ZIJN VEILIG ======== -->
-<section id="veiligheid" style="padding:72px 0;background:var(--clr-warm-white);">
+<!-- ======== TERUGBELVERZOEK ======== -->
+<section id="terugbellen" style="padding:80px 0;background:var(--clr-warm-white);">
   <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">&#9670; Uw gegevens zijn veilig</div>
-      <h2 class="section-title">U vertrouwt ons gevoelige gegevens toe. Zo gaan wij daarmee om</h2>
-      <p class="section-desc">Concreet, geen vage geruststellingen.</p>
+    <div class="tb-grid">
+      <div>
+        <h2>Liever niet zelf bellen?</h2>
+        <p>Laat uw naam en nummer achter. Wij bellen u terug, dezelfde dag als u het voor 21:00 doorgeeft. Meer hoeft u niet in te vullen.</p>
+        <p class="tb-tijden"><strong>Wij bellen</strong><br>doordeweeks 18:00&ndash;21:00<br>zaterdag en zondag 09:00&ndash;21:00</p>
+        <p class="tb-of">Liever direct? Bel <a href="tel:+31619711848" rel="nofollow">06 &ndash; 19 71 18 48</a> of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag." rel="nofollow">stuur een WhatsApp</a>.</p>
+      </div>
+      <div class="form-card">
+        <form action="https://formspree.io/f/xrbndagq" method="POST">
+          <input type="hidden" name="formtype" value="terugbelverzoek">
+<input type="hidden" name="email" value="noreply@belastinghulpzaanstad.nl">
+<input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/?ok=1">
+<input type="hidden" name="_subject" value="Terugbelverzoek via de website">
+          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+          <div class="form-field">
+            <label for="hp-naam">Uw naam</label>
+            <input type="text" id="hp-naam" name="naam" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="hp-tel">Telefoonnummer</label>
+            <input type="tel" id="hp-tel" name="telefoon" required autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="hp-dagdeel">Wanneer kunnen wij u het beste bereiken?</label>
+            <select id="hp-dagdeel" name="dagdeel">
+              <option value="Maakt niet uit">Maakt niet uit</option>
+              <option value="Doordeweeks avond (18:00-21:00)">Doordeweeks &rsquo;s avonds, 18:00&ndash;21:00</option>
+              <option value="Weekend ochtend (09:00-13:00)">Weekend, ochtend 09:00&ndash;13:00</option>
+              <option value="Weekend middag (13:00-17:00)">Weekend, middag 13:00&ndash;17:00</option>
+              <option value="Weekend avond (17:00-21:00)">Weekend, avond 17:00&ndash;21:00</option>
+            </select>
+          </div>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
+          <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
+        </form>
+      </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:36px;">
-      <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid var(--clr-teal);">
-        <div style="font-size:1.8rem;margin-bottom:12px;">&#128272;</div>
-        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Wij nemen uw DigiD nooit over</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Wij vragen of gebruiken uw DigiD-inloggegevens nooit. Wij werken via een machtiging bij de Belastingdienst (met een code die u zelf aanvraagt) of doen de aangifte samen terwijl u zelf inlogt.</p>
-      </div>
-      <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid var(--clr-orange);">
-        <div style="font-size:1.8rem;margin-bottom:12px;">&#128451;&#65039;</div>
-        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Documenten beveiligd &amp; kort bewaard</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Wij bewaren uw documenten beveiligd en niet langer dan nodig is voor uw aangifte en de wettelijke bewaarplicht. De exacte termijnen leest u in ons <a href="/privacy/">privacybeleid</a>.</p>
-      </div>
-      <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid var(--clr-green);">
-        <div style="font-size:1.8rem;margin-bottom:12px;">&#129296;</div>
-        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Geheimhouding</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Alles wat u ons vertelt, blijft tussen ons. Wij delen uw gegevens niet met derden, behalve wanneer dat nodig is om uw aangifte in te dienen of wanneer de wet ons daartoe verplicht.</p>
-      </div>
-      <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid #B8421A;">
-        <div style="font-size:1.8rem;margin-bottom:12px;">&#129534;</div>
-        <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Geen verrassingen</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Het eerste gesprek is gratis en vrijblijvend. Pas na uw akkoord met de vaste prijs gaan we aan de slag. Zie ook onze <a href="/algemene-voorwaarden/">algemene voorwaarden</a>.</p>
-      </div>
-    </div>
-    <!-- TODO eigenaar: beroepsaansprakelijkheidsverzekering hier vermelden zodra afgesloten (verzekeraar + dekking). -->
   </div>
 </section>
 
-<!-- ======== WIE HET VOOR U DOET ======== -->
+<!-- ======== VERTROUWEN (wie er langskomt + uw gegevens zijn veilig) ======== -->
 <section id="wie" style="padding:80px 0;background:var(--clr-warm-white);">
   <div class="container">
     <div class="wie-grid">
@@ -1716,6 +1663,36 @@ html[data-fontscale="xl"]{font-size:23px}
         <p>Ik werk in heel Zaanstad en de Zaanstreek, het hele jaar door. Vooraf spreken we een vaste prijs af. Komt u er met mij niet uit, dan zeg ik dat ook, dan bent u beter geholpen bij het Sociaal Wijkteam of de Bibliotheek, en die hulp is gratis.</p>
         <a href="/over-ons/" class="wie-link">Meer over mij en hoe ik werk &rarr;</a>
       </div>
+    </div>
+    <div id="veiligheid" style="margin-top:64px;">
+      <div class="section-header">
+        <div class="section-eyebrow">&#9670; Uw gegevens zijn veilig</div>
+        <h2 class="section-title">U vertrouwt ons gevoelige gegevens toe. Zo gaan wij daarmee om</h2>
+        <p class="section-desc">Concreet, geen vage geruststellingen.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:36px;">
+        <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid var(--clr-teal);">
+          <div style="font-size:1.8rem;margin-bottom:12px;">&#128272;</div>
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Wij nemen uw DigiD nooit over</h3>
+          <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Wij vragen of gebruiken uw DigiD-inloggegevens nooit. Wij werken via een machtiging bij de Belastingdienst (met een code die u zelf aanvraagt) of doen de aangifte samen terwijl u zelf inlogt.</p>
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid var(--clr-orange);">
+          <div style="font-size:1.8rem;margin-bottom:12px;">&#128451;&#65039;</div>
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Documenten beveiligd &amp; kort bewaard</h3>
+          <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Wij bewaren uw documenten beveiligd en niet langer dan nodig is voor uw aangifte en de wettelijke bewaarplicht. De exacte termijnen leest u in ons <a href="/privacy/">privacybeleid</a>.</p>
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid var(--clr-green);">
+          <div style="font-size:1.8rem;margin-bottom:12px;">&#129296;</div>
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Geheimhouding</h3>
+          <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Alles wat u ons vertelt, blijft tussen ons. Wij delen uw gegevens niet met derden, behalve wanneer dat nodig is om uw aangifte in te dienen of wanneer de wet ons daartoe verplicht.</p>
+        </div>
+        <div style="background:#fff;border-radius:14px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.05);border-top:4px solid #B8421A;">
+          <div style="font-size:1.8rem;margin-bottom:12px;">&#129534;</div>
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Geen verrassingen</h3>
+          <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin:0;">Het eerste gesprek is gratis en vrijblijvend. Pas na uw akkoord met de vaste prijs gaan we aan de slag. Zie ook onze <a href="/algemene-voorwaarden/">algemene voorwaarden</a>.</p>
+        </div>
+      </div>
+      <!-- TODO eigenaar: beroepsaansprakelijkheidsverzekering hier vermelden zodra afgesloten (verzekeraar + dekking). -->
     </div>
   </div>
 </section>
@@ -1751,31 +1728,7 @@ html[data-fontscale="xl"]{font-size:23px}
         <p>U ontvangt uw teruggave. Bij een voorlopige aanvraag zelfs maandelijks.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ======== WAT MOET U KLAARLEGGEN ======== -->
-<section id="klaarleggen" style="padding:80px 0;">
-  <div class="container">
-    <div class="section-head">
-      <h2>Wat moet u klaarleggen?</h2>
-      <p>Niet veel. Wat u niet kunt vinden, zoeken wij samen op. Dit is het meest gevraagde:</p>
-    </div>
-    <div class="klaar-grid">
-      <ul class="klaar-lijst">
-        <li>Uw DigiD. Die blijft van u, wij nemen hem niet over</li>
-        <li>Uw jaaropgave of laatste loonstrook</li>
-        <li>Bij AOW of pensioen: de jaaropgave van de SVB en het pensioenfonds</li>
-        <li>Bij een koopwoning: de jaaropgave van de hypotheek en de WOZ-beschikking</li>
-      </ul>
-      <ul class="klaar-lijst">
-        <li>Jaaroverzichten van uw bank- en spaarrekeningen</li>
-        <li>Bonnen van zorgkosten of giften, als u die heeft</li>
-        <li>Uw laatste aanslag of beschikking van de Belastingdienst</li>
-        <li>Bij toeslagen: uw huurcontract of de laatste huurverhoging</li>
-      </ul>
-    </div>
-    <p class="klaar-noot"><a href="/checklist/" class="btn btn-secondary">Bekijk de volledige checklist</a></p>
+    <p style="text-align:center;margin-top:38px;color:var(--clr-bark);font-size:1rem;">Wat u moet klaarleggen, staat op <a href="/checklist/" style="color:var(--clr-teal);font-weight:700;">onze checklist</a>. Wat u niet kunt vinden, zoeken wij samen op.</p>
   </div>
 </section>
 
@@ -1807,7 +1760,7 @@ html[data-fontscale="xl"]{font-size:23px}
       <div class="audience-card audience-card--starters">
         <div class="audience-icon">&#127968;&#128274;</div>
         <h3>Starters &amp; Eerste Woning</h3>
-        <p>Net je eerste huis gekocht? Vraag een voorlopige teruggave aan en krijg maandelijks geld terug. Wij regelen het snel en makkelijk.</p>
+        <p>Heeft u net uw eerste huis gekocht? Vraag een voorlopige teruggave aan en krijg maandelijks geld terug. Wij regelen het snel en makkelijk.</p>
         <ul class="audience-list">
           <li><span class="audience-list-icon">&#10003;</span> Voorlopige teruggave aanvragen</li>
           <li><span class="audience-list-icon">&#10003;</span> Hypotheekrenteaftrek berekenen</li>
@@ -1822,113 +1775,34 @@ html[data-fontscale="xl"]{font-size:23px}
   </div>
 </section>
 
-<!-- ======== REGIO ======== -->
-<section>
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">&#9670; Werkgebied</div>
-      <h2 class="section-title">Heel Zaanstad en omgeving</h2>
-      <p class="section-desc">Wij komen bij u thuis of helpen u online. Overal in de gemeente Zaanstad.</p>
-    </div>
-    <div class="regio-badges">
-      <a href="zaandam/" class="regio-badge">Zaandam</a>
-      <a href="krommenie/" class="regio-badge">Krommenie</a>
-      <a href="assendelft/" class="regio-badge">Assendelft</a>
-      <a href="wormerveer/" class="regio-badge">Wormerveer</a>
-      <a href="koog-aan-de-zaan/" class="regio-badge">Koog aan de Zaan</a>
-      <a href="zaandijk/" class="regio-badge">Zaandijk</a>
-      <a href="westzaan/" class="regio-badge">Westzaan</a>
-      <a href="wormerland/" class="regio-badge">Wormerland</a>
-      <a href="oostzaan/" class="regio-badge">Oostzaan</a>
-    </div>
-  </div>
-</section>
-
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">&#9670; Veelgestelde vragen</div>
-      <h2 class="section-title">Vragen over uw belastingzaken</h2>
-    </div>
-
-    <div class="faq-grid">
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Ik heb mijn aangifte 2025 niet gedaan vóór 1 mei: wat nu?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Geen paniek. U kunt nog steeds aangifte doen. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469, bij herhaling meer). Hoe eerder u indient, hoe kleiner het risico. Heeft u al een herinnering of aanmaning ontvangen? Ook dan dienen we uw aangifte snel voor u in.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Krijgen jullie mijn DigiD-inloggegevens?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p><strong>Nee, wij vragen of gebruiken uw DigiD-inloggegevens nooit.</strong> Dat mag niet en dat is ook niet nodig. We werken op twee veilige manieren: u geeft ons een <strong>machtiging</strong> via de Belastingdienst (met een machtigingscode die u zelf aanvraagt), óf we doen de aangifte <strong>samen aan uw keukentafel</strong> terwijl u zelf inlogt. Zo houdt u altijd zelf de controle over uw gegevens.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Kan ik een voorlopige teruggave nu nog aanvragen voor 2026?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Zeker. Een voorlopige teruggave kunt u het hele jaar door aanvragen of wijzigen. Heeft u een koopwoning, dan ontvangt u uw hypotheekrenteaftrek maandelijks op uw rekening in plaats van één keer per jaar. Ook bij een verhuizing, nieuwe hypotheek, salariswijziging of gezinsuitbreiding is het verstandig uw voorlopige teruggave te laten bijwerken.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Tot hoever terug kunnen jullie aangiften corrigeren?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>U kunt tot 5 jaar terug een correctie indienen bij de Belastingdienst. Dat betekent dat wij uw aangiften over 2021, 2022, 2023 en 2024 kunnen nakijken op gemiste aftrekposten, zoals zorgkosten, giften, studiekosten of partneralimentatie. Wij doen een gratis eerste check. Blijkt dat u geld heeft laten liggen, dan dienen wij een verbeterde aangifte voor u in. Dit valt onder ons Correctie &amp; late aangifte-tarief van €69.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Wat is bezwaar Box 3 en kom ik in aanmerking?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Box 3 is de belasting over uw spaargeld en beleggingen. De Hoge Raad heeft geoordeeld dat de oude rekenmethode niet deugde voor de jaren 2021 tot en met 2024. Als uw werkelijke rendement lager was dan het forfaitair bepaalde rendement, kunt u bezwaar maken en belasting terugkrijgen. Dit kan oplopen tot honderden euro's. Wij dienen kosteloos een pro forma bezwaar voor u in. Het hoofdbezwaar doen wij op basis van no cure no pay. U betaalt alleen als u geld terugkrijgt.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Wij verwachten een erfenis of willen schenken. Kunnen jullie helpen?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Jazeker. Bij overlijden moet u binnen 8 maanden aangifte erfbelasting doen, een ingewikkeld formulier dat veel mensen onderschatten. Ook bij schenkingen aan kinderen of kleinkinderen zijn er jaarlijkse vrijstellingen waar u slim gebruik van kunt maken (bijvoorbeeld de eenmalige verhoogde vrijstelling voor een eigen woning). Wij begeleiden u rustig door het proces en zorgen dat u niet meer betaalt dan nodig is. Vraag vrijblijvend een offerte aan.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======== MID-CTA #3 ======== -->
-<div class="mid-cta">
-  Vraag niet beantwoord? Bel <a href="tel:+31619711848" class="mid-cta-phone" rel="nofollow">06 &ndash; 19 71 18 48</a>
-  of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20mijn%20situatie." class="mid-cta-wa" rel="nofollow">stuur een WhatsApp &rarr;</a>
-</div>
-
-<!-- ======== BLOG-SECTIE ======== -->
+<!-- ======== KENNISBANK (zelf uitzoeken + artikelen) ======== -->
 <section id="blog" style="padding:80px 0;background:var(--clr-warm-white);">
   <div class="container">
     <div class="section-header">
       <div class="section-eyebrow">&#9670; Kennisbank</div>
-      <h2 class="section-title">Handige artikelen voor u</h2>
-      <p class="section-desc">Alles over belastingaangifte, toeslagen en kortingen – speciaal voor senioren en woningeigenaren in Zaanstad.</p>
+      <h2 class="section-title">Eerst zelf uitzoeken? Dat kan</h2>
+      <p class="section-desc">U hoeft niet te bellen om te beginnen. Op deze pagina&rsquo;s staan de bedragen en grenzen voor 2026, met tabellen waarin u uw eigen situatie kunt opzoeken.</p>
     </div>
+    <div class="zelf-grid" id="zelf-uitzoeken">
+      <a href="/blog/hypotheekrenteaftrek-berekenen/" class="zelf-card">
+        <h3>Heeft u een koopwoning?</h3>
+        <p>Wat u per maand terug kunt krijgen van de rente die u over uw hypotheek betaalt, met voorbeelden per inkomen.</p>
+        <span class="zelf-link">Bekijk de tabellen &rarr;</span>
+      </a>
+      <a href="/blog/huurtoeslag-berekenen/" class="zelf-card">
+        <h3>Huurt u een woning?</h3>
+        <p>De huurgrenzen en inkomensgrenzen voor huurtoeslag in 2026, en hoeveel u ongeveer krijgt.</p>
+        <span class="zelf-link">Bekijk de grenzen &rarr;</span>
+      </a>
+      <a href="/blog/ouderenkorting/" class="zelf-card">
+        <h3>Krijgt u AOW?</h3>
+        <p>De kortingen waar u vanaf uw AOW-leeftijd recht op heeft, en wat dat scheelt op uw aanslag.</p>
+        <span class="zelf-link">Bekijk de bedragen &rarr;</span>
+      </a>
+    </div>
+    <p class="zelf-noot">Komt u er niet uit, of wilt u het zeker weten? Wij kijken vrijblijvend met u mee. <a href="tel:+31619711848" rel="nofollow">Bel 06 &ndash; 19 71 18 48</a> of <a href="#terugbellen">laat uw nummer achter</a>.</p>
+    <h3 style="font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--clr-deep);text-align:center;margin:64px 0 10px;">Handige artikelen voor u</h3>
+    <p style="text-align:center;color:var(--clr-bark);font-size:1rem;line-height:1.6;max-width:660px;margin:0 auto;">Alles over belastingaangifte, toeslagen en kortingen – speciaal voor senioren en woningeigenaren in Zaanstad.</p>
     <style>
       .blog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
       .blog-card{display:block;background:#fff;border-radius:12px;padding:26px;text-decoration:none;color:inherit;box-shadow:0 2px 12px rgba(44,37,32,0.07);transition:transform 0.2s ease,box-shadow 0.2s ease;border:1px solid rgba(44,37,32,0.05);}
@@ -1985,46 +1859,61 @@ html[data-fontscale="xl"]{font-size:23px}
   </div>
 </section>
 
-<!-- ======== TERUGBELVERZOEK ======== -->
-<section id="terugbellen" style="padding:80px 0;background:var(--clr-warm-white);">
+<!-- ======== MID-CTA #3 ======== -->
+<div class="mid-cta">
+  Vraag niet beantwoord? Bel <a href="tel:+31619711848" class="mid-cta-phone" rel="nofollow">06 &ndash; 19 71 18 48</a>
+  of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20mijn%20situatie." class="mid-cta-wa" rel="nofollow">stuur een WhatsApp &rarr;</a>
+</div>
+
+<section class="faq" id="faq">
   <div class="container">
-    <div class="tb-grid">
-      <div>
-        <h2>Liever niet zelf bellen?</h2>
-        <p>Laat uw naam en nummer achter. Wij bellen u terug, dezelfde dag als u het voor 21:00 doorgeeft. Meer hoeft u niet in te vullen.</p>
-        <p class="tb-tijden"><strong>Wij bellen</strong><br>doordeweeks 18:00&ndash;21:00<br>zaterdag en zondag 09:00&ndash;21:00</p>
-        <p class="tb-of">Liever direct? Bel <a href="tel:+31619711848" rel="nofollow">06 &ndash; 19 71 18 48</a> of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20een%20vraag." rel="nofollow">stuur een WhatsApp</a>.</p>
+    <div class="section-header">
+      <div class="section-eyebrow">&#9670; Veelgestelde vragen</div>
+      <h2 class="section-title">Vragen over uw belastingzaken</h2>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Ik heb mijn aangifte 2025 niet gedaan vóór 1 mei: wat nu?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Geen paniek. U kunt nog steeds aangifte doen. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469, bij herhaling meer). Hoe eerder u indient, hoe kleiner het risico. Heeft u al een herinnering of aanmaning ontvangen? Ook dan dienen we uw aangifte snel voor u in.</p>
+        </div>
       </div>
-      <div class="form-card">
-        <form action="https://formspree.io/f/xrbndagq" method="POST">
-          <input type="hidden" name="formtype" value="terugbelverzoek">
-<input type="hidden" name="email" value="noreply@belastinghulpzaanstad.nl">
-<input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/?ok=1">
-<input type="hidden" name="_subject" value="Terugbelverzoek via de website">
-          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-          <div class="form-field">
-            <label for="hp-naam">Uw naam</label>
-            <input type="text" id="hp-naam" name="naam" required autocomplete="name">
-          </div>
-          <div class="form-field">
-            <label for="hp-tel">Telefoonnummer</label>
-            <input type="tel" id="hp-tel" name="telefoon" required autocomplete="tel">
-          </div>
-          <div class="form-field">
-            <label for="hp-dagdeel">Wanneer kunnen wij u het beste bereiken?</label>
-            <select id="hp-dagdeel" name="dagdeel">
-              <option value="Maakt niet uit">Maakt niet uit</option>
-              <option value="Doordeweeks avond (18:00-21:00)">Doordeweeks &rsquo;s avonds, 18:00&ndash;21:00</option>
-              <option value="Weekend ochtend (09:00-13:00)">Weekend, ochtend 09:00&ndash;13:00</option>
-              <option value="Weekend middag (13:00-17:00)">Weekend, middag 13:00&ndash;17:00</option>
-              <option value="Weekend avond (17:00-21:00)">Weekend, avond 17:00&ndash;21:00</option>
-            </select>
-          </div>
-          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
-          <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
-        </form>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Krijgen jullie mijn DigiD-inloggegevens?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Nee, wij vragen of gebruiken uw DigiD-inloggegevens nooit.</strong> Dat mag niet en dat is ook niet nodig. We werken op twee veilige manieren: u geeft ons een <strong>machtiging</strong> via de Belastingdienst (met een machtigingscode die u zelf aanvraagt), óf we doen de aangifte <strong>samen aan uw keukentafel</strong> terwijl u zelf inlogt. Zo houdt u altijd zelf de controle over uw gegevens.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Kan ik een voorlopige teruggave nu nog aanvragen voor 2026?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Zeker. Een voorlopige teruggave kunt u het hele jaar door aanvragen of wijzigen. Heeft u een koopwoning, dan ontvangt u uw hypotheekrenteaftrek maandelijks op uw rekening in plaats van één keer per jaar. Ook bij een verhuizing, nieuwe hypotheek, salariswijziging of gezinsuitbreiding is het verstandig uw voorlopige teruggave te laten bijwerken.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Tot hoever terug kunnen jullie aangiften corrigeren?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>U kunt tot 5 jaar terug een correctie indienen bij de Belastingdienst. Dat betekent dat wij uw aangiften over 2021, 2022, 2023 en 2024 kunnen nakijken op gemiste aftrekposten, zoals zorgkosten, giften, studiekosten of partneralimentatie. Wij doen een gratis eerste check. Blijkt dat u geld heeft laten liggen, dan dienen wij een verbeterde aangifte voor u in. Dit valt onder ons Correctie &amp; late aangifte-tarief van €69.</p>
+        </div>
       </div>
     </div>
+    <p style="text-align:center;margin-top:28px;color:var(--clr-bark);font-size:0.92rem;">Vragen over <a href="/diensten/box-3-bezwaar/" style="color:var(--clr-teal);font-weight:700;">bezwaar box 3</a> of over <a href="/diensten/erfbelasting-schenking/" style="color:var(--clr-teal);font-weight:700;">erfbelasting en schenken</a>? Die beantwoorden wij op de pagina van die dienst.</p>
   </div>
 </section>
 
@@ -2236,22 +2125,6 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "U kunt tot 5 jaar terug een correctie indienen bij de Belastingdienst. Wij kijken uw aangiften over 2021–2024 kosteloos na op gemiste aftrekposten zoals zorgkosten, giften, studiekosten of partneralimentatie. Dit valt onder ons Correctie & Late Aangifte-tarief van €69."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wat is bezwaar Box 3 en kom ik in aanmerking?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Box 3 is de belasting over spaargeld en beleggingen. De Hoge Raad oordeelde dat de oude rekenmethode niet deugde voor 2021–2024. Als uw werkelijke rendement lager was dan het forfaitaire rendement, kunt u bezwaar maken. Wij dienen kosteloos pro forma bezwaar in; hoofdbezwaar op basis van no cure no pay."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wij verwachten een erfenis of willen schenken. Kunnen jullie helpen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Jazeker. Wij begeleiden u bij aangifte erfbelasting na overlijden en adviseren bij schenkingen aan kinderen of kleinkinderen. Er zijn jaarlijkse vrijstellingen en eenmalige verhoogde vrijstellingen waar u slim gebruik van kunt maken. Vraag vrijblijvend een offerte aan."
       }
     }
   ]
