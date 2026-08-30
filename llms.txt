@@ -6,7 +6,7 @@
 
 Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisaties zijn:
 - Belastingaangifte invullen (vaste prijs vanaf €59, inclusief toeslagencontrole)
-- Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek, gemiddeld €800–€1.200 terug per jaar)
+- Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek, vaak €100–€400 per maand extra netto)
 - Toeslagen aanvragen en controleren: huurtoeslag, zorgtoeslag, kinderopvangtoeslag, kindgebonden budget
 - Ouderenkorting en AOW-aangifte voor senioren
 - Box 3-bezwaar (spaartaks): pro forma bezwaar gratis, hoofdbezwaar op basis van no cure no pay
@@ -21,6 +21,7 @@ Vaste servicepagina's met uitgebreide uitleg per dienst:
 - [Box 3 bezwaar (spaartaks)](https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/), bezwaar tegen de box 3-heffing 2021–2024; pro forma gratis, no cure no pay
 - [Correctie & late aangifte](https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/), gemiste aftrekposten alsnog terugvragen tot 5 jaar terug; €69, uitstel gratis inbegrepen
 - [Erfbelasting & schenkbelasting](https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/), aangifte en advies bij nalaten en schenken; prijs op maat, vrijblijvend gesprek
+- [Toeslagen aanvragen](https://belastinghulpzaanstad.nl/diensten/toeslagen/), huurtoeslag, zorgtoeslag, kindgebonden budget en kinderopvangtoeslag; controle gratis, aanvraag €30
 
 Engelstalige servicepagina's (voor expats): [Tax return](https://belastinghulpzaanstad.nl/en/services/tax-return/) · [Preliminary refund](https://belastinghulpzaanstad.nl/en/services/preliminary-refund/) · [Box 3 objection](https://belastinghulpzaanstad.nl/en/services/box-3-objection/) · [Correction & late return](https://belastinghulpzaanstad.nl/en/services/late-tax-return/) · [Inheritance & gift tax](https://belastinghulpzaanstad.nl/en/services/inheritance-gift-tax/)
 
@@ -57,7 +58,7 @@ Praktisch:
 ## Veelgestelde vragen
 
 ### Wat kost belastingaangifte hulp bij Belastinghulp Zaanstad?
-€59 vaste prijs, inclusief alle toeslagen controleren en indienen. Geen extra kosten.
+€59 vaste prijs voor de aangifte, inclusief controle van uw huur- en zorgtoeslag. Een toeslag daadwerkelijk aanvragen of wijzigen kost €30. Geen andere kosten.
 
 ### Komen jullie bij mij thuis?
 Ja, wij komen altijd bij u thuis. U hoeft nergens naartoe.
@@ -72,7 +73,7 @@ Wij dienen de aangifte binnen 1 week in na ons bezoek.
 Senioren met AOW, gepensioneerden, en starters met een eerste koopwoning die hypotheekrenteaftrek willen aanvragen.
 
 ### Wat is voorlopige teruggave?
-Bij een eerste woning kunt u hypotheekrenteaftrek maandelijks laten uitbetalen via een voorlopige teruggave bij de Belastingdienst. Gemiddeld levert dit €800–€1.200 per jaar op.
+Bij een eerste woning kunt u hypotheekrenteaftrek maandelijks laten uitbetalen via een voorlopige teruggave bij de Belastingdienst. Dat is vaak €100–€400 per maand extra netto.
 
 ### Wat is de zorgtoeslag grens in 2026?
 In 2026 is de inkomensgrens voor zorgtoeslag circa €40.857 voor alleenstaanden en €51.142 voor toeslagpartners.
@@ -84,7 +85,7 @@ In 2026 wordt huurtoeslag berekend tot een maximale rekenhuur van €932,93. De 
 De ouderenkorting in 2026 bedraagt €2.067 voor personen met een inkomen tot €46.002 (daarboven bouwt de korting met 15% af tot nul bij €59.783). De alleenstaande ouderenkorting is €540.
 
 ### Hoeveel belasting krijg ik terug?
-Dit hangt af van uw situatie. Starters met hypotheek krijgen gemiddeld €800–€1.200 terug. Senioren met aftrekposten kunnen ook honderden euro's terugkrijgen.
+Dit hangt af van uw situatie. Woningbezitters met hypotheekrenteaftrek krijgen vaak €100–€400 per maand terug via een voorlopige teruggave. Senioren met aftrekposten kunnen ook honderden euro's terugkrijgen.
 
 ### Wanneer is de deadline belastingaangifte 2025?
 De uiterste datum voor de aangifte over 2025 is 1 mei 2026. Met uitstel kan dit tot 1 september 2026. Via onze beconregeling zelfs tot 1 mei 2027.
@@ -104,6 +105,12 @@ Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over 
 ## Pagina's
 
 - [Homepage – Belastinghulp Zaanstad](https://belastinghulpzaanstad.nl/)
+- [Tarieven, alle vaste prijzen op een rij](https://belastinghulpzaanstad.nl/tarieven/)
+- [Belastingaangifte voor senioren](https://belastinghulpzaanstad.nl/senioren/)
+- [Checklist: wat heb ik nodig?](https://belastinghulpzaanstad.nl/checklist/)
+- [Contact, bellen, WhatsApp of terugbelverzoek](https://belastinghulpzaanstad.nl/contact/)
+- [Over ons, wie de aangifte doet](https://belastinghulpzaanstad.nl/over-ons/)
+- [Kennisbank, alle artikelen](https://belastinghulpzaanstad.nl/blog/)
 - [Belastinghulp Zaandam](https://belastinghulpzaanstad.nl/zaandam/)
 - [Belastinghulp Krommenie](https://belastinghulpzaanstad.nl/krommenie/)
 - [Belastinghulp Assendelft](https://belastinghulpzaanstad.nl/assendelft/)
@@ -159,4 +166,4 @@ Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over 
 
 ## Engelstalige informatie
 
-Een Engelstalige versie van de belangrijkste pagina's staat op [/en/](https://belastinghulpzaanstad.nl/en/) (o.a. tax return, rent benefit, healthcare benefit, mortgage interest deduction).
+Een Engelstalige versie van de belangrijkste pagina's staat op [/en/](https://belastinghulpzaanstad.nl/en/), met een eigen [kennisbank](https://belastinghulpzaanstad.nl/en/blog/) en een pagina [over ons](https://belastinghulpzaanstad.nl/en/about-us/). De Engelse dienstenpagina's staan hierboven bij Diensten.
