@@ -1,5 +1,5 @@
 {
-  "_doc": "Eén bron van waarheid voor de fiscale cijfers (belastingjaar 2026). De site genereert NIET automatisch uit dit bestand (statische HTML); scripts/check-fiscale-cijfers.js faalt als een VEROUDERDE waarde ergens in de HTML terugkomt. Werk je een cijfer bij: pas \"waarde\" aan, zet de oude waarde in \"verouderd\", en vul \"bron_url\" en \"gecontroleerd_op\" (JJJJ-MM-DD) in. Een waarde zonder bron_url mag alleen blijven staan met \"bron_url_todo\": true; het script telt die apart. Waarden ouder dan 12 maanden geven een waarschuwing.",
+  "_doc": "Eén bron van waarheid voor de fiscale cijfers (belastingjaar 2026). De site genereert NIET automatisch uit dit bestand (statische HTML); scripts/check-fiscale-cijfers.js faalt als een VEROUDERDE waarde ergens in de HTML terugkomt. Werk je een cijfer bij: pas \"waarde\" aan, zet de oude waarde in \"verouderd\", en vul \"bron_url\" en \"gecontroleerd_op\" (JJJJ-MM-DD) in. Een waarde zonder bron_url mag alleen blijven staan met \"bron_url_todo\": true; het script telt die apart. Waarden ouder dan 12 maanden geven een waarschuwing. Korte waarden (\"36%\", \"€20\") hebben een \"context\": een van die woorden moet op dezelfde regel staan voordat set-fiscale-cijfers.js vervangt.",
   "belastingjaar": 2026,
   "laatst_gecontroleerd": "2026-08-30",
   "bron_algemeen": "https://www.belastingdienst.nl",
@@ -97,7 +97,11 @@
         "€478"
       ],
       "gecontroleerd_op": "2026-08-30",
-      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+      "context": [
+        "ouderenkorting",
+        "alleenstaande"
+      ]
     },
     "zorgtoeslag_inkomensgrens_alleenstaand": {
       "waarde": "€40.857",
@@ -249,7 +253,13 @@
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: 36% over het rendement",
       "verouderd": [],
       "gecontroleerd_op": "2026-08-30",
-      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+      "context": [
+        "box 3",
+        "box3",
+        "spaartaks",
+        "vermogen"
+      ]
     },
     "verzuimboete_eerste": {
       "waarde": "€469",
@@ -281,7 +291,12 @@
       "bron": "eigen actie, aangekondigd op /over-ons/ en op de plaatspagina's",
       "verouderd": [],
       "gecontroleerd_op": "2026-08-30",
-      "bron_url": "https://belastinghulpzaanstad.nl/over-ons/"
+      "bron_url": "https://belastinghulpzaanstad.nl/over-ons/",
+      "context": [
+        "korting",
+        "startkorting",
+        "eerste klanten"
+      ]
     },
     "huurtoeslag_vermogensgrens_alleenstaand": {
       "waarde": "€38.479",
