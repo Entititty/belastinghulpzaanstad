@@ -47,6 +47,10 @@ node_modules/
 # zelf is uitgesloten; git kijkt er dan niet in.
 docs/*
 !docs/TODO-no-cure-no-pay.md
+# En het draaiboek voor de jaarovergang: DEPLOY.md verwijst ernaar, dus dat
+# bestand hoort mee te reizen met de repo. De overige analyses in docs/
+# blijven lokaal.
+!docs/jaarlijkse-update.md
 
 # Conversiemeting. De logregels staan op de server in
 # /var/log/belastinghulp/tellingen/, dus buiten de webroot. Haal je ze op met

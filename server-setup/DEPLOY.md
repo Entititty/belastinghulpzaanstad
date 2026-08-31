@@ -49,12 +49,17 @@ cd "/pad/naar/Website belasting"
 
 node scripts/hash-css.js            # naam en verwijzingen kloppend maken
 node scripts/check-html.js          # tag-balans en nesting, faalt bij een fout
-node scripts/check-fiscale-cijfers.js
+node scripts/check-fiscale-cijfers.js   # bronnen, houdbaarheid, JSON-LD tegen de tekst
 node scripts/crawl-audit.js         # verwacht: 95 pagina's, 404:0, dupTitle:0
 node scripts/build-sitemap.js       # NA het committen, VOOR het pushen
 ```
 
 Werkboom schoon? Dan pas verder.
+
+> **In januari, bij de jaarovergang:** de fiscale bedragen wijzigen dan. Volg
+> `docs/jaarlijkse-update.md`; daar staat per waarde de primaire bron, de
+> volgorde en hoe je `scripts/set-fiscale-cijfers.js` aanroept. De
+> rekenvoorbeelden eigen woning moeten met de hand na; geen script bewaakt die.
 
 ### 2.2 Pagina's en CSS uitrollen
 
