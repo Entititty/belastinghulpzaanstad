@@ -272,11 +272,19 @@
         "verzuimboete van €385",
         "€68 – €385",
         "€68-€385",
-        "boete €68"
+        "boete €68",
+        "€385"
       ],
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete",
       "bron_url_2": "https://wetten.overheid.nl/BWBR0038145/",
-      "gecontroleerd_op": "2026-08-30"
+      "gecontroleerd_op": "2026-08-30",
+      "context": [
+        "verzuimboete",
+        "boete",
+        "fine",
+        "default",
+        "verzuim"
+      ]
     },
     "verzuimboete_maximum": {
       "waarde": "€6.709",
