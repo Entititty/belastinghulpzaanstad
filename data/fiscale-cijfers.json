@@ -128,7 +128,8 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, kan ik zorgtoeslag krijgen: \"niet meer vermogen dan € 146.011\"",
       "verouderd": [
-        "€140.213"
+        "€140.213",
+        "€140.231"
       ],
       "gecontroleerd_op": "2026-08-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
@@ -137,7 +138,9 @@
       "waarde": "€184.633",
       "geverifieerd": true,
       "bron": "belastingdienst.nl, kan ik zorgtoeslag krijgen: \"samen niet hoger dan € 184.633\"",
-      "verouderd": [],
+      "verouderd": [
+        "€177.301"
+      ],
       "gecontroleerd_op": "2026-08-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
