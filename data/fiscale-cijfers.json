@@ -1,7 +1,7 @@
 {
   "_doc": "Eén bron van waarheid voor de fiscale cijfers (belastingjaar 2026). De site genereert NIET automatisch uit dit bestand (statische HTML); scripts/check-fiscale-cijfers.js faalt als een VEROUDERDE waarde ergens in de HTML terugkomt. Werk je een cijfer bij: pas \"waarde\" aan, zet de oude waarde in \"verouderd\", en vul \"bron_url\" en \"gecontroleerd_op\" (JJJJ-MM-DD) in. Een waarde zonder bron_url mag alleen blijven staan met \"bron_url_todo\": true; het script telt die apart. Waarden ouder dan 12 maanden geven een waarschuwing. Korte waarden (\"36%\", \"€20\") hebben een \"context\": een van die woorden moet op dezelfde regel staan voordat set-fiscale-cijfers.js vervangt.",
   "belastingjaar": 2026,
-  "laatst_gecontroleerd": "2026-08-30",
+  "laatst_gecontroleerd": "2026-09-02",
   "bron_algemeen": "https://www.belastingdienst.nl",
   "cijfers": {
     "box1_schijf1_tarief": {
@@ -339,6 +339,55 @@
         "6,5% belastingrente",
         "belastingrente (6,5%",
         "tarief 6,5%"
+      ]
+    },
+    "huurtoeslag_jongerengrens": {
+      "waarde": "€498,20",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, huurtoeslag verandert vanaf 2026: \"In 2026 is deze maximale huur €932,93 en voor jongeren tot 21 jaar is dat €498,20\"",
+      "verouderd": [
+        "€477,20"
+      ],
+      "gecontroleerd_op": "2026-09-02",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/huurtoeslag-verandert-vanaf-2026"
+    },
+    "huurtoeslag_jongeren_leeftijd": {
+      "waarde": "21 jaar",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, huurtoeslag verandert vanaf 2026: \"Vanaf 2026 doen we dat alleen nog bij jongeren tot 21 jaar\". Tot en met 2025 lag de grens op 23 jaar.",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-09-02",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/huurtoeslag-verandert-vanaf-2026",
+      "context": [
+        "huurtoeslag",
+        "jongeren",
+        "huurgrens"
+      ]
+    },
+    "minimumuurloon_21plus": {
+      "waarde": "€14,99",
+      "geverifieerd": true,
+      "bron": "rijksoverheid.nl, bedragen minimumloon 2026: bruto minimumuurloon vanaf 21 jaar per 1 juli 2026. LET OP: wijzigt elk half jaar, per 1 januari en 1 juli. Per 1 januari 2026 was het €14,71.",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-09-02",
+      "bron_url": "https://www.rijksoverheid.nl/onderwerpen/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026",
+      "context": [
+        "minimumloon",
+        "minimumuurloon",
+        "per uur"
+      ]
+    },
+    "minimumjeugdloon_18": {
+      "waarde": "€7,50",
+      "geverifieerd": true,
+      "bron": "rijksoverheid.nl, bedragen minimumloon 2026: minimumjeugdloon 18 jaar per uur per 1 juli 2026. LET OP: wijzigt elk half jaar, per 1 januari en 1 juli. Per 1 januari 2026 was het €7,36.",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-09-02",
+      "bron_url": "https://www.rijksoverheid.nl/onderwerpen/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026",
+      "context": [
+        "minimumjeugdloon",
+        "jeugdloon",
+        "per uur"
       ]
     }
   }
