@@ -1,11 +1,12 @@
 # Belastinghulp Zaanstad
 
-> Belastinghulp Zaanstad helpt senioren, starters en woningbezitters bij belastingaangifte, voorlopige teruggave, toeslagen, box 3-bezwaar, correctie van oude aangiften en erf-/schenkbelasting in de gemeente Zaanstad. Vaste prijs vanaf €59, hulp aan huis, zelfde dag reactie.
+> Belastinghulp Zaanstad helpt senioren, starters, woningbezitters en mensen met een eerste baan bij belastingaangifte, voorlopige teruggave, toeslagen, box 3-bezwaar, correctie van oude aangiften en erf-/schenkbelasting in de gemeente Zaanstad. Vaste prijs vanaf €49, hulp aan huis of online, zelfde dag reactie.
 
 ## Over ons
 
 Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisaties zijn:
 - Belastingaangifte invullen (vaste prijs vanaf €59, inclusief toeslagencontrole)
+- Eerste baan of bijbaan: loonheffingskorting rechtzetten en te veel betaalde loonbelasting terugvragen (€49, online)
 - Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek, vaak €100–€400 per maand extra netto)
 - Toeslagen aanvragen en controleren: huurtoeslag, zorgtoeslag, kinderopvangtoeslag, kindgebonden budget
 - Ouderenkorting en AOW-aangifte voor senioren
@@ -17,13 +18,14 @@ Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisatie
 
 Vaste servicepagina's met uitgebreide uitleg per dienst:
 - [Belastingaangifte laten doen](https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/), volledige aangifte inkomstenbelasting, vaste prijs vanaf €59, aan huis in Zaanstad
+- [Eerste baan](https://belastinghulpzaanstad.nl/diensten/eerste-baan/), eerste aangifte bij een eerste baan of bijbaan; loonheffingskorting bij één werkgever, teruggave van te veel betaalde loonbelasting, zorg- en huurtoeslag nagekeken; €49, geen partnertarief, via WhatsApp of beeldbellen
 - [Voorlopige teruggave aanvragen](https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/), hypotheekrenteaftrek maandelijks laten uitbetalen; pakket €109, met partner €149
 - [Box 3 bezwaar (spaartaks)](https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/), bezwaar tegen de box 3-heffing 2021–2024; pro forma gratis, no cure no pay
 - [Correctie & late aangifte](https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/), gemiste aftrekposten alsnog terugvragen tot 5 jaar terug; €69, uitstel gratis inbegrepen
 - [Erfbelasting & schenkbelasting](https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/), aangifte en advies bij nalaten en schenken; prijs op maat, vrijblijvend gesprek
 - [Toeslagen aanvragen](https://belastinghulpzaanstad.nl/diensten/toeslagen/), huurtoeslag, zorgtoeslag, kindgebonden budget en kinderopvangtoeslag; controle gratis, aanvraag €30
 
-Engelstalige servicepagina's (voor expats): [Tax return](https://belastinghulpzaanstad.nl/en/services/tax-return/) · [Preliminary refund](https://belastinghulpzaanstad.nl/en/services/preliminary-refund/) · [Box 3 objection](https://belastinghulpzaanstad.nl/en/services/box-3-objection/) · [Correction & late return](https://belastinghulpzaanstad.nl/en/services/late-tax-return/) · [Inheritance & gift tax](https://belastinghulpzaanstad.nl/en/services/inheritance-gift-tax/)
+Engelstalige servicepagina's (voor expats): [Tax return](https://belastinghulpzaanstad.nl/en/services/tax-return/) · [First job](https://belastinghulpzaanstad.nl/en/services/first-job/) · [Preliminary refund](https://belastinghulpzaanstad.nl/en/services/preliminary-refund/) · [Box 3 objection](https://belastinghulpzaanstad.nl/en/services/box-3-objection/) · [Correction & late return](https://belastinghulpzaanstad.nl/en/services/late-tax-return/) · [Inheritance & gift tax](https://belastinghulpzaanstad.nl/en/services/inheritance-gift-tax/)
 
 ## Werkgebied
 
@@ -32,6 +34,7 @@ Zaandam, Krommenie, Assendelft, Wormerveer, Koog aan de Zaan, Zaandijk, Westzaan
 ## Prijzen en praktisch
 
 Alle bedragen zijn vast vooraf (geen verborgen kosten):
+- Eerste baan (eerste aangifte, bijbaan of deeljaar gewerkt): **€49** per aangifte · geen partnertarief
 - Senioren aangifte (65+ / AOW): **€59** per aangifte · met partner €89
 - Correctie & late aangifte: **€69** per aangifte · met partner €99 · uitstel-aanvraag gratis inbegrepen
 - Voorlopige teruggave pakket (woningbezitters, hele jaar): **€109** eenmalig · met partner €149
