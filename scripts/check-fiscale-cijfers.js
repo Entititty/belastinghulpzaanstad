@@ -53,10 +53,20 @@ for (const [key, c] of Object.entries(data.cijfers)) {
   }
 }
 
-/* ---------- 2. verouderde waarden in de HTML ---------- */
+/* ---------- 2. verouderde waarden in de HTML ----------
+ * "context" werkt hier hetzelfde als in set-fiscale-cijfers.js: staat er een
+ * lijst met woorden bij een waarde, dan telt een treffer alleen als een van
+ * die woorden op dezelfde regel staat. Dat is nodig zodra een verouderde
+ * waarde ook een andere betekenis heeft. €385 is de oude verzuimboete, maar
+ * ook het verplicht eigen risico en, als €385.000, de koopsom van een woning
+ * in Assendelft. Zonder context zou het kale bedrag die drie niet uit elkaar
+ * houden, en dan kan het niet bewaakt worden.
+ */
 const guards = [];
 for (const [key, c] of Object.entries(data.cijfers)) {
-  (c.verouderd || []).forEach(function (old) { guards.push({ key: key, old: old, correct: c.waarde }); });
+  (c.verouderd || []).forEach(function (old) {
+    guards.push({ key: key, old: old, correct: c.waarde, context: c.context || null });
+  });
 }
 
 function walk(dir, acc) {
@@ -76,8 +86,10 @@ let hits = 0;
 for (const f of files) {
   const lines = fs.readFileSync(f, 'utf8').split(/\r?\n/);
   lines.forEach(function (ln, i) {
+    const laag = ln.toLowerCase();
     for (const g of guards) {
       if (ln.indexOf(g.old) !== -1) {
+        if (g.context && !g.context.some((w) => laag.indexOf(w.toLowerCase()) !== -1)) continue;
         hits++;
         console.log('STALE  ' + path.relative(ROOT, f) + ':' + (i + 1) + '  "' + g.old + '"  -> gebruik ' + g.correct + '  (' + g.key + ')');
       }
