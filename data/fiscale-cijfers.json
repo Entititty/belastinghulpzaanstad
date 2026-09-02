@@ -148,7 +148,10 @@
       "waarde": "€932,93",
       "geverifieerd": true,
       "bron": "belastingdienst.nl, berekening huurtoeslag 2026: maximale rekenhuur €932,93 vanaf 21 jaar",
-      "verouderd": [],
+      "verouderd": [
+        "€808,06",
+        "€808.06"
+      ],
       "gecontroleerd_op": "2026-08-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-huurtoeslag-2026"
     },
@@ -354,7 +357,9 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, huurtoeslag verandert vanaf 2026: \"In 2026 is deze maximale huur €932,93 en voor jongeren tot 21 jaar is dat €498,20\"",
       "verouderd": [
-        "€477,20"
+        "€477,20",
+        "€454,47",
+        "€454.47"
       ],
       "gecontroleerd_op": "2026-09-02",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/huurtoeslag-verandert-vanaf-2026"
