@@ -50,11 +50,19 @@ cd "/pad/naar/Website belasting"
 node scripts/hash-css.js            # naam en verwijzingen kloppend maken
 node scripts/check-html.js          # tag-balans en nesting, faalt bij een fout
 node scripts/check-fiscale-cijfers.js   # bronnen, houdbaarheid, JSON-LD tegen de tekst
-node scripts/crawl-audit.js         # verwacht: 95 pagina's, 404:0, dupTitle:0
+node scripts/check-links.js .       # interne links, ankers, JSON-LD, lengte titles
+node scripts/check-hreflang.js .    # wijzen de taalversies naar elkaar terug
+node scripts/crawl-audit.js         # verwacht: 97 pagina's, 404:0, dupTitle:0
 node scripts/build-sitemap.js       # NA het committen, VOOR het pushen
 ```
 
 Werkboom schoon? Dan pas verder.
+
+> **Twee leeslijsten, geen poortwachters.** `vind-losse-bedragen.js` zoekt
+> bedragen in de HTML die niet in `fiscale-cijfers.json` staan, en
+> `faq-audit.js` toont wat `faq-sync.js` per pagina zou veranderen. Allebei
+> falen ze nooit; ze zijn bedoeld om af en toe met het oog langs te gaan, niet
+> om bij elke uitrol te draaien.
 
 > **In januari, bij de jaarovergang:** de fiscale bedragen wijzigen dan. Volg
 > `docs/jaarlijkse-update.md`; daar staat per waarde de primaire bron, de
@@ -557,6 +565,7 @@ Zie `docs/TODO-kvk-btw.md`.
 ```bash
 # lokaal
 node scripts/hash-css.js && node scripts/check-html.js && node scripts/check-fiscale-cijfers.js \
+  && node scripts/check-links.js . && node scripts/check-hreflang.js . \
   && node scripts/crawl-audit.js && node scripts/build-sitemap.js
 git checkout main && git merge --ff-only homepage-rework && git push
 
