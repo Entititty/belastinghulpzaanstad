@@ -55,8 +55,9 @@ while ((m = itemRe.exec(src)) !== null) {
 console.log('Zichtbare vragen: ' + items.length);
 items.forEach((i, n) => console.log('  ' + (n + 1) + '. ' + i.vraag));
 
-/* FAQPage-blok vinden */
-const blokRe = /<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "FAQPage",[\s\S]*?<\/script>/;
+/* FAQPage-blok vinden. Beide schrijfwijzen komen voor: uitgeschreven met
+   spaties, en compact op één regel ("@context":"https://schema.org"). */
+const blokRe = /<script type="application\/ld\+json">\s*\{\s*"@context":\s*"https:\/\/schema\.org",\s*"@type":\s*"FAQPage",[\s\S]*?<\/script>/;
 const gevonden = src.match(blokRe);
 if (!gevonden) { console.error('Geen FAQPage-blok gevonden.'); process.exit(1); }
 

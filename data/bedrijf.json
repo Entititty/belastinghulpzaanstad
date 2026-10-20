@@ -1,0 +1,55 @@
+{
+  "_doc": "Eén bron van waarheid voor de prijzen en de bedrijfsgegevens. De site heeft geen build: scripts/config-sync.js schrijft deze waarden in de HTML (elementen met data-prijs=\"...\", blokken tussen <!-- cfg:naam --> en <!-- /cfg:naam -->, en de prijzen in de JSON-LD) en waarschuwt voor elke lege placeholder. Wijzig hier een waarde en draai daarna: node scripts/config-sync.js. Een lege placeholder komt NIET als leeg veld op de site: het bijbehorende zinsdeel wordt weggelaten tot de waarde er is. Dit bestand staat in een publieke repo en is via de webserver op te vragen: zet er niets in wat niet op de site mag staan.",
+  "bedrijf": {
+    "naam": "Belastinghulp Zaanstad",
+    "eigenaar": "Stan van der Hoeven",
+    "email": "info@belastinghulpzaanstad.nl",
+    "vestigingsplaats": "Zaandam",
+    "gemeente": "Zaanstad"
+  },
+  "prijzen": {
+    "_doc": "Bedragen in hele euro's. 'partner' is de prijs voor u en uw fiscaal partner samen in één opdracht. in_prijsrange: telt mee voor de priceRange in de JSON-LD.",
+    "aangifte": { "bedrag": 59, "partner": 89, "omschrijving": "Belastingaangifte, ook voor senioren (AOW)", "in_prijsrange": true },
+    "eerste_baan": { "bedrag": 49, "partner": null, "omschrijving": "Eerste baan, eerste aangifte", "in_prijsrange": true },
+    "correctie": { "bedrag": 69, "partner": 99, "omschrijving": "Correctie of late aangifte, per jaar", "in_prijsrange": true },
+    "voorlopige_teruggave": { "bedrag": 109, "partner": 149, "omschrijving": "Voorlopige teruggave, incl. hypotheekberekening", "in_prijsrange": true },
+    "toeslag": { "bedrag": 30, "partner": null, "omschrijving": "Toeslag aanvragen of wijzigen", "in_prijsrange": false },
+    "spoed": { "bedrag": 25, "partner": null, "omschrijving": "Spoedtoeslag: aangifte binnen 24 uur, bovenop de prijs", "in_prijsrange": false },
+    "erfbelasting": { "bedrag": null, "partner": null, "omschrijving": "Erfbelasting en schenking: altijd op offerte", "in_prijsrange": false }
+  },
+  "startkorting": {
+    "_doc": "Eigen actie, sinds 2026 aangekondigd op /over-ons/, de plaatspagina's en de Engelse homepage. actief=false haalt de regel op /tarieven/ weg; de overige vermeldingen moeten dan met de hand weg (zie het eindrapport van oktober 2026 voor de lijst).",
+    "actief": true,
+    "bedrag": 20,
+    "geldig_tot": "2026-12-31"
+  },
+  "placeholders": {
+    "_doc": "Nog niet bekend. Leeg laten tot de eigenaar het bevestigt; config-sync.js waarschuwt zolang een waarde leeg is.",
+    "KVK_NUMMER": "",
+    "BTW_ID": "",
+    "KOR": null,
+    "BAV": "",
+    "FEE_BOX3": null,
+    "FEE_BOX3_MIN": null,
+    "FEE_BOX3_MAX": null,
+    "FEE_BOX3_GRONDSLAG": "",
+    "VAT_NOTE": "",
+    "GOOGLE_REVIEW_URL": "",
+    "ACHTERGROND_STAN": "",
+    "EINDDATUM_CORRECTIE_2021": ""
+  },
+  "_placeholders_uitleg": {
+    "KVK_NUMMER": "8 cijfers, bijvoorbeeld 12345678. Komt in de footer van elke pagina.",
+    "BTW_ID": "Het btw-identificatienummer (NL + 9 cijfers + B + 2 cijfers), niet het omzetbelastingnummer: dat bevat bij een eenmanszaak uw BSN.",
+    "KOR": "true als u de kleineondernemersregeling gebruikt (dan geen btw-id in de footer maar een KOR-vermelding), false als u btw-plichtig bent, null zolang dat niet vaststaat.",
+    "BAV": "De vermelding van de beroepsaansprakelijkheidsverzekering zoals die in de footer moet komen, bijvoorbeeld 'Beroepsaansprakelijkheid verzekerd bij <verzekeraar>'.",
+    "FEE_BOX3": "Het no cure no pay-percentage voor hulp bij de Opgaaf werkelijk rendement, als getal: 15 betekent 15%.",
+    "FEE_BOX3_MIN": "Optioneel minimum in euro's, of null.",
+    "FEE_BOX3_MAX": "Optioneel maximum in euro's, of null.",
+    "FEE_BOX3_GRONDSLAG": "Waarover het percentage gaat, als zinsdeel, bijvoorbeeld 'van de belasting die u terugkrijgt'.",
+    "VAT_NOTE": "Eén zin over de btw die onder de tarieven komt, bijvoorbeeld 'Alle prijzen zijn inclusief btw.' of 'Wij vallen onder de kleineondernemersregeling; u betaalt geen btw.'",
+    "GOOGLE_REVIEW_URL": "De link waarmee klanten direct een Google-review schrijven (https://g.page/r/.../review). Komt op /beoordeling/.",
+    "ACHTERGROND_STAN": "Twee of drie zinnen achtergrond in de ik-vorm (opleiding, ervaring), voor /over-ons/. Alleen wat waar en controleerbaar is.",
+    "EINDDATUM_CORRECTIE_2021": "De bevestigde uiterste datum voor een correctie over 2021, als tekst, bijvoorbeeld '31 december 2026'. Komt op /diensten/correctie-late-aangifte/."
+  }
+}
