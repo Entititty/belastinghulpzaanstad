@@ -313,7 +313,7 @@
       <p style="color:var(--clr-bark);line-height:1.75;">You fill in an estimate for the whole year. Be careful with it: an estimate that is too high means paying back afterwards. We calculate your amounts in advance.</p>
 
       <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--clr-deep);margin:36px 0 12px;">Example: a mortgage of &euro;340,000</h3>
-      <p style="color:var(--clr-bark);line-height:1.75;margin-bottom:18px;">Say your home has a WOZ value of &euro;340,000 and you have a mortgage of &euro;340,000 at 3.7% interest. Your income is in the first tax bracket, so you deduct at 37.56%.</p>
+      <p style="color:var(--clr-bark);line-height:1.75;margin-bottom:18px;">Say your home has a WOZ value of &euro;340,000 and you have a mortgage of &euro;340,000 at 3.7% interest. How much you get back depends on the bracket your income falls in: up to &euro;38,883 that is 35.75%, above it 37.56%.</p>
 
       <table class="income-table">
         <thead>
@@ -340,14 +340,19 @@
             <td>€949</td>
           </tr>
           <tr>
-            <td>Tax benefit (37.56%)</td>
+            <td>Benefit, income up to €38,883 (35.75%)</td>
+            <td>± €4,072</td>
+            <td><strong>± €339</strong></td>
+          </tr>
+          <tr>
+            <td>Benefit, income in 2nd bracket (37.56%)</td>
             <td>± €4,278</td>
             <td><strong>± €357</strong></td>
           </tr>
         </tbody>
       </table>
 
-      <p class="berekening-disclaimer">* Indicative example. Your actual refund depends on your interest rate, WOZ value, tax bracket and situation. This example assumes an income in the first tax bracket. In the top bracket the interest is deducted at the capped rate while the imputed rental value is added to your income at the full rate, so the benefit is lower.</p>
+      <p class="berekening-disclaimer">* Indicative example. The higher amount applies if your income stays above €38,883 after the deduction; otherwise your benefit lies in between. Mortgage interest is deductible at no more than 37.56% in 2026. In the top bracket the interest is deducted at that cap while the imputed rental value is added to your income at the full rate, so the benefit is lower. Your actual refund depends on your interest rate, WOZ value, income and situation.</p>
 
       <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--clr-deep);margin:36px 0 12px;">When do you receive the money?</h3>
       <p style="color:var(--clr-bark);line-height:1.75;margin-bottom:16px;">After approval, the Belastingdienst pays out monthly, usually around the 20th. Apply in January and the amount is spread over twelve months. Apply in April and you receive the first three months in one payment, followed by the fixed monthly amount.</p>
@@ -459,7 +464,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How much do I get back each month?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>That depends on your mortgage interest, income and tax bracket. For many homeowners it is between €100 and €400 per month. We calculate your exact amount before we submit the application.</p></div>
+        <div class="faq-answer"><p>That depends on your mortgage interest, income and tax bracket. With a €340,000 mortgage at 3.7% interest it is about €339 to €357 per month, depending on your income. We calculate your own amount before we submit the application.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Do I have to repay it if my income changes?<span class="faq-arrow">+</span></button>
@@ -589,7 +594,7 @@ document.querySelectorAll('.step, .faq-item').forEach(el=>{el.style.opacity='0';
       "name": "How much do I get back each month?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "That depends on your mortgage interest, income and tax bracket. For many homeowners it is between €100 and €400 per month. We calculate your exact amount before we submit the application."
+        "text": "That depends on your mortgage interest, income and tax bracket. With a €340,000 mortgage at 3.7% interest it is about €339 to €357 per month, depending on your income. We calculate your own amount before we submit the application."
       }
     },
     {
