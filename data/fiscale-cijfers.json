@@ -427,6 +427,51 @@
         "verlaagd voor kopers onder 35",
         "reduced in 2026 for buyers under 35"
       ]
+    },
+    "ouderenkorting_afbouwgrens": {
+      "waarde": "€46.002",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: \"€ 2.067 - 15% x (verzamelinkomen - € 46.002)\"",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+      "gecontroleerd_op": "2026-10-20",
+      "verouderd": [
+        "€44.770"
+      ]
+    },
+    "ouderenkorting_nulpunt": {
+      "waarde": "€59.782",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: de ouderenkorting is nul bij een verzamelinkomen van € 59.782 (2.067 / 15% = 13.780 boven € 46.002)",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
+      "gecontroleerd_op": "2026-10-20",
+      "verouderd": [
+        "€59.783",
+        "€57.310"
+      ]
+    },
+    "huurtoeslag_aftoppingsgrens_laag": {
+      "waarde": "€713,02",
+      "geverifieerd": true,
+      "bron": "Volkshuisvesting Nederland, huurtoeslagparameters 2026: aftoppingsgrens laag € 713,02 (tot hier 65% vergoeding boven de kwaliteitskortingsgrens)",
+      "bron_url": "https://www.volkshuisvestingnederland.nl/onderwerpen/huren-en-wonen/inkomensgrenzen-huurprijsgrenzen-en-huurtoeslagparameters/huurtoeslagparameters",
+      "gecontroleerd_op": "2026-10-20",
+      "verouderd": []
+    },
+    "huurtoeslag_aftoppingsgrens_hoog": {
+      "waarde": "€764,14",
+      "geverifieerd": true,
+      "bron": "Volkshuisvesting Nederland, huurtoeslagparameters 2026: aftoppingsgrens hoog € 764,14",
+      "bron_url": "https://www.volkshuisvestingnederland.nl/onderwerpen/huren-en-wonen/inkomensgrenzen-huurprijsgrenzen-en-huurtoeslagparameters/huurtoeslagparameters",
+      "gecontroleerd_op": "2026-10-20",
+      "verouderd": []
+    },
+    "huurtoeslag_minimum_basishuur_eenpersoons": {
+      "waarde": "€202,52",
+      "geverifieerd": true,
+      "bron": "Volkshuisvesting Nederland, huurtoeslagparameters 2026: minimum basishuur eenpersoons € 202,52, meerpersoons € 200,71",
+      "bron_url": "https://www.volkshuisvestingnederland.nl/onderwerpen/huren-en-wonen/inkomensgrenzen-huurprijsgrenzen-en-huurtoeslagparameters/huurtoeslagparameters",
+      "gecontroleerd_op": "2026-10-20",
+      "verouderd": []
     }
   }
 }
