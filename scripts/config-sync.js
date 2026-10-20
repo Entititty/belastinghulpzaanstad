@@ -60,6 +60,7 @@ if (P.KOR !== null && P.KOR !== true && P.KOR !== false) fouten.push('KOR moet t
 if (P.KOR === null) waarschuwingen.push('KOR is nog niet bepaald (true/false): btw-vermelding kan nog niet kloppen.');
 
 if (leeg(P.BAV)) waarschuwingen.push('BAV is leeg: geen vermelding van een beroepsaansprakelijkheidsverzekering in de footer.');
+if (!leeg(P.BAV) && leeg(P.BAV_EN)) waarschuwingen.push('BAV_EN is leeg: de Engelse footer toont de BAV-vermelding nog niet.');
 
 if (leeg(P.FEE_BOX3)) {
   waarschuwingen.push('FEE_BOX3 is leeg: de box 3-pagina en /tarieven/ noemen nog geen percentage.');
@@ -146,7 +147,9 @@ function footerRegel(taal) {
   if (!leeg(P.KVK_NUMMER)) delen.push('KvK ' + esc(P.KVK_NUMMER));
   if (!leeg(P.BTW_ID)) delen.push((nl ? 'BTW-id ' : 'VAT ') + esc(P.BTW_ID));
   if (P.KOR === true) delen.push(nl ? 'kleineondernemersregeling: wij rekenen geen btw' : 'small business scheme (KOR): no VAT charged');
-  if (!leeg(P.BAV)) delen.push(esc(P.BAV));
+  /* De BAV-tekst is vrije tekst; die vertalen we niet zelf. */
+  if (nl && !leeg(P.BAV)) delen.push(esc(P.BAV));
+  if (!nl && !leeg(P.BAV_EN)) delen.push(esc(P.BAV_EN));
   delen.push(nl ? 'Bezoek uitsluitend op afspraak. Wij komen bij u thuis' : 'By appointment only. We come to your home');
   return '<span class="footer-gegevens" style="display:block;margin-bottom:6px;color:rgba(255,255,255,0.72);">' +
     delen.join(' &middot; ') + '</span>';

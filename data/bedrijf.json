@@ -9,13 +9,48 @@
   },
   "prijzen": {
     "_doc": "Bedragen in hele euro's. 'partner' is de prijs voor u en uw fiscaal partner samen in één opdracht. in_prijsrange: telt mee voor de priceRange in de JSON-LD.",
-    "aangifte": { "bedrag": 59, "partner": 89, "omschrijving": "Belastingaangifte, ook voor senioren (AOW)", "in_prijsrange": true },
-    "eerste_baan": { "bedrag": 49, "partner": null, "omschrijving": "Eerste baan, eerste aangifte", "in_prijsrange": true },
-    "correctie": { "bedrag": 69, "partner": 99, "omschrijving": "Correctie of late aangifte, per jaar", "in_prijsrange": true },
-    "voorlopige_teruggave": { "bedrag": 109, "partner": 149, "omschrijving": "Voorlopige teruggave, incl. hypotheekberekening", "in_prijsrange": true },
-    "toeslag": { "bedrag": 30, "partner": null, "omschrijving": "Toeslag aanvragen of wijzigen", "in_prijsrange": false },
-    "spoed": { "bedrag": 25, "partner": null, "omschrijving": "Spoedtoeslag: aangifte binnen 24 uur, bovenop de prijs", "in_prijsrange": false },
-    "erfbelasting": { "bedrag": null, "partner": null, "omschrijving": "Erfbelasting en schenking: altijd op offerte", "in_prijsrange": false }
+    "aangifte": {
+      "bedrag": 59,
+      "partner": 89,
+      "omschrijving": "Belastingaangifte, ook voor senioren (AOW)",
+      "in_prijsrange": true
+    },
+    "eerste_baan": {
+      "bedrag": 49,
+      "partner": null,
+      "omschrijving": "Eerste baan, eerste aangifte",
+      "in_prijsrange": true
+    },
+    "correctie": {
+      "bedrag": 69,
+      "partner": 99,
+      "omschrijving": "Correctie of late aangifte, per jaar",
+      "in_prijsrange": true
+    },
+    "voorlopige_teruggave": {
+      "bedrag": 109,
+      "partner": 149,
+      "omschrijving": "Voorlopige teruggave, incl. hypotheekberekening",
+      "in_prijsrange": true
+    },
+    "toeslag": {
+      "bedrag": 30,
+      "partner": null,
+      "omschrijving": "Toeslag aanvragen of wijzigen",
+      "in_prijsrange": false
+    },
+    "spoed": {
+      "bedrag": 25,
+      "partner": null,
+      "omschrijving": "Spoedtoeslag: aangifte binnen 24 uur, bovenop de prijs",
+      "in_prijsrange": false
+    },
+    "erfbelasting": {
+      "bedrag": null,
+      "partner": null,
+      "omschrijving": "Erfbelasting en schenking: altijd op offerte",
+      "in_prijsrange": false
+    }
   },
   "startkorting": {
     "_doc": "Eigen actie, sinds 2026 aangekondigd op /over-ons/, de plaatspagina's en de Engelse homepage. actief=false haalt de regel op /tarieven/ weg; de overige vermeldingen moeten dan met de hand weg (zie het eindrapport van oktober 2026 voor de lijst).",
@@ -29,6 +64,7 @@
     "BTW_ID": "",
     "KOR": null,
     "BAV": "",
+    "BAV_EN": "",
     "FEE_BOX3": null,
     "FEE_BOX3_MIN": null,
     "FEE_BOX3_MAX": null,
@@ -43,6 +79,7 @@
     "BTW_ID": "Het btw-identificatienummer (NL + 9 cijfers + B + 2 cijfers), niet het omzetbelastingnummer: dat bevat bij een eenmanszaak uw BSN.",
     "KOR": "true als u de kleineondernemersregeling gebruikt (dan geen btw-id in de footer maar een KOR-vermelding), false als u btw-plichtig bent, null zolang dat niet vaststaat.",
     "BAV": "De vermelding van de beroepsaansprakelijkheidsverzekering zoals die in de footer moet komen, bijvoorbeeld 'Beroepsaansprakelijkheid verzekerd bij <verzekeraar>'.",
+    "BAV_EN": "Dezelfde vermelding in het Engels voor de /en/-pagina's, bijvoorbeeld 'Professional liability insurance with <verzekeraar>'. Optioneel; leeg = geen BAV in de Engelse footer.",
     "FEE_BOX3": "Het no cure no pay-percentage voor hulp bij de Opgaaf werkelijk rendement, als getal: 15 betekent 15%.",
     "FEE_BOX3_MIN": "Optioneel minimum in euro's, of null.",
     "FEE_BOX3_MAX": "Optioneel maximum in euro's, of null.",
