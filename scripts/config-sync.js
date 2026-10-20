@@ -171,7 +171,7 @@ const SJABLONEN = {
   },
   'review-knop': function () {
     if (leeg(P.GOOGLE_REVIEW_URL)) {
-      return '<p style="line-height:1.7;color:var(--clr-bark);margin:0;">Wilt u ons laten weten hoe het ging? Stuur een <a href="https://wa.me/31619711848" rel="nofollow" style="color:var(--clr-teal);font-weight:700;">WhatsApp</a> of een <a href="mailto:' + esc(B.email) + '" style="color:var(--clr-teal);font-weight:700;">e-mail</a>. Wij lezen alles.</p>';
+      return '<p style="line-height:1.7;color:var(--clr-bark);margin:0;">Wilt u mij laten weten hoe het ging? Stuur een <a href="https://wa.me/31619711848" rel="nofollow" style="color:var(--clr-teal);font-weight:700;">WhatsApp</a> of een <a href="mailto:' + esc(B.email) + '" style="color:var(--clr-teal);font-weight:700;">e-mail</a>. Ik lees alles.</p>';
     }
     return '<a href="' + esc(P.GOOGLE_REVIEW_URL) + '" class="btn btn-primary" target="_blank" rel="noopener" style="display:inline-flex;min-height:48px;">Schrijf een review op Google &rarr;</a>';
   },
