@@ -185,3 +185,95 @@ dan content, dan CTR.
 
 ### Nieuwe scripts
 `crawl-audit.js`, `gsc-export.js`, `gsc-report.js`, `build-sitemap.js`, `indexnow.js`.
+
+---
+
+## 2026-10-20 — Feiten en vertrouwen (branch `feiten-en-vertrouwen-2026-10`)
+
+Doel: feiten corrigeren, meer vertrouwen, meer aanvragen (bellen, WhatsApp,
+terugbelformulier). Ontwerp, telefoonnummer, WhatsApp-links en het honeypot-veld
+zijn gebleven. Niets verzonnen: onbekende gegevens staan als placeholder in
+`data/bedrijf.json`; `node scripts/bouw.js` waarschuwt zolang ze leeg zijn.
+Niet gepusht. Bronnen geraadpleegd op 20-10-2026.
+
+### Fase 1 — Feitelijke correcties
+| Wat | Waarom | Bron |
+|---|---|---|
+| Box 3: "bezwaar" wordt "Hulp bij uw Opgaaf werkelijk rendement"; zelf doen kan gratis; no cure no pay, tarief uit `FEE_BOX3` (nog leeg) | De site zei dat de Hoge Raad over 2021–2024 had geoordeeld en dat een (pro forma) bezwaar nodig was. Over 2021–2024 kan iedereen het werkelijk rendement opgeven, ook zonder bezwaar; de uitspraak van 25 juni 2026 gaat over 2017–2020 | belastingdienst.nl: Massaal bezwaar Plus, formulier Opgaaf werkelijk rendement, eisen bezwaar |
+| Overdrachtsbelasting: 2% blijft; starters 18–35 jaar 0% tot €555.000 (was €525.000) | "In 2026 verlaagd voor kopers onder 35" klopte niet | belastingdienst.nl startersvrijstelling; SRA, januari 2026 |
+| Rekenvoorbeeld met twee scenario's over saldo €11.390: €4.072 (35,75%) en €4.278 (37,56%), €339–€357 per maand; "€100 tot €400 per maand" wordt "afhankelijk van hypotheek en inkomen" | Het voorbeeld rekende met 37,56% en noemde dat de eerste schijf. De opdracht noemde 35,70%; de Belastingdienst hanteert 35,75% | belastingdienst.nl: tarieven voorlopige aanslag 2026, afbouw tarief aftrekposten |
+| Stellige claims voorzichtiger: "veel mensen betalen te veel", "duizenden euro's", gemiddelde teruggaves (€800–€1.200, €1.600), "wij zien regelmatig…", "hundreds of euros per month" (EN-homepage) | Geen bron; de Belastingdienst publiceert geen gemiddelde teruggave. De €1.600 lijkt het oude gemiddelde van de middelingsregeling (afgeschaft per 2023). Een bedrijf uit 2026 kan geen eigen resultaten claimen | — (weggehaald) |
+| Blogs op 2026-bedragen: ouderenkorting nulpunt €59.782 (was €59.783); huurtoeslagparameters; 1,28% is het fictieve rendement op spaargeld, niet de werkelijke rente; giften bij €45.000 tegen 37,56% (€169/€338) | Rekenfouten en verkeerde labels | belastingdienst.nl; volkshuisvestingnederland.nl (huurtoeslagparameters) |
+| Engelse plaatspagina's: rekenblokken herbouwd (het forfait werd van het voordeel afgetrokken), statistieken gelijk aan NL (inwoners 2026, WOZ 2025, % koop/huur), inwonertallen in de tekst (Westzaan 5.131, niet 8.000), "Avg. monthly refund" weg | Onverifieerbare velden, eerder alleen op de NL-pagina's vervangen | CBS/AlleCijfers.nl (zie de ronde van juli hierboven) |
+| Monumentenaftrek (Zaandijk, Koog aan de Zaan) weg | Per 1 januari 2019 afgeschaft, vervangen door een subsidie | belastingdienst.nl: aftrek onderhoudskosten monumentenpanden |
+| Verlopen teksten: EN-banner "extension until 1 September 2026", EN-blogkaart "deadline 1 May 2026, €59", seizoensbanner "voorlopige teruggave vanaf €49" | Data verstreken; €49 is de prijs voor eerste baan | — |
+| `llms.txt` gelijk met de site; Beconregeling weg | De site noemt geen Beconregeling en een Beconnummer is niet bevestigd | — |
+| Verzuimboete €469 (max. €6.709) ongewijzigd, nu met "pas na herinnering en aanmaning" | Klopte al | `data/fiscale-cijfers.json` |
+
+### Fase 2 — Eén bron voor prijzen en diensten
+- `data/bedrijf.json` + `scripts/config-sync.js`: 309 prijsplekken (`data-prijs`), cfg-blokken
+  en de JSON-LD (Offers, priceRange, LocalBusiness) komen uit één bestand. Gevonden:
+  AggregateOffer correctie €69–€69 (moet €69–€99) en aangifte laten doen €59–€149 (moet €59–€89).
+- Homepage: drie ingangen (senioren, koopwoning, correctie en box 3) plus "Meer diensten".
+- Over ons in de ik-vorm (Stan van der Hoeven); de diensten zijn de zeven dienstpagina's.
+  WOZ-bezwaar en kwijtschelding weg (geen pagina, geen prijs: open vraag).
+- €20-korting: "nieuwe klanten in 2026, met of zonder review" (hing aan reviews).
+
+### Fase 3 — Vertrouwen en aanvragen
+- Footer uit de config: naam, vestigingsplaats, e-mail; KvK, btw/KOR en BAV zodra bekend.
+- Blok "Waarom betalen als er gratis hulp is?" (BelastingTelefoon, balie, bibliotheek/IDO,
+  wijkteam, ouderenbonden). Bron: rijksoverheid.nl en belastingdienst.nl (bellen).
+- Correctiepagina: in 2026 kan 2021 nog worden teruggevraagd (5 jaar). Bron:
+  belastingdienst.nl, "te laat voor bezwaar". Een exacte einddatum pas na bevestiging.
+- `/beoordeling/` (noindex) en `docs/reviewverzoek.md`: reviewverzoek zonder selectie of
+  tegenprestatie; de Google-knop verschijnt pas met `GOOGLE_REVIEW_URL`.
+- Heroknoppen op dienst- en plaatspagina's: WhatsApp en bellen.
+
+### Fase 4 — Techniek
+- Eén LocalBusiness-blok uit de config op 98 pagina's (werkgebied 9 plaatsen,
+  ma–vr 18–21, za–zo 9–21). FAQ-schema's op 36 pagina's gelijk met de zichtbare vragen;
+  daarbij verdwenen onjuiste schema-antwoorden (Wlz/Wmo/tandarts aftrekbaar, 140%-norm).
+- Nieuwe scripts: `check-jsonld.js`, `check-rekenvoorbeelden.js`, `bouw.js`.
+- Canonicals en hreflang: 0 problemen. Plaatspagina's: eigen intro per plaats
+  (ter controle door de eigenaar).
+
+### Fase 5 — Toegankelijkheid
+- 18px basis ook op mobiel; koppen op telefoons op hun oude maat.
+- De kop paste niet op 375px: de menuknop viel buiten beeld. Nu logo op twee regels en
+  een menuknop van 48×48, ook bij A++ en op 320px.
+- Tikdoelen 48px (menu, NL/EN, footer, FAQ, formulier, belknoppen, A/A+/A++, cookieknoppen);
+  het open menu heeft een dichte achtergrond en scrollt.
+- Footerkoppen h2 (koppenvolgorde); rekendisclaimer 4,24:1 → 6,4:1; witte focusrand op
+  donkere vlakken; links in lopende tekst onderstreept.
+- 85 tabellen schuifbaar op telefoons (vielen buiten beeld); 36 grids krimpen op 320px.
+- Engelse labels voor de contactbalk en de tekstgrootteknop.
+
+### Lighthouse mobiel (lokaal, Edge headless)
+| pagina | prestaties voor → na | toegankelijkheid | best practices | CLS |
+|---|---|---|---|---|
+| / | 56 → 84 | 99 → 100 | 100 → 96* | 0 → 0 |
+| /tarieven/ | 95 → 97 | 98 → 100 | 100 → 96* | 0,004 → 0,062 |
+| /over-ons/ | 97 → 97 | 98 → 100 | 100 → 96* | 0 → 0 |
+| /senioren/ | 90 → 94 | 99 → 100 | 100 → 96* | 0,149 → 0,002 |
+| /contact/ | 97 → 97 | 98 → 100 | 100 → 96* | 0,004 → 0,002 |
+| /diensten/box-3-bezwaar/ | 97 → 90 | 98 → 100 | 100 → 96* | 0,003 → 0,001 |
+| /diensten/voorlopige-teruggave/ | 96 → 89 | 95 → 100 | 100 → 96* | 0,003 → 0 |
+| /diensten/correctie-late-aangifte/ | 97 → 97 | 98 → 100 | 100 → 96* | 0 → 0 |
+| /zaandam/ | 97 → 90 | 98 → 100 | 100 → 96* | 0 → 0 |
+| /blog/hypotheekrenteaftrek-berekenen/ | 97 → 97 | 98 → 100 | 100 → 96* | 0,005 → 0,001 |
+| /en/ | 90 → 88 | 98 → 100 | 100 → 96* | 0 → 0 |
+
+SEO 100 voor en na. \* Best practices: gtag.js van googletagmanager.com laadde tijdens
+de na-meting niet (certificaatfout in het netwerk van de meetmachine); een herhaalde
+meting van de oude stand op hetzelfde moment gaf ook 96. Prestaties schommelen tussen
+runs: bij herhaalde metingen van beide versies kwam de LCP willekeurig op ~9,3 s door
+hetzelfde mislukte verzoek. Een verschil in prestaties is met deze metingen niet aan te
+tonen. De CLS op /tarieven/ komt door het wisselen van lettertype (Nunito Sans) bij de
+grotere tekst en blijft onder de grens van 0,1.
+
+### Open vragen (placeholders in `data/bedrijf.json`)
+KVK_NUMMER, BTW_ID of KOR, BAV/BAV_EN, FEE_BOX3 (met minimum, maximum, grondslag en
+betaalmoment), VAT_NOTE, GOOGLE_REVIEW_URL, ACHTERGROND_STAN en
+EINDDATUM_CORRECTIE_2021. Verder: de €20-korting na 2026, WOZ-bezwaar en kwijtschelding
+(nog genoemd op plaatspagina's en in blogs), een Beconnummer, en de mededelingen over
+de KvK-inschrijving op `/privacy/` en in de algemene voorwaarden.
