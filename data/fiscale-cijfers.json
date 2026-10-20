@@ -1,7 +1,7 @@
 {
   "_doc": "Eén bron van waarheid voor de fiscale cijfers (belastingjaar 2026). De site genereert NIET automatisch uit dit bestand (statische HTML); scripts/check-fiscale-cijfers.js faalt als een VEROUDERDE waarde ergens in de HTML terugkomt. Werk je een cijfer bij: pas \"waarde\" aan, zet de oude waarde in \"verouderd\", en vul \"bron_url\" en \"gecontroleerd_op\" (JJJJ-MM-DD) in. Een waarde zonder bron_url mag alleen blijven staan met \"bron_url_todo\": true; het script telt die apart. Waarden ouder dan 12 maanden geven een waarschuwing. Korte waarden (\"36%\", \"€20\") hebben een \"context\": een van die woorden moet op dezelfde regel staan voordat set-fiscale-cijfers.js vervangt.",
   "belastingjaar": 2026,
-  "laatst_gecontroleerd": "2026-09-02",
+  "laatst_gecontroleerd": "2026-10-20",
   "bron_algemeen": "https://www.belastingdienst.nl",
   "cijfers": {
     "box1_schijf1_tarief": {
@@ -401,6 +401,31 @@
         "minimumjeugdloon",
         "jeugdloon",
         "per uur"
+      ]
+    },
+    "overdrachtsbelasting_eigen_woning": {
+      "waarde": "2%",
+      "geverifieerd": true,
+      "bron": "SRA, 12-01-2026: het tarief voor een woning die de koper zelf gaat bewonen is 2%, \"niet anders dan in 2025\". Overige woningen 8% (was 10,4%), overig onroerend goed 10,4%.",
+      "bron_url": "https://www.sra.nl/nieuws/004501/2026/01/overdrachtsbelasting-drie-tarieven-en-hogere-startersvrijstelling-in-2026",
+      "bron_url_2": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/woning/overdrachtsbelasting/tarieven_overdrachtsbelasting/laag-tarief",
+      "gecontroleerd_op": "2026-10-20",
+      "context": [
+        "overdrachtsbelasting",
+        "transfer tax"
+      ],
+      "verouderd": []
+    },
+    "startersvrijstelling_waardegrens": {
+      "waarde": "€555.000",
+      "geverifieerd": true,
+      "bron": "Belastingdienst, startersvrijstelling: meerderjarig en nog geen 35 bij de levering, zelf gaan wonen, niet eerder gebruikt, woningwaarde niet hoger dan €555.000 (2025: €525.000, volgens SRA 12-01-2026). De oude waarde staat bewust niet in verouderd: de site noemt hem als vergelijking.",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/woning/overdrachtsbelasting/startersvrijstelling/startersvrijstelling",
+      "bron_url_2": "https://www.sra.nl/nieuws/004501/2026/01/overdrachtsbelasting-drie-tarieven-en-hogere-startersvrijstelling-in-2026",
+      "gecontroleerd_op": "2026-10-20",
+      "verouderd": [
+        "verlaagd voor kopers onder 35",
+        "reduced in 2026 for buyers under 35"
       ]
     }
   }
