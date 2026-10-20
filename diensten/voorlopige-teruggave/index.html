@@ -67,7 +67,7 @@
     ]
   },
   "areaServed": { "@type": "AdministrativeArea", "name": "Zaanstad" },
-  "offers": { "@type": "AggregateOffer", "lowPrice": "109", "highPrice": "149", "priceCurrency": "EUR", "offerCount": "2" },
+  "offers": { "@type": "AggregateOffer", "@id": "https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/#prijzen-voorlopige_teruggave", "lowPrice": "109", "highPrice": "149", "priceCurrency": "EUR", "offerCount": "2" },
   "url": "https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"
 }
 </script>
@@ -185,13 +185,13 @@
       <div>
         <div class="hero-badge fade-up"><span class="hero-badge-dot"></span>Maandelijks geld terug, voor woningbezitters</div>
         <h1 class="fade-up fade-up-d1">Voorlopige teruggave<br><em>aanvragen</em></h1>
-        <p class="hero-sub fade-up fade-up-d2">Heeft u een koopwoning? Dan hoeft u niet tot na uw aangifte te wachten op uw hypotheekvoordeel. Met een <strong>voorlopige teruggave</strong> ontvangt u uw hypotheekrenteaftrek maandelijks op uw rekening. Wij regelen de aanvraag voor een vaste prijs van €109, aan huis in de Zaanstreek.</p>
+        <p class="hero-sub fade-up fade-up-d2">Heeft u een koopwoning? Dan hoeft u niet tot na uw aangifte te wachten op uw hypotheekvoordeel. Met een <strong>voorlopige teruggave</strong> ontvangt u uw hypotheekrenteaftrek maandelijks op uw rekening. Wij regelen de aanvraag voor een vaste prijs van <span data-prijs="voorlopige_teruggave">€109</span>, aan huis in de Zaanstreek.</p>
         <div class="hero-buttons fade-up fade-up-d3">
           <a href="#contact" class="btn btn-primary">Voorlopige teruggave aanvragen →</a>
           <a href="#faq" class="btn btn-secondary">Veelgestelde vragen</a>
         </div>
         <div class="hero-trust fade-up fade-up-d4">
-          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Vaste prijs €109</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Vaste prijs <span data-prijs="voorlopige_teruggave">€109</span></div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Aan huis in Zaanstad</div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Zelfde dag reactie</div>
         </div>
@@ -215,7 +215,7 @@
             </div>
             <div class="hero-card-row">
               <span>Vaste prijs</span>
-              <span style="color: var(--clr-green);font-weight:700;">€109</span>
+              <span style="color: var(--clr-green);font-weight:700;"><span data-prijs="voorlopige_teruggave">€109</span></span>
             </div>
           </div>
           <p class="hero-card-disclaimer">* Het bedrag hangt af van uw hypotheek, inkomen en belastingschijf. Wij berekenen uw exacte maandbedrag.</p>
@@ -237,7 +237,7 @@
       </div>
       <div class="local-stat-grid">
         <div class="local-stat">
-          <div class="local-stat-value">€109</div>
+          <div class="local-stat-value"><span data-prijs="voorlopige_teruggave">€109</span></div>
           <div class="local-stat-label">Vaste prijs</div>
         </div>
         <div class="local-stat">
@@ -300,8 +300,8 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px;">
       <div style="background:var(--clr-cream);border-radius:14px;padding:32px 26px;border:1px solid rgba(44,37,32,0.06);">
         <div style="font-size:2rem;margin-bottom:14px;">🏷️</div>
-        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--clr-deep);margin-bottom:10px;">Vaste prijs €109</h3>
-        <p style="font-size:0.95rem;color:var(--clr-bark);line-height:1.65;">Het complete pakket kost €109, inclusief hypotheekrenteberekening en de bijtelling voor uw woning (in belastingtaal: het eigenwoningforfait). Vraagt u het samen met uw partner aan? Dan is het €149. U weet vooraf wat u betaalt.</p>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--clr-deep);margin-bottom:10px;">Vaste prijs <span data-prijs="voorlopige_teruggave">€109</span></h3>
+        <p style="font-size:0.95rem;color:var(--clr-bark);line-height:1.65;">Het complete pakket kost <span data-prijs="voorlopige_teruggave">€109</span>, inclusief hypotheekrenteberekening en de bijtelling voor uw woning (in belastingtaal: het eigenwoningforfait). Vraagt u het samen met uw partner aan? Dan is het <span data-prijs="voorlopige_teruggave.partner">€149</span>. U weet vooraf wat u betaalt.</p>
       </div>
       <div style="background:var(--clr-cream);border-radius:14px;padding:32px 26px;border:1px solid rgba(44,37,32,0.06);">
         <div style="font-size:2rem;margin-bottom:14px;">🏠</div>
@@ -412,8 +412,8 @@
     <div style="max-width:520px;margin:36px auto 0;background:#fff;border-radius:16px;padding:34px 32px;border:1px solid rgba(44,37,32,0.08);box-shadow:0 4px 20px rgba(44,37,32,0.07);text-align:center;">
       <div style="font-size:2rem;margin-bottom:8px;">💰</div>
       <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-deep);margin-bottom:6px;">Voorlopige teruggave</div>
-      <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--clr-teal);margin:8px 0;">€109</div>
-      <div style="font-size:0.85rem;color:var(--clr-bark);margin-bottom:18px;">compleet pakket · met partner €149</div>
+      <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--clr-teal);margin:8px 0;"><span data-prijs="voorlopige_teruggave">€109</span></div>
+      <div style="font-size:0.85rem;color:var(--clr-bark);margin-bottom:18px;">compleet pakket · met partner <span data-prijs="voorlopige_teruggave.partner">€149</span></div>
       <ul style="list-style:none;padding:0;margin:0 0 22px;text-align:left;display:inline-block;">
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Aanvraag of wijziging voorlopige teruggave</li>
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Hypotheekrenteaftrek correct doorgerekend</li>
@@ -503,7 +503,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost het en wat heb ik nodig?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>Het complete pakket met hypotheekberekening kost €109; samen met uw partner €149. Wij hebben uw hypotheekgegevens, WOZ-beschikking en inkomensgegevens nodig, wij vertellen u precies wat.</p></div>
+        <div class="faq-answer"><p>Het complete pakket met hypotheekberekening kost <span data-prijs="voorlopige_teruggave">€109</span>; samen met uw partner <span data-prijs="voorlopige_teruggave.partner">€149</span>. Wij hebben uw hypotheekgegevens, WOZ-beschikking en inkomensgegevens nodig, wij vertellen u precies wat.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat is het verschil tussen een voorlopige teruggave en een voorlopige aanslag?<span class="faq-arrow">+</span></button>
@@ -529,7 +529,7 @@
 <section class="cta" id="contact">
   <div class="container">
     <h2>Voorlopige teruggave laten aanvragen?</h2>
-    <p class="cta-sub">Stuur een WhatsApp of bel, wij reageren dezelfde dag. Vaste prijs €109, aan huis in de Zaanstreek.</p>
+    <p class="cta-sub">Stuur een WhatsApp of bel, wij reageren dezelfde dag. Vaste prijs <span data-prijs="voorlopige_teruggave">€109</span>, aan huis in de Zaanstreek.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20een%20voorlopige%20teruggave%20aanvragen." class="btn btn-primary" style="background:#188741;" rel="nofollow">💬 WhatsApp ons</a>
       <a href="tel:+31619711848" class="btn btn-secondary" rel="nofollow">📞 06 – 19 71 18 48</a>

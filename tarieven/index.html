@@ -105,14 +105,16 @@
   "url": "https://belastinghulpzaanstad.nl/tarieven/",
   "provider": {"@id": "https://belastinghulpzaanstad.nl/#business"},
   "itemListElement": [
-    {"@type":"Offer","name":"Eerste baan, eerste aangifte","price":"49","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/eerste-baan/"},
-    {"@type":"Offer","name":"Belastingaangifte, alleenstaand","price":"59","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"},
-    {"@type":"Offer","name":"Belastingaangifte, met fiscaal partner","price":"89","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"},
-    {"@type":"Offer","name":"Voorlopige teruggave","price":"109","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"},
-    {"@type":"Offer","name":"Voorlopige teruggave, met fiscaal partner","price":"149","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"},
-    {"@type":"Offer","name":"Correctie of late aangifte, per jaar","price":"69","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"},
-    {"@type":"Offer","name":"Toeslag aanvragen of wijzigen","price":"30","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/toeslagen/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-eerste_baan","name":"Eerste baan, eerste aangifte","price":"49","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/eerste-baan/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-aangifte","name":"Belastingaangifte, alleenstaand","price":"59","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-aangifte-partner","name":"Belastingaangifte, met fiscaal partner","price":"89","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-voorlopige_teruggave","name":"Voorlopige teruggave","price":"109","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-voorlopige_teruggave-partner","name":"Voorlopige teruggave, met fiscaal partner","price":"149","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-correctie","name":"Correctie of late aangifte, per jaar","price":"69","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-correctie-partner","name":"Correctie of late aangifte, per jaar, met fiscaal partner","price":"99","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-toeslag","name":"Toeslag aanvragen of wijzigen","price":"30","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/toeslagen/"},
     {"@type":"Offer","name":"Toeslagencheck","price":"0","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/toeslagen/"},
+    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-spoed","name":"Spoedtoeslag: aangifte binnen 24 uur, bovenop de prijs","price":"25","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/tarieven/"},
     {"@type":"Offer","name":"Check of de Opgaaf werkelijk rendement (box 3) loont","price":"0","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/"}
   ]
 }
@@ -172,8 +174,8 @@
       Geen uurtarief, geen toeslag achteraf, geen kosten voor een gesprek dat niet doorgaat.
     </p>
     <p style="font-size:1.05rem;color:var(--clr-deep);font-weight:600;line-height:1.7;margin:0 0 6px;">
-      Woont u samen en doet u samen aangifte? Dan betaalt u €89 in plaats van €59.
-      Dat is €30 voor u samen, niet €59 per persoon.
+      Woont u samen en doet u samen aangifte? Dan betaalt u <span data-prijs="aangifte.partner">€89</span> in plaats van <span data-prijs="aangifte">€59</span>.
+      Dat is <span data-prijs="aangifte.extra">€30</span> voor u samen, niet <span data-prijs="aangifte">€59</span> per persoon.
     </p>
   </div>
 </section>
@@ -192,29 +194,29 @@
         </thead>
         <tbody>
           <tr>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/belastingaangifte-laten-doen/" style="color:var(--clr-teal);font-weight:700;">Belastingaangifte</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Eén jaar, compleet ingediend</span></td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€59</td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€89</td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/belastingaangifte-laten-doen/" style="color:var(--clr-teal);font-weight:700;">Belastingaangifte</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Eén jaar, compleet ingediend. Ook voor senioren met AOW</span></td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="aangifte">€59</span></td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="aangifte.partner">€89</span></td>
           </tr>
           <tr>
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/eerste-baan/" style="color:var(--clr-teal);font-weight:700;">Eerste baan</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Eerste aangifte, loonheffingskorting en toeslagen nagekeken</span></td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€49</td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="eerste_baan">€49</span></td>
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;color:var(--clr-bark);white-space:nowrap;">n.v.t.</td>
           </tr>
           <tr>
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/voorlopige-teruggave/" style="color:var(--clr-teal);font-weight:700;">Voorlopige teruggave</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Elke maand geld terug, incl. hypotheekberekening</span></td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€109</td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€149</td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="voorlopige_teruggave">€109</span></td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="voorlopige_teruggave.partner">€149</span></td>
           </tr>
           <tr>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/correctie-late-aangifte/" style="color:var(--clr-teal);font-weight:700;">Correctie of late aangifte</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Per jaar dat wij herstellen of alsnog indienen</span></td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€69</td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€99</td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/correctie-late-aangifte/" style="color:var(--clr-teal);font-weight:700;">Correctie of late aangifte</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Per jaar dat wij herstellen of alsnog indienen. De check of het iets oplevert is gratis</span></td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="correctie">€69</span></td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="correctie.partner">€99</span></td>
           </tr>
           <tr>
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/toeslagen/" style="color:var(--clr-teal);font-weight:700;">Toeslag aanvragen of wijzigen</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Huur-, zorg-, kindgebonden of kinderopvangtoeslag</span></td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">€30</td>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;color:var(--clr-bark);white-space:nowrap;">€30</td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;"><span data-prijs="toeslag">€30</span></td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;color:var(--clr-bark);white-space:nowrap;"><span data-prijs="toeslag">€30</span></td>
           </tr>
           <tr>
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/box-3-bezwaar/" style="color:var(--clr-teal);font-weight:700;">Box 3: werkelijk rendement opgeven</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Over 2021&ndash;2024. De check is gratis, zie hieronder</span></td>
@@ -230,7 +232,7 @@
           </tr>
           <tr>
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);">Spoed: aangifte binnen 24 uur<br><span style="font-size:0.88rem;color:var(--clr-bark);">Bovenop de prijs hierboven</span></td>
-            <td colspan="2" style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">+ €25</td>
+            <td colspan="2" style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">+ <span data-prijs="spoed">€25</span></td>
           </tr>
           <tr>
             <td style="padding:14px 12px;"><a href="/diensten/erfbelasting-schenking/" style="color:var(--clr-teal);font-weight:700;">Erfbelasting en schenking</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Elke nalatenschap is anders, dus altijd op offerte</span></td>
@@ -242,6 +244,8 @@
     <p style="font-size:0.92rem;color:var(--clr-bark);margin:14px 0 0;line-height:1.6;">
       &ldquo;Samen&rdquo; betekent: u en uw fiscaal partner in één opdracht. Dat is dus geen prijs per persoon.
     </p>
+    <!-- cfg:btw-vermelding --><!-- /cfg:btw-vermelding -->
+    <!-- cfg:startkorting-tarieven --><p class="startkorting" style="font-size:1rem;color:var(--clr-deep);margin:14px 0 0;line-height:1.6;background:#FFF8E1;border:1px solid #F5B947;border-radius:10px;padding:12px 16px;"><strong>Nieuw in 2026:</strong> bent u een nieuwe klant, dan krijgt u &euro;20 korting op een aangifte of voorlopige teruggave. Dat gaat automatisch, u heeft geen code nodig.</p><!-- /cfg:startkorting-tarieven -->
   </div>
 </section>
 
@@ -259,7 +263,7 @@
     <h2 style="font-family:var(--font-display);font-size:1.5rem;color:var(--clr-deep);margin:0 0 18px;">Wat er niet bij zit</h2>
     <ul style="list-style:none;padding:0;margin:0;display:grid;gap:10px;">
       <li style="padding-left:28px;position:relative;line-height:1.6;"><span aria-hidden="true" style="position:absolute;left:0;color:var(--clr-bark);font-weight:800;">&ndash;</span> Boekhouding of aangifte voor een onderneming. Dat doen wij niet; wij verwijzen u door.</li>
-      <li style="padding-left:28px;position:relative;line-height:1.6;"><span aria-hidden="true" style="position:absolute;left:0;color:var(--clr-bark);font-weight:800;">&ndash;</span> Elk extra jaar is een eigen prijs. Vijf jaar corrigeren is vijf keer €69.</li>
+      <li style="padding-left:28px;position:relative;line-height:1.6;"><span aria-hidden="true" style="position:absolute;left:0;color:var(--clr-bark);font-weight:800;">&ndash;</span> Elk extra jaar is een eigen prijs. Vijf jaar corrigeren is vijf keer <span data-prijs="correctie">€69</span>.</li>
       <li style="padding-left:28px;position:relative;line-height:1.6;"><span aria-hidden="true" style="position:absolute;left:0;color:var(--clr-bark);font-weight:800;">&ndash;</span> Een bezwaarprocedure bij de rechter. Loopt het zo ver, dan zeggen wij dat vooraf.</li>
       <li style="padding-left:28px;position:relative;line-height:1.6;"><span aria-hidden="true" style="position:absolute;left:0;color:var(--clr-bark);font-weight:800;">&ndash;</span> Boetes of rente van de Belastingdienst. Die betaalt u aan hen, niet aan ons.</li>
     </ul>

@@ -88,12 +88,16 @@ if (sk.actief === true && sk.geldig_tot && VANDAAG > sk.geldig_tot) {
 
 /* ---------- prijzen ---------- */
 const prijzen = cfg.prijzen;
+/* "aangifte" = de prijs, "aangifte.partner" = samen met de fiscaal partner,
+   "aangifte.extra" = wat de partner erbij kost (partner min alleen). */
 function prijs(sleutel) {
   const [k, sub] = sleutel.split('.');
   if (k === 'startkorting') return sk.bedrag;
   const p = prijzen[k];
   if (!p || k === '_doc') return undefined;
-  return sub === 'partner' ? p.partner : p.bedrag;
+  if (sub === 'partner') return p.partner;
+  if (sub === 'extra') return typeof p.partner === 'number' ? p.partner - p.bedrag : undefined;
+  return p.bedrag;
 }
 const inRange = [];
 for (const [k, p] of Object.entries(prijzen)) {
@@ -207,13 +211,17 @@ for (const f of walk(ROOT, [])) {
   const voor = fs.readFileSync(f, 'utf8');
   let s = voor;
 
-  /* 1. data-prijs */
-  s = s.replace(/<([a-z][a-z0-9]*)(\s[^>]*?\sdata-prijs="([a-z_]+(?:\.partner)?)"[^>]*)>([^<]*)<\/\1>/gi,
+  /* 1. data-prijs. We onthouden welke oude prijs welke nieuwe werd: een
+     FAQ-antwoord in de JSON-LD noemt dezelfde prijs, en die moet mee. */
+  const oudNieuw = new Map();
+  s = s.replace(/<([a-z][a-z0-9]*)(\s(?:[^>]*?\s)?data-prijs="([a-z_]+(?:\.partner|\.extra)?)"[^>]*)>([^<]*)<\/\1>/gi,
     function (heel, tag, attrs, sleutel, inhoud) {
       const v = prijs(sleutel);
       prijsPlekken++;
       if (typeof v !== 'number') { fouten.push(rel(f) + ': data-prijs="' + sleutel + '" heeft geen bedrag in data/bedrijf.json'); return heel; }
       if (!/\d/.test(inhoud)) { fouten.push(rel(f) + ': data-prijs="' + sleutel + '" bevat geen getal om te vervangen'); return heel; }
+      const oud = inhoud.match(/\d+/)[0];
+      if (oud !== String(v)) oudNieuw.set(oud, String(v));
       return '<' + tag + attrs + '>' + inhoud.replace(/\d+/, String(v)) + '</' + tag + '>';
     });
 
@@ -228,9 +236,16 @@ for (const f of walk(ROOT, [])) {
   /* 3. JSON-LD */
   s = s.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, function (heel, open, body, sluit) {
     let b = body;
+    /* FAQ-antwoorden: een gewijzigde prijs, in elke schrijfwijze die voorkomt */
+    if (oudNieuw.size && /"FAQPage"/.test(b)) {
+      for (const [oud, nieuw] of oudNieuw) {
+        b = b.replace(new RegExp('(€\\s?|\\\\u20ac)' + oud + '(?!\\d)(?![.,]\\d)', 'g'), '$1' + nieuw)
+          .replace(new RegExp('\\b' + oud + ' euro\\b', 'g'), nieuw + ' euro');
+      }
+    }
     b = b.replace(/("priceRange"\s*:\s*)"[^"]*"/g, function (m, kop) { ldPlekken++; return kop + '"' + PRICE_RANGE + '"'; });
     let i = 0, m;
-    const idRe = /"@id"\s*:\s*"[^"]*#(prijs|prijzen)-([a-z_]+)"/g;
+    const idRe = /"@id"\s*:\s*"[^"]*#(prijs|prijzen)-([a-z_]+?)(-partner)?"/g;
     while ((m = idRe.exec(b)) !== null) {
       const [van, tot] = objectRond(b, m.index);
       let obj = b.slice(van, tot);
@@ -239,7 +254,8 @@ for (const f of walk(ROOT, [])) {
       ldPlekken++;
       if (!p) { fouten.push(rel(f) + ': JSON-LD verwijst naar onbekende prijs "' + sleutel + '"'); continue; }
       if (m[1] === 'prijs') {
-        const v = prijs(sleutel);
+        const v = prijs(sleutel + (m[3] ? '.partner' : ''));
+        if (typeof v !== 'number') { fouten.push(rel(f) + ': JSON-LD #prijs-' + sleutel + (m[3] || '') + ' heeft geen bedrag'); continue; }
         obj = zetVeld(obj, 'price', String(v));
       } else {
         obj = zetVeld(obj, 'lowPrice', String(p.bedrag));
@@ -258,6 +274,34 @@ for (const f of walk(ROOT, [])) {
     afwijkend.push(rel(f));
     if (!CHECK) fs.writeFileSync(f, s);
   }
+}
+
+/* ---------- titles en meta: geen markers mogelijk, dus alleen controleren ----------
+   Een title of description kan geen <span> bevatten. Na een prijswijziging
+   blijft daar dus de oude prijs staan. Op de pagina's met prijzen moet elk
+   bedrag tot €200 in de meta een prijs uit data/bedrijf.json zijn; hogere
+   bedragen zijn hier fiscale bedragen of rekenvoorbeelden en doen niet mee. */
+const bekendePrijzen = new Set([String(sk.bedrag)]);
+for (const [k, p] of Object.entries(prijzen)) {
+  if (k === '_doc') continue;
+  ['', '.partner', '.extra'].forEach(function (sub) { const v = prijs(k + sub); if (typeof v === 'number') bekendePrijzen.add(String(v)); });
+}
+const PRIJSPAGINA = /^(index\.html|tarieven\/|senioren\/|diensten\/|en\/index\.html|en\/services\/|(en\/)?(zaandam|krommenie|assendelft|wormerveer|koog-aan-de-zaan|zaandijk|westzaan|wormerland|oostzaan)\/)/;
+for (const f of walk(ROOT, [])) {
+  const r = rel(f);
+  if (!PRIJSPAGINA.test(r)) continue;
+  const html = fs.readFileSync(f, 'utf8');
+  const meta = [(html.match(/<title>([^<]*)<\/title>/) || [])[1] || ''];
+  const re = /<meta (?:name|property)="(?:description|og:description|twitter:description|og:title|twitter:title|og:image:alt)" content="([^"]*)"/g;
+  let m;
+  while ((m = re.exec(html)) !== null) meta.push(m[1]);
+  const gezien = new Set();
+  meta.join(' ').replace(/€\s?(\d{2,3})(?!\d)(?![.,]\d)/g, function (heel, n) {
+    if (Number(n) <= 200 && !bekendePrijzen.has(n) && !gezien.has(n)) {
+      gezien.add(n);
+      waarschuwingen.push(r + ': title of meta noemt €' + n + ', dat is geen prijs uit data/bedrijf.json. Pas de tekst met de hand aan.');
+    }
+  });
 }
 
 /* ---------- llms.txt: geen markers mogelijk, dus alleen controleren ---------- */

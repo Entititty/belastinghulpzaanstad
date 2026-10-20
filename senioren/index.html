@@ -108,6 +108,7 @@
   ],
   "offers": {
     "@type": "AggregateOffer",
+    "@id": "https://belastinghulpzaanstad.nl/senioren/#prijzen-aangifte",
     "priceCurrency": "EUR",
     "lowPrice": "59",
     "highPrice": "89",
@@ -261,7 +262,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         </div>
         <h1>Wij doen uw belastingaangifte.<br><em>U hoeft alleen open te doen.</em></h1>
         <p class="hero-sub sen-groot">
-          Wij komen bij u thuis. U hoeft niets te printen en niets uit te zoeken. Vaste prijs van &euro;&nbsp;59. U weet vooraf wat het kost en er komt niets bij.
+          Wij komen bij u thuis. U hoeft niets te printen en niets uit te zoeken. Vaste prijs van <span data-prijs="aangifte">&euro;&nbsp;59</span>. U weet vooraf wat het kost en er komt niets bij.
         </p>
         <div class="hero-buttons">
           <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20hulp%20met%20mijn%20belastingaangifte." class="btn btn-wa">Stuur een WhatsApp</a>
@@ -310,9 +311,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <h2 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);text-align:center;margin-bottom:26px;">Wat kost het?</h2>
     <div class="sen-prijs">
       <div style="color:var(--clr-bark);font-weight:700;">Aangifte voor senioren</div>
-      <div class="sen-prijs-bedrag">&euro; 59</div>
+      <div class="sen-prijs-bedrag"><span data-prijs="aangifte">&euro; 59</span></div>
       <div style="color:var(--clr-bark);">per aangifte</div>
-      <p class="sen-prijs-noot">Doet u het samen met uw partner? Dan is het <strong>&euro;&nbsp;89</strong> voor u samen.</p>
+      <p class="sen-prijs-noot">Doet u het samen met uw partner? Dan is het <strong><span data-prijs="aangifte.partner">&euro;&nbsp;89</span></strong> voor u samen.</p>
       <p class="sen-prijs-noot">U betaalt pas na de aangifte. Geen abonnement, geen kosten achteraf. Levert het u niets op, dan zeggen wij dat vooraf.</p>
     </div>
   </div>
@@ -372,7 +373,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost een aangifte?<span class="faq-arrow">+</span></button>
-      <div class="faq-answer"><p>&euro;&nbsp;59 per aangifte. Samen met uw partner &euro;&nbsp;89 voor u samen. U weet de prijs vooraf en er komt niets bij.</p></div>
+      <div class="faq-answer"><p><span data-prijs="aangifte">&euro;&nbsp;59</span> per aangifte. Samen met uw partner <span data-prijs="aangifte.partner">&euro;&nbsp;89</span> voor u samen. U weet de prijs vooraf en er komt niets bij.</p></div>
     </div>
 
     <div class="faq-item">

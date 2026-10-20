@@ -67,7 +67,7 @@
     ]
   },
   "areaServed": { "@type": "AdministrativeArea", "name": "Zaanstad" },
-  "offers": { "@type": "AggregateOffer", "lowPrice": "109", "highPrice": "149", "priceCurrency": "EUR", "offerCount": "2" },
+  "offers": { "@type": "AggregateOffer", "@id": "https://belastinghulpzaanstad.nl/en/services/preliminary-refund/#prijzen-voorlopige_teruggave", "lowPrice": "109", "highPrice": "149", "priceCurrency": "EUR", "offerCount": "2" },
   "url": "https://belastinghulpzaanstad.nl/en/services/preliminary-refund/"
 }
 </script>
@@ -182,13 +182,13 @@
       <div>
         <div class="hero-badge fade-up"><span class="hero-badge-dot"></span>Monthly money back, for homeowners</div>
         <h1 class="fade-up fade-up-d1">Preliminary tax refund,<br><em>arranged</em></h1>
-        <p class="hero-sub fade-up fade-up-d2">Own your home? You do not have to wait until after your tax return for your mortgage benefit. With a <strong>preliminary tax refund</strong> you receive your mortgage interest deduction in your account every month. We arrange the application for a fixed price of €109, at your home in the Zaanstad region.</p>
+        <p class="hero-sub fade-up fade-up-d2">Own your home? You do not have to wait until after your tax return for your mortgage benefit. With a <strong>preliminary tax refund</strong> you receive your mortgage interest deduction in your account every month. We arrange the application for a fixed price of <span data-prijs="voorlopige_teruggave">€109</span>, at your home in the Zaanstad region.</p>
         <div class="hero-buttons fade-up fade-up-d3">
           <a href="#contact" class="btn btn-primary">Apply for a preliminary refund →</a>
           <a href="#faq" class="btn btn-secondary">Frequently asked questions</a>
         </div>
         <div class="hero-trust fade-up fade-up-d4">
-          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Fixed price €109</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Fixed price <span data-prijs="voorlopige_teruggave">€109</span></div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> At your home in Zaanstad</div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Same-day reply</div>
         </div>
@@ -212,7 +212,7 @@
             </div>
             <div class="hero-card-row">
               <span>Fixed price</span>
-              <span style="color: var(--clr-green);font-weight:700;">€109</span>
+              <span style="color: var(--clr-green);font-weight:700;"><span data-prijs="voorlopige_teruggave">€109</span></span>
             </div>
           </div>
           <p class="hero-card-disclaimer">* The amount depends on your mortgage, income and tax bracket. We calculate your exact monthly amount.</p>
@@ -234,7 +234,7 @@
       </div>
       <div class="local-stat-grid">
         <div class="local-stat">
-          <div class="local-stat-value">€109</div>
+          <div class="local-stat-value"><span data-prijs="voorlopige_teruggave">€109</span></div>
           <div class="local-stat-label">Fixed price</div>
         </div>
         <div class="local-stat">
@@ -382,8 +382,8 @@
     <div style="max-width:520px;margin:36px auto 0;background:#fff;border-radius:16px;padding:34px 32px;border:1px solid rgba(44,37,32,0.08);box-shadow:0 4px 20px rgba(44,37,32,0.07);text-align:center;">
       <div style="font-size:2rem;margin-bottom:8px;">💰</div>
       <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-deep);margin-bottom:6px;">Preliminary refund</div>
-      <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--clr-teal);margin:8px 0;">€109</div>
-      <div style="font-size:0.85rem;color:var(--clr-bark);margin-bottom:18px;">complete package · with partner €149</div>
+      <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--clr-teal);margin:8px 0;"><span data-prijs="voorlopige_teruggave">€109</span></div>
+      <div style="font-size:0.85rem;color:var(--clr-bark);margin-bottom:18px;">complete package · with partner <span data-prijs="voorlopige_teruggave.partner">€149</span></div>
       <ul style="list-style:none;padding:0;margin:0 0 22px;text-align:left;display:inline-block;">
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Application or change of preliminary refund</li>
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Mortgage interest deduction calculated correctly</li>
@@ -472,7 +472,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What does it cost and what do I need?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>The complete package with mortgage calculation costs €109; with your partner €149. We need your mortgage details, property valuation (WOZ) and income information, we tell you exactly what.</p></div>
+        <div class="faq-answer"><p>The complete package with mortgage calculation costs <span data-prijs="voorlopige_teruggave">€109</span>; with your partner <span data-prijs="voorlopige_teruggave.partner">€149</span>. We need your mortgage details, property valuation (WOZ) and income information, we tell you exactly what.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What's the difference between a preliminary tax refund and a preliminary assessment?<span class="faq-arrow">+</span></button>
@@ -498,7 +498,7 @@
 <section class="cta" id="contact">
   <div class="container">
     <h2>Have your preliminary refund arranged?</h2>
-    <p class="cta-sub">Send a WhatsApp or call, we reply the same day. Fixed price €109, at your home in the Zaanstad region.</p>
+    <p class="cta-sub">Send a WhatsApp or call, we reply the same day. Fixed price <span data-prijs="voorlopige_teruggave">€109</span>, at your home in the Zaanstad region.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/31619711848?text=Hi!%20I%20would%20like%20to%20apply%20for%20a%20preliminary%20tax%20refund." class="btn btn-primary" style="background:#188741;" rel="nofollow">💬 WhatsApp us</a>
       <a href="tel:+31619711848" class="btn btn-secondary" rel="nofollow">📞 06 – 19 71 18 48</a>

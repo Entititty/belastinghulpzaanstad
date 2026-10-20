@@ -67,7 +67,7 @@
     ]
   },
   "areaServed": { "@type": "AdministrativeArea", "name": "Zaanstad" },
-  "offers": { "@type": "AggregateOffer", "lowPrice": "59", "highPrice": "149", "priceCurrency": "EUR", "offerCount": "3" },
+  "offers": { "@type": "AggregateOffer", "@id": "https://belastinghulpzaanstad.nl/en/services/tax-return/#prijzen-aangifte", "lowPrice": "59", "highPrice": "89", "priceCurrency": "EUR", "offerCount": "2" },
   "url": "https://belastinghulpzaanstad.nl/en/services/tax-return/"
 }
 </script>
@@ -180,15 +180,15 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-badge fade-up"><span class="hero-badge-dot"></span>Fixed price from €59, at your home</div>
+        <div class="hero-badge fade-up"><span class="hero-badge-dot"></span>Fixed price from <span data-prijs="aangifte">€59</span>, at your home</div>
         <h1 class="fade-up fade-up-d1">Your Dutch tax return,<br><em>done for you</em></h1>
-        <p class="hero-sub fade-up fade-up-d2">No more struggling with DigiD and the Belastingdienst website. We do your income tax return at your kitchen table, for a fixed price from <strong>€59</strong>, at your home anywhere in the Zaanstad region. Made for seniors, first-time buyers and expats.</p>
+        <p class="hero-sub fade-up fade-up-d2">No more struggling with DigiD and the Belastingdienst website. We do your income tax return at your kitchen table, for a fixed price from <strong><span data-prijs="aangifte">€59</span></strong>, at your home anywhere in the Zaanstad region. Made for seniors, first-time buyers and expats.</p>
         <div class="hero-buttons fade-up fade-up-d3">
           <a href="#contact" class="btn btn-primary">Request your tax return →</a>
           <a href="#faq" class="btn btn-secondary">Frequently asked questions</a>
         </div>
         <div class="hero-trust fade-up fade-up-d4">
-          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Fixed price from €59</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Fixed price from <span data-prijs="aangifte">€59</span></div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> At your home in Zaanstad</div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Same-day reply</div>
         </div>
@@ -212,7 +212,7 @@
             </div>
             <div class="hero-card-row">
               <span>From</span>
-              <span style="color: var(--clr-green);font-weight:700;">€59</span>
+              <span style="color: var(--clr-green);font-weight:700;"><span data-prijs="aangifte">€59</span></span>
             </div>
           </div>
           <p class="hero-card-disclaimer">* The final result depends on your personal situation. We tell you the exact price before we start.</p>
@@ -230,11 +230,11 @@
         <h2>Your tax return, done at home in the Zaanstad region</h2>
         <p>Every year, more people get stuck on the Dutch tax return. Not because it truly has to be complicated, but because everything is online, the Belastingdienst language is hard to follow, and DigiD is a real barrier for many seniors and expats.</p>
         <p>We come to your home in Zaandam, Krommenie, Wormerveer, Assendelft or anywhere else in the Zaanstad municipality. We fill in your income tax return at the table, make sure you use every credit and deduction you are entitled to, and file it digitally with the Belastingdienst.</p>
-        <p>You know the price upfront: from €59 for a single return. No hourly billing, no surprise invoices afterwards.</p>
+        <p>You know the price upfront: from <span data-prijs="aangifte">€59</span> for a single return. No hourly billing, no surprise invoices afterwards.</p>
       </div>
       <div class="local-stat-grid">
         <div class="local-stat">
-          <div class="local-stat-value">€59</div>
+          <div class="local-stat-value"><span data-prijs="aangifte">€59</span></div>
           <div class="local-stat-label">From-price</div>
         </div>
         <div class="local-stat">
@@ -300,7 +300,7 @@
         <div class="tarief-icon">👴</div>
         <div class="tarief-name">Tax return</div>
         <div class="tarief-for">Seniors, first-time buyers, expats</div>
-        <div class="tarief-price">€59</div>
+        <div class="tarief-price"><span data-prijs="aangifte">€59</span></div>
         <div class="tarief-price-note">per return</div>
         <ul class="tarief-features">
           <li>Complete income tax return</li>
@@ -308,7 +308,7 @@
           <li>Healthcare costs &amp; gifts deduction</li>
           <li>Rent and healthcare benefit check</li>
           <li>At your home across Zaanstad</li>
-          <li>With partner: €89</li>
+          <li>With partner: <span data-prijs="aangifte.partner">€89</span></li>
         </ul>
       </div>
       <div class="tarief-card tarief-card--popular">
@@ -316,7 +316,7 @@
         <div class="tarief-icon">💰</div>
         <div class="tarief-name">Home owner package</div>
         <div class="tarief-for">Homeowners, all year round</div>
-        <div class="tarief-price">€109</div>
+        <div class="tarief-price"><span data-prijs="voorlopige_teruggave">€109</span></div>
         <div class="tarief-price-note">one-off</div>
         <ul class="tarief-features">
           <li>Preliminary refund 2026 arranged</li>
@@ -324,14 +324,14 @@
           <li>Owner-occupied home value included</li>
           <li><strong>Extra net income every month, depending on mortgage and income</strong></li>
           <li>Also after moving or a salary change</li>
-          <li>With partner: €149</li>
+          <li>With partner: <span data-prijs="voorlopige_teruggave.partner">€149</span></li>
         </ul>
       </div>
       <div class="tarief-card">
         <div class="tarief-icon">📝</div>
         <div class="tarief-name">Correction &amp; late return</div>
         <div class="tarief-for">Up to 5 years back</div>
-        <div class="tarief-price">€69</div>
+        <div class="tarief-price"><span data-prijs="correctie">€69</span></div>
         <div class="tarief-price-note">per annual return</div>
         <ul class="tarief-features">
           <li>Corrected returns 2021–2024</li>
@@ -408,7 +408,7 @@
     <div class="faq-grid">
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What does it cost to have my tax return done?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>Our prices start at €59 for a single return and go up to €109 for a complete home owner package (including mortgage interest deduction). With a partner you pay €30 extra. No surprises afterwards.</p></div>
+        <div class="faq-answer"><p>Our prices start at <span data-prijs="aangifte">€59</span> for a single return and go up to <span data-prijs="voorlopige_teruggave">€109</span> for a complete home owner package (including mortgage interest deduction). With a partner you pay <span data-prijs="aangifte.extra">€30</span> extra. No surprises afterwards.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Do you really come to my home?<span class="faq-arrow">+</span></button>
@@ -424,7 +424,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What is the difference with an accountant?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>An accountant suits entrepreneurs with complex finances. For a private return you quickly pay €150–€300 there. We focus on private individuals, seniors and homeowners, with a fixed price from €59.</p></div>
+        <div class="faq-answer"><p>An accountant suits entrepreneurs with complex finances. For a private return you quickly pay €150–€300 there. We focus on private individuals, seniors and homeowners, with a fixed price from <span data-prijs="aangifte">€59</span>.</p></div>
       </div>
     </div>
   </div>
@@ -434,7 +434,7 @@
 <section class="cta" id="contact">
   <div class="container">
     <h2>Have your tax return done?</h2>
-    <p class="cta-sub">Send a WhatsApp or call, we reply the same day. Fixed price from €59, at your home in the Zaanstad region.</p>
+    <p class="cta-sub">Send a WhatsApp or call, we reply the same day. Fixed price from <span data-prijs="aangifte">€59</span>, at your home in the Zaanstad region.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/31619711848?text=Hi!%20I%20would%20like%20to%20have%20my%20Dutch%20tax%20return%20done." class="btn btn-primary" style="background:#188741;" rel="nofollow">💬 WhatsApp us</a>
       <a href="tel:+31619711848" class="btn btn-secondary" rel="nofollow">📞 06 – 19 71 18 48</a>

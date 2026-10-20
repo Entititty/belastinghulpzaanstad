@@ -67,7 +67,7 @@
     ]
   },
   "areaServed": { "@type": "AdministrativeArea", "name": "Zaanstad" },
-  "offers": { "@type": "Offer", "price": "49", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+  "offers": { "@type": "Offer", "@id": "https://belastinghulpzaanstad.nl/diensten/eerste-baan/#prijs-eerste_baan", "price": "49", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
   "url": "https://belastinghulpzaanstad.nl/diensten/eerste-baan/"
 }
 </script>
@@ -185,13 +185,13 @@
       <div>
         <div class="hero-badge fade-up"><span class="hero-badge-dot"></span>Voor wie net begint met werken</div>
         <h1 class="fade-up fade-up-d1">Uw eerste baan<br><em>en de belasting</em></h1>
-        <p class="hero-sub fade-up fade-up-d2">Bij een eerste baan of een bijbaan houdt uw werkgever loonbelasting in op basis van een schatting. Die schatting klopt vaak niet, en dan betaalt u een heel jaar te veel. Wij zetten uw <strong>loonheffingskorting</strong> goed, vragen te veel betaalde belasting terug en controleren uw toeslagen. Vaste prijs €49.</p>
+        <p class="hero-sub fade-up fade-up-d2">Bij een eerste baan of een bijbaan houdt uw werkgever loonbelasting in op basis van een schatting. Die schatting klopt vaak niet, en dan betaalt u een heel jaar te veel. Wij zetten uw <strong>loonheffingskorting</strong> goed, vragen te veel betaalde belasting terug en controleren uw toeslagen. Vaste prijs <span data-prijs="eerste_baan">€49</span>.</p>
         <div class="hero-buttons fade-up fade-up-d3">
           <a href="#contact" class="btn btn-primary">Aangifte laten doen →</a>
           <a href="#faq" class="btn btn-secondary">Veelgestelde vragen</a>
         </div>
         <div class="hero-trust fade-up fade-up-d4">
-          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Vaste prijs €49</div>
+          <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Vaste prijs <span data-prijs="eerste_baan">€49</span></div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Via WhatsApp of beeldbellen</div>
           <div class="hero-trust-item"><span class="hero-trust-icon">✓</span> Zelfde dag reactie</div>
         </div>
@@ -215,7 +215,7 @@
             </div>
             <div class="hero-card-row">
               <span>Vaste prijs</span>
-              <span style="color: var(--clr-green);font-weight:700;">€49</span>
+              <span style="color: var(--clr-green);font-weight:700;"><span data-prijs="eerste_baan">€49</span></span>
             </div>
           </div>
           <p class="hero-card-disclaimer">* Wat u terugkrijgt hangt af van hoeveel maanden u werkte en van uw loon. Wij rekenen het vooraf voor u uit, zodat u weet of het de moeite is.</p>
@@ -233,11 +233,11 @@
         <h2>Hulp bij uw eerste aangifte in de Zaanstreek</h2>
         <p>Uw eerste loonstrook roept meer vragen op dan hij beantwoordt. Waarom houdt uw werkgever zoveel in? Wat is die loonheffingskorting? En moet u nu wel of geen aangifte doen?</p>
         <p>Het korte antwoord: aangifte doen is voor de meeste starters niet verplicht, maar het levert wel geld op. Wie een deel van het jaar werkt, of naast een studie een bijbaan heeft, betaalt bijna altijd te veel loonbelasting. Dat geld komt niet vanzelf terug; u moet erom vragen.</p>
-        <p>Wij nemen het van u over voor een vaste prijs van €49. Dat gaat via WhatsApp of beeldbellen, op een tijdstip dat u uitkomt. U hoeft er niet voor vrij te nemen en er komt niemand bij u langs, tenzij u dat zelf liever heeft.</p>
+        <p>Wij nemen het van u over voor een vaste prijs van <span data-prijs="eerste_baan">€49</span>. Dat gaat via WhatsApp of beeldbellen, op een tijdstip dat u uitkomt. U hoeft er niet voor vrij te nemen en er komt niemand bij u langs, tenzij u dat zelf liever heeft.</p>
       </div>
       <div class="local-stat-grid">
         <div class="local-stat">
-          <div class="local-stat-value">€49</div>
+          <div class="local-stat-value"><span data-prijs="eerste_baan">€49</span></div>
           <div class="local-stat-label">Vaste prijs</div>
         </div>
         <div class="local-stat">
@@ -481,7 +481,7 @@
     <div style="max-width:520px;margin:36px auto 0;background:#fff;border-radius:16px;padding:34px 32px;border:1px solid rgba(44,37,32,0.08);box-shadow:0 4px 20px rgba(44,37,32,0.07);text-align:center;">
       <div style="font-size:2rem;margin-bottom:8px;">🎓</div>
       <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-deep);margin-bottom:6px;">Eerste baan</div>
-      <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--clr-teal);margin:8px 0;">€49</div>
+      <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--clr-teal);margin:8px 0;"><span data-prijs="eerste_baan">€49</span></div>
       <div style="font-size:0.85rem;color:var(--clr-bark);margin-bottom:18px;">compleet · online geregeld</div>
       <ul style="list-style:none;padding:0;margin:0 0 22px;text-align:left;display:inline-block;">
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Aangifte inkomstenbelasting over één jaar</li>
@@ -555,7 +555,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost het en hoe gaat het?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>Een vaste prijs van €49 voor één jaar, zonder partnertarief. Wij rekenen eerst kosteloos uit wat u terugkrijgt; valt dat lager uit dan onze prijs, dan zeggen wij dat. Het geheel gaat via WhatsApp en beeldbellen, dus u hoeft nergens naartoe.</p></div>
+        <div class="faq-answer"><p>Een vaste prijs van <span data-prijs="eerste_baan">€49</span> voor één jaar, zonder partnertarief. Wij rekenen eerst kosteloos uit wat u terugkrijgt; valt dat lager uit dan onze prijs, dan zeggen wij dat. Het geheel gaat via WhatsApp en beeldbellen, dus u hoeft nergens naartoe.</p></div>
       </div>
     </div>
   </div>
@@ -565,7 +565,7 @@
 <section class="cta" id="contact">
   <div class="container">
     <h2>Uw eerste aangifte laten doen?</h2>
-    <p class="cta-sub">Stuur een WhatsApp, wij reageren dezelfde dag. Vaste prijs €49, online geregeld via beeldbellen.</p>
+    <p class="cta-sub">Stuur een WhatsApp, wij reageren dezelfde dag. Vaste prijs <span data-prijs="eerste_baan">€49</span>, online geregeld via beeldbellen.</p>
     <div class="cta-buttons">
       <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20mijn%20eerste%20baan%20en%20wil%20graag%20mijn%20aangifte%20laten%20doen." class="btn btn-primary" style="background:#188741;" rel="nofollow">💬 WhatsApp ons</a>
       <a href="tel:+31619711848" class="btn btn-secondary" rel="nofollow">📞 06 – 19 71 18 48</a>
