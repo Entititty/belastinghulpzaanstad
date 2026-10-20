@@ -47,14 +47,18 @@ die tweede regel.
 ```bash
 cd "/pad/naar/Website belasting"
 
-node scripts/hash-css.js            # naam en verwijzingen kloppend maken
-node scripts/check-html.js          # tag-balans en nesting, faalt bij een fout
-node scripts/check-fiscale-cijfers.js   # bronnen, houdbaarheid, JSON-LD tegen de tekst
-node scripts/check-links.js .       # interne links, ankers, JSON-LD, lengte titles
-node scripts/check-hreflang.js .    # wijzen de taalversies naar elkaar terug
-node scripts/crawl-audit.js         # verwacht: 97 pagina's, 404:0, dupTitle:0
+node scripts/bouw.js                # gegevens, stylesheet en alle controles; faalt bij een fout
 node scripts/build-sitemap.js       # NA het committen, VOOR het pushen
 ```
+
+`bouw.js` draait achter elkaar: `config-sync.js` (prijzen en bedrijfsgegevens
+uit `data/bedrijf.json` in de HTML), `hash-css.js`, `check-html.js`,
+`check-fiscale-cijfers.js`, `check-rekenvoorbeelden.js`, `check-jsonld.js`,
+`check-links.js`, `check-hreflang.js`, `check-contrast.js` en `crawl-audit.js`
+(verwacht: 98 pagina's, 404:0, dupTitle:0). Met `--check` schrijft het niets.
+Onderaan staan de lege placeholders uit `data/bedrijf.json` (KvK, btw, BAV,
+box 3-tarief, reviewlink). Dat zijn waarschuwingen, geen fouten: de site klopt
+dan, er staat alleen minder op.
 
 Werkboom schoon? Dan pas verder.
 
@@ -564,10 +568,9 @@ Zie `docs/TODO-kvk-btw.md`.
 
 ```bash
 # lokaal
-node scripts/hash-css.js && node scripts/check-html.js && node scripts/check-fiscale-cijfers.js \
-  && node scripts/check-links.js . && node scripts/check-hreflang.js . \
-  && node scripts/crawl-audit.js && node scripts/build-sitemap.js
-git checkout main && git merge --ff-only homepage-rework && git push
+node scripts/bouw.js               # daarna committen
+node scripts/build-sitemap.js && git add sitemap*.xml && git commit -m "Sitemaps bijgewerkt"
+git checkout main && git merge --ff-only <branch> && git push
 
 # server
 cd /var/www/belastinghulpzaanstad.nl/html && ./server-setup/auto-deploy.sh

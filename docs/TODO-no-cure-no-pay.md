@@ -1,103 +1,95 @@
-# TODO: het no cure no pay-tarief staat nergens
+# TODO: het no cure no pay-tarief voor box 3
 
-**Status:** wacht op een bedrag of percentage van Stan. Aangemaakt 28 augustus 2026.
+**Status:** wacht op een percentage van Stan. Aangemaakt 28 augustus 2026,
+bijgewerkt 20 oktober 2026.
 
-Op de site staat 50 keer, verspreid over 15 pagina's, dat het hoofdbezwaar
-box 3 op basis van no cure no pay gaat. Wat dat kost staat er nergens bij.
-Dat is de enige echt verborgen kostenpost op de site: elk ander bedrag staat
-op `/tarieven/`.
+Sinds oktober 2026 heet de dienst "Hulp bij uw Opgaaf werkelijk rendement
+(box 3)" en niet meer "bezwaar box 3": over 2021 tot en met 2024 laat de
+Belastingdienst iedereen met box 3-inkomen het werkelijk rendement opgeven met
+het formulier Opgaaf werkelijk rendement, ook zonder bezwaar. Zelf doen kan
+gratis. Wij rekenen het uit en dienen het in op basis van no cure no pay.
 
-Zolang het bedrag er niet is, verandert er niets op de site. Geen
-"vanaf"-bedrag, geen "neem contact op voor de voorwaarden", geen placeholder.
-Zelfde regel als bij het KvK-nummer: liever niets dan iets wat niet klopt.
-De huidige tekst is niet fout, hij is alleen onvolledig.
+Wat dat kost, staat nog nergens. Op de site staat nu alleen wanneer u betaalt:
+*"U betaalt alleen als de Belastingdienst uw box 3-belasting verlaagt. Levert
+de opgaaf niets op, dan betaalt u niets. Hoeveel u betaalt, hoort u vooraf, en
+u tekent er zelf voor."* Dat is niet fout, wel onvolledig.
 
 ---
 
-## De vier vragen die beantwoord moeten worden
+## Waar het tarief vandaan komt
 
-**1. Het percentage of het bedrag.**
-Bijvoorbeeld: 20 % van de teruggave, of een vast bedrag per geslaagd bezwaar.
+Eén plek: `data/bedrijf.json`, onder `placeholders`.
+
+| veld | betekenis | voorbeeldvorm |
+|---|---|---|
+| `FEE_BOX3` | percentage, als getal | `15` betekent 15% |
+| `FEE_BOX3_GRONDSLAG` | waarover het percentage gaat | `"van de belasting die u terugkrijgt"` |
+| `FEE_BOX3_MIN` | minimumbedrag in euro, of `null` | `50` |
+| `FEE_BOX3_MAX` | maximumbedrag in euro, of `null` | `500` |
+
+Daarna:
+
+```bash
+node scripts/bouw.js
+```
+
+`config-sync.js` (de eerste stap van `bouw.js`) zet de zin in de blokken
+`<!-- cfg:box3-tarief -->` en `<!-- cfg:box3-tarief-en -->` op `/tarieven/`,
+`/diensten/box-3-bezwaar/` en `/en/services/box-3-objection/`. Zolang
+`FEE_BOX3` leeg is, waarschuwt het script bij elke run en blijft de huidige
+zin staan. Een percentage van 0 of 100 of meer is een fout en stopt het script.
+
+De overige vermeldingen van no cure no pay (homepage, plaatspagina's, blogs)
+noemen geen bedrag en linken naar `/tarieven/` of de dienstpagina. Zo blijft
+het, zodat er maar één plek is om bij te werken.
+
+---
+
+## De vragen die beantwoord moeten worden
+
+**1. Het percentage.**
 
 **2. Waarover wordt het gerekend?**
-Over het bedrag dat de Belastingdienst terugbetaalt, of over het verschil
-tussen de oorspronkelijke aanslag en de nieuwe? Die twee zijn niet hetzelfde
-zodra er al een voorlopige aanslag is geweest.
+Over de belasting die de Belastingdienst terugbetaalt of verlaagt, over
+welke jaren samen, en telt belastingrente mee? Dit wordt `FEE_BOX3_GRONDSLAG`.
 
-**3. Wat gebeurt er als er geen resultaat is?**
-Aanname: u betaalt niets, ook geen dossierkosten en ook geen uren. Bevestigen.
-Dit is de zin die op de pagina moet komen, want het is precies de vraag die
-iemand tegenhoudt.
+**3. Een minimum of maximum?** Ja of nee, en zo ja welk bedrag.
 
-**4. Zit er een minimum of maximum aan, en waar houdt het op?**
-- Een minimumvergoeding bij een kleine teruggave, ja of nee?
-- Een maximum, ja of nee?
-- Gaat de zaak naar de rechter: zit dat erbij, of is dat een aparte afspraak?
-  Op `/tarieven/` staat nu al onder "wat er niet bij zit": *"Een
-  bezwaarprocedure bij de rechter. Loopt het zo ver, dan zeggen wij dat
-  vooraf."* Dat moet kloppen met het antwoord hier.
+**4. Wanneer betaalt de klant?**
+Bij de beslissing van de Belastingdienst, of pas als het geld op de rekening
+staat? Zet dit in de opdrachtbevestiging; de site zegt nu alleen "u betaalt
+alleen als de Belastingdienst uw box 3-belasting verlaagt".
+
+**5. Wat als het nul oplevert?**
+De site belooft: dan betaalt u niets, ook geen dossierkosten of uren. Klopt
+dat niet, dan moet de zin in `scripts/config-sync.js` (functie `feeZin`) mee
+veranderen.
+
+**6. Gaat de zaak naar de rechter?**
+Op `/tarieven/` staat onder "wat er niet bij zit" dat een procedure bij de
+rechter niet in de prijs zit en dat we dat vooraf zeggen. Dat moet blijven
+kloppen met de afspraak.
 
 ---
 
-## Wat er daarna gebeurt
+## JSON-LD
 
-### 1. `/tarieven/`
-
-Regel 274 tot 275 zegt nu:
-
-> Bij bezwaar box 3 dienen wij het pro forma bezwaar kosteloos in. Gaat het
-> hoofdbezwaar door, dan spreken wij vooraf een vergoeding af die u alleen
-> betaalt als het bezwaar geld oplevert.
-
-Daar moet het bedrag in, plus de nul-resultaat-regel. In de tarieventabel
-staat "Pro forma bezwaar box 3" met €0; daar hoort een tweede regel bij voor
-het hoofdbezwaar.
-
-Let ook op de JSON-LD op die pagina: de `OfferCatalog` heeft nu alleen een
-`Offer` met `price: "0"` voor het pro forma bezwaar. Komt er een percentage,
-dan hoort daar geen `price` bij (een percentage is geen prijs in schema.org);
-laat dat aanbod dan uit de catalogus in plaats van er een verzonnen bedrag in
-te zetten.
-
-### 2. `/diensten/box-3-bezwaar/`
-
-Elf vermeldingen. De belangrijkste plekken:
-
-| regel | wat er staat |
-|---|---|
-| 219 | `* No cure no pay: u betaalt alleen een vergoeding als het bezwaar daadwerkelijk geld oplevert.` |
-| 302 | dezelfde belofte, in de prijssectie |
-| 330 | `pro forma kosteloos · hoofdbezwaar op no cure no pay` |
-| 412 | het FAQ-antwoord "Wat kost het mij?" |
-| 513 | hetzelfde antwoord in de `FAQPage` JSON-LD |
-
-Regel 412 en 513 moeten **gelijk blijven aan elkaar**. Google leest de
-JSON-LD; staat daar een ander antwoord dan op de pagina, dan is dat een
-overtreding van de richtlijnen voor gestructureerde data.
-
-### 3. De rest
-
-De overige 38 vermeldingen staan op de plaatspagina's, de homepage, twee
-blogartikelen en de Engelse pagina's. Die hoeven het bedrag niet te herhalen —
-dat is precies de fout die met `/tarieven/` is opgelost. Ze moeten wel naar
-`/tarieven/` of naar `/diensten/box-3-bezwaar/` linken.
-
-Vergeet de Engelse kant niet: `en/index.html`, `en/services/box-3-objection/`
-en `en/zaandam/`.
+Een percentage is geen prijs in schema.org. De `OfferCatalog` op `/tarieven/`
+heeft daarom alleen een `Offer` voor de gratis check (`price: "0"`); het
+no cure no pay-deel heeft bewust geen `Offer`. Zet daar geen verzonnen bedrag
+in.
 
 ---
 
 ## Controleren na de wijziging
 
 ```bash
-node scripts/crawl-audit.js        # 95 pagina's, 404:0
-node scripts/check-contrast.js
-grep -rc "no cure no pay" --include=index.html . | grep -v ":0$"
+node scripts/bouw.js
+grep -rn "cfg:box3-tarief" --include=index.html .
 ```
 
-En met de hand: staat het bedrag op `/tarieven/` en op
-`/diensten/box-3-bezwaar/`, en zegt allebei wat er gebeurt als er geen
-resultaat is?
+En met de hand: staat het percentage op `/tarieven/` en op de box 3-pagina
+(NL en EN), en zegt de pagina wat er gebeurt als de opgaaf niets oplevert?
 
 ---
 

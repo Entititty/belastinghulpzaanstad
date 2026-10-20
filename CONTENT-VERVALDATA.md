@@ -9,20 +9,41 @@ herzien moeten worden, zodat niets stilletjes veroudert. Bijgehouden sinds ronde
 
 ---
 
-## 1. Uitstel-strip op de homepage — AUTO ✅
-- **Bestand:** `index.html`, sectie `#uitstel-strip` (elementen `#uitstel-badge/-title/-desc/-chip`)
-- **Logica:** vóór **1 september 2026** = persoonlijk-uitstel-boodschap; ná 1 sep 2026
-  schakelt het script automatisch naar de **Beconregeling** (uitstel tot **1 mei 2027**).
-- **Volgende HANDMATIGE actie — uiterlijk 2027-04-15:** ná 1 mei 2027 is óók de
-  Becon-deadline verlopen. De strip moet dan overschakelen naar het **belastingjaar 2026**
-  (aangifte voorjaar 2027) of tijdelijk verborgen worden. Werk het script + de standaardtekst bij.
+## 1. Strip "aangifte 2025 nog niet gedaan" op de Engelse homepage — HANDMATIG
+*Bijgewerkt 2026-10-20.* De Nederlandse homepage heeft geen uitstel-strip meer. De
+site noemt nergens een Beconregeling: die claim is eerder weggehaald, omdat niet
+vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de eigenaar).
+- **Bestand:** `en/index.html`, sectie `#uitstel-strip` (statische HTML).
+- **Nu:** "Not filed your 2025 return yet? You can still file it", late aangifte €69
+  (`data-prijs`). De oude tekst "extension until 1 September 2026" is per 2026-10-20 vervangen.
+- **Actie — 2027-01:** omzetten naar het aangifteseizoen 2026 (aangifte vóór 1 mei 2027).
+- `js/seizoen.js` en `data/seizoen.json` worden op dit moment door geen enkele pagina
+  geladen. Zet je ze weer aan, werk dan eerst de periodeteksten bij (jaartallen, prijzen).
 
-## 2. "Persoonlijk uitstel tot 1 sep 2026 / Beconregeling tot 1 mei 2027" (bodytekst) — HANDMATIG
-- **Bestanden:** homepage (`index.html` r. ~1655, 2075, 2178, 2465) + diverse dienst-/blogpagina's
-  (~22 HTML-bestanden bevatten "tot 1 september").
-- **Geldig tot:** **2027-05-01**. Deze teksten benoemen beide data en blijven correct tot dan.
+## 2. "Uitstel tot 1 september 2026" (bodytekst blogs) — HANDMATIG
+- **Bestanden:** ~30 HTML-bestanden noemen "1 september" (uitstel-, deadline- en te-laat-blogs,
+  plus de huurtoeslagblogs met "tot 1 september van het jaar erna", die blijven kloppen).
+- **Status:** de teksten over uitstel voor de aangifte 2025 zijn per 1 september 2026 verlopen,
+  maar noemen steeds "vóór 1 mei" en "bent u al te laat, dien dan zo snel mogelijk in".
 - **Actie — Q1 2027:** actualiseren naar de cyclus van belastingjaar 2026
-  (persoonlijk uitstel tot ~1 sep 2027, Becon tot ~1 mei 2028).
+  (uitstel aanvragen vóór 1 mei 2027, uitstel tot 1 september 2027). Zie `docs/seizoen-2027.md`.
+
+## 2a. Startkorting €20 — HANDMATIG, verloopt **2026-12-31**
+- **Bron:** `data/bedrijf.json` → `startkorting` (`actief`, `bedrag`, `geldig_tot`), en
+  `startkorting_eerste_klanten` in `data/fiscale-cijfers.json`.
+- **Tekst:** "nieuwe klanten krijgen in 2026 €20 korting op een aangifte of voorlopige
+  teruggave, met of zonder review".
+- **Bestanden (22):** `tarieven/`, `over-ons/`, de negen NL-plaatspagina's, `en/`,
+  `en/about-us/` en de negen EN-plaatspagina's; plus `llms.txt`.
+- **Actie — 2026-12-31:** loopt de actie af, zet `actief` op `false` (haalt de regel op
+  `/tarieven/` weg) en haal de overige vermeldingen met de hand weg. Verlengen: pas
+  `geldig_tot` en de jaartallen in de tekst aan.
+
+## 2b. "In 2026 kunt u nog aftrekposten uit 2021 terugvragen" — HANDMATIG, verloopt eind 2026
+- **Bestand:** `diensten/correctie-late-aangifte/` (urgentieblok), placeholder
+  `EINDDATUM_CORRECTIE_2021` in `data/bedrijf.json` (nu leeg: er staat geen exacte datum).
+- **Actie — zodra de eigenaar de einddatum bevestigt:** datum invullen en `node scripts/bouw.js`.
+- **Actie — 2027-01:** het jaartal één jaar opschuiven (2022) en de placeholder leegmaken.
 
 ## 3. "Aangifte 2025" / belastingjaar-framing — HANDMATIG
 - **Bestanden:** ~14 HTML-bestanden noemen "aangifte 2025" (o.a. homepage-hero, uitstel-strip,
@@ -64,11 +85,13 @@ De **2026**-tarieven (beneden AOW) zijn:
 
 Het **maximale aftrektarief eigen woning** (tariefsaanpassing) 2026 = **37,56%**.
 
-## 6. Box 3 / rechtsherstel-jaren — HANDMATIG
-- **Bestanden:** `diensten/box-3-bezwaar/`, `blog/box-3-bezwaar-2026/`, `blog/box-3-sparen/`,
-  `blog/hoeveel-spaargeld-belastingvrij/`.
-- **Verwijzing:** "aanslagen 2021–2024". **Actie:** uitbreiden zodra nieuwe aanslagjaren/uitspraken
-  relevant worden (bijv. aanslag 2025).
+## 6. Box 3: Opgaaf werkelijk rendement 2021–2024 — HANDMATIG
+- **Bestanden:** `diensten/box-3-bezwaar/` (en de EN-versie), `tarieven/`, `blog/box-3-bezwaar-2026/`,
+  `blog/box-3-sparen/`, `blog/hoeveel-spaargeld-belastingvrij/`, `en/blog/box-3-savings/`.
+- **Sinds 2026-10:** de dienst is hulp bij de Opgaaf werkelijk rendement (geen bezwaar), zelf doen
+  kan gratis, wij werken op no cure no pay. Tarief: placeholder `FEE_BOX3` (zie `docs/TODO-no-cure-no-pay.md`).
+- **Actie:** bij elke nieuwe stap van de Belastingdienst (termijnen, aanslag 2025, Wet werkelijk
+  rendement box 3) de jaren en de uitleg nalopen op belastingdienst.nl.
 
 ### ✅ Volledige cijferaudit uitgevoerd (2026-07-27) — geverifieerde 2026-referentiewaarden
 Alle onderstaande waarden zijn geverifieerd bij belastingdienst.nl / rijksoverheid.nl en
@@ -80,18 +103,21 @@ sitebreed doorgevoerd (NL + EN). Gebruik ze als ijkpunt bij de volgende jaarupda
 | Max. aftrektarief eigen woning | 37,56% · eigenwoningforfait 0,35% (WOZ ≤ €1.350.000) |
 | Algemene heffingskorting | max €3.115 · afbouw €29.736→€78.426 (6,398%) |
 | Arbeidskorting | max €5.685 · IACK max €3.032 · jonggehandicapten €923 |
-| Ouderenkorting | €2.067 (grens €46.002, afbouw 15% tot €59.783) · alleenstaand €540 |
+| Ouderenkorting | €2.067 (grens €46.002, afbouw 15% tot €59.782) · alleenstaand €540 |
 | AOW-er box 1 schijf 1 | ca. 17,85% |
 | Zorgtoeslag | inkomensgrens €40.857 / €51.142 · vermogensgrens €146.011 / €184.633 |
-| Huurtoeslag | rekenhuur €932,93 · vermogen €36.952 / €73.904 |
+| Huurtoeslag | rekenhuur €932,93 · vermogen €38.479 / €76.958 |
 | Kinderopvangtoeslag max uurtarief | dagopvang €11,23 · bso €9,98 · gastouder €8,49 |
 | Kindgebonden budget vermogensgrens | €146.011 / €184.633 |
 | Box 3 | heffingvrij €59.357 / €118.714 · forfait spaargeld 1,28% · beleggingen 6,00% · schulden 2,70% · schuldendrempel €3.800 / €7.600 · tarief 36% |
 
 ## 7. Vaste bedragen die kunnen wijzigen — HANDMATIG
-- **Verzuimboete €385** (uitstel-strip + te-laat-blogs) — controleren bij Belastingdienst-wijziging.
-- **"Vaste prijs €59" / tarieven** (€59/€69/€109/€49/€30, spoedtoeslag €25) — bij prijswijziging
-  sitebreed + in `llms.txt` + og-image bijwerken.
+- **Verzuimboete €469** (eerste keer; maximum €6.709) in de te-laat-blogs, `llms.txt` en de EN-homepage —
+  staat in `data/fiscale-cijfers.json`.
+- **Prijzen** (€59/€89 aangifte, €49 eerste baan, €69/€99 correctie, €109/€149 voorlopige teruggave,
+  €30 toeslagen, +€25 spoed): wijzig ze in `data/bedrijf.json` en draai `node scripts/bouw.js`. Titles,
+  meta-descriptions, `llms.txt`, `data/seizoen.json` en og-images gaan met de hand; `config-sync.js`
+  waarschuwt als daar een bedrag staat dat geen prijs meer is.
 
 ---
 
@@ -99,8 +125,8 @@ sitebreed doorgevoerd (NL + EN). Gebruik ze als ijkpunt bij de volgende jaarupda
 | Wanneer | Wat nalopen |
 |---|---|
 | **2026-12** | 2027-toeslag-/tariefcijfers (§5); prijzen (§7) |
-| **2027-01** | belastingjaar-framing 2025→2026 (§3); deadline-2027-artikel aanmaken (§4) |
-| **2027-04-15** | uitstel-strip laten pivoten na afloop Becon-deadline (§1) |
+| **2026-12-31** | startkorting afgelopen of verlengd (§2a); 2021-correctietekst (§2b) |
+| **2027-01** | belastingjaar-framing 2025→2026 (§3); deadline-2027-artikel aanmaken (§4); EN-strip naar aangifteseizoen 2026 (§1); uitstelteksten naar 2027 (§2); 2021 → 2022 (§2b) |
 | **jaarlijks mei** | na afloop aangifteseizoen: hero/strip/blogs herijken |
 
 
@@ -108,6 +134,7 @@ sitebreed doorgevoerd (NL + EN). Gebruik ze als ijkpunt bij de volgende jaarupda
 
 ## Eén bron van waarheid voor fiscale cijfers (Taak 3)
 - **data/fiscale-cijfers.json** — alle 2026-cijfers met bron + 'verouderd'-lijst.
-- **data/plaatsen.json** — inwoners + woningprijs per kern (bron nog TODO; sommige pagina's tonen meerdere bedragen).
-- **scripts/check-fiscale-cijfers.js** — `node scripts/check-fiscale-cijfers.js`; faalt (exit 1) als een verouderde waarde weer in de HTML staat. Draai dit vóór elke push.
+- **data/bedrijf.json** — prijzen, bedrijfsgegevens en placeholders (KvK, btw, BAV, box 3-tarief, reviewlink); `scripts/config-sync.js` zet ze in de HTML.
+- **data/plaatsen.json** — inwoners (2026), gemiddelde WOZ-waarde (2025) en % koop/huur per kern (bron CBS/AlleCijfers.nl); gelijk aan de statistiekblokken op de NL- en EN-plaatspagina's.
+- **scripts/check-fiscale-cijfers.js** — `node scripts/check-fiscale-cijfers.js`; faalt (exit 1) als een verouderde waarde weer in de HTML staat. Draai vóór elke push `node scripts/bouw.js`; dat draait dit script mee.
 - Let op: de site is statische HTML zonder build, dus cijfers worden NIET automatisch uit de JSON gegenereerd. Wijzig je een cijfer: pas het aan in de JSON én in de HTML, en zet de oude waarde in 'verouderd'.

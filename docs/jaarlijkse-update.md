@@ -127,18 +127,18 @@ iets veranderd in de regeling en moet je verder kijken dan dit lijstje.
 
 ### Stap 7. Startkorting (1 waarde, 90 vermeldingen)
 
-`startkorting_eerste_klanten` is geen fiscaal cijfer maar een eigen actie. Loopt
-die af, gebruik dan niet dit script maar verwijder de teksten; een korting van
-€0 is geen korting.
+`startkorting_eerste_klanten` is geen fiscaal cijfer maar een eigen actie. Het
+bedrag en de einddatum staan ook in `data/bedrijf.json` onder `startkorting`
+(`geldig_tot`: 31 december 2026). Loopt de actie af, gebruik dan niet dit script
+maar zet `actief` op `false` en verwijder de teksten; een korting van €0 is geen
+korting. De lijst met pagina's staat in `CONTENT-VERVALDATA.md`, §2a.
 
 ---
 
 ## Na afloop, altijd
 
 ```bash
-node scripts/check-fiscale-cijfers.js   # geen verouderde waarden, alle bronnen en data aanwezig
-node scripts/check-html.js              # geen kapotte tags door de vervangingen
-node scripts/crawl-audit.js             # 95 pagina's, 404:0, dupTitle:0
+node scripts/bouw.js                    # alle controles, ook check-fiscale-cijfers en check-rekenvoorbeelden
 node scripts/build-sitemap.js           # na het committen
 ```
 
@@ -156,19 +156,26 @@ Loop daarna met het oog langs:
 
 ---
 
-## Rekenvoorbeelden: het script raakt ze niet aan
+## Rekenvoorbeelden: het script raakt ze niet aan, maar rekent ze wel na
 
-Op de homepage, negen plaatspagina's en `/diensten/voorlopige-teruggave/` staat
-een rekenvoorbeeld eigen woning. De methode is:
+Op de homepage, de negen plaatspagina's (NL en EN) en
+`/diensten/voorlopige-teruggave/` staat een rekenvoorbeeld eigen woning. Sinds
+oktober 2026 met twee scenario's, omdat het voordeel van het inkomen afhangt:
 
 ```
-(hypotheekrente − eigenwoningforfait) × aftrektarief = jaarvoordeel
-jaarvoordeel ÷ 12 = maandbedrag
+hypotheekrente − eigenwoningforfait = aftrekbaar saldo
+saldo × tarief schijf 1 (2026: 35,75%)       = jaarvoordeel bij een inkomen tot de schijfgrens
+saldo × maximaal aftrektarief (2026: 37,56%) = jaarvoordeel in de tweede schijf
+jaarvoordeel ÷ 12 = maandbedrag, op de pagina als bandbreedte (bijv. €339–€357)
 ```
 
-Wijzigt het aftrektarief of het forfaitpercentage, dan kloppen het jaarvoordeel
-en het maandbedrag niet meer, terwijl er geen enkel "verouderd" bedrag in de
-HTML staat. Geen script dat dat merkt. Reken ze met de hand na, per pagina:
+`set-fiscale-cijfers.js` vervangt alleen de tarieven zelf, niet de uitkomsten.
+Wijzigt een tarief of het forfaitpercentage, dan kloppen saldo, jaarvoordeel en
+maandbedrag niet meer, terwijl er geen enkel "verouderd" bedrag in de HTML staat.
+Dat vangt `scripts/check-rekenvoorbeelden.js` (onderdeel van `bouw.js`): het
+rekent elk blok na met de tarieven uit `data/fiscale-cijfers.json`
+(`box1_schijf1_tarief` en `max_aftrektarief_eigen_woning`) en noemt per pagina
+wat niet klopt. Aanpassen gaat met de hand. De invoer per pagina:
 
 | Pagina | Rente | Forfait |
 | --- | ---: | ---: |
@@ -181,8 +188,13 @@ HTML staat. Geen script dat dat merkt. Reken ze met de hand na, per pagina:
 | `/krommenie/` | €11.285 | €1.068 |
 | `/oostzaan/` | €13.875 | €1.313 |
 
-De Engelse tegenhangers `/en/`, `/en/zaandam/` en `/en/wormerland/` gebruiken
-dezelfde bedragen met een komma als duizendscheiding.
+`/zaandam/` gebruikt dezelfde bedragen als de homepage. De Engelse
+tegenhangers (`/en/` en de negen `/en/<plaats>/`-pagina's) gebruiken dezelfde
+bedragen per plaats, met een komma als duizendscheiding.
+
+Let ook op lopende tekst die een maandbedrag noemt ("this comes to around €339
+to €357 per month"): het script kijkt naar de rekenblokken, niet naar zinnen
+elders op de pagina. Zoek na een update op het oude maandbedrag.
 
 ---
 

@@ -1,15 +1,79 @@
 {
-  "_doc": "Per kern: naam, inwoners en gemiddelde woningprijs. De waarden komen uit de bestaande plaatspagina's en zijn NOG NIET geverifieerd tegen een bron. Sommige pagina's tonen meerdere bedragen (woningprijs + hypotheekvoorbeeld); die moeten worden gelijkgetrokken. TODO eigenaar: bevestig per kern de gemiddelde woningprijs + peildatum en bron (bijv. CBS of Kadaster), en het inwonertal.",
-  "peildatum_todo": "TODO: peildatum + bron invullen",
+  "_doc": "Per kern: inwoners (2026), gemiddelde WOZ-waarde (2025) en het aandeel koop- of huurwoningen. Dezelfde cijfers staan in de statistiekblokken van de Nederlandse en Engelse plaatspagina's. Geen script leest dit bestand; het is het naslagpunt bij een update.",
+  "bron": "CBS / AlleCijfers.nl, zie CHANGELOG-AUDIT.md (ronde lokale pagina's)",
+  "bijgewerkt": "2026-10-20",
   "kernen": [
-    { "slug": "zaandam", "naam": "Zaandam", "inwoners": { "waarde": 84000, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 340000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €370.000 (hypotheekvoorbeeld), gelijktrekken" }, "omschrijving": "Grootste kern en centrum van de gemeente Zaanstad." },
-    { "slug": "krommenie", "naam": "Krommenie", "inwoners": { "waarde": 17000, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 305000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €386.000, gelijktrekken" }, "omschrijving": "Kern in het noorden van Zaanstad, grenzend aan Assendelft." },
-    { "slug": "assendelft", "naam": "Assendelft", "inwoners": { "waarde": 25000, "bron": "TODO: verifiëren (lijkt hoog)" }, "gem_woningprijs": { "waarde": 385000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €470.000, gelijktrekken" }, "omschrijving": "Langgerekt dorp in het noordwesten van Zaanstad." },
-    { "slug": "wormerveer", "naam": "Wormerveer", "inwoners": { "waarde": 12700, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 280000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €338.000, gelijktrekken" }, "omschrijving": "Kern langs de Zaan in het noorden van de gemeente." },
-    { "slug": "koog-aan-de-zaan", "naam": "Koog aan de Zaan", "inwoners": { "waarde": 11300, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 310000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €389.000, gelijktrekken" }, "omschrijving": "Compacte kern tussen Zaandam en Zaandijk." },
-    { "slug": "zaandijk", "naam": "Zaandijk", "inwoners": { "waarde": 8800, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 330000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €383.000, gelijktrekken" }, "omschrijving": "Kern bij de Zaanse Schans aan de Zaan." },
-    { "slug": "westzaan", "naam": "Westzaan", "inwoners": { "waarde": 5100, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 350000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €510.000, gelijktrekken" }, "omschrijving": "Dorp met veel vrijstaande woningen ten westen van Zaandam." },
-    { "slug": "wormerland", "naam": "Wormerland", "inwoners": { "waarde": 16300, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 340000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €441.000, gelijktrekken" }, "omschrijving": "Aangrenzende gemeente met o.a. Wormer en Jisp." },
-    { "slug": "oostzaan", "naam": "Oostzaan", "inwoners": { "waarde": 9700, "bron": "TODO: verifiëren" }, "gem_woningprijs": { "waarde": 375000, "bron": "TODO: verifiëren", "opmerking": "pagina toont ook €522.000, gelijktrekken" }, "omschrijving": "Aangrenzende gemeente ten zuiden van Zaandam." }
+    {
+      "slug": "zaandam",
+      "naam": "Zaandam",
+      "inwoners_2026": 84461,
+      "gem_woz_2025": 370266,
+      "huurwoningen_pct": 52,
+      "omschrijving": "Grootste kern en centrum van de gemeente Zaanstad."
+    },
+    {
+      "slug": "krommenie",
+      "naam": "Krommenie",
+      "inwoners_2026": 17237,
+      "gem_woz_2025": 386390,
+      "koopwoningen_pct": 53,
+      "omschrijving": "Kern in het noorden van Zaanstad, grenzend aan Assendelft."
+    },
+    {
+      "slug": "assendelft",
+      "naam": "Assendelft",
+      "inwoners_2026": 25460,
+      "gem_woz_2025": 470045,
+      "koopwoningen_pct": 72,
+      "omschrijving": "Langgerekt dorp in het noordwesten van Zaanstad."
+    },
+    {
+      "slug": "wormerveer",
+      "naam": "Wormerveer",
+      "inwoners_2026": 12735,
+      "gem_woz_2025": 338000,
+      "koopwoningen_pct": 51,
+      "omschrijving": "Kern langs de Zaan in het noorden van de gemeente."
+    },
+    {
+      "slug": "koog-aan-de-zaan",
+      "naam": "Koog aan de Zaan",
+      "inwoners_2026": 11306,
+      "gem_woz_2025": 388878,
+      "koopwoningen_pct": 61,
+      "omschrijving": "Compacte kern tussen Zaandam en Zaandijk."
+    },
+    {
+      "slug": "zaandijk",
+      "naam": "Zaandijk",
+      "inwoners_2026": 8868,
+      "gem_woz_2025": 382923,
+      "koopwoningen_pct": 53,
+      "omschrijving": "Kern bij de Zaanse Schans aan de Zaan."
+    },
+    {
+      "slug": "westzaan",
+      "naam": "Westzaan",
+      "inwoners_2026": 5131,
+      "gem_woz_2025": 510000,
+      "koopwoningen_pct": 79,
+      "omschrijving": "Dorp met veel vrijstaande woningen ten westen van Zaandam."
+    },
+    {
+      "slug": "wormerland",
+      "naam": "Wormerland",
+      "inwoners_2026": 16328,
+      "gem_woz_2025": 441000,
+      "koopwoningen_pct": 63,
+      "omschrijving": "Aangrenzende gemeente met o.a. Wormer en Jisp."
+    },
+    {
+      "slug": "oostzaan",
+      "naam": "Oostzaan",
+      "inwoners_2026": 9778,
+      "gem_woz_2025": 522000,
+      "koopwoningen_pct": 67,
+      "omschrijving": "Aangrenzende gemeente ten zuiden van Zaandam."
+    }
   ]
 }
