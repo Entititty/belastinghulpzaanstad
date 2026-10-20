@@ -628,22 +628,84 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forE
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hoe hoog is de algemene heffingskorting in 2026?","acceptedAnswer":{"@type":"Answer","text":"De maximale algemene heffingskorting bedraagt €3.115 in 2026 voor inkomens tot €29.736."}},{"@type":"Question","name":"Heeft een gepensioneerde recht op arbeidskorting?","acceptedAnswer":{"@type":"Answer","text":"Nee. De arbeidskorting geldt alleen voor mensen met arbeidsinkomen. AOW en pensioen tellen niet mee."}},{"@type":"Question","name":"Kan ik gemiste heffingskortingen met terugwerkende kracht claimen?","acceptedAnswer":{"@type":"Answer","text":"Ja, via een belastingaangifte kunt u tot 5 jaar terug heffingskortingen claimen die u heeft gemist."}},
-      {
-        "@type": "Question",
-        "name": "Hoeveel is de ouderenkorting in 2026?",
-        "acceptedAnswer": { "@type": "Answer", "text": "De ouderenkorting bedraagt €2.067 in 2026 voor AOW-gerechtigden met een verzamelinkomen tot €46.002. Bent u alleenstaand? Dan ontvangt u bovendien de alleenstaande ouderenkorting van €540, samen €2.607 korting op uw belastingaanslag." }
-      },
-      {
-        "@type": "Question",
-        "name": "Wat is het verschil tussen een heffingskorting en een aftrekpost?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Een aftrekpost verlaagt uw belastbaar inkomen. Een heffingskorting verlaagt direct uw belastingaanslag. Bij een tarief van 37% levert €1.000 aftrekpost €370 voordeel op. Een heffingskorting van €370 levert altijd €370 op, ongeacht uw tarief." }
-      },
-      {
-        "@type": "Question",
-        "name": "Krijg ik de algemene heffingskorting automatisch?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Grotendeels wel. Uw werkgever, pensioenfonds of de SVB passen de korting al toe in de loonheffing. Maar niet altijd volledig of correct. Via uw aangifte inkomstenbelasting zorgt u voor de definitieve verrekening en ontvangt u eventueel het resterende bedrag terug." }
-      }]}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hoe hoog is de algemene heffingskorting in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De maximale algemene heffingskorting bedraagt €3.115 in 2026 voor inkomens tot €29.736. Bij hogere inkomens bouwt de korting geleidelijk af tot nul boven €78.426."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik heffingskortingen terugkrijgen als geld?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Heffingskortingen verminderen uw te betalen belasting. Als uw belasting lager is dan de kortingen, kunt u het surplus niet als geld terugkrijgen, maar via een correcte aangifte zorgt u dat u niet meer betaalt dan nodig."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mijn partner werkt niet. Heeft hij/zij ook recht op heffingskortingen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Een partner zonder inkomen heeft recht op de algemene heffingskorting. Als de partner te weinig belasting betaalt om de korting volledig te benutten, kan de fiscus deze uitbetalen. Maar dit wordt de komende jaren afgebouwd."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Krijg ik als gepensioneerde ook recht op de arbeidskorting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. De arbeidskorting geldt alleen voor mensen met arbeidsinkomen (loon, winst uit onderneming). AOW en pensioen tellen niet mee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Worden heffingskortingen automatisch toegepast?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grotendeels wel. Uw werkgever, pensioenfonds en SVB passen ze toe in de loonheffing. Maar niet altijd volledig of correct. Via uw aangifte inkomstenbelasting zorgt u voor de definitieve verrekening."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik heffingskortingen met terugwerkende kracht claimen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Via een belastingaangifte kunt u tot 5 jaar terug heffingskortingen claimen die u heeft gemist. Wij helpen u dit te berekenen en in te dienen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoeveel is de ouderenkorting in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De ouderenkorting bedraagt €2.067 in 2026 voor AOW-gerechtigden met een verzamelinkomen tot €46.002. Bent u alleenstaand? Dan ontvangt u bovendien de alleenstaande ouderenkorting van €540, samen €2.607 korting op uw belastingaanslag."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is het verschil tussen een heffingskorting en een aftrekpost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Een aftrekpost verlaagt uw belastbaar inkomen. Een heffingskorting verlaagt direct uw belastingaanslag. Bij een tarief van 37% levert €1.000 aftrekpost €370 voordeel op. Een heffingskorting van €370 levert altijd €370 op, ongeacht uw tarief."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Krijg ik de algemene heffingskorting automatisch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Grotendeels wel. Uw werkgever, pensioenfonds of de SVB passen de korting al toe in de loonheffing. Maar niet altijd volledig of correct. Via uw aangifte inkomstenbelasting zorgt u voor de definitieve verrekening en ontvangt u eventueel het resterende bedrag terug."
+      }
+    }
+  ]
+}
 </script>
 
 <a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer nofollow" aria-label="Stuur ons een WhatsApp berichtje" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#188741;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">

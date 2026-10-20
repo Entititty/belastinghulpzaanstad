@@ -616,22 +616,84 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forE
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat is de deadline voor de belastingaangifte 2025?","acceptedAnswer":{"@type":"Answer","text":"De deadline voor de belastingaangifte inkomstenbelasting 2025 is 1 mei 2026. Vraag uitstel aan via Mijn Belastingdienst voor automatisch uitstel tot 1 september 2026."}},{"@type":"Question","name":"Hoe hoog is de boete voor te late aangifte?","acceptedAnswer":{"@type":"Answer","text":"Bij een eerste verzuim bedraagt de verzuimboete €469; bij herhaling kan die oplopen tot €6.709. Heeft u recht op een teruggave, dan blijft een boete in de praktijk vaak achterwege."}},{"@type":"Question","name":"Kan ik nog aangifte doen over voorgaande jaren?","acceptedAnswer":{"@type":"Answer","text":"Ja, u kunt tot 5 jaar terug aangifte doen en eventuele teruggave ontvangen."}},
-      {
-        "@type": "Question",
-        "name": "Hoeveel uitstel kan ik aanvragen voor de belastingaangifte?",
-        "acceptedAnswer": { "@type": "Answer", "text": "U kunt via Mijn Belastingdienst zelf gratis uitstel aanvragen tot 1 september 2026. Maar alleen als u dit vóór 1 mei doet. Bent u al te laat, dien dan zo snel mogelijk alsnog in." }
-      },
-      {
-        "@type": "Question",
-        "name": "Wat gebeurt er als ik de belastingaangifte helemaal niet doe?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Als u na een herinnering nog steeds geen aangifte doet, legt de Belastingdienst een ambtshalve aanslag op. De Belastingdienst schat dan uw inkomen, doorgaans aan de hoge kant. Dit leidt tot te veel belasting betalen. Dien alsnog zelf aangifte in." }
-      },
-      {
-        "@type": "Question",
-        "name": "Kan ik een boete voor te late aangifte laten verminderen?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ja. Als u kunt aantonen dat de vertraging te wijten is aan bijzondere omstandigheden (ziekte, overlijden in gezin, etc.) kunt u bezwaar maken tegen de boete en om vermindering of kwijtschelding verzoeken." }
-      }]}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is de deadline voor de belastingaangifte 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De deadline voor de aangifte inkomstenbelasting 2025 is 1 mei 2026. Kunt u dit niet halen, vraag dan uitstel aan via Mijn Belastingdienst. Dit geeft u automatisch uitstel tot 1 september 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Krijg ik een boete als ik te laat aangifte doe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bij een eerste verzuim bedraagt de verzuimboete €469; bij herhaald te laat kan die oplopen tot €6.709. Heeft u recht op een teruggave, dan valt een boete in de praktijk vaak lager uit of blijft die achterwege, maar reken daar niet op en dien zo snel mogelijk in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik nog aangifte doen als ik de brief ben kwijtgeraakt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. U kunt altijd inloggen via Mijn Belastingdienst met DigiD en digitaal aangifte doen, ook zonder de aangieftebrief. U kunt ook ons inschakelen om dit voor u te doen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ik heb al meerdere jaren geen aangifte gedaan. Wat nu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "U kunt tot 5 jaar terug aangifte doen en eventuele teruggave ontvangen. Als u die jaren ook belasting heeft moeten betalen, kan de Belastingdienst naheffen. Wij helpen u dit geordend aan te pakken."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan een adviseur uitstel voor mij aanvragen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Via de uitstelregeling voor intermediairs kunnen belastingadviseurs namens hun klanten uitstel aanvragen tot 1 mei van het jaar erna. Wij regelen dit voor u."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat als de Belastingdienst mijn inkomen ambtshalve vaststelt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Een ambtshalve aanslag is vrijwel altijd hoger dan uw werkelijke verschuldigde belasting. Dien alsnog zelf aangifte in. U kunt bezwaar maken tegen een ambtshalve aanslag, maar doe dat tijdig (binnen 6 weken na de datum van de aanslag)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoeveel uitstel kan ik aanvragen voor de belastingaangifte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "U kunt via Mijn Belastingdienst zelf gratis uitstel aanvragen tot 1 september 2026. Maar alleen als u dit vóór 1 mei doet. Bent u al te laat, dien dan zo snel mogelijk alsnog in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat gebeurt er als ik de belastingaangifte helemaal niet doe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Als u na een herinnering nog steeds geen aangifte doet, legt de Belastingdienst een ambtshalve aanslag op. De Belastingdienst schat dan uw inkomen, doorgaans aan de hoge kant. Dit leidt tot te veel belasting betalen. Dien alsnog zelf aangifte in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik een boete voor te late aangifte laten verminderen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Als u kunt aantonen dat de vertraging te wijten is aan bijzondere omstandigheden (ziekte, overlijden in gezin, etc.) kunt u bezwaar maken tegen de boete en om vermindering of kwijtschelding verzoeken."
+      }
+    }
+  ]
+}
 </script>
 
 <a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer nofollow" aria-label="Stuur ons een WhatsApp berichtje" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#188741;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">
