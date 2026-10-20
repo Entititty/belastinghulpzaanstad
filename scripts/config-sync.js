@@ -355,6 +355,20 @@ for (const [k, p] of Object.entries(prijzen)) {
   });
 }
 
+/* ---------- data/seizoen.json: teksten voor de seizoensbanner, alleen controleren ----------
+   Geen markers mogelijk in JSON-tekst. Na een prijswijziging blijft daar dus de
+   oude prijs staan; dit vangt elk bedrag tot €200 dat geen prijs meer is. Een
+   bestaande prijs bij de verkeerde dienst ("voorlopige teruggave vanaf €49")
+   ziet het niet: lees de teksten na bij elke prijswijziging. */
+const seizoen = fs.readFileSync(path.join(ROOT, 'data', 'seizoen.json'), 'utf8').replace(/&euro;\s?/g, '€');
+const gezienSeizoen = new Set();
+seizoen.replace(/€\s?(\d{2,3})(?!\d)(?![.,]\d)/g, function (heel, n) {
+  if (Number(n) <= 200 && !bekendePrijzen.has(n) && !gezienSeizoen.has(n)) {
+    gezienSeizoen.add(n);
+    waarschuwingen.push('data/seizoen.json noemt €' + n + ', dat is geen prijs uit data/bedrijf.json. Pas de tekst met de hand aan.');
+  }
+});
+
 /* ---------- uitkomst ---------- */
 console.log('config-sync: ' + prijsPlekken + ' prijsplekken, ' + blokken + ' cfg-blokken, ' + ldPlekken + ' JSON-LD-velden; priceRange ' + PRICE_RANGE);
 if (waarschuwingen.length) {

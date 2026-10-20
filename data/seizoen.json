@@ -1,6 +1,6 @@
 {
   "_comment": "Teksten voor de seizoensbanner op de homepage en plaatspagina's. /js/seizoen.js kiest automatisch de juiste periode op basis van de huidige maand. Hier bewerken volstaat, geen code nodig. Blijf feitelijk juist (zie belastingdienst.nl).",
-  "_laatst_gecontroleerd": "2026-08-03",
+  "_laatst_gecontroleerd": "2026-10-20",
   "perioden": [
     {
       "van_maand": 1,
@@ -27,7 +27,7 @@
       "tot_maand": 12,
       "badge": "WOONT U IN EEN KOOPWONING?",
       "titel": "Vraag uw voorlopige teruggave aan, <strong style=\"color:#FFD166;\">elke maand geld terug</strong>",
-      "desc": "Met een voorlopige teruggave ontvangt u uw hypotheekrenteaftrek maandelijks, in plaats van pas na de aangifte. Wij vragen hem voor u aan, vanaf €49.",
+      "desc": "Met een voorlopige teruggave ontvangt u uw hypotheekrenteaftrek maandelijks, in plaats van pas na de aangifte. Wij vragen hem voor u aan: €109, met partner €149.",
       "chip": "Maandelijks voordeel i.p.v. achteraf",
       "cta_label": "Voorlopige teruggave aanvragen",
       "wa_text": "Hoi!%20Ik%20wil%20een%20voorlopige%20teruggave%20aanvragen."
