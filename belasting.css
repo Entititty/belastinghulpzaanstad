@@ -1400,7 +1400,7 @@ section {
   margin-bottom: 16px;
 }
 
-.footer h4 {
+.footer h2 {
   font-family: var(--font-display);
   color: white;
   font-size: 1rem;
@@ -1432,7 +1432,6 @@ section {
    RESPONSIVE
    ======================================== */
 @media (max-width: 900px) {
-  html { font-size: 16px; }
 
   .hero-grid,
   .teruggave-grid,
@@ -1477,17 +1476,16 @@ section {
    BEREKENING DISCLAIMER
    ======================================== */
 .berekening-disclaimer {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   color: var(--clr-bark);
   font-style: italic;
   margin-top: 10px;
   line-height: 1.5;
-  opacity: 0.85;
 }
 
 .hero-card-disclaimer {
-  font-size: 0.72rem;
-  color: rgba(107,94,80,0.75);
+  font-size: 0.8rem;
+  color: var(--clr-bark);
   font-style: italic;
   margin-top: 10px;
   padding-top: 10px;
@@ -1980,13 +1978,41 @@ section {
 .skip-link:focus { left: 0; }
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--clr-orange);outline-offset:2px;border-radius:4px}
 .footer-links a{display:inline-block;padding:5px 0}
-.faq-question{min-height:44px}
+.faq-question{min-height:48px}
 html[data-fontscale="l"]{font-size:20px}
 html[data-fontscale="xl"]{font-size:23px}
 .bhz-mobilebar{display:none}
-@media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#188741;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
+@media(max-width:768px){.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:var(--clr-deep);font-size:0.8rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}.bhz-mobilebar a:last-child{border-right:none}.bhz-mobilebar a.wa{background:#188741;color:#fff}.bhz-mobilebar .ic{font-size:1.2rem}body{padding-bottom:56px}.wa-float{display:none !important}.ts-switch{bottom:64px}}
 .ts-switch{position:fixed;right:16px;bottom:88px;z-index:9998;display:flex;align-items:center;gap:5px;background:#fff;border:1px solid rgba(44,37,32,0.15);border-radius:100px;padding:5px 9px;box-shadow:0 4px 16px rgba(44,37,32,0.18)}
 .ts-switch-label{font-size:0.78rem;color:var(--clr-bark)}
-.ts-switch button{min-width:44px;min-height:44px;border:1px solid rgba(44,37,32,0.18);background:var(--clr-cream);border-radius:8px;font-weight:700;color:var(--clr-deep);cursor:pointer;font-family:var(--font-body);line-height:1}
+.ts-switch button{min-width:48px;min-height:48px;border:1px solid rgba(44,37,32,0.18);background:var(--clr-cream);border-radius:8px;font-weight:700;color:var(--clr-deep);cursor:pointer;font-family:var(--font-body);line-height:1}
 .ts-switch button[aria-pressed="true"]{background:var(--clr-teal);color:#fff;border-color:var(--clr-teal)}
-@media(max-width:600px){.ts-switch{right:8px;bottom:80px;padding:4px 6px;gap:3px}.ts-switch-label{display:none}.ts-switch button{min-width:40px;min-height:40px;font-size:0.9rem}}
+@media(max-width:600px){.ts-switch{right:8px;bottom:80px;padding:4px 6px;gap:3px}.ts-switch-label{display:none}.ts-switch button{min-width:48px;min-height:48px;font-size:0.9rem}}
+
+/* ===== TOEGANKELIJKHEID (fase 5, oktober 2026) =====
+   Basis 18px ook op mobiel; koppen op telefoons blijven op hun oude maat.
+   Tikdoelen minstens 48px, de kop past op een smal scherm, witte focusrand op donkere vlakken. */
+.tabel-scroll{overflow-x:auto;max-width:100%}
+.footer-links{gap:0}
+.footer-links a{display:inline-flex;align-items:center;min-height:48px;padding:0}
+.mid-cta-phone,.mid-cta-wa{padding:10px 18px;min-height:48px}
+.cta-phone a{display:inline-block;padding:4px 0}
+.blog-meta a{position:relative}
+.blog-meta a::after{content:'';position:absolute;left:0;right:0;top:-11px;bottom:-11px}
+.regio-badge{display:inline-flex;align-items:center;min-height:48px}
+.breadcrumb-inner a{position:relative}
+.breadcrumb-inner a::after{content:'';position:absolute;left:-4px;right:-4px;top:-12px;bottom:-12px}
+.cta :focus-visible,.footer :focus-visible{outline-color:#fff}
+body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
+.mobile-toggle{width:48px;height:48px;flex-shrink:0}
+.mobile-toggle span{left:12px}
+.mobile-toggle span:nth-child(1){top:16px}
+.mobile-toggle span:nth-child(2){top:23px}
+.mobile-toggle span:nth-child(3){top:30px}
+.lang-toggle a{position:relative;min-width:48px;min-height:36px}
+.lang-toggle a::after{content:'';position:absolute;left:0;right:0;top:-6px;bottom:-6px}
+@media (max-width:900px){.nav-inner{padding-top:8px;padding-bottom:8px}.nav-logo{min-height:48px}.lang-toggle a{font-size:14px}.nav-links{max-height:calc(100vh - 120px);overflow-y:auto;gap:0 !important;background:#faf8f4 !important}.nav-links a{display:inline-flex;align-items:center;min-height:48px}.nav-links a::after{display:none}.nav-dropdown-menu a{display:flex;padding:0 18px}.nav-links .nav-cta{margin-top:8px}}
+@media (max-width:1100px){html[lang="en"] .nav-inner{padding-top:8px;padding-bottom:8px}html[lang="en"] .nav-logo{min-height:48px}html[lang="en"] .nav-links{max-height:calc(100vh - 120px);overflow-y:auto;gap:0 !important;background:#faf8f4 !important}html[lang="en"] .nav-links a{display:inline-flex;align-items:center;min-height:48px}html[lang="en"] .nav-links a::after{display:none}html[lang="en"] .nav-dropdown-menu a{display:flex;padding:0 18px}}
+@media (max-width:600px){.nav-logo{font-size:19px;line-height:1.15;white-space:normal;flex-shrink:1;min-width:0}.lang-toggle{margin-left:8px}.hero h1{font-size:1.8rem}.section-title,.local-intro h2{font-size:1.7rem}.teruggave h2,.cta h2,.blog-hero h1,.cta-phone a{font-size:1.6rem}.blog-article h2{font-size:1.2rem}}
+@media (max-width:600px){h1,h2,h3{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}}
+@media (max-width:359px){.nav-logo-icon{display:none}.local-stat-grid{grid-template-columns:1fr}}

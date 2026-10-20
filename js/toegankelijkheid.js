@@ -5,6 +5,8 @@
 (function () {
   var KEY = 'bhz-tekstgrootte';
   var root = document.documentElement;
+  // Engelse pagina's krijgen Engelse labels; de knoppen en links blijven gelijk.
+  var EN = (root.getAttribute('lang') || '').slice(0, 2) === 'en';
 
   function apply(scale) {
     if (scale === 'l' || scale === 'xl') root.setAttribute('data-fontscale', scale);
@@ -33,13 +35,13 @@
     'html[data-fontscale="xl"]{font-size:23px}',
     '.ts-switch{position:fixed;right:16px;bottom:88px;z-index:9998;display:flex;align-items:center;gap:5px;background:#fff;border:1px solid rgba(44,37,32,0.15);border-radius:100px;padding:5px 9px;box-shadow:0 4px 16px rgba(44,37,32,0.18)}',
     '.ts-switch-label{font-size:0.78rem;color:#6b5e50}',
-    '.ts-switch button{min-width:44px;min-height:44px;border:1px solid rgba(44,37,32,0.18);background:#faf8f4;border-radius:8px;font-weight:700;color:#2c2520;cursor:pointer;line-height:1}',
+    '.ts-switch button{min-width:48px;min-height:48px;border:1px solid rgba(44,37,32,0.18);background:#faf8f4;border-radius:8px;font-weight:700;color:#2c2520;cursor:pointer;line-height:1}',
     '.ts-switch button[aria-pressed="true"]{background:#15756a;color:#fff;border-color:#15756a}',
     '.bhz-mobilebar{display:none}',
-    '@media(max-width:600px){.ts-switch{right:8px;bottom:80px;padding:4px 6px;gap:3px}.ts-switch-label{display:none}.ts-switch button{min-width:40px;min-height:40px;font-size:0.9rem}}',
+    '@media(max-width:600px){.ts-switch{right:8px;bottom:80px;padding:4px 6px;gap:3px}.ts-switch-label{display:none}.ts-switch button{min-width:48px;min-height:48px;font-size:0.9rem}}',
     '@media(max-width:768px){',
     '.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}',
-    '.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:#2c2520;font-size:0.72rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}',
+    '.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:#2c2520;font-size:0.8rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}',
     '.bhz-mobilebar a:last-child{border-right:none}',
     '.bhz-mobilebar a.wa{background:#188741;color:#fff}',
     '.bhz-mobilebar .ic{font-size:1.2rem}',
@@ -58,12 +60,12 @@
     var box = document.createElement('div');
     box.className = 'ts-switch';
     box.setAttribute('role', 'group');
-    box.setAttribute('aria-label', 'Tekstgrootte aanpassen');
+    box.setAttribute('aria-label', EN ? 'Text size' : 'Tekstgrootte aanpassen');
     box.innerHTML =
-      '<span class="ts-switch-label" aria-hidden="true">Tekst</span>' +
-      '<button type="button" data-scale="normal" aria-label="Normale tekstgrootte">A</button>' +
-      '<button type="button" data-scale="l" aria-label="Grotere tekst">A+</button>' +
-      '<button type="button" data-scale="xl" aria-label="Grootste tekst">A++</button>';
+      '<span class="ts-switch-label" aria-hidden="true">' + (EN ? 'Text' : 'Tekst') + '</span>' +
+      '<button type="button" data-scale="normal" aria-label="' + (EN ? 'A, normal text size' : 'A, normale tekstgrootte') + '">A</button>' +
+      '<button type="button" data-scale="l" aria-label="' + (EN ? 'A+, larger text' : 'A+, grotere tekst') + '">A+</button>' +
+      '<button type="button" data-scale="xl" aria-label="' + (EN ? 'A++, largest text' : 'A++, grootste tekst') + '">A++</button>';
     box.addEventListener('click', function (e) {
       var b = e.target.closest('button');
       if (!b) return;
@@ -111,11 +113,11 @@
     if (document.querySelector('.bhz-mobilebar')) return;
     var bar = document.createElement('nav');
     bar.className = 'bhz-mobilebar';
-    bar.setAttribute('aria-label', 'Snel contact');
+    bar.setAttribute('aria-label', EN ? 'Quick contact' : 'Snel contact');
     bar.innerHTML =
-      '<a href="tel:+31619711848" rel="nofollow"><span class="ic" aria-hidden="true">📞</span>Bellen</a>' +
-      '<a href="/contact/#terugbellen"><span class="ic" aria-hidden="true">📅</span>Terugbellen</a>' +
-      '<a class="wa" href="https://wa.me/31619711848" rel="nofollow"><span class="ic" aria-hidden="true">💬</span>WhatsApp</a>';
+      '<a href="tel:+31619711848" rel="nofollow"><span class="ic" aria-hidden="true">📞</span>' + (EN ? 'Call' : 'Bellen') + '</a>' +
+      '<a href="/contact/#terugbellen"><span class="ic" aria-hidden="true">📅</span>' + (EN ? 'Call back' : 'Terugbellen') + '</a>' +
+      '<a class="wa" href="https://wa.me/31619711848' + (EN ? '?text=Hi!%20I%20have%20a%20question.' : '') + '" rel="nofollow"><span class="ic" aria-hidden="true">💬</span>WhatsApp</a>';
     document.body.appendChild(bar);
   }
 

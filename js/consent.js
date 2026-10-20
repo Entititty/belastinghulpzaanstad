@@ -78,7 +78,7 @@
       '#bhz-consent a{color:#15756A;text-decoration:underline;}' +
       '#bhz-consent .bhz-btns{display:flex;gap:10px;flex-wrap:wrap;}' +
       '#bhz-consent button{cursor:pointer;border-radius:100px;font-weight:700;font-size:0.9rem;' +
-      'padding:10px 20px;border:2px solid #15756A;font-family:inherit;}' +
+      'padding:10px 20px;min-height:48px;border:2px solid #15756A;font-family:inherit;}' +
       '#bhz-accept{background:#15756A;color:#fff;}' +
       '#bhz-accept:hover{background:#146B61;border-color:#146B61;}' +
       '#bhz-reject{background:transparent;color:#15756A;}' +
