@@ -57,7 +57,7 @@
     {"@type":"City","name":"Wormerland"},
     {"@type":"City","name":"Oostzaan"}
   ],
-  "serviceType": ["Belastingaangifte","Voorlopige teruggave","Correctie aangiften","Bezwaar box 3","Erfbelasting en schenkbelasting","Toeslagen aanvragen","WOZ-bezwaar","Kwijtschelding gemeentelijke belasting"],
+  "serviceType": ["Belastingaangifte","Voorlopige teruggave","Correctie aangiften","Opgaaf werkelijk rendement (box 3)","Erfbelasting en schenkbelasting","Toeslagen aanvragen","WOZ-bezwaar","Kwijtschelding gemeentelijke belasting"],
   "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029", "https://share.google/xdHHoqulKkgYD4XPA"],
   "openingHoursSpecification": [
     {
@@ -113,7 +113,7 @@
     {"@type":"Offer","name":"Correctie of late aangifte, per jaar","price":"69","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"},
     {"@type":"Offer","name":"Toeslag aanvragen of wijzigen","price":"30","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/toeslagen/"},
     {"@type":"Offer","name":"Toeslagencheck","price":"0","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/toeslagen/"},
-    {"@type":"Offer","name":"Pro forma bezwaar box 3","price":"0","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/"}
+    {"@type":"Offer","name":"Check of de Opgaaf werkelijk rendement (box 3) loont","price":"0","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/"}
   ]
 }
 </script>
@@ -137,7 +137,7 @@
           <li><a href="/diensten/belastingaangifte-laten-doen/">Aangifte laten doen</a></li>
           <li><a href="/diensten/eerste-baan/">Eerste baan</a></li>
           <li><a href="/diensten/voorlopige-teruggave/">Voorlopige teruggave</a></li>
-          <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
+          <li><a href="/diensten/box-3-bezwaar/">Box 3: werkelijk rendement</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
           <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
@@ -217,8 +217,8 @@
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;color:var(--clr-bark);white-space:nowrap;">€30</td>
           </tr>
           <tr>
-            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/box-3-bezwaar/" style="color:var(--clr-teal);font-weight:700;">Pro forma bezwaar box 3</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Houdt uw rechten open zolang de zaak loopt</span></td>
-            <td colspan="2" style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:#2f7d49;white-space:nowrap;">gratis</td>
+            <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/box-3-bezwaar/" style="color:var(--clr-teal);font-weight:700;">Box 3: werkelijk rendement opgeven</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Over 2021&ndash;2024. De check is gratis, zie hieronder</span></td>
+            <td colspan="2" style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);text-align:right;font-weight:800;color:var(--clr-deep);white-space:nowrap;">no cure no pay</td>
           </tr>
           <tr>
             <td style="padding:14px 12px;border-bottom:1px solid var(--clr-sand);"><a href="/diensten/toeslagen/" style="color:var(--clr-teal);font-weight:700;">Toeslagencheck</a><br><span style="font-size:0.88rem;color:var(--clr-bark);">Wij kijken of u iets misloopt, zonder verplichting</span></td>
@@ -270,17 +270,22 @@
   <div class="container" style="max-width:860px;">
     <h2 style="font-family:var(--font-display);font-size:1.5rem;color:var(--clr-deep);margin:0 0 18px;">Wanneer betaalt u niets</h2>
     <p style="line-height:1.7;color:var(--clr-bark);margin:0 0 12px;">
-      Drie dingen zijn gratis, en dat blijft zo ook als u daarna geen opdracht geeft:
+      Vier dingen zijn gratis, en dat blijft zo ook als u daarna geen opdracht geeft:
     </p>
     <ul style="line-height:1.8;color:var(--clr-bark);padding-left:22px;margin:0 0 20px;">
       <li>Het eerste gesprek waarin wij kijken wat er speelt.</li>
       <li>De toeslagencheck: wij rekenen na of u iets misloopt.</li>
       <li>De controle of een correctie over eerdere jaren zin heeft. Levert het niets op, dan doen wij niets en betaalt u niets.</li>
+      <li>De check of het opgeven van uw werkelijk rendement in box 3 iets oplevert.</li>
     </ul>
-    <p style="line-height:1.7;color:var(--clr-bark);margin:0;">
-      Bij bezwaar box 3 dienen wij het pro forma bezwaar kosteloos in. Gaat het hoofdbezwaar door,
-      dan spreken wij vooraf een vergoeding af die u alleen betaalt als het bezwaar geld oplevert.
-      U hoort dat bedrag voordat wij beginnen, en u tekent er zelf voor.
+    <h3 id="box-3" style="font-family:var(--font-display);font-size:1.2rem;color:var(--clr-deep);margin:0 0 8px;">Box 3: werkelijk rendement opgeven</h3>
+    <p style="line-height:1.7;color:var(--clr-bark);margin:0 0 10px;">
+      Of de Opgaaf werkelijk rendement over 2021&ndash;2024 in uw geval loont, kijken wij gratis na.
+      Doen wij de opgaaf daarna voor u, dan geldt:
+    </p>
+    <p style="line-height:1.7;color:var(--clr-bark);margin:0;"><!-- cfg:box3-tarief --><strong>No cure no pay.</strong> U betaalt alleen als de Belastingdienst uw box 3-belasting verlaagt. Levert de opgaaf niets op, dan betaalt u niets. Hoeveel u betaalt, hoort u vooraf, en u tekent er zelf voor.<!-- /cfg:box3-tarief --></p>
+    <p style="line-height:1.7;color:var(--clr-bark);margin:10px 0 0;">
+      U kunt de opgaaf ook zelf gratis doen via Mijn Belastingdienst.
     </p>
   </div>
 </section>
@@ -316,7 +321,7 @@
           <li><a href="/diensten/belastingaangifte-laten-doen/">Aangifte laten doen</a></li>
           <li><a href="/diensten/eerste-baan/">Eerste baan</a></li>
           <li><a href="/diensten/voorlopige-teruggave/">Voorlopige teruggave</a></li>
-          <li><a href="/diensten/box-3-bezwaar/">Bezwaar box 3</a></li>
+          <li><a href="/diensten/box-3-bezwaar/">Box 3: werkelijk rendement</a></li>
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
           <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
