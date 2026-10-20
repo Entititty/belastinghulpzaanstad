@@ -51,12 +51,16 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "AccountingService"],
+  "@type": [
+    "LocalBusiness",
+    "AccountingService"
+  ],
   "@id": "https://belastinghulpzaanstad.nl/#business",
   "name": "Belastinghulp Zaanstad",
   "url": "https://belastinghulpzaanstad.nl/",
   "telephone": "+31619711848",
   "email": "info@belastinghulpzaanstad.nl",
+  "image": "https://belastinghulpzaanstad.nl/og/og-default.png",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Zaandam",
@@ -65,30 +69,81 @@
   },
   "priceRange": "€49–€149",
   "foundingDate": "2026",
+  "founder": {
+    "@id": "https://belastinghulpzaanstad.nl/over-ons/#stan"
+  },
   "areaServed": [
-    {"@type":"City","name":"Zaanstad"},
-    {"@type":"City","name":"Zaandam"},
-    {"@type":"City","name":"Krommenie"},
-    {"@type":"City","name":"Assendelft"},
-    {"@type":"City","name":"Wormerveer"},
-    {"@type":"City","name":"Koog aan de Zaan"},
-    {"@type":"City","name":"Zaandijk"},
-    {"@type":"City","name":"Westzaan"},
-    {"@type":"City","name":"Wormerland"},
-    {"@type":"City","name":"Oostzaan"}
+    {
+      "@type": "City",
+      "name": "Zaandam"
+    },
+    {
+      "@type": "City",
+      "name": "Krommenie"
+    },
+    {
+      "@type": "City",
+      "name": "Assendelft"
+    },
+    {
+      "@type": "City",
+      "name": "Wormerveer"
+    },
+    {
+      "@type": "City",
+      "name": "Koog aan de Zaan"
+    },
+    {
+      "@type": "City",
+      "name": "Zaandijk"
+    },
+    {
+      "@type": "City",
+      "name": "Westzaan"
+    },
+    {
+      "@type": "City",
+      "name": "Wormerland"
+    },
+    {
+      "@type": "City",
+      "name": "Oostzaan"
+    }
   ],
-  "serviceType": ["Belastingaangifte","Voorlopige teruggave","Correctie aangiften","Opgaaf werkelijk rendement (box 3)","Erfbelasting en schenkbelasting","Toeslagen aanvragen","WOZ-bezwaar","Kwijtschelding gemeentelijke belasting"],
-  "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029", "https://share.google/xdHHoqulKkgYD4XPA"],
+  "serviceType": [
+    "Belastingaangifte",
+    "Eerste baan en bijbaan",
+    "Voorlopige teruggave",
+    "Correctie en late aangifte",
+    "Opgaaf werkelijk rendement (box 3)",
+    "Erfbelasting en schenkbelasting",
+    "Toeslagen aanvragen",
+    "WOZ-bezwaar",
+    "Kwijtschelding gemeentelijke belasting"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61574368775029",
+    "https://share.google/xdHHoqulKkgYD4XPA"
+  ],
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
       "opens": "18:00",
       "closes": "21:00"
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Saturday","Sunday"],
+      "dayOfWeek": [
+        "Saturday",
+        "Sunday"
+      ],
       "opens": "09:00",
       "closes": "21:00"
     }
@@ -162,7 +217,7 @@
     <div class="blog-hero-eyebrow">◆ Deductions &amp; tax return</div>
     <h1>Donations deduction from tax: how it works in 2026</h1>
     <div class="blog-meta">
-      <span class="blog-meta-item">📅 Last updated: <time datetime="2026-07-27">27 July 2026</time></span>
+      <span class="blog-meta-item">📅 Last updated: <time datetime="2026-10-20">20 October 2026</time></span>
       <span class="blog-meta-item">⏱ Reading time: 8 minutes</span>
       <span class="blog-meta-item">✍ <a href="/en/about-us/#stan" style="color:inherit;text-decoration:underline;text-underline-offset:2px;">Stan van der Hoeven</a></span>
     </div>
@@ -313,7 +368,7 @@
 
       <h3>Cultural ANBI: extra benefit</h3>
       <p>
-        Do you give to a cultural institution with ANBI status (e.g. a museum, theatre or library)? Then a <strong>multiplier of 125%</strong> applies: you may deduct 125% of your donation instead of 100%. A donation of €200 to a cultural ANBI thus yields a deduction of €250. This is capped at €1,250 of extra deduction per year (so a maximum of €1,000 donation for the extra benefit).
+        Do you give to a cultural institution with ANBI status (e.g. a museum, theatre or library)? Then a <strong>multiplier of 125%</strong> applies: you may deduct 125% of your donation instead of 100%. A donation of €200 to a cultural ANBI thus yields a deduction of €250. This is capped at €1,250 of extra deduction per year; you reach that maximum with a donation of €5,000, because the increase is 25% of your donation.
       </p>
 
       <h2 id="hoe-verwerken">How do you process donations in your tax return?</h2>
@@ -645,7 +700,8 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forE
   },
   "publisher": { "@type": "Organization", "name": "Belastinghulp Zaanstad", "url": "https://belastinghulpzaanstad.nl",
   "sameAs": ["https://www.facebook.com/profile.php?id=61574368775029", "https://share.google/xdHHoqulKkgYD4XPA"] },
-  "dateModified": "2026-07-27",
+  "datePublished": "2026-04-27",
+  "dateModified": "2026-10-20",
   "url": "https://belastinghulpzaanstad.nl/en/blog/donations-deduction/",
   "inLanguage": "en",
   "mainEntityOfPage": "https://belastinghulpzaanstad.nl/en/blog/donations-deduction/"

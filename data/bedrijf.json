@@ -7,6 +7,64 @@
     "vestigingsplaats": "Zaandam",
     "gemeente": "Zaanstad"
   },
+  "lokaal": {
+    "_doc": "Bron voor het LocalBusiness-blok (@id #business) in de JSON-LD van elke pagina. config-sync.js bouwt dat blok hieruit op, met de priceRange uit de prijzen en, zodra ze bekend zijn, KvK-nummer en btw-id uit de placeholders.",
+    "telefoon": "+31619711848",
+    "adres": {
+      "plaats": "Zaandam",
+      "regio": "Noord-Holland",
+      "land": "NL"
+    },
+    "werkgebied": [
+      "Zaandam",
+      "Krommenie",
+      "Assendelft",
+      "Wormerveer",
+      "Koog aan de Zaan",
+      "Zaandijk",
+      "Westzaan",
+      "Wormerland",
+      "Oostzaan"
+    ],
+    "openingstijden": [
+      {
+        "dagen": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "open": "18:00",
+        "dicht": "21:00"
+      },
+      {
+        "dagen": [
+          "Saturday",
+          "Sunday"
+        ],
+        "open": "09:00",
+        "dicht": "21:00"
+      }
+    ],
+    "diensten": [
+      "Belastingaangifte",
+      "Eerste baan en bijbaan",
+      "Voorlopige teruggave",
+      "Correctie en late aangifte",
+      "Opgaaf werkelijk rendement (box 3)",
+      "Erfbelasting en schenkbelasting",
+      "Toeslagen aanvragen",
+      "WOZ-bezwaar",
+      "Kwijtschelding gemeentelijke belasting"
+    ],
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61574368775029",
+      "https://share.google/xdHHoqulKkgYD4XPA"
+    ],
+    "oprichtingsjaar": "2026",
+    "afbeelding": "https://belastinghulpzaanstad.nl/og/og-default.png"
+  },
   "prijzen": {
     "_doc": "Bedragen in hele euro's. 'partner' is de prijs voor u en uw fiscaal partner samen in één opdracht. in_prijsrange: telt mee voor de priceRange in de JSON-LD.",
     "aangifte": {

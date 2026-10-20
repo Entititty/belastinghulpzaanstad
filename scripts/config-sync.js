@@ -183,6 +183,38 @@ const SJABLONEN = {
   }
 };
 
+/* ---------- het LocalBusiness-blok ----------
+   Elke pagina draagt hetzelfde blok met "@id": ".../#business". Het stond op
+   98 pagina's als losse kopie, in vier varianten. Nu bouwen we het hier op. */
+const BASIS_URL = 'https://belastinghulpzaanstad.nl';
+function bedrijfsBlok() {
+  const L = cfg.lokaal;
+  const o = {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'AccountingService'],
+    '@id': BASIS_URL + '/#business',
+    name: B.naam,
+    url: BASIS_URL + '/',
+    telephone: L.telefoon,
+    email: B.email,
+    image: L.afbeelding,
+    address: { '@type': 'PostalAddress', addressLocality: L.adres.plaats, addressRegion: L.adres.regio, addressCountry: L.adres.land },
+    priceRange: PRICE_RANGE,
+    foundingDate: L.oprichtingsjaar,
+    founder: { '@id': BASIS_URL + '/over-ons/#stan' },
+    areaServed: L.werkgebied.map(function (n) { return { '@type': 'City', name: n }; }),
+    serviceType: L.diensten,
+    sameAs: L.sameAs,
+    openingHoursSpecification: L.openingstijden.map(function (t) {
+      return { '@type': 'OpeningHoursSpecification', dayOfWeek: t.dagen, opens: t.open, closes: t.dicht };
+    })
+  };
+  if (!leeg(P.BTW_ID)) o.vatID = P.BTW_ID;
+  if (!leeg(P.KVK_NUMMER)) o.identifier = { '@type': 'PropertyValue', propertyID: 'KvK', value: P.KVK_NUMMER };
+  return '\n' + JSON.stringify(o, null, 2) + '\n';
+}
+const BEDRIJFSBLOK = bedrijfsBlok();
+
 /* ---------- bestanden ---------- */
 function walk(dir, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -239,6 +271,11 @@ for (const f of walk(ROOT, [])) {
   /* 3. JSON-LD */
   s = s.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, function (heel, open, body, sluit) {
     let b = body;
+    /* het bedrijfsblok geheel opnieuw uit data/bedrijf.json */
+    if (/"@id"\s*:\s*"https:\/\/belastinghulpzaanstad\.nl\/#business"/.test(b) && /"LocalBusiness"/.test(b)) {
+      ldPlekken++;
+      return open + BEDRIJFSBLOK + sluit;
+    }
     /* FAQ-antwoorden: een gewijzigde prijs, in elke schrijfwijze die voorkomt */
     if (oudNieuw.size && /"FAQPage"/.test(b)) {
       for (const [oud, nieuw] of oudNieuw) {
