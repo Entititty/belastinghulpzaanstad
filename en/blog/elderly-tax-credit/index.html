@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="stylesheet" href="/belasting.30f5385a.min.css">
+<link rel="stylesheet" href="/belasting.70a69763.min.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -117,9 +117,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -413,6 +411,24 @@
           <p>Yes. You can file tax returns up to 5 years back. If you have not (fully) received the elderly tax credit in earlier years, you can still file those years and get the difference back.</p>
         </div>
       </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Do I have to file a tax return to get the elderly tax credit?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Usually the SVB already applies the elderly tax credit through payroll tax. If you have more than one income, or the credit was not fully applied, a tax return can get you money back.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Can I claim missed elderly tax credit for previous years?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes, up to five years back, through a tax return or a correction.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -643,6 +659,22 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item').forE
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. You can file tax returns up to 5 years back. If you have not (fully) received the elderly tax credit in earlier years, you can still file those years and get the difference back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to file a tax return to get the elderly tax credit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually the SVB already applies the elderly tax credit through payroll tax. If you have more than one income, or the credit was not fully applied, a tax return can get you money back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I claim missed elderly tax credit for previous years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, up to five years back, through a tax return or a correction."
       }
     }
   ]

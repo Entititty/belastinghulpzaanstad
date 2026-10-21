@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="stylesheet" href="/belasting.30f5385a.min.css">
+<link rel="stylesheet" href="/belasting.70a69763.min.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SpeakableSpecification","cssSelector":["h1",".blog-intro",".faq-question",".faq-answer p",".faq-answer"]}
 </script>
@@ -107,9 +107,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -218,7 +216,7 @@
       <p>An extension means you officially get more time to file your tax return. Normally the 2025 tax return must be filed before 1 May 2026. With an extension you get extra time – without a fine and without annoying reminders from the Belastingdienst (Dutch tax authority).</p>
 
       <div class="info-box">
-        <p><strong>Important:</strong> An extension is <strong>not the same</strong> as paying later. If you have to pay tax, the tax interest (6.5% in 2026) simply continues to accrue from 1 July 2026, even if you have an extension. Getting a refund? Then you receive this money only after your tax return has been processed.</p>
+        <p><strong>Important:</strong> An extension is <strong>not the same</strong> as paying later. If you have to pay tax, the tax interest (5% in 2026) simply continues to accrue from 1 July 2026, even if you have an extension. Getting a refund? Then you receive this money only after your tax return has been processed.</p>
       </div>
 
       <h2 id="hoelang-uitstel">How long do I get an extension?</h2>
@@ -269,7 +267,7 @@
       <ul>
         <li><strong>An extension is free</strong> if you request it yourself</li>
         <li><strong>You don't get a fine</strong> if you file within the extension period</li>
-        <li><strong>Tax interest continues</strong> from 1 July 2026 (6.5% per year)</li>
+        <li><strong>Tax interest continues</strong> from 1 July 2026 (5% per year)</li>
         <li><strong>Refunds are paid later</strong> – you wait longer for your money</li>
         <li><strong>Benefits have their own deadlines</strong> – these can be missed</li>
         <li><strong>You can only get an extension once</strong> – renewal must be in writing with reason</li>
@@ -354,7 +352,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Do I have to pay tax interest if I have an extension?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>Yes, tax interest continues to accrue from 1 July 2026 if you have to pay extra tax. In 2026 the rate is 6.5% per year. An extension only prevents a fine, not the interest. If you get a refund, you receive no interest on the refund amount.</p></div>
+        <div class="faq-answer"><p>Yes, tax interest continues to accrue from 1 July 2026 if you have to pay extra tax. In 2026 the rate is 5% per year. An extension only prevents a fine, not the interest. If you get a refund, you receive no interest on the refund amount.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can I request an extension if I am already late?<span class="faq-arrow">+</span></button>
@@ -362,7 +360,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What if I don't have DigiD for an extension?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>Without DigiD you can request an extension by phone via 0800-0543. We can also arrange it for you via authorisation. Many seniors in Zaanstad choose this because it removes the DigiD hassle.</p></div>
+        <div class="faq-answer"><p>Without DigiD you can request an extension by phone via 0800-0543. We can also arrange it for you via authorisation.</p></div>
       </div>
     </div>
   </div>
@@ -503,7 +501,60 @@ document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Until when can I request an extension for my 2025 tax return?","acceptedAnswer":{"@type":"Answer","text":"You can request a free extension yourself until at the latest 1 May 2026, via Mijn Belastingdienst. Request it before 1 May."}},{"@type":"Question","name":"Does requesting an extension cost anything?","acceptedAnswer":{"@type":"Answer","text":"No, an extension from the Belastingdienst (Dutch tax authority) is free. You can do it yourself via My Belastingdienst or by phone via 0800-0543."}},{"@type":"Question","name":"Will I get a fine if I have requested an extension?","acceptedAnswer":{"@type":"Answer","text":"No, if you have requested an extension before 1 May 2026 and file within the extension period, you don't get a default fine."}},{"@type":"Question","name":"Do I have to pay tax interest if I have an extension?","acceptedAnswer":{"@type":"Answer","text":"Yes, tax interest continues from 1 July 2026 if you have to pay extra tax. In 2026 the rate is 6.5% per year."}},{"@type":"Question","name":"Can I request an extension if I am already late?","acceptedAnswer":{"@type":"Answer","text":"No. An extension must be requested before 1 May. If you are already late, file as soon as possible."}},{"@type":"Question","name":"What if I don't have DigiD for an extension?","acceptedAnswer":{"@type":"Answer","text":"Without DigiD you can request an extension by phone via 0800-0543. We can also arrange it for you via authorisation."}}]}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Until when can I request an extension for my 2025 tax return?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can request a free extension yourself until at the latest 1 May 2026, via Mijn Belastingdienst. If you still don't file after that and have no extension, fines will follow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does requesting an extension cost anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, an extension from the Belastingdienst (Dutch tax authority) is free. You can do it yourself via My Belastingdienst or by phone via 0800-0543. If you'd like us to arrange it for you together with the tax return, that costs €59."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will I get a fine if I have requested an extension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, if you have requested an extension before 1 May 2026 and file within the extension period (until 1 September 2026 or via adviser until 1 May 2027), you don't get a default fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to pay tax interest if I have an extension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, tax interest continues to accrue from 1 July 2026 if you have to pay extra tax. In 2026 the rate is 5% per year. An extension only prevents a fine, not the interest. If you get a refund, you receive no interest on the refund amount."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I request an extension if I am already late?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. An extension must be requested before 1 May. If you are already late, file as soon as possible, the sooner you file, the smaller the risk of a penalty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't have DigiD for an extension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Without DigiD you can request an extension by phone via 0800-0543. We can also arrange it for you via authorisation."
+      }
+    }
+  ]
+}
 </script>
 
 <a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer nofollow" aria-label="Send us a WhatsApp message" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#188741;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">

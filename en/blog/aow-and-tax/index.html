@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="stylesheet" href="/belasting.30f5385a.min.css">
+<link rel="stylesheet" href="/belasting.70a69763.min.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SpeakableSpecification","cssSelector":["h1",".article-intro p:first-child",".faq-question",".faq-answer p",".faq-answer"]}
 </script>
@@ -107,9 +107,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -328,7 +326,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">What tax rate applies to AOW recipients?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>AOW recipients no longer pay AOW premiums, which means the rate in the first bracket (up to approx. €40,500) is only around 19% instead of 37% for workers. Above that threshold, the same rates of 37% and 49.5% apply.</p></div>
+        <div class="faq-answer"><p>AOW recipients no longer pay AOW premiums, which means the rate in the first bracket (up to €38,883) is about 17.85%, instead of 35.75% for people below AOW age. Above that, the same rates apply: 37.56% and 49.50%.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can I get tax back as an AOW recipient?<span class="faq-arrow">+</span></button>
@@ -474,7 +472,60 @@ document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my AOW payment taxed?","acceptedAnswer":{"@type":"Answer","text":"Yes, AOW is taxable income in box 1. The SVB withholds payroll tax but also settles the tax credits, which means most AOW recipients pay little to no tax."}},{"@type":"Question","name":"What tax rate applies to AOW recipients?","acceptedAnswer":{"@type":"Answer","text":"AOW recipients no longer pay AOW premiums, which means the rate in the first bracket is around 19% instead of 37% for workers."}},{"@type":"Question","name":"Can I get tax back as an AOW recipient?","acceptedAnswer":{"@type":"Answer","text":"Yes. If you have high healthcare costs, have made donations, or if the elderly tax credit has not been fully settled, you can get money back via the annual tax return."}},{"@type":"Question","name":"How much is the elderly tax credit for AOW recipients in 2026?","acceptedAnswer":{"@type":"Answer","text":"The elderly tax credit is €2,067 at an aggregate income up to €46,002. Single people are additionally entitled to the single person elderly tax credit of €540."}},{"@type":"Question","name":"I receive both AOW and a pension, will I have to pay extra?","acceptedAnswer":{"@type":"Answer","text":"Possibly yes if both parties apply the full tax credit. You can ask the pension fund not to apply the tax credit to prevent a back-payment."}},{"@type":"Question","name":"Do I have to file a tax return if I only receive AOW?","acceptedAnswer":{"@type":"Answer","text":"Not required if you don't receive a tax return letter, but filing a tax return can be beneficial if you have healthcare costs, donations or other deductions."}}]}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is my AOW payment taxed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, AOW is taxable income (box 1). The SVB withholds payroll tax, but also settles the tax credits. In most cases you therefore pay little to no tax if you only receive AOW."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What tax rate applies to AOW recipients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AOW recipients no longer pay AOW premiums, which means the rate in the first bracket (up to €38,883) is about 17.85%, instead of 35.75% for people below AOW age. Above that, the same rates apply: 37.56% and 49.50%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get tax back as an AOW recipient?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you have high healthcare costs, have made donations, or if the elderly tax credit has not been fully settled by the SVB, you can get money back via an income tax return."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to file a tax return if I only receive AOW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not required if you don't receive a tax return letter. But filing a tax return can be beneficial if you have healthcare costs, donations or other deductions. We can quickly check this for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I receive both AOW and a pension. Will I have to pay extra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Possibly yes. If both the SVB and your pension fund apply the full tax credit, too little tax has been withheld. You can resolve this by asking the pension fund not to apply the tax credit (doubly)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is the elderly tax credit for AOW recipients in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The elderly tax credit is €2,067 at an aggregate income up to €46,002. Above that, the credit is gradually phased out. Single people are additionally entitled to the single person elderly tax credit of €540."
+      }
+    }
+  ]
+}
 </script>
 
 <a class="wa-float" href="https://wa.me/31619711848" target="_blank" rel="noopener noreferrer nofollow" aria-label="Send us a WhatsApp message" style="position:fixed;bottom:24px;right:24px;z-index:9999;height:52px;padding:0 20px 0 14px;gap:10px;background:#188741;border-radius:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);text-decoration:none">

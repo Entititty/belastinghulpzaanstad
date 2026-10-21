@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="apple-touch-icon" href="../../favicon.png">
-<link rel="stylesheet" href="../../belasting.30f5385a.min.css">
+<link rel="stylesheet" href="../../belasting.70a69763.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Belastinghulp Zaanstad","item":"https://belastinghulpzaanstad.nl/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://belastinghulpzaanstad.nl/blog/"},{"@type":"ListItem","position":3,"name":"Hypotheekrenteaftrek berekenen","item":"https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/"}]}</script>
@@ -103,9 +103,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -139,6 +137,8 @@
 <script src="/js/consent.js"></script>
 <script src="/js/toegankelijkheid.js" defer></script>
 <script src="/js/tellingen.js" defer></script>
+<script src="/js/formulier.js" defer></script>
+<script src="/js/rekenhulp.js" defer></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCQDYVY2M6"></script>
 <script>
@@ -224,7 +224,7 @@
 
 
       <!-- REKENTOOL -->
-      <div class="hra-calc" style="background:#fff;border:1px solid var(--clr-sand);border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(44,37,32,0.06);margin-bottom:32px;">
+      <div class="hra-calc" data-rh-calc="Hypotheekrenteaftrek 2026" style="background:#fff;border:1px solid var(--clr-sand);border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(44,37,32,0.06);margin-bottom:32px;">
         <h2 style="margin-top:0;">Bereken uw voordeel</h2>
 
         <div style="display:flex;flex-direction:column;gap:18px;margin-top:18px;">
@@ -270,8 +270,8 @@
         <!-- RESULTAAT -->
         <div style="margin-top:24px;background:var(--clr-teal-light);border-radius:14px;padding:22px 24px;text-align:center;">
           <div style="font-size:0.9rem;color:var(--clr-bark);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;">Geschat voordeel per maand</div>
-          <div id="calc-maand" style="font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--clr-teal);line-height:1.1;margin:6px 0;">€ 0</div>
-          <div style="font-size:0.95rem;color:var(--clr-bark);">≈ <span id="calc-jaar" style="font-weight:700;">€ 0</span> per jaar belastingvoordeel</div>
+          <div id="calc-maand" data-rh-uitkomst="Per maand" style="font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--clr-teal);line-height:1.1;margin:6px 0;">€ 0</div>
+          <div style="font-size:0.95rem;color:var(--clr-bark);">≈ <span id="calc-jaar" data-rh-uitkomst="Per jaar" style="font-weight:700;">€ 0</span> per jaar belastingvoordeel</div>
         </div>
 
         <details style="margin-top:16px;">
@@ -284,16 +284,33 @@
         </p>
       </div>
 
-      <!-- CTA onder de tool -->
-      <div style="margin:0 0 36px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:24px 28px;">
-        <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;">
-          <div style="font-size:2rem;line-height:1;">💶</div>
-          <div style="flex:1;min-width:240px;">
-            <div style="font-weight:700;color:#2C2520;font-size:1.15rem;margin-bottom:6px;">Dit bedrag maandelijks op uw rekening?</div>
-            <p style="margin:0 0 14px 0;color:#4a3f35;font-size:0.98rem;">Met een voorlopige teruggave krijgt u uw hypotheekvoordeel niet pas na de aangifte, maar elke maand vooruit. Wij vragen het correct voor u aan. <strong>Kost u 5 minuten via WhatsApp.</strong></p>
-            <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20een%20voorlopige%20teruggave%20aanvragen%20voor%20mijn%20hypotheekrenteaftrek." rel="nofollow" style="background:#188741;color:#fff !important;text-decoration:none;padding:12px 24px;border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(37,211,102,0.3);">💬 Voorlopige teruggave aanvragen →</a>
+      <!-- CTA onder de tool: gratis laten narekenen (rekenhulp.js zet de berekening in het formulier) -->
+      <div id="narekenen" style="margin:0 0 36px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:24px 28px;">
+        <div style="font-weight:700;color:#2C2520;font-size:1.15rem;margin-bottom:6px;"><span aria-hidden="true">💶</span> Dit bedrag elke maand op uw rekening?</div>
+        <p style="margin:0 0 16px 0;color:#4a3f35;font-size:0.98rem;">Met een voorlopige teruggave krijgt u uw hypotheekvoordeel elke maand, in plaats van na de aangifte. Laat uw naam en telefoonnummer achter: Stan rekent het gratis na met uw eigen gegevens en belt u terug, meestal dezelfde dag. Uw invoer hierboven gaat mee. Aanvragen kost daarna <span data-prijs="voorlopige_teruggave">€109</span>, met partner <span data-prijs="voorlopige_teruggave.partner">€149</span>.</p>
+        <form action="https://formspree.io/f/xrbndagq" method="POST" data-rh-lead>
+          <input type="hidden" name="formtype" value="rekentool">
+          <input type="hidden" name="tool" value="Hypotheekrenteaftrek">
+          <input type="hidden" name="berekening" value="">
+          <input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/?ok=1">
+          <input type="hidden" name="_subject" value="Rekentool hypotheekrenteaftrek: terugbelverzoek">
+          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+          <div class="form-field">
+            <label for="rh-naam">Uw naam</label>
+            <input type="text" id="rh-naam" name="naam" required autocomplete="name">
           </div>
-        </div>
+          <div class="form-field">
+            <label for="rh-tel">Telefoonnummer</label>
+            <input type="tel" id="rh-tel" name="telefoon" required autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="rh-mail">E-mailadres <span style="font-weight:400;">(niet verplicht)</span></label>
+            <input type="email" id="rh-mail" name="email" autocomplete="email">
+          </div>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens en deze berekening worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
+          <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
+        </form>
+        <p style="margin:12px 0 0;font-size:0.95rem;color:#4a3f35;">Liever WhatsApp? <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20een%20voorlopige%20teruggave%20aanvragen%20voor%20mijn%20hypotheekrenteaftrek." rel="nofollow">Stuur een bericht</a>, of bel <a href="tel:+31619711848" rel="nofollow">06 &ndash; 19 71 18 48</a>.</p>
       </div>
 
       <h2 id="hoe">Hoe werkt de berekening?</h2>
@@ -507,6 +524,7 @@
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
           <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
+          <li><a href="/rekentools/">Rekentools</a></li>
         </ul>
       </div>
       <div>

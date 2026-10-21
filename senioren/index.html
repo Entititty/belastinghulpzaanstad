@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
-<link rel="stylesheet" href="../belasting.30f5385a.min.css">
+<link rel="stylesheet" href="../belasting.70a69763.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">
@@ -100,9 +100,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -214,6 +212,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Ja, en dat vertellen wij u eerlijk. Zie de uitleg hierboven: het Sociaal Wijkteam, de Bibliotheek en het FormulierenHuis helpen gratis met invullen. Wij doen het voor u, aan huis, het hele jaar door."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat kost een aangifte voor senioren?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "€59 vaste prijs, met partner €89. De controle van uw toeslagen en ouderenkorting hoort erbij. Er komen geen kosten bij."
       }
     }
   ]
@@ -365,8 +371,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <p style="color:var(--clr-bark);margin-bottom:28px;max-width:60ch;line-height:1.7;">Wij doen de hele aangifte, van begin tot eind. U vertelt uw situatie, wij zoeken de rest op.</p>
     <ul class="sen-lijst">
       <li>Uw volledige aangifte inkomstenbelasting, ingediend bij de Belastingdienst</li>
-      <li>Wij kijken of u de <a href="/blog/ouderenkorting/">ouderenkorting</a> volledig krijgt. Die wordt niet altijd helemaal verrekend</li>
-      <li>Zorgkosten en giften die u mag aftrekken, ook als u de bonnen kwijt bent</li>
+      <li>Wij kijken of u de <a href="/blog/ouderenkorting/">ouderenkorting</a> volledig krijgt. Die wordt niet altijd helemaal verrekend. <a href="/rekentools/ouderenkorting/">Reken uw ouderenkorting uit</a></li>
+      <li>Zorgkosten en giften die u mag aftrekken. Bent u bonnen kwijt, dan zoeken wij samen naar ander bewijs, zoals bankafschriften</li>
       <li>Controle of u recht heeft op <a href="/blog/huurtoeslag-aanvragen/">huurtoeslag</a> of <a href="/blog/zorgtoeslag-aanvragen/">zorgtoeslag</a>, en zo ja hoeveel</li>
       <li>Uw spaargeld: klopt wat de Belastingdienst daarover heeft berekend?</li>
       <li>Aangiften van eerdere jaren corrigeren, tot vijf jaar terug</li>
@@ -459,6 +465,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Is er ook gratis hulp?<span class="faq-arrow">+</span></button>
       <div class="faq-answer"><p>Ja, en dat vertellen wij u eerlijk. Zie de uitleg hierboven: het Sociaal Wijkteam, de Bibliotheek en het FormulierenHuis helpen gratis met invullen. Wij doen het voor u, aan huis, het hele jaar door.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+        Wat kost een aangifte voor senioren?
+        <span class="faq-arrow">+</span>
+      </button>
+      <div class="faq-answer">
+        <p><span data-prijs="aangifte">€59</span> vaste prijs, met partner <span data-prijs="aangifte.partner">€89</span>. De controle van uw toeslagen en ouderenkorting hoort erbij. Er komen geen kosten bij.</p>
+      </div>
     </div>
 
   </div>
@@ -564,6 +579,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
           <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
+          <li><a href="/rekentools/">Rekentools</a></li>
         </ul>
       </div>
       <div>

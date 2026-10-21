@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="stylesheet" href="/belasting.30f5385a.min.css">
+<link rel="stylesheet" href="/belasting.70a69763.min.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SpeakableSpecification","cssSelector":["h1",".article-intro p:first-child",".faq-question",".faq-answer p",".faq-answer"]}
 </script>
@@ -107,9 +107,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -280,7 +278,7 @@
         <li>Annual statement(s) from SVB, pension fund, employer</li>
         <li>WOZ valuation (property tax assessment) from the municipality</li>
         <li>Bank statement or overview as of 1 January (for box 3)</li>
-        <li>Receipts for healthcare costs (dentist, personal contributions, aids)</li>
+        <li>Receipts for healthcare costs you paid yourself (such as prescription medicines or aids)</li>
         <li>Possibly: donation receipts from charities (ANBI)</li>
       </ul>
 
@@ -368,6 +366,24 @@
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Can you also file tax returns for previous years?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Yes, you can file or revise tax returns up to 5 years back. If you have missed credits or deductions earlier, we can still file those years and claim the money back.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How much can I get back as a senior?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>That differs per situation. If you only receive state pension (AOW), you can get money back if the elderly tax credit (€2,067) or the general tax credit was not fully applied. With deductible healthcare costs or donations it can be more.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Do I have to declare my savings in the tax return?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>You only pay box 3 tax if your assets minus debts on 1 January exceed the tax-free allowance: in 2026 €59,357, or €118,714 with a tax partner. You then pay tax on a calculated return, not on the assets themselves. Your bank balances are usually already in the pre-filled return; check them.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -547,6 +563,22 @@ document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes, you can file or revise tax returns up to 5 years back. If you have missed credits or deductions earlier, we can still file those years and claim the money back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much can I get back as a senior?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That differs per situation. If you only receive state pension (AOW), you can get money back if the elderly tax credit (€2,067) or the general tax credit was not fully applied. With deductible healthcare costs or donations it can be more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to declare my savings in the tax return?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You only pay box 3 tax if your assets minus debts on 1 January exceed the tax-free allowance: in 2026 €59,357, or €118,714 with a tax partner. You then pay tax on a calculated return, not on the assets themselves. Your bank balances are usually already in the pre-filled return; check them."
       }
     }
   ]

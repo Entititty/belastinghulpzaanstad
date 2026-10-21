@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="apple-touch-icon" href="../../favicon.png">
-<link rel="stylesheet" href="../../belasting.30f5385a.min.css">
+<link rel="stylesheet" href="../../belasting.70a69763.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Belastinghulp Zaanstad","item":"https://belastinghulpzaanstad.nl/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://belastinghulpzaanstad.nl/blog/"},{"@type":"ListItem","position":3,"name":"Huurtoeslag berekenen","item":"https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/"}]}</script>
@@ -103,9 +103,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -139,6 +137,8 @@
 <script src="/js/consent.js"></script>
 <script src="/js/toegankelijkheid.js" defer></script>
 <script src="/js/tellingen.js" defer></script>
+<script src="/js/formulier.js" defer></script>
+<script src="/js/rekenhulp.js" defer></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCQDYVY2M6"></script>
 <script>
@@ -224,7 +224,7 @@
 
 
       <!-- REKENTOOL -->
-      <div class="hra-calc" style="background:#fff;border:1px solid var(--clr-sand);border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(44,37,32,0.06);margin-bottom:32px;">
+      <div class="hra-calc" data-rh-calc="Huurtoeslag 2026" style="background:#fff;border:1px solid var(--clr-sand);border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(44,37,32,0.06);margin-bottom:32px;">
         <h2 style="margin-top:0;">Bereken uw huurtoeslag (indicatie)</h2>
 
         <div style="display:flex;flex-direction:column;gap:18px;margin-top:18px;">
@@ -260,10 +260,10 @@
 
         <!-- RESULTAAT -->
         <div style="margin-top:24px;background:var(--clr-teal-light);border-radius:14px;padding:22px 24px;text-align:center;">
-          <div id="calc-status" style="font-size:0.95rem;font-weight:700;color:var(--clr-teal);margin-bottom:4px;">U komt waarschijnlijk in aanmerking ✓</div>
+          <div id="calc-status" data-rh-uitkomst="Uitkomst" style="font-size:0.95rem;font-weight:700;color:var(--clr-teal);margin-bottom:4px;">U komt waarschijnlijk in aanmerking ✓</div>
           <div style="font-size:0.85rem;color:var(--clr-bark);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;">Indicatieve huurtoeslag per maand</div>
-          <div id="calc-maand" style="font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--clr-teal);line-height:1.1;margin:6px 0;">± € 0</div>
-          <div style="font-size:0.95rem;color:var(--clr-bark);">≈ <span id="calc-jaar" style="font-weight:700;">€ 0</span> per jaar</div>
+          <div id="calc-maand" data-rh-uitkomst="Per maand" style="font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--clr-teal);line-height:1.1;margin:6px 0;">± € 0</div>
+          <div style="font-size:0.95rem;color:var(--clr-bark);">≈ <span id="calc-jaar" data-rh-uitkomst="Per jaar" style="font-weight:700;">€ 0</span> per jaar</div>
         </div>
 
         <details style="margin-top:16px;">
@@ -276,16 +276,33 @@
         </p>
       </div>
 
-      <!-- SOFT CAPTURE / CTA onder de tool -->
-      <div style="margin:0 0 36px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:24px 28px;">
-        <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;">
-          <div style="font-size:2rem;line-height:1;">🏠</div>
-          <div style="flex:1;min-width:240px;">
-            <div style="font-weight:700;color:#2C2520;font-size:1.15rem;margin-bottom:6px;">Wilt u uw exacte bedrag weten?</div>
-            <p style="margin:0 0 14px 0;color:#4a3f35;font-size:0.98rem;">Wij berekenen uw huurtoeslag <strong>precies</strong>, inclusief vermogen, servicekosten en medebewoners, én regelen de aanvraag voor u. Gratis en vrijblijvend. <strong>Kost u 5 minuten via WhatsApp.</strong></p>
-            <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20weten%20of%20ik%20recht%20heb%20op%20huurtoeslag%20en%20hoeveel.%20Kunnen%20jullie%20het%20gratis%20berekenen%3F" rel="nofollow" style="background:#188741;color:#fff !important;text-decoration:none;padding:12px 24px;border-radius:100px;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(37,211,102,0.3);">💬 Gratis exacte berekening →</a>
+      <!-- CTA onder de tool: gratis laten narekenen (rekenhulp.js zet de berekening in het formulier) -->
+      <div id="narekenen" style="margin:0 0 36px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:24px 28px;">
+        <div style="font-weight:700;color:#2C2520;font-size:1.15rem;margin-bottom:6px;"><span aria-hidden="true">🏠</span> Wilt u uw exacte bedrag weten?</div>
+        <p style="margin:0 0 16px 0;color:#4a3f35;font-size:0.98rem;">Wij berekenen uw huurtoeslag gratis en precies, met uw vermogen en de inkomens van medebewoners erbij. Laat uw naam en telefoonnummer achter: Stan belt u terug, meestal dezelfde dag. Uw invoer hierboven gaat mee. De aanvraag regelen wij daarna voor <span data-prijs="toeslag">€30</span>.</p>
+        <form action="https://formspree.io/f/xrbndagq" method="POST" data-rh-lead>
+          <input type="hidden" name="formtype" value="rekentool">
+          <input type="hidden" name="tool" value="Huurtoeslag">
+          <input type="hidden" name="berekening" value="">
+          <input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/?ok=1">
+          <input type="hidden" name="_subject" value="Rekentool huurtoeslag: terugbelverzoek">
+          <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+          <div class="form-field">
+            <label for="rh-naam">Uw naam</label>
+            <input type="text" id="rh-naam" name="naam" required autocomplete="name">
           </div>
-        </div>
+          <div class="form-field">
+            <label for="rh-tel">Telefoonnummer</label>
+            <input type="tel" id="rh-tel" name="telefoon" required autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="rh-mail">E-mailadres <span style="font-weight:400;">(niet verplicht)</span></label>
+            <input type="email" id="rh-mail" name="email" autocomplete="email">
+          </div>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens en deze berekening worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
+          <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
+        </form>
+        <p style="margin:12px 0 0;font-size:0.95rem;color:#4a3f35;">Liever WhatsApp? <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20weten%20of%20ik%20recht%20heb%20op%20huurtoeslag%20en%20hoeveel." rel="nofollow">Stuur een bericht</a>, of bel <a href="tel:+31619711848" rel="nofollow">06 &ndash; 19 71 18 48</a>.</p>
       </div>
 
       <h2 id="hoe">Hoe werkt de berekening van huurtoeslag?</h2>
@@ -402,6 +419,24 @@
           <p>Ja, tot 1 september van het jaar ná het toeslagjaar. Vraagt u in 2026 nog over 2025 aan, dan moet dat vóór 1 september 2026. Meer hierover leest u bij <a href="../huurtoeslag-aanvragen/">huurtoeslag aanvragen</a>.</p>
         </div>
       </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Welk inkomen vul ik in?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Het inkomen van uw huishouden: uw eigen verzamelinkomen plus dat van een toeslagpartner en eventuele medebewoners. Voor een indicatie kunt u uw bruto jaarinkomen gebruiken.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Ik zit net boven een inkomensgrens. Heb ik dan geen recht?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Niet per se. Er is geen harde inkomensgrens: de huurtoeslag wordt geleidelijk lager naarmate uw inkomen stijgt. Laat het nakijken als u twijfelt.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -464,7 +499,7 @@
 <div class="disclaimer-box" style="margin:32px auto 0;max-width:var(--content-width,800px);padding:20px 24px;background:var(--clr-orange-light);border-radius:12px;border-left:4px solid var(--clr-orange);">
   <p style="font-weight:700;font-size:0.9rem;color:var(--clr-midnight);margin:0 0 6px;">Disclaimer &amp; aansprakelijkheid</p>
   <p style="font-size:0.82rem;color:var(--clr-bark);margin:0;line-height:1.7;">
-    De uitkomsten van deze rekentool zijn <strong>indicatief</strong> en uitsluitend bedoeld als algemene informatie, niet als fiscaal, financieel of juridisch advies. De berekening is een sterke vereenvoudiging van de officiële huurtoeslagberekening en gaat uit van de voor 2026 geldende grenzen (o.a. eigen bijdrage, kwaliteitskortingsgrens, aftoppingsgrens en maximale rekenhuur). De eigen bijdrage wordt daarbij benaderd. Er wordt géén rekening gehouden met uw volledige persoonlijke situatie, waaronder uw vermogen, medebewoners, leeftijd of bijzondere omstandigheden. <strong>Aan de uitkomst kunnen op geen enkele wijze rechten worden ontleend.</strong> Belastinghulp Zaanstad aanvaardt geen aansprakelijkheid voor beslissingen die op basis van deze indicatie worden genomen. Voor een bindende berekening verwijzen wij u naar de officiële proefberekening op <a href="https://www.toeslagen.nl" style="color:var(--clr-orange);">toeslagen.nl</a> of neemt u contact met ons op. Genoemde bedragen en regelgeving kunnen jaarlijks wijzigen.
+    De uitkomsten van deze rekentool zijn <strong>indicatief</strong> en uitsluitend bedoeld als algemene informatie, niet als fiscaal, financieel of juridisch advies. De berekening is een sterke vereenvoudiging van de officiële huurtoeslagberekening en gaat uit van de voor 2026 geldende grenzen (o.a. eigen bijdrage, kwaliteitskortingsgrens, aftoppingsgrens en maximale rekenhuur). De eigen bijdrage wordt daarbij benaderd. Er wordt géén rekening gehouden met uw volledige persoonlijke situatie, waaronder uw vermogen, medebewoners, leeftijd of bijzondere omstandigheden. <strong>Aan de uitkomst kunnen op geen enkele wijze rechten worden ontleend.</strong> Belastinghulp Zaanstad aanvaardt geen aansprakelijkheid voor beslissingen die op basis van deze indicatie worden genomen. Voor een bindende berekening verwijzen wij u naar de officiële proefberekening op <a href="https://www.toeslagen.nl" style="color:var(--clr-deep);text-decoration:underline;">toeslagen.nl</a> of neemt u contact met ons op. Genoemde bedragen en regelgeving kunnen jaarlijks wijzigen.
   </p>
 </div>
 
@@ -501,6 +536,7 @@
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
           <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
+          <li><a href="/rekentools/">Rekentools</a></li>
         </ul>
       </div>
       <div>
@@ -693,7 +729,7 @@ window.addEventListener('scroll', () => {
       "name": "Klopt de uitkomst van de rekentool precies?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nee, het is een indicatie . De tool gebruikt een vereenvoudigde berekening met de eigen bijdrage en de kwaliteitskortings- en aftoppingsgrenzen (2026). Uw werkelijke huurtoeslag hangt ook af van uw vermogen, servicekosten en medebewoners. Wij rekenen het graag exact voor u uit."
+        "text": "Nee, het is een indicatie. De tool gebruikt een vereenvoudigde berekening met de eigen bijdrage en de kwaliteitskortings- en aftoppingsgrenzen (2026). Uw werkelijke huurtoeslag hangt ook af van uw vermogen, servicekosten en medebewoners. Wij rekenen het graag exact voor u uit."
       }
     },
     {
@@ -717,7 +753,23 @@ window.addEventListener('scroll', () => {
       "name": "Kan ik huurtoeslag met terugwerkende kracht aanvragen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja, tot 1 september van het jaar ná het toeslagjaar. Vraagt u in 2026 nog over 2025 aan, dan moet dat vóór 1 september 2026. Meer hierover leest u bij huurtoeslag aanvragen ."
+        "text": "Ja, tot 1 september van het jaar ná het toeslagjaar. Vraagt u in 2026 nog over 2025 aan, dan moet dat vóór 1 september 2026. Meer hierover leest u bij huurtoeslag aanvragen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welk inkomen vul ik in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Het inkomen van uw huishouden: uw eigen verzamelinkomen plus dat van een toeslagpartner en eventuele medebewoners. Voor een indicatie kunt u uw bruto jaarinkomen gebruiken."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ik zit net boven een inkomensgrens. Heb ik dan geen recht?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Niet per se. Er is geen harde inkomensgrens: de huurtoeslag wordt geleidelijk lager naarmate uw inkomen stijgt. Laat het nakijken als u twijfelt."
       }
     }
   ]

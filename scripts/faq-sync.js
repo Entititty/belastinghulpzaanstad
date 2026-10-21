@@ -28,6 +28,9 @@ const eol = src.includes('\r\n') ? '\r\n' : '\n';
 function ontdoe(html) {
   let t = html
     .replace(/<span class="faq-arrow">[\s\S]*?<\/span>/gi, ' ')
+    /* Inline-elementen (een prijs in een span, een link) zonder spatie, anders
+       staat er "€89 ." in het schema. Blokelementen, <br> en commentaar wel. */
+    .replace(/<\/?(?:span|strong|b|em|i|a|small|abbr|time|sup|sub)\b[^>]*>/gi, '')
     .replace(/<[^>]+>/g, ' ');
   const ent = {
     '&amp;': '&', '&euro;': '€', '&nbsp;': ' ', '&ndash;': '–', '&mdash;': '—',

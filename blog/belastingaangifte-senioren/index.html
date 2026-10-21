@@ -28,7 +28,7 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="apple-touch-icon" href="../../favicon.png">
-<link rel="stylesheet" href="../../belasting.30f5385a.min.css">
+<link rel="stylesheet" href="../../belasting.70a69763.min.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SpeakableSpecification","cssSelector":["h1",".article-intro p:first-child",".faq-question",".faq-answer p",".faq-answer"]}
 </script>
@@ -107,9 +107,7 @@
     "Correctie en late aangifte",
     "Opgaaf werkelijk rendement (box 3)",
     "Erfbelasting en schenkbelasting",
-    "Toeslagen aanvragen",
-    "WOZ-bezwaar",
-    "Kwijtschelding gemeentelijke belasting"
+    "Toeslagen aanvragen"
   ],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61574368775029",
@@ -301,7 +299,7 @@
         <li>Jaaropgave(n) van SVB, pensioenfonds, werkgever</li>
         <li>WOZ-beschikking van de gemeente</li>
         <li>Bankafschrift of -overzicht per 1 januari (voor box 3)</li>
-        <li>Bonnetjes van zorgkosten (tandarts, eigen bijdragen, hulpmiddelen)</li>
+        <li>Bonnetjes van zorgkosten die u zelf betaalde (zoals medicijnen op voorschrift of hulpmiddelen)</li>
         <li>Eventueel: giftkwitanties van ANBI-instellingen</li>
       </ul>
 
@@ -389,6 +387,24 @@
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Kunnen jullie ook aangifte doen over voorgaande jaren?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Ja, u kunt tot 5 jaar terug aangifte doen of herzien. Als u eerder kortingen of aftrekposten hebt gemist, kunnen wij die jaren alsnog indienen en het geld terugvragen.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Hoeveel kan ik als senior terugkrijgen?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Dat verschilt per situatie. Wie alleen AOW krijgt, kan geld terugkrijgen als de ouderenkorting (€2.067) of de algemene heffingskorting niet volledig is verrekend. Met aftrekbare zorgkosten of giften kan het meer worden.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Moet ik mijn spaargeld opgeven bij de aangifte?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>U betaalt alleen belasting in box 3 als uw bezittingen min schulden op 1 januari hoger zijn dan het heffingvrije vermogen: in 2026 €59.357, of €118.714 met een fiscale partner. U betaalt dan belasting over een berekend rendement, niet over het vermogen zelf. Uw banksaldi staan meestal al in de vooraf ingevulde aangifte; controleer ze.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -484,6 +500,7 @@
           <li><a href="/diensten/correctie-late-aangifte/">Correctie &amp; late aangifte</a></li>
           <li><a href="/diensten/erfbelasting-schenking/">Erfbelasting &amp; schenking</a></li>
           <li><a href="/diensten/toeslagen/">Toeslagen aanvragen</a></li>
+          <li><a href="/rekentools/">Rekentools</a></li>
         </ul>
       </div>
       <div>
@@ -602,6 +619,22 @@ document.querySelectorAll('.audience-card,.tarief-card,.step,.faq-item').forEach
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Ja, u kunt tot 5 jaar terug aangifte doen of herzien. Als u eerder kortingen of aftrekposten hebt gemist, kunnen wij die jaren alsnog indienen en het geld terugvragen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoeveel kan ik als senior terugkrijgen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dat verschilt per situatie. Wie alleen AOW krijgt, kan geld terugkrijgen als de ouderenkorting (€2.067) of de algemene heffingskorting niet volledig is verrekend. Met aftrekbare zorgkosten of giften kan het meer worden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Moet ik mijn spaargeld opgeven bij de aangifte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "U betaalt alleen belasting in box 3 als uw bezittingen min schulden op 1 januari hoger zijn dan het heffingvrije vermogen: in 2026 €59.357, of €118.714 met een fiscale partner. U betaalt dan belasting over een berekend rendement, niet over het vermogen zelf. Uw banksaldi staan meestal al in de vooraf ingevulde aangifte; controleer ze."
       }
     }
   ]
