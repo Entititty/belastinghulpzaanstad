@@ -143,7 +143,7 @@ sitebreed doorgevoerd (NL + EN). Gebruik ze als ijkpunt bij de volgende jaarupda
 
 ## Eén bron van waarheid voor fiscale cijfers (Taak 3)
 - **data/fiscale-cijfers.json** — alle 2026-cijfers met bron + 'verouderd'-lijst.
-- **data/bedrijf.json** — prijzen, bedrijfsgegevens en placeholders (KvK, btw, BAV, box 3-tarief, reviewlink); `scripts/config-sync.js` zet ze in de HTML.
+- **data/bedrijf.json** — prijzen, bedrijfsgegevens en placeholders (KvK, btw of KOR, reviewlink); `scripts/config-sync.js` zet ze in de HTML.
 - **data/plaatsen.json** — inwoners (2026), gemiddelde WOZ-waarde (2025) en % koop/huur per kern (bron CBS/AlleCijfers.nl); gelijk aan de statistiekblokken op de NL- en EN-plaatspagina's.
 - **scripts/check-fiscale-cijfers.js** — `node scripts/check-fiscale-cijfers.js`; faalt (exit 1) als een verouderde waarde weer in de HTML staat. Draai vóór elke push `node scripts/bouw.js`; dat draait dit script mee.
 - Let op: de site is statische HTML zonder build, dus cijfers worden NIET automatisch uit de JSON gegenereerd. Wijzig je een cijfer: pas het aan in de JSON én in de HTML, en zet de oude waarde in 'verouderd'.

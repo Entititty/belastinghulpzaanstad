@@ -119,8 +119,6 @@
     "KVK_NUMMER": "",
     "BTW_ID": "",
     "KOR": null,
-    "BAV": "",
-    "BAV_EN": "",
     "FEE_BOX3": 15,
     "FEE_BOX3_MIN": null,
     "FEE_BOX3_MAX": 500,
@@ -128,16 +126,14 @@
     "FEE_BOX3_GRONDSLAG_EN": "of the box 3 tax you get back or no longer have to pay",
     "VAT_NOTE": "Alle prijzen zijn inclusief btw. Er komen geen kosten bij.",
     "GOOGLE_REVIEW_URL": "",
-    "ACHTERGROND_STAN": "Ik ben bij belastingaangiften terechtgekomen via mijn werk. Daar deed ik aangiften inkomstenbelasting, en ik merkte dat ik het uitzoeken leuk vind: hoe zit het precies, wat mag wel en wat niet. Nog leuker vind ik het contact met mensen. Samen aan tafel de papieren doornemen, uitleggen wat er gebeurt en merken dat iemand opgelucht is als het geregeld is. Daarom ben ik in 2026 Belastinghulp Zaanstad begonnen.",
-    "ACHTERGROND_STAN_EN": "Stan got into tax returns through his work, where he prepared income tax returns. He found that he enjoys working out how things fit together: what is allowed and what is not. What he enjoys even more is the contact with people: going through the paperwork together at the table, explaining what happens, and seeing someone relieved once it is sorted. That is why he started Belastinghulp Zaanstad in 2026.",
+    "ACHTERGROND_STAN": "Ik doe al acht jaar aangiften inkomstenbelasting, eerst via mijn werk, en heb er inmiddels meer dan honderd gedaan. Ik merkte dat ik het uitzoeken leuk vind: hoe zit het precies, wat mag wel en wat niet. Nog leuker vind ik het contact met mensen. Samen aan tafel de papieren doornemen, uitleggen wat er gebeurt en merken dat iemand opgelucht is als het geregeld is. Daarom ben ik in 2026 Belastinghulp Zaanstad begonnen.",
+    "ACHTERGROND_STAN_EN": "Stan has been preparing income tax returns for eight years, starting through his work, and has done more than a hundred. He found that he enjoys working out how things fit together: what is allowed and what is not. What he enjoys even more is the contact with people: going through the paperwork together at the table, explaining what happens, and seeing someone relieved once it is sorted. That is why he started Belastinghulp Zaanstad in 2026.",
     "EINDDATUM_CORRECTIE_2021": "31 december 2026"
   },
   "_placeholders_uitleg": {
     "KVK_NUMMER": "8 cijfers, bijvoorbeeld 12345678. Komt in de footer van elke pagina.",
     "BTW_ID": "Het btw-identificatienummer (NL + 9 cijfers + B + 2 cijfers), niet het omzetbelastingnummer: dat bevat bij een eenmanszaak uw BSN.",
     "KOR": "true als u de kleineondernemersregeling gebruikt (dan geen btw-id in de footer maar een KOR-vermelding), false als u btw-plichtig bent, null zolang dat niet vaststaat.",
-    "BAV": "De vermelding van de beroepsaansprakelijkheidsverzekering zoals die in de footer moet komen, bijvoorbeeld 'Beroepsaansprakelijkheid verzekerd bij <verzekeraar>'.",
-    "BAV_EN": "Dezelfde vermelding in het Engels voor de /en/-pagina's, bijvoorbeeld 'Professional liability insurance with <verzekeraar>'. Optioneel; leeg = geen BAV in de Engelse footer.",
     "FEE_BOX3": "Het no cure no pay-percentage voor hulp bij de Opgaaf werkelijk rendement, als getal: 15 betekent 15%.",
     "FEE_BOX3_MIN": "Optioneel minimum in euro's, of null.",
     "FEE_BOX3_MAX": "Optioneel maximum in euro's voor alle jaren samen, of null.",
@@ -145,7 +141,7 @@
     "FEE_BOX3_GRONDSLAG_EN": "Dezelfde grondslag in het Engels, voor /en/services/box-3-objection/. Leeg = een algemene Engelse formulering.",
     "VAT_NOTE": "Eén zin over de btw die onder de tarieven komt, bijvoorbeeld 'Alle prijzen zijn inclusief btw.' of 'Wij vallen onder de kleineondernemersregeling; u betaalt geen btw.'",
     "GOOGLE_REVIEW_URL": "De link waarmee klanten direct een Google-review schrijven (https://g.page/r/.../review). Komt op /beoordeling/.",
-    "ACHTERGROND_STAN": "Twee tot vier zinnen achtergrond in de ik-vorm, voor /over-ons/. Alleen wat waar is: geen opleiding of jaren ervaring die niet kloppen.",
+    "ACHTERGROND_STAN": "Twee tot vier zinnen achtergrond in de ik-vorm, voor /over-ons/. Alleen wat waar is. Bevestigd door de eigenaar (oktober 2026): acht jaar ervaring met aangiften inkomstenbelasting, meer dan honderd gedaan.",
     "ACHTERGROND_STAN_EN": "Dezelfde achtergrond in het Engels, in de derde persoon (zoals de rest van /en/about-us/).",
     "EINDDATUM_CORRECTIE_2021": "De uiterste datum voor een correctie over 2021, als tekst. Een verzoek om vermindering moet binnen 5 jaar na het einde van het belastingjaar bij de Belastingdienst binnen zijn (ontvangst telt): 31 december 2026."
   }

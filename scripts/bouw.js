@@ -7,7 +7,7 @@
  * WAAROM
  * De site heeft geen build. De controles bestonden wel, maar los, en de lijst
  * in server-setup/DEPLOY.md liep achter op de scripts. Dit script is die lijst.
- * Lege placeholders in data/bedrijf.json (KvK-nummer, btw, BAV, box 3-tarief,
+ * Lege placeholders in data/bedrijf.json (KvK-nummer, btw of KOR,
  * Google-reviewlink) zijn een waarschuwing en geen fout: de site klopt dan,
  * er staat alleen minder op. Ze worden onderaan nog eens samengevat, zodat ze
  * niet wegvallen tussen de andere uitvoer.
