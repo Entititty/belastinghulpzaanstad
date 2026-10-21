@@ -56,8 +56,8 @@ uit `data/bedrijf.json` in de HTML), `hash-css.js`, `check-html.js`,
 `check-fiscale-cijfers.js`, `check-rekenvoorbeelden.js`, `check-jsonld.js`,
 `check-links.js`, `check-hreflang.js`, `check-contrast.js` en `crawl-audit.js`
 (verwacht: 98 pagina's, 404:0, dupTitle:0). Met `--check` schrijft het niets.
-Onderaan staan de lege placeholders uit `data/bedrijf.json` (KvK, btw, BAV,
-box 3-tarief, reviewlink). Dat zijn waarschuwingen, geen fouten: de site klopt
+Onderaan staan de lege placeholders uit `data/bedrijf.json` (KvK, btw of KOR,
+reviewlink). Dat zijn waarschuwingen, geen fouten: de site klopt
 dan, er staat alleen minder op.
 
 Werkboom schoon? Dan pas verder.
@@ -561,6 +561,26 @@ node scripts/set-kvk.js --kvk 12345678 --btw NL123456789B01
 ```
 
 Zie `docs/TODO-kvk-btw.md`.
+
+---
+
+## 4b. Eigen 404-pagina (oktober 2026)
+
+Het server-blok heeft er drie regels bij: `error_page 404 /404/index.html;`,
+`location = /404/index.html { internal; }` en `location = /404/ { return 404; }`.
+De pagina zelf staat in de repo en gaat met de git-deploy mee; het server-blok
+niet. Na de deploy, op de server:
+
+```bash
+sudo cp server-setup/nginx-belastinghulpzaanstad.conf \
+        /etc/nginx/sites-available/belastinghulpzaanstad.nl
+sudo nginx -t && sudo systemctl reload nginx
+curl -sI https://belastinghulpzaanstad.nl/bestaat-niet/ | head -1              # HTTP/2 404
+curl -s  https://belastinghulpzaanstad.nl/bestaat-niet/ | grep -o '<title>[^<]*'  # Pagina niet gevonden
+```
+
+De statuscode moet 404 blijven; een foutpagina met 200 telt voor Google als
+een gewone (dunne) pagina.
 
 ---
 

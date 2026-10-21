@@ -337,3 +337,34 @@ Toegankelijkheid 100 en SEO 100 op `/rekentools/`, beide tools, `/blog/huurtoesl
 (oranje disclaimerlink gerepareerd: contrast 4,48:1) en `/blog/hypotheekrenteaftrek-berekenen/`.
 Prestaties schommelden op deze meetmachine (ook ongewijzigde pagina's zakten); met en zonder de
 nieuwe scripts was de blokkeertijd gelijk.
+
+---
+
+## 2026-10-21 (2) — Over ons en technische SEO
+
+### Over ons
+- Achtergrond van Stan: acht jaar aangiften inkomstenbelasting, meer dan honderd gedaan (bron: de
+  eigenaar). Op /over-ons/, /en/about-us/, de homepage, in het Person-schema en in `llms.txt`.
+- Beroepsaansprakelijkheidsverzekering weg (placeholders, waarschuwing, footer, TODO's), op verzoek.
+- Engelse belofte "niet tevreden, geen factuur" vervangen door de afspraak uit de algemene voorwaarden.
+
+### Technische SEO
+| Wat | Waarom |
+|---|---|
+| `image` (ImageObject, de og-afbeelding) in het Article-schema van alle 50 artikelen | Google raadt een afbeelding aan voor artikelen in de zoekresultaten; die ontbrak overal |
+| `Offer` op de Engelse box 3- en erfbelastingpagina, gelijk aan de Nederlandse | Schema-gat uit crawl-audit |
+| Meta descriptions van 11 pagina's aangevuld (9 plaatspagina's, tips, zorgkosten) | Onder 120 tekens; plaatspagina's noemen nu ook de voorlopige teruggave. De zorgkosten-description noemt geen losse posten meer |
+| Links naar de rekentools vanaf 9 plaatspagina's (bij het rekenvoorbeeld) en 4 blogs | De tools hadden 2 en 3 interne links; nu geen enkele pagina meer onder de 5 |
+| Rekentools-overzicht aangevuld met uitleg | Dunne pagina (254 woorden) |
+| Eigen 404-pagina (`/404/index.html`, noindex) en `error_page 404` in het nginx-server-blok | nginx toonde een kale foutpagina; bezoekers en verloren links komen nu op een pagina met navigatie, telefoon en WhatsApp. Server-blok handmatig uitrollen, zie DEPLOY.md §4b |
+| Ook het tekstlettertype (Nunito Sans, 31 KB) vooraf laden | Het wisselen van lettertype gaf op /tarieven/ een verschuiving van 0,062; nu 0 |
+
+Gecontroleerd en in orde: canonical en og:url op elke indexeerbare pagina, og-afbeeldingen bestaan,
+hreflang met x-default, robots.txt met sitemap, sitemap zonder noindex-pagina's, 301's voor de drie
+samengevoegde pagina's in nginx, één h1 per pagina, titles en descriptions binnen de grenzen,
+alt-tekst en afmetingen bij alle afbeeldingen, geen http-bronnen, html lang klopt.
+
+Lighthouse: toegankelijkheid, best practices (met gtag geblokkeerd) en SEO 100 op de gemeten pagina's.
+De prestatiescore is op deze meetmachine onbetrouwbaar: de werkelijk gemeten LCP is 0,2-0,7 s, maar de
+simulatie geeft willekeurig een vaste 9,3 s, ook bij de oude versie van de site. Na de uitrol geeft
+PageSpeed Insights de echte cijfers.
