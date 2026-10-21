@@ -198,6 +198,24 @@ elders op de pagina. Zoek na een update op het oude maandbedrag.
 
 ---
 
+## Rekentools
+
+`/rekentools/voorlopige-teruggave/` en `/rekentools/ouderenkorting/` halen hun cijfers
+bij het laden uit `data/fiscale-cijfers.json` (`box1_schijf1_tarief`, `box1_schijf1_grens`,
+`max_aftrektarief_eigen_woning`, `eigenwoningforfait_pct` en de vier ouderenkorting-waarden).
+Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de nieuwe cijfers.
+
+De twee oudere rekentools op de blogs niet: daar staan de cijfers in het script onderaan de
+pagina. Pas ze met de hand aan:
+
+- `blog/hypotheekrenteaftrek-berekenen/`: `TARIEF_SCHIJF1`, `AFTREKTARIEF`, `EWF_PERCENTAGE`
+- `blog/huurtoeslag-berekenen/`: de huurtoeslagparameters bovenin het script
+
+Controleer daarna met de hand of de uitkomst bij de standaardinvoer klopt met het
+rekenvoorbeeld op de site.
+
+---
+
 ## Als een waarde verdwijnt of nieuw is
 
 Een nieuwe waarde zet je met de hand in `data/fiscale-cijfers.json`:

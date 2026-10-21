@@ -41,9 +41,18 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
 
 ## 2b. "In 2026 kunt u nog aftrekposten uit 2021 terugvragen" — HANDMATIG, verloopt eind 2026
 - **Bestand:** `diensten/correctie-late-aangifte/` (urgentieblok), placeholder
-  `EINDDATUM_CORRECTIE_2021` in `data/bedrijf.json` (nu leeg: er staat geen exacte datum).
-- **Actie — zodra de eigenaar de einddatum bevestigt:** datum invullen en `node scripts/bouw.js`.
+  `EINDDATUM_CORRECTIE_2021` in `data/bedrijf.json`: **31 december 2026** (ingevuld 2026-10-21;
+  een verzoek om vermindering moet binnen 5 jaar na het einde van het belastingjaar binnen zijn,
+  ontvangst telt). Ook in `llms.txt`.
 - **Actie — 2027-01:** het jaartal één jaar opschuiven (2022) en de placeholder leegmaken.
+
+## 2c. Rekentools — deels AUTO
+- `/rekentools/voorlopige-teruggave/` en `/rekentools/ouderenkorting/` rekenen met
+  `data/fiscale-cijfers.json` (via `js/rekenhulp.js`) en volgen de jaarlijkse update vanzelf.
+  De uitlegteksten op die pagina's (35,75%, €38.883, €2.067 enz.) vervangt `set-fiscale-cijfers.js`.
+- **HANDMATIG:** de oudere rekentools in `blog/hypotheekrenteaftrek-berekenen/` en
+  `blog/huurtoeslag-berekenen/` hebben hun cijfers in het paginascript staan. Werk die bij
+  elke jaarupdate met de hand bij (zie `docs/jaarlijkse-update.md`).
 
 ## 3. "Aangifte 2025" / belastingjaar-framing — HANDMATIG
 - **Bestanden:** ~14 HTML-bestanden noemen "aangifte 2025" (o.a. homepage-hero, uitstel-strip,

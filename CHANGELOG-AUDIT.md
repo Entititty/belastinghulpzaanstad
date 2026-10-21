@@ -277,3 +277,63 @@ betaalmoment), VAT_NOTE, GOOGLE_REVIEW_URL, ACHTERGROND_STAN en
 EINDDATUM_CORRECTIE_2021. Verder: de €20-korting na 2026, WOZ-bezwaar en kwijtschelding
 (nog genoemd op plaatspagina's en in blogs), een Beconnummer, en de mededelingen over
 de KvK-inschrijving op `/privacy/` en in de algemene voorwaarden.
+
+---
+
+## 2026-10-21 — Antwoorden eigenaar, FAQ en rekentools (zelfde branch)
+
+### Antwoorden van de eigenaar verwerkt
+| Wat | Waarom | Bron |
+|---|---|---|
+| Box 3: 15% van de box 3-belasting die u terugkrijgt of minder betaalt, maximaal €500 voor alle jaren samen, geen minimum; u betaalt pas na de beslissing, bij een teruggave pas als het geld op uw rekening staat | Eigenaar: "doe wat het beste is". Geen minimum, zodat niemand meer betaalt dan hij terugkrijgt; een maximum voor grote teruggaves | `data/bedrijf.json` (FEE_BOX3, FEE_BOX3_MAX, FEE_BOX3_GRONDSLAG en een nieuwe Engelse grondslag) |
+| Btw: "Alle prijzen zijn inclusief btw. Er komen geen kosten bij." op /tarieven/ | Eigenaar: inclusief | `VAT_NOTE`; KOR blijft open tot de KvK-inschrijving |
+| Achtergrond Stan (NL in de ik-vorm, EN in de derde persoon): begonnen met aangiften inkomstenbelasting via zijn werk, plezier in uitzoeken en in het contact met mensen | Eigenaar vroeg om een algemene tekst; geen opleiding of jaren ervaring genoemd | `ACHTERGROND_STAN`, nieuw `ACHTERGROND_STAN_EN` |
+| Correctie 2021: uiterste datum 31 december 2026; het verzoek moet dan binnen zijn | Een verzoek om ambtshalve vermindering moet binnen vijf jaar na het einde van het belastingjaar zijn ontvangen; de verzendtheorie geldt niet | belastingdienst.nl (te laat voor bezwaar); taxlive.nl (gemitigeerde verzendtheorie geldt niet bij ambtshalve vermindering) |
+| WOZ-bezwaar en kwijtschelding geen dienst meer: weg uit de dienstenlijst (LocalBusiness op 98 pagina's), meta-descriptions van 9 plaatspagina's, "wij dienen kosteloos bezwaar in" (8 plaatspagina's), de CTA's van de WOZ- en kwijtscheldingsblogs (NL en EN), de toeslagen-FAQ en het privacybeleid | Eigenaar: geen dienst, geen mogelijkheid meer. De blogs blijven als uitleg om het zelf te doen | — |
+| Startkorting blijft tot 31-12-2026 | Eigenaar | De build waarschuwt na die datum |
+| KvK, btw-id, Becon, reviews | Nog niet; blijft leeg, niets op de site | — |
+
+### FAQ
+- 44 juiste vragen die eerder alleen in het schema stonden, zichtbaar teruggezet op 22 pagina's
+  (o.a. AOW én pensioen bijbetalen, periodieke gift, aflossingsvrije hypotheek, huurtoeslag met
+  tijdelijk contract, ouderenkorting terugvragen). Bijgewerkt waar nodig: huurtoeslag over 2026
+  kan tot 1 september 2027, tarief hypotheekrente 35,75% of maximaal 37,56%.
+- Niet teruggezet, omdat ze fout of onbewezen waren: aftrekbare zorgkosten "eigen bijdragen
+  Wlz/Wmo, tandarts, brillen", de 140%-doelurennorm, "boete blijft vaak achterwege",
+  kinderopvangtoeslag €225 bij €55.000, gemiddelde teruggave €1.600, kwijtschelding-vermogensgrens.
+- Het FAQ-schema volgt nu op alle 86 pagina's de zichtbare antwoorden (op 16 pagina's week het
+  antwoord af; faq-audit vergeleek alleen de vragen). faq-sync zet geen spatie meer voor leestekens
+  na een prijs in een span ("€89 ." werd "€89.").
+- Fouten in zichtbare antwoorden en checklists hersteld: "eigen bijdragen" en tandarts als aftrekbare
+  zorgkosten (pensioenblog en seniorenchecklist, NL en EN); "uitstel aanvragen tot 1 september"
+  (aanvragen moet vóór 1 mei); belastingrente "6,5% in 2026" op twee Engelse blogs (is 5%);
+  AOW-tarief "19% tot ca. €40.500" (is 17,85% tot €38.883, NL en EN); "veel senioren in Zaanstad
+  kiezen hiervoor"; accountantsprijzen "€150–€300" zonder bron.
+- Het box 3-tarief staat via een cfg-blok in het FAQ-antwoord "Wat kost het mij?" (NL en EN) en in de
+  tarieventabel; config-sync werkt dan ook het FAQ-schema bij.
+- Bron belastingrente: `data/fiscale-cijfers.json` (5% vanaf 1 januari 2026); de Engelse
+  schrijfwijzen van 6,5% staan nu in "verouderd", zodat de check ze tegenhoudt.
+
+### Rekentools (fase 6)
+- Nieuw: `/rekentools/` (overzicht), `/rekentools/voorlopige-teruggave/` en `/rekentools/ouderenkorting/`.
+  De huurtoeslagtool is de bestaande op `/blog/huurtoeslag-berekenen/`.
+- `js/rekenhulp.js` rekent met `data/fiscale-cijfers.json` (nieuwe sleutel `box1_schijf1_grens`
+  €38.883), dus de tools volgen de jaarlijkse update vanzelf. Getest: €339–€357 per maand bij
+  €340.000 tegen 3,7% (gelijk aan het rekenvoorbeeld), ouderenkorting €2.067 / €1.467 bij
+  €50.000 / €0 bij €60.000, plus €540 alleenstaand.
+- Leadformulier "Gratis laten narekenen" onder elke tool, ook onder de twee bestaande rekentools op
+  de blogs: naam, telefoon, e-mail (niet verplicht), toestemming. De invoer en de uitkomst gaan
+  automatisch mee in een verborgen veld, zodat Stan bij het terugbellen weet waar het over gaat.
+  De uitkomst zelf is zonder formulier te zien: een tool die pas na het invullen van gegevens iets
+  laat zien, botst met "vrije toestemming" uit de AVG en kost vertrouwen.
+- Privacybeleid (NL en EN): de berekening gebeurt op het eigen apparaat; pas bij versturen gaan
+  gegevens en uitkomst via Formspree naar ons.
+- Vindbaar via de footer (alle NL-pagina's), "Meer diensten" op de homepage, /senioren/, de
+  dienstpagina voorlopige teruggave, de ouderenkortingblog en `llms.txt`.
+- Formulierstijl staat nu in de gedeelde stylesheet; een open FAQ-antwoord was afgekapt op 300 px.
+
+### Lighthouse mobiel, nieuwe pagina's
+Toegankelijkheid 100 en SEO 100 op `/rekentools/`, beide tools, `/blog/huurtoeslag-berekenen/`
+(oranje disclaimerlink gerepareerd: contrast 4,48:1) en `/blog/hypotheekrenteaftrek-berekenen/`.
+Prestaties schommelden op deze meetmachine (ook ongewijzigde pagina's zakten); met en zonder de
+nieuwe scripts was de blokkeertijd gelijk.

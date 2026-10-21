@@ -12,8 +12,8 @@ Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisatie
 - Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek elke maand in plaats van achteraf; hoeveel hangt af van hypotheek en inkomen)
 - Toeslagen aanvragen en controleren: huurtoeslag, zorgtoeslag, kinderopvangtoeslag, kindgebonden budget
 - Ouderenkorting en AOW-aangifte voor senioren
-- Box 3: hulp bij de Opgaaf werkelijk rendement over 2021–2024 (gratis check, daarna no cure no pay; zelf doen kan ook, gratis)
-- Correctie en late aangifte tot 5 jaar terug (2021–2024), uitstel kosteloos inbegrepen
+- Box 3: hulp bij de Opgaaf werkelijk rendement over 2021–2024 (gratis check, daarna no cure no pay: 15% van de box 3-belasting die u terugkrijgt, maximaal €500 voor alle jaren samen; zelf doen kan ook, gratis)
+- Correctie en late aangifte tot 5 jaar terug (2021–2024), uitstel kosteloos inbegrepen. Over 2021 kan dat nog tot en met 31 december 2026: dan moet het verzoek bij de Belastingdienst binnen zijn
 - Aangifte erfbelasting en schenkbelasting (prijs op maat)
 
 ## Diensten
@@ -41,7 +41,8 @@ Alle bedragen zijn vast vooraf (geen verborgen kosten):
 - Correctie & late aangifte: **€69** per aangifte · met partner €99 · uitstel-aanvraag gratis inbegrepen
 - Voorlopige teruggave pakket (woningbezitters, hele jaar): **€109** eenmalig · met partner €149
 - Toeslagen check: **gratis** · toeslagen aanvragen: **€30**
-- Box 3, Opgaaf werkelijk rendement: check **gratis**, daarna **no cure no pay** (u betaalt alleen als de Belastingdienst uw box 3-belasting verlaagt)
+- Box 3, Opgaaf werkelijk rendement: check **gratis**, daarna **no cure no pay**: 15% van de box 3-belasting die u terugkrijgt of minder betaalt, maximaal €500 voor alle jaren samen. U betaalt alleen als de Belastingdienst uw box 3-belasting verlaagt, en pas na die beslissing
+- Alle prijzen zijn inclusief btw; er komen geen kosten bij
 - Erfbelasting & schenkbelasting: prijs op maat (vrijblijvend gesprek)
 - Spoedaanvraag (binnen 24 uur): **+€25**
 - Startkorting 2026: nieuwe klanten krijgen in 2026 **€20 korting** op een aangifte of voorlopige teruggave (automatisch, geen code, los van een review)
@@ -103,7 +104,7 @@ Voor de aangifte over 2026 (in te dienen in 2027) vraagt u uitstel gratis aan vi
 U krijgt eerst een herinnering en daarna een aanmaning. Reageert u daar niet op, dan kan een verzuimboete volgen: €469 bij eerste verzuim, oplopend tot €6.709 bij herhaling. Moet u bijbetalen, dan rekent de Belastingdienst ook belastingrente (5% in 2026) vanaf 1 juli na het belastingjaar.
 
 ### Moet ik bezwaar maken om te veel betaalde box 3-belasting terug te krijgen?
-Over 2021 tot en met 2024 niet. De Belastingdienst laat iedereen met box 3-inkomen over die jaren altijd het werkelijk rendement opgeven met het formulier Opgaaf werkelijk rendement, ook zonder brief. Bezwaar tegen een definitieve aanslag moet binnen 6 weken na de datum op de aanslag; een pro forma bezwaar heeft alleen zin zolang die termijn loopt. De uitspraak van de Hoge Raad van 25 juni 2026 gaat over niet-bezwaarmakers over 2017–2020, niet over 2021–2024. Wij rekenen het werkelijk rendement uit en dienen de opgaaf in op basis van no cure no pay; zelf doen kan ook, gratis. Bron: belastingdienst.nl, Massaal Bezwaar Plus.
+Over 2021 tot en met 2024 niet. De Belastingdienst laat iedereen met box 3-inkomen over die jaren altijd het werkelijk rendement opgeven met het formulier Opgaaf werkelijk rendement, ook zonder brief. Bezwaar tegen een definitieve aanslag moet binnen 6 weken na de datum op de aanslag; een pro forma bezwaar heeft alleen zin zolang die termijn loopt. De uitspraak van de Hoge Raad van 25 juni 2026 gaat over niet-bezwaarmakers over 2017–2020, niet over 2021–2024. Wij rekenen het werkelijk rendement uit en dienen de opgaaf in op basis van no cure no pay (15% van wat het oplevert, maximaal €500 voor alle jaren samen); zelf doen kan ook, gratis. Bron: belastingdienst.nl, Massaal Bezwaar Plus.
 
 ### Kunnen jullie helpen met erfbelasting of schenkbelasting?
 Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over nalaten en schenken. De prijs is op maat; een eerste gesprek is vrijblijvend.
@@ -112,6 +113,7 @@ Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over 
 
 - [Homepage – Belastinghulp Zaanstad](https://belastinghulpzaanstad.nl/)
 - [Tarieven, alle vaste prijzen op een rij](https://belastinghulpzaanstad.nl/tarieven/)
+- [Rekentools: voorlopige teruggave, ouderenkorting, huurtoeslag](https://belastinghulpzaanstad.nl/rekentools/)
 - [Belastingaangifte voor senioren](https://belastinghulpzaanstad.nl/senioren/)
 - [Checklist: wat heb ik nodig?](https://belastinghulpzaanstad.nl/checklist/)
 - [Contact, bellen, WhatsApp of terugbelverzoek](https://belastinghulpzaanstad.nl/contact/)
@@ -128,6 +130,12 @@ Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over 
 - [Belastinghulp Oostzaan](https://belastinghulpzaanstad.nl/oostzaan/)
 
 ## Rekentools
+
+Alle rekentools rekenen met de cijfers van 2026. De berekening gebeurt in de browser; alleen wie het formulier onder een rekentool verstuurt, stuurt gegevens naar ons.
+
+- [Rekentools, overzicht](https://belastinghulpzaanstad.nl/rekentools/)
+- [Voorlopige teruggave berekenen](https://belastinghulpzaanstad.nl/rekentools/voorlopige-teruggave/), wat u elke maand terugkrijgt van uw hypotheekrenteaftrek, met beide tarieven (35,75% en 37,56%)
+- [Ouderenkorting berekenen](https://belastinghulpzaanstad.nl/rekentools/ouderenkorting/), ouderenkorting en alleenstaande ouderenkorting 2026 bij uw inkomen
 
 - [Huurtoeslag berekenen 2026 (indicatie)](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/). Check of u recht heeft en hoeveel per maand, o.b.v. kale huur en inkomen
 - [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/), maandelijks belastingvoordeel van de hypotheekrenteaftrek
