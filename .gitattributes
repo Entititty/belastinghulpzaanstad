@@ -1,2 +1,7 @@
 # Shell-scripts moeten altijd LF houden, anders breken ze op de Linux-VPS
 *.sh text eol=lf
+
+# Ook al het andere blijft LF in de werkmap, ook op Windows (core.autocrlf=true).
+# De scripts in scripts/ schrijven LF; een checkout die CRLF maakt, levert gemengde
+# regeleindes op en dan faalt "node scripts/bouw.js --check" op elke pagina.
+* text=auto eol=lf
