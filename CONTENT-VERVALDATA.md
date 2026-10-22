@@ -25,6 +25,9 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
   plus de huurtoeslagblogs met "tot 1 september van het jaar erna", die blijven kloppen).
 - **Status:** de teksten over uitstel voor de aangifte 2025 zijn per 1 september 2026 verlopen,
   maar noemen steeds "vóór 1 mei" en "bent u al te laat, dien dan zo snel mogelijk in".
+- **Bijgewerkt 2026-10-22:** `blog/uitstel-belastingaangifte-2025/` is samengevoegd met de tijdloze
+  pagina `blog/uitstel-belastingaangifte-aanvragen/` (vangnet + 301), die geen jaartallen noemt. Over:
+  `blog/te-laat-belastingaangifte/` (noemt de deadline van 1 mei 2026; klopt voor wie nu te laat is).
 - **Actie — Q1 2027:** actualiseren naar de cyclus van belastingjaar 2026
   (uitstel aanvragen vóór 1 mei 2027, uitstel tot 1 september 2027). Zie `docs/seizoen-2027.md`.
 
@@ -44,6 +47,8 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
   `EINDDATUM_CORRECTIE_2021` in `data/bedrijf.json`: **31 december 2026** (ingevuld 2026-10-21;
   een verzoek om vermindering moet binnen 5 jaar na het einde van het belastingjaar binnen zijn,
   ontvangst telt). Ook in `llms.txt`.
+- **Let op:** de meta description van `diensten/correctie-late-aangifte/` noemt het ook ("over 2021
+  kan dat nog tot 31 december 2026"). Die staat niet in de config: met de hand aanpassen.
 - **Actie — 2027-01:** het jaartal één jaar opschuiven (2022) en de placeholder leegmaken.
 
 ## 2c. Rekentools — deels AUTO
@@ -59,13 +64,20 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
   te-laat-/uitstel-blogs).
 - **Actie — vanaf 2027-01 (start aangifteseizoen 2026):** verschuif naar "aangifte 2026".
   Let ook op de hero-subtekst "…uw aangifte 2025 nog niet deed…".
+- **Al gedaan 2026-10-22:** `blog/belastingaangifte-voor-1-april/` en `blog/aangifte-inkomstenbelasting/`
+  staan op de aangifte over 2026 (aangifte van 1 maart tot 1 mei 2027). Over: de homepage-FAQ
+  "Ik heb mijn aangifte 2025 niet gedaan", de te-laat-blog en de strip op de Engelse homepage.
 
 ## 4. Deadline-artikelen — HANDMATIG
 - `blog/einddatum-belastingaangifte-2025/` = **noindex redirect** naar de 2026-versie (OK, laten staan).
-- `blog/einddatum-belastingaangifte-2026/` = live, **deadline 1 mei 2027**.
-  **Actie — Q1 2027:** maak `…-2027/`, zet 2026 op noindex+redirect, herhaal het patroon.
-- `en/blog/tax-return-deadline-2025/` = **verouderd (nog over 2025)**. hreflang wijst nu naar de
-  NL 2026-versie. **Actie — z.s.m. (zie Taak 9):** inhoud verversen naar 2026 of retireren.
+- `blog/einddatum-belastingaangifte-2026/` = live, **deadline 1 mei 2027**. Deze pagina is het hele
+  seizoen 2026 actueel (tot 1 mei 2027, met uitstel 1 september 2027).
+  **Actie — na 1 mei 2027:** maak `…-2027/`, zet 2026 op noindex+redirect, herhaal het patroon. Of
+  overweeg samenvoegen met `blog/belastingaangifte-voor-1-april/`: die staat hoger op dezelfde
+  zoekopdrachten en heeft geen jaartal in het adres, dan vervalt deze jaarlijkse wissel.
+- `en/blog/tax-return-deadline-2025/` en `en/blog/tax-return-extension-2025/`: **samengevoegd**
+  op 2026-10-22 met `en/blog/late-tax-return/` (vangnet + 301). Er is geen Engelse deadlinepagina
+  voor 2026; maak die alleen als er Engelse vraag naar blijkt.
 
 ## 5. Toeslag- en tariefcijfers (jaarlijks) — HANDMATIG
 - **Bestanden/onderwerpen:** huurtoeslag (grens €932,93 / vermogens­grenzen), zorgtoeslag,
@@ -73,6 +85,17 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
   rekentools `blog/huurtoeslag-berekenen/` en `blog/hypotheekrenteaftrek-berekenen/`.
 - **Actie — Q4 2026 / Q1 2027:** zodra de **2027-cijfers** van de Belastingdienst bekend zijn,
   bijwerken en `dateModified` + zichtbare "Laatst bijgewerkt" ophogen.
+
+## 6. Jaarlijks terugkerende data in titels en FAQ — HANDMATIG
+*Toegevoegd 2026-10-22.*
+- **Terugwerkende kracht toeslagen:** `blog/huurtoeslag-aanvragen/`, `en/blog/rent-benefit/`,
+  `blog/zorgtoeslag-grens/` noemen "over 2026 tot 1 september 2027". **Actie — na 1 september
+  2027:** een jaar opschuiven.
+- **Seizoensdata:** `blog/belastingaangifte-voor-1-april/` (tabel 1 maart / 1 april / 1 mei /
+  1 september 2027, titel "Belastingaangifte 2026"). **Actie — na 1 mei 2027:** naar het seizoen 2027.
+- **Gemeentebelastingen:** titel en kop van `blog/kwijtschelding-gemeentelijke-belasting/` en
+  `en/blog/municipal-tax-waiver/` noemen 2026. **Actie — februari 2027**, als de nieuwe aanslag komt:
+  naar 2027, en controleer de voorwaarden op zaanstad.nl (autogrens €3.350, termijn 3 maanden).
 
 ## ✅ OPGELOST (2026-07-27) — box 1-tarief "36,93%" sitebreed geactualiseerd
 

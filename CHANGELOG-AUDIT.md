@@ -368,3 +368,71 @@ Lighthouse: toegankelijkheid, best practices (met gtag geblokkeerd) en SEO 100 o
 De prestatiescore is op deze meetmachine onbetrouwbaar: de werkelijk gemeten LCP is 0,2-0,7 s, maar de
 simulatie geeft willekeurig een vaste 9,3 s, ook bij de oude versie van de site. Na de uitrol geeft
 PageSpeed Insights de echte cijfers.
+
+---
+
+## 2026-10-22 — Meer klikken uit Google (branch `ctr-snippets-2026-10`)
+
+Aanleiding: de site wordt veel vertoond maar weinig aangeklikt. Uit Search Console bleek dat het
+meeste verkeer op pagina 2 tot 4 staat, waar bijna niemand klikt, en dat een deel van de vertoningen
+over diensten gaat die wij niet leveren (taxatie, bewindvoering, schuldhulp). De cijfers zelf staan
+lokaal in `docs/ctr-analyse-2026-10.md`, niet in git.
+
+### Zoekopdrachten waar we al op pagina 1 stonden zonder klikken
+| Pagina | Wat er veranderd is |
+|---|---|
+| `/blog/kwijtschelding-gemeentelijke-belasting/` | Titel en kop op "gemeentelijke belastingen Zaanstad"; blok "Zoekt u de gemeente zelf?" met Mijn Zaanstad en 14 075 |
+| `/blog/zorgtoeslag-aanvragen/` | Titel, kop en een eigen sectie over 18 worden (ingangsdatum, eerst de verzekering, één keer aanvragen), plus FAQ |
+| `/blog/belastingaangifte-voor-1-april/` | Naar het seizoen 2026 (aangifte van 1 maart tot 1 mei 2027); de snippet noemde nog de deadline van mei 2026 |
+| Homepage | Titel en omschrijving op "belastinghulp Zaandam"; FAQ "Zijn jullie de Belastingdienst?" met de BelastingTelefoon |
+| `/blog/belastingteruggave/` | FAQ "Waarom krijg ik geen belasting terug?" |
+| `/blog/zorgtoeslag-grens/` | Titel op "maximaal inkomen zorgtoeslag"; FAQ "Hoe zet ik mijn zorgtoeslag stop?" (route volgens belastingdienst.nl) |
+| `/en/blog/elderly-tax-credit/` | "single elderly person's tax credit" in titel en omschrijving |
+
+### Titels en omschrijvingen
+Ongeveer 75 pagina's kregen een nieuwe titel en/of omschrijving: zoekwoord vooraan, een concrete
+belofte (bedrag, rekentool, "wat mag wel en niet"), geen " | Belastinghulp Zaanstad" achter
+blogtitels (Google toont de sitenaam al boven het resultaat). og:title en og:description lopen mee,
+dus delen via WhatsApp toont dezelfde tekst. De titels van de negen Nederlandse plaatspagina's zijn
+bewust niet aangeraakt: daar loopt de meting van 30 augustus (beslismoment 1 juni 2027).
+
+### Feiten rechtgezet
+- **Verzonnen gemiddelden weg**, Nederlands en Engels: "senioren laten gemiddeld €350–€700 liggen",
+  "gepensioneerden krijgen gemiddeld €400–€1.200 terug", "de gemiddelde huurder loopt €3.000–€5.000
+  mis", "€300–€1.500 extra", "average €800–€1,200", "seniors leave €600 on the table", "correctie duurt
+  gemiddeld 8–12 weken", "tot €1.500 extra" in og-titels.
+- **Kwijtschelding Zaanstad** volgens zaanstad.nl: alleen afvalstoffen- en rioolheffing, inkomen op
+  bijstandsniveau, auto tot €3.350, aanvragen binnen 3 maanden na de aanslag, waterschap apart bij het
+  HHNK. Weg: de inkomens- en spaargrenzen zonder bron, "OZB voor huurders" (huurders betalen geen OZB),
+  de belofte "wij helpen u kosteloos met de aanvraag" (geen dienst meer).
+- **Huurtoeslag**: de tabel "maximum toetsingsinkomen ± €31.750 …" stond in geen enkele bron; de
+  toeslag bouwt af en het nulpunt hangt af van huur en huishouden. Terugwerkende kracht nu over 2026
+  (tot 1 september 2027). Dubbele FAQ vervangen door "met terugwerkende kracht". EN: "income limit
+  €32,975" weg.
+- **Zorgtoeslag**: "met terugwerkende kracht tot 3 jaar terug" was fout; het is tot 1 september van het
+  jaar erna.
+- **Giften**: omschrijving noemde een drempel van €67; het is 1% van het drempelinkomen, minimaal €60
+  (zoals het artikel al zei).
+- **Einddatum 2026**: "nog maar enkele weken" weg (aangifte kan pas vanaf 1 maart 2027), "donderdag
+  1 mei 2027" was fout (zaterdag; weekdag weggelaten), F-formulier volgt gewoon 1 mei (de "8 maanden"
+  is de termijn van de erfbelasting), C-formulierregel weg (niet te bevestigen).
+- **Aangiftegids**: deadline naar de aangifte over 2026.
+
+### Samengevoegd (vangnetpagina + 301 in beide nginx-configs)
+- `/blog/uitstel-belastingaangifte-2025/` → `/blog/uitstel-belastingaangifte-aanvragen/`
+- `/en/blog/tax-return-deadline-2025/` en `/en/blog/tax-return-extension-2025/` → `/en/blog/late-tax-return/`
+
+Alle interne links omgezet, hreflang van de NL-deadlinepagina naar de EN-2025-pagina verwijderd. De
+301's werken pas na het uitrollen van het server-blok (DEPLOY.md §4b); tot die tijd stuurt de
+meta-refresh bezoekers en Google door.
+
+### Overig
+- u-vorm in elf artikelkoppen en alles wat ze overneemt ("Lees ook", kaarten, kruimelpad, schema). Het
+  citaat van de Belastingdienst op /diensten/eerste-baan/ blijft letterlijk.
+- `favicon.png`: 2048×2048 en 1,4 MB, met veel witruimte en het watermerk van de AI-generator; nu het
+  beeldmerk bijgesneden op 192×192, 8 KB. Het origineel staat niet meer in de repo; bewaar het zelf als
+  u het nodig heeft (drukwerk, Google-bedrijfsprofiel).
+- robots-meta (max-image-preview:large) ook op de drie rekentoolpagina's; WebSite-schema met de
+  homepage-URL inclusief slash, gelijk aan de canonical.
+- `.gitattributes`: alles LF, ook op Windows. Na de merge op Windows had de werkmap gemengde
+  regeleindes, waardoor `bouw.js --check` op elke pagina faalde.
