@@ -582,6 +582,16 @@ curl -s  https://belastinghulpzaanstad.nl/bestaat-niet/ | grep -o '<title>[^<]*'
 De statuscode moet 404 blijven; een foutpagina met 200 telt voor Google als
 een gewone (dunne) pagina.
 
+Sinds 22 oktober 2026 staan in hetzelfde server-blok ook 301's voor drie
+samengevoegde pagina's over aangifte 2025. Na het herladen:
+
+```bash
+curl -sI https://belastinghulpzaanstad.nl/blog/uitstel-belastingaangifte-2025/ | grep -i "^location"
+# location: https://belastinghulpzaanstad.nl/blog/uitstel-belastingaangifte-aanvragen/
+curl -sI https://belastinghulpzaanstad.nl/en/blog/tax-return-deadline-2025/ | grep -i "^location"
+# location: https://belastinghulpzaanstad.nl/en/blog/late-tax-return/
+```
+
 ---
 
 ## 5. Korte versie
