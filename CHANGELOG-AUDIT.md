@@ -436,3 +436,49 @@ meta-refresh bezoekers en Google door.
   homepage-URL inclusief slash, gelijk aan de canonical.
 - `.gitattributes`: alles LF, ook op Windows. Na de merge op Windows had de werkmap gemengde
   regeleindes, waardoor `bouw.js --check` op elke pagina faalde.
+
+---
+
+## 2026-10-23 — SEO en CTR volgens de takenlijst van de eigenaar (branch `seo-verbeteringen`)
+
+Dertien taken, elk in een eigen commit. Uitgangspunt: het bedrijf heeft nog geen klanten en nog geen
+KvK-nummer; /tarieven/ (dus `data/bedrijf.json`) is de bron voor alle prijzen.
+
+### Inhoud
+- **Geen klantclaims**: label "Populairst" en "Most popular"/"Most chosen" weg (de kaart blijft
+  uitgelicht), "Gemiddelde doorlooptijd" → "1 week, doorgaans geregeld", "Veel klanten komen jaarlijks
+  terug" weg, "helpen wij met name senioren"/"we mainly help"/"we see many seniors" neutraal, "Vragen
+  die wij vaak krijgen" → "Vragen en antwoorden", "op bezoek bij een klant" → "op een afspraak",
+  "Most searched in Zaanstad" en een gemiddelde teruggave zonder bron weg. De vergelijking met een
+  genoemde concurrent op de aangiftepagina is ook weg.
+- **Box 3-dienstpagina** op "werkelijk rendement opgeven", met "bezwaar" als tweede zoekterm (title
+  "Box 3 bezwaar of werkelijk rendement? Gratis check"). Procedure nagekeken op belastingdienst.nl.
+- **Hoofdzoekwoord**: homepage op "Belastinghulp Zaanstad" (was "Zaandam en Zaanstad"); H2 op de
+  aangiftepagina "in Zaanstad". Zaandam hoort bij /zaandam/.
+- **Deadline-artikelen samengevoegd** op `/blog/einddatum-belastingaangifte-2026/` (title
+  "Belastingaangifte 2026: deadline 1 mei 2027 (+ uitstel)"); `/blog/belastingaangifte-voor-1-april/`
+  is een vangnet met een 301 in beide nginx-configs. Rechtgezet: bericht vóór 1 juli is een belofte
+  van de Belastingdienst, geen garantie; de boete volgt na herinnering en aanmaning; belastingrente
+  5% (2026) vanaf 1 juli als u na 1 mei aangifte doet en moet bijbetalen.
+- **Ouderenkorting**: title "Ouderenkorting 2026: €2.067 + €540 alleenstaand | rekentool".
+- **Senioren**: H1 "Belastingaangifte voor senioren, bij u thuis", de oude H1 als subkop; de twee
+  prijsvragen in het FAQ samengevoegd.
+- **Plaatspagina's** (9): omschrijving met "incl. btw" en "ook ’s avonds en in het weekend".
+
+### Techniek
+- **Blogoverzicht**: dubbele kaart weg; `scripts/blog-kaarten-sync.js` zet kaarttitels op /blog/ en
+  /en/blog/ én de artikellinks in llms.txt gelijk aan de paginatitel (draait mee in `bouw.js`).
+- **Sitemap**: lastmod uit "Laatst bijgewerkt" op de pagina, anders de laatste commit; XML-controle
+  na het bouwen. Live gecontroleerd: alle sitemaps geven 200 met text/xml.
+- **JSON-LD**: bedrijfsblok ProfessionalService + AccountingService, adres zonder straat en regio,
+  sameAs met LinkedIn; provider op dienstpagina's verwijst naar het bedrijfsblok; tweede Offer voor
+  het box 3-tarief; Engelse auteur dezelfde Person als de Nederlandse. `check-jsonld.js` eist nu
+  BreadcrumbList, bedrijfsblok, Person-auteur, Service met Offer, geen Review/AggregateRating, en
+  alleen bestaande schema.org-typen.
+- **Hreflang** klopte; de taalknop niet (8 Engelse artikelen wezen met "NL" naar zichzelf, 6
+  dienstpagina's met "EN" naar /en/). `check-hreflang.js` controleert nu ook x-default en de knop.
+- **KvK**: footer in de vorm "KvK: … · btw: …", alleen als ingevuld; identifier en vatID in de
+  JSON-LD. Getest met tijdelijke nummers.
+- **btw-vangnet**: config-sync faalt op "incl. btw" in de tekst zodra KOR true wordt.
+- **llms.txt** bij; de Engelse pagina's verwezen naar `/en/llms.txt` (bestaat niet), nu `/llms.txt`.
+- Nieuw: `scripts/meta-audit.js` (title, meta en H1 per pagina, met markeringen).
