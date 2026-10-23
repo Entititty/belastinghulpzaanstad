@@ -208,7 +208,8 @@ const SJABLONEN = {
     if (leeg(P.GOOGLE_REVIEW_URL)) {
       return '<p style="line-height:1.7;color:var(--clr-bark);margin:0;">Wilt u mij laten weten hoe het ging? Stuur een <a href="https://wa.me/31619711848" rel="nofollow" style="color:var(--clr-teal);font-weight:700;">WhatsApp</a> of een <a href="mailto:' + esc(B.email) + '" style="color:var(--clr-teal);font-weight:700;">e-mail</a>. Ik lees alles.</p>';
     }
-    return '<a href="' + esc(P.GOOGLE_REVIEW_URL) + '" class="btn btn-primary" target="_blank" rel="noopener" style="display:inline-flex;min-height:48px;">Schrijf een review op Google &rarr;</a>';
+    /* een tekstlink, geen knop: knoppen zijn alleen "Bel of app" en "Bel mij terug" (check-knoppen.js) */
+    return '<a href="' + esc(P.GOOGLE_REVIEW_URL) + '" class="tekstlink" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;font-size:1.05rem;">Schrijf een review op Google &rarr;</a>';
   },
   'achtergrond-stan': function () {
     return leeg(P.ACHTERGROND_STAN) ? '' : '<p style="line-height:1.75;color:var(--clr-bark);font-size:1.02rem;margin-bottom:12px;">' + esc(P.ACHTERGROND_STAN) + '</p>';

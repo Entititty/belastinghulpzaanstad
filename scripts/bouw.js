@@ -31,6 +31,7 @@ const STAPPEN = [
   ['blog-kaarten-sync', CHECK ? ['--check'] : []],
   ['hash-css', CHECK ? ['--dry'] : []],
   ['check-html', []],
+  ['check-knoppen', []],
   ['check-fiscale-cijfers', []],
   ['check-rekenvoorbeelden', []],
   ['check-jsonld', []],
