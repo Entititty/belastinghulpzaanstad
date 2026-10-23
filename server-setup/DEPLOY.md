@@ -592,6 +592,13 @@ curl -sI https://belastinghulpzaanstad.nl/en/blog/tax-return-deadline-2025/ | gr
 # location: https://belastinghulpzaanstad.nl/en/blog/late-tax-return/
 ```
 
+Sinds 23 oktober 2026 ook voor het samengevoegde deadline-artikel:
+
+```bash
+curl -sI https://belastinghulpzaanstad.nl/blog/belastingaangifte-voor-1-april/ | grep -i "^location"
+# location: https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte-2026/
+```
+
 ---
 
 ## 5. Korte versie

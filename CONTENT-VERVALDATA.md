@@ -64,17 +64,20 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
   te-laat-/uitstel-blogs).
 - **Actie — vanaf 2027-01 (start aangifteseizoen 2026):** verschuif naar "aangifte 2026".
   Let ook op de hero-subtekst "…uw aangifte 2025 nog niet deed…".
-- **Al gedaan 2026-10-22:** `blog/belastingaangifte-voor-1-april/` en `blog/aangifte-inkomstenbelasting/`
-  staan op de aangifte over 2026 (aangifte van 1 maart tot 1 mei 2027). Over: de homepage-FAQ
+- **Al gedaan 2026-10-22:** `blog/einddatum-belastingaangifte-2026/` (sinds 2026-10-23 samen met het
+  voormalige `belastingaangifte-voor-1-april`) en `blog/aangifte-inkomstenbelasting/` staan op de aangifte over 2026 (aangifte van 1 maart tot 1 mei 2027). Over: de homepage-FAQ
   "Ik heb mijn aangifte 2025 niet gedaan", de te-laat-blog en de strip op de Engelse homepage.
 
 ## 4. Deadline-artikelen — HANDMATIG
 - `blog/einddatum-belastingaangifte-2025/` = **noindex redirect** naar de 2026-versie (OK, laten staan).
 - `blog/einddatum-belastingaangifte-2026/` = live, **deadline 1 mei 2027**. Deze pagina is het hele
   seizoen 2026 actueel (tot 1 mei 2027, met uitstel 1 september 2027).
-  **Actie — na 1 mei 2027:** maak `…-2027/`, zet 2026 op noindex+redirect, herhaal het patroon. Of
-  overweeg samenvoegen met `blog/belastingaangifte-voor-1-april/`: die staat hoger op dezelfde
-  zoekopdrachten en heeft geen jaartal in het adres, dan vervalt deze jaarlijkse wissel.
+  **Actie — na 1 mei 2027:** werk dezelfde pagina bij naar het seizoen 2027 (titel, H1, tabellen, FAQ,
+  `dateModified`). Het jaartal in het adres blijft dan staan; een nieuwe URL per jaar kost telkens
+  de opgebouwde positie.
+- `blog/belastingaangifte-voor-1-april/` = **samengevoegd** op 2026-10-23 met de einddatum-pagina
+  (vangnet + 301 in nginx). De tabel met 1 maart / 1 april / 1 mei / 1 september en de uitleg over
+  "vóór 1 april = vóór 1 juli bericht" staan nu daar.
 - `en/blog/tax-return-deadline-2025/` en `en/blog/tax-return-extension-2025/`: **samengevoegd**
   op 2026-10-22 met `en/blog/late-tax-return/` (vangnet + 301). Er is geen Engelse deadlinepagina
   voor 2026; maak die alleen als er Engelse vraag naar blijkt.
@@ -91,8 +94,8 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
 - **Terugwerkende kracht toeslagen:** `blog/huurtoeslag-aanvragen/`, `en/blog/rent-benefit/`,
   `blog/zorgtoeslag-grens/` noemen "over 2026 tot 1 september 2027". **Actie — na 1 september
   2027:** een jaar opschuiven.
-- **Seizoensdata:** `blog/belastingaangifte-voor-1-april/` (tabel 1 maart / 1 april / 1 mei /
-  1 september 2027, titel "Belastingaangifte 2026"). **Actie — na 1 mei 2027:** naar het seizoen 2027.
+- **Seizoensdata:** `blog/einddatum-belastingaangifte-2026/` (tabel 1 maart / 1 april / 1 mei /
+  1 september 2027, titel "Belastingaangifte 2026: deadline 1 mei 2027 (+ uitstel)"). **Actie — na 1 mei 2027:** naar het seizoen 2027.
 - **Gemeentebelastingen:** titel en kop van `blog/kwijtschelding-gemeentelijke-belasting/` en
   `en/blog/municipal-tax-waiver/` noemen 2026. **Actie — februari 2027**, als de nieuwe aanslag komt:
   naar 2027, en controleer de voorwaarden op zaanstad.nl (autogrens €3.350, termijn 3 maanden).
