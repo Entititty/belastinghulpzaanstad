@@ -40,13 +40,14 @@
     '.bhz-mobilebar{display:none}',
     '@media(max-width:600px){.ts-switch{right:8px;bottom:80px;padding:4px 6px;gap:3px}.ts-switch-label{display:none}.ts-switch button{min-width:48px;min-height:48px;font-size:0.9rem}}',
     '@media(max-width:768px){',
-    '.bhz-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}',
-    '.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:#2c2520;font-size:0.8rem;font-weight:700;border-right:1px solid rgba(44,37,32,0.08)}',
-    '.bhz-mobilebar a:last-child{border-right:none}',
+    '.bhz-mobilebar{display:flex;align-items:stretch;position:fixed;left:0;right:0;bottom:0;z-index:9997;background:#fff;border-top:1px solid rgba(44,37,32,0.12);box-shadow:0 -2px 12px rgba(44,37,32,0.12)}',
+    '.bhz-mobilebar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;text-decoration:none;color:#2c2520;font-size:0.8rem;font-weight:700}',
+    '.bhz-mobilebar a.bel{background:#15756a;color:#fff}',
     '.bhz-mobilebar a.wa{background:#188741;color:#fff}',
+    '.bhz-mobilebar .of{align-self:center;position:relative;z-index:1;margin:0 -10px;padding:2px 5px;border-radius:100px;background:#fff;color:#2c2520;font-size:0.7rem;font-weight:800;line-height:1;box-shadow:0 1px 4px rgba(44,37,32,0.25)}',
     '.bhz-mobilebar .ic{font-size:1.2rem}',
     'body{padding-bottom:56px}',
-    '.wa-float{display:none !important}',
+    '.wa-float,.boa-zweef{display:none !important}',
     '.ts-switch{bottom:64px}',
     '}'
     ].join('');
@@ -109,15 +110,20 @@
     }
   }
 
+  /* Dezelfde twee knoppen als op de pagina: "Bel of app" (links bellen, rechts
+     WhatsApp, elk één tik) en "Bel mij terug". Heeft de pagina zelf een
+     terugbelformulier, dan gaat die knop daarheen. */
   function buildMobileBar() {
     if (document.querySelector('.bhz-mobilebar')) return;
     var bar = document.createElement('nav');
     bar.className = 'bhz-mobilebar';
     bar.setAttribute('aria-label', EN ? 'Quick contact' : 'Snel contact');
+    var terug = document.getElementById('terugbellen') ? '#terugbellen' : '/contact/#terugbellen';
     bar.innerHTML =
-      '<a href="tel:+31619711848" rel="nofollow"><span class="ic" aria-hidden="true">📞</span>' + (EN ? 'Call' : 'Bellen') + '</a>' +
-      '<a href="/contact/#terugbellen"><span class="ic" aria-hidden="true">📅</span>' + (EN ? 'Call back' : 'Terugbellen') + '</a>' +
-      '<a class="wa" href="https://wa.me/31619711848' + (EN ? '?text=Hi!%20I%20have%20a%20question.' : '') + '" rel="nofollow"><span class="ic" aria-hidden="true">💬</span>WhatsApp</a>';
+      '<a class="bel" href="tel:+31619711848" rel="nofollow"><span class="ic" aria-hidden="true">📞</span>' + (EN ? 'Call' : 'Bel') + '</a>' +
+      '<span class="of" aria-hidden="true">' + (EN ? 'or' : 'of') + '</span>' +
+      '<a class="wa" href="https://wa.me/31619711848' + (EN ? '?text=Hi!%20I%20have%20a%20question.' : '') + '" rel="nofollow" aria-label="' + (EN ? 'WhatsApp' : 'App via WhatsApp') + '"><span class="ic" aria-hidden="true">💬</span>' + (EN ? 'WhatsApp' : 'App') + '</a>' +
+      '<a href="' + terug + '"><span class="ic" aria-hidden="true">📅</span>' + (EN ? 'Call me back' : 'Bel mij terug') + '</a>';
     document.body.appendChild(bar);
   }
 

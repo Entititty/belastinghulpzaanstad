@@ -184,6 +184,11 @@ const SJABLONEN = {
     return String(P.FEE_BOX3).replace('.', ',') + '%<br><span style="font-size:0.8rem;font-weight:600;color:var(--clr-bark);">no cure no pay' +
       (leeg(P.FEE_BOX3_MAX) ? '' : ', max. ' + euro(P.FEE_BOX3_MAX)) + '</span>';
   },
+  /* kort, voor de dienstentegel op de homepage en de plaatspagina's */
+  'box3-tarief-tegel': function () {
+    if (leeg(P.FEE_BOX3)) return 'check gratis &middot; daarna no cure no pay';
+    return 'check gratis &middot; daarna ' + String(P.FEE_BOX3).replace('.', ',') + '%' + (leeg(P.FEE_BOX3_MAX) ? '' : ', max. ' + euro(P.FEE_BOX3_MAX));
+  },
   'btw-vermelding': function () {
     return leeg(P.VAT_NOTE) ? '' : '<p class="btw-vermelding" style="font-size:0.95rem;color:var(--clr-bark);margin:10px 0 0;line-height:1.6;">' + esc(P.VAT_NOTE) + '</p>';
   },
