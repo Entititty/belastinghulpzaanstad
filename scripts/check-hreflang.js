@@ -14,7 +14,9 @@
  *
  * Gecontroleerd wordt: bestaat het doelbestand, heeft dat doel zelf hreflang,
  * en staat de eigen canonical in het rijtje van de tegenhanger. x-default doet
- * niet mee aan de wederkerigheidseis; die mag naar de voorkeurstaal wijzen.
+ * niet mee aan de wederkerigheidseis; die mag naar de voorkeurstaal wijzen,
+ * maar moet er wel zijn en in beide talen hetzelfde zijn. De taalknop
+ * (NL | EN) bovenaan moet naar dezelfde vertaling gaan als hreflang.
  *
  * GEBRUIK
  *   node scripts/check-hreflang.js .
@@ -63,6 +65,26 @@ for (const [url, info] of kaart) {
   /* verwijst de pagina naar zichzelf? */
   const zelf = Object.values(a).indexOf(url) !== -1;
   if (!zelf) { console.log('GEEN ZELFVERWIJZING  ' + rel); fout++; }
+
+  /* x-default hoort in elk cluster, en beide talen wijzen naar dezelfde */
+  if (!a['x-default']) { console.log('GEEN X-DEFAULT      ' + rel); fout++; }
+  const tegen = Object.entries(a).find(([t, d]) => t !== 'x-default' && d !== url);
+  if (tegen && kaart.get(tegen[1]) && kaart.get(tegen[1]).alts['x-default'] !== a['x-default']) {
+    console.log('X-DEFAULT VERSCHILT  ' + rel + '  en ' + tegen[1]); fout++;
+  }
+
+  /* De taalknop (NL | EN) moet naar dezelfde vertaling gaan als hreflang.
+     Op acht Engelse artikelen ging "NL" in oktober 2026 naar de Engelse
+     pagina zelf; hreflang klopte wel, dus deze controle zag het niet. */
+  if (tegen) {
+    const html = fs.readFileSync(info.bestand, 'utf8');
+    const knop = (html.match(/<div class="lang-toggle">([\s\S]*?)<\/div>/) || [])[1] || '';
+    const tekst = /<html lang="en"/.test(html) ? 'NL' : 'EN';
+    const href = (knop.match(new RegExp('<a href="([^"]*)"[^>]*>' + tekst + '</a>')) || [])[1];
+    if (href !== undefined && href.replace(BASIS, '') !== tegen[1].replace(BASIS, '')) {
+      console.log('TAALKNOP WIJKT AF    ' + rel + '  ' + tekst + ' -> ' + href + ', hreflang -> ' + tegen[1]); fout++;
+    }
+  }
 
   for (const [taal, doel] of Object.entries(a)) {
     if (taal === 'x-default') continue;
