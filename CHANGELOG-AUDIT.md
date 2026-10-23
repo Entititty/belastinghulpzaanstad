@@ -486,3 +486,29 @@ KvK-nummer; /tarieven/ (dus `data/bedrijf.json`) is de bron voor alle prijzen.
 - **btw-vangnet**: config-sync faalt op "incl. btw" in de tekst zodra KOR true wordt.
 - **llms.txt** bij; de Engelse pagina's verwezen naar `/en/llms.txt` (bestaat niet), nu `/llms.txt`.
 - Nieuw: `scripts/meta-audit.js` (title, meta en H1 per pagina, met markeringen).
+
+---
+
+## 2026-10-23 (2) — Pagina's vereenvoudigd, twee knoppen (branch `eenvoud-conversie`)
+
+Taak 14. Doel: rustiger pagina's en één duidelijke actie, voor meer aanvragen.
+
+| Pagina | Secties | Woorden |
+|---|---|---|
+| Homepage | 11 → 7 | 1.911 → 851 |
+| /diensten/belastingaangifte-laten-doen/ | 10 → 9 | 1.279 → 1.055 |
+| 9 plaatspagina's | 11-12 → 5 | 1.403-1.664 → 1.136-1.325 |
+
+- **Knoppen**: overal "Bel of app" (één knop met twee helften: bellen en WhatsApp, elk één tik)
+  en "Bel mij terug". Ook in het menu, zwevend op grote schermen en in de mobiele balk. Andere
+  knoppen zijn tekstlinks. `scripts/check-knoppen.js` (in `bouw.js`) bewaakt dat.
+- **Homepage**: H1 en title "Belastingaangifte laten doen, bij u thuis in Zaanstad"; zes
+  dienstentegels met prijs; Stan + vertrouwensstrip; gratis hulp in drie regels (de volledige
+  lijst staat op /senioren/#gratis-hulp); het rekenvoorbeeld staat op /diensten/voorlopige-teruggave/.
+- **Aangiftepagina**: 12 kenmerkblokken → 4; invalshoek "aangifte inkomstenbelasting", zodat
+  hij niet met de homepage concurreert.
+- **Plaatspagina's**: alle lokale inhoud in één blok onder de hero, algemene blokken compact
+  onderaan. Met een script nagekeken: elk lokaal getal en elke eigennaam staat er nog. De
+  €20-regel staat nu in een cfg-blok en verdwijnt vanzelf als de actie afloopt.
+- **Rechtgezet**: studiekosten (sinds 2022 niet aftrekbaar) en de klantclaim "De meeste
+  mensen komen bij ons met…".
