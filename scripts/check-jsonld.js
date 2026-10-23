@@ -26,6 +26,16 @@ const DATUM = /^\d{4}-\d{2}-\d{2}/;
 const URL_RE = /^https:\/\/belastinghulpzaanstad\.nl\//;
 /* Het bedrijfsblok is ProfessionalService + AccountingService; beide zijn een LocalBusiness. */
 const BEDRIJF = new Set(['LocalBusiness', 'ProfessionalService', 'AccountingService']);
+/* Elk @type moet een bestaand schema.org-type zijn; een tikfout laat Google het
+   blok stil vallen. Deze lijst is op 23 oktober 2026 nagelopen tegen
+   https://schema.org/version/latest/schemaorg-current-https-types.csv: alle
+   typen die de site gebruikt, plus PropertyValue (KvK-nummer) en een paar die
+   voor de hand liggen. Een nieuw type? Controleer het daar en zet het erbij. */
+const TYPEN = new Set(['AboutPage', 'AccountingService', 'AdministrativeArea', 'AggregateOffer', 'Answer', 'Article',
+  'BlogPosting', 'BreadcrumbList', 'City', 'CollectionPage', 'ContactPoint', 'FAQPage', 'HowTo', 'ImageObject', 'ItemList',
+  'ListItem', 'LocalBusiness', 'Offer', 'OfferCatalog', 'OpeningHoursSpecification', 'Organization', 'Person',
+  'PostalAddress', 'PriceSpecification', 'ProfessionalService', 'ProfilePage', 'PropertyValue', 'Question', 'Service',
+  'SpeakableSpecification', 'WebApplication', 'WebPage', 'WebSite']);
 
 function walk(dir, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -48,7 +58,7 @@ function toets(o, f) {
   if (Array.isArray(o)) { o.forEach((x) => toets(x, f)); return; }
   const t = typen(o);
   const fout = (m) => fouten.push(rel(f) + ': ' + (t.join('/') || 'object') + ': ' + m);
-  t.forEach((x) => { telling[x] = (telling[x] || 0) + 1; });
+  t.forEach((x) => { telling[x] = (telling[x] || 0) + 1; if (!TYPEN.has(x)) fout('onbekend @type "' + x + '" (geen schema.org-type uit de lijst bovenin)'); });
 
   /* een verwijzing naar het bedrijfsblok (provider op een dienstpagina) heeft alleen @type, @id en name */
   const verwijzing = Object.keys(o).every((k) => ['@type', '@id', 'name'].includes(k));
@@ -145,6 +155,7 @@ for (const f of walk(ROOT, [])) {
     blokken++;
     let j;
     try { j = JSON.parse(m[1]); } catch (e) { fouten.push(rel(f) + ': ongeldige JSON'); ongeldig++; continue; }
+    if ([].concat(j).some((x) => x['@context'] !== 'https://schema.org')) fouten.push(rel(f) + ': blok zonder "@context": "https://schema.org"');
     toets(j, f);
     knopen(j, alle);
   }
