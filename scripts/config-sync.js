@@ -377,6 +377,21 @@ for (const f of walk(ROOT, [])) {
   });
 }
 
+/* ---------- "incl. btw" in teksten zonder marker ----------
+   Een title of description kan geen cfg-blok bevatten. De plaatspagina's
+   noemen sinds oktober 2026 "incl. btw" in hun omschrijving. Kiest de
+   eigenaar voor de kleineondernemersregeling (KOR: true), of zegt VAT_NOTE
+   niet meer dat de prijzen inclusief btw zijn, dan klopt die tekst niet meer. */
+const btwKlopt = P.KOR !== true && (leeg(P.VAT_NOTE) || /inclusief btw/i.test(P.VAT_NOTE));
+if (!btwKlopt) {
+  for (const f of walk(ROOT, [])) {
+    const html = fs.readFileSync(f, 'utf8').replace(/<!-- cfg:btw-vermelding -->[\s\S]*?<!-- \/cfg:btw-vermelding -->/g, '');
+    if (/\b(?:incl\.|inclusief) btw\b/i.test(html)) {
+      fouten.push(rel(f) + ': noemt "incl. btw", maar KOR of VAT_NOTE zegt dat er geen btw in de prijs zit. Pas de tekst met de hand aan.');
+    }
+  }
+}
+
 /* ---------- llms.txt: geen markers mogelijk, dus alleen controleren ---------- */
 const llms = fs.readFileSync(path.join(ROOT, 'llms.txt'), 'utf8');
 for (const [k, p] of Object.entries(prijzen)) {

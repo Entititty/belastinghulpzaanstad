@@ -133,7 +133,7 @@
   "_placeholders_uitleg": {
     "KVK_NUMMER": "8 cijfers, bijvoorbeeld 12345678. Komt in de footer van elke pagina.",
     "BTW_ID": "Het btw-identificatienummer (NL + 9 cijfers + B + 2 cijfers), niet het omzetbelastingnummer: dat bevat bij een eenmanszaak uw BSN.",
-    "KOR": "true als u de kleineondernemersregeling gebruikt (dan geen btw-id in de footer maar een KOR-vermelding), false als u btw-plichtig bent, null zolang dat niet vaststaat.",
+    "KOR": "true als u de kleineondernemersregeling gebruikt (dan geen btw-id in de footer maar een KOR-vermelding), false als u btw-plichtig bent, null zolang dat niet vaststaat. Let op: de omschrijving van de 9 plaatspagina's noemt 'incl. btw'. Bij true (of een VAT_NOTE zonder 'inclusief btw') faalt config-sync tot die tekst met de hand is aangepast.",
     "FEE_BOX3": "Het no cure no pay-percentage voor hulp bij de Opgaaf werkelijk rendement, als getal: 15 betekent 15%.",
     "FEE_BOX3_MIN": "Optioneel minimum in euro's, of null.",
     "FEE_BOX3_MAX": "Optioneel maximum in euro's voor alle jaren samen, of null.",
