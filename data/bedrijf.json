@@ -109,7 +109,7 @@
     }
   },
   "startkorting": {
-    "_doc": "Eigen actie, sinds 2026 aangekondigd op /over-ons/, de plaatspagina's en de Engelse homepage. actief=false (of een geldig_tot in het verleden) haalt de regel op /tarieven/ en op de 9 Nederlandse plaatspagina's weg (cfg-blokken). Met de hand weg moeten dan nog: /over-ons/, de Engelse homepage, /en/about-us/ en de 9 Engelse plaatspagina's (zoek op data-prijs="startkorting").",
+    "_doc": "Eigen actie, sinds 2026 aangekondigd op /over-ons/, de plaatspagina's en de Engelse homepage. actief=false (of een geldig_tot in het verleden) haalt de regel op /tarieven/ en op de 9 Nederlandse plaatspagina's weg (cfg-blokken). Met de hand weg moeten dan nog: /over-ons/, de Engelse homepage, /en/about-us/ en de 9 Engelse plaatspagina's (zoek op data-prijs='startkorting').",
     "actief": true,
     "bedrag": 20,
     "geldig_tot": "2026-12-31"
