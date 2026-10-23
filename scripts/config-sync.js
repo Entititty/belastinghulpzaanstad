@@ -198,6 +198,12 @@ const SJABLONEN = {
       '<strong>Nieuw in 2026:</strong> bent u een nieuwe klant, dan krijgt u ' + euro(sk.bedrag) +
       ' korting op een aangifte of voorlopige teruggave. Dat gaat automatisch, u heeft geen code nodig.</p>';
   },
+  /* korte versie voor het slot van de plaatspagina's; verdwijnt vanzelf als de actie afloopt */
+  'startkorting-kort': function () {
+    if (!startkortingLoopt) return '';
+    return '<p class="slot-actie"><strong>Nieuw in 2026:</strong> bent u een nieuwe klant, dan krijgt u ' + euro(sk.bedrag) +
+      ' korting op een aangifte of voorlopige teruggave, automatisch en zonder code. Wij plaatsen geen verzonnen reviews; <a href="/over-ons/">lees waarom</a>.</p>';
+  },
   'review-knop': function () {
     if (leeg(P.GOOGLE_REVIEW_URL)) {
       return '<p style="line-height:1.7;color:var(--clr-bark);margin:0;">Wilt u mij laten weten hoe het ging? Stuur een <a href="https://wa.me/31619711848" rel="nofollow" style="color:var(--clr-teal);font-weight:700;">WhatsApp</a> of een <a href="mailto:' + esc(B.email) + '" style="color:var(--clr-teal);font-weight:700;">e-mail</a>. Ik lees alles.</p>';
