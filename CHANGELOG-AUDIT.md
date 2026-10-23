@@ -464,6 +464,10 @@ KvK-nummer; /tarieven/ (dus `data/bedrijf.json`) is de bron voor alle prijzen.
 - **Senioren**: H1 "Belastingaangifte voor senioren, bij u thuis", de oude H1 als subkop; de twee
   prijsvragen in het FAQ samengevoegd.
 - **Plaatspagina's** (9): omschrijving met "incl. btw" en "ook ’s avonds en in het weekend".
+- **Bij de controle gevonden**: "maandelijks €100–€400 extra netto" op /blog/hypotheekrenteaftrek/ (geen
+  basis; hangt af van hypotheek en inkomen) en "wij regelen uitstel tot 1 mei van het jaar erna" op het
+  te laat-artikel (becon-uitstel vraagt een beconnummer en PKI-certificaat; er is nog geen KvK). Beide
+  neutraal gemaakt, ook in het Engels.
 
 ### Techniek
 - **Blogoverzicht**: dubbele kaart weg; `scripts/blog-kaarten-sync.js` zet kaarttitels op /blog/ en
