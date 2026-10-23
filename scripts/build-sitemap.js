@@ -4,10 +4,17 @@
  * Bouwt sitemap.xml als index, met vier deelsitemaps:
  *   sitemap-diensten.xml, sitemap-kennisbank.xml, sitemap-lokaal.xml, sitemap-overig.xml
  *
- * lastmod komt uit git: de datum van de laatste commit die het bestand raakte.
- * Heeft een bestand nog niet-gecommitte wijzigingen, dan wordt het vandaag,
- * want dan gaat die versie zo de deur uit. Zo blijft lastmod eerlijk;
- * een sitemap waarin alles "vandaag" is, gelooft Google namelijk niet.
+ * lastmod is eerst de datum die de pagina zelf noemt: "Laatst bijgewerkt" of
+ * "Last updated", met een <time datetime> of als tekst ("4 augustus 2026").
+ * Die datum gaat alleen omhoog bij een inhoudelijke wijziging. Een commit die
+ * op alle pagina's tegelijk het menu, de footer of de JSON-LD van het bedrijf
+ * aanpaste, gaf voorheen elke pagina dezelfde lastmod; zo'n sitemap gelooft
+ * Google niet. Noemt de pagina geen datum, dan geldt de laatste commit die
+ * het bestand raakte, of vandaag als het nog niet-gecommitte wijzigingen
+ * heeft (die versie gaat zo de deur uit).
+ *
+ * Na het schrijven controleert het script de XML: namespace, één <loc> en één
+ * <lastmod> per <url>, absolute https-adressen, geen dubbele adressen.
  *
  * Draai dit NA het committen en VOOR het uitrollen.
  * Gebruik: node scripts/build-sitemap.js [--dry]
@@ -58,8 +65,28 @@ const gewijzigd = new Set(
     .map(function (l) { return l.slice(3).trim(); })
     .filter(Boolean)
 );
-function lastmod(file) {
+const MAANDEN = {
+  januari: 1, februari: 2, maart: 3, april: 4, mei: 5, juni: 6, juli: 7, augustus: 8,
+  september: 9, oktober: 10, november: 11, december: 12,
+  january: 1, february: 2, march: 3, may: 5, june: 6, july: 7, august: 8, october: 10
+};
+function paginaDatum(html) {
+  const t = html.match(/(?:laatst bijgewerkt|last updated)[^<]{0,20}<time datetime="(\d{4}-\d{2}-\d{2})"/i);
+  if (t) return t[1];
+  const m = html.match(/(?:laatst bijgewerkt|last updated):?\s*(\d{1,2})\s+([a-z]+)\s+(\d{4})/i);
+  const maand = m && MAANDEN[m[2].toLowerCase()];
+  return maand ? m[3] + '-' + String(maand).padStart(2, '0') + '-' + m[1].padStart(2, '0') : null;
+}
+const herkomst = { pagina: 0, git: 0 };
+function lastmod(file, html) {
   const rel = path.relative(ROOT, file).split(path.sep).join('/');
+  const p = paginaDatum(html);
+  if (p) {
+    herkomst.pagina++;
+    if (p > VANDAAG) { console.warn('  ! ' + rel + ': "Laatst bijgewerkt" ligt in de toekomst (' + p + '), vandaag gebruikt'); return VANDAAG; }
+    return p;
+  }
+  herkomst.git++;
   if (gewijzigd.has(rel)) return VANDAAG;
   const d = git(['log', '-1', '--format=%cs', '--', rel]);
   return /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : VANDAAG;
@@ -92,7 +119,7 @@ for (const file of walk(ROOT, []).sort()) {
   const p = u.replace(ORIGIN, '');
   groepen[g].push({
     loc: u,
-    lastmod: lastmod(file),
+    lastmod: lastmod(file, html),
     changefreq: FREQ[g],
     priority: PRIORITEIT[p] || PRIORITEIT[g]
   });
@@ -134,11 +161,45 @@ const index = '<?xml version="1.0" encoding="UTF-8"?>\n' +
       '  </sitemap>';
   }).join('\n') + '\n</sitemapindex>\n';
 
+/* ---------- controle van de eigen uitvoer ----------
+   De XML komt uit dit script, dus de controle is op opbouw, niet met een
+   volledige parser: gelijke aantallen open- en sluittags, de juiste
+   namespace, per <url> precies één <loc> en één <lastmod>. */
+const NS = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
+const problemen = [];
+const alleLocs = new Set();
+function controleer(naam, xml, wortel, item) {
+  if (xml.indexOf('<?xml version="1.0" encoding="UTF-8"?>\n<' + wortel + ' ' + NS + '>') !== 0) problemen.push(naam + ': kop of namespace klopt niet');
+  ['loc', 'lastmod', item, wortel].forEach(function (tag) {
+    const open = (xml.match(new RegExp('<' + tag + '[ >]', 'g')) || []).length;
+    const dicht = (xml.match(new RegExp('</' + tag + '>', 'g')) || []).length;
+    if (open !== dicht) problemen.push(naam + ': ' + open + 'x <' + tag + '> tegen ' + dicht + 'x </' + tag + '>');
+  });
+  const blokken = xml.split('<' + item + '>').slice(1);
+  blokken.forEach(function (b) {
+    const locs = b.match(/<loc>([^<]*)<\/loc>/g) || [];
+    const data = b.match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/g) || [];
+    if (locs.length !== 1 || data.length !== 1) { problemen.push(naam + ': een <' + item + '> zonder precies één loc en één lastmod'); return; }
+    const loc = locs[0].replace(/<\/?loc>/g, '');
+    if (loc.indexOf(ORIGIN + '/') !== 0) problemen.push(naam + ': geen absoluut https-adres: ' + loc);
+    if (item === 'url') { if (alleLocs.has(loc)) problemen.push(naam + ': dubbel adres ' + loc); alleLocs.add(loc); }
+  });
+  if (/&(?!amp;|lt;|gt;|quot;|apos;)/.test(xml)) problemen.push(naam + ': losse & in de XML');
+}
+bestanden.forEach(function (b) { controleer(b.naam, b.inhoud, 'urlset', 'url'); });
+controleer('sitemap.xml', index, 'sitemapindex', 'sitemap');
+if (problemen.length) {
+  console.error('FOUT in de sitemap, niets geschreven:');
+  problemen.forEach(function (p) { console.error('  - ' + p); });
+  process.exit(1);
+}
+
 if (!DRY) {
   bestanden.forEach(function (b) { fs.writeFileSync(path.join(ROOT, b.naam), b.inhoud, 'utf8'); });
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), index, 'utf8');
 }
 
-console.log((DRY ? '[dry] ' : '') + 'sitemap.xml (index) + ' + bestanden.length + ' deelsitemaps');
+console.log((DRY ? '[dry] ' : '') + 'sitemap.xml (index) + ' + bestanden.length + ' deelsitemaps, XML gecontroleerd');
 bestanden.forEach(function (b) { console.log('  ' + b.naam.padEnd(26) + String(b.aantal).padStart(3) + ' url\'s, laatste wijziging ' + b.lastmod); });
+console.log('  lastmod uit "Laatst bijgewerkt" op de pagina: ' + herkomst.pagina + ', uit git: ' + herkomst.git);
 console.log('  overgeslagen (noindex of andere canonical): ' + overgeslagen);
