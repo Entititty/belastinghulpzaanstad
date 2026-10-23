@@ -163,8 +163,8 @@ function footerRegel(taal) {
   delen.push(nl ? 'gevestigd in ' + esc(B.vestigingsplaats) + ', gemeente ' + esc(B.gemeente)
     : 'based in ' + esc(B.vestigingsplaats) + ', ' + esc(B.gemeente) + ' municipality');
   delen.push('<a href="mailto:' + esc(B.email) + '" style="color:inherit;text-decoration:underline">' + esc(B.email) + '</a>');
-  if (!leeg(P.KVK_NUMMER)) delen.push('KvK ' + esc(P.KVK_NUMMER));
-  if (!leeg(P.BTW_ID)) delen.push((nl ? 'BTW-id ' : 'VAT ') + esc(P.BTW_ID));
+  if (!leeg(P.KVK_NUMMER)) delen.push('KvK: ' + esc(P.KVK_NUMMER));
+  if (!leeg(P.BTW_ID)) delen.push((nl ? 'btw: ' : 'VAT: ') + esc(P.BTW_ID));
   if (P.KOR === true) delen.push(nl ? 'kleineondernemersregeling: wij rekenen geen btw' : 'small business scheme (KOR): no VAT charged');
   delen.push(nl ? 'Bezoek uitsluitend op afspraak. Wij komen bij u thuis' : 'By appointment only. We come to your home');
   return '<span class="footer-gegevens" style="display:block;margin-bottom:6px;color:rgba(255,255,255,0.72);">' +

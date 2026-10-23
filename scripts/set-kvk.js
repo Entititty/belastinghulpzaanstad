@@ -94,7 +94,7 @@ let fout = 0;
     if (!m) continue;
     const r2 = path.relative(ROOT, p).split(path.sep).join('/');
     if (VERWIJDER && m[1].indexOf('KvK') !== -1) { console.error('KvK nog in de footer van ' + r2); fout++; }
-    if (!VERWIJDER && m[1].indexOf('KvK ' + KVK) === -1) { console.error('KvK ontbreekt in de footer van ' + r2); fout++; }
+    if (!VERWIJDER && m[1].indexOf('KvK: ' + KVK) === -1) { console.error('KvK ontbreekt in de footer van ' + r2); fout++; }
   }
 })(ROOT);
 console.log(fout === 0 ? '\nok  alle footers kloppen' : '\nFOUT: ' + fout + ' footer(s)');

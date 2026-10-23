@@ -131,8 +131,8 @@
     "EINDDATUM_CORRECTIE_2021": "31 december 2026"
   },
   "_placeholders_uitleg": {
-    "KVK_NUMMER": "8 cijfers, bijvoorbeeld 12345678. Komt in de footer van elke pagina.",
-    "BTW_ID": "Het btw-identificatienummer (NL + 9 cijfers + B + 2 cijfers), niet het omzetbelastingnummer: dat bevat bij een eenmanszaak uw BSN.",
+    "KVK_NUMMER": "Het KvK-nummer: 8 cijfers, bijvoorbeeld 12345678. Zolang dit leeg is, staat er niets. Ingevuld komt het in de footer van elke pagina ('KvK: 12345678') en als identifier in de JSON-LD. Invullen kan ook met: node scripts/set-kvk.js --kvk 12345678 --btw NL123456789B01",
+    "BTW_ID": "Het btw-identificatienummer (NL + 9 cijfers + B + 2 cijfers), niet het omzetbelastingnummer: dat bevat bij een eenmanszaak uw BSN. Ingevuld komt het in de footer ('btw: NL…') en als vatID in de JSON-LD.",
     "KOR": "true als u de kleineondernemersregeling gebruikt (dan geen btw-id in de footer maar een KOR-vermelding), false als u btw-plichtig bent, null zolang dat niet vaststaat. Let op: de omschrijving van de 9 plaatspagina's noemt 'incl. btw'. Bij true (of een VAT_NOTE zonder 'inclusief btw') faalt config-sync tot die tekst met de hand is aangepast.",
     "FEE_BOX3": "Het no cure no pay-percentage voor hulp bij de Opgaaf werkelijk rendement, als getal: 15 betekent 15%.",
     "FEE_BOX3_MIN": "Optioneel minimum in euro's, of null.",
