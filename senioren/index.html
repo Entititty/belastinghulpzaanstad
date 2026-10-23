@@ -185,10 +185,10 @@
     },
     {
       "@type": "Question",
-      "name": "Wat kost een aangifte?",
+      "name": "Wat kost een aangifte voor senioren?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "€ 59 per aangifte. Samen met uw partner € 89 voor u samen. U weet de prijs vooraf en er komt niets bij."
+        "text": "€ 59 per aangifte, samen met uw partner € 89. De controle van uw toeslagen en ouderenkorting hoort erbij. U weet de prijs vooraf en er komt niets bij."
       }
     },
     {
@@ -213,14 +213,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Ja, en dat vertellen wij u eerlijk. Zie de uitleg hierboven: het Sociaal Wijkteam, de Bibliotheek en het FormulierenHuis helpen gratis met invullen. Wij doen het voor u, aan huis, het hele jaar door."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wat kost een aangifte voor senioren?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "€59 vaste prijs, met partner €89. De controle van uw toeslagen en ouderenkorting hoort erbij. Er komen geen kosten bij."
       }
     }
   ]
@@ -248,6 +240,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* eigen onderdelen van deze pagina */
 .sen-groot{font-size:1.06rem;line-height:1.75}
+.sen-subkop{font-family:var(--font-display);font-size:1.45rem;font-weight:700;line-height:1.3;color:var(--clr-deep);margin:-6px 0 16px;max-width:30ch}
+@media(max-width:600px){.sen-subkop{font-size:1.2rem}}
 .btn-wa{background:#188741;color:#fff;border:2px solid #188741}
 .btn-wa:hover{background:#136c34;border-color:#136c34;color:#fff}
 .sen-bereikbaar{margin-top:18px;font-size:1rem;line-height:1.6;color:var(--clr-bark);max-width:48ch}
@@ -337,7 +331,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           <span class="hero-badge-dot"></span>
           Voor 65-plussers en AOW-gerechtigden in Zaanstad
         </div>
-        <h1>Wij doen uw belastingaangifte.<br><em>U hoeft alleen open te doen.</em></h1>
+        <h1>Belastingaangifte voor senioren,<br><em>bij u thuis</em></h1>
+        <p class="sen-subkop">Wij doen uw belastingaangifte. U hoeft alleen open te doen.</p>
         <p class="hero-sub sen-groot">
           Wij komen bij u thuis. U hoeft niets te printen en niets uit te zoeken. Vaste prijs van <span data-prijs="aangifte">&euro;&nbsp;59</span>. U weet vooraf wat het kost en er komt niets bij.
         </p>
@@ -441,7 +436,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <!-- FAQ -->
 <section class="faq" id="faq" style="padding:76px 0;">
   <div class="container">
-    <h2 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);margin-bottom:26px;">Vragen die wij vaak krijgen</h2>
+    <h2 style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);margin-bottom:26px;">Vragen en antwoorden</h2>
 
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Moet ik mijn DigiD afgeven?<span class="faq-arrow">+</span></button>
@@ -449,8 +444,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
 
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost een aangifte?<span class="faq-arrow">+</span></button>
-      <div class="faq-answer"><p><span data-prijs="aangifte">&euro;&nbsp;59</span> per aangifte. Samen met uw partner <span data-prijs="aangifte.partner">&euro;&nbsp;89</span> voor u samen. U weet de prijs vooraf en er komt niets bij.</p></div>
+      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wat kost een aangifte voor senioren?<span class="faq-arrow">+</span></button>
+      <div class="faq-answer"><p><span data-prijs="aangifte">&euro;&nbsp;59</span> per aangifte, samen met uw partner <span data-prijs="aangifte.partner">&euro;&nbsp;89</span>. De controle van uw toeslagen en ouderenkorting hoort erbij. U weet de prijs vooraf en er komt niets bij.</p></div>
     </div>
 
     <div class="faq-item">
@@ -466,15 +461,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Is er ook gratis hulp?<span class="faq-arrow">+</span></button>
       <div class="faq-answer"><p>Ja, en dat vertellen wij u eerlijk. Zie de uitleg hierboven: het Sociaal Wijkteam, de Bibliotheek en het FormulierenHuis helpen gratis met invullen. Wij doen het voor u, aan huis, het hele jaar door.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-        Wat kost een aangifte voor senioren?
-        <span class="faq-arrow">+</span>
-      </button>
-      <div class="faq-answer">
-        <p><span data-prijs="aangifte">€59</span> vaste prijs, met partner <span data-prijs="aangifte.partner">€89</span>. De controle van uw toeslagen en ouderenkorting hoort erbij. Er komen geen kosten bij.</p>
-      </div>
     </div>
 
   </div>
