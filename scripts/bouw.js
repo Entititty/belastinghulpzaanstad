@@ -2,7 +2,8 @@
 /*
  * bouw.js
  * Eén commando voor elke uitrol: zet de gegevens uit data/bedrijf.json in de
- * HTML, maakt de stylesheetnaam kloppend en draait alle controles.
+ * HTML, zet de kaarttitels op het blogoverzicht gelijk aan de paginatitels,
+ * maakt de stylesheetnaam kloppend en draait alle controles.
  *
  * WAAROM
  * De site heeft geen build. De controles bestonden wel, maar los, en de lijst
@@ -13,7 +14,7 @@
  * niet wegvallen tussen de andere uitvoer.
  *
  * GEBRUIK
- *   node scripts/bouw.js           schrijft (config-sync, hash-css) en controleert
+ *   node scripts/bouw.js           schrijft (config-sync, blog-kaarten-sync, hash-css) en controleert
  *   node scripts/bouw.js --check   schrijft niets; faalt als de HTML afwijkt
  *
  * Exit 1 zodra een stap faalt. De sitemap (scripts/build-sitemap.js) hoort
@@ -27,6 +28,7 @@ const CHECK = process.argv.includes('--check');
 
 const STAPPEN = [
   ['config-sync', CHECK ? ['--check'] : []],
+  ['blog-kaarten-sync', CHECK ? ['--check'] : []],
   ['hash-css', CHECK ? ['--dry'] : []],
   ['check-html', []],
   ['check-fiscale-cijfers', []],
