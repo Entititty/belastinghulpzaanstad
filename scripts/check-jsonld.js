@@ -24,6 +24,8 @@ const DAGEN = new Set(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', '
 const TIJD = /^([01]\d|2[0-3]):[0-5]\d$/;
 const DATUM = /^\d{4}-\d{2}-\d{2}/;
 const URL_RE = /^https:\/\/belastinghulpzaanstad\.nl\//;
+/* Het bedrijfsblok is ProfessionalService + AccountingService; beide zijn een LocalBusiness. */
+const BEDRIJF = new Set(['LocalBusiness', 'ProfessionalService', 'AccountingService']);
 
 function walk(dir, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -48,7 +50,9 @@ function toets(o, f) {
   const fout = (m) => fouten.push(rel(f) + ': ' + (t.join('/') || 'object') + ': ' + m);
   t.forEach((x) => { telling[x] = (telling[x] || 0) + 1; });
 
-  if (t.includes('LocalBusiness')) {
+  /* een verwijzing naar het bedrijfsblok (provider op een dienstpagina) heeft alleen @type, @id en name */
+  const verwijzing = Object.keys(o).every((k) => ['@type', '@id', 'name'].includes(k));
+  if (t.some((x) => BEDRIJF.has(x)) && !verwijzing) {
     if (!tekstGevuld(o.name)) fout('name ontbreekt');
     if (!o.address || !o.address.addressLocality || !o.address.addressCountry) fout('address mist plaats of land');
     if (!/^\+31\d{9}$/.test(o.telephone || '')) fout('telephone niet in de vorm +31...');
@@ -96,17 +100,55 @@ function toets(o, f) {
   }
 }
 
+/* ---------- eisen per pagina ----------
+   - nergens Review of AggregateRating: er zijn nog geen echte reviews
+   - elke indexeerbare pagina een BreadcrumbList, behalve de twee homepages
+     (een kruimelpad van één stap zegt niets)
+   - elke indexeerbare pagina het bedrijfsblok (#business)
+   - artikelen: een Article met als auteur een Person met naam en url
+   - dienstpagina's: een Service met minstens één Offer */
+function knopen(o, acc) {
+  if (!o || typeof o !== 'object') return acc;
+  if (Array.isArray(o)) { o.forEach((x) => knopen(x, acc)); return acc; }
+  acc.push(o);
+  for (const v of Object.values(o)) if (v && typeof v === 'object') knopen(v, acc);
+  return acc;
+}
+function toetsPagina(f, s, alle) {
+  const r = rel(f);
+  const fout = (m) => fouten.push(r + ': ' + m);
+  const heeft = (type) => alle.some((n) => typen(n).includes(type));
+  if (heeft('Review') || heeft('AggregateRating') || alle.some((n) => n.review || n.aggregateRating)) fout('Review of AggregateRating gevonden; er zijn nog geen echte reviews');
+  const robots = (s.match(/<meta name="robots" content="([^"]*)"/) || [])[1] || '';
+  if (/noindex/.test(robots) || !/<link rel="canonical"/.test(s)) return;
+  if (r !== 'index.html' && r !== 'en/index.html' && !heeft('BreadcrumbList')) fout('BreadcrumbList ontbreekt');
+  if (!alle.some((n) => n['@id'] === 'https://belastinghulpzaanstad.nl/#business' && n.address)) fout('bedrijfsblok (#business) ontbreekt');
+  if (/^(en\/)?blog\/[^/]+\/index\.html$/.test(r)) {
+    const a = alle.find((n) => typen(n).includes('Article'));
+    if (!a) fout('artikel zonder Article');
+    else if (!typen(a.author).includes('Person') || !tekstGevuld(a.author.name) || !URL_RE.test(a.author.url || '')) fout('Article zonder auteur (Person met naam en url)');
+  }
+  if (/^(en\/)?(diensten|services)\/[^/]+\/index\.html$/.test(r)) {
+    const sv = alle.find((n) => typen(n).includes('Service'));
+    if (!sv) fout('dienstpagina zonder Service');
+    else if (![].concat(sv.offers || []).length) fout('Service zonder Offer');
+  }
+}
+
 let blokken = 0, ongeldig = 0;
 for (const f of walk(ROOT, [])) {
   const s = fs.readFileSync(f, 'utf8');
   const re = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+  const alle = [];
   let m;
   while ((m = re.exec(s)) !== null) {
     blokken++;
     let j;
     try { j = JSON.parse(m[1]); } catch (e) { fouten.push(rel(f) + ': ongeldige JSON'); ongeldig++; continue; }
     toets(j, f);
+    knopen(j, alle);
   }
+  toetsPagina(f, s, alle);
 }
 
 console.log('JSON-LD: ' + blokken + ' blokken; ' + Object.entries(telling).sort((a, b) => b[1] - a[1]).map((x) => x[0] + ' ' + x[1]).join(', '));

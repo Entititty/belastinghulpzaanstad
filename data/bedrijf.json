@@ -8,11 +8,10 @@
     "gemeente": "Zaanstad"
   },
   "lokaal": {
-    "_doc": "Bron voor het LocalBusiness-blok (@id #business) in de JSON-LD van elke pagina. config-sync.js bouwt dat blok hieruit op, met de priceRange uit de prijzen en, zodra ze bekend zijn, KvK-nummer en btw-id uit de placeholders.",
+    "_doc": "Bron voor het LocalBusiness-blok (@id #business) in de JSON-LD van elke pagina. config-sync.js bouwt dat blok hieruit op, met de priceRange uit de prijzen en, zodra ze bekend zijn, KvK-nummer en btw-id uit de placeholders. Het adres heeft alleen plaats en land: er is geen bezoekadres. sameAs: de Facebookpagina, het Google-bedrijfsprofiel (share.google-link) en het LinkedIn-profiel van de eigenaar (eenmanszaak; vervang dat door een LinkedIn-bedrijfspagina als die er komt). Dezelfde lijst komt in het Organization-blok op de homepages.",
     "telefoon": "+31619711848",
     "adres": {
       "plaats": "Zaandam",
-      "regio": "Noord-Holland",
       "land": "NL"
     },
     "werkgebied": [
@@ -58,7 +57,8 @@
     ],
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61574368775029",
-      "https://share.google/xdHHoqulKkgYD4XPA"
+      "https://share.google/xdHHoqulKkgYD4XPA",
+      "https://www.linkedin.com/in/shoeven/"
     ],
     "oprichtingsjaar": "2026",
     "afbeelding": "https://belastinghulpzaanstad.nl/og/og-default.png"

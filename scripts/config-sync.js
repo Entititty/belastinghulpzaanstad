@@ -22,7 +22,9 @@
  * 3. JSON-LD: een Offer met "@id" op #prijs-sleutel krijgt "price", een
  *    AggregateOffer op #prijzen-sleutel krijgt lowPrice/highPrice/offerCount,
  *    en elke "priceRange" wordt de laagste tot de hoogste prijs met
- *    in_prijsrange: true.
+ *    in_prijsrange: true. Het bedrijfsblok (#business) wordt helemaal opnieuw
+ *    opgebouwd; het Organization-blok (#organization) krijgt e-mail, telefoon
+ *    en sameAs; een Offer op #tarief-box3 krijgt de tekst van het box 3-tarief.
  *
  * GEBRUIK
  *   node scripts/config-sync.js            schrijft, en waarschuwt voor lege placeholders
@@ -113,6 +115,11 @@ function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 function euro(n) { return '&euro;' + n; }
+/* HTML uit een sjabloon als platte tekst voor een JSON-string in de JSON-LD */
+function jsonTekst(html) {
+  return html.replace(/<[^>]+>/g, '').replace(/&euro;/g, '€').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&')
+    .replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
 
 function feeZin(taal) {
   const nl = taal === 'nl';
@@ -203,22 +210,25 @@ const SJABLONEN = {
   }
 };
 
-/* ---------- het LocalBusiness-blok ----------
+/* ---------- het bedrijfsblok ----------
    Elke pagina draagt hetzelfde blok met "@id": ".../#business". Het stond op
-   98 pagina's als losse kopie, in vier varianten. Nu bouwen we het hier op. */
+   98 pagina's als losse kopie, in vier varianten. Nu bouwen we het hier op.
+   Type: ProfessionalService (een LocalBusiness), met AccountingService als
+   specifiekere soort. Het adres heeft alleen plaats en land: wij werken aan
+   huis en hebben geen bezoekadres. */
 const BASIS_URL = 'https://belastinghulpzaanstad.nl';
 function bedrijfsBlok() {
   const L = cfg.lokaal;
   const o = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'AccountingService'],
+    '@type': ['ProfessionalService', 'AccountingService'],
     '@id': BASIS_URL + '/#business',
     name: B.naam,
     url: BASIS_URL + '/',
     telephone: L.telefoon,
     email: B.email,
     image: L.afbeelding,
-    address: { '@type': 'PostalAddress', addressLocality: L.adres.plaats, addressRegion: L.adres.regio, addressCountry: L.adres.land },
+    address: { '@type': 'PostalAddress', addressLocality: L.adres.plaats, addressCountry: L.adres.land },
     priceRange: PRICE_RANGE,
     foundingDate: L.oprichtingsjaar,
     founder: { '@id': BASIS_URL + '/over-ons/#stan' },
@@ -291,11 +301,28 @@ for (const f of walk(ROOT, [])) {
   /* 3. JSON-LD */
   s = s.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, function (heel, open, body, sluit) {
     let b = body;
-    /* het bedrijfsblok geheel opnieuw uit data/bedrijf.json */
-    if (/"@id"\s*:\s*"https:\/\/belastinghulpzaanstad\.nl\/#business"/.test(b) && /"LocalBusiness"/.test(b)) {
+    /* Het bedrijfsblok en het Organization-blok herkennen we aan hun eigen
+       @id bovenaan. Een verwijzing ernaar (provider, worksFor, founder) staat
+       ook in andere blokken; die blokken moeten blijven zoals ze zijn. */
+    let top = null;
+    try { top = JSON.parse(b); } catch (e) { /* check-links.js meldt ongeldige JSON */ }
+    if (top && !Array.isArray(top) && top['@id'] === BASIS_URL + '/#business') {
       ldPlekken++;
       return open + BEDRIJFSBLOK + sluit;
     }
+    if (top && !Array.isArray(top) && top['@id'] === BASIS_URL + '/#organization') {
+      ldPlekken++;
+      top.email = B.email;
+      top.telephone = cfg.lokaal.telefoon;
+      top.sameAs = cfg.lokaal.sameAs;
+      return open + '\n' + JSON.stringify(top, null, 2) + '\n' + sluit;
+    }
+    /* Het box 3-tarief als Offer (no cure no pay) op de box 3-pagina's:
+       de omschrijving komt uit dezelfde placeholders als de zichtbare tekst. */
+    b = b.replace(/\{[^{}]*"@id"\s*:\s*"[^"]*#tarief-box3"[^{}]*\}/g, function (obj) {
+      ldPlekken++;
+      return zetVeld(obj, 'description', jsonTekst(feeZin(/\/en\//.test(f.split(path.sep).join('/')) ? 'en' : 'nl')));
+    });
     /* FAQ-antwoorden: een gewijzigde prijs, in elke schrijfwijze die voorkomt */
     if (oudNieuw.size && /"FAQPage"/.test(b)) {
       for (const [oud, nieuw] of oudNieuw) {
