@@ -230,7 +230,7 @@ function percentielen(waarden) {
 }
 
 function slug(s) {
-  return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40).replace(/-+$/, '');
+  return String(s).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40).replace(/-+$/, '');
 }
 
 /* ---------------- kaart: RD naar SVG, vereenvoudigd ---------------- */
@@ -394,7 +394,7 @@ async function main() {
   const csvKop = alle.kolommen.map((k) => k.kop).concat(DOELGROEPEN.flatMap((dg) => ['Rang ' + dg.code, 'QR ' + dg.code]));
   const csvRij = (b) => alle.rijen[buurten.indexOf(b)].concat(DOELGROEPEN.flatMap((dg) => [b['rang_' + dg.code] || null, b['score_' + dg.code] !== undefined && b['score_' + dg.code] !== null ? qrUrl(dg, b) : null]));
   const cel = (v) => (v === null || v === undefined ? '' : /[;"\n]/.test(String(v)) ? '"' + String(v).replace(/"/g, '""') + '"' : typeof v === 'number' ? String(v).replace('.', ',') : String(v));
-  fs.writeFileSync(path.join(UIT, 'buurtscore.csv'), '﻿' + [csvKop.map(cel).join(';')].concat(buurten.map((b) => csvRij(b).map(cel).join(';'))).join('\r\n') + '\r\n');
+  fs.writeFileSync(path.join(UIT, 'buurtscore.csv'), '\ufeff' + [csvKop.map(cel).join(';')].concat(buurten.map((b) => csvRij(b).map(cel).join(';'))).join('\r\n') + '\r\n');
 
   /* ---------- QR-codes ---------- */
   let qrTel = 0;

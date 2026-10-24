@@ -16,7 +16,7 @@ const TABEL = {
 
 test('CSV: puntkomma, BOM, aanhalingstekens en geen formules', () => {
   const s = csv(TABEL);
-  assert.ok(s.startsWith('﻿Naam;Telefoon;Omzet;Opmerking\r\n'));
+  assert.ok(s.startsWith('\ufeffNaam;Telefoon;Omzet;Opmerking\r\n'));
   const r = s.slice(1).split('\r\n');
   assert.equal(r[1], 'Zoë de Vries;06 12 34 56 78;89;"Graag ""na"" 19:00; dank"');
   assert.equal(r[2], '"\'=HYPERLINK(""http://kwaad.example"")";\'+447911123456;;"regel 1\nregel 2"');

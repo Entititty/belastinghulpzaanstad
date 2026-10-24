@@ -24,7 +24,7 @@ function csvCel(v) {
 function csv(tabel) {
   const regels = [tabel.kolommen.map((k) => csvCel(k.kop)).join(';')];
   for (const r of tabel.rijen) regels.push(r.map(csvCel).join(';'));
-  return '﻿' + regels.join('\r\n') + '\r\n';
+  return '\ufeff' + regels.join('\r\n') + '\r\n';
 }
 
 /* ---------------- xlsx ---------------- */
