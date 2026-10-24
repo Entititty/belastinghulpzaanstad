@@ -512,3 +512,46 @@ Taak 14. Doel: rustiger pagina's en één duidelijke actie, voor meer aanvragen.
   €20-regel staat nu in een cfg-blok en verdwijnt vanzelf als de actie afloopt.
 - **Rechtgezet**: studiekosten (sinds 2022 niet aftrekbaar) en de klantclaim "De meeste
   mensen komen bij ons met…".
+
+---
+
+## 2026-10-24 — Lead engine, module 1: aanvragen vangen (branch `lead-engine`)
+
+Plan: aanvragen vangen, opvolgen en meten, en buurten kiezen voor flyers, binnen de AVG en
+de Telecommunicatiewet. Module 1 komt in twee uitrolstappen live; zie `server-setup/APP.md`.
+
+**Release A** (`6b01daf`, `8927f0f`, `607542b`). De formulieren gaan dan nog naar Formspree.
+- **Klikmeting**: per klik ook de knop (menu, hero, balk, zwevend, slotblok, tekst), de
+  broncategorie en de campagne- of partnercode. Nieuwe gebeurtenissen: binnenkomst via een
+  flyer of partner, en rekentoolgebruik. De herkomst blijft per tabblad in sessionStorage,
+  zonder ID. Bij een flyer of partner komt "(via flyer …)" achter de WhatsApp-tekst.
+- **De app** (`app/`): Node 24 met de ingebouwde SQLite, zonder npm-pakketten, op de eigen
+  VPS achter nginx.
+  - `/api/aanvraag`: telefooncontrole, honeypot, tijdval, limieten en Origin-controle.
+    Opgeslagen met toestemmingstekst en versie, herkomst en de berekening van een rekentool.
+  - Melding per aanvraag via een mailwachtrij.
+  - Herinneringslijst met dubbele opt-in, afmelden met één klik, en een jaarlijkse ronde die
+    pas na goedkeuring uitgaat.
+  - Bewaartermijnen worden 's nachts toegepast.
+  - Mail via Brevo: SMTP op poort 2525, omdat DigitalOcean 25, 465 en 587 blokkeert, en als
+    vangnet de Brevo-API.
+- **Server**: `app-installeren.sh`, de systemd-unit, `nginx-app.conf` en het server-blok
+  (`/api/`, `/beheer/`, `/app/` dicht), `APP.md`. Twijfelgevallen (te snel, veel links)
+  worden bewaard met [Controleer] en niet weggegooid.
+
+**Release B** (`d8c3763` en het privacybeleid). Pas uitrollen als APP.md §5 klopt.
+- **Formulieren**: de 8 formulieren gaan naar de eigen app, met één opbouw. Velden: dienst,
+  voorkeurstijd, en optioneel e-mail en opmerking. De toestemmingstekst noemt de
+  bewaartermijn. `check-formulieren.js` (in `bouw.js`) bewaakt dat de tekst op de pagina
+  gelijk is aan wat de app opslaat.
+- **Rekentools**: "Zullen wij dit precies voor u uitrekenen? Laat uw nummer achter."
+- **Nieuwe pagina's**:
+  - /bedankt/: wat gebeurt er nu, met een .vcf om het nummer op te slaan;
+  - /herinnering/, met een blok op drie pagina's en één regel op de homepage.
+- **Mobiele balk**: de onderkant van elke pagina viel 20px achter de balk. Hersteld.
+- **Privacybeleid (NL en EN)**:
+  - nieuw: formulierdata, herkomst en sessionStorage, de herinneringslijst, de tellingen
+    zonder cookies, het serverlogboek, doorverwijzers, en de verwerkers DigitalOcean, Brevo
+    en Porkbun;
+  - bewaartermijnen per soort gegeven;
+  - Formspree eruit.
