@@ -61,6 +61,14 @@ async function startApp(opties) {
       }
       return smtp.berichten;
     },
+    /* wacht tot alle mail uit de wachtrij verstuurd is */
+    async wachtrijLeeg() {
+      for (let i = 0; i < 100; i++) {
+        await app.ctx.mail.verwerk();
+        if (app.ctx.db.prepare('SELECT COUNT(*) AS n FROM uitgaand WHERE gestopt IS NULL').get().n === 0) return;
+        await new Promise((r) => setTimeout(r, 20));
+      }
+    },
     async stop() {
       await app.sluit();
       await smtp.sluit();

@@ -65,9 +65,11 @@ function maakHerinnering(ctx) {
 
     if (!http.vanEigenSite(req, ctx.origins)) return fout(403, 'Dit formulier kan alleen vanaf onze eigen site worden verstuurd.');
     const b = await http.leesFormulier(req, 8 * 1024);
-    const duur = Number(b.h_duur);
-    if (b._gotcha || (b.h_duur !== undefined && b.h_duur !== '' && Number.isFinite(duur) && duur < cfg.spam.min_seconden)) {
-      ctx.log('info', 'herinnering genegeerd: ' + (b._gotcha ? 'honeypot' : 'te snel'));
+    /* Alleen de honeypot. Een tijdval zou hier een snelle mens stil laten
+     * verdwijnen; de bevestigingsmail (dubbele opt-in) en de limieten per IP
+     * en per adres houden misbruik al tegen. */
+    if (b._gotcha) {
+      ctx.log('info', 'herinnering genegeerd: honeypot');
       return gelukt();
     }
     if (!perIp.mag(http.ipVan(req), ctx.klok().getTime())) return fout(429, 'Er zijn al een paar aanmeldingen vanaf dit adres verstuurd. Probeer het later nog eens.');

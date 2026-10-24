@@ -13,6 +13,7 @@ const ip = () => ({ 'X-Real-IP': '198.51.100.' + (++ipTeller) });
 const aantal = () => t.db.prepare('SELECT COUNT(*) AS n FROM aanvragen').get().n;
 
 test('geldige aanvraag: opgeslagen met toestemming en herkomst, melding aan Stan', async () => {
+  await t.wachtrijLeeg();
   const voor = t.smtp.berichten.length;
   const r = await t.post('/api/aanvraag', terugbellen({
     h_pagina: '/senioren/', h_vorige: '/', h_landing: '/zaandam/', h_verwijzer: 'www.google.nl', h_apparaat: 'mobiel',
@@ -57,15 +58,32 @@ test('zonder JavaScript: 303 naar /bedankt/', async () => {
   assert.equal(r.headers.get('location'), '/bedankt/');
 });
 
-test('honeypot en tijdval: zelfde antwoord, niets opgeslagen', async () => {
+test('zeker spam (honeypot, link in de naam): zelfde antwoord, niets opgeslagen', async () => {
   const voor = aantal();
   let r = await t.post('/api/aanvraag', terugbellen({ telefoon: '0612000002', _gotcha: 'http://spam' }), ip());
   assert.deepEqual(await r.json(), { ok: true, volgende: '/bedankt/' });
-  r = await t.post('/api/aanvraag', terugbellen({ telefoon: '0612000003', h_duur: '1.2' }), ip());
+  r = await t.post('/api/aanvraag', terugbellen({ telefoon: '0612000006', naam: 'Goedkoop http://spam.example' }), ip());
+  assert.deepEqual(await r.json(), { ok: true, volgende: '/bedankt/' });
+  assert.equal(aantal(), voor);
+});
+
+test('misschien spam (te snel, veel links): wel bewaard, met [Controleer] in de melding', async () => {
+  await t.wachtrijLeeg();
+  const voor = t.smtp.berichten.length;
+  let r = await t.post('/api/aanvraag', terugbellen({ telefoon: '0612000003', h_duur: '1.2' }), ip());
   assert.deepEqual(await r.json(), { ok: true, volgende: '/bedankt/' });
   r = await t.post('/api/aanvraag', terugbellen({ telefoon: '0612000004', opmerking: 'http://a.example http://b.example' }), ip());
   assert.deepEqual(await r.json(), { ok: true, volgende: '/bedankt/' });
-  assert.equal(aantal(), voor);
+  const v = (tel) => t.db.prepare('SELECT verdacht FROM aanvragen WHERE telefoon = ?').get(tel).verdacht;
+  assert.equal(v('+31612000003'), 'binnen 2,5 seconde verstuurd');
+  assert.equal(v('+31612000004'), 'meerdere links in de opmerking');
+  const mails = await t.mails(voor + 2);
+  const onderwerpen = mails.slice(voor).map((m) => nep.onderwerp(m.data));
+  assert.ok(onderwerpen.every((o) => o.startsWith('[Controleer] Nieuwe aanvraag')), onderwerpen.join(' | '));
+  assert.match(nep.tekst(mails[voor].data), /Let op, misschien spam/);
+  /* een gewone aanvraag heeft geen markering */
+  await t.post('/api/aanvraag', terugbellen({ telefoon: '0612000007' }), ip());
+  assert.equal(v('+31612000007'), null);
 });
 
 test('ongeldige invoer: 422 met een zin per veld', async () => {
@@ -140,6 +158,7 @@ test('bron: flyer, partner, bedrijfsprofiel', async () => {
 });
 
 test('rekentool: invoer en uitkomst gaan mee, ook in de melding', async () => {
+  await t.wachtrijLeeg();
   const voor = t.smtp.berichten.length;
   const berekening = JSON.stringify({ invoer: [['Hypotheek', '340000'], ['Rente', '3,7']], uitkomst: [['Per maand', '€ 339 – 357']] });
   const r = await t.post('/api/aanvraag', terugbellen({

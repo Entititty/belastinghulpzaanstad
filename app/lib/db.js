@@ -64,6 +64,7 @@ const MIGRATIES = [
     bron TEXT NOT NULL,
     bron_detail TEXT,
     apparaat TEXT,
+    verdacht TEXT,
     grondslag TEXT NOT NULL,
     toestemming_versie TEXT,
     toestemming_tekst TEXT,

@@ -6,9 +6,15 @@
  * invoer, is het geen dubbele klik. Dan opslaan met de toestemmingstekst en
  * de herkomst, en een melding in de mailwachtrij.
  *
- * Spam (honeypot ingevuld, binnen 2,5 seconde verstuurd, links in de naam)
- * krijgt hetzelfde antwoord als een echte aanvraag. Een bot ziet dus geen
- * verschil en past zich niet aan. Er wordt dan niets opgeslagen.
+ * Zeker spam (honeypot ingevuld, links in de naam) krijgt hetzelfde antwoord
+ * als een echte aanvraag, maar wordt niet opgeslagen. Een bot ziet dus geen
+ * verschil en past zich niet aan.
+ *
+ * Misschien spam (binnen 2,5 seconde verstuurd, meer dan één link in de
+ * opmerking) wordt WEL opgeslagen, met een markering "verdacht", en de
+ * melding krijgt [Controleer] in het onderwerp. Een snelle mens met
+ * automatisch invullen mag nooit stilletjes verdwijnen: die ziet de
+ * bedankpagina en wacht op een telefoontje.
  *
  * Met JavaScript stuurt formulier.js het formulier en krijgt JSON terug.
  * Zonder JavaScript doet de browser een gewone POST en volgt een 303 naar
@@ -55,7 +61,6 @@ function controleer(b, cfg) {
   const o = v.tekst(b.opmerking, formulier === 'bericht' ? 2000 : 1000);
   if (o.fout) fouten.opmerking = o.fout;
   else if (!o.waarde && formulier === 'bericht') fouten.opmerking = 'leeg';
-  if (o.spam) spam = true;
   if (!b.akkoord) fouten.akkoord = 'leeg';
 
   const rekentool = cfg.rekentools[b.rekentool] ? b.rekentool : null;
@@ -73,6 +78,7 @@ function controleer(b, cfg) {
       dienst: cfg.diensten.some((d) => d.code === b.dienst) ? b.dienst : 'onbekend',
       voorkeurstijd: cfg.voorkeurstijden.some((d) => d.code === b.voorkeurstijd) ? b.voorkeurstijd : 'maakt-niet-uit',
       opmerking: o.waarde || null,
+      veelLinks: !!o.spam,
       rekentool,
       berekening: berekening ? JSON.stringify(berekening) : null,
       pagina: v.pad(b.h_pagina),
@@ -117,11 +123,11 @@ function maakAanvraag(ctx) {
 
   const invoegen = db.prepare(`INSERT INTO aanvragen (aangemaakt, kanaal, formulier, naam, telefoon, telefoon_soort, email, dienst,
     voorkeurstijd, opmerking, rekentool, berekening, pagina, vorige_pagina, landingspagina, verwijzer, utm_source, utm_medium,
-    utm_campaign, utm_content, ref, partner_id, bron, bron_detail, apparaat, grondslag, toestemming_versie, toestemming_tekst,
+    utm_campaign, utm_content, ref, partner_id, bron, bron_detail, apparaat, verdacht, grondslag, toestemming_versie, toestemming_tekst,
     toestemming_tijd, status, status_tijd, gewijzigd)
     VALUES (:aangemaakt, 'formulier', :formulier, :naam, :telefoon, :telefoon_soort, :email, :dienst, :voorkeurstijd, :opmerking,
     :rekentool, :berekening, :pagina, :vorige_pagina, :landingspagina, :verwijzer, :utm_source, :utm_medium, :utm_campaign,
-    :utm_content, :ref, :partner_id, :bron, :bron_detail, :apparaat, 'toestemming', :versie, :toestemming_tekst, :aangemaakt,
+    :utm_content, :ref, :partner_id, :bron, :bron_detail, :apparaat, :verdacht, 'toestemming', :versie, :toestemming_tekst, :aangemaakt,
     'nieuw', :aangemaakt, :aangemaakt)`);
   invoegen.setAllowUnknownNamedParameters(true);
 
@@ -139,8 +145,8 @@ function maakAanvraag(ctx) {
     const b = await http.leesFormulier(req, 16 * 1024);
     const ip = http.ipVan(req);
 
-    if (b._gotcha || teSnel(b, cfg)) {
-      ctx.log('info', 'aanvraag genegeerd: ' + (b._gotcha ? 'honeypot' : 'te snel'));
+    if (b._gotcha) {
+      ctx.log('info', 'aanvraag genegeerd: honeypot');
       return gelukt();
     }
     if (!perIp.mag(ip, ctx.klok().getTime())) return fout(429, TE_VAAK);
@@ -155,9 +161,13 @@ function maakAanvraag(ctx) {
       return fout(422, teksten[Object.keys(teksten)[0]], teksten);
     }
     if (spam) {
-      ctx.log('info', 'aanvraag genegeerd: links in naam of opmerking');
+      ctx.log('info', 'aanvraag genegeerd: link in de naam');
       return gelukt();
     }
+    const twijfel = [];
+    if (teSnel(b, cfg)) twijfel.push('binnen ' + String(cfg.spam.min_seconden).replace('.', ',') + ' seconde verstuurd');
+    if (data.veelLinks) twijfel.push('meerdere links in de opmerking');
+    data.verdacht = twijfel.length ? twijfel.join('; ') : null;
     if (!data.pagina) data.pagina = v.pad(req.headers.referer) || null;
 
     const nu = ctx.klok();

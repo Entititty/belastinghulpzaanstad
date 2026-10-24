@@ -91,10 +91,13 @@ function meldingAanvraag(a, cfg, basisUrl) {
 
   /* "Weekend, avond 17:00–21:00" wordt "weekend avond" */
   const kortTijd = tijd.replace(/\s*\d.*$/, '').replace(/,/g, '').trim().toLowerCase();
-  const onderwerp = 'Nieuwe aanvraag: ' + dienst + (a.voorkeurstijd && a.voorkeurstijd !== 'maakt-niet-uit' ? ' (' + kortTijd + ')' : '');
+  const onderwerp = (a.verdacht ? '[Controleer] ' : '') + 'Nieuwe aanvraag: ' + dienst +
+    (a.voorkeurstijd && a.voorkeurstijd !== 'maakt-niet-uit' ? ' (' + kortTijd + ')' : '');
+  const twijfel = a.verdacht ? 'Let op, misschien spam: ' + a.verdacht + '. Kijk even of het echt lijkt voordat u belt.' : null;
 
   const tekst = [
     'Nieuwe aanvraag via de website.',
+    twijfel,
     '',
     'Bel: tel:' + a.telefoon + '  (' + nummer + ')',
     kanWa ? 'WhatsApp: ' + waLink(a.telefoon, groet) : null,
@@ -107,6 +110,7 @@ function meldingAanvraag(a, cfg, basisUrl) {
 
   const html = omhulsel(
     '<p style="margin:0 0 6px;font-size:14px;color:' + KLEUR.zacht + '">Nieuwe aanvraag via de website</p>' +
+    (twijfel ? '<p style="margin:0 0 12px;padding:10px 12px;background:#fff3d6;border:2px solid #8b5a00;border-radius:8px;color:#5c3b00;font-weight:bold">' + esc(twijfel) + '</p>' : '') +
     '<h1 style="margin:0 0 16px;font-size:22px">' + esc(a.naam) + ' &middot; ' + esc(dienst) + '</h1>' +
     '<p style="margin:0 0 8px">' + knop('tel:' + a.telefoon, '&#128222; Bel ' + esc(nummer), KLEUR.teal) +
     (kanWa ? knop(waLink(a.telefoon, groet), '&#128172; WhatsApp', KLEUR.groen) : '') + '</p>' +
