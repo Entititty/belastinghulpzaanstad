@@ -45,6 +45,9 @@ button.gevaar { background: #fff; color: var(--fout); border: 2px solid var(--fo
 .badge.klant { background: #e3f4e8; color: #1c6b34; }
 .badge.geen-interesse { background: #eceae7; color: #5f5248; }
 .badge.verdacht { background: #fde7e5; color: var(--fout); }
+.badge.benaderd { background: #fff1d6; color: #7a4a00; }
+.badge.actief { background: #e3f4e8; color: #1c6b34; }
+.badge.gestopt { background: #eceae7; color: #5f5248; }
 .status-knoppen { display: flex; flex-wrap: wrap; gap: 8px; }
 .status-knoppen button { background: #fff; color: var(--tekst); border: 2px solid var(--rand); }
 .status-knoppen button[aria-pressed="true"] { background: var(--teal); color: #fff; border-color: var(--teal); }
@@ -61,6 +64,10 @@ table.tabel th, table.tabel td { padding: 8px 10px; border-bottom: 1px solid var
 table.tabel td.getal, table.tabel th.getal { text-align: right; font-variant-numeric: tabular-nums; }
 .tabel-wrap { overflow-x: auto; margin: 0 0 14px; }
 .inlog { max-width: 420px; margin: 8vh auto 0; }
+input[type=file] { font: inherit; max-width: 100%; }
+.link-rij input[type=text] { flex: 1 1 220px; width: auto; }
+.qr-voorbeeld svg { display: block; width: 180px; height: auto; margin: 12px 0; }
+.import-fout { color: var(--fout); font-weight: 600; }
 .verborgen { display: none; }
 @media (min-width: 720px) {
   body { font-size: 16px; }

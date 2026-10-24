@@ -76,6 +76,7 @@ function maakApp(o) {
   ctx.herinnering = herinnering;
   ctx.beheer = maakBeheer(ctx);
   require('./lib/overzicht').registreer(ctx);
+  require('./lib/partners').registreer(ctx);
   const statisch = dev ? maakStatisch(root, log) : null;
 
   function gezond(req, res) {

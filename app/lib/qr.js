@@ -336,7 +336,7 @@ function svg(qr, opties) {
     }
   }
   return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + z + ' ' + z + '" width="' + z * schaal + '" height="' + z * schaal +
-    '" shape-rendering="crispEdges"' + (o.titel ? ' role="img" aria-label="' + String(o.titel).replace(/"/g, '&quot;') + '"' : '') + '>' +
+    '" shape-rendering="crispEdges"' + (o.titel ? ' role="img" aria-label="' + String(o.titel).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;') + '"' : '') + '>' +
     '<rect width="' + z + '" height="' + z + '" fill="#fff"/><path d="' + pad + '" fill="#000"/></svg>';
 }
 

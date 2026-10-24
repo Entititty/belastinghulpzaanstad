@@ -134,21 +134,28 @@ test('handmatig toevoegen: wie belde', async () => {
 });
 
 test('privacy: alles van één persoon exporteren en verwijderen', async () => {
-  /* dezelfde persoon staat ook op de herinneringslijst */
-  t.db.prepare("INSERT INTO herinneringen (email, status, aangemaakt, toestemming_versie, toestemming_tekst) VALUES ('piet@voorbeeld.nl', 'bevestigd', ?, 'herinnering-2026-10', 't')").run(t.nu().toISOString());
+  /* dezelfde persoon staat ook op de herinneringslijst, en is contactpersoon bij een partner */
+  const nu = t.nu().toISOString();
+  t.db.prepare("INSERT INTO herinneringen (email, status, aangemaakt, toestemming_versie, toestemming_tekst) VALUES ('piet@voorbeeld.nl', 'bevestigd', ?, 'herinnering-2026-10', 't')").run(nu);
+  t.db.prepare(`INSERT INTO partners (naam, type, rechtsvorm, contactpersoon, email, status, ref_code, notities, aangemaakt, gewijzigd)
+    VALUES ('Makelaardij Test', 'makelaar', 'bv', 'Piet', 'piet@voorbeeld.nl', 'actief', 'mtest', 'belt graag', ?, ?)`).run(nu, nu);
   const pagina = await (await haal('/beheer/persoon?q=piet@voorbeeld.nl')).text();
-  assert.match(pagina, /1 aanvraag\/aanvragen en 1 inschrijving/);
+  assert.match(pagina, /1 aanvraag\/aanvragen, 1 inschrijving\(en\) op de herinneringslijst en 1 keer contactpersoon bij een partner/);
   const r = await haal('/beheer/persoon.json?q=piet@voorbeeld.nl');
   const j = await r.json();
   assert.equal(j.aanvragen.length, 1);
   assert.equal(j.herinneringslijst.length, 1);
   assert.ok(Array.isArray(j.aanvragen[0].notities));
+  assert.deepEqual(j.contactpersoon_bij_partner.map((p) => [p.organisatie, p.contactpersoon, p.notities]), [['Makelaardij Test', 'Piet', 'belt graag']]);
   const weg = await stuur('/beheer/persoon/verwijderen', { q: 'piet@voorbeeld.nl' });
   assert.equal(weg.status, 303);
   assert.equal(t.db.prepare("SELECT COUNT(*) n FROM aanvragen WHERE email = 'piet@voorbeeld.nl'").get().n, 0);
   assert.equal(t.db.prepare("SELECT COUNT(*) n FROM herinneringen WHERE email = 'piet@voorbeeld.nl'").get().n, 0);
+  /* de organisatie blijft, de contactpersoon niet */
+  assert.deepEqual({ ...t.db.prepare("SELECT naam, contactpersoon, email, notities FROM partners WHERE ref_code = 'mtest'").get() },
+    { naam: 'Makelaardij Test', contactpersoon: null, email: null, notities: null });
   const log = t.db.prepare("SELECT details FROM logboek WHERE actie = 'privacy-verwijderd'").get().details;
-  assert.equal(log, '1 aanvragen, 1 herinneringen');
+  assert.equal(log, '1 aanvragen, 1 herinneringen, 1 partnercontacten');
   assert.ok(!t.db.prepare('SELECT group_concat(details) AS d FROM logboek').get().d.includes('piet'), 'geen adres in het logboek');
 });
 

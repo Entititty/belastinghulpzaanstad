@@ -638,3 +638,43 @@ de Telecommunicatiewet. Module 1 komt in twee uitrolstappen live; zie `server-se
   haalt alles opnieuw op.
 - **Controles**: de scripts die pagina's doorlopen, slaan `intern/` voortaan over. Het zijn
   lokale rapporten die nginx niet serveert.
+
+### Module 5: partners in /beheer/partners (gaat mee met release B of later)
+- **Alleen zakelijke relaties**:
+  - een rechtsvorm is verplicht, uit een lijst (BV, eenmanszaak, stichting, ...);
+  - "particulier" wordt geweigerd, ook in een import;
+  - bij een eenmanszaak of zzp'er staat de regel erbij: geen ongevraagde mail, sms,
+    WhatsApp of belacties;
+  - geen scraping;
+  - de app stuurt partners nooit iets.
+- **Toevoegen** met de hand, of als CSV uit Excel:
+  - puntkomma, komma of tab, en zowel UTF-8 als Windows-1252;
+  - u ziet eerst een controle met de fout per regel, daarna gaan alleen de goede
+    regels erin;
+  - dubbele namen en codes worden herkend.
+- **Per partner**:
+  - een code voor `?ref=`, gemaakt van de naam (`Jansen Makelaardij B.V.` wordt
+    `jansen-makelaardij`);
+  - een link naar de pagina die bij het soort partner past: makelaar en
+    hypotheekadviseur naar voorlopige teruggave, notaris en uitvaart naar
+    erfbelasting, ouderenbond naar senioren;
+  - een QR-code als SVG;
+  - een **kaart als PDF (A5)** om af te geven, met "Doorverwezen door ...", een regel
+    uit de beschrijving van de pagina (zonder prijzen), de QR-code, de link en het
+    telefoonnummer. Op de kaart staan alleen onze eigen gegevens.
+- **Cijfers per partner**, berekend uit de aanvragen en de klikmeting:
+  - doorverwijzingen, klanten en omzet;
+  - bezoeken via de link, en daarna bellen of WhatsApp.
+  - Aanvragen die binnenkwamen voordat de partner bestond, worden gekoppeld zodra de
+    code er is.
+- **Privacy**:
+  - Gestopt wist de contactpersoon, het nummer, het e-mailadres en de notities
+    (privacybeleid: "zolang wij samenwerken"). De naam en de cijfers blijven.
+  - /beheer/persoon vindt ook contactpersonen van partners, neemt ze mee in de
+    export en wist ze bij "Alles verwijderen".
+  - Het logboek noemt nummers, geen namen.
+- **PDF** met een eigen kleine schrijver (`app/lib/pdf.js`):
+  - Helvetica in WinAnsi, dus é, ’ en € werken;
+  - de QR-code als vectorvlakken;
+  - de test leest de code module voor module terug uit de PDF;
+  - in pdf.js gerenderd en bekeken.

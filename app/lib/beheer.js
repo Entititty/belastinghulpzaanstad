@@ -77,7 +77,7 @@ function maakBeheer(ctx) {
   function pagina(res, sessie, titel, actief, inhoud, o) {
     const opties = o || {};
     const melding = opties.melding ? h`<p class="melding${opties.fout ? ' fout' : ''}" role="${opties.fout ? 'alert' : 'status'}">${opties.melding}</p>` : '';
-    /* alleen pagina's die er al zijn (overzicht en partners komen in een latere module) */
+    /* alleen pagina's die er zijn: overzicht en partners komen uit hun eigen module */
     const bestaat = (href) => routes.some((r) => r.methode === 'GET' && r.patroon.test(href));
     const kop = h`<header class="kop"><a class="merk" href="/beheer/aanvragen">Beheer</a><nav class="menu" aria-label="Beheer">${MENU.filter((m) => bestaat(m[2])).map(([k, t, href]) =>
       h`<a href="${href}"${veilig(k === actief ? ' aria-current="page"' : '')}>${t}</a>`)}</nav>
@@ -384,13 +384,17 @@ function maakBeheer(ctx) {
     const t = v.telefoon(s);
     const e = v.email(s);
     if (t.waarde) {
-      return { wat: v.telefoonWeergave(t.waarde), aanvragen: db.prepare('SELECT * FROM aanvragen WHERE telefoon = ? ORDER BY aangemaakt').all(t.waarde), herinneringen: [] };
+      return {
+        wat: v.telefoonWeergave(t.waarde), aanvragen: db.prepare('SELECT * FROM aanvragen WHERE telefoon = ? ORDER BY aangemaakt').all(t.waarde), herinneringen: [],
+        partners: db.prepare('SELECT * FROM partners WHERE telefoon = ?').all(t.waarde)
+      };
     }
     if (e.waarde) {
       return {
         wat: e.waarde,
         aanvragen: db.prepare('SELECT * FROM aanvragen WHERE email = ? ORDER BY aangemaakt').all(e.waarde),
-        herinneringen: db.prepare('SELECT * FROM herinneringen WHERE email = ?').all(e.waarde)
+        herinneringen: db.prepare('SELECT * FROM herinneringen WHERE email = ?').all(e.waarde),
+        partners: db.prepare('SELECT * FROM partners WHERE email = ?').all(e.waarde)
       };
     }
     return null;
@@ -405,10 +409,12 @@ function maakBeheer(ctx) {
         <input type="search" id="p-q" name="q" value="${q}" placeholder="06 12 34 56 78 of naam@voorbeeld.nl"><button type="submit">Zoek</button></form>
       ${q && !r ? h`<p class="melding fout">Vul een geldig telefoonnummer of e-mailadres in.</p>` : ''}
       ${r ? h`<section class="kaart"><h2>Gevonden voor ${r.wat}</h2>
-        <p>${r.aanvragen.length} aanvraag/aanvragen en ${r.herinneringen.length} inschrijving(en) op de herinneringslijst.</p>
+        <p>${r.aanvragen.length} aanvraag/aanvragen, ${r.herinneringen.length} inschrijving(en) op de herinneringslijst en ${r.partners.length} keer contactpersoon bij een partner.</p>
         ${r.aanvragen.length ? h`<ul>${r.aanvragen.map((a) => h`<li><a href="/beheer/aanvraag/${a.id}">${a.naam}</a>, ${leesbaar(a.aangemaakt)}, ${STATUS_NAAM[a.status]}</li>`)}</ul>` : ''}
         ${r.herinneringen.length ? h`<ul>${r.herinneringen.map((x) => h`<li>Herinneringslijst: ${x.status === 'bevestigd' ? 'bevestigd' : 'nog niet bevestigd'}, aangemeld ${leesbaar(x.aangemaakt)}</li>`)}</ul>` : ''}
-        ${r.aanvragen.length + r.herinneringen.length ? h`<div class="rij">
+        ${r.partners.length ? h`<ul>${r.partners.map((p) => h`<li>Contactpersoon bij partner <a href="/beheer/partner/${p.id}">${p.naam}</a>${p.contactpersoon ? ' (' + p.contactpersoon + ')' : ''}</li>`)}</ul>
+          <p class="klein">Bij een partner wist "Alles verwijderen" de contactpersoon, het nummer, het e-mailadres en de notities; de organisatie zelf blijft.</p>` : ''}
+        ${r.aanvragen.length + r.herinneringen.length + r.partners.length ? h`<div class="rij">
           <a class="knop licht" href="/beheer/persoon.json?q=${encodeURIComponent(q)}">Exporteer (JSON)</a>
           <a class="knop licht" href="/beheer/persoon.csv?q=${encodeURIComponent(q)}">Exporteer (CSV)</a>
           <form method="post" action="/beheer/persoon/verwijderen" data-bevestig="Alle gegevens van deze persoon verwijderen? Dat kan niet ongedaan worden. Klanten met een lopende bewaarplicht: eerst nagaan!">${csrfVeld(sessie)}
@@ -422,7 +428,7 @@ function maakBeheer(ctx) {
     const r = zoekPersoon(q);
     if (!r) return http.json(res, 400, { ok: false, fout: 'geen geldig nummer of e-mailadres' });
     const datum = nl(ctx.klok()).datum;
-    dbm.log(db, ctx.klok, 'privacy-export', formaat + ': ' + r.aanvragen.length + ' aanvragen, ' + r.herinneringen.length + ' herinneringen');
+    dbm.log(db, ctx.klok, 'privacy-export', formaat + ': ' + r.aanvragen.length + ' aanvragen, ' + r.herinneringen.length + ' herinneringen, ' + r.partners.length + ' partnercontacten');
     if (formaat === 'json') {
       const data = {
         gemaakt: ctx.klok().toISOString(), door: 'Belastinghulp Zaanstad', gezocht_op: r.wat,
@@ -430,7 +436,9 @@ function maakBeheer(ctx) {
           berekening: a.berekening ? JSON.parse(a.berekening) : null,
           notities: db.prepare('SELECT tijd, tekst FROM notities WHERE aanvraag_id = ? ORDER BY tijd').all(a.id)
         })),
-        herinneringslijst: r.herinneringen
+        herinneringslijst: r.herinneringen,
+        contactpersoon_bij_partner: r.partners.map((p) => ({ organisatie: p.naam, contactpersoon: p.contactpersoon, telefoon: p.telefoon, email: p.email,
+          notities: p.notities, status: p.status, sinds: p.aangemaakt }))
       };
       return bestand(res, 'gegevens-' + datum + '.json', 'application/json; charset=utf-8', JSON.stringify(data, null, 2));
     }
@@ -444,8 +452,11 @@ function maakBeheer(ctx) {
     dbm.transactie(db, () => {
       for (const a of r.aanvragen) db.prepare('DELETE FROM aanvragen WHERE id = ?').run(a.id);
       for (const x of r.herinneringen) db.prepare('DELETE FROM herinneringen WHERE id = ?').run(x.id);
+      for (const p of r.partners) {
+        db.prepare('UPDATE partners SET contactpersoon = NULL, telefoon = NULL, email = NULL, notities = NULL, gewijzigd = ? WHERE id = ?').run(ctx.klok().toISOString(), p.id);
+      }
     });
-    dbm.log(db, ctx.klok, 'privacy-verwijderd', r.aanvragen.length + ' aanvragen, ' + r.herinneringen.length + ' herinneringen');
+    dbm.log(db, ctx.klok, 'privacy-verwijderd', r.aanvragen.length + ' aanvragen, ' + r.herinneringen.length + ' herinneringen, ' + r.partners.length + ' partnercontacten');
     return terug(res, '/beheer/persoon', 'persoonweg');
   }
 

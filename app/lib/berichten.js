@@ -36,9 +36,12 @@ function omhulsel(inhoud, voet) {
 
 function alinea(t) { return '<p style="margin:0 0 14px">' + t + '</p>'; }
 
+/* het nummer voor bellen en WhatsApp, zoals op de site */
+const TELEFOON = { weergave: '06 19 71 18 48', e164: '+31619711848' };
+
 function afzender(cfg) {
   const b = cfg.bedrijf.bedrijf;
-  return b.naam + ' · ' + b.vestigingsplaats + ' · ' + b.email + ' · 06 19 71 18 48';
+  return b.naam + ' · ' + b.vestigingsplaats + ' · ' + b.email + ' · ' + TELEFOON.weergave;
 }
 
 function label(lijst, code) {
@@ -262,4 +265,4 @@ function signaal(onderwerp, regels) {
   return { onderwerp: '[Belastinghulp] ' + onderwerp, tekst: regels.join('\n') + '\n\nAutomatisch bericht van belastinghulpzaanstad.nl' };
 }
 
-module.exports = { meldingAanvraag, bevestigHerinnering, alAangemeld, herinneringRonde, dagoverzicht, signaal, vulPrijzen, terugbelLink, esc, waLink, label, omhulsel, knop, alinea, KLEUR };
+module.exports = { meldingAanvraag, bevestigHerinnering, alAangemeld, herinneringRonde, dagoverzicht, signaal, vulPrijzen, terugbelLink, esc, waLink, label, omhulsel, knop, alinea, KLEUR, TELEFOON };

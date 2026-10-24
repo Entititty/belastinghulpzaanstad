@@ -322,6 +322,19 @@ Bewaar zo'n kopie versleuteld: er staan namen en telefoonnummers in.
 **Optioneel: een pushbericht** naast de mail, via Pushover of Telegram. Zie
 het einde van `app.env.voorbeeld`. Er gaan geen namen of nummers mee.
 
+**Partners** (makelaar, notaris, ouderenbond, buurthuis): onder Partners voegt
+u ze toe, of importeert u een lijst die u zelf in Excel maakte (CSV). Alleen
+bedrijven en organisaties; de rechtsvorm is verplicht. Elke partner krijgt:
+- een eigen link;
+- een QR-code;
+- een kaart (PDF, A5) om aan klanten mee te geven.
+
+Wie via die link binnenkomt, ziet u bij de aanvraag en in het overzicht. De
+app stuurt partners nooit iets, en een partner hoort niet wie er via hem kwam.
+Zet u een partner op Gestopt, dan worden de contactpersoon, het nummer, het
+e-mailadres en de notities gewist (privacybeleid: "zolang wij samenwerken").
+Scan één QR-code met uw telefoon voordat u kaarten laat drukken.
+
 ---
 
 ## 6. Dagelijks
