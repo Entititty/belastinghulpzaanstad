@@ -2133,3 +2133,20 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .slot-actie{margin:22px 0 0;background:#FFF8E1;border:1px solid #F5B947;border-radius:12px;padding:14px 18px;line-height:1.6;color:var(--clr-deep)}
 .slot-plaatsen{display:flex;flex-wrap:wrap;gap:8px 18px;margin:18px 0 0;padding:0;list-style:none}
 .slot-plaatsen a{color:var(--clr-teal);font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+
+/* ---- Formulieren naar de eigen server (november 2026): "Wilt u nog iets kwijt?", foute velden, herinnering ---- */
+.form-field textarea{min-height:96px;resize:vertical;line-height:1.5}
+.form-field [aria-invalid="true"]{border:2px solid #b3261e;background:#fff8f7}
+.form-meer{margin:2px 0 14px}
+.form-meer summary{display:block;padding:11px 0;min-height:48px;cursor:pointer;font-weight:700;color:var(--clr-teal);list-style:none;line-height:1.5}
+.form-meer summary::-webkit-details-marker{display:none}
+.form-meer summary::before{content:'+';display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;margin-right:10px;vertical-align:middle;border-radius:50%;border:2px solid var(--clr-teal);font-weight:800;line-height:1}
+.form-meer[open] summary::before{content:'\2212'}
+.form-meer summary span{font-weight:600;color:var(--clr-bark)}
+.form-meer[open] summary{margin-bottom:8px}
+.form-meer summary:focus-visible{outline:3px solid var(--clr-orange);outline-offset:2px;border-radius:6px}
+.form-consent-tekst{font-size:0.95rem;color:var(--clr-bark);line-height:1.6;margin:0 0 16px}
+.herinnering-kaart h2{font-family:var(--font-display);font-size:1.45rem;line-height:1.3;color:var(--clr-deep);margin:0 0 8px}
+.herinnering-kaart>p{color:var(--clr-bark);line-height:1.7;margin:0 0 16px}
+.tegels-herinnering{text-align:center;margin:14px auto 0;color:var(--clr-bark);line-height:1.7}
+@media (max-width:479px){.form-card .form-submit{width:100%}}

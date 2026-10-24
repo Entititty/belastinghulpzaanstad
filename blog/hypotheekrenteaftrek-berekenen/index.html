@@ -29,7 +29,7 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="apple-touch-icon" href="../../favicon.png">
-<link rel="stylesheet" href="../../belasting.e4c6766b.min.css">
+<link rel="stylesheet" href="../../belasting.496e0718.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Belastinghulp Zaanstad","item":"https://belastinghulpzaanstad.nl/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://belastinghulpzaanstad.nl/blog/"},{"@type":"ListItem","position":3,"name":"Hypotheekrenteaftrek berekenen","item":"https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/"}]}</script>
@@ -136,10 +136,10 @@
 }
 </script>
 <script src="/js/consent.js"></script>
-<script src="/js/toegankelijkheid.js?v=20261023" defer></script>
+<script src="/js/toegankelijkheid.js?v=20261024" defer></script>
 <script src="/js/tellingen.js?v=20261024" defer></script>
-<script src="/js/formulier.js" defer></script>
-<script src="/js/rekenhulp.js" defer></script>
+<script src="/js/formulier.js?v=20261024" defer></script>
+<script src="/js/rekenhulp.js?v=20261024" defer></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCQDYVY2M6"></script>
 <script>
@@ -287,28 +287,35 @@
 
       <!-- CTA onder de tool: gratis laten narekenen (rekenhulp.js zet de berekening in het formulier) -->
       <div id="narekenen" style="margin:0 0 36px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:24px 28px;">
-        <div style="font-weight:700;color:#2C2520;font-size:1.15rem;margin-bottom:6px;"><span aria-hidden="true">💶</span> Dit bedrag elke maand op uw rekening?</div>
-        <p style="margin:0 0 16px 0;color:#4a3f35;font-size:0.98rem;">Met een voorlopige teruggave krijgt u uw hypotheekvoordeel elke maand, in plaats van na de aangifte. Laat uw naam en telefoonnummer achter: Stan rekent het gratis na met uw eigen gegevens en belt u terug, meestal dezelfde dag. Uw invoer hierboven gaat mee. Aanvragen kost daarna <span data-prijs="voorlopige_teruggave">€109</span>, met partner <span data-prijs="voorlopige_teruggave.partner">€149</span>.</p>
-        <form action="https://formspree.io/f/xrbndagq" method="POST" data-rh-lead>
-          <input type="hidden" name="formtype" value="rekentool">
-          <input type="hidden" name="tool" value="Hypotheekrenteaftrek">
+        <div style="font-weight:700;color:#2C2520;font-size:1.15rem;margin-bottom:6px;"><span aria-hidden="true">💶</span> Zullen wij dit precies voor u uitrekenen?</div>
+        <p style="margin:0 0 16px 0;color:#4a3f35;font-size:0.98rem;">Laat uw nummer achter. Stan rekent het gratis na met uw eigen gegevens en belt u terug, meestal dezelfde dag. Met een voorlopige teruggave krijgt u uw hypotheekvoordeel daarna elke maand, in plaats van na de aangifte. Uw invoer hierboven gaat mee. Aanvragen kost <span data-prijs="voorlopige_teruggave">€109</span>, met partner <span data-prijs="voorlopige_teruggave.partner">€149</span>.</p>
+        <form action="/api/aanvraag" method="POST" data-rh-lead>
+          <input type="hidden" name="formulier" value="rekentool">
+          <input type="hidden" name="toestemming_versie" value="rekentool-2026-10">
+          <input type="hidden" name="dienst" value="voorlopige-teruggave">
+          <input type="hidden" name="rekentool" value="hypotheekrenteaftrek">
           <input type="hidden" name="berekening" value="">
-          <input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/?ok=1">
-          <input type="hidden" name="_subject" value="Rekentool hypotheekrenteaftrek: terugbelverzoek">
           <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-field">
             <label for="rh-naam">Uw naam</label>
-            <input type="text" id="rh-naam" name="naam" required autocomplete="name">
+            <input type="text" id="rh-naam" name="naam" required autocomplete="name" maxlength="80">
           </div>
           <div class="form-field">
             <label for="rh-tel">Telefoonnummer</label>
-            <input type="tel" id="rh-tel" name="telefoon" required autocomplete="tel">
+            <input type="tel" id="rh-tel" name="telefoon" required autocomplete="tel" maxlength="32">
           </div>
-          <div class="form-field">
-            <label for="rh-mail">E-mailadres <span style="font-weight:400;">(niet verplicht)</span></label>
-            <input type="email" id="rh-mail" name="email" autocomplete="email">
-          </div>
-          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens en deze berekening worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
+          <details class="form-meer">
+            <summary>Wilt u nog iets kwijt? <span>(niet verplicht)</span></summary>
+            <div class="form-field">
+              <label for="rh-email">E-mailadres</label>
+              <input type="email" id="rh-email" name="email" autocomplete="email" maxlength="254">
+            </div>
+            <div class="form-field">
+              <label for="rh-opm">Opmerking</label>
+              <textarea id="rh-opm" name="opmerking" maxlength="1000"></textarea>
+            </div>
+          </details>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens en deze berekening worden gebruikt om contact met mij op te nemen. Word ik geen klant, dan worden ze na 12 maanden verwijderd. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
           <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
         </form>
         <p style="margin:12px 0 0;font-size:0.95rem;color:#4a3f35;">Liever WhatsApp? <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20een%20voorlopige%20teruggave%20aanvragen%20voor%20mijn%20hypotheekrenteaftrek." rel="nofollow">Stuur een bericht</a>, of bel <a href="tel:+31619711848" rel="nofollow">06 &ndash; 19 71 18 48</a>.</p>

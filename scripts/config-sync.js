@@ -110,6 +110,11 @@ for (const [k, p] of Object.entries(prijzen)) {
 }
 const PRICE_RANGE = '€' + Math.min.apply(null, inRange) + '–€' + Math.max.apply(null, inRange);
 
+/* ---------- aanvragen: data/aanvraag.json (formulieren, herinneringslijst) ---------- */
+const AANVRAAG = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'aanvraag.json'), 'utf8'));
+const RONDES = (AANVRAAG.herinnering && AANVRAAG.herinnering.rondes) || [];
+if (!RONDES.length) fouten.push('data/aanvraag.json: herinnering.rondes is leeg');
+
 /* ---------- sjablonen voor de cfg-blokken ---------- */
 function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -219,7 +224,14 @@ const SJABLONEN = {
   },
   'correctie-2021-einddatum': function () {
     return leeg(P.EINDDATUM_CORRECTIE_2021) ? '' : ' De uiterste datum is ' + esc(P.EINDDATUM_CORRECTIE_2021) + ': dan moet uw verzoek over 2021 bij de Belastingdienst binnen zijn. Wacht daarom niet tot de laatste week.';
-  }
+  },
+  /* Het aangiftejaar van de laatste herinneringsronde in data/aanvraag.json
+   * ("Herinnering als de aangifte over 2026 opengaat"). Komt er een ronde
+   * bij, dan schuift het jaartal op de pagina's vanzelf mee. */
+  'herinnering-jaar': function () { return String(RONDES[RONDES.length - 1].aangiftejaar); },
+  /* De bewaartermijn van aanvragen in het privacybeleid, uit dezelfde instelling als de app */
+  'aanvraag-bewaartermijn': function () { return AANVRAAG.bewaren.aanvraag_maanden + ' maanden'; },
+  'aanvraag-bewaartermijn-en': function () { return AANVRAAG.bewaren.aanvraag_maanden + ' months'; }
 };
 
 /* ---------- het bedrijfsblok ----------

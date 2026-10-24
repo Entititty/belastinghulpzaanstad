@@ -113,8 +113,22 @@
   /* Dezelfde twee knoppen als op de pagina: "Bel of app" (links bellen, rechts
      WhatsApp, elk één tik) en "Bel mij terug". Heeft de pagina zelf een
      terugbelformulier, dan gaat die knop daarheen. */
+  /* De balk is hoger dan de 56px die de CSS onderaan vrijhoudt (icoon plus
+   * tekst; met grotere letters nog hoger). Meet hem en houd precies die
+   * ruimte vrij, anders valt de onderkant van elke pagina erachter. */
+  function ruimteOnderBalk(bar) {
+    function zet() {
+      var h = getComputedStyle(bar).display === 'none' ? 0 : Math.ceil(bar.getBoundingClientRect().height);
+      document.body.style.paddingBottom = h ? h + 'px' : '';
+    }
+    zet();
+    window.addEventListener('resize', zet);
+    if (window.ResizeObserver) new ResizeObserver(zet).observe(bar);
+  }
+
   function buildMobileBar() {
-    if (document.querySelector('.bhz-mobilebar')) return;
+    var bestaand = document.querySelector('.bhz-mobilebar');
+    if (bestaand) { ruimteOnderBalk(bestaand); return; }
     var bar = document.createElement('nav');
     bar.className = 'bhz-mobilebar';
     bar.setAttribute('aria-label', EN ? 'Quick contact' : 'Snel contact');
@@ -125,6 +139,7 @@
       '<a class="wa" href="https://wa.me/31619711848' + (EN ? '?text=Hi!%20I%20have%20a%20question.' : '') + '" rel="nofollow" aria-label="' + (EN ? 'WhatsApp' : 'App via WhatsApp') + '"><span class="ic" aria-hidden="true">💬</span>' + (EN ? 'WhatsApp' : 'App') + '</a>' +
       '<a href="' + terug + '"><span class="ic" aria-hidden="true">📅</span>' + (EN ? 'Call me back' : 'Bel mij terug') + '</a>';
     document.body.appendChild(bar);
+    ruimteOnderBalk(bar);
   }
 
   function init() {

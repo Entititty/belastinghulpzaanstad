@@ -29,7 +29,7 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="apple-touch-icon" href="../../favicon.png">
-<link rel="stylesheet" href="../../belasting.e4c6766b.min.css">
+<link rel="stylesheet" href="../../belasting.496e0718.min.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SpeakableSpecification","cssSelector":["h1",".blog-intro",".faq-question",".faq-answer p",".faq-answer"]}
 </script>
@@ -139,7 +139,7 @@
 }
 </script>
 <script src="/js/consent.js"></script>
-<script src="/js/toegankelijkheid.js?v=20261023" defer></script>
+<script src="/js/toegankelijkheid.js?v=20261024" defer></script>
 <script src="/js/tellingen.js?v=20261024" defer></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCQDYVY2M6"></script>
@@ -369,6 +369,26 @@
   </div>
 </div>
 
+
+<!-- HERINNERING -->
+<section id="herinnering" style="padding:56px 0;">
+  <div class="container" style="max-width:760px;">
+    <div class="form-card herinnering-kaart">
+      <h2>Herinnering als de aangifte over <!-- cfg:herinnering-jaar -->2026<!-- /cfg:herinnering-jaar --> opengaat</h2>
+      <p>Nog geen haast? Laat uw e-mailadres achter. Eind februari krijgt u één mail, zodat u op tijd weet dat het weer kan.</p>
+      <form action="/api/herinnering" method="POST" class="herinnering-form">
+        <input type="hidden" name="toestemming_versie" value="herinnering-2026-10">
+        <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+        <div class="form-field">
+          <label for="hr-d-email">Uw e-mailadres</label>
+          <input type="email" id="hr-d-email" name="email" required autocomplete="email" maxlength="254">
+        </div>
+        <p class="form-consent-tekst">Wij mailen u elk jaar één keer, eind februari, als de aangifte opengaat. Afmelden kan altijd met één klik; dan verwijderen wij uw e-mailadres meteen.</p>
+        <div><button type="submit" class="form-submit">Stuur mij een herinnering</button></div>
+      </form>
+    </div>
+  </div>
+</section>
 
 <!-- LEES OOK -->
 <div class="container" style="margin:0 auto 50px;">

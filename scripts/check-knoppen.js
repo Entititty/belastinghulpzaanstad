@@ -18,7 +18,9 @@
  * - elke "Bel of app" (.boa) heeft een belhelft (tel:+31619711848) en een
  *   WhatsApp-helft (wa.me/31619711848)
  * - "Bel mij terug" (.bmt) heet zo, of "Call me back" in het Engels
- * - verzendknoppen van formulieren: "Bel mij terug" of "Bericht versturen"
+ * - verzendknoppen van formulieren: "Bel mij terug" of "Bericht versturen";
+ *   voor de herinneringslijst "Stuur mij een herinnering", en op de pagina's
+ *   achter de link in de mail "Ja, bevestig mijn aanmelding" en "Afmelden"
  * - andere <button>s alleen voor FAQ, menu, printen en de cookievoorkeur
  *
  * GEBRUIK
@@ -30,7 +32,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const OUD = /\bclass="[^"]*\b(btn|btn-[a-z]+|tarief-btn|nav-cta|wa-float|mid-cta-phone|mid-cta-wa)\b[^"]*"/;
 const BMT = ['Bel mij terug', 'Call me back'];
-const VERZEND = ['Bel mij terug', 'Bericht versturen'];
+const VERZEND = ['Bel mij terug', 'Bericht versturen', 'Stuur mij een herinnering', 'Ja, bevestig mijn aanmelding', 'Afmelden'];
 const KNOP_OK = /\bclass="[^"]*\b(faq-question|mobile-toggle|cl-print)\b|onclick="window\.bhzResetConsent/;
 
 function walk(dir, acc) {

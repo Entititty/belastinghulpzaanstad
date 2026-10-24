@@ -13,10 +13,17 @@
  *
  * HET FORMULIER
  * Elk formulier met data-rh-lead krijgt in het verborgen veld "berekening" de
- * invoer en de uitkomst van de rekentool op dezelfde pagina ([data-rh-calc]).
+ * invoer en de uitkomst van de rekentool op dezelfde pagina ([data-rh-calc]),
+ * als JSON: {"invoer": [[label, waarde], ...], "uitkomst": [[label, waarde], ...]}.
  * Zo ziet Stan bij het terugbellen meteen waar het over gaat. Er gaat niets
  * weg zolang de bezoeker het formulier niet verstuurt; versturen doet
  * formulier.js, net als bij de andere formulieren.
+ *
+ * GEBRUIK TELLEN
+ * De eerste keer dat iemand iets invult, telt js/tellingen.js één
+ * "rekentool"-gebeurtenis (zonder de ingevulde waarden). Zo is te zien hoe
+ * vaak een rekentool gebruikt wordt tegenover hoe vaak het tot een aanvraag
+ * leidt.
  */
 (function () {
   'use strict';
@@ -128,6 +135,8 @@
     function opnieuw() { reken(box, C); vulFormulieren(); }
     box.addEventListener('input', opnieuw);
     box.addEventListener('change', opnieuw);
+    box.addEventListener('input', telGebruik);
+    box.addEventListener('change', telGebruik);
     opnieuw();
     box.setAttribute('data-rh-klaar', '1');
   }
@@ -159,21 +168,31 @@
   }
 
   function samenvatting(calc) {
-    var regels = ['Rekentool: ' + (calc.getAttribute('data-rh-calc') || document.title)];
+    var invoer = [], uitkomst = [];
     var velden = calc.querySelectorAll('input, select');
     for (var i = 0; i < velden.length; i++) {
       var el = velden[i];
       if (el.type === 'hidden' || el.type === 'button') continue;
       if ((el.type === 'radio' || el.type === 'checkbox') && !el.checked) continue;
       var waarde = el.tagName === 'SELECT' ? tekst(el.options[el.selectedIndex]) : el.value;
-      regels.push(labelVan(el) + ': ' + waarde);
+      invoer.push([labelVan(el), waarde]);
     }
     var uit = calc.querySelectorAll('[data-rh-uitkomst]');
     for (var j = 0; j < uit.length; j++) {
       var t = tekst(uit[j]);
-      if (t) regels.push(uit[j].getAttribute('data-rh-uitkomst') + ': ' + t);
+      if (t) uitkomst.push([uit[j].getAttribute('data-rh-uitkomst'), t]);
     }
-    return regels.join('\n');
+    return JSON.stringify({ invoer: invoer, uitkomst: uitkomst });
+  }
+
+  /* één keer per paginabezoek; de code staat in het formulier (rekentool) */
+  var geteld = false;
+  function telGebruik() {
+    if (geteld) return;
+    var veld = document.querySelector('form[data-rh-lead] input[name="rekentool"]');
+    if (!veld || typeof window.bhzTel !== 'function') return;
+    geteld = true;
+    window.bhzTel('rekentool', veld.value);
   }
 
   function vulFormulieren() {
@@ -192,7 +211,7 @@
   var oudeCalc = document.querySelector('[data-rh-calc]:not([data-rekenhulp])');
   if (oudeCalc) {
     ['input', 'change'].forEach(function (soort) {
-      oudeCalc.addEventListener(soort, function () { setTimeout(vulFormulieren, 0); });
+      oudeCalc.addEventListener(soort, function () { setTimeout(vulFormulieren, 0); telGebruik(); });
     });
   }
   document.addEventListener('submit', function (e) {

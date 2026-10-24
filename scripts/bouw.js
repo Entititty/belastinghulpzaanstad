@@ -32,6 +32,7 @@ const STAPPEN = [
   ['hash-css', CHECK ? ['--dry'] : []],
   ['check-html', []],
   ['check-knoppen', []],
+  ['check-formulieren', []],
   ['check-fiscale-cijfers', []],
   ['check-rekenvoorbeelden', []],
   ['check-jsonld', []],

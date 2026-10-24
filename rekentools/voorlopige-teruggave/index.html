@@ -26,7 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="stylesheet" href="/belasting.e4c6766b.min.css">
+<link rel="stylesheet" href="/belasting.496e0718.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">
@@ -203,10 +203,10 @@
 }
 </script>
 <script src="/js/consent.js"></script>
-<script src="/js/toegankelijkheid.js?v=20261023" defer></script>
+<script src="/js/toegankelijkheid.js?v=20261024" defer></script>
 <script src="/js/tellingen.js?v=20261024" defer></script>
-<script src="/js/formulier.js" defer></script>
-<script src="/js/rekenhulp.js" defer></script>
+<script src="/js/formulier.js?v=20261024" defer></script>
+<script src="/js/rekenhulp.js?v=20261024" defer></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCQDYVY2M6"></script>
 <script>
@@ -308,28 +308,35 @@
 <section id="narekenen" style="padding:8px 0 48px;">
   <div class="container" style="max-width:760px;">
     <div class="form-card">
-      <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 10px;">Gratis laten narekenen</h2>
-      <p style="line-height:1.7;color:var(--clr-bark);margin:0 0 18px;">Laat uw naam en telefoonnummer achter. Stan rekent het na met uw eigen gegevens en belt u terug, meestal dezelfde dag. Uw invoer en de uitkomst hierboven gaan mee, zodat u niets opnieuw hoeft te vertellen.</p>
-      <form action="https://formspree.io/f/xrbndagq" method="POST" data-rh-lead>
-        <input type="hidden" name="formtype" value="rekentool">
-        <input type="hidden" name="tool" value="Voorlopige teruggave">
+      <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 10px;">Zullen wij dit precies voor u uitrekenen?</h2>
+      <p style="line-height:1.7;color:var(--clr-bark);margin:0 0 18px;">Laat uw nummer achter. Stan rekent het gratis na met uw eigen gegevens en belt u terug, meestal dezelfde dag. Uw invoer en de uitkomst hierboven gaan mee, zodat u niets opnieuw hoeft te vertellen.</p>
+      <form action="/api/aanvraag" method="POST" data-rh-lead>
+        <input type="hidden" name="formulier" value="rekentool">
+        <input type="hidden" name="toestemming_versie" value="rekentool-2026-10">
+        <input type="hidden" name="dienst" value="voorlopige-teruggave">
+        <input type="hidden" name="rekentool" value="voorlopige-teruggave">
         <input type="hidden" name="berekening" value="">
-        <input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/rekentools/voorlopige-teruggave/?ok=1">
-        <input type="hidden" name="_subject" value="Rekentool voorlopige teruggave: terugbelverzoek">
         <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
         <div class="form-field">
           <label for="rh-naam">Uw naam</label>
-          <input type="text" id="rh-naam" name="naam" required autocomplete="name">
+          <input type="text" id="rh-naam" name="naam" required autocomplete="name" maxlength="80">
         </div>
         <div class="form-field">
           <label for="rh-tel">Telefoonnummer</label>
-          <input type="tel" id="rh-tel" name="telefoon" required autocomplete="tel">
+          <input type="tel" id="rh-tel" name="telefoon" required autocomplete="tel" maxlength="32">
         </div>
-        <div class="form-field">
-          <label for="rh-mail">E-mailadres <span style="font-weight:400;color:var(--clr-bark);">(niet verplicht)</span></label>
-          <input type="email" id="rh-mail" name="email" autocomplete="email">
-        </div>
-        <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens en deze berekening worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
+        <details class="form-meer">
+          <summary>Wilt u nog iets kwijt? <span>(niet verplicht)</span></summary>
+          <div class="form-field">
+            <label for="rh-email">E-mailadres</label>
+            <input type="email" id="rh-email" name="email" autocomplete="email" maxlength="254">
+          </div>
+          <div class="form-field">
+            <label for="rh-opm">Opmerking</label>
+            <textarea id="rh-opm" name="opmerking" maxlength="1000"></textarea>
+          </div>
+        </details>
+        <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens en deze berekening worden gebruikt om contact met mij op te nemen. Word ik geen klant, dan worden ze na 12 maanden verwijderd. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
         <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
       </form>
       <p class="rh-noot">Liever direct? Bel <a href="tel:+31619711848" rel="nofollow" style="color:var(--clr-teal);font-weight:700;">06 &ndash; 19 71 18 48</a> of <a href="https://wa.me/31619711848?text=Hoi!%20Ik%20heb%20de%20rekentool%20voorlopige%20teruggave%20gebruikt%20en%20heb%20een%20vraag." rel="nofollow" style="color:var(--clr-teal);font-weight:700;">stuur een WhatsApp</a>.</p>

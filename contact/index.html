@@ -26,7 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
-<link rel="stylesheet" href="../belasting.e4c6766b.min.css">
+<link rel="stylesheet" href="../belasting.496e0718.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">
@@ -132,9 +132,9 @@
 <link rel="alternate" hreflang="nl-NL" href="https://belastinghulpzaanstad.nl/contact/">
 <link rel="alternate" hreflang="x-default" href="https://belastinghulpzaanstad.nl/contact/">
 <script src="/js/consent.js"></script>
-<script src="/js/toegankelijkheid.js?v=20261023" defer></script>
+<script src="/js/toegankelijkheid.js?v=20261024" defer></script>
 <script src="/js/tellingen.js?v=20261024" defer></script>
-<script src="/js/formulier.js" defer></script>
+<script src="/js/formulier.js?v=20261024" defer></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCQDYVY2M6"></script>
 <script>
@@ -256,31 +256,55 @@
       <div class="form-card" id="terugbellen">
         <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 6px;">Vraag een terugbelverzoek aan</h2>
         <p style="color:var(--clr-bark);font-size:0.95rem;margin:0 0 18px;">Laat uw naam en nummer achter, wij bellen u terug. Meer hoeft niet.</p>
-        <form action="https://formspree.io/f/xrbndagq" method="POST">
-          <input type="hidden" name="formtype" value="terugbelverzoek">
-<input type="hidden" name="email" value="noreply@belastinghulpzaanstad.nl">
-<input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/contact/?ok=1">
-<input type="hidden" name="_subject" value="Terugbelverzoek via de website">
+        <form action="/api/aanvraag" method="POST">
+          <input type="hidden" name="formulier" value="terugbellen">
+          <input type="hidden" name="toestemming_versie" value="terugbellen-2026-10">
           <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-field">
             <label for="tb-naam">Uw naam</label>
-            <input type="text" id="tb-naam" name="naam" required autocomplete="name">
+            <input type="text" id="tb-naam" name="naam" required autocomplete="name" maxlength="80">
           </div>
           <div class="form-field">
             <label for="tb-tel">Telefoonnummer</label>
-            <input type="tel" id="tb-tel" name="telefoon" required autocomplete="tel">
+            <input type="tel" id="tb-tel" name="telefoon" required autocomplete="tel" maxlength="32">
           </div>
           <div class="form-field">
-            <label for="tb-dagdeel">Wanneer kunnen wij u het beste bereiken?</label>
-            <select id="tb-dagdeel" name="dagdeel">
-              <option value="Maakt niet uit">Maakt niet uit</option>
-              <option value="Doordeweeks avond (18:00-21:00)">Doordeweeks &rsquo;s avonds, 18:00&ndash;21:00</option>
-              <option value="Weekend ochtend (09:00-13:00)">Weekend, ochtend 09:00&ndash;13:00</option>
-              <option value="Weekend middag (13:00-17:00)">Weekend, middag 13:00&ndash;17:00</option>
-              <option value="Weekend avond (17:00-21:00)">Weekend, avond 17:00&ndash;21:00</option>
+            <label for="tb-dienst">Waar gaat het over?</label>
+            <select id="tb-dienst" name="dienst">
+              <option value="onbekend">Weet ik nog niet</option>
+              <option value="aangifte">Belastingaangifte</option>
+              <option value="aangifte-senioren">Aangifte voor senioren (AOW of pensioen)</option>
+              <option value="voorlopige-teruggave">Voorlopige teruggave</option>
+              <option value="correctie">Correctie of te late aangifte</option>
+              <option value="box3">Box 3: spaargeld en beleggingen</option>
+              <option value="toeslagen">Toeslagen</option>
+              <option value="eerste-baan">Eerste baan</option>
+              <option value="erfbelasting">Erfbelasting of schenking</option>
+              <option value="anders">Iets anders</option>
             </select>
           </div>
-          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
+          <div class="form-field">
+            <label for="tb-tijd">Wanneer kunnen wij u het beste bereiken?</label>
+            <select id="tb-tijd" name="voorkeurstijd">
+              <option value="maakt-niet-uit">Maakt niet uit</option>
+              <option value="doordeweeks-avond">Doordeweeks ’s avonds, 18:00–21:00</option>
+              <option value="weekend-ochtend">Weekend, ochtend 09:00–13:00</option>
+              <option value="weekend-middag">Weekend, middag 13:00–17:00</option>
+              <option value="weekend-avond">Weekend, avond 17:00–21:00</option>
+            </select>
+          </div>
+          <details class="form-meer">
+            <summary>Wilt u nog iets kwijt? <span>(niet verplicht)</span></summary>
+            <div class="form-field">
+              <label for="tb-email">E-mailadres</label>
+              <input type="email" id="tb-email" name="email" autocomplete="email" maxlength="254">
+            </div>
+            <div class="form-field">
+              <label for="tb-opm">Opmerking</label>
+              <textarea id="tb-opm" name="opmerking" maxlength="1000"></textarea>
+            </div>
+          </details>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Word ik geen klant, dan worden ze na 12 maanden verwijderd. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
           <div style="margin-top:18px;"><button type="submit" class="form-submit">Bel mij terug</button></div>
         </form>
       </div>
@@ -289,40 +313,42 @@
       <div class="form-card" id="bericht">
         <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 6px;">Of stuur een bericht</h2>
         <p style="color:var(--clr-bark);font-size:0.95rem;margin:0 0 18px;">Vertel kort waar het over gaat. Wij nemen dezelfde dag contact met u op.</p>
-        <form action="https://formspree.io/f/xrbndagq" method="POST">
-          <input type="hidden" name="formtype" value="bericht">
-<input type="hidden" name="_next" value="https://belastinghulpzaanstad.nl/contact/?ok=1">
-<input type="hidden" name="_subject" value="Bericht via het contactformulier">
+        <form action="/api/aanvraag" method="POST">
+          <input type="hidden" name="formulier" value="bericht">
+          <input type="hidden" name="toestemming_versie" value="bericht-2026-10">
           <div class="form-hp" aria-hidden="true"><label>Vul dit niet in<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-field">
             <label for="c-naam">Uw naam</label>
-            <input type="text" id="c-naam" name="naam" required autocomplete="name">
+            <input type="text" id="c-naam" name="naam" required autocomplete="name" maxlength="80">
           </div>
           <div class="form-field">
             <label for="c-tel">Telefoonnummer</label>
-            <input type="tel" id="c-tel" name="telefoon" required autocomplete="tel">
+            <input type="tel" id="c-tel" name="telefoon" required autocomplete="tel" maxlength="32">
           </div>
           <div class="form-field">
             <label for="c-email">E-mailadres</label>
-            <input type="email" id="c-email" name="email" required autocomplete="email">
+            <input type="email" id="c-email" name="email" required autocomplete="email" maxlength="254">
           </div>
           <div class="form-field">
-            <label for="c-onderwerp">Waar gaat het over?</label>
-            <select id="c-onderwerp" name="onderwerp">
-              <option value="Belastingaangifte laten doen">Belastingaangifte laten doen</option>
-              <option value="Voorlopige teruggave">Voorlopige teruggave</option>
-              <option value="Box 3 werkelijk rendement">Box 3: werkelijk rendement opgeven</option>
-              <option value="Correctie of late aangifte">Correctie of late aangifte</option>
-              <option value="Erfbelasting of schenking">Erfbelasting of schenking</option>
-              <option value="Toeslagen">Toeslagen</option>
-              <option value="Iets anders">Iets anders</option>
+            <label for="c-dienst">Waar gaat het over?</label>
+            <select id="c-dienst" name="dienst">
+              <option value="onbekend">Weet ik nog niet</option>
+              <option value="aangifte">Belastingaangifte</option>
+              <option value="aangifte-senioren">Aangifte voor senioren (AOW of pensioen)</option>
+              <option value="voorlopige-teruggave">Voorlopige teruggave</option>
+              <option value="correctie">Correctie of te late aangifte</option>
+              <option value="box3">Box 3: spaargeld en beleggingen</option>
+              <option value="toeslagen">Toeslagen</option>
+              <option value="eerste-baan">Eerste baan</option>
+              <option value="erfbelasting">Erfbelasting of schenking</option>
+              <option value="anders">Iets anders</option>
             </select>
           </div>
           <div class="form-field">
-            <label for="c-bericht">Uw bericht</label>
-            <textarea id="c-bericht" name="bericht" required></textarea>
+            <label for="c-opm">Uw bericht</label>
+            <textarea id="c-opm" name="opmerking" required maxlength="2000"></textarea>
           </div>
-          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om mijn vraag te beantwoorden. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
+          <label class="form-consent"><input type="checkbox" name="akkoord" required> <span>Ik ga ermee akkoord dat mijn gegevens worden gebruikt om mijn vraag te beantwoorden. Word ik geen klant, dan worden ze na 12 maanden verwijderd. Zie het <a href="/privacy/">privacybeleid</a>.</span></label>
           <div style="margin-top:18px;"><button type="submit" class="form-submit">Bericht versturen</button></div>
           <p class="form-note">Liever direct? Bel <a href="tel:+31619711848" rel="nofollow">06 – 19 71 18 48</a> of <a href="https://wa.me/31619711848" rel="nofollow">WhatsApp ons</a>.</p>
         </form>

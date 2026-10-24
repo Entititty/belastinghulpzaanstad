@@ -5,3 +5,6 @@
 # De scripts in scripts/ schrijven LF; een checkout die CRLF maakt, levert gemengde
 # regeleindes op en dan faalt "node scripts/bouw.js --check" op elke pagina.
 * text=auto eol=lf
+
+# De visitekaart op /bedankt/: vCard schrijft CRLF voor (RFC 6350)
+*.vcf text eol=crlf
