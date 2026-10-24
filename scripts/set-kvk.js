@@ -85,7 +85,7 @@ if (r.status !== 0) process.exit(r.status || 1);
 let fout = 0;
 (function walk(dir) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name === '.git' || e.name === 'node_modules') continue;
+    if (e.name === '.git' || e.name === 'node_modules' || e.name === 'intern') continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) { walk(p); continue; }
     if (e.name !== 'index.html') continue;

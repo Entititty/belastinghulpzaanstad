@@ -28,7 +28,7 @@ const STAART = '.min.css';
 function walk(dir, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) {
-      if (e.name === '.git' || e.name === 'node_modules') continue;
+      if (e.name === '.git' || e.name === 'node_modules' || e.name === 'intern') continue;
       walk(path.join(dir, e.name), acc);
     } else if (e.name === 'index.html') acc.push(path.join(dir, e.name));
   }

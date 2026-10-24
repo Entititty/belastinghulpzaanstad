@@ -603,3 +603,38 @@ de Telecommunicatiewet. Module 1 komt in twee uitrolstappen live; zie `server-se
   - het palet gecontroleerd met de validator: alle controles PASS op wit;
   - elke grafiek smal en breed gerenderd, zodat de tekst leesbaar blijft;
   - geen inline scripts of stijlen, dus de CSP blijft streng.
+
+### Module 4: buurtscore voor flyers en lokale ads (lokaal script, niet op de server)
+- **`node scripts/buurtscore.js`** rangschikt de 97 buurten van Zaanstad (GM0479), Oostzaan
+  (GM0431) en Wormerland (GM0880) per doelgroep. Er komen geen persoonsgegevens aan te pas.
+- **Bronnen**:
+  - CBS "Kerncijfers wijken en buurten" via OData (2025 = 86165NED). Het tabelnummer komt
+    uit de catalogus en de kolommen uit DataProperties.
+  - Is een cijfer leeg, dan neemt het script het jaar ervoor, en anders twee jaar ervoor.
+    In 2025 komen inkomen, vermogen en armoede uit 2024, voor 80 tot 85 buurten.
+  - De buurtgrenzen komen van PDOK; is de kaart van het jaar er nog niet, dan die van het
+    jaar ervoor.
+  - Ook getest met `--jaar 2026`. Het CBS splitst daar 65+ in 65-80 en 80+; het script telt
+    die op. PDOK gebruikt daar andere veldnamen, en het script kan met beide werken.
+- **Score 0-100** per doelgroep: een gewogen percentielrang. Het is een indicatie, geen
+  voorspelling.
+  - **Senioren**: % en aantal 65+.
+  - **Woningbezitters**: % koop, % 25-45, nieuwbouw, bouwjaar < 10 jaar.
+  - **Toeslagen**: % huur, corporatie, laagste 40% inkomens, armoede.
+  - **Box 3**: mediaan vermogen, hoogste 20% inkomens, % 65+.
+  - Buurten met minder dan 50 huishoudens vallen af (`--min-huishoudens`).
+- **Uitvoer** in `intern/buurtscore/<jaar>/` (gitignored, bedrijfsgegevens):
+  - `buurtscore.csv` en `buurtscore.xlsx`, met een blad per doelgroep, alle buurten en de
+    uitleg;
+  - `kaart.html`, een SVG-kaart per doelgroep met de top 10 genummerd;
+  - `top10.html`, printbaar, met per buurt de huishoudens, de geschatte doelgroep, de
+    flyerkosten (`--prijs 0,12`) en de QR-code;
+  - 329 QR-codes als SVG.
+- **QR-adres** per buurt en doelgroep:
+  `<landingspagina>?utm_source=flyer&utm_medium=print&utm_campaign=<buurt>&utm_content=<doelgroep>`.
+  Het overzicht in /beheer toont dan per buurt de scans, klikken, aanvragen en omzet. Alle
+  329 codes zijn teruggelezen en gelijk aan het adres in de CSV.
+- **Cache** in `intern/buurtscore/cache/`. Herhalen gaat zonder netwerk; `--vernieuw`
+  haalt alles opnieuw op.
+- **Controles**: de scripts die pagina's doorlopen, slaan `intern/` voortaan over. Het zijn
+  lokale rapporten die nginx niet serveert.

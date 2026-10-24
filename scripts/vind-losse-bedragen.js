@@ -106,7 +106,7 @@ function eenCijferAf(a, b) {
 /* ---------- de HTML doorlopen ---------- */
 function walk(dir, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name === 'node_modules' || e.name === '.git') continue;
+    if (e.name === 'node_modules' || e.name === '.git' || e.name === 'intern') continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, acc);
     else if (e.name.endsWith('.html')) acc.push(p);

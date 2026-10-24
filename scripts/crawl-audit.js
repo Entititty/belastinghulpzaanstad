@@ -22,7 +22,7 @@ const IN_LINK_MIN = 5;          // minder interne in-links = te weinig autoritei
 function walk(dir, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) {
-      if (e.name === 'node_modules' || e.name === '.git') continue;
+      if (e.name === 'node_modules' || e.name === '.git' || e.name === 'intern') continue;
       walk(path.join(dir, e.name), acc);
     } else if (e.name.endsWith('.html')) {
       acc.push(path.join(dir, e.name));

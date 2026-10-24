@@ -37,7 +37,7 @@ const KNOP_OK = /\bclass="[^"]*\b(faq-question|mobile-toggle|cl-print)\b|onclick
 
 function walk(dir, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (['.git', 'node_modules', 'docs', 'reports'].includes(e.name)) continue;
+    if (['.git', 'node_modules', 'docs', 'reports', 'intern'].includes(e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, acc);
     else if (e.name.endsWith('.html')) acc.push(p);

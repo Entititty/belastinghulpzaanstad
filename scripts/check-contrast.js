@@ -73,7 +73,7 @@ function naarHex(w) {
 function walk(dir, filter, acc) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) {
-      if (e.name === '.git' || e.name === 'node_modules') continue;
+      if (e.name === '.git' || e.name === 'node_modules' || e.name === 'intern') continue;
       walk(path.join(dir, e.name), filter, acc);
     } else if (filter(e.name)) acc.push(path.join(dir, e.name));
   }
