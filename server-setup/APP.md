@@ -261,6 +261,69 @@ bezoeker merkt daar niets van.
 
 ---
 
+## 5b. /beheer: uw eigen inlog
+
+/beheer is de lijst met aanvragen. Daar bekijkt u ze, belt of appt u met één
+tik, zet u de status, schrijft u notities en exporteert u naar Excel. Ook de
+privacyverzoeken en het goedkeuren van de herinnering gaan daar.
+
+**Inloggen vraagt drie dingen:** uw gebruikersnaam, uw wachtwoord, en een
+code van 6 cijfers uit een authenticator-app op uw telefoon (bijvoorbeeld
+Google Authenticator of Microsoft Authenticator; gratis). Met alleen een
+wachtwoord kan dus niemand erin.
+
+Eenmalig aanmaken, op de server:
+
+```bash
+sudo -u bhz-app node /var/www/belastinghulpzaanstad.nl/html/app/beheer-gebruiker.js stan
+```
+
+1. Typ twee keer een wachtwoord van minstens 12 tekens. U ziet niets
+   verschijnen terwijl u typt; dat hoort zo.
+2. Er verschijnt een QR-code. Kies in de app "account toevoegen" en
+   "QR-code scannen". Lukt scannen niet (bijvoorbeeld in een wit
+   terminalvenster), kies dan "sleutel invoeren" en typ de sleutel over die
+   eronder staat.
+3. Typ de 6 cijfers die de app toont. Klopt het, dan staat er "Gelukt".
+
+Daarna inloggen op https://belastinghulpzaanstad.nl/beheer/. Op uw telefoon
+blijft u 30 dagen ingelogd. **Nieuwe telefoon of wachtwoord vergeten?** Draai
+hetzelfde commando opnieuw: wachtwoord en app worden opnieuw ingesteld en
+alle oude sessies vervallen.
+
+Na 5 verkeerde pogingen vanaf één adres is inloggen 15 minuten dicht. Bij 20
+verkeerde pogingen in een uur, van welk adres ook, is het 15 minuten voor
+iedereen dicht en krijgt u een mail.
+
+**Wat de app verder elke dag doet:**
+
+| tijd | wat |
+|---|---|
+| 03:30 | opruimen: aanvragen zonder opdracht na 12 maanden, onbevestigde herinneringen na 7 dagen, klanten na 7 jaar |
+| 03:45 | back-up van de database in `/var/backups/belastinghulp/`, 14 dagen bewaard |
+| 04:15 | de klikmeting inlezen voor het overzicht |
+| 17:30 (doordeweeks), 08:30 (weekend) | het dagoverzicht per mail: de open aanvragen, nieuw eerst |
+
+Het dagoverzicht komt ook als er niets open staat. Krijgt u hem een keer
+niet, kijk dan in /beheer/status of in het logboek. De tijden staan in
+`data/aanvraag.json`.
+
+**Back-ups buiten de server:** de back-ups staan op dezelfde server. Gaat de
+hele server verloren, dan zijn ze dat ook. DigitalOcean heeft daarvoor
+"Backups" (kost extra, per week een kopie van de hele server). Of haal af en
+toe een kopie op:
+
+```bash
+scp <user>@<server>:/var/backups/belastinghulp/leads-$(date +%F).db .
+```
+
+Bewaar zo'n kopie versleuteld: er staan namen en telefoonnummers in.
+
+**Optioneel: een pushbericht** naast de mail, via Pushover of Telegram. Zie
+het einde van `app.env.voorbeeld`. Er gaan geen namen of nummers mee.
+
+---
+
 ## 6. Dagelijks
 
 - **Kijken of hij draait**: `systemctl status belastinghulp-app`

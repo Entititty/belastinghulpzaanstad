@@ -214,9 +214,52 @@ function herinneringRonde(ronde, cfg, basisUrl, afmeldLink, aangemeld) {
   return { onderwerp: ronde.onderwerp, tekst, html };
 }
 
+/* ---------------- dagoverzicht aan Stan ----------------
+ * open: de open aanvragen, nieuw eerst. extra: { nieuwSindsGisteren, lijst, waarschuwingen } */
+function dagoverzicht(open, extra, cfg, basisUrl) {
+  const STATUS = { nieuw: 'Nieuw', gebeld: 'Gebeld', afspraak: 'Afspraak' };
+  const nieuw = open.filter((a) => a.status === 'nieuw').length;
+  const onderwerp = open.length
+    ? 'Dagoverzicht: ' + open.length + ' open (' + nieuw + ' nieuw)'
+    : 'Dagoverzicht: geen open aanvragen';
+  const regel = (a) => {
+    const tijd = label(cfg.voorkeurstijden, a.voorkeurstijd);
+    return {
+      a,
+      kop: '[' + (STATUS[a.status] || a.status) + '] ' + a.naam + ' · ' + label(cfg.diensten, a.dienst) +
+        (a.voorkeurstijd && a.voorkeurstijd !== 'maakt-niet-uit' ? ' · ' + tijd : '') + (a.verdacht ? ' · CONTROLEER' : ''),
+      nummer: telefoonWeergave(a.telefoon) || a.email || '',
+      binnen: leesbaar(a.aangemaakt),
+      beheer: basisUrl + '/beheer/aanvraag/' + a.id
+    };
+  };
+  const regels = open.map(regel);
+  const kopTekst = [
+    open.length ? open.length + ' open aanvra' + (open.length === 1 ? 'ag' : 'gen') + ', waarvan ' + nieuw + ' nieuw.' : 'Er staan geen open aanvragen. Alles werkt.',
+    extra.nieuwSindsGisteren ? extra.nieuwSindsGisteren + ' nieuwe aanvra' + (extra.nieuwSindsGisteren === 1 ? 'ag' : 'gen') + ' sinds gisteren.' : null,
+    'Herinneringslijst: ' + extra.lijst + ' bevestigde aanmelding(en).'
+  ].filter(Boolean);
+  const tekst = kopTekst.concat(extra.waarschuwingen.map((w) => 'LET OP: ' + w), [''],
+    regels.map((r) => r.kop + '\n  ' + r.nummer + (r.a.telefoon ? '  tel:' + r.a.telefoon : '') + '\n  binnen ' + r.binnen + '\n  ' + r.beheer + '\n'),
+    ['Alle aanvragen: ' + basisUrl + '/beheer/aanvragen']).join('\n');
+  const html = omhulsel(
+    '<h1 style="margin:0 0 10px;font-size:20px">' + esc(onderwerp) + '</h1>' +
+    kopTekst.map((t) => alinea(esc(t))).join('') +
+    extra.waarschuwingen.map((w) => '<p style="margin:0 0 12px;padding:10px 12px;background:#fff3d6;border:2px solid #8b5a00;border-radius:8px;color:#5c3b00;font-weight:bold">' + esc(w) + '</p>').join('') +
+    regels.map((r) => '<div style="border-top:1px solid #e5ddd3;padding:12px 0">' +
+      '<p style="margin:0 0 6px;font-weight:bold">' + esc(r.kop) + '</p>' +
+      '<p style="margin:0 0 8px;color:' + KLEUR.zacht + '">' + esc(r.nummer) + ' · binnen ' + esc(r.binnen) + '</p>' +
+      (r.a.telefoon ? knop('tel:' + r.a.telefoon, '&#128222; Bel', KLEUR.teal) : '') +
+      '<a href="' + esc(r.beheer) + '" style="color:' + KLEUR.teal + ';font-weight:bold;margin-left:4px">Open</a></div>').join('') +
+    alinea('<a href="' + esc(basisUrl + '/beheer/aanvragen') + '" style="color:' + KLEUR.teal + ';font-weight:bold">Alle aanvragen</a>'),
+    'Automatisch dagoverzicht van belastinghulpzaanstad.nl'
+  );
+  return { onderwerp, tekst, html };
+}
+
 /* Korte signalen aan Stan: platte tekst */
 function signaal(onderwerp, regels) {
   return { onderwerp: '[Belastinghulp] ' + onderwerp, tekst: regels.join('\n') + '\n\nAutomatisch bericht van belastinghulpzaanstad.nl' };
 }
 
-module.exports = { meldingAanvraag, bevestigHerinnering, alAangemeld, herinneringRonde, signaal, vulPrijzen, terugbelLink, esc, waLink, label, omhulsel, knop, alinea, KLEUR };
+module.exports = { meldingAanvraag, bevestigHerinnering, alAangemeld, herinneringRonde, dagoverzicht, signaal, vulPrijzen, terugbelLink, esc, waLink, label, omhulsel, knop, alinea, KLEUR };

@@ -1,0 +1,71 @@
+/* /beheer — eerst voor de telefoon, groot en duidelijk. Kleuren van de site. */
+:root { --teal: #15756a; --teal-donker: #0f5a51; --groen: #188741; --tekst: #2c2520; --zacht: #5f5248; --rand: rgba(44,37,32,0.14); --vlak: #faf6f0; --fout: #b3261e; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--tekst); background: var(--vlak); }
+a { color: var(--teal); }
+h1 { font-size: 1.45rem; line-height: 1.25; margin: 0 0 14px; }
+h2 { font-size: 1.15rem; margin: 26px 0 10px; }
+.kop { position: sticky; top: 0; z-index: 5; background: #fff; border-bottom: 1px solid var(--rand); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 8px 14px; }
+.merk { font-weight: 800; text-decoration: none; color: var(--teal); margin-right: 6px; }
+/* telefoon: "Beheer" en "Uitloggen" op één regel, het menu eronder over de volle breedte */
+.uit { margin-left: auto; order: 2; }
+.menu { display: flex; gap: 2px; overflow-x: auto; flex: 1 1 100%; order: 3; -webkit-overflow-scrolling: touch; }
+.menu a { padding: 10px 10px; white-space: nowrap; text-decoration: none; color: var(--tekst); border-radius: 8px; font-weight: 600; }
+.menu a[aria-current="page"] { background: #e6f3f1; color: var(--teal-donker); }
+.uit button { background: none; border: 1px solid var(--rand); border-radius: 8px; padding: 8px 12px; font: inherit; font-size: 0.9rem; cursor: pointer; color: var(--zacht); }
+.inhoud { max-width: 960px; margin: 0 auto; padding: 18px 14px 60px; }
+.melding { padding: 12px 14px; border-radius: 10px; margin: 0 0 16px; font-weight: 600; background: #e6f5f3; color: #14695f; border: 2px solid #14695f; }
+.melding.fout { background: #fff3f2; color: var(--fout); border-color: var(--fout); }
+.kaart { background: #fff; border: 1px solid var(--rand); border-radius: 12px; padding: 16px; margin: 0 0 14px; }
+label { display: block; font-weight: 700; margin: 12px 0 6px; }
+input[type=text], input[type=tel], input[type=email], input[type=password], input[type=number], input[type=search], select, textarea {
+  width: 100%; font: inherit; padding: 11px 12px; border: 1px solid rgba(44,37,32,0.3); border-radius: 10px; background: #fff; min-height: 48px; }
+textarea { min-height: 96px; resize: vertical; }
+button, .knop { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 0; background: var(--teal); color: #fff; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+button:hover, .knop:hover { background: var(--teal-donker); }
+.knop.wa { background: var(--groen); }
+.knop.licht, button.licht { background: #fff; color: var(--tekst); border: 2px solid var(--rand); }
+button.gevaar { background: #fff; color: var(--fout); border: 2px solid var(--fout); }
+.rij { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.bel-rij { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 14px; }
+.bel-rij .knop { font-size: 1.1rem; min-height: 56px; padding: 0 22px; }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px 12px; align-items: end; }
+.filters label { margin: 0 0 4px; font-size: 0.9rem; }
+.lijst { list-style: none; padding: 0; margin: 0; }
+.lijst li { background: #fff; border: 1px solid var(--rand); border-radius: 12px; margin: 0 0 10px; display: flex; align-items: stretch; }
+.lijst li > a { flex: 1; display: block; padding: 12px 14px; text-decoration: none; color: inherit; min-width: 0; }
+.lijst .naam { font-weight: 800; font-size: 1.08rem; }
+.lijst .sub { color: var(--zacht); font-size: 0.95rem; overflow-wrap: anywhere; }
+.lijst li > a.bel { flex: 0 0 auto; display: flex; align-items: center; padding: 0 18px; border-left: 1px solid var(--rand); font-weight: 700; text-decoration: none; color: var(--teal); }
+.badge { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.8rem; font-weight: 800; margin-right: 6px; vertical-align: 2px; background: #eee; color: #333; }
+.badge.nieuw { background: #fff1d6; color: #7a4a00; }
+.badge.gebeld { background: #e3eefc; color: #1d4f91; }
+.badge.afspraak { background: #efe6fb; color: #5b2f99; }
+.badge.klant { background: #e3f4e8; color: #1c6b34; }
+.badge.geen-interesse { background: #eceae7; color: #5f5248; }
+.badge.verdacht { background: #fde7e5; color: var(--fout); }
+.status-knoppen { display: flex; flex-wrap: wrap; gap: 8px; }
+.status-knoppen button { background: #fff; color: var(--tekst); border: 2px solid var(--rand); }
+.status-knoppen button[aria-pressed="true"] { background: var(--teal); color: #fff; border-color: var(--teal); }
+dl.gegevens { display: grid; grid-template-columns: minmax(110px, 30%) 1fr; gap: 6px 12px; margin: 0; }
+dl.gegevens dt { color: var(--zacht); }
+dl.gegevens dd { margin: 0; overflow-wrap: anywhere; }
+.notities { list-style: none; padding: 0; margin: 0 0 12px; }
+.notities li { border-left: 3px solid var(--teal); padding: 4px 0 4px 10px; margin: 0 0 10px; white-space: pre-wrap; }
+.notities time { display: block; color: var(--zacht); font-size: 0.85rem; }
+.klein { font-size: 0.9rem; color: var(--zacht); }
+pre.mail { white-space: pre-wrap; background: #fff; border: 1px solid var(--rand); border-radius: 10px; padding: 14px; font: 0.95rem/1.5 system-ui, sans-serif; }
+table.tabel { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--rand); border-radius: 12px; overflow: hidden; font-size: 0.95rem; }
+table.tabel th, table.tabel td { padding: 8px 10px; border-bottom: 1px solid var(--rand); text-align: left; vertical-align: top; }
+table.tabel td.getal, table.tabel th.getal { text-align: right; font-variant-numeric: tabular-nums; }
+.tabel-wrap { overflow-x: auto; margin: 0 0 14px; }
+.inlog { max-width: 420px; margin: 8vh auto 0; }
+.verborgen { display: none; }
+@media (min-width: 720px) {
+  body { font-size: 16px; }
+  .inhoud { padding-top: 24px; }
+  /* breed scherm: alles op één regel */
+  .menu { flex: 1 1 auto; order: 1; }
+  .uit { order: 2; }
+}

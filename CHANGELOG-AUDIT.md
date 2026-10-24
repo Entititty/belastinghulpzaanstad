@@ -555,3 +555,32 @@ de Telecommunicatiewet. Module 1 komt in twee uitrolstappen live; zie `server-se
     en Porkbun;
   - bewaartermijnen per soort gegeven;
   - Formspree eruit.
+
+### Module 2: opvolging in /beheer (gaat mee met release B)
+- **Inloggen**: naam, wachtwoord (scrypt) en een 6-cijferige code uit een authenticator-app
+  (TOTP volgens RFC 6238, getest met de officiële testvectoren). Een code werkt maar één
+  keer. Sessiecookie `__Host-` (Secure, HttpOnly, SameSite=Strict), CSRF-token en
+  Origin-controle bij elke POST, CSP zonder inline scripts. Na 5 foute pogingen per adres
+  15 minuten dicht; bij 20 in een uur dicht voor iedereen, met een mail.
+  `app/beheer-gebruiker.js` maakt de gebruiker aan, met een QR-code in de terminal.
+- **Lijst en detail**, gemaakt voor de telefoon:
+  - filters op status, dienst, bron en periode, en zoeken op naam, nummer of e-mail;
+  - grote knoppen voor bellen en WhatsApp;
+  - status met één tik (met een notitie in de geschiedenis), notities, omzet;
+  - rekentoolgegevens, herkomst en toestemming.
+- **Handmatig toevoegen** voor wie belde of appte. Grondslag: zelf contact opgenomen.
+- **Export** als CSV (puntkomma, BOM, beveiligd tegen formules) en als echte .xlsx (eigen
+  zip-schrijver, in Excel geopend en gecontroleerd).
+- **Privacy**: zoeken op nummer of e-mail, alles exporteren (JSON/CSV) of alles
+  verwijderen. Het logboek noemt aantallen, nooit namen.
+- **Herinnering**: voorbeeld van de mail en de tekst goedkeuren.
+- **Status**: de mail, de wachtrij, de back-ups en het logboek, plus een proefmail.
+- **Elke dag**:
+  - het dagoverzicht (doordeweeks 17:30, in het weekend 08:30), ook bij 0 open;
+  - een back-up (VACUUM INTO, 14 dagen);
+  - de klikmeting inlezen (herhaalbaar).
+- **Push** via Pushover of Telegram is ingebouwd maar staat uit, en gaat zonder
+  persoonsgegevens.
+- **QR-encoder** (`app/lib/qr.js`):
+  - de test leest elke code terug en controleert Reed-Solomon;
+  - module voor module gelijk aan qrcode-generator 1.4.4 (40 van de 40).

@@ -55,9 +55,15 @@ const LEESBAAR = new Intl.DateTimeFormat('nl-NL', {
 });
 const DATUM = new Intl.DateTimeFormat('nl-NL', { timeZone: ZONE, day: 'numeric', month: 'long', year: 'numeric' });
 
-/* "za 24 okt, 18:03" */
-function leesbaar(iso) { return iso ? LEESBAAR.format(new Date(iso)) : ''; }
+/* "za 24 okt, 18:03"; een ongeldige datum geeft lege tekst in plaats van een fout */
+function leesbaar(iso) {
+  const d = iso ? new Date(iso) : null;
+  return d && !isNaN(d) ? LEESBAAR.format(d) : '';
+}
 /* "24 oktober 2026" */
-function datumTekst(iso) { return iso ? DATUM.format(new Date(iso)) : ''; }
+function datumTekst(iso) {
+  const d = iso ? new Date(iso) : null;
+  return d && !isNaN(d) ? DATUM.format(d) : '';
+}
 
 module.exports = { ZONE, nl, vanNl, isoNu, minMaanden, minDagen, minMinuten, leesbaar, datumTekst };

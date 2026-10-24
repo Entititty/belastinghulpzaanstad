@@ -27,6 +27,9 @@ const { maakAanvraag } = require('./lib/aanvraag');
 const { maakHerinnering } = require('./lib/herinnering');
 const { maakPlanner, opruimen } = require('./lib/taken');
 const { maakStatisch } = require('./lib/statisch');
+const { maakBeheer } = require('./lib/beheer');
+const { maakPush } = require('./lib/push');
+const { dagoverzicht, dagoverzichtTijd, backup, klikkenInlezen } = require('./lib/dagelijks');
 
 const ROOT = path.resolve(__dirname, '..');
 
@@ -66,8 +69,12 @@ function maakApp(o) {
 
   const ctx = { root, dev, config, env, klok, log, db, basisUrl, origins };
   ctx.mail = maakMailer({ db, klok, env, log, verstuur: opties.verstuur });
+  ctx.push = maakPush(env, log, basisUrl);
+  ctx.commit = () => commit(root);
   const aanvraag = maakAanvraag(ctx);
   const herinnering = maakHerinnering(ctx);
+  ctx.herinnering = herinnering;
+  ctx.beheer = maakBeheer(ctx);
   const statisch = dev ? maakStatisch(root, log) : null;
 
   function gezond(req, res) {
@@ -110,7 +117,10 @@ function maakApp(o) {
   const planner = maakPlanner(ctx, [
     { naam: 'wachtrij', elkeMs: 60e3, doe: () => ctx.mail.verwerk() },
     { naam: 'herinnering', elkeMs: 60e3, doe: () => herinnering.ronde() },
-    { naam: 'opruimen', om: config.planning.opruimen, doe: () => opruimen(ctx) }
+    { naam: 'opruimen', om: config.planning.opruimen, doe: () => opruimen(ctx) },
+    { naam: 'backup', om: config.planning.backup, doe: () => backup(ctx) },
+    { naam: 'klikken', om: config.planning.klikken_inlezen, doe: () => klikkenInlezen(ctx) },
+    { naam: 'dagoverzicht', om: dagoverzichtTijd(config), doe: () => dagoverzicht(ctx) }
   ]);
   ctx.planner = planner;
 
