@@ -584,3 +584,22 @@ de Telecommunicatiewet. Module 1 komt in twee uitrolstappen live; zie `server-se
 - **QR-encoder** (`app/lib/qr.js`):
   - de test leest elke code terug en controleert Reed-Solomon;
   - module voor module gelijk aan qrcode-generator 1.4.4 (40 van de 40).
+
+### Module 3: rapportage in /beheer/overzicht (gaat mee met release B)
+- **Periodekeuze** bovenaan, voor de hele pagina: 4, 13 of 52 weken, dit jaar of alles.
+- **Kerncijfers**: aanvragen, klanten, conversie, omzet en klikken op bellen of WhatsApp,
+  met het verschil met de even lange periode ervoor.
+- **Aanvragen per week**: tot 26 weken per week, daarna per maand.
+- **Klikken op bellen en WhatsApp**: twee lijnen, met een legenda en een label aan het
+  eind.
+- **Tabellen met staafjes** per bron, dienst, rekentool en partner. Steeds aanvragen,
+  klanten, conversie en omzet. Bij de rekentools ook "gebruikt" tegenover "aanvragen".
+- **Klikken per knop**.
+- **Flyers per buurt**: scans, klikken, aanvragen, klanten, omzet.
+- **Klikken nu inlezen** met een knop, naast het nachtelijke inlezen.
+- **Grafieken** als SVG van de server, volgens de dataviz-skill:
+  - dunne kolommen met een afgeronde kop, lijnen van 2px, haarlijnen;
+  - een tooltip bij aanwijzen, aantikken of Tab, en een tabel bij elke grafiek;
+  - het palet gecontroleerd met de validator: alle controles PASS op wit;
+  - elke grafiek smal en breed gerenderd, zodat de tekst leesbaar blijft;
+  - geen inline scripts of stijlen, dus de CSP blijft streng.

@@ -61,6 +61,21 @@ async function startApp(opties) {
       }
       return smtp.berichten;
     },
+    /* inloggen op /beheer; geeft haal(pad) en stuur(pad, velden) met cookie en CSRF */
+    async beheer() {
+      const S = require('../lib/sessie');
+      const geheim = S.maakGebruiker(app.ctx.db, klok, 'stan', 'een heel lang wachtwoord');
+      const r = await t.post('/beheer/inloggen', { naam: 'stan', wachtwoord: 'een heel lang wachtwoord', code: S.totp(geheim, nu.getTime()) },
+        { Accept: 'text/html', 'X-Real-IP': '203.0.113.' + Math.floor(Math.random() * 200) });
+      const cookie = String(r.headers.get('set-cookie') || '').split(';')[0];
+      if (!cookie) throw new Error('inloggen mislukt: ' + r.status);
+      const lijst = await (await fetch(basis + '/beheer/aanvragen', { headers: { Cookie: cookie } })).text();
+      const csrf = /name="csrf" value="([^"]+)"/.exec(lijst)[1];
+      return {
+        haal: (pad) => fetch(basis + pad, { redirect: 'manual', headers: { Cookie: cookie } }),
+        stuur: (pad, velden, kop) => t.post(pad, Object.assign({ csrf }, velden), Object.assign({ Cookie: cookie, Accept: 'text/html' }, kop || {}))
+      };
+    },
     /* wacht tot alle mail uit de wachtrij verstuurd is */
     async wachtrijLeeg() {
       for (let i = 0; i < 100; i++) {

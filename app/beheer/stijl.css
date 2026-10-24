@@ -69,3 +69,44 @@ table.tabel td.getal, table.tabel th.getal { text-align: right; font-variant-num
   .menu { flex: 1 1 auto; order: 1; }
   .uit { order: 2; }
 }
+
+/* ---- overzicht: kerncijfers, grafieken, tabellen ----
+ * Kleuren van de dataviz-skill (gevalideerd op wit): reeks 1 #2a78d6, reeks 2 #eb6834,
+ * raster #e1e0d9, as #c3c2b7, astekst #898781. Tekst nooit in de reekskleur. */
+.kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 0 0 14px; }
+.kpi-tegel { background: #fff; border: 1px solid var(--rand); border-radius: 12px; padding: 12px 14px; }
+.kpi-label { color: var(--zacht); font-size: 0.9rem; }
+.kpi-waarde { font-size: 1.7rem; font-weight: 600; line-height: 1.2; margin-top: 2px; }
+.kpi-delta { font-size: 0.85rem; color: var(--zacht); margin-top: 2px; }
+.kpi-delta.op { color: #006300; }
+.kpi-delta.neer { color: var(--fout); }
+.kpi-uitleg { font-size: 0.8rem; color: var(--zacht); }
+.figuur { margin: 0 0 14px; }
+.figuur figcaption h2 { margin-top: 0; }
+.grafiek { display: block; width: 100%; height: auto; }
+.alleen-smal .grafiek { max-width: 360px; }
+.alleen-breed .grafiek { max-width: 720px; }
+.alleen-breed { display: none; }
+.g-as { font-size: 11px; fill: #898781; font-variant-numeric: tabular-nums; }
+.g-waarde, .g-label { font-size: 12px; fill: var(--tekst); font-weight: 600; }
+.grafiek .hit { outline: none; }
+.grafiek .hit:hover, .grafiek .hit:focus { fill: rgba(44, 37, 32, 0.06); }
+.legenda { margin: 0 0 6px; font-size: 0.9rem; color: var(--zacht); }
+.sleutel { display: inline-block; width: 16px; height: 2px; vertical-align: middle; margin: 0 6px 0 0; border-radius: 1px; }
+.sleutel.s1 { background: #2a78d6; }
+.sleutel.s2 { background: #eb6834; margin-left: 12px; }
+.staaf-kol { width: 110px; }
+.staafje { display: block; }
+details > summary { cursor: pointer; color: var(--teal); font-weight: 700; margin: 8px 0; }
+.tip { position: fixed; z-index: 20; max-width: 260px; background: #2c2520; color: #fff; padding: 6px 10px; border-radius: 8px;
+  font-size: 0.85rem; line-height: 1.4; white-space: pre-line; pointer-events: none; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18); }
+.tip[hidden] { display: none; }
+@media (min-width: 720px) {
+  .alleen-smal { display: none; }
+  .alleen-breed { display: block; }
+}
+/* telefoon: de staafjeskolom weg, zodat klant, conversie en omzet in beeld blijven */
+@media (max-width: 520px) {
+  .staaf-kol { display: none; }
+  table.tabel th, table.tabel td { padding: 7px 6px; }
+}
