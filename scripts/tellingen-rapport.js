@@ -34,19 +34,26 @@ const UIT      = path.resolve(arg('--uit', path.join(ROOT, 'intern', 'tellingen'
 const OPRUIMEN = process.argv.indexOf('--opruimen') !== -1;
 const BEWAAR   = 90;   /* dagen ruwe regels; daarna alleen nog dagtotalen */
 
-/* De vijf dingen die we meten. Andere waarden zijn ongeldig. */
-const EVENTS = ['whatsapp', 'tel', 'mail', 'form_submit', 'form_abandon'];
+/* De zeven dingen die we meten. Andere waarden zijn ongeldig. "bezoek" en
+ * "rekentool" zijn er sinds november 2026 bij. */
+const EVENTS = ['whatsapp', 'tel', 'mail', 'form_submit', 'form_abandon', 'bezoek', 'rekentool'];
 const LABEL = {
   whatsapp:     'WhatsApp aangeklikt',
   tel:          'Telefoonnummer aangeklikt',
   mail:         'E-mailadres aangeklikt',
   form_submit:  'Formulier verstuurd (poging)',
-  form_abandon: 'Formulier halverwege verlaten'
+  form_abandon: 'Formulier halverwege verlaten',
+  bezoek:       'Binnengekomen via flyer of partner',
+  rekentool:    'Rekentool gebruikt'
 };
 const KORT = {
   whatsapp: 'whatsapp', tel: 'telefoon', mail: 'e-mail',
-  form_submit: 'verstuurd', form_abandon: 'afgehaakt'
+  form_submit: 'verstuurd', form_abandon: 'afgehaakt', bezoek: 'bezoek', rekentool: 'rekentool'
 };
+/* Knop, bron en campagne (k, b, c) komen uit js/tellingen.js, dat ze uit
+ * vaste lijsten haalt. Hier alleen de vorm controleren; wat niet klopt wordt
+ * "overig". */
+const RE_CODE = /^[a-z0-9-]{1,40}$/;
 
 /* ------------------------------------------------------------------
  * De whitelist met veldnamen staat op EEN plek: js/tellingen.js. Hier
@@ -105,6 +112,17 @@ function bestanden() {
 const dagen = {};      /* dag  -> { event -> aantal } */
 const perPagina = {};  /* pad  -> { event -> aantal } */
 const perVeld = {};    /* veld -> aantal */
+const perKnop = {};    /* knop -> { event -> aantal }, alleen bellen en WhatsApp */
+const perBron = {};    /* bron -> { event -> aantal } */
+const perCampagne = {};/* campagne -> { event -> aantal } */
+function code(x) {
+  if (!x) return '';
+  return RE_CODE.test(x) ? x : 'overig';
+}
+function tel(tabel, sleutel, e) {
+  tabel[sleutel] = tabel[sleutel] || {};
+  tabel[sleutel][e] = (tabel[sleutel][e] || 0) + 1;
+}
 let regels = 0, ongeldig = 0;
 const dagbestanden = bestanden();
 
@@ -126,6 +144,11 @@ for (const naam of dagbestanden) {
       const v = schoonVeld(r.v) || 'overig';
       perVeld[v] = (perVeld[v] || 0) + 1;
     }
+    /* regels van voor november 2026 hebben geen k, b en c */
+    const k = code(r.k), b = code(r.b), c = code(r.c);
+    if (k && (r.e === 'tel' || r.e === 'whatsapp')) tel(perKnop, k, r.e);
+    if (b) tel(perBron, b, r.e);
+    if (c) tel(perCampagne, c, r.e);
   }
 }
 
@@ -224,6 +247,17 @@ if (!start) {
         .map(function (v) { return [v, perVeld[v]]; })
     )));
   }
+  [['Bellen en WhatsApp per knop:', 'knop', perKnop, ['tel', 'whatsapp']],
+   ['Per bron:', 'bron', perBron, EVENTS],
+   ['Per flyer of partner:', 'campagne', perCampagne, EVENTS]].forEach(function (x) {
+    const sleutels = Object.keys(x[2]);
+    if (!sleutels.length) return;
+    console.log('');
+    console.log(x[0]);
+    console.log(tabel([[x[1]].concat(x[3].map(function (e) { return KORT[e]; }))].concat(
+      sleutels.sort().map(function (s) { return [s].concat(x[3].map(function (e) { return x[2][s][e] || 0; })); })
+    )));
+  });
   console.log('');
   console.log(regels + ' regels gelezen, ' + ongeldig + ' overgeslagen, ' +
               dagbestanden.length + ' dagbestanden.');
@@ -308,6 +342,22 @@ if (start) {
   body += '<p>Alleen de <em>naam</em> van het veld, nooit wat erin stond. Een naam die niet ' +
     'op de lijst in <code>js/tellingen.js</code> staat, komt hier als <code>overig</code>.</p>\n';
 
+  [['Bellen en WhatsApp per knop', 'knop', perKnop, ['tel', 'whatsapp'],
+    'Waar op de pagina de klik was: menu, hero, de balk onderin op de telefoon, de zwevende knop, het slotblok, een tekstlink.'],
+   ['Per bron', 'bron', perBron, EVENTS,
+    'Hoe het bezoek binnenkwam: flyer, partner, zoekmachine, direct, ... De bron van een aanvraag zelf staat in /beheer.'],
+   ['Per flyer of partner', 'campagne of partnercode', perCampagne, EVENTS,
+    'Flyers per buurt (utm_campaign) en partners (?ref=). Een bezoek is een scan van de QR-code of een klik op de link.']].forEach(function (x) {
+    const sleutels = Object.keys(x[2]).sort();
+    body += '\n<h2>' + esc(x[0]) + '</h2>\n';
+    body += sleutels.length
+      ? '<table>\n<thead>' + rij([x[1]].concat(x[3].map(function (e) { return KORT[e]; })), 'th') + '</thead>\n<tbody>\n' +
+        sleutels.map(function (s) { return rij([s].concat(x[3].map(function (e) { return x[2][s][e] || 0; }))); }).join('\n') +
+        '\n</tbody>\n</table>\n'
+      : '<p>Nog niets gemeten.</p>\n';
+    body += '<p>' + esc(x[4]) + ' Alleen dagen met ruwe regels (' + BEWAAR + ' dagen), vanaf november 2026.</p>\n';
+  });
+
   body += '\n<h2>Per dag, laatste 30</h2>\n<table>\n<thead>' +
     rij(['dag'].concat(EVENTS.map(function (e) { return KORT[e]; })).concat(['totaal', '']), 'th') +
     '</thead>\n<tbody>\n' +
@@ -325,15 +375,16 @@ const voet = [
   '',
   '<footer>',
   '<p><strong>Wat hier wel en niet in zit.</strong> Geteld wordt een klik op WhatsApp,',
-  'op een telefoonnummer of op een e-mailadres, het versturen van een formulier, en het',
-  'halverwege verlaten van een formulier. Paginaweergaven worden niet geteld: daardoor',
-  'vallen crawlers vanzelf af, want die klikken niet.</p>',
-  '<p><strong>Verstuurd is een poging.</strong> Of Formspree het bericht heeft aangenomen',
-  'weten we hier niet; dat staat in je mailbox.</p>',
+  'op een telefoonnummer of op een e-mailadres, het versturen van een formulier, het',
+  'halverwege verlaten van een formulier, een binnenkomst via een flyer of partner, en het',
+  'gebruik van een rekentool. Gewone paginaweergaven worden niet geteld: daardoor vallen',
+  'crawlers vanzelf af, want die klikken niet.</p>',
+  '<p><strong>Verstuurd is een poging.</strong> Of de aanvraag echt binnenkwam, staat in',
+  '/beheer en in de melding in uw mailbox.</p>',
   '<p><strong>Geen persoonsgegevens.</strong> Een regel bevat het uur, de gebeurtenis, het',
-  'pad en bij afhaken een veldnaam. Geen IP-adres, geen user-agent, geen sessie, geen',
-  'verwijzende pagina, geen cookie. Daarom is er geen toestemming nodig en staat deze',
-  'meting los van de cookiebalk.</p>',
+  'pad, bij afhaken een veldnaam, en de knop, de broncategorie en een campagne- of',
+  'partnercode. Geen IP-adres, geen user-agent, geen sessie, geen verwijzende URL, geen',
+  'cookie. Daarom is er geen toestemming nodig en staat deze meting los van de cookiebalk.</p>',
   '<p><strong>Bewaartermijn.</strong> Ruwe regels ' + BEWAAR + ' dagen',
   '(<code>node scripts/tellingen-rapport.js --opruimen</code>). Daarna blijven alleen de',
   'dagtotalen per gebeurtenis over, zonder pagina en zonder veld.</p>',
