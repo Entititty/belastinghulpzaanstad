@@ -1,0 +1,111 @@
+{
+  "_doc": "Instellingen voor de aanvragen: de formulieren, de herinneringslijst en /beheer. Dit bestand is PUBLIEK (de webroot is de repo-root), dus hier staan geen geheimen. Wachtwoorden, de SMTP-sleutel en het app-geheim staan op de server in /etc/belastinghulp/app.env. Uitleg: server-setup/APP.md. De app leest dit bestand bij het starten; na een wijziging herstart hij vanzelf bij de volgende uitrol.",
+
+  "diensten": [
+    { "code": "onbekend", "label": "Weet ik nog niet" },
+    { "code": "aangifte", "label": "Belastingaangifte" },
+    { "code": "aangifte-senioren", "label": "Aangifte voor senioren (AOW of pensioen)" },
+    { "code": "voorlopige-teruggave", "label": "Voorlopige teruggave" },
+    { "code": "correctie", "label": "Correctie of te late aangifte" },
+    { "code": "box3", "label": "Box 3: spaargeld en beleggingen" },
+    { "code": "toeslagen", "label": "Toeslagen" },
+    { "code": "eerste-baan", "label": "Eerste baan" },
+    { "code": "erfbelasting", "label": "Erfbelasting of schenking" },
+    { "code": "anders", "label": "Iets anders" }
+  ],
+
+  "_doc_dienst_per_pagina": "Kiest de bezoeker op de contactpagina niets, dan vult formulier.js de dienst in op basis van de vorige pagina. Langste voorvoegsel wint.",
+  "dienst_per_pagina": {
+    "/diensten/belastingaangifte-laten-doen/": "aangifte",
+    "/diensten/voorlopige-teruggave/": "voorlopige-teruggave",
+    "/diensten/correctie-late-aangifte/": "correctie",
+    "/diensten/box-3-bezwaar/": "box3",
+    "/diensten/toeslagen/": "toeslagen",
+    "/diensten/eerste-baan/": "eerste-baan",
+    "/diensten/erfbelasting-schenking/": "erfbelasting",
+    "/senioren/": "aangifte-senioren",
+    "/rekentools/ouderenkorting/": "aangifte-senioren",
+    "/rekentools/voorlopige-teruggave/": "voorlopige-teruggave",
+    "/blog/hypotheekrenteaftrek-berekenen/": "voorlopige-teruggave",
+    "/blog/huurtoeslag-berekenen/": "toeslagen"
+  },
+
+  "voorkeurstijden": [
+    { "code": "maakt-niet-uit", "label": "Maakt niet uit" },
+    { "code": "doordeweeks-avond", "label": "Doordeweeks ’s avonds, 18:00–21:00" },
+    { "code": "weekend-ochtend", "label": "Weekend, ochtend 09:00–13:00" },
+    { "code": "weekend-middag", "label": "Weekend, middag 13:00–17:00" },
+    { "code": "weekend-avond", "label": "Weekend, avond 17:00–21:00" }
+  ],
+
+  "rekentools": {
+    "voorlopige-teruggave": "Voorlopige teruggave",
+    "ouderenkorting": "Ouderenkorting",
+    "hypotheekrenteaftrek": "Hypotheekrenteaftrek",
+    "huurtoeslag": "Huurtoeslag"
+  },
+
+  "_doc_toestemming": "Elke tekst die naast een akkoordvinkje of boven een aanmeldknop staat, staat hier met een versie. Het formulier stuurt de versie mee; de app slaat de versie EN de tekst op bij de aanvraag. Verander je een tekst, maak dan een NIEUWE versie aan en laat de oude staan: oude aanvragen verwijzen ernaar. scripts/check-formulieren.js controleert dat de tekst op de pagina letterlijk gelijk is aan de tekst hier, en dat het aantal maanden klopt met bewaren.aanvraag_maanden.",
+  "toestemming": {
+    "terugbellen-2026-10": "Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen. Word ik geen klant, dan worden ze na 12 maanden verwijderd. Zie het privacybeleid.",
+    "rekentool-2026-10": "Ik ga ermee akkoord dat mijn gegevens en deze berekening worden gebruikt om contact met mij op te nemen. Word ik geen klant, dan worden ze na 12 maanden verwijderd. Zie het privacybeleid.",
+    "bericht-2026-10": "Ik ga ermee akkoord dat mijn gegevens worden gebruikt om mijn vraag te beantwoorden. Word ik geen klant, dan worden ze na 12 maanden verwijderd. Zie het privacybeleid.",
+    "herinnering-2026-10": "Wij mailen u elk jaar één keer, eind februari, als de aangifte opengaat. Afmelden kan altijd met één klik; dan verwijderen wij uw e-mailadres meteen."
+  },
+
+  "bewaren": {
+    "aanvraag_maanden": 12,
+    "herinnering_onbevestigd_dagen": 7,
+    "backup_dagen": 14,
+    "sessie_dagen": 30,
+    "mislukte_mail_dagen": 7,
+    "klant_jaren": 7
+  },
+
+  "planning": {
+    "dagoverzicht_doordeweeks": "17:30",
+    "dagoverzicht_weekend": "08:30",
+    "dagoverzicht_ook_als_leeg": true,
+    "opruimen": "03:30",
+    "backup": "03:45",
+    "klikken_inlezen": "04:15"
+  },
+
+  "belvenster": {
+    "doordeweeks": "18:00–21:00",
+    "weekend": "09:00–21:00"
+  },
+
+  "spam": {
+    "min_seconden": 2.5,
+    "max_per_uur_per_ip": 5,
+    "dubbel_minuten": 2
+  },
+
+  "_doc_herinnering": "De jaarlijkse herinnering. Per ronde: het jaar waarin hij uitgaat, het aangiftejaar, vanaf wanneer hij mag (Nederlandse tijd), het onderwerp en de alinea's. Hij gaat uit aan iedereen die bevestigd heeft, maximaal max_per_dag per dag (Brevo gratis: 300), tot venster_dagen na de startdatum; wie later bevestigt, krijgt hem het jaar erna. De app verstuurt ALLEEN als deze tekst in /beheer is goedgekeurd; verander je de tekst na goedkeuren, dan vervalt de goedkeuring. Een week vooraf, en daarna elke dag tot hij is goedgekeurd, krijgt u een seintje. {prijs:aangifte} en {prijs:aangifte.partner} komen uit data/bedrijf.json; {link} is de terugbellink met utm-codes. Controleer de openingsdatum op belastingdienst.nl voordat u goedkeurt.",
+  "herinnering": {
+    "max_per_dag": 250,
+    "venster_dagen": 14,
+    "rondes": [
+      {
+        "jaar": 2027,
+        "aangiftejaar": 2026,
+        "verstuur_vanaf": "2027-02-25 10:00",
+        "onderwerp": "De aangifte over 2026 gaat open",
+        "alineas": [
+          "Goedendag,",
+          "U vroeg ons om u te laten weten wanneer de belastingaangifte weer kan. Het is bijna zover: begin maart 2027 gaat de aangifte inkomstenbelasting over 2026 open. U heeft tot 1 mei 2027 de tijd.",
+          "Zullen wij hem voor u doen? Wij komen bij u thuis in de Zaanstreek, ook ’s avonds en in het weekend. De prijs is vast: {prijs:aangifte}, met uw partner samen {prijs:aangifte.partner}.",
+          "Bel of app ons op 06 19 71 18 48, of laat uw nummer achter, dan bellen wij u terug: {link}",
+          "Met vriendelijke groet,\nStan van der Hoeven\nBelastinghulp Zaanstad"
+        ]
+      }
+    ]
+  },
+
+  "turnstile": {
+    "_doc": "Cloudflare Turnstile tegen spam. Staat uit: de honeypot, de tijdval en de limiet per IP-adres zijn voor een kleine site meestal genoeg. Zet hem alleen aan als er toch spam doorkomt; vermeld Cloudflare dan in het privacybeleid. Het geheim staat in app.env (TURNSTILE_GEHEIM).",
+    "aan": false,
+    "sitekey": ""
+  }
+}

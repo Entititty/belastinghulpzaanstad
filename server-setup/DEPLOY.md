@@ -601,6 +601,23 @@ curl -sI https://belastinghulpzaanstad.nl/blog/belastingaangifte-voor-1-april/ |
 
 ---
 
+## 4c. De app voor aanvragen en beheer (november 2026)
+
+Sinds november 2026 draait er naast nginx één programma: de app achter `/api/`
+en `/beheer/`, die de formulieren, de herinneringslijst en het beheer doet.
+Installeren, de mail via Brevo instellen en controleren staan in
+**`server-setup/APP.md`**. Het installatiescript
+(`sudo bash server-setup/app-installeren.sh`) zet ook de nginx-bestanden uit
+dit document neer: de cache-map, de tellingen-map en het server-blok, met een
+back-up en een `nginx -t` vooraf. Daarmee is §4b meteen afgehandeld.
+
+De klikmeting schrijft sinds dezelfde ronde drie velden meer per regel: de
+knop (`k`), de broncategorie (`b`) en de campagne- of partnercode (`c`). Oude
+regels zonder die velden blijven bruikbaar; `tellingen-rapport.js` leest
+beide.
+
+---
+
 ## 5. Korte versie
 
 ```bash

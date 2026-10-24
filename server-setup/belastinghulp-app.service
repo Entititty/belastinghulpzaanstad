@@ -1,0 +1,62 @@
+# ============================================================
+#  systemd-dienst voor de app achter /api/ en /beheer/
+#  Locatie: /etc/systemd/system/belastinghulp-app.service
+#  Wordt neergezet door server-setup/app-installeren.sh.
+#
+#  Na een uitrol (git reset --hard) stopt de app zichzelf binnen een
+#  minuut, en Restart=always start hem dan met de nieuwe code. Daarom
+#  hoeft auto-deploy.sh niets te herstarten.
+#
+#  Bekijken:   systemctl status belastinghulp-app
+#  Logboek:    journalctl -u belastinghulp-app -n 50
+#  Herstarten: sudo systemctl restart belastinghulp-app
+# ============================================================
+[Unit]
+Description=Belastinghulp Zaanstad: aanvragen, herinneringen en beheer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=bhz-app
+Group=bhz-app
+# om de klikmeting van nginx te kunnen lezen (/var/log/belastinghulp/tellingen, groep www-data)
+SupplementaryGroups=www-data
+WorkingDirectory=/var/www/belastinghulpzaanstad.nl/html
+EnvironmentFile=/etc/belastinghulp/app.env
+Environment=NODE_ENV=production
+Environment=TZ=Europe/Amsterdam
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning app/server.js
+Restart=always
+RestartSec=3
+
+# ---- Afscherming ----
+# De app mag alleen schrijven in zijn eigen datamap en de back-upmap. De
+# webroot, /etc en de rest van het systeem zijn voor hem alleen-lezen.
+NoNewPrivileges=yes
+ProtectSystem=strict
+# het minteken: ontbreekt de back-upmap, dan start de app toch (zonder back-up)
+ReadWritePaths=/var/lib/belastinghulp -/var/backups/belastinghulp
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+UMask=0077
+# Node heeft geheugen nodig dat schrijfbaar en uitvoerbaar is (JIT), dus
+# MemoryDenyWriteExecute staat bewust NIET aan.
+MemoryMax=256M
+
+[Install]
+WantedBy=multi-user.target
