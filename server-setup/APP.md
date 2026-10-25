@@ -203,16 +203,38 @@ er mis is als het niet lukt:
 | `535`, `authent` | Login of sleutel klopt niet. Kopieer ze opnieuw uit Brevo. |
 | `sender`, `domain` | Het domein is nog niet geverifieerd in Brevo (stap 4b). |
 
-**Vangnet als ook poort 2525 dicht is:** maak in Brevo bij "SMTP & API" >
-"API keys" een API-sleutel aan, en zet in `app.env`:
+Werkt SMTP, ga dan toch door naar 4e: daar komt de mail via de API van Brevo,
+zonder volgen per persoon. Dat is ook het vangnet als poort 2525 dicht blijkt.
 
-```
-MAIL_VIA=brevo-api
-BREVO_API_SLEUTEL=<de API-sleutel>
-```
+### 4e. Geen volgen per persoon (verplicht voor de herinneringslijst)
 
-De mail gaat dan via gewone HTTPS (poort 443), die DigitalOcean nooit
-blokkeert. Herstart en draai `testmail.js` opnieuw.
+Brevo zet in elke mail een onzichtbaar plaatje en leidt links via een eigen
+klikteller, ook bij SMTP (gezien op 25 oktober 2026: "Open in beheer" ging via
+`sendibt2.com`). Bij mails aan uzelf maakt dat niet uit. Maar de bevestiging en
+de herinnering gaan naar mensen die toestemming gaven voor die mail, niet om
+gevolgd te worden. Alleen via de API kan de app per ontvanger zeggen dat er
+geen toestemming is; Brevo telt opens en kliks dan alleen anoniem, in totalen.
+
+1. Zet in Brevo de toestemming per contact aan. Brevo noemt het
+   "per-contact pixel tracking consent"; zoek in de instellingen op
+   "tracking" of "pixel". Kies dat contacten zonder bekende toestemming niet
+   gevolgd worden.
+2. Maak bij "SMTP & API" > "API-sleutels" een API-sleutel aan (niet de
+   SMTP-sleutel).
+3. Zet in `app.env`:
+
+   ```
+   MAIL_VIA=brevo-api
+   BREVO_API_SLEUTEL=<de API-sleutel>
+   ```
+
+   De SMTP-regels mogen blijven staan; ze worden dan niet gebruikt.
+4. Herstart en draai `testmail.js` opnieuw. De app gaat alleen over IPv4 naar
+   Brevo, dus het adres bij Authorized IPs blijft hetzelfde.
+
+Controleren: doe een proefaanvraag (§5), open de melding en klik op een link.
+In Brevo, bij de logs van transactionele mail, hoort bij dat bericht dan geen
+"geopend" of "geklikt" op naam te staan.
 
 ---
 

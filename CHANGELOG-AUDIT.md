@@ -707,3 +707,18 @@ Hersteld:
   stond geen Node op de server). `app-installeren.sh` zet hem nu neer, als `www-data`.
 - **/beheer/herinnering**: de terugbellink in het voorbeeld van de mail maakte de pagina
   op een telefoon breder dan het scherm.
+
+### Brevo: geen volgen per persoon (2026-10-25)
+
+In de melding van een proefaanvraag ging "Open in beheer" via `sendibt2.com`. Brevo zet
+in elke mail een volgpixel en leidt links via een eigen klikteller, ook bij SMTP. Voor
+mails aan Stan maakt dat niet uit; voor de bevestiging en de herinnering aan mensen op
+de lijst wel: zij gaven toestemming voor die mail, niet om gevolgd te worden.
+- **De mail gaat via de API van Brevo** (`MAIL_VIA=brevo-api`), met per ontvanger
+  `contactPixelTrackingConsent: false`. Brevo telt opens en kliks dan alleen anoniem,
+  in totalen (Brevo-changelog, 20 juli 2026). Daarvoor moet in Brevo de toestemming
+  per contact aanstaan; APP.md stap 4e.
+- **Alleen IPv4** naar `api.brevo.com`, zodat het adres bij Authorized IPs blijft
+  kloppen.
+- **Privacybeleid** (NL en EN): Brevo telt anoniem, alleen in totalen.
+- `testmail.js` noemt bij een 401 via de API ook de IP-lijst van Brevo.

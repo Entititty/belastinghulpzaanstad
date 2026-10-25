@@ -111,7 +111,8 @@ test('vangnet: via de Brevo-API (HTTPS) in plaats van SMTP', async () => {
     const j = ontvangen[0].json;
     assert.equal(ontvangen[0].sleutel, 'xkeysib-test');
     assert.equal(ontvangen[0].pad, '/v3/smtp/email');
-    assert.deepEqual(j.to, [{ email: 'a@b.nl' }]);
+    /* geen toestemming voor volgen: Brevo telt opens en kliks dan alleen anoniem */
+    assert.deepEqual(j.to, [{ email: 'a@b.nl', contactPixelTrackingConsent: false }]);
     assert.equal(j.sender.email, 'info@belastinghulpzaanstad.nl');
     assert.equal(j.subject, 'Één onderwerp');
     assert.equal(j.htmlContent, '<p>html</p>');

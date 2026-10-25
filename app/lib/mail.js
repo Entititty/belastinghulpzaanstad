@@ -91,8 +91,9 @@ function smtpInstellingen(env) {
   };
 }
 
-/* Hoe de mail de deur uit gaat: SMTP (standaard) of de Brevo-API (vangnet,
- * zie brevo.js). null = nog niet ingesteld; de mail blijft dan wachten. */
+/* Hoe de mail de deur uit gaat: de Brevo-API (aanbevolen: alleen daar kan
+ * Brevo het volgen per persoon uitzetten, zie brevo.js) of SMTP. null = nog
+ * niet ingesteld; de mail blijft dan wachten. */
 function vervoer(env) {
   if (env.MAIL_VIA === 'brevo-api') return env.BREVO_API_SLEUTEL && env.MAIL_VAN ? { soort: 'api' } : null;
   const inst = smtpInstellingen(env);

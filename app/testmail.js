@@ -38,6 +38,9 @@ async function main() {
     if (/ECONNREFUSED|ETIMEDOUT|kan niet verbinden|geen antwoord/i.test(m)) {
       console.error('-> De server komt er niet door. DigitalOcean blokkeert vaak de mailpoorten. Probeer SMTP_POORT=2525,');
       console.error('   of zet MAIL_VIA=brevo-api met BREVO_API_SLEUTEL (gaat via HTTPS). Zie APP.md, stap 3.');
+    } else if (via.soort === 'api' && /\b(401|403)\b/.test(m)) {
+      console.error('-> Brevo weigert. BREVO_API_SLEUTEL moet een API-sleutel zijn (SMTP & API > API-sleutels), niet de');
+      console.error('   SMTP-sleutel. En het IPv4-adres van de server moet in Brevo bij Authorized IPs staan.');
     } else if (/\b535\b|authent|401|403/i.test(m)) {
       console.error('-> Inloggen lukt niet. SMTP_GEBRUIKER is de "login" uit Brevo (SMTP & API > SMTP),');
       console.error('   SMTP_WACHTWOORD is een SMTP-sleutel (niet uw Brevo-wachtwoord en niet een API-sleutel).');
