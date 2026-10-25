@@ -74,6 +74,7 @@ for (const f of files) {
     if (href.startsWith('//')) continue;
 
     let [pad, anker] = href.split('#');
+    pad = pad.split('?')[0];                     /* utm-codes e.d. veranderen het doel niet */
     if (pad === '') pad = eigenUrl;              /* alleen een anker */
     else if (!pad.startsWith('/')) {             /* relatief pad */
       pad = path.posix.normalize(mapVanBestand + pad);

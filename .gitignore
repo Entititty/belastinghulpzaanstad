@@ -54,6 +54,9 @@ docs/*
 # Het WhatsApp-sjabloon voor een reviewverzoek. Bevat geen cijfers of
 # klantgegevens, en hoort bij /beoordeling/.
 !docs/reviewverzoek.md
+# De e-mailhandtekening: alleen gegevens die ook op de site staan. De beelden
+# staan in img/mail/.
+!docs/email-handtekening.html
 
 # Conversiemeting. De logregels staan op de server in
 # /var/log/belastinghulp/tellingen/, dus buiten de webroot. Haal je ze op met
