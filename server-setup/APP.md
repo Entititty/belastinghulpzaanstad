@@ -89,7 +89,10 @@ Het script legt bij elke stap uit wat het doet. Opnieuw draaien kan altijd;
    `/var/backups/belastinghulp`, allebei alleen voor die gebruiker.
 3. **`/etc/belastinghulp/app.env`** uit `server-setup/app.env.voorbeeld`, met
    een nieuw willekeurig `BHZ_GEHEIM`.
-4. **De map voor de klikmeting**, als die er nog niet was (DEPLOY.md §2.6).
+4. **De map voor de klikmeting**, als die er nog niet was (DEPLOY.md §2.6),
+   en een wekelijkse taak in `/etc/cron.d/belastinghulp-tellingen` die
+   klikregels ouder dan 90 dagen samenvat en verwijdert, zoals het
+   privacybeleid zegt.
 5. **De dienst** `belastinghulp-app`: neerzetten, aanzetten en starten.
    Het script stopt als de app niet reageert.
 6. **nginx**. Eerst een back-up van `conf.d` en het server-blok in
@@ -299,7 +302,7 @@ iedereen dicht en krijgt u een mail.
 
 | tijd | wat |
 |---|---|
-| 03:30 | opruimen: aanvragen zonder opdracht na 12 maanden, onbevestigde herinneringen na 7 dagen, klanten na 7 jaar |
+| 03:30 | opruimen: aanvragen zonder opdracht na 12 maanden, onbevestigde herinneringen na 7 dagen, klanten na 7 jaar, mails die niet weg konden na 9 dagen |
 | 03:45 | back-up van de database in `/var/backups/belastinghulp/`, 14 dagen bewaard |
 | 04:15 | de klikmeting inlezen voor het overzicht |
 | 17:30 (doordeweeks), 08:30 (weekend) | het dagoverzicht per mail: de open aanvragen, nieuw eerst |

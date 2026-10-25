@@ -159,6 +159,33 @@ test('privacy: alles van één persoon exporteren en verwijderen', async () => {
   assert.ok(!t.db.prepare('SELECT group_concat(details) AS d FROM logboek').get().d.includes('piet'), 'geen adres in het logboek');
 });
 
+test('privacy: zoeken op nummer wijst op het e-mailadres uit dezelfde aanvraag', async () => {
+  const nu = t.nu().toISOString();
+  t.db.prepare(`INSERT INTO aanvragen (aangemaakt, kanaal, formulier, naam, telefoon, telefoon_soort, email, dienst, bron, grondslag, status, gewijzigd)
+    VALUES (?, 'formulier', 'terugbellen', 'Kees Kenmerk', '+31611112222', 'mobiel', 'kees@voorbeeld.nl', 'aangifte', 'direct', 'toestemming', 'nieuw', ?)`).run(nu, nu);
+  t.db.prepare("INSERT INTO herinneringen (email, status, aangemaakt, toestemming_versie, toestemming_tekst) VALUES ('kees@voorbeeld.nl', 'bevestigd', ?, 'herinnering-2026-10', 't')").run(nu);
+  const opNummer = await (await haal('/beheer/persoon?q=' + encodeURIComponent('06 1111 2222'))).text();
+  assert.match(opNummer, /1 aanvraag\/aanvragen, 0 inschrijving\(en\) op de herinneringslijst/);
+  assert.match(opNummer, /In deze aanvragen staat ook <strong>kees@voorbeeld\.nl<\/strong>\. Daarop staat nog: 1 inschrijving\(en\) op de herinneringslijst\./);
+  assert.match(opNummer, /href="\/beheer\/persoon\?q=kees%40voorbeeld\.nl"/);
+  /* andersom staat er op het nummer niets extra's, dus geen verwijzing */
+  const opAdres = await (await haal('/beheer/persoon?q=kees@voorbeeld.nl')).text();
+  assert.match(opAdres, /1 aanvraag\/aanvragen, 1 inschrijving\(en\)/);
+  assert.doesNotMatch(opAdres, /In deze aanvragen staat ook/);
+  /* niet vanzelf meenemen: verwijderen op het nummer laat de inschrijving staan, op het adres niet */
+  await stuur('/beheer/persoon/verwijderen', { q: '06 1111 2222' });
+  assert.equal(t.db.prepare("SELECT COUNT(*) n FROM herinneringen WHERE email = 'kees@voorbeeld.nl'").get().n, 1);
+  await stuur('/beheer/persoon/verwijderen', { q: 'kees@voorbeeld.nl' });
+  assert.equal(t.db.prepare("SELECT COUNT(*) n FROM herinneringen WHERE email = 'kees@voorbeeld.nl'").get().n, 0);
+});
+
+test('een kapotte cookie van een ander script legt /beheer niet plat', async () => {
+  const r = await haal('/beheer/aanvragen', { Cookie: cookie + '; kapot=100%; ook=%E0%A4%A' });
+  assert.equal(r.status, 200);
+  const inlog = await fetch(t.basis + '/beheer/inloggen', { headers: { Cookie: 'kapot=100%' } });
+  assert.equal(inlog.status, 200);
+});
+
 test('herinnering: voorbeeld en goedkeuren', async () => {
   const pagina = await (await haal('/beheer/herinnering')).text();
   assert.match(pagina, /Nog niet goedgekeurd/);

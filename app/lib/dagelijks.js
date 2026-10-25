@@ -58,11 +58,13 @@ function backup(ctx) {
   if (fs.existsSync(doel)) fs.unlinkSync(doel);
   db.exec("VACUUM INTO '" + doel.replace(/'/g, "''") + "'");
   try { fs.chmodSync(doel, 0o600); } catch (e) { /* Windows */ }
+  /* Precies 14 kopieën, vandaag meegeteld. Zo is wat vandaag verwijderd wordt over
+   * uiterlijk 14 dagen ook uit de laatste kopie weg, zoals het privacybeleid zegt. */
   const grens = nl(minDagen(ctx.klok(), cfg.bewaren.backup_dagen)).datum;
   let weg = 0;
   for (const f of fs.readdirSync(map)) {
     const m = /^leads-(\d{4}-\d{2}-\d{2})\.db$/.exec(f);
-    if (m && m[1] < grens) { fs.unlinkSync(path.join(map, f)); weg++; }
+    if (m && m[1] <= grens) { fs.unlinkSync(path.join(map, f)); weg++; }
   }
   dbm.zetInstelling(db, 'backup-laatste', ctx.klok().toISOString());
   ctx.log('info', 'back-up ' + naam + ' gemaakt; ' + weg + ' oude weg');

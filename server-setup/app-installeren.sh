@@ -12,7 +12,7 @@
 #   1. Node.js 24 (NodeSource), en Node mee in de automatische updates
 #   2. gebruiker bhz-app, /var/lib/belastinghulp, /var/backups/belastinghulp
 #   3. /etc/belastinghulp/app.env uit het voorbeeld, met een nieuw geheim
-#   4. de map voor de klikmeting
+#   4. de map voor de klikmeting, en de wekelijkse opruimtaak (90 dagen)
 #   5. de systemd-dienst belastinghulp-app, en starten
 #   6. nginx: drie bestanden in conf.d en (na uw "j") het server-blok
 #   7. controles
@@ -106,6 +106,24 @@ stap "4. Map voor de klikmeting"
 install -d -o www-data -g www-data -m 750 /var/log/belastinghulp/tellingen
 [ -f /var/log/belastinghulp/tellingen/START ] || { date -I > /var/log/belastinghulp/tellingen/START; chown www-data:www-data /var/log/belastinghulp/tellingen/START; }
 ok "/var/log/belastinghulp/tellingen (www-data; de app leest mee via de groep)"
+
+# Ruwe klikregels na 90 dagen samenvatten en weg, zoals het privacybeleid zegt
+# (DEPLOY.md §2.6, punt 6). Als www-data, de eigenaar van de bestanden: zo draait
+# er geen code uit de repo als root. Maandag 05:07, na het inlezen door de app
+# (04:15), zodat de app elke dag al geteld heeft voordat het bestand weggaat.
+CRON=/etc/cron.d/belastinghulp-tellingen
+cat > "$CRON" <<EOF
+# Klikmeting (/t): ruwe regels ouder dan 90 dagen samenvatten in dagtotalen.json en verwijderen.
+# Neergezet door server-setup/app-installeren.sh.
+SHELL=/bin/sh
+PATH=/usr/local/bin:/usr/bin:/bin
+7 5 * * 1 www-data cd $WEBROOT && node scripts/tellingen-rapport.js --bron /var/log/belastinghulp/tellingen --uit /var/log/belastinghulp/tellingen/overzicht/index.html --opruimen >/dev/null 2>&1
+EOF
+chmod 644 "$CRON"
+ok "elke maandag: klikregels ouder dan 90 dagen samengevat en weg ($CRON)"
+if crontab -l -u root 2>/dev/null | grep -q 'tellingen-rapport'; then
+  let_op "de crontab van root heeft nog een regel met tellingen-rapport (de oude aanpak uit DEPLOY.md). Haal die weg met: sudo crontab -e"
+fi
 
 # ---------------------------------------------------------------
 stap "5. De dienst belastinghulp-app"

@@ -77,11 +77,16 @@ function vanEigenSite(req, toegestaan) {
   return toegestaan.includes(o);
 }
 
+/* Alle cookies van het domein komen mee, ook die van andere scripts. Eentje met
+ * een kapotte %-code ("100%") slaan we over; anders zou /beheer niet meer openen. */
 function cookies(req) {
   const o = Object.create(null);
   for (const deel of String(req.headers.cookie || '').split(';')) {
     const i = deel.indexOf('=');
-    if (i > 0) o[deel.slice(0, i).trim()] = decodeURIComponent(deel.slice(i + 1).trim());
+    if (i <= 0) continue;
+    let w = deel.slice(i + 1).trim();
+    try { w = decodeURIComponent(w); } catch (e) { continue; }
+    o[deel.slice(0, i).trim()] = w;
   }
   return o;
 }

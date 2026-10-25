@@ -390,17 +390,20 @@ en `intern/` staan in `.gitignore`.
 
 #### 6. Bewaartermijn
 
-Ruwe regels blijven **90 dagen** staan. Daarna houdt het script alleen de
-dagtotalen per gebeurtenis over, zonder pagina en zonder veldnaam, in
-`dagtotalen.json`. Wekelijks, als root, want de bestanden zijn van
-`www-data`:
+Ruwe regels blijven **90 dagen** staan; zo staat het ook in het
+privacybeleid. Daarna houdt het script alleen de dagtotalen per gebeurtenis
+over, zonder pagina en zonder veldnaam, in `dagtotalen.json`.
+
+Sinds de app (server-setup/APP.md) zet `app-installeren.sh` dit wekelijks
+klaar in `/etc/cron.d/belastinghulp-tellingen`. Het draait als `www-data`, de
+eigenaar van de bestanden, en dus niet als root:
 
 ```
-7 4 * * 1 cd /var/www/belastinghulpzaanstad.nl/html && /usr/bin/node scripts/tellingen-rapport.js --bron /var/log/belastinghulp/tellingen --opruimen >/dev/null 2>&1
+7 5 * * 1 www-data cd /var/www/belastinghulpzaanstad.nl/html && node scripts/tellingen-rapport.js --bron /var/log/belastinghulp/tellingen --uit /var/log/belastinghulp/tellingen/overzicht/index.html --opruimen >/dev/null 2>&1
 ```
 
-Draai je het nooit, dan blijven de regels staan. Ze bevatten geen
-persoonsgegevens, dus dat is geen datalek, maar de map groeit wel.
+Stond de oude regel (als root) al in de crontab van root? Haal die dan weg
+met `sudo crontab -e`; het script waarschuwt daarvoor.
 
 ---
 

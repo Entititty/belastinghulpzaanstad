@@ -70,6 +70,9 @@ function maakPlanner(ctx, taken) {
  * - klanten: weg 7 jaar na "klant sinds" (de fiscale bewaarplicht)
  * - herinneringen die niet bevestigd zijn: weg na 7 dagen
  * - verlopen sessies en mails die het opgaven
+ * - mails die nooit weg konden, omdat de mail niet was ingesteld: ook die na
+ *   twee dagen plus de termijn voor mislukte mails, want er staan namen en
+ *   nummers in (het dagoverzicht hangt aan geen enkele aanvraag)
  * Notities en wachtende mails van een aanvraag gaan mee (ON DELETE CASCADE).
  */
 function opruimen(ctx) {
@@ -83,8 +86,8 @@ function opruimen(ctx) {
   const h = db.prepare("DELETE FROM herinneringen WHERE status = 'wacht' AND aangemaakt < ?")
     .run(minDagen(nu, b.herinnering_onbevestigd_dagen).toISOString()).changes;
   const s = db.prepare('DELETE FROM sessies WHERE verloopt < ?').run(nu.toISOString()).changes;
-  const m = db.prepare('DELETE FROM uitgaand WHERE gestopt IS NOT NULL AND gestopt < ?')
-    .run(minDagen(nu, b.mislukte_mail_dagen).toISOString()).changes;
+  const m = db.prepare('DELETE FROM uitgaand WHERE (gestopt IS NOT NULL AND gestopt < ?) OR aangemaakt < ?')
+    .run(minDagen(nu, b.mislukte_mail_dagen).toISOString(), minDagen(nu, b.mislukte_mail_dagen + 2).toISOString()).changes;
   if (a + k + h + m) {
     dbm.log(db, ctx.klok, 'opgeruimd', a + ' aanvragen, ' + k + ' oude klanten, ' + h + ' onbevestigde herinneringen, ' + m + ' mislukte mails');
   }

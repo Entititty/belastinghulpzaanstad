@@ -385,13 +385,13 @@ function maakBeheer(ctx) {
     const e = v.email(s);
     if (t.waarde) {
       return {
-        wat: v.telefoonWeergave(t.waarde), aanvragen: db.prepare('SELECT * FROM aanvragen WHERE telefoon = ? ORDER BY aangemaakt').all(t.waarde), herinneringen: [],
+        wat: v.telefoonWeergave(t.waarde), sleutel: t.waarde, aanvragen: db.prepare('SELECT * FROM aanvragen WHERE telefoon = ? ORDER BY aangemaakt').all(t.waarde), herinneringen: [],
         partners: db.prepare('SELECT * FROM partners WHERE telefoon = ?').all(t.waarde)
       };
     }
     if (e.waarde) {
       return {
-        wat: e.waarde,
+        wat: e.waarde, sleutel: e.waarde,
         aanvragen: db.prepare('SELECT * FROM aanvragen WHERE email = ? ORDER BY aangemaakt').all(e.waarde),
         herinneringen: db.prepare('SELECT * FROM herinneringen WHERE email = ?').all(e.waarde),
         partners: db.prepare('SELECT * FROM partners WHERE email = ?').all(e.waarde)
@@ -400,9 +400,32 @@ function maakBeheer(ctx) {
     return null;
   }
 
+  /* Dezelfde persoon kan ook met zijn andere gegevens bij ons staan: het e-mailadres
+   * uit een aanvraag op de herinneringslijst, of een tweede aanvraag met dat nummer.
+   * Niet vanzelf meenemen, want een gedeeld e-mailadres of vast nummer kan van een
+   * huisgenoot zijn; wel tonen, met een knop om daarop te zoeken. */
+  function gekoppeld(r) {
+    const ids = new Set(r.aanvragen.map((a) => a.id));
+    const kenmerken = new Set();
+    for (const a of r.aanvragen) for (const k of [a.telefoon, a.email]) if (k && k !== r.sleutel) kenmerken.add(k);
+    const uit = [];
+    for (const k of kenmerken) {
+      const kolom = k.includes('@') ? 'email' : 'telefoon';
+      const aanvragen = db.prepare('SELECT id FROM aanvragen WHERE ' + kolom + ' = ?').all(k).filter((a) => !ids.has(a.id)).length;
+      const herinneringen = kolom === 'email' ? db.prepare('SELECT COUNT(*) AS n FROM herinneringen WHERE email = ?').get(k).n : 0;
+      const partners = db.prepare('SELECT COUNT(*) AS n FROM partners WHERE ' + kolom + ' = ?').get(k).n;
+      if (!aanvragen && !herinneringen && !partners) continue;
+      const wat = [aanvragen ? aanvragen + ' andere aanvraag/aanvragen' : null, herinneringen ? herinneringen + ' inschrijving(en) op de herinneringslijst' : null,
+        partners ? partners + ' keer contactpersoon bij een partner' : null].filter(Boolean).join(', ');
+      uit.push({ k, weergave: kolom === 'email' ? k : v.telefoonWeergave(k), wat });
+    }
+    return uit;
+  }
+
   function persoonPagina(res, url, sessie) {
     const q = url.searchParams.get('q') || '';
     const r = q ? zoekPersoon(q) : null;
+    const ook = r ? gekoppeld(r) : [];
     const inhoud = h`<h1>Privacy: alle gegevens van één persoon</h1>
       <p>Vraagt iemand welke gegevens wij hebben, of om alles te verwijderen? Zoek op telefoonnummer of e-mailadres. U moet binnen een maand antwoorden.</p>
       <form method="get" action="/beheer/persoon" class="kaart rij"><label for="p-q" class="verborgen">Telefoon of e-mail</label>
@@ -410,6 +433,8 @@ function maakBeheer(ctx) {
       ${q && !r ? h`<p class="melding fout">Vul een geldig telefoonnummer of e-mailadres in.</p>` : ''}
       ${r ? h`<section class="kaart"><h2>Gevonden voor ${r.wat}</h2>
         <p>${r.aanvragen.length} aanvraag/aanvragen, ${r.herinneringen.length} inschrijving(en) op de herinneringslijst en ${r.partners.length} keer contactpersoon bij een partner.</p>
+        ${ook.map((x) => h`<p class="melding">In deze aanvragen staat ook <strong>${x.weergave}</strong>. Daarop staat nog: ${x.wat}. Is dat dezelfde persoon?
+          <a href="/beheer/persoon?q=${encodeURIComponent(x.k)}">Zoek ook op ${x.weergave}</a>; dat exporteert of verwijdert u apart.</p>`)}
         ${r.aanvragen.length ? h`<ul>${r.aanvragen.map((a) => h`<li><a href="/beheer/aanvraag/${a.id}">${a.naam}</a>, ${leesbaar(a.aangemaakt)}, ${STATUS_NAAM[a.status]}</li>`)}</ul>` : ''}
         ${r.herinneringen.length ? h`<ul>${r.herinneringen.map((x) => h`<li>Herinneringslijst: ${x.status === 'bevestigd' ? 'bevestigd' : 'nog niet bevestigd'}, aangemeld ${leesbaar(x.aangemaakt)}</li>`)}</ul>` : ''}
         ${r.partners.length ? h`<ul>${r.partners.map((p) => h`<li>Contactpersoon bij partner <a href="/beheer/partner/${p.id}">${p.naam}</a>${p.contactpersoon ? ' (' + p.contactpersoon + ')' : ''}</li>`)}</ul>

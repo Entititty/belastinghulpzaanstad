@@ -58,7 +58,7 @@ dl.gegevens dd { margin: 0; overflow-wrap: anywhere; }
 .notities li { border-left: 3px solid var(--teal); padding: 4px 0 4px 10px; margin: 0 0 10px; white-space: pre-wrap; }
 .notities time { display: block; color: var(--zacht); font-size: 0.85rem; }
 .klein { font-size: 0.9rem; color: var(--zacht); }
-pre.mail { white-space: pre-wrap; background: #fff; border: 1px solid var(--rand); border-radius: 10px; padding: 14px; font: 0.95rem/1.5 system-ui, sans-serif; }
+pre.mail { white-space: pre-wrap; overflow-wrap: anywhere; background: #fff; border: 1px solid var(--rand); border-radius: 10px; padding: 14px; font: 0.95rem/1.5 system-ui, sans-serif; }
 table.tabel { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--rand); border-radius: 12px; overflow: hidden; font-size: 0.95rem; }
 table.tabel th, table.tabel td { padding: 8px 10px; border-bottom: 1px solid var(--rand); text-align: left; vertical-align: top; }
 table.tabel td.getal, table.tabel th.getal { text-align: right; font-variant-numeric: tabular-nums; }

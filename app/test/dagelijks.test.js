@@ -66,11 +66,14 @@ test('back-up: een leesbare kopie, oude na 14 dagen weg', async () => {
     const map = t.ctx.env.BHZ_BACKUP_MAP;
     fs.mkdirSync(map, { recursive: true });
     fs.writeFileSync(path.join(map, 'leads-2026-11-01.db'), 'oud');
+    /* 14 dagen voor vandaag: weg, zodat er precies 14 kopieën zijn (7 t/m 20 november) */
+    fs.writeFileSync(path.join(map, 'leads-2026-11-06.db'), 'grens');
+    fs.writeFileSync(path.join(map, 'leads-2026-11-07.db'), 'oudste die blijft');
     fs.writeFileSync(path.join(map, 'leads-2026-11-10.db'), 'jonger');
     fs.writeFileSync(path.join(map, 'iets-anders.txt'), 'blijft');
     const r = backup(t.ctx);
     assert.equal(r.naam, 'leads-2026-11-20.db');
-    assert.deepEqual(fs.readdirSync(map).sort(), ['iets-anders.txt', 'leads-2026-11-10.db', 'leads-2026-11-20.db']);
+    assert.deepEqual(fs.readdirSync(map).sort(), ['iets-anders.txt', 'leads-2026-11-07.db', 'leads-2026-11-10.db', 'leads-2026-11-20.db']);
     const kopie = new DatabaseSync(path.join(map, 'leads-2026-11-20.db'), { readOnly: true });
     assert.equal(kopie.prepare('SELECT COUNT(*) AS n FROM aanvragen').get().n, 1);
     kopie.close();

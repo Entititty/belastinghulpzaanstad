@@ -678,3 +678,32 @@ de Telecommunicatiewet. Module 1 komt in twee uitrolstappen live; zie `server-se
   - de QR-code als vectorvlakken;
   - de test leest de code module voor module terug uit de PDF;
   - in pdf.js gerenderd en bekeken.
+
+### Extra controle vóór de uitrol (2026-10-25)
+
+Alle code van de lead engine opnieuw nagelopen, en de onderdelen die de tests niet
+afdekten apart beproefd:
+- **QR-codes**: 508 codes (versie 1 t/m 32, alle niveaus en maskers, ook echte partner-
+  en flyerlinks) teruggelezen met een onafhankelijke scanner (jsQR): allemaal goed.
+- **Mail**: STARTTLS (de route via Brevo op 2525), directe TLS, AUTH PLAIN en LOGIN, een
+  verkeerd certificaat (geweigerd) en een trage server, tegen een lokale testserver.
+- **In een echte browser** (Edge): flyerbezoek, terugbelformulier, rekentool,
+  herinneringslijst (aanmelden, bevestigen, afmelden), zonder JavaScript, en /beheer op
+  telefoonbreedte: 44 controles, geen fouten in de console.
+
+Hersteld:
+- **Kapotte cookie**: een cookie van een ander script met een losse `%` gaf een fout (500)
+  op heel /beheer, ook op het inlogscherm. Zo'n cookie wordt nu overgeslagen.
+- **Privacy, één persoon**: zoeken op telefoonnummer liet een inschrijving op de
+  herinneringslijst onder het e-mailadres uit dezelfde aanvraag niet zien, en "Alles
+  verwijderen" liet die staan. De pagina wijst daar nu op, met een knop om ook op dat
+  adres te zoeken. Niet vanzelf meegenomen: een gedeeld adres of nummer kan van een
+  huisgenoot zijn.
+- **Mailwachtrij**: mails die nooit weg konden (mail niet ingesteld) bleven met namen en
+  nummers staan. Ze gaan nu na 9 dagen weg, net als mislukte mails.
+- **Back-ups**: precies 14 kopieën in plaats van 15, zodat "na uiterlijk 14 dagen ook uit
+  de back-ups weg" klopt.
+- **Klikmeting, 90 dagen**: het opruimen hing af van een cron die nooit kon draaien (er
+  stond geen Node op de server). `app-installeren.sh` zet hem nu neer, als `www-data`.
+- **/beheer/herinnering**: de terugbellink in het voorbeeld van de mail maakte de pagina
+  op een telefoon breder dan het scherm.

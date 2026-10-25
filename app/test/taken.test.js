@@ -28,6 +28,23 @@ test('bewaartermijn: geen klant na 12 maanden weg, klant blijft, notities gaan m
   }
 });
 
+test('mailwachtrij: opgegeven mails na 7 dagen weg, en mails die nooit weg konden na 9', async () => {
+  const t = await startApp({ start: '2026-11-20T02:30:00Z' });
+  try {
+    /* volgende poging ver weg, zodat de wachtrij ze in deze test niet verstuurt */
+    const voeg = t.db.prepare(`INSERT INTO uitgaand (soort, aan, onderwerp, tekst, volgende_poging, gestopt, aangemaakt)
+      VALUES ('dagoverzicht', 'stan@voorbeeld.nl', 'Dagoverzicht', 'Jan, 06 12 34 56 78', '2099-01-01T00:00:00.000Z', ?, ?)`);
+    voeg.run('2026-11-12T10:00:00.000Z', '2026-11-10T10:00:00.000Z');
+    voeg.run(null, '2026-11-10T10:00:00.000Z');
+    const jong = voeg.run(null, '2026-11-15T10:00:00.000Z').lastInsertRowid;
+    const r = opruimen(t.ctx);
+    assert.equal(r.mails, 2);
+    assert.deepEqual(t.db.prepare('SELECT id FROM uitgaand ORDER BY id').all().map((x) => x.id), [Number(jong)]);
+  } finally {
+    await t.stop();
+  }
+});
+
 test('planner: een dagtaak één keer per dag, alleen binnen twee uur na zijn tijd', async () => {
   const t = await startApp({ start: '2026-11-02T15:00:00Z' });
   try {
