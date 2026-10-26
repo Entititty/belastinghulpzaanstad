@@ -24,12 +24,12 @@
 <meta name="twitter:title" content="Belastingadviseur Krommenie | aangifte laten doen vanaf €59">
 <meta name="twitter:description" content="Belastingaangifte laten doen in Krommenie? Vaste prijs vanaf €59 incl. btw. Wij komen bij u thuis, ook ’s avonds en in het weekend. Bel of app.">
 <link rel="canonical" href="https://belastinghulpzaanstad.nl/krommenie/">
-<link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/bhz-serif-2026-10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/nunito-sans-2026-10.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
-<link rel="stylesheet" href="../belasting.496e0718.min.css">
+<link rel="stylesheet" href="../belasting.a043ad53.min.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -516,39 +516,6 @@ window.addEventListener('scroll', () => { const nav = document.getElementById('n
 const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scroll-reveal').forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; observer.observe(el); });
 
-// Testimonials slider
-(function() {
-  var w = document.querySelector('.testimonials-slider-wrapper');
-  if (!w) return;
-  var track = w.querySelector('.testimonials-track');
-  var cards = Array.from(track.children);
-  var prev = w.querySelector('.testimonials-btn--prev');
-  var next = w.querySelector('.testimonials-btn--next');
-  var dotsEl = document.querySelector('.testimonials-dots');
-  var GAP = 24, cur = 0;
-  function vis() { return innerWidth >= 900 ? 3 : innerWidth >= 600 ? 2 : 1; }
-  function maxIdx() { return Math.max(0, cards.length - vis()); }
-  function go(n) {
-    cur = Math.min(Math.max(0, n), maxIdx());
-    track.style.transform = 'translateX(-' + (cur * (cards[0].offsetWidth + GAP)) + 'px)';
-    prev.disabled = cur === 0;
-    next.disabled = cur >= maxIdx();
-    dotsEl.innerHTML = '';
-    for (var i = 0; i <= maxIdx(); i++) {
-      (function(i) {
-        var d = document.createElement('button');
-        d.className = 'testimonials-dot' + (i === cur ? ' active' : '');
-        d.setAttribute('aria-label', 'Testimonial ' + (i + 1));
-        d.onclick = function() { go(i); };
-        dotsEl.appendChild(d);
-      })(i);
-    }
-  }
-  prev.onclick = function() { go(cur - 1); };
-  next.onclick = function() { go(cur + 1); };
-  addEventListener('resize', function() { go(cur); });
-  go(0);
-})();
 </script>
 <script type="application/ld+json">
 {

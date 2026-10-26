@@ -204,7 +204,7 @@ curl -sI https://belastinghulpzaanstad.nl/ \
 curl -sI "https://belastinghulpzaanstad.nl/$(ls belasting.*.min.css)" \
   | grep -i "cache-control\|strict-transport"
 
-curl -sI https://belastinghulpzaanstad.nl/fonts/nunito-sans.woff2 \
+curl -sI https://belastinghulpzaanstad.nl/fonts/nunito-sans-2026-10.woff2 \
   | grep -i "cache-control\|strict-transport"
 ```
 
@@ -214,7 +214,7 @@ Verwacht:
 |---|---|---|
 | `/` | `public, max-age=0, must-revalidate` | aanwezig |
 | `/belasting.<hash>.min.css` | `public, max-age=31536000, immutable` | aanwezig |
-| `/fonts/nunito-sans.woff2` | `public, max-age=31536000, immutable` | aanwezig |
+| `/fonts/nunito-sans-2026-10.woff2` | `public, max-age=31536000, immutable` | aanwezig |
 
 **`Strict-Transport-Security` moet in alle drie de gevallen meekomen.** Mist
 hij bij een van de statische bestanden, dan heeft er alsnog een `location`
@@ -621,6 +621,46 @@ beide.
 
 ---
 
+## 4d. Snelheid: HTTP/2, kleinere lettertypen, /.git/ dicht (oktober 2026)
+
+**Wat met de gewone uitrol meegaat** (niets voor te doen op de server):
+
+- De lettertypen zijn kleiner: `fonts/bhz-serif-2026-10.woff2` en
+  `fonts/nunito-sans-2026-10.woff2`, samen 107 KB in plaats van 153 KB. Eruit
+  is alleen wat de site nooit gebruikt (de gewichten onder 400 en de breuk- en
+  tabelcijfers); de letters en hun breedtes zijn precies gelijk, dus ook de
+  regelafbreking. De schreefletter heet nu BHZ Serif: een aangepaste versie
+  van Source Serif 4 mag die naam volgens de licentie niet dragen. Uitleg en
+  hoe ze gemaakt zijn: `scripts/fonts-maken.py`; licentie: `fonts/OFL.txt`.
+- `belasting.css` is de enige bron. `scripts/minify-css.js` maakt er het
+  `.min.css`-bestand van; `bouw.js` draait het vóór `hash-css.js`. Pas dus
+  alleen `belasting.css` aan, nooit het `.min.css`-bestand.
+
+**Wat met de hand moet**: het server-blok krijgt `http2` bij de twee
+`listen 443`-regels, `charset utf-8`, en twee regels die `/.git/` en de
+`.md`-werkdocumenten afsluiten. Tot nu toe waren `/.git/config` en het
+uitrollogboek `/.git/logs/HEAD` gewoon op te vragen. Na de deploy:
+
+```bash
+sudo bash /var/www/belastinghulpzaanstad.nl/html/server-setup/nginx-bijwerken.sh
+```
+
+Het script maakt een back-up, laat het verschil zien, vraagt om een "j",
+draait `nginx -t` en zet bij een fout alles terug. Daarna controleert het zelf
+HTTP/2, `/.git/HEAD` en `/AUDIT.md` (allebei 404), de homepage, de stylesheet,
+een lettertype en `/api/gezond`. Met de hand nakijken kan ook:
+
+```bash
+curl -sI --http2 https://belastinghulpzaanstad.nl/ | head -1          # HTTP/2 200
+curl -s -o /dev/null -w "%{http_code}\n" https://belastinghulpzaanstad.nl/.git/HEAD   # 404
+```
+
+De volgorde maakt niet uit: de pagina's werken met en zonder deze
+nginx-wijziging. Terugdraaien: de regel die het script aan het eind toont, of
+§4 "Alleen nginx terug".
+
+---
+
 ## 5. Korte versie
 
 ```bash
@@ -629,17 +669,11 @@ node scripts/bouw.js               # daarna committen
 node scripts/build-sitemap.js && git add sitemap*.xml && git commit -m "Sitemaps bijgewerkt"
 git checkout main && git merge --ff-only <branch> && git push
 
-# server
+# server (de cron haalt de pagina's elk uur zelf op; dit doet het meteen)
 cd /var/www/belastinghulpzaanstad.nl/html && ./server-setup/auto-deploy.sh
-sudo cp server-setup/nginx-cache-map.conf /etc/nginx/conf.d/cache-map.conf
-sudo cp server-setup/nginx-tellingen.conf  /etc/nginx/conf.d/tellingen.conf
-sudo install -d -o www-data -g www-data -m 750 /var/log/belastinghulp/tellingen
-date -I | sudo tee /var/log/belastinghulp/tellingen/START
-sudo nginx -t
-sudo cp /etc/nginx/sites-available/belastinghulpzaanstad.nl ~/nginx-backup-$(date +%F).conf
-sudo cp server-setup/nginx-belastinghulpzaanstad.conf \
-        /etc/nginx/sites-available/belastinghulpzaanstad.nl
-sudo nginx -t && sudo systemctl reload nginx
+# alleen als er iets in server-setup/nginx-*.conf is veranderd:
+sudo bash server-setup/nginx-bijwerken.sh   # conf.d en server-blok: back-up, diff, nginx -t, controles
+# eenmalig, alleen bij de allereerste uitrol van de klikmeting: §2.6
 
 # controleren, dan
 node scripts/indexnow.js --alles

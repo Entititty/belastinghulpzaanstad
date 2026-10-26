@@ -734,3 +734,53 @@ van de Telecommunicatiewet (geen of geringe gevolgen voor de privacy), dus zonde
 toestemming. Het privacybeleid zegt al dat Brevo anoniem telt (`6fcac8d`). APP.md
 stap 4e heeft nu de exacte menupaden. De branches `privacy-correctie`, `mailjet` en
 `privacy-mailjet` zijn daardoor niet nodig; `mailjet` blijft als terugvaloptie.
+
+---
+
+## 2026-10-26 — Snelheid en opruimen (branch `snelheid`)
+
+Wat een bezoeker bij het eerste bezoek binnenhaalt aan HTML, CSS en lettertypen
+(over de lijn, dus na gzip): homepage 171,0 → 123,4 KB, een blogartikel 173,7 →
+126,8 KB. Ruim een kwart minder, zonder dat er iets aan de pagina's verandert.
+
+- **Lettertypen 153 → 107 KB.** Eruit: de gewichten 200-399 van de serif (de site
+  vraagt nooit minder dan 400) en bij beide de breuk- en tabelcijfers, die de CSS
+  nergens aanzet. De letters en hun breedtes zijn precies gelijk; kerning, fi/fl en
+  de IJ via HarfBuzz ook. Kleiner kon (97 KB, door ook 700-900 en optische grootte
+  onder 18 weg te halen), maar dan rekent fontTools de rest om en rondt af: in een
+  vergelijking van alle pagina's brak daardoor op 2 van de 210 pagina-breedtes een
+  regel anders af. Daarom niet. Omdat "Source" een Reserved Font Name van Adobe is,
+  heet de aangepaste serif **BHZ Serif**, ook in de CSS. `fonts/OFL.txt` (licentie),
+  `scripts/fonts-maken.py` (hoe, en hoe opnieuw). Nieuwe bestandsnamen, want nginx
+  laat lettertypen een jaar cachen.
+- **`belasting.css` is de enige bron.** Elke CSS-wijziging ging tot nu toe met de
+  hand in twee bestanden. `scripts/minify-css.js` maakt het `.min.css`-bestand nu
+  uit de bron (alleen commentaar en witruimte eruit), in `bouw.js` vóór
+  `hash-css.js`; `--check` faalt als ze uit elkaar lopen.
+- **61 ongebruikte CSS-regels weg** uit de stylesheet: de reviewcarrousel (er
+  staan geen reviews op de site), oude knoppen (`.btn-primary`, `.btn-secondary`,
+  `.btn-orange`, `.btn-white`, `.btn-outline-white`, `.tarief-btn`), `.nav-cta`,
+  `.cta-phone`, `.mid-cta-phone`/`-wa`, `.wa-label` en twee animaties. Stylesheet
+  9,1 → 8,1 KB na gzip. Voorwaarde: de class of het element komt in geen enkele
+  pagina en in geen enkel script voor.
+- **Inline CSS van de homepages** teruggebracht tot wat die pagina zelf gebruikt:
+  NL 41 → 30 KB, EN 42 → 33 KB (onder meer de CSS van eerder verwijderde secties:
+  teruggave, doelgroepen, tarieven). De CSS blijft leesbaar.
+- **Dood script weg**: de "Testimonials slider" op 5 pagina's (EN-homepage,
+  Krommenie en Zaandam in NL en EN) zocht naar een carrousel die niet meer bestaat.
+- **Minder beweging**: wie in het systeem "beweging beperken" aanzet, krijgt geen
+  inschuivende hero, kaarten of knipperende stip meer (`prefers-reduced-motion`).
+- **nginx** (met de hand, `server-setup/nginx-bijwerken.sh`, DEPLOY.md §4d):
+  HTTP/2 aan (de server sprak alleen HTTP/1.1), `charset utf-8` voor llms.txt en
+  andere tekstbestanden, en `/.git/` en de `.md`-werkdocumenten dicht. Tot nu toe
+  waren `/.git/config` en het uitrollogboek `/.git/logs/HEAD` op te vragen.
+- **Opgeruimd**: `server-setup/nginx-server-block-snippet.conf` (een oude config met
+  een andere webroot; wie hem had toegepast, had de site platgelegd), README.md
+  van UTF-16 naar UTF-8.
+- **Bewust niet gedaan**: Google Analytics laadt nog op elke pagina vóór de
+  toestemming (Consent Mode v2, keuze van juli); dat is aan de eigenaar.
+  `js/seizoen.js` en `data/seizoen.json` laadt geen pagina, maar ze blijven voor de
+  beslissing over de seizoensstrip in januari. De samengevoegde blogpagina's
+  blijven als vangnet (nginx stuurt ze door). JavaScript niet geminificeerd: gzip
+  doet daar het meeste al. De sitemap niet opnieuw gebouwd: er is inhoudelijk
+  niets veranderd.

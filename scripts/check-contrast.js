@@ -35,10 +35,10 @@
  * script niet.
  *
  * DODE CSS
- * De .testimonial-regels halen de eis niet, maar geen enkele pagina
- * gebruikt die classes. Dat is een uitzondering die zichzelf opheft: komt
- * .testimonial ooit weer in de markup, dan vervalt de uitzondering en
- * slaat het script alsnog af.
+ * Een selector in DOOD (hieronder) wordt overgeslagen zolang geen enkele
+ * pagina de class gebruikt. Komt hij weer in de markup, dan vervalt de
+ * uitzondering vanzelf. De lijst is leeg sinds de .testimonial-regels in
+ * oktober 2026 uit de CSS zijn gehaald.
  *
  * Gebruik:
  *   node scripts/check-contrast.js
@@ -174,7 +174,7 @@ const vlakken = [
 
 /* dode selectors: de uitzondering geldt alleen zolang de markup ze niet
  * gebruikt. Zodra dat verandert, valt de uitzondering weg. */
-const DOOD = ['.testimonial'];
+const DOOD = [];
 const dodeSelectors = DOOD.filter(function (sel) {
   const klasse = sel.replace('.', '');
   for (const f of paginas) {
