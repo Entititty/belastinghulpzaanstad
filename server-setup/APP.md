@@ -206,35 +206,46 @@ er mis is als het niet lukt:
 Werkt SMTP, ga dan toch door naar 4e: daar komt de mail via de API van Brevo,
 zonder volgen per persoon. Dat is ook het vangnet als poort 2525 dicht blijkt.
 
-### 4e. Geen volgen per persoon (verplicht voor de herinneringslijst)
+### 4e. Geen volgen per persoon: Brevo laten anonimiseren (verplicht)
 
 Brevo zet in elke mail een onzichtbaar plaatje en leidt links via een eigen
 klikteller, ook bij SMTP (gezien op 25 oktober 2026: "Open in beheer" ging via
 `sendibt2.com`). Bij mails aan uzelf maakt dat niet uit. Maar de bevestiging en
 de herinnering gaan naar mensen die toestemming gaven voor die mail, niet om
-gevolgd te worden. Alleen via de API kan de app per ontvanger zeggen dat er
-geen toestemming is; Brevo telt opens en kliks dan alleen anoniem, in totalen.
+gevolgd te worden.
 
-1. Zet in Brevo de toestemming per contact aan. Brevo noemt het
-   "per-contact pixel tracking consent"; zoek in de instellingen op
-   "tracking" of "pixel". Kies dat contacten zonder bekende toestemming niet
-   gevolgd worden.
-2. Maak bij "SMTP & API" > "API-sleutels" een API-sleutel aan (niet de
-   SMTP-sleutel).
-3. Zet in `app.env`:
+Helemaal uitzetten kan niet; dat bevestigde Brevo-support op 26 oktober 2026.
+Anoniem tellen kan wel: alleen totalen, niet per persoon. Dat valt onder de
+uitzondering in artikel 11.7a, derde lid, onder b, van de Telecommunicatiewet:
+meten hoe een dienst werkt, met geen of geringe gevolgen voor de privacy. Dan
+is geen toestemming nodig. Zo staat het ook in het privacybeleid.
+
+1. **Verplicht:** Settings > Automations > Transactional emails > Tracking:
+   zet **Anonymous email tracking** aan. Dat geldt voor alle transactionele
+   mail, via SMTP en via de API.
+2. **Extra slot (mag, hoeft niet):** Settings > Contacts > **Per-contact pixel
+   tracking consent**: zet het aan en zet "unknown consent" op **No**. Via de
+   API stuurt de app bij elke ontvanger al `contactPixelTrackingConsent: false`
+   mee. Daarvoor zijn nodig: een API-sleutel uit "SMTP & API" > "API-sleutels"
+   (niet de SMTP-sleutel), en in `app.env`:
 
    ```
    MAIL_VIA=brevo-api
    BREVO_API_SLEUTEL=<de API-sleutel>
    ```
 
-   De SMTP-regels mogen blijven staan; ze worden dan niet gebruikt.
-4. Herstart en draai `testmail.js` opnieuw. De app gaat alleen over IPv4 naar
-   Brevo, dus het adres bij Authorized IPs blijft hetzelfde.
+   De SMTP-regels mogen blijven staan; ze worden dan niet gebruikt. Herstart en
+   draai `testmail.js` opnieuw. De app gaat alleen over IPv4 naar Brevo, dus
+   het adres bij Authorized IPs blijft hetzelfde.
 
 Controleren: doe een proefaanvraag (§5), open de melding en klik op een link.
-In Brevo, bij de logs van transactionele mail, hoort bij dat bericht dan geen
+De link loopt nog steeds via `sendibt2.com`; dat is het anonieme tellen. In
+Brevo, bij de logs van transactionele mail, hoort bij dat bericht geen
 "geopend" of "geklikt" op naam te staan.
+
+Mocht Brevo dit ooit niet meer bieden: de branch `mailjet` bevat een route via
+Mailjet, waar het volgen per bericht helemaal uit kan (Frans, gratis zonder
+creditcard).
 
 ---
 

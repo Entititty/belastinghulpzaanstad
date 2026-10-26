@@ -722,3 +722,15 @@ de lijst wel: zij gaven toestemming voor die mail, niet om gevolgd te worden.
   kloppen.
 - **Privacybeleid** (NL en EN): Brevo telt anoniem, alleen in totalen.
 - `testmail.js` noemt bij een 401 via de API ook de IP-lijst van Brevo.
+
+### Brevo telt anoniem (2026-10-26)
+
+Brevo-support bevestigde dat het volgen in transactionele mail niet helemaal uit kan,
+maar wel anoniem: alleen totalen, niet per persoon. De instelling staat onder Settings >
+Automations > Transactional emails > Tracking ("Anonymous email tracking"); als extra
+slot kan Settings > Contacts > Per-contact pixel tracking consent, met "unknown consent"
+op No. Anoniem tellen valt onder de uitzondering van artikel 11.7a, derde lid, onder b,
+van de Telecommunicatiewet (geen of geringe gevolgen voor de privacy), dus zonder
+toestemming. Het privacybeleid zegt al dat Brevo anoniem telt (`6fcac8d`). APP.md
+stap 4e heeft nu de exacte menupaden. De branches `privacy-correctie`, `mailjet` en
+`privacy-mailjet` zijn daardoor niet nodig; `mailjet` blijft als terugvaloptie.
