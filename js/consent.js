@@ -1,18 +1,26 @@
 /*
- * Belastinghulp Zaanstad — cookie consent + Google Consent Mode v2
- * Zelf-gehost, geen externe CMP. Laadt synchroon in <head> vóór gtag.js.
+ * Belastinghulp Zaanstad — cookie consent
+ * Zelf-gehost, geen externe CMP. Laadt synchroon in <head>.
  *
  * Gedrag:
- *  - Consent-defaults staan op 'denied' (analytics/ads) totdat de bezoeker kiest.
- *    Google Analytics laadt dan cookieloos (Consent Mode v2 pings).
- *  - Microsoft Clarity kent geen Consent Mode en wordt PAS geïnjecteerd na 'Accepteren'.
+ *  - Google Analytics en Microsoft Clarity laden pas na 'Accepteren'. Tot die
+ *    keuze gaat er niets naar Google of Microsoft, ook geen meting zonder
+ *    cookies.
+ *    Tot oktober 2026 laadde Google Analytics op elke pagina vooraf, met
+ *    Consent Mode v2 op 'denied'. Dat stuurde toch al meetsignalen zonder
+ *    toestemming, en gtag.js is 176 KB: meer dan de hele pagina.
+ *  - Na 'Accepteren' alleen analytics_storage aan: de toestemming is voor
+ *    statistieken, niet voor advertenties.
+ *  - De standaard blijft 'denied', voor het geval gtag.js ooit van elders
+ *    komt.
  *  - Keuze wordt onthouden in localStorage; bij een volgende bezoek verschijnt de balk niet meer.
  */
 (function () {
   var STORAGE_KEY = 'bhz_consent_v1';
   var CLARITY_ID  = 'w6ziuhbtlm';
+  var GA_ID       = 'G-KCQDYVY2M6';
 
-  // --- Consent Mode v2 defaults (moet vóór gtag('config') draaien) ---
+  // --- Consent Mode-standaard: alles dicht tot 'Accepteren' ---
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   window.gtag = window.gtag || gtag;
@@ -45,14 +53,22 @@
     })(window, document, 'clarity', 'script', CLARITY_ID);
   }
 
+  // Eerst de toestemming, dan pas config: zo telt de eerste paginaweergave
+  // met toestemming, en niet als meting zonder cookies.
+  function loadGa() {
+    if (window.__bhzGaLoaded) return;
+    window.__bhzGaLoaded = true;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+    var t = document.createElement('script');
+    t.async = true;
+    t.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(t);
+  }
+
   function grantAll() {
-    gtag('consent', 'update', {
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted',
-      analytics_storage: 'granted',
-      personalization_storage: 'granted'
-    });
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    loadGa();
     loadClarity();
   }
 

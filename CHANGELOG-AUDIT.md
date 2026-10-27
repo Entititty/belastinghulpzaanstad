@@ -831,3 +831,28 @@ externe links, wat AI-crawlers te zien krijgen, en de posities in Bing en Google
 - Het plan voor zichtbaarheid in AI-antwoorden (eenmalige stappen, maandelijkse
   meting, vragenlijst, nulmeting) staat in `docs/ai-zichtbaarheid.md`. Lokaal,
   net als de andere analyses, want er staan zoekcijfers in.
+
+## 2026-10-27 (2) — Google Analytics pas na "Accepteren" (branch `ga-na-toestemming`)
+
+Aparte branch, bovenop `controle-ai-2026-10`: de eigenaar beslist of dit live gaat.
+
+- Google Analytics laadde op elke pagina vóór de keuze in de cookiebalk
+  (Consent Mode v2 op "denied", keuze van juli 2026). gtag.js stuurt dan al
+  meetsignalen zonder cookies naar Google, terwijl de cookiebalk en het
+  privacybeleid zeggen "alleen met uw toestemming". En gtag.js is 176 KB over de
+  lijn: meer dan de rest van een eerste bezoek samen (±145 KB).
+- Nu laadt `consent.js` Google Analytics, net als Clarity, pas na "Accepteren",
+  of meteen bij een volgend bezoek als dat al eerder gebeurde. Het tagblok is uit
+  104 pagina's weg. Zonder toestemming gaat er niets naar Google of Microsoft: de
+  pagina's laden verder niets van buiten.
+- Na "Accepteren" alleen `analytics_storage` aan; de advertentiesignalen blijven
+  uit. De toestemming is voor statistieken.
+- Wat GA4 mist: niets wat in de rapporten stond. Google gebruikt de signalen zonder
+  toestemming alleen om bezoekers bij te schatten, en pas vanaf 1.000 gebruikers
+  per dag met toestemming. De eigen tellingen (klikken, formulieren, herkomst)
+  tellen iedereen, zonder cookies.
+- Privacybeleid NL en EN aangepast; laatst bijgewerkt 27 oktober 2026.
+  `consent.js` met `?v=20261027`.
+- Getest in Edge, met alles naar buiten geblokkeerd: zonder keuze gaat er niets
+  weg; na Accepteren gtag.js en Clarity, met de toestemming vóór de config; een
+  volgende pagina laadt ze meteen; na Weigeren gaat er niets weg.
