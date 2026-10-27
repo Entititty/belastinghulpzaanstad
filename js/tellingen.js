@@ -104,7 +104,11 @@
    * app/test/bron.test.js legt ze met een tabel naast elkaar.
    * ------------------------------------------------------------------ */
   /* BRON-BEGIN */
-  var AI = ['chatgpt.com', 'chat.openai.com', 'perplexity.ai', 'copilot.microsoft.com', 'gemini.google.com', 'claude.ai'];
+  /* AI-assistenten. ChatGPT zet utm_source=chatgpt.com achter zijn links;
+     zo'n bezoek is AI en geen campagne. */
+  var AI = ['chatgpt.com', 'chat.openai.com', 'perplexity.ai', 'copilot.microsoft.com', 'copilot.cloud.microsoft', 'gemini.google.com', 'claude.ai',
+    'chat.mistral.ai', 'chat.deepseek.com', 'grok.com', 'meta.ai'];
+  var AI_NAAM = /^(chatgpt|openai|perplexity|copilot|gemini|claude|mistral|deepseek|grok)(\.|$)/;
   var ZOEK = ['google.', 'bing.com', 'duckduckgo.com', 'ecosia.org', 'search.yahoo.com', 'yahoo.com', 'startpage.com', 'qwant.com', 'search.brave.com'];
   var SOCIAL = ['facebook.com', 'm.facebook.com', 'l.facebook.com', 'lm.facebook.com', 'instagram.com', 'l.instagram.com',
     'linkedin.com', 'lnkd.in', 'x.com', 't.co', 'twitter.com', 'nextdoor.nl', 'nextdoor.com', 'youtube.com', 'tiktok.com', 'pinterest.com', 'reddit.com'];
@@ -125,6 +129,7 @@
     if (camp === 'bedrijfsprofiel' || src === 'gbp') return { bron: 'bedrijfsprofiel', detail: 'Google' };
     if (/^(cpc|ppc|paid|ads?|betaald|display|paid-?social)$/.test(med)) return { bron: 'advertentie', detail: [src, camp].filter(Boolean).join(' / ') };
     if (med === 'email' || med === 'e-mail' || src === 'herinnering' || src === 'nieuwsbrief') return { bron: 'e-mail', detail: camp || src };
+    if (src && (AI_NAAM.test(src) || past(src.replace(/^www\./, ''), AI))) return { bron: 'ai', detail: src };
     if (src) return { bron: 'campagne', detail: [src, med, camp].filter(Boolean).join(' / ') };
     var v = String(h.verwijzer || '').toLowerCase().replace(/^www\./, '');
     if (v) {

@@ -8,6 +8,8 @@
  * De sleutel is het .txt-bestand in de root; de naam ervan is de sleutel.
  * Dat bestand moet publiek bereikbaar blijven, anders weigert IndexNow.
  *
+ * server-setup/auto-deploy.sh draait --sinds na elke uitrol vanzelf.
+ *
  * Gebruik:
  *   node scripts/indexnow.js --sinds HEAD~1     # URL's uit de laatste commit
  *   node scripts/indexnow.js --alles            # alles uit de sitemap
@@ -44,9 +46,13 @@ function padNaarUrl(rel) {
   return ORIGIN + '/' + rel.replace(/index\.html$/, '');
 }
 
+/* Alleen pagina's uit de sitemap: de rest staat op noindex of stuurt door.
+ * Een verwijderde pagina gaat wel mee, dan laat Bing hem sneller los. */
 function uitGit(sinds) {
   const uit = execFileSync('git', ['diff', '--name-only', sinds, 'HEAD'], { cwd: ROOT, encoding: 'utf8' });
+  const inSitemap = new Set(uitSitemaps());
   return uit.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean)
+    .filter(function (rel) { return !fs.existsSync(path.join(ROOT, rel)) || inSitemap.has(padNaarUrl(rel)); })
     .map(padNaarUrl).filter(Boolean);
 }
 

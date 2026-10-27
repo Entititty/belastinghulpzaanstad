@@ -784,3 +784,50 @@ Wat een bezoeker bij het eerste bezoek binnenhaalt aan HTML, CSS en lettertypen
   blijven als vangnet (nginx stuurt ze door). JavaScript niet geminificeerd: gzip
   doet daar het meeste al. De sitemap niet opnieuw gebouwd: er is inhoudelijk
   niets veranderd.
+
+## 2026-10-27 — Controle en vindbaarheid in AI-antwoorden (branch `controle-ai-2026-10`)
+
+Nagekeken: de live site na de snelheidsronde, toegankelijkheid (axe-core 4.10,
+WCAG 2.2 AA plus best practices, alle 106 pagina's op 390 en 1280 px), alle 122
+externe links, wat AI-crawlers te zien krijgen, en de posities in Bing en Google.
+
+- **AI-crawlers**: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot,
+  Claude-SearchBot, Bingbot, Googlebot en Applebot krijgen elke pagina volledig
+  (200, alle tekst en JSON-LD in de HTML). Hier hoefde niets aan.
+- **Bing** (bron van Copilot en een bron van ChatGPT): bij de lokale zoekvragen
+  staat de site meestal bovenaan; de nulmeting staat in `docs/ai-zichtbaarheid.md`.
+  Bing toonde bij een deel van de pagina's nog oude titels.
+- **IndexNow vanzelf**: `auto-deploy.sh` meldt na elke uitrol de gewijzigde
+  pagina's (`indexnow.js --sinds`). Die stap stond in DEPLOY.md, maar ging met de
+  hand. `--sinds` meldt nu alleen pagina's uit de sitemap, plus verwijderde.
+- **AI-herkomst klopte niet**: ChatGPT zet `utm_source=chatgpt.com` achter zijn
+  links, en een utm-code ging vóór de verwijzende site. Zo'n bezoek of aanvraag
+  telde dus als "campagne". Nu als AI, in `js/tellingen.js` en `app/lib/bron.js`
+  tegelijk (de test legt ze naast elkaar, 7 gevallen erbij). Ook erbij: Grok,
+  Mistral, DeepSeek, Meta AI en Microsoft 365 Copilot. In /beheer kan "AI (ChatGPT
+  e.d.)" nu ook als antwoord op "Hoe kent deze persoon ons?".
+- **Toegankelijkheid**, uit de axe-scan:
+  - kruimelpad als `<nav aria-label="Kruimelpad">` (92 pagina's), scheidingstekens
+    met `aria-hidden`, de huidige pagina met `aria-current`;
+  - de zwevende belknop als `<aside aria-label="Contact">` (85 pagina's) en de
+    tekstgrootteknoppen (A, A+, A++) als `<aside>` met een naam, zodat ze in een
+    paginagebied staan;
+  - brede tabellen (77, op 48 pagina's) die op een smal scherm opzij schuiven,
+    krijgen een tabstop en een naam, maar alleen als ze echt niet passen
+    (`js/toegankelijkheid.js`);
+  - de links in de vertrouwensblokken op de homepage zijn onderstreept: ze
+    verschilden alleen in kleur van de tekst eromheen (contrast 1,13:1).
+  - Na deze ronde meldt axe niets meer op de 99 gewone pagina's, op 390 en 1280 px.
+    De 7 doorstuurpagina's sturen meteen door; daar meet axe de pagina waar ze
+    naartoe wijzen.
+- **Kapotte link**: twee zorgtoeslagblogs wezen naar een pagina van Dienst
+  Toeslagen die niet meer bestaat (404). Nu naar de proefberekening, zoals de
+  rest van de site. Eén verhuisde link van Rijksoverheid bijgewerkt.
+- `js/toegankelijkheid.js` en `js/tellingen.js` met `?v=20261027`: de browser
+  bewaart scripts een week.
+- **Gemeten, niet veranderd**: op een trage mobiele verbinding is de LCP 0,8–2,6 s
+  en de CLS 0. Google Analytics (`gtag.js`) is 176 KB van de 320 KB die een eerste
+  bezoek binnenhaalt; zie de aparte branch `ga-na-toestemming`.
+- Het plan voor zichtbaarheid in AI-antwoorden (eenmalige stappen, maandelijkse
+  meting, vragenlijst, nulmeting) staat in `docs/ai-zichtbaarheid.md`. Lokaal,
+  net als de andere analyses, want er staan zoekcijfers in.

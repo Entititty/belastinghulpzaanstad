@@ -409,8 +409,17 @@ met `sudo crontab -e`; het script waarschuwt daarvoor.
 
 ### 2.7 Na de uitrol
 
+IndexNow gaat sinds oktober 2026 vanzelf. `auto-deploy.sh` meldt na elke
+uitrol de gewijzigde pagina's die in de sitemap staan
+(`node scripts/indexnow.js --sinds <vorige versie>`). Het resultaat staat in
+`/tmp/belasting-deploy.log`. Een nieuwe versie van `auto-deploy.sh` geldt pas
+vanaf de uitrol erna.
+
+Met de hand is het alleen nodig als de log "indexnow mislukt" toont, of na
+een uitrol met nieuwe pagina's in de sitemap:
+
 ```bash
-node scripts/indexnow.js --alles     # Bing, en daarmee ChatGPT-zoek
+node scripts/indexnow.js --alles     # Bing, en daarmee ChatGPT en Copilot
 ```
 
 Doe dit **na** de deploy. IndexNow haalt het sleutelbestand op om te
@@ -675,6 +684,6 @@ cd /var/www/belastinghulpzaanstad.nl/html && ./server-setup/auto-deploy.sh
 sudo bash server-setup/nginx-bijwerken.sh   # conf.d en server-blok: back-up, diff, nginx -t, controles
 # eenmalig, alleen bij de allereerste uitrol van de klikmeting: §2.6
 
-# controleren, dan
+# IndexNow gaat vanzelf na de uitrol (§2.7); met de hand alleen als de log het vraagt:
 node scripts/indexnow.js --alles
 ```

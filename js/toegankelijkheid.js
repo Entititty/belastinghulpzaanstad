@@ -1,7 +1,8 @@
 /* Toegankelijkheid (Taak 9)
    1. Tekstgrootte-schakelaar A / A+ / A++ (onthoudt de keuze in localStorage).
    2. FAQ-knoppen: aria-expanded bijhouden voor schermlezers.
-   3. Decoratieve icoon-emoji: aria-hidden zetten. */
+   3. Decoratieve icoon-emoji: aria-hidden zetten.
+   4. Brede tabellen: met het toetsenbord opzij te schuiven. */
 (function () {
   var KEY = 'bhz-tekstgrootte';
   var root = document.documentElement;
@@ -58,9 +59,9 @@
   }
   function buildSwitcher() {
     if (document.querySelector('.ts-switch')) return;
-    var box = document.createElement('div');
+    // een <aside> met een naam: een eigen gebied, dat een schermlezer kan aanwijzen
+    var box = document.createElement('aside');
     box.className = 'ts-switch';
-    box.setAttribute('role', 'group');
     box.setAttribute('aria-label', EN ? 'Text size' : 'Tekstgrootte aanpassen');
     box.innerHTML =
       '<span class="ts-switch-label" aria-hidden="true">' + (EN ? 'Text' : 'Tekst') + '</span>' +
@@ -74,6 +75,7 @@
       apply(scale);
       try { localStorage.setItem(KEY, scale); } catch (err) {}
       markPressed(box, scale);
+      tabellen();
     });
     document.body.appendChild(box);
     markPressed(box, saved || 'normal');
@@ -142,12 +144,48 @@
     ruimteOnderBalk(bar);
   }
 
+  /* Brede tabellen schuiven op een smal scherm opzij (.tabel-scroll). Past
+     een tabel niet, dan krijgt het kader een tabstop en een naam: zo komt
+     iemand er met het toetsenbord in (pijltjes) en hoort een schermlezer wat
+     het is. Past hij wel, dan geen overbodige tabstop. Opnieuw bij een
+     andere schermbreedte en een andere tekstgrootte. */
+  function tabellen() {
+    var els = document.querySelectorAll('.tabel-scroll');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.scrollWidth > el.clientWidth + 1) {
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('role', 'region');
+        el.setAttribute('aria-label', EN ? 'Table, scroll sideways' : 'Tabel, schuif opzij');
+      } else if (el.hasAttribute('tabindex')) {
+        el.removeAttribute('tabindex');
+        el.removeAttribute('role');
+        el.removeAttribute('aria-label');
+      }
+    }
+  }
+
   function init() {
     injectCss();
     buildSwitcher();
     buildMobileBar();
     wireFaq();
     try { hideDecorativeEmoji(); } catch (e) {}
+    tabellen();
+    // Opnieuw kijken zodra het kader of de tabel van maat verandert: bij een
+    // andere schermbreedte, en als de lettertypen binnenkomen (vaak pas na
+    // dit moment, en ze kunnen een tabel breder maken).
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(tabellen);
+      var ks = document.querySelectorAll('.tabel-scroll');
+      for (var i = 0; i < ks.length; i++) {
+        ro.observe(ks[i]);
+        if (ks[i].firstElementChild) ro.observe(ks[i].firstElementChild);
+      }
+    } else {
+      window.addEventListener('resize', tabellen);
+      window.addEventListener('load', tabellen);
+    }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
