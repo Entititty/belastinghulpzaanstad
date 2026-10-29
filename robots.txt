@@ -1,79 +1,56 @@
 # Belastinghulp Zaanstad – robots.txt
-
-# Algemene zoekmachines
+#
+# Alle zoekmachines en AI-diensten mogen de hele site lezen. De site wil
+# gevonden worden: in zoekresultaten, in AI-antwoorden (ChatGPT, Copilot,
+# Gemini, Perplexity, Claude) en in wat taalmodellen over ons weten.
+#
+# Content-Signal (contentsignals.org) zegt dat ook met zoveel woorden:
+#   search=yes    in een zoekindex en in zoekresultaten
+#   ai-input=yes  als bron voor een AI-antwoord, ook de AI-samenvattingen
+#                 in zoekmachines. Op "no" zou dit de AI-antwoorden juist
+#                 tegenhouden.
+#   ai-train=yes  om AI-modellen te trainen
+# Het is een voorkeur; een crawler hoeft er zich niet aan te houden.
+#
+# Eén groep voor alle crawlers. Een crawler met een eigen groep leest alleen
+# die groep, dus zo geldt de Content-Signal-regel voor iedereen.
 User-agent: *
-Allow: /
-
-# Google – inclusief AI Overviews / SGE
+# Google, ook AI Overviews en Gemini
 User-agent: Googlebot
-Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
 # OpenAI / ChatGPT
 User-agent: GPTBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 # Anthropic / Claude
 User-agent: ClaudeBot
-Allow: /
-
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 User-agent: Anthropic-AI
-Allow: /
-
 User-agent: claude-web
-Allow: /
-
 # Perplexity
 User-agent: PerplexityBot
-Allow: /
-
+User-agent: Perplexity-User
 # Microsoft Copilot / Bing
 User-agent: Bingbot
-Allow: /
-
 User-agent: msnbot
-Allow: /
-
 # You.com
 User-agent: YouBot
-Allow: /
-
 # Cohere
 User-agent: cohere-ai
-Allow: /
-
 # Diffbot
 User-agent: Diffbot
-Allow: /
-
 # Common Crawl (gebruikt door veel AI-trainingssets)
 User-agent: CCBot
-Allow: /
-
 # Bytespider (TikTok / ByteDance)
 User-agent: Bytespider
-Allow: /
-
 # Apple (Siri / Spotlight)
 User-agent: Applebot
-Allow: /
-
 User-agent: Applebot-Extended
-Allow: /
-
 # Meta AI
 User-agent: meta-externalagent
-Allow: /
-
 User-agent: FacebookBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 Sitemap: https://belastinghulpzaanstad.nl/sitemap.xml

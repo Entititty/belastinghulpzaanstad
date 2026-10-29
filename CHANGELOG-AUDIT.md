@@ -856,3 +856,19 @@ Aparte branch, bovenop `controle-ai-2026-10`: de eigenaar beslist of dit live ga
 - Getest in Edge, met alles naar buiten geblokkeerd: zonder keuze gaat er niets
   weg; na Accepteren gtag.js en Clarity, met de toestemming vóór de config; een
   volgende pagina laadt ze meteen; na Weigeren gaat er niets weg.
+
+## 2026-10-29 — Content-Signal in robots.txt (branch `robots-content-signal`)
+
+- `robots.txt` zegt nu ook met een Content-Signal-regel (contentsignals.org) dat de
+  site mag dienen voor zoeken, als bron voor AI-antwoorden en voor training:
+  `search=yes, ai-input=yes, ai-train=yes`. Het is een voorkeur, geen regel die een
+  crawler moet volgen. Het voorbeeld van de test (isitagentready.com) zette
+  `ai-input=no`; dat vraagt AI-diensten juist om de site niet als bron te gebruiken.
+- Alle crawlers staan in één groep. Een crawler met een eigen groep leest alleen die
+  groep, dus anders kreeg alleen `*` het signaal. De toegang is per crawler precies
+  gelijk (`Allow: /`), nagelopen volgens RFC 9309. Erbij gezet: Claude-SearchBot,
+  Claude-User en Perplexity-User; die mochten via `*` al.
+- De andere punten van die test niet gedaan: ze zijn voor sites met een openbare API
+  of logins voor software (API-catalogus, OAuth, MCP, auth.md, DNS-AID en dergelijke),
+  of leveren niets op (Markdown voor agents). WebMCP is een proef in Chrome; later
+  opnieuw bekijken. De afweging staat in `docs/ai-zichtbaarheid.md`.
