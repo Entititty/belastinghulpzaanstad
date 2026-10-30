@@ -142,6 +142,17 @@ De toeslagrekentools volgen deze waarden vanzelf. Daarna, in deze volgorde:
    `/en/blog/rent-benefit/` en de kaart op `/en/`), en `llms.txt`. Zoek op het oude
    maximum (in 2026: €129, €246, €523, €525, €537).
 
+### Stap 5b. Erfbelasting en schenkbelasting (16 waarden, sinds oktober 2026)
+
+Bron: de pagina's [vrijstelling erfbelasting](https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/vrijstelling-erfbelasting),
+[tarieven erfbelasting](https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting),
+[schenken aan uw kind](https://www.belastingdienst.nl/wps/wcm/connect/nl/schenken/content/hoeveel-mag-ik-mijn-kind-belastingvrij-schenken),
+en voor `erf_vrijstelling_partner_minimaal` de nieuwe Toelichting Erfbelasting (zoek op
+"minimale vrijstelling"). De sleutels beginnen met `erf_`, `schenk_` en `erfschenk_`.
+De tarieven (10%, 18%, 30%, 20%, 36%, 40%) veranderen zelden, de bedragen elk jaar.
+`check-rekenregels.js` rekent negen gevallen na met de bedragen van 2026 erin; zet daar
+de nieuwe bedragen in, dan faalt hij niet meer.
+
 ### Stap 6. Boete en rente (3 waarden)
 
 | Sleutel | Bron |

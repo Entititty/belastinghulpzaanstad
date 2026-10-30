@@ -265,6 +265,38 @@
     zet(box, 'melding', melding);
   };
 
+  /* Erfbelasting en schenkbelasting: bedrag min vrijstelling, dan twee tarieven
+     (rekenregels.js). Dezelfde rekentool voor beide, met eigen meldingen. */
+  function erfschenk(soort) {
+    return function (box, C) {
+      var R = window.BHZRekenregels;
+      var relatie = keuze(box, 'relatie');
+      var r = R.erfschenkbelasting(C, { soort: soort, relatie: relatie, bedrag: bedrag(box, 'bedrag') });
+      zet(box, 'belasting', euro(r.belasting));
+      zet(box, 'vrijstelling', '− ' + euro(r.vrijstelling));
+      zet(box, 'belastbaar', euro(r.belastbaar));
+      zet(box, 'uitleg',
+        'Bedrag: ' + euro(bedrag(box, 'bedrag')) + '<br>' +
+        'Vrijstelling: &minus; ' + euro(r.vrijstelling) + '<br>' +
+        'Belastbaar: ' + euro(r.belastbaar) + '<br>' +
+        pct(r.tariefLaag) + ' over ' + euro(Math.min(r.belastbaar, r.grens)) + ' = ' + euro(r.laag) +
+        (r.belastbaar > r.grens ? '<br>' + pct(r.tariefHoog) + ' over het deel boven ' + euro(r.grens) + ' (' + euro(r.belastbaar - r.grens) + ') = ' + euro(r.hoog) : '') + '<br>' +
+        (soort === 'erf' ? 'Erfbelasting' : 'Schenkbelasting') + ': ' + euro(r.belasting), true);
+      var m = {
+        'erf/partner': 'Krijgt u door het overlijden ook een nabestaandenpensioen of lijfrente? Dan is uw vrijstelling lager, maar in 2026 nooit lager dan ' + euro(C.erf_vrijstelling_partner_minimaal) + '. Samenwonend? Dan telt u alleen als partner met een notarieel samenlevingscontract, of als u allebei minstens 5 jaar op hetzelfde adres staat ingeschreven.',
+        'erf/kind-beperking': 'Deze hogere vrijstelling geldt alleen als u door uw beperking de komende 3 jaar waarschijnlijk minder dan de helft verdient van iemand zonder beperking, en de overledene meer dan de helft van uw levensonderhoud betaalde.',
+        'erf/ouder': 'Erven beide ouders? Dan geldt de vrijstelling voor hen samen.',
+        'schenk/kind': 'Geven u en uw partner allebei? Dan geldt de vrijstelling voor u samen. Tel alle schenkingen aan dit kind in 2026 bij elkaar op.',
+        'schenk/kind-eenmalig': 'Eén keer per kind, als het kind of zijn partner tussen 18 en 40 jaar is. Uw kind vraagt de vrijstelling aan in zijn aangifte schenkbelasting.',
+        'schenk/kind-studie': 'Alleen voor een dure studie of opleiding, als uw kind tussen 18 en 40 jaar is. Er gelden extra voorwaarden; laat het ons nakijken.',
+        'schenk/kleinkind': 'Geven opa en oma allebei? Dan geldt de vrijstelling voor hen samen, als zij partners zijn voor de schenkbelasting.'
+      }[soort + '/' + relatie] || '';
+      zet(box, 'melding', m);
+    };
+  }
+  REKENHULPEN['erfbelasting'] = erfschenk('erf');
+  REKENHULPEN['schenkbelasting'] = erfschenk('schenk');
+
   /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
   function zichtbaarheid(box) {
     var els = box.querySelectorAll('[data-rh-als]');
@@ -280,7 +312,7 @@
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
-    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
+    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
       zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
       return;
     }

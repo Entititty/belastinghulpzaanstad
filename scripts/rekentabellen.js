@@ -145,7 +145,22 @@ function belastingvrijLoon() {
   return Math.floor(laag / 100) * 100;
 }
 
+/* ---------- erfbelasting en schenkbelasting ---------- */
+function erfschenkTabel(id, soort, kop, kolommen, bedragen) {
+  const rijen = bedragen.map((b) => [euro(b)].concat(kolommen.map(([, relatie]) => {
+    const r = R.erfschenkbelasting(C, { soort, relatie, bedrag: b });
+    return r.belasting >= 0.5 ? euro(r.belasting) : '€0';
+  })));
+  return tabel(id, kop, [soort === 'erf' ? 'Wat u erft' : 'Schenking'].concat(kolommen.map(([naam]) => naam)), rijen);
+}
+
 const TABELLEN = {
+  'erfbelasting-tabel': (id) => erfschenkTabel(id, 'erf', 'Erfbelasting ' + JAAR + ' per erfgenaam',
+    [['Partner', 'partner'], ['Kind', 'kind'], ['Kleinkind', 'kleinkind'], ['Broer, zus, ander', 'overig']],
+    [25000, 50000, 100000, 150000, 200000, 300000, 500000, 1000000]),
+  'schenkbelasting-tabel': (id) => erfschenkTabel(id, 'schenk', 'Schenkbelasting ' + JAAR + ' per ontvanger',
+    [['Kind', 'kind'], ['Kind 18-40, eenmalig', 'kind-eenmalig'], ['Kleinkind', 'kleinkind'], ['Iemand anders', 'overig']],
+    [5000, 10000, 25000, 50000, 100000, 250000]),
   'inkomstenbelasting-loon': belastingBijLoon,
   'zorgtoeslag-alleenstaand': (id) => zorgtoeslagTabel(id, false),
   'zorgtoeslag-partners': (id) => zorgtoeslagTabel(id, true),
@@ -159,7 +174,13 @@ const TABELLEN = {
   'huurtoeslag-nulpunt': huurtoeslagNulpunt
 };
 
+const erfschenk = (soort, relatie, bedrag) => euro(R.erfschenkbelasting(C, { soort, relatie, bedrag }).belasting);
+
 const WAARDEN = {
+  'erf-100k-kind': () => erfschenk('erf', 'kind', 100000),
+  'erf-100k-kleinkind': () => erfschenk('erf', 'kleinkind', 100000),
+  'erf-100k-overig': () => erfschenk('erf', 'overig', 100000),
+  'schenk-10k-kind': () => erfschenk('schenk', 'kind', 10000),
   'inkomstenbelasting-vrij-tot': () => euro(belastingvrijLoon()),
   'zorgtoeslag-max-maand': () => euro(R.zorgtoeslag(C, { inkomen: 0 }).maand),
   'zorgtoeslag-max-maand-partners': () => euro(R.zorgtoeslag(C, { partner: true, inkomen: 0 }).maand),

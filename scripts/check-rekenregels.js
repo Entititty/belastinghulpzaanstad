@@ -103,6 +103,33 @@ gelijk('box 1 tot de tweede schijfgrens', R.box1(C, C.box1_schijf2_grens),
   C.box1_schijf1_grens * C.box1_schijf1_tarief + (C.box1_schijf2_grens - C.box1_schijf1_grens) * C.box1_schijf2_tarief);
 gelijk('box 1 boven de tweede schijfgrens', R.box1(C, C.box1_schijf2_grens + 1000) - R.box1(C, C.box1_schijf2_grens), 1000 * C.box1_schijf3_tarief);
 
+/* ---------- erfbelasting en schenkbelasting ----------
+   De Belastingdienst geeft geen rekenvoorbeeld; deze zijn met de hand
+   uitgerekend met de vrijstellingen en tarieven 2026. */
+gelijk('erfbelasting: kind erft €100.000', R.erfschenkbelasting(C, { soort: 'erf', relatie: 'kind', bedrag: 100000 }).belasting, (100000 - 26230) * 0.10);
+gelijk('erfbelasting: partner erft €1.000.000', R.erfschenkbelasting(C, { soort: 'erf', relatie: 'partner', bedrag: 1000000 }).belasting,
+  158669 * 0.10 + (1000000 - 828035 - 158669) * 0.20);
+gelijk('erfbelasting: partner onder de vrijstelling', R.erfschenkbelasting(C, { soort: 'erf', relatie: 'partner', bedrag: 800000 }).belasting, 0);
+gelijk('erfbelasting: kleinkind erft €50.000', R.erfschenkbelasting(C, { soort: 'erf', relatie: 'kleinkind', bedrag: 50000 }).belasting, (50000 - 26230) * 0.18);
+gelijk('erfbelasting: broer erft €300.000', R.erfschenkbelasting(C, { soort: 'erf', relatie: 'overig', bedrag: 300000 }).belasting,
+  158669 * 0.30 + (300000 - 2769 - 158669) * 0.40);
+gelijk('erfbelasting: ouder erft €100.000', R.erfschenkbelasting(C, { soort: 'erf', relatie: 'ouder', bedrag: 100000 }).belasting, (100000 - 62110) * 0.30);
+gelijk('schenkbelasting: kind krijgt €10.000', R.erfschenkbelasting(C, { soort: 'schenk', relatie: 'kind', bedrag: 10000 }).belasting, (10000 - 6908) * 0.10);
+gelijk('schenkbelasting: kind krijgt €33.129 eenmalig', R.erfschenkbelasting(C, { soort: 'schenk', relatie: 'kind-eenmalig', bedrag: 33129 }).belasting, 0);
+gelijk('schenkbelasting: kleinkind krijgt €10.000', R.erfschenkbelasting(C, { soort: 'schenk', relatie: 'kleinkind', bedrag: 10000 }).belasting, (10000 - 2769) * 0.18);
+for (const soort of ['erf', 'schenk']) {
+  for (const relatie of soort === 'erf' ? ['partner', 'kind', 'kind-beperking', 'kleinkind', 'achterkleinkind', 'ouder', 'overig'] : ['kind', 'kind-eenmalig', 'kind-studie', 'kleinkind', 'overig']) {
+    let vorige = -1;
+    for (let b = 0; b <= 2000000; b += 5000) {
+      const r = R.erfschenkbelasting(C, { soort, relatie, bedrag: b });
+      eigenschap(soort + '/' + relatie + ': negatief bij ' + b, r.belasting >= 0);
+      eigenschap(soort + '/' + relatie + ': daalt bij ' + b, r.belasting >= vorige - 1e-9);
+      eigenschap(soort + '/' + relatie + ': meer dan het bedrag bij ' + b, r.belasting <= b);
+      vorige = r.belasting;
+    }
+  }
+}
+
 /* ---------- eigenschappen ---------- */
 {
   let vorige = -1;

@@ -206,7 +206,54 @@
     };
   }
 
+  /*
+   * ERFBELASTING EN SCHENKBELASTING
+   * invoer: { soort: 'erf' of 'schenk', relatie, bedrag }
+   * Belastbaar is het bedrag min de vrijstelling. Daarover het lage tarief tot
+   * de schijfgrens en het hoge daarboven (vrijstellingen en tarieven 2026 van
+   * de Belastingdienst). Per relatie: [sleutel van de vrijstelling, tariefgroep].
+   * Groep 1: partner en kinderen; 1a: kleinkinderen en verder; 2: de rest,
+   * ook ouders, broers en zussen.
+   */
+  var ERFSCHENK = {
+    erf: {
+      partner: ['erf_vrijstelling_partner', '1'],
+      kind: ['erf_vrijstelling_kind', '1'],
+      'kind-beperking': ['erf_vrijstelling_kind_beperking', '1'],
+      kleinkind: ['erf_vrijstelling_kind', '1a'],
+      achterkleinkind: ['erf_vrijstelling_overig', '1a'],
+      ouder: ['erf_vrijstelling_ouders', '2'],
+      overig: ['erf_vrijstelling_overig', '2']
+    },
+    schenk: {
+      kind: ['schenk_vrijstelling_kind', '1'],
+      'kind-eenmalig': ['schenk_vrijstelling_kind_eenmalig', '1'],
+      'kind-studie': ['schenk_vrijstelling_studie', '1'],
+      kleinkind: ['erf_vrijstelling_overig', '1a'],
+      overig: ['erf_vrijstelling_overig', '2']
+    }
+  };
+
+  function erfschenkbelasting(C, inv) {
+    var regel = (ERFSCHENK[inv.soort] || {})[inv.relatie];
+    if (!regel) throw new Error('onbekende relatie: ' + inv.soort + '/' + inv.relatie);
+    var bedrag = Math.max(0, Number(inv.bedrag) || 0);
+    var vrijstelling = C[regel[0]];
+    var groep = regel[1];
+    var laagPct = C['erfschenk_tarief_groep' + groep + '_laag'];
+    var hoogPct = C['erfschenk_tarief_groep' + groep + '_hoog'];
+    var grens = C.erfschenk_schijfgrens;
+    var belastbaar = Math.max(0, bedrag - vrijstelling);
+    var laag = Math.min(belastbaar, grens) * laagPct;
+    var hoog = Math.max(0, belastbaar - grens) * hoogPct;
+    return {
+      vrijstelling: vrijstelling, belastbaar: belastbaar, groep: groep, grens: grens,
+      tariefLaag: laagPct, tariefHoog: hoogPct, laag: laag, hoog: hoog, belasting: laag + hoog
+    };
+  }
+
   return {
+    erfschenkbelasting: erfschenkbelasting,
     getal: getal, cijfers: cijfers, heleEuroOmlaag: heleEuroOmlaag,
     zorgtoeslag: zorgtoeslag, huurtoeslag: huurtoeslag,
     box1: box1, algemeneHeffingskorting: algemeneHeffingskorting, arbeidskorting: arbeidskorting,

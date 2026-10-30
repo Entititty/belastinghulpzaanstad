@@ -947,3 +947,20 @@ benadering, en voor de zorgtoeslag was er geen tool.
   formules op minder dan €1 na hetzelfde.
 - Links vanaf `/blog/belastingteruggave/`, `/diensten/eerste-baan/`, het overzicht van de
   rekentools en `llms.txt`.
+
+### Rekentools erfbelasting en schenkbelasting (zelfde branch)
+
+- **Nieuw: `/rekentools/erfbelasting/` en `/rekentools/schenkbelasting/`**. Eén rekenregel
+  voor beide (`erfschenkbelasting` in `js/rekenregels.js`): bedrag min de vrijstelling, en
+  daarover het lage tarief tot €158.669 en het hoge daarboven. Vrijstellingen en tarieven
+  2026 van de Belastingdienst; de minimale partnervrijstelling van €213.915 bij een
+  nabestaandenpensioen uit de Toelichting Erfbelasting 2026. Per keuze een melding met de
+  voorwaarden (samenwonend partner, kind met een beperking, ouders samen, opa en oma
+  samen, eenmalig verhoogd, dure studie).
+- Tabellen per bedrag en erfgenaam of ontvanger, en losse bedragen ("een kind dat
+  €100.000 erft, betaalt €7.377") tussen markeringen.
+- 16 nieuwe waarden in `fiscale-cijfers.json`. De Belastingdienst geeft hier geen
+  rekenvoorbeeld; `check-rekenregels.js` rekent negen met de hand uitgerekende gevallen na,
+  en dat de belasting nooit daalt bij een hoger bedrag en nooit hoger is dan het bedrag.
+- Aanvragen via deze tools gaan naar de dienst Erfbelasting (op offerte). Links vanaf
+  `/diensten/erfbelasting-schenking/`, het overzicht en `llms.txt`.

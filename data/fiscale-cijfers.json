@@ -785,6 +785,183 @@
         "arbeidskorting",
         "arbeidsinkomen"
       ]
+    },
+    "erf_vrijstelling_partner": {
+      "waarde": "€828.035",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, vrijstelling erfbelasting 2026: echtgenoot, geregistreerde partner of samenwonende partner € 828.035",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/vrijstelling-erfbelasting"
+    },
+    "erf_vrijstelling_partner_minimaal": {
+      "waarde": "€213.915",
+      "geverifieerd": true,
+      "bron": "Toelichting Erfbelasting 2026, vraag 10: de partnervrijstelling wordt verminderd met het nabestaandenpensioen of de lijfrente; \"in 2026 blijft altijd een minimale vrijstelling over van € 213.915\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/belastingdienst/docs/toe_aangifte_erf_2026_suc0611t63fd.pdf"
+    },
+    "erf_vrijstelling_kind": {
+      "waarde": "€26.230",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, vrijstelling erfbelasting 2026: kind, pleegkind of stiefkind € 26.230; kleinkind ook € 26.230",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/vrijstelling-erfbelasting"
+    },
+    "erf_vrijstelling_kind_beperking": {
+      "waarde": "€78.671",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, vrijstelling erfbelasting 2026: kind met een beperking € 78.671 (onder voorwaarden)",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/vrijstelling-erfbelasting"
+    },
+    "erf_vrijstelling_ouders": {
+      "waarde": "€62.110",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, vrijstelling erfbelasting 2026: ouder € 62.110; erven beide ouders, dan samen € 62.110",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/vrijstelling-erfbelasting"
+    },
+    "erf_vrijstelling_overig": {
+      "waarde": "€2.769",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, vrijstelling erfbelasting 2026: achterkleinkind en andere erfgenamen € 2.769. Schenken aan kleinkinderen en anderen: ook € 2.769. Kleinkinderen: https://www.belastingdienst.nl/wps/wcm/connect/nl/schenken/content/hoeveel-mag-ik-mijn-kleinkinderen-belastingvrij-schenken",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/vrijstelling-erfbelasting",
+      "context": [
+        "erfbelasting",
+        "schenkbelasting",
+        "erfenis",
+        "schenking",
+        "erfgenam"
+      ]
+    },
+    "schenk_vrijstelling_kind": {
+      "waarde": "€6.908",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, schenken aan uw kind 2026: jaarlijkse vrijstelling € 6.908",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/schenken/content/hoeveel-mag-ik-mijn-kind-belastingvrij-schenken"
+    },
+    "schenk_vrijstelling_kind_eenmalig": {
+      "waarde": "€33.129",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, schenken aan uw kind 2026: eenmalig verhoogde vrijstelling € 33.129 als het kind of zijn partner tussen 18 en 40 is",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/schenken/content/hoeveel-mag-ik-mijn-kind-belastingvrij-schenken"
+    },
+    "schenk_vrijstelling_studie": {
+      "waarde": "€69.009",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, schenken aan uw kind 2026: eenmalig € 69.009 voor een dure studie, kind tussen 18 en 40",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/schenken/content/hoeveel-mag-ik-mijn-kind-belastingvrij-schenken"
+    },
+    "erfschenk_schijfgrens": {
+      "waarde": "€158.669",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tarieven erfbelasting en schenkbelasting 2026: lage tarieven \"tot € 158.669\", daarboven de hoge",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting"
+    },
+    "erfschenk_tarief_groep1_laag": {
+      "waarde": "10%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tarieven erfbelasting 2026: partner en kinderen 10% tot € 158.669",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting",
+      "context": [
+        "erfbelasting",
+        "schenkbelasting",
+        "erfenis",
+        "schenking",
+        "erfgenam"
+      ]
+    },
+    "erfschenk_tarief_groep1_hoog": {
+      "waarde": "20%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tarieven erfbelasting 2026: partner en kinderen 20% vanaf € 158.669",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting",
+      "context": [
+        "erfbelasting",
+        "schenkbelasting",
+        "erfenis",
+        "schenking",
+        "erfgenam"
+      ]
+    },
+    "erfschenk_tarief_groep1a_laag": {
+      "waarde": "18%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tarieven erfbelasting 2026: kleinkinderen en verdere afstammelingen 18% tot € 158.669",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting",
+      "context": [
+        "erfbelasting",
+        "schenkbelasting",
+        "erfenis",
+        "schenking",
+        "erfgenam"
+      ]
+    },
+    "erfschenk_tarief_groep1a_hoog": {
+      "waarde": "36%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tarieven erfbelasting 2026: kleinkinderen en verdere afstammelingen 36% vanaf € 158.669",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting",
+      "context": [
+        "erfbelasting",
+        "schenkbelasting",
+        "erfenis",
+        "schenking",
+        "erfgenam"
+      ]
+    },
+    "erfschenk_tarief_groep2_laag": {
+      "waarde": "30%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tarieven erfbelasting 2026: overige erfgenamen 30% tot € 158.669 (schenkbelasting: zelfde tarieven, https://www.belastingdienst.nl/wps/wcm/connect/nl/schenken/content/tarieven-schenkbelasting)",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting",
+      "context": [
+        "erfbelasting",
+        "schenkbelasting",
+        "erfenis",
+        "schenking",
+        "erfgenam"
+      ]
+    },
+    "erfschenk_tarief_groep2_hoog": {
+      "waarde": "40%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tarieven erfbelasting 2026: overige erfgenamen 40% vanaf € 158.669",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/erfbelasting/content/tarieven-erfbelasting",
+      "context": [
+        "erfbelasting",
+        "schenkbelasting",
+        "erfenis",
+        "schenking",
+        "erfgenam"
+      ]
     }
   }
 }

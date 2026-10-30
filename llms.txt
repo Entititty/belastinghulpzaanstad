@@ -139,6 +139,8 @@ Alle rekentools rekenen met de cijfers van 2026. De berekening gebeurt in de bro
 - [Belastingteruggave berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/belastingteruggave/), voor wie alleen loon heeft (eerste baan, bijbaan, deel van het jaar gewerkt): ingehouden loonheffing min de belasting na algemene heffingskorting en arbeidskorting; met tabel belasting per loon
 - [Zorgtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/zorgtoeslag/), met de formule van Dienst Toeslagen (standaardpremie min normpremie); maximaal €129 per maand alleen, €246 met toeslagpartner; met tabel per inkomen
 - [Huurtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/), met de formule van Dienst Toeslagen (basishuur, 100%, 65% en 40% vergoeding, inkomenscorrectie); maximaal €523 per maand alleen, €537 met 3 of meer personen; met tabellen per huur en inkomen
+- [Erfbelasting berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/erfbelasting/), vrijstelling en tarief per erfgenaam (partner €828.035, kind en kleinkind €26.230, anderen €2.769; 10/18/30% tot €158.669, daarboven 20/36/40%); met tabel per bedrag
+- [Schenkbelasting berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/schenkbelasting/), vrijstellingen 2026 (kind €6.908 per jaar, eenmalig €33.129 of €69.009 voor een dure studie, anderen €2.769) en tarieven; met tabel per bedrag
 - [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/), maandelijks belastingvoordeel van de hypotheekrenteaftrek
 
 ## Blog artikelen
