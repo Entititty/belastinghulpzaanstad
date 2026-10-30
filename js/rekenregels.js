@@ -18,7 +18,10 @@
  * - Zorgtoeslag: "Berekening zorgtoeslag 2026" van Dienst Toeslagen.
  * - Huurtoeslag: "Berekening huurtoeslag 2026" van Dienst Toeslagen, en de
  *   Wet op de huurtoeslag (art. 13, 20 en 21) waar de brochure kort is.
- * De rekenvoorbeelden uit beide brochures staan in check-rekenregels.js.
+ * - Inkomstenbelasting: de tarieven box 1 en de tabellen algemene
+ *   heffingskorting en arbeidskorting 2026 van de Belastingdienst.
+ * De rekenvoorbeelden uit de brochures en de randen van de tabellen staan in
+ * check-rekenregels.js.
  *
  * Werkt in de browser (window.BHZRekenregels) en in Node (require).
  */
@@ -152,5 +155,61 @@
     return uit;
   }
 
-  return { getal: getal, cijfers: cijfers, heleEuroOmlaag: heleEuroOmlaag, zorgtoeslag: zorgtoeslag, huurtoeslag: huurtoeslag };
+  /*
+   * INKOMSTENBELASTING BOX 1, voor wie de AOW-leeftijd nog niet heeft
+   * Tarieven en de tabellen algemene heffingskorting en arbeidskorting 2026
+   * van de Belastingdienst. De schijfgrenzen in die tabellen ("vanaf € 11.966")
+   * en de formules ("- € 11.965") staan hier zoals daar.
+   */
+  function box1(C, inkomen) {
+    var g1 = C.box1_schijf1_grens, g2 = C.box1_schijf2_grens;
+    return Math.min(inkomen, g1) * C.box1_schijf1_tarief +
+      Math.max(0, Math.min(inkomen, g2) - g1) * C.box1_schijf2_tarief +
+      Math.max(0, inkomen - g2) * C.box1_schijf3_tarief;
+  }
+
+  function algemeneHeffingskorting(C, verzamelinkomen) {
+    if (verzamelinkomen <= C.ahk_afbouwgrens) return C.algemene_heffingskorting_max;
+    return Math.max(0, C.algemene_heffingskorting_max - C.ahk_afbouwpercentage * (verzamelinkomen - C.ahk_afbouwgrens));
+  }
+
+  function arbeidskorting(C, arbeidsinkomen) {
+    var ai = arbeidsinkomen;
+    if (ai <= 0) return 0;
+    if (ai <= C.arbeidskorting_grens1) return C.arbeidskorting_pct1 * ai;
+    if (ai <= C.arbeidskorting_grens2) return C.arbeidskorting_bedrag2 + C.arbeidskorting_pct2 * (ai - C.arbeidskorting_grens1);
+    if (ai <= C.arbeidskorting_grens3) return C.arbeidskorting_bedrag3 + C.arbeidskorting_pct3 * (ai - C.arbeidskorting_grens2);
+    return Math.max(0, C.arbeidskorting_max - C.arbeidskorting_afbouwpercentage * (ai - C.arbeidskorting_grens3));
+  }
+
+  /*
+   * BELASTINGTERUGGAVE voor wie alleen loon heeft
+   * invoer: { loon: fiscaal loon (loon voor de loonheffing, alle werkgevers samen),
+   *           ingehouden: ingehouden loonheffing, aow: true/false }
+   * Verschuldigd = box 1 min de heffingskortingen, nooit minder dan nul: een
+   * heffingskorting verlaagt alleen de belasting die er is. Zonder
+   * aftrekposten, ander inkomen of box 3.
+   */
+  function belastingteruggave(C, inv) {
+    var loon = Math.max(0, Number(inv.loon) || 0);
+    var ingehouden = Math.max(0, Number(inv.ingehouden) || 0);
+    var heffing = box1(C, loon);
+    var ahk = algemeneHeffingskorting(C, loon);
+    var ak = arbeidskorting(C, loon);
+    var kortingen = Math.min(heffing, ahk + ak);
+    var verschuldigd = heffing - kortingen;
+    return {
+      reden: inv.aow ? 'aow' : '',
+      heffing: heffing, ahk: ahk, ak: ak, kortingen: kortingen,
+      verschuldigd: verschuldigd, ingehouden: ingehouden,
+      verschil: inv.aow ? 0 : ingehouden - verschuldigd
+    };
+  }
+
+  return {
+    getal: getal, cijfers: cijfers, heleEuroOmlaag: heleEuroOmlaag,
+    zorgtoeslag: zorgtoeslag, huurtoeslag: huurtoeslag,
+    box1: box1, algemeneHeffingskorting: algemeneHeffingskorting, arbeidskorting: arbeidskorting,
+    belastingteruggave: belastingteruggave
+  };
 });

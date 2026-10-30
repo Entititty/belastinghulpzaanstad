@@ -136,6 +136,7 @@ Alle rekentools rekenen met de cijfers van 2026. De berekening gebeurt in de bro
 - [Rekentools, overzicht](https://belastinghulpzaanstad.nl/rekentools/)
 - [Voorlopige teruggave berekenen](https://belastinghulpzaanstad.nl/rekentools/voorlopige-teruggave/), wat u elke maand terugkrijgt van uw hypotheekrenteaftrek, met beide tarieven (35,75% en 37,56%)
 - [Ouderenkorting berekenen](https://belastinghulpzaanstad.nl/rekentools/ouderenkorting/), ouderenkorting en alleenstaande ouderenkorting 2026 bij uw inkomen
+- [Belastingteruggave berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/belastingteruggave/), voor wie alleen loon heeft (eerste baan, bijbaan, deel van het jaar gewerkt): ingehouden loonheffing min de belasting na algemene heffingskorting en arbeidskorting; met tabel belasting per loon
 - [Zorgtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/zorgtoeslag/), met de formule van Dienst Toeslagen (standaardpremie min normpremie); maximaal €129 per maand alleen, €246 met toeslagpartner; met tabel per inkomen
 - [Huurtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/), met de formule van Dienst Toeslagen (basishuur, 100%, 65% en 40% vergoeding, inkomenscorrectie); maximaal €523 per maand alleen, €537 met 3 of meer personen; met tabellen per huur en inkomen
 - [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/), maandelijks belastingvoordeel van de hypotheekrenteaftrek

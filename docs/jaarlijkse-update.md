@@ -33,7 +33,7 @@ precies het moment.
 Werk van breed naar smal. De eerste bron dekt elf waarden in één keer; daarna
 wordt het losse werk.
 
-### Stap 1. Tarieven, heffingskortingen en box 3 (11 waarden)
+### Stap 1. Tarieven, heffingskortingen en box 3 (11 + 12 waarden)
 
 Bron: [voorlopige aanslag 2027: gebruikte tarieven en heffingskortingen](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen)
 
@@ -70,6 +70,17 @@ met `--schrijf` erachter.
 in 2026 allebei 37,56%, maar het zijn twee verschillende dingen: het tarief van
 de tweede schijf en het maximale tarief waartegen je aftrekposten mag aftrekken.
 Ze kunnen uit elkaar lopen. Controleer ze apart, en zet ze apart.
+
+**Voor de rekentool belastingteruggave** (12 waarden, sinds oktober 2026) ook:
+`box1_schijf2_grens`, en uit de tabellen
+[algemene heffingskorting](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2026)
+en [arbeidskorting](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026)
+(vervang 2026 in de link door het nieuwe jaar): `ahk_afbouwgrens`,
+`ahk_afbouwpercentage` en de `arbeidskorting_*`-waarden: drie schijfgrenzen, drie
+percentages, de startbedragen van schijf 2 en 3 en het afbouwpercentage.
+`check-rekenregels.js` controleert dat de schijven van de arbeidskorting op elkaar
+aansluiten; staat er één cijfer verkeerd, dan faalt hij. `ahk_afbouwgrens` is in
+2026 even hoog als `zorgtoeslag_drempelinkomen` (€29.736); zet ze apart.
 
 ### Stap 2. Aftrektarief (1 waarde, 64 vermeldingen samen met stap 1)
 

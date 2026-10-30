@@ -223,6 +223,48 @@
     }
   };
 
+  /* Belastingteruggave: ingehouden loonheffing min de belasting die u echt
+     verschuldigd bent (rekenregels.js). Alleen loon, onder de AOW-leeftijd. */
+  REKENHULPEN['belastingteruggave'] = function (box, C) {
+    var R = window.BHZRekenregels;
+    var r = R.belastingteruggave(C, {
+      loon: bedrag(box, 'loon'),
+      ingehouden: bedrag(box, 'ingehouden'),
+      aow: keuze(box, 'aow') === 'ja'
+    });
+    // eerst afronden op hele euro's, dan aftrekken: dan klopt de som die de bezoeker narekent
+    var heffing = Math.round(r.heffing);
+    var ahk = Math.min(Math.round(r.ahk), heffing);
+    var ak = Math.min(Math.round(r.ak), heffing - ahk);
+    var verschuldigd = heffing - ahk - ak;
+    var verschil = Math.round(r.ingehouden) - verschuldigd;
+    var terug = verschil >= 0;
+    zet(box, 'kop', r.reden ? 'Uw teruggave' : terug ? 'U krijgt ongeveer terug' : 'U betaalt ongeveer bij');
+    zet(box, 'bedrag', r.reden ? '–' : euro(Math.abs(verschil)));
+    zet(box, 'heffing', euro(heffing));
+    zet(box, 'ahk', '− ' + euro(ahk));
+    zet(box, 'ak', '− ' + euro(ak));
+    zet(box, 'verschuldigd', euro(verschuldigd));
+    zet(box, 'ingehouden', euro(r.ingehouden));
+    zet(box, 'uitleg',
+      'Belasting over ' + euro(bedrag(box, 'loon')) + ' loon: ' + pct(C.box1_schijf1_tarief) + ' tot ' + euro(C.box1_schijf1_grens) +
+      ', ' + pct(C.box1_schijf2_tarief) + ' tot ' + euro(C.box1_schijf2_grens) + ', daarboven ' + pct(C.box1_schijf3_tarief) + ' = ' + euro(r.heffing) + '<br>' +
+      'Algemene heffingskorting: ' + euro(r.ahk) + '<br>' +
+      'Arbeidskorting: ' + euro(r.ak) + '<br>' +
+      'Een heffingskorting verlaagt alleen de belasting die er is, dus samen nooit meer dan ' + euro(r.heffing) + '<br>' +
+      'Belasting die u echt betaalt: ' + euro(verschuldigd) + '<br>' +
+      'Al ingehouden: ' + euro(r.ingehouden) + '; het verschil krijgt u terug of betaalt u bij.', true);
+    var melding = '';
+    if (r.reden === 'aow') {
+      melding = 'Voor wie in 2026 de AOW-leeftijd bereikt, gelden andere tarieven en kortingen. Bereken uw ouderenkorting met de rekentool ouderenkorting, of laat het ons gratis narekenen.';
+    } else if (r.ingehouden === 0 && bedrag(box, 'loon') > 0) {
+      melding = 'Vul ook de ingehouden loonheffing in; die staat op uw jaaropgave.';
+    } else if (!terug) {
+      melding = 'Er is minder ingehouden dan u verschuldigd bent. Meestal komt dat doordat twee werkgevers tegelijk de loonheffingskorting toepasten. Geef die korting bij maar één werkgever op.';
+    }
+    zet(box, 'melding', melding);
+  };
+
   /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
   function zichtbaarheid(box) {
     var els = box.querySelectorAll('[data-rh-als]');
@@ -238,7 +280,7 @@
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
-    if ((naam === 'zorgtoeslag' || naam === 'huurtoeslag') && !window.BHZRekenregels) {
+    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
       zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
       return;
     }

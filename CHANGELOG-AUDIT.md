@@ -928,3 +928,22 @@ benadering, en voor de zorgtoeslag was er geen tool.
 - Getest in Edge: de officiële voorbeelden geven in de rekentool dezelfde bedragen, het
   formulier krijgt de berekening mee, geen consolefouten; axe zonder meldingen op 390 en
   1280 px; geen pagina breder dan het scherm.
+
+### Rekentool belastingteruggave (zelfde branch)
+
+- **Nieuw: `/rekentools/belastingteruggave/`**: loon en ingehouden loonheffing van de
+  jaaropgave erin, en de rekentool rekent de inkomstenbelasting 2026 uit met de tarieven
+  van box 1 en de tabellen algemene heffingskorting en arbeidskorting van de
+  Belastingdienst. Uitkomst: wat u terugkrijgt of moet bijbetalen, met de uitleg waarom
+  (deel van het jaar gewerkt, geen loonheffingskorting, twee werkgevers). Voor wie alleen
+  loon heeft en de AOW-leeftijd nog niet bereikt. Het aanvraagformulier gaat naar de
+  dienst Eerste baan (€49).
+- Tabel "inkomstenbelasting bij alleen loon" van €5.000 tot €75.000. Bedragen eerst
+  afgerond en dan afgetrokken, zodat elke rij op de euro klopt. Tot €11.359 loon betaalt
+  u in 2026 geen inkomstenbelasting (op de site: ongeveer €11.300).
+- 12 nieuwe waarden in `fiscale-cijfers.json` (schijfgrens 2, afbouw algemene
+  heffingskorting, alle schijven van de arbeidskorting), met de tabellen als bron.
+  `check-rekenregels.js` toetst de randen van die tabellen: op elke schijfgrens geven twee
+  formules op minder dan €1 na hetzelfde.
+- Links vanaf `/blog/belastingteruggave/`, `/diensten/eerste-baan/`, het overzicht van de
+  rekentools en `llms.txt`.

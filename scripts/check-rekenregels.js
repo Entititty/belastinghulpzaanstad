@@ -84,7 +84,37 @@ gelijk('huurtoeslag vb 3 (Marina): deel C', h.c, 0);
 gelijk('huurtoeslag vb 3 (Marina): correctie', h.d, 125.44, 0.01);
 gelijk('huurtoeslag vb 3 (Marina): per maand', h.maand, 307, 0);
 
+/* ---------- inkomstenbelasting: de randen van de tabellen 2026 ----------
+   De tabellen algemene heffingskorting en arbeidskorting noemen per schijf een
+   startbedrag (€ 996, € 5.300, € 5.685). Op elke grens moeten twee schijven op
+   minder dan €1 na hetzelfde geven, anders staat er een cijfer verkeerd. */
+gelijk('algemene heffingskorting tot de afbouwgrens', R.algemeneHeffingskorting(C, C.ahk_afbouwgrens), C.algemene_heffingskorting_max);
+gelijk('algemene heffingskorting bij €50.000', R.algemeneHeffingskorting(C, 50000), C.algemene_heffingskorting_max - C.ahk_afbouwpercentage * (50000 - C.ahk_afbouwgrens));
+gelijk('algemene heffingskorting vanaf €78.427 nul', R.algemeneHeffingskorting(C, 78427), 0, 0.5);
+gelijk('arbeidskorting bij €11.965', R.arbeidskorting(C, C.arbeidskorting_grens1), C.arbeidskorting_bedrag2, 0.5);
+gelijk('arbeidskorting bij €25.845', R.arbeidskorting(C, C.arbeidskorting_grens2), C.arbeidskorting_bedrag3, 0.5);
+gelijk('arbeidskorting bij €45.592', R.arbeidskorting(C, C.arbeidskorting_grens3), C.arbeidskorting_max, 0.5);
+gelijk('arbeidskorting vanaf €132.921 nul', R.arbeidskorting(C, 132921), 0, 0.5);
+for (const g of [C.arbeidskorting_grens1, C.arbeidskorting_grens2, C.arbeidskorting_grens3]) {
+  gelijk('arbeidskorting sluit aan bij ' + g, R.arbeidskorting(C, g + 1), R.arbeidskorting(C, g), 1);
+}
+gelijk('box 1 tot de eerste schijfgrens', R.box1(C, C.box1_schijf1_grens), C.box1_schijf1_grens * C.box1_schijf1_tarief);
+gelijk('box 1 tot de tweede schijfgrens', R.box1(C, C.box1_schijf2_grens),
+  C.box1_schijf1_grens * C.box1_schijf1_tarief + (C.box1_schijf2_grens - C.box1_schijf1_grens) * C.box1_schijf2_tarief);
+gelijk('box 1 boven de tweede schijfgrens', R.box1(C, C.box1_schijf2_grens + 1000) - R.box1(C, C.box1_schijf2_grens), 1000 * C.box1_schijf3_tarief);
+
 /* ---------- eigenschappen ---------- */
+{
+  let vorige = -1;
+  for (let loon = 0; loon <= 150000; loon += 100) {
+    const r = R.belastingteruggave(C, { loon, ingehouden: 0 });
+    eigenschap('verschuldigde belasting negatief bij loon ' + loon, r.verschuldigd >= 0);
+    eigenschap('meer loon geeft minder belasting bij ' + loon, r.verschuldigd >= vorige - 1e-9);
+    vorige = r.verschuldigd;
+  }
+  eigenschap('teruggave = ingehouden - verschuldigd',
+    Math.abs(R.belastingteruggave(C, { loon: 20000, ingehouden: 2000 }).verschil - (2000 - R.belastingteruggave(C, { loon: 20000, ingehouden: 0 }).verschuldigd)) < 1e-9);
+}
 function eigenschap(wat, ok) { getoetst++; if (!ok) fouten.push(wat); }
 
 for (const partner of [false, true]) {
@@ -128,4 +158,4 @@ if (fouten.length) {
   fouten.forEach((f) => console.error('  - ' + f));
   process.exit(1);
 }
-console.log('OK: ' + getoetst + ' controles, de rekenvoorbeelden van Dienst Toeslagen (' + VOORBEELDJAAR + ') kloppen.');
+console.log('OK: ' + getoetst + ' controles, de rekenvoorbeelden van Dienst Toeslagen en de tabellen van de Belastingdienst (' + VOORBEELDJAAR + ') kloppen.');

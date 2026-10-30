@@ -9,7 +9,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf1_grens": {
@@ -17,7 +17,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: de eerste schijf loopt tot € 38.883 (35,75%)",
       "verouderd": [],
-      "gecontroleerd_op": "2026-10-21",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf2_tarief": {
@@ -30,7 +30,7 @@
         "36,97%",
         "36.97%"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf3_tarief": {
@@ -38,7 +38,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "max_aftrektarief_eigen_woning": {
@@ -64,7 +64,7 @@
       "verouderd": [
         "€3.362"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "arbeidskorting_max": {
@@ -74,7 +74,7 @@
       "verouderd": [
         "€5.599"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "iack_max": {
@@ -646,6 +646,145 @@
       "verouderd": [],
       "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf"
+    },
+    "box1_schijf2_grens": {
+      "waarde": "€78.426",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, voorlopige aanslag 2026: schijf 2 \"meer dan € 38.883 tot en met € 78.426\", 37,56%; daarboven 49,50% (niet AOW-leeftijd)",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
+    },
+    "ahk_afbouwgrens": {
+      "waarde": "€29.736",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel algemene heffingskorting 2026: € 3.115 tot en met € 29.736, daarboven \"€ 3.115 - 6,398% x (verzamelinkomen - € 29.736)\". Zelfde bedrag als zorgtoeslag_drempelinkomen.",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2026",
+      "context": [
+        "heffingskorting"
+      ]
+    },
+    "ahk_afbouwpercentage": {
+      "waarde": "6,398%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel algemene heffingskorting 2026: afbouw 6,398% van het verzamelinkomen boven € 29.736, € 0 vanaf € 78.427",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/algemene_heffingskorting/tabel-algemene-heffingskorting-2026",
+      "context": [
+        "heffingskorting",
+        "afbouw"
+      ]
+    },
+    "arbeidskorting_grens1": {
+      "waarde": "€11.965",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: \"tot en met € 11.965: 8,324% x arbeidsinkomen\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_pct1": {
+      "waarde": "8,324%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: tot en met € 11.965, 8,324% x arbeidsinkomen",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_bedrag2": {
+      "waarde": "€996",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: \"vanaf € 11.966 tot en met € 25.845: € 996 + 31,009% x (arbeidsinkomen - € 11.965)\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_pct2": {
+      "waarde": "31,009%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: 31,009% x (arbeidsinkomen - € 11.965)",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_grens2": {
+      "waarde": "€25.845",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: tweede schijf tot en met € 25.845",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_bedrag3": {
+      "waarde": "€5.300",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: \"vanaf € 25.846 tot en met € 45.592: € 5.300 + 1,950% x (arbeidsinkomen - € 25.845)\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_pct3": {
+      "waarde": "1,950%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: 1,950% x (arbeidsinkomen - € 25.845) (op de pagina geschreven als 1.950%)",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_grens3": {
+      "waarde": "€45.592",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: derde schijf tot en met € 45.592; daarboven \"€ 5.685 - 6,510% x (arbeidsinkomen - € 45.592)\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
+    },
+    "arbeidskorting_afbouwpercentage": {
+      "waarde": "6,510%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, tabel arbeidskorting 2026: vanaf € 45.593 tot en met € 132.920, € 5.685 - 6,510% x (arbeidsinkomen - € 45.592); vanaf € 132.921 € 0",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/heffingskortingen_boxen_tarieven/heffingskortingen/arbeidskorting/tabel-arbeidskorting-2026",
+      "context": [
+        "arbeidskorting",
+        "arbeidsinkomen"
+      ]
     }
   }
 }

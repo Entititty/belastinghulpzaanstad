@@ -121,7 +121,32 @@ function huurtoeslagNulpunt(id) {
     ['Kale huur', '1 persoon', '2 personen', '3 of meer'], rijen);
 }
 
+/* ---------- inkomstenbelasting bij loon ---------- */
+function belastingBijLoon(id) {
+  const lonen = [5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 75000];
+  const rijen = lonen.map((loon) => {
+    const r = R.belastingteruggave(C, { loon });
+    // eerst afronden, dan aftrekken: dan klopt de som in elke rij op de euro
+    const heffing = Math.round(r.heffing), kortingen = Math.round(r.kortingen);
+    const betaalt = Math.max(0, heffing - kortingen);
+    return [euro(loon), euro(heffing), euro(kortingen), euro(betaalt), euro(betaalt / 12)];
+  });
+  return tabel(id, 'Inkomstenbelasting ' + JAAR + ' bij alleen loon (jonger dan de AOW-leeftijd)',
+    ['Loon per jaar', 'Belasting', 'Heffingskortingen', 'U betaalt', 'Per maand'], rijen);
+}
+
+/* Tot welk loon betaalt u niets? Afgerond op €100 omlaag. */
+function belastingvrijLoon() {
+  let laag = 0, hoog = 40000;
+  while (hoog - laag > 1) {
+    const m = Math.floor((laag + hoog) / 2);
+    if (R.belastingteruggave(C, { loon: m }).verschuldigd < 0.5) laag = m; else hoog = m;
+  }
+  return Math.floor(laag / 100) * 100;
+}
+
 const TABELLEN = {
+  'inkomstenbelasting-loon': belastingBijLoon,
   'zorgtoeslag-alleenstaand': (id) => zorgtoeslagTabel(id, false),
   'zorgtoeslag-partners': (id) => zorgtoeslagTabel(id, true),
   'huurtoeslag-1': (id) => huurtoeslagTabel(id, 1, 'Huurtoeslag ' + JAAR + ' per maand: 1 persoon, 21 jaar of ouder',
@@ -135,6 +160,7 @@ const TABELLEN = {
 };
 
 const WAARDEN = {
+  'inkomstenbelasting-vrij-tot': () => euro(belastingvrijLoon()),
   'zorgtoeslag-max-maand': () => euro(R.zorgtoeslag(C, { inkomen: 0 }).maand),
   'zorgtoeslag-max-maand-partners': () => euro(R.zorgtoeslag(C, { partner: true, inkomen: 0 }).maand),
   'huurtoeslag-max-maand-1': () => euro(R.huurtoeslag(C, { kaleHuur: 9999, personen: 1, iemand21: true, inkomen: 0 }).maand),
