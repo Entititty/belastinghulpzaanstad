@@ -1,8 +1,18 @@
 /*
  * rekenhulp.js
- * De rekentools op /rekentools/ (voorlopige teruggave, ouderenkorting) en het
- * formulier "gratis laten narekenen" onder elke rekentool, ook op de blogs die
- * een eigen rekentool hebben.
+ * De rekentools op /rekentools/ (voorlopige teruggave, ouderenkorting,
+ * zorgtoeslag) en op /blog/huurtoeslag-berekenen/, en het formulier "gratis
+ * laten narekenen" onder elke rekentool, ook op de blogs die een eigen
+ * rekentool hebben.
+ *
+ * De zorgtoeslag en de huurtoeslag rekenen met js/rekenregels.js (laad dat
+ * vóór dit script). Daar staan de formules van Dienst Toeslagen; hier alleen
+ * de invoer en de uitkomst op de pagina.
+ *
+ * VELDEN DIE ER SOMS NIET TOE DOEN
+ * Een element met data-rh-als="partner=ja" (of "personen!=1") is alleen
+ * zichtbaar als die keuze geldt. Verborgen velden gaan niet mee in de
+ * berekening voor het formulier.
  *
  * WAAROM DE CIJFERS UIT /data/fiscale-cijfers.json KOMEN
  * De oudere rekentools op de blogs hebben hun percentages in de code staan
@@ -40,6 +50,9 @@
   }
   function euro(n) {
     return '€ ' + Math.round(n).toLocaleString('nl-NL');
+  }
+  function euroCent(n) {
+    return '€ ' + n.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
   function pct(n) {
     return (n * 100).toLocaleString('nl-NL', { maximumFractionDigits: 2 }) + '%';
@@ -121,18 +134,119 @@
         'Alleenstaande ouderenkorting bij AOW voor alleenstaanden: ' + euro(ALLEEN) + '.', true);
       zet(box, 'melding', aow ? ''
         : 'De ouderenkorting is er voor wie uiterlijk eind 2026 de AOW-leeftijd bereikt. Krijgt u nog geen AOW, dan telt deze korting (nog) niet.');
+    },
+
+    /* Zorgtoeslag: standaardpremie min normpremie (rekenregels.js). */
+    'zorgtoeslag': function (box, C) {
+      var R = window.BHZRekenregels;
+      var partner = keuze(box, 'partner') === 'ja';
+      var inkomen = bedrag(box, 'inkomen') + (partner ? bedrag(box, 'inkomen_partner') : 0);
+      var z = R.zorgtoeslag(C, {
+        partner: partner,
+        inkomen: inkomen,
+        partnerVerzekerd: keuze(box, 'partner_verzekerd') !== 'nee',
+        vermogenTeHoog: keuze(box, 'vermogen') === 'ja'
+      });
+      zet(box, 'maand', euro(z.maand));
+      zet(box, 'jaar', euro(z.jaar));
+      zet(box, 'standaardpremie', euro(z.standaardpremie));
+      zet(box, 'normpremie', z.reden === 'vermogen' ? '–' : euroCent(z.normpremie));
+      zet(box, 'uitleg',
+        (partner ? 'Gezamenlijk toetsingsinkomen: ' : 'Toetsingsinkomen: ') + euro(inkomen) + '<br>' +
+        'Standaardpremie' + (partner ? ' (twee keer)' : '') + ': ' + euro(z.standaardpremie) + '<br>' +
+        'Normpremie: ' + pct(partner ? C.zorgtoeslag_normpercentage_partners : C.zorgtoeslag_normpercentage_alleenstaand) +
+        ' van ' + euro(z.drempelinkomen) + (inkomen > z.drempelinkomen
+          ? ' + ' + pct(C.zorgtoeslag_afbouwpercentage) + ' van het inkomen daarboven (' + euro(inkomen - z.drempelinkomen) + ')'
+          : '') + ' = ' + euroCent(z.normpremie) + '<br>' +
+        (inkomen > z.inkomensgrens
+          ? 'Uw inkomen is hoger dan de grens van ' + euro(z.inkomensgrens) + ', dus de zorgtoeslag is nul.'
+          : 'Zorgtoeslag per jaar: ' + euro(z.standaardpremie) + ' &minus; ' + euroCent(z.normpremie) +
+            (z.half ? ', daarvan de helft' : '') + ' = ' + euroCent(z.jaar) + '<br>' +
+            'Per maand: ' + euroCent(z.maandExact) + '; Dienst Toeslagen betaalt hele euro\'s, naar beneden afgerond.'), true);
+      var melding = '';
+      if (z.reden === 'vermogen') {
+        melding = 'Met een vermogen boven ' + euro(z.vermogensgrens) + (partner ? ' (samen)' : '') + ' op 1 januari heeft u dat hele jaar geen recht op zorgtoeslag, ook niet bij een laag inkomen.';
+      } else if (z.reden === 'inkomen') {
+        melding = 'Boven een toetsingsinkomen van ' + euro(z.inkomensgrens) + (partner ? ' (samen)' : '') + ' is er geen zorgtoeslag.';
+      } else if (z.half) {
+        melding = 'Uw partner is niet verzekerd voor de Wet op de zorgtoeslag (bijvoorbeeld als militair). Dan krijgt u de helft van de berekende zorgtoeslag.';
+      }
+      zet(box, 'melding', melding);
+    },
+
+    /* Huurtoeslag: deel A + B + C min de inkomenscorrectie D (rekenregels.js). */
+    'huurtoeslag': function (box, C) {
+      var R = window.BHZRekenregels;
+      var personen = parseInt(keuze(box, 'personen'), 10) || 1;
+      var iemand21 = keuze(box, 'leeftijd') !== 'jonger';
+      var inkomen = bedrag(box, 'inkomen') + (personen > 1 ? bedrag(box, 'inkomen_anderen') : 0);
+      var huur = bedrag(box, 'huur');
+      var h = R.huurtoeslag(C, {
+        kaleHuur: huur,
+        personen: personen,
+        iemand21: iemand21,
+        kindOfHandicap: keuze(box, 'kind') === 'ja',
+        inkomen: inkomen,
+        vermogenTeHoog: keuze(box, 'vermogen') === 'ja'
+      });
+      zet(box, 'maand', euro(h.maand));
+      zet(box, 'jaar', euro(h.jaar));
+      zet(box, 'deel_a', euroCent(h.a));
+      zet(box, 'deel_bc', euroCent(h.b + h.c));
+      zet(box, 'correctie', h.d ? '− ' + euroCent(h.d) : euroCent(0));
+      zet(box, 'nulpunt', h.nulpunt && h.reden !== 'vermogen'
+        ? 'Bij deze huur en dit huishouden krijgt u huurtoeslag tot een inkomen van ongeveer <strong>' + euro(Math.floor(h.nulpunt / 100) * 100) + '</strong> per jaar.'
+        : '', true);
+      zet(box, 'uitleg',
+        'Rekenhuur: ' + euroCent(h.rekenhuur) + (h.boven_huurgrens ? ' (uw huur, maar niet meer dan de huurgrens van ' + euroCent(h.huurgrens) + ')' : '') + '<br>' +
+        'A. Van de basishuur (' + euroCent(h.basishuur) + ', die betaalt u zelf) tot ' + euroCent(h.kwaliteitskortingsgrens) + ': 100% vergoed = ' + euroCent(h.a) + '<br>' +
+        (h.jongeren ? '' :
+          'B. Van ' + euroCent(h.kwaliteitskortingsgrens) + ' tot ' + euroCent(h.aftoppingsgrens) + ': ' + pct(C.huurtoeslag_vergoeding_tot_aftoppingsgrens) + ' vergoed = ' + euroCent(h.b) + '<br>' +
+          'C. Boven ' + euroCent(h.aftoppingsgrens) + ': ' + pct(C.huurtoeslag_vergoeding_boven_aftoppingsgrens) + ' vergoed = ' + euroCent(h.c) + '<br>') +
+        'D. Inkomenscorrectie: ' + (h.d
+          ? '(' + euro(inkomen) + ' &minus; ' + euro(h.ijkpunt) + ') &times; ' + pct(h.afbouw) + ' &divide; 12 = ' + euroCent(h.d)
+          : 'geen, uw inkomen is niet hoger dan ' + euro(h.ijkpunt)) + '<br>' +
+        'Huurtoeslag per maand: A + B + C &minus; D, naar beneden afgerond op hele euro\'s.', true);
+      var melding = '';
+      if (h.reden === 'vermogen') {
+        melding = 'Met een vermogen boven de grens op 1 januari heeft u dat hele jaar geen recht op huurtoeslag, ook niet bij een laag inkomen.';
+      } else if (h.reden === 'huur') {
+        melding = 'Uw kale huur is niet hoger dan de basishuur van ' + euroCent(h.basishuur) + '. Dat deel betaalt iedereen zelf, dus er is geen huurtoeslag.';
+      } else if (h.reden === 'inkomen') {
+        melding = 'Bij dit inkomen valt de huurtoeslag weg: de inkomenscorrectie (' + euroCent(h.d) + ') is groter dan de toeslag over uw huur (' + euroCent(h.a + h.b + h.c) + ').';
+      } else if (h.boven_huurgrens) {
+        melding = h.jongeren
+          ? 'Iedereen in uw huishouden is jonger dan 21. Dan telt de huur tot ' + euroCent(h.huurgrens) + '; over het deel daarboven krijgt u geen huurtoeslag.'
+          : 'Uw huur is hoger dan ' + euroCent(h.huurgrens) + '. U kunt toch huurtoeslag krijgen, maar alleen over de huur tot dat bedrag.';
+      }
+      zet(box, 'melding', melding);
     }
   };
+
+  /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
+  function zichtbaarheid(box) {
+    var els = box.querySelectorAll('[data-rh-als]');
+    for (var i = 0; i < els.length; i++) {
+      var m = /^([a-z_]+)(!?=)(.*)$/.exec(els[i].getAttribute('data-rh-als'));
+      if (!m) continue;
+      var w = keuze(box, m[1]);
+      els[i].hidden = m[2] === '=' ? w !== m[3] : w === m[3];
+    }
+  }
 
   function start(box, cijfers) {
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
+    if ((naam === 'zorgtoeslag' || naam === 'huurtoeslag') && !window.BHZRekenregels) {
+      zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
+      return;
+    }
     var C = {};
     Object.keys(cijfers).forEach(function (k) {
       if (cijfers[k] && cijfers[k].waarde !== undefined) C[k] = getal(cijfers[k].waarde);
     });
-    function opnieuw() { reken(box, C); vulFormulieren(); }
+    function opnieuw() { zichtbaarheid(box); reken(box, C); vulFormulieren(); }
     box.addEventListener('input', opnieuw);
     box.addEventListener('change', opnieuw);
     box.addEventListener('input', telGebruik);
@@ -173,6 +287,7 @@
     for (var i = 0; i < velden.length; i++) {
       var el = velden[i];
       if (el.type === 'hidden' || el.type === 'button') continue;
+      if (el.closest('[hidden]')) continue;
       if ((el.type === 'radio' || el.type === 'checkbox') && !el.checked) continue;
       var waarde = el.tagName === 'SELECT' ? tekst(el.options[el.selectedIndex]) : el.value;
       invoer.push([labelVan(el), waarde]);

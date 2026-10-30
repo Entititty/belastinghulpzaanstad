@@ -3,8 +3,8 @@
  * bouw.js
  * Eén commando voor elke uitrol: zet de gegevens uit data/bedrijf.json in de
  * HTML, zet de kaarttitels op het blogoverzicht gelijk aan de paginatitels,
- * maakt het .min.css-bestand uit belasting.css, maakt de stylesheetnaam
- * kloppend en draait alle controles.
+ * rekent de tabellen bij de rekentools uit, maakt het .min.css-bestand uit
+ * belasting.css, maakt de stylesheetnaam kloppend en draait alle controles.
  *
  * WAAROM
  * De site heeft geen build. De controles bestonden wel, maar los, en de lijst
@@ -15,7 +15,7 @@
  * niet wegvallen tussen de andere uitvoer.
  *
  * GEBRUIK
- *   node scripts/bouw.js           schrijft (config-sync, blog-kaarten-sync, minify-css, hash-css) en controleert
+ *   node scripts/bouw.js           schrijft (config-sync, blog-kaarten-sync, rekentabellen, minify-css, hash-css) en controleert
  *   node scripts/bouw.js --check   schrijft niets; faalt als de HTML afwijkt
  *
  * Exit 1 zodra een stap faalt. De sitemap (scripts/build-sitemap.js) hoort
@@ -30,6 +30,7 @@ const CHECK = process.argv.includes('--check');
 const STAPPEN = [
   ['config-sync', CHECK ? ['--check'] : []],
   ['blog-kaarten-sync', CHECK ? ['--check'] : []],
+  ['rekentabellen', CHECK ? ['--check'] : []],
   ['minify-css', CHECK ? ['--check'] : []],
   ['hash-css', CHECK ? ['--dry'] : []],
   ['check-html', []],
@@ -37,6 +38,7 @@ const STAPPEN = [
   ['check-formulieren', []],
   ['check-fiscale-cijfers', []],
   ['check-rekenvoorbeelden', []],
+  ['check-rekenregels', []],
   ['check-jsonld', []],
   ['check-links', ['.']],
   ['check-hreflang', ['.']],

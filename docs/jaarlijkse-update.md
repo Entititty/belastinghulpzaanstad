@@ -99,18 +99,37 @@ schulden zijn in januari nog voorlopig; ze worden pas begin van het volgende jaa
 definitief vastgesteld. Zet in januari de voorlopige waarde, en zet een
 herinnering voor februari van het jaar daarna om ze definitief te maken.
 
-### Stap 5. Toeslagen (10 waarden)
+### Stap 5. Toeslagen (26 waarden)
 
 | Wat | Bron |
 | --- | --- |
 | Zorgtoeslag: inkomens- en vermogensgrenzen (4) | [kan ik zorgtoeslag krijgen](https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen) |
 | Kindgebonden budget: vermogensgrens (1) | [kan ik kindgebonden budget krijgen](https://www.belastingdienst.nl/wps/wcm/connect/nl/kindgebonden-budget/content/kan-ik-kindgebonden-budget-krijgen) |
-| Huurtoeslag: maximale rekenhuur (1) | [berekening huurtoeslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-huurtoeslag-2026) |
+| Zorgtoeslag: standaardpremie, drempelinkomen, de drie percentages en het maximum (7) | de brochure **Berekening zorgtoeslag 2027** van Dienst Toeslagen ([overzicht](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-zorgtoeslag)) |
+| Huurtoeslag: rekenhuur, huurgrens jongeren, basishuren, kwaliteitskortingsgrens, aftoppingsgrenzen, ijkpunten, afbouwpercentages, de vergoedingen 65% en 40%, vrijstelling kinderen (15) | de brochure **Berekening huurtoeslag 2027** ([overzicht](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-huurtoeslag)) |
 | Huurtoeslag: vermogensgrenzen (2) | [maximaal vermogen huurtoeslag](https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/maximaal-vermogen-huurtoeslag) |
 | Kinderopvang: drie uurtarieven (3) | [maximumuurprijs kinderopvangtoeslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang) |
 
 De vermogensgrens van de huurtoeslag is een **eigen** grens; die is niet gelijk
 aan het heffingsvrij vermogen in box 3. Dat is in 2026 fout gegaan.
+
+Let op: `huurtoeslag_kwaliteitskortingsgrens` en `huurtoeslag_jongerengrens` zijn
+in 2026 allebei €498,20. Verandert er maar één, zet die dan met de hand in
+`fiscale-cijfers.json` en kijk welke vermeldingen in de HTML bij welke horen;
+`set-fiscale-cijfers.js` ziet het verschil niet.
+
+De toeslagrekentools volgen deze waarden vanzelf. Daarna, in deze volgorde:
+
+1. Zet de rekenvoorbeelden uit de nieuwe brochures in `scripts/check-rekenregels.js`
+   en zet `VOORBEELDJAAR` op het nieuwe jaar. Tot dan faalt `bouw.js` met opzet.
+2. Is de formule zelf veranderd (zoals de basishuur in 2026), pas dan
+   `js/rekenregels.js` aan tot de voorbeelden weer kloppen.
+3. `node scripts/bouw.js`: `rekentabellen.js` rekent alle tabellen en de bedragen
+   tussen `<!-- r:... -->` opnieuw uit.
+4. Met de hand, want daar kan geen markering in: de meta-omschrijvingen met een
+   bedrag (`/rekentools/zorgtoeslag/`, `/blog/huurtoeslag-aanvragen/`, de titel van
+   `/en/blog/rent-benefit/` en de kaart op `/en/`), en `llms.txt`. Zoek op het oude
+   maximum (in 2026: €129, €246, €523, €525, €537).
 
 ### Stap 6. Boete en rente (3 waarden)
 
@@ -200,16 +219,15 @@ elders op de pagina. Zoek na een update op het oude maandbedrag.
 
 ## Rekentools
 
-`/rekentools/voorlopige-teruggave/` en `/rekentools/ouderenkorting/` halen hun cijfers
-bij het laden uit `data/fiscale-cijfers.json` (`box1_schijf1_tarief`, `box1_schijf1_grens`,
-`max_aftrektarief_eigen_woning`, `eigenwoningforfait_pct` en de vier ouderenkorting-waarden).
-Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de nieuwe cijfers.
+`/rekentools/voorlopige-teruggave/`, `/rekentools/ouderenkorting/`, `/rekentools/zorgtoeslag/`
+en `/blog/huurtoeslag-berekenen/` halen hun cijfers bij het laden uit
+`data/fiscale-cijfers.json`. Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de
+nieuwe cijfers. De formules van de zorgtoeslag en de huurtoeslag staan in
+`js/rekenregels.js` (zie stap 5).
 
-De twee oudere rekentools op de blogs niet: daar staan de cijfers in het script onderaan de
-pagina. Pas ze met de hand aan:
-
-- `blog/hypotheekrenteaftrek-berekenen/`: `TARIEF_SCHIJF1`, `AFTREKTARIEF`, `EWF_PERCENTAGE`
-- `blog/huurtoeslag-berekenen/`: de huurtoeslagparameters bovenin het script
+De oudere rekentool op `blog/hypotheekrenteaftrek-berekenen/` niet: daar staan de cijfers
+in het script onderaan de pagina (`TARIEF_SCHIJF1`, `AFTREKTARIEF`, `EWF_PERCENTAGE`).
+Pas die met de hand aan.
 
 Controleer daarna met de hand of de uitkomst bij de standaardinvoer klopt met het
 rekenvoorbeeld op de site.

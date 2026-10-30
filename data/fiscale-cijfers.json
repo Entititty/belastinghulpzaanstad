@@ -1,7 +1,7 @@
 {
   "_doc": "Eén bron van waarheid voor de fiscale cijfers (belastingjaar 2026). De site genereert NIET automatisch uit dit bestand (statische HTML); scripts/check-fiscale-cijfers.js faalt als een VEROUDERDE waarde ergens in de HTML terugkomt. Werk je een cijfer bij: pas \"waarde\" aan, zet de oude waarde in \"verouderd\", en vul \"bron_url\" en \"gecontroleerd_op\" (JJJJ-MM-DD) in. Een waarde zonder bron_url mag alleen blijven staan met \"bron_url_todo\": true; het script telt die apart. Waarden ouder dan 12 maanden geven een waarschuwing. Korte waarden (\"36%\", \"€20\") hebben een \"context\": een van die woorden moet op dezelfde regel staan voordat set-fiscale-cijfers.js vervangt.",
   "belastingjaar": 2026,
-  "laatst_gecontroleerd": "2026-10-20",
+  "laatst_gecontroleerd": "2026-10-30",
   "bron_algemeen": "https://www.belastingdienst.nl",
   "cijfers": {
     "box1_schijf1_tarief": {
@@ -118,7 +118,7 @@
       "verouderd": [
         "€38.520"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "zorgtoeslag_inkomensgrens_partners": {
@@ -128,7 +128,7 @@
       "verouderd": [
         "€48.224"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "zorgtoeslag_vermogensgrens_alleenstaand": {
@@ -139,7 +139,7 @@
         "€140.213",
         "€140.231"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "zorgtoeslag_vermogensgrens_partners": {
@@ -149,7 +149,7 @@
       "verouderd": [
         "€177.301"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen"
     },
     "huurtoeslag_rekenhuur_max": {
@@ -160,8 +160,8 @@
         "€808,06",
         "€808.06"
       ],
-      "gecontroleerd_op": "2026-08-30",
-      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-huurtoeslag-2026"
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf"
     },
     "kinderopvang_uurtarief_dagopvang": {
       "waarde": "€11,23",
@@ -372,7 +372,7 @@
         "€454,47",
         "€454.47"
       ],
-      "gecontroleerd_op": "2026-09-02",
+      "gecontroleerd_op": "2026-10-30",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/huurtoeslag-verandert-vanaf-2026"
     },
     "huurtoeslag_jongeren_leeftijd": {
@@ -464,25 +464,188 @@
       "waarde": "€713,02",
       "geverifieerd": true,
       "bron": "Volkshuisvesting Nederland, huurtoeslagparameters 2026: aftoppingsgrens laag € 713,02 (tot hier 65% vergoeding boven de kwaliteitskortingsgrens)",
-      "bron_url": "https://www.volkshuisvestingnederland.nl/onderwerpen/huren-en-wonen/inkomensgrenzen-huurprijsgrenzen-en-huurtoeslagparameters/huurtoeslagparameters",
-      "gecontroleerd_op": "2026-10-20",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "gecontroleerd_op": "2026-10-30",
       "verouderd": []
     },
     "huurtoeslag_aftoppingsgrens_hoog": {
       "waarde": "€764,14",
       "geverifieerd": true,
       "bron": "Volkshuisvesting Nederland, huurtoeslagparameters 2026: aftoppingsgrens hoog € 764,14",
-      "bron_url": "https://www.volkshuisvestingnederland.nl/onderwerpen/huren-en-wonen/inkomensgrenzen-huurprijsgrenzen-en-huurtoeslagparameters/huurtoeslagparameters",
-      "gecontroleerd_op": "2026-10-20",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "gecontroleerd_op": "2026-10-30",
       "verouderd": []
     },
     "huurtoeslag_minimum_basishuur_eenpersoons": {
       "waarde": "€202,52",
       "geverifieerd": true,
-      "bron": "Volkshuisvesting Nederland, huurtoeslagparameters 2026: minimum basishuur eenpersoons € 202,52, meerpersoons € 200,71",
-      "bron_url": "https://www.volkshuisvestingnederland.nl/onderwerpen/huren-en-wonen/inkomensgrenzen-huurprijsgrenzen-en-huurtoeslagparameters/huurtoeslagparameters",
-      "gecontroleerd_op": "2026-10-20",
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 2: basishuur voor huishoudens van 1 persoon € 202,52 (sinds 2026 niet meer afhankelijk van het inkomen)",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "gecontroleerd_op": "2026-10-30",
       "verouderd": []
+    },
+    "zorgtoeslag_standaardpremie": {
+      "waarde": "€2.119",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening zorgtoeslag 2026, stap 1: \"De standaardpremie is voor 2026 vastgesteld op € 2.119.\" Met toeslagpartner tweemaal.",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_zorgtoeslag_tg0821z62fd.pdf"
+    },
+    "zorgtoeslag_drempelinkomen": {
+      "waarde": "€29.736",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening zorgtoeslag 2026, stap 3: \"Het drempelinkomen is voor 2026 vastgesteld op € 29.736.\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_zorgtoeslag_tg0821z62fd.pdf"
+    },
+    "zorgtoeslag_normpercentage_alleenstaand": {
+      "waarde": "1,912%",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening zorgtoeslag 2026, stap 3: normpremie = 1,912% x drempelinkomen + 13,73% (toetsingsinkomen - drempelinkomen), zonder toeslagpartner",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_zorgtoeslag_tg0821z62fd.pdf",
+      "context": [
+        "normpremie",
+        "drempelinkomen",
+        "zorgtoeslag"
+      ]
+    },
+    "zorgtoeslag_normpercentage_partners": {
+      "waarde": "4,289%",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening zorgtoeslag 2026, stap 3: normpremie = 4,289% x drempelinkomen + 13,73% (gezamenlijk toetsingsinkomen - drempelinkomen), met toeslagpartner",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_zorgtoeslag_tg0821z62fd.pdf",
+      "context": [
+        "normpremie",
+        "drempelinkomen",
+        "zorgtoeslag"
+      ]
+    },
+    "zorgtoeslag_afbouwpercentage": {
+      "waarde": "13,73%",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening zorgtoeslag 2026, stap 3: 13,73% van het inkomen boven het drempelinkomen",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_zorgtoeslag_tg0821z62fd.pdf",
+      "context": [
+        "normpremie",
+        "drempelinkomen",
+        "zorgtoeslag"
+      ]
+    },
+    "zorgtoeslag_max_alleenstaand": {
+      "waarde": "€1.550",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening zorgtoeslag 2026: \"de maximale zorgtoeslag voor een aanvrager zonder toeslagpartner € 1.550\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_zorgtoeslag_tg0821z62fd.pdf"
+    },
+    "zorgtoeslag_max_partners": {
+      "waarde": "€2.963",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening zorgtoeslag 2026: \"voor een aanvrager met toeslagpartner € 2.963\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_zorgtoeslag_tg0821z62fd.pdf"
+    },
+    "huurtoeslag_basishuur_meerpersoons": {
+      "waarde": "€200,71",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 2: basishuur voor huishoudens van 2 of meer personen € 200,71",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf"
+    },
+    "huurtoeslag_kwaliteitskortingsgrens": {
+      "waarde": "€498,20",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 3: \"De kwaliteitskortingsgrens is voor iedereen € 498,20.\" Zelfde bedrag als de huurgrens voor jongeren onder 21 (huurtoeslag_jongerengrens).",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "context": [
+        "kwaliteitskorting"
+      ]
+    },
+    "huurtoeslag_inkomensijkpunt_eenpersoons": {
+      "waarde": "€23.425",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 6: inkomensijkpunt huishoudens van 1 persoon € 23.425",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf"
+    },
+    "huurtoeslag_inkomensijkpunt_meerpersoons": {
+      "waarde": "€31.500",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 6: inkomensijkpunt huishoudens van 2 of meer personen € 31.500",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf"
+    },
+    "huurtoeslag_afbouwpercentage_eenpersoons": {
+      "waarde": "27%",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 6: correctie = (rekeninkomen - inkomensijkpunt) x (afbouwpercentage/12), 27% voor 1 persoon. Ook Wet op de huurtoeslag art. 21 lid 2.",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "context": [
+        "afbouw",
+        "correctie",
+        "ijkpunt"
+      ]
+    },
+    "huurtoeslag_afbouwpercentage_meerpersoons": {
+      "waarde": "22%",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 6: 22% voor 2 of meer personen",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "context": [
+        "afbouw",
+        "correctie",
+        "ijkpunt"
+      ]
+    },
+    "huurtoeslag_vergoeding_tot_aftoppingsgrens": {
+      "waarde": "65%",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 4: tussen kwaliteitskortingsgrens en aftoppingsgrens 65% vergoeding",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "context": [
+        "aftoppingsgrens",
+        "kwaliteitskortingsgrens"
+      ]
+    },
+    "huurtoeslag_vergoeding_boven_aftoppingsgrens": {
+      "waarde": "40%",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 4: boven de aftoppingsgrens tot de huurgrens 40% vergoeding",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf",
+      "context": [
+        "aftoppingsgrens"
+      ]
+    },
+    "huurtoeslag_vrijstelling_inkomen_kinderen": {
+      "waarde": "€6.218",
+      "geverifieerd": true,
+      "bron": "Dienst Toeslagen, Berekening huurtoeslag 2026, stap 5: inwonende kinderen jonger dan 23 jaar, alleen het inkomen boven € 6.218 per persoon per jaar telt mee",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://download.belastingdienst.nl/toeslagen/docs/berekening_huurtoeslag_tg0831z62fd.pdf"
     }
   }
 }

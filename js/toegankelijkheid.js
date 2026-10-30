@@ -154,9 +154,12 @@
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       if (el.scrollWidth > el.clientWidth + 1) {
+        // met de titel van de tabel erbij, anders hebben twee tabellen op één pagina dezelfde naam
+        var t = el.querySelector('table[aria-labelledby]');
+        var kop = t && document.getElementById(t.getAttribute('aria-labelledby'));
         el.setAttribute('tabindex', '0');
         el.setAttribute('role', 'region');
-        el.setAttribute('aria-label', EN ? 'Table, scroll sideways' : 'Tabel, schuif opzij');
+        el.setAttribute('aria-label', (kop ? kop.textContent.trim() + '. ' : '') + (EN ? 'Table, scroll sideways' : 'Tabel, schuif opzij'));
       } else if (el.hasAttribute('tabindex')) {
         el.removeAttribute('tabindex');
         el.removeAttribute('role');

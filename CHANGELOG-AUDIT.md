@@ -872,3 +872,59 @@ Aparte branch, bovenop `controle-ai-2026-10`: de eigenaar beslist of dit live ga
   of logins voor software (API-catalogus, OAuth, MCP, auth.md, DNS-AID en dergelijke),
   of leveren niets op (Markdown voor agents). WebMCP is een proef in Chrome; later
   opnieuw bekijken. De afweging staat in `docs/ai-zichtbaarheid.md`.
+
+## 2026-10-30 — Rekentools fase 1: zorgtoeslag en huurtoeslag (branch `rekentools-fase-1`)
+
+Aanleiding: ±5.400 vertoningen in Google sinds mei op rekenvragen ("hoeveel huurtoeslag
+krijg ik", "zorgtoeslag 2026 tabel"), met 4 klikken, op plek 30 tot 60. De pagina's
+waren niet het beste antwoord: de huurtoeslagtool rekende met een zelfbedachte
+benadering, en voor de zorgtoeslag was er geen tool.
+
+- **`js/rekenregels.js`**: de formules van Dienst Toeslagen ("Berekening zorgtoeslag
+  2026" en "Berekening huurtoeslag 2026", plus de Wet op de huurtoeslag waar de brochure
+  kort is). Eén bestand voor de browser, de tabellen en de controle.
+- **`scripts/check-rekenregels.js`** (in bouw.js): rekent de officiële rekenvoorbeelden
+  uit beide brochures na (Wouter €129, Marit en Rik €103, Sem €295, Demi en Sophie €492,
+  Marina €307) plus ruim 8.600 eigenschappen (nooit negatief, meer inkomen nooit meer
+  toeslag). Faalt na de jaarwisseling tot de nieuwe voorbeelden erin staan.
+- **`scripts/rekentabellen.js`** (in bouw.js): zet vaste tabellen en bedragen in de HTML,
+  tussen `<!-- tabel:... -->` en `<!-- r:... -->`, uitgerekend met dezelfde code. AI-diensten
+  en zoekmachines lezen geen JavaScript; deze tabellen wel. `--check` faalt als een
+  tabel afwijkt.
+- **Nieuw: `/rekentools/zorgtoeslag/`**, met tabellen per inkomen (alleen en met
+  toeslagpartner), voorwaarden, "net 18 of student" en vragen.
+- **`/blog/huurtoeslag-berekenen/` opnieuw gebouwd** op hetzelfde adres: de 7 stappen uit
+  de brochure, met huishouden, leeftijd onder 21, inkomen van medebewoners en vermogen;
+  tabellen voor 1, 2 en 3+ personen en jongeren; "tot welk inkomen" in de uitkomst. De
+  oude tekst "hoe hoger uw inkomen, hoe hoger uw eigen bijdrage" klopt sinds 2026 niet
+  meer (de basishuur is vast; er komt een inkomenscorrectie af).
+- **`/blog/huurtoeslag-grens/`**: tabel "tot welk inkomen krijgt u huurtoeslag" per huur
+  en huishouden; voorwaarden aangevuld (getekend huurcontract, eigen douche of bad sinds
+  1 maart 2024).
+- **Rechtgezet**:
+  - "tot €522 per maand" was een bedrag uit 2025 (AUDIT.md r.267). Het maximum in
+    2026 is €523 alleen, €525 met 2 en €537 met 3 of meer personen. Aangepast op
+    `/blog/huurtoeslag-aanvragen/`, `/en/blog/rent-benefit/` en `/en/`.
+  - Het Engelse rekenvoorbeeld (€680 huur, €22.000 inkomen) noemde "± €450" met een
+    eigen bijdrage van "± €230". Volgens de formule is het €413, met een basishuur van
+    €202,52.
+  - "Dienst Toeslagen publiceert geen vast maximumbedrag" (zorgtoeslag, NL en EN): de
+    brochure noemt €1.550 per jaar, €129 per maand.
+  - "Uw kale huur mag niet hoger zijn dan €932,93" (`/diensten/toeslagen/`) en "must
+    not exceed" (EN): sinds 2026 mag dat wel; alleen het deel daarboven telt niet.
+  - "Ik ben 19 en huur een kamer: dat kan" (`/diensten/eerste-baan/`, EN): alleen
+    voor een zelfstandige woonruimte.
+  - Zorgtoeslag "vanaf uw achttiende": vanaf de eerste dag van de maand na de 18e
+    verjaardag.
+- `data/fiscale-cijfers.json`: 16 nieuwe waarden met bron (de brochures), 9 bestaande
+  opnieuw nagelezen. `data/aanvraag.json`: rekentool "zorgtoeslag", zodat de berekening
+  bij een aanvraag in /beheer komt (de app herstart zichzelf na de uitrol).
+- `js/rekenhulp.js`: velden die alleen zichtbaar zijn als ze ertoe doen (`data-rh-als`);
+  verborgen velden gaan niet mee naar het formulier.
+- Opmaak: tabeltitel boven het schuifkader (een `<caption>` werd op de telefoon
+  afgekapt); de eerste kolom blijft staan bij opzij schuiven; `.tabel-scroll` is
+  gepositioneerd, anders maakte de tekst "geen" voor schermlezers de pagina op een
+  telefoon 1.464 px breed.
+- Getest in Edge: de officiële voorbeelden geven in de rekentool dezelfde bedragen, het
+  formulier krijgt de berekening mee, geen consolefouten; axe zonder meldingen op 390 en
+  1280 px; geen pagina breder dan het scherm.

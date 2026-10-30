@@ -1793,6 +1793,34 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 @media (max-width:479px){.form-card .form-submit{width:100%}}
 
 /* ========================================
+   REKENTABELLEN
+   De vaste tabellen bij de rekentools (scripts/rekentabellen.js). Bedragen
+   rechts uitgelijnd, de eerste kolom is de kop van de rij.
+   ======================================== */
+.rekentabel-kop,.blog-article .rekentabel-kop{font-weight:700;color:var(--clr-deep);font-size:1rem;line-height:1.4;margin:22px 0 0}
+.rekentabel{margin:10px 0 8px}
+.rekentabel thead th{text-align:right;white-space:nowrap}
+.rekentabel thead th:first-child{text-align:left}
+.rekentabel tbody th{background:#fff;color:var(--clr-deep);text-transform:none;letter-spacing:0;font-size:0.92rem;font-weight:700;border-bottom:1px solid var(--clr-sand);border-radius:0}
+.rekentabel tbody tr:nth-child(even) th{background:var(--clr-warm-white)}
+.rekentabel tbody tr:last-child th{border-bottom:none}
+.rekentabel td{text-align:right;white-space:nowrap}
+/* de eerste kolom (de huur of het inkomen) blijft staan als u opzij schuift */
+.rekentabel th:first-child{position:sticky;left:0;z-index:1}
+@media (max-width:600px){
+  .rekentabel th,.rekentabel td{padding:8px 10px}
+  .rekentabel thead th{text-transform:none;letter-spacing:0;font-size:0.85rem}
+}
+/* een bedrag in de uitkomst van een rekentool niet over twee regels */
+.rh-regels strong{white-space:nowrap}
+/* De tekst "geen" voor schermlezers (.sr-only) staat absoluut. Zonder een
+   gepositioneerd kader ontsnapt hij aan het schuifkader en maakt hij op een
+   telefoon de hele pagina breder. */
+.tabel-scroll{position:relative}
+.rekentabel-noot{font-size:0.9rem;color:var(--clr-bark);margin:0 0 28px;line-height:1.6}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ========================================
    MINDER BEWEGING
    Wie in het besturingssysteem "beweging beperken" aanzet, krijgt geen
    animaties: de hero staat er meteen, de stip en het label bewegen niet en

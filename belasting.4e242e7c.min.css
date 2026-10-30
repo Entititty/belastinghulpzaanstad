@@ -372,4 +372,18 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .herinnering-kaart>p{color:var(--clr-bark);line-height:1.7;margin:0 0 16px}
 .tegels-herinnering{text-align:center;margin:14px auto 0;color:var(--clr-bark);line-height:1.7}
 @media (max-width:479px){.form-card .form-submit{width:100%}}
+.rekentabel-kop,.blog-article .rekentabel-kop{font-weight:700;color:var(--clr-deep);font-size:1rem;line-height:1.4;margin:22px 0 0}
+.rekentabel{margin:10px 0 8px}
+.rekentabel thead th{text-align:right;white-space:nowrap}
+.rekentabel thead th:first-child{text-align:left}
+.rekentabel tbody th{background:#fff;color:var(--clr-deep);text-transform:none;letter-spacing:0;font-size:0.92rem;font-weight:700;border-bottom:1px solid var(--clr-sand);border-radius:0}
+.rekentabel tbody tr:nth-child(even) th{background:var(--clr-warm-white)}
+.rekentabel tbody tr:last-child th{border-bottom:none}
+.rekentabel td{text-align:right;white-space:nowrap}
+.rekentabel th:first-child{position:sticky;left:0;z-index:1}
+@media (max-width:600px){.rekentabel th,.rekentabel td{padding:8px 10px}.rekentabel thead th{text-transform:none;letter-spacing:0;font-size:0.85rem}}
+.rh-regels strong{white-space:nowrap}
+.tabel-scroll{position:relative}
+.rekentabel-noot{font-size:0.9rem;color:var(--clr-bark);margin:0 0 28px;line-height:1.6}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-up{opacity:1;animation:none}.hero-badge-dot,.hero-float-badge{animation:none}.audience-card,.tarief-card,.step,.faq-item,.scroll-reveal{opacity:1!important;transform:none!important;transition:none!important}}
