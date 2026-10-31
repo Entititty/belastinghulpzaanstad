@@ -411,6 +411,55 @@
     zet(box, 'melding', melding);
   };
 
+  /* Belasting met AOW en pensioen: tarief en kortingen voor wie het hele jaar
+     de AOW-leeftijd heeft, min wat de SVB, het pensioenfonds en een werkgever
+     al inhielden (rekenregels.js). Eerst afronden, dan aftrekken. */
+  REKENHULPEN['aow-pensioen'] = function (box, C) {
+    var R = window.BHZRekenregels;
+    var werk = keuze(box, 'werk') === 'ja';
+    var r = R.aowBelasting(C, {
+      aow: bedrag(box, 'aow'), pensioen: bedrag(box, 'pensioen'), loon: werk ? bedrag(box, 'loon') : 0,
+      ingehouden: bedrag(box, 'aow_ingehouden') + bedrag(box, 'pensioen_ingehouden') + (werk ? bedrag(box, 'loon_ingehouden') : 0),
+      alleenstaand: keuze(box, 'alleenstaand') === 'ja', voor1946: keuze(box, 'voor1946') === 'ja'
+    });
+    var heffing = Math.round(r.heffing), rest = heffing;
+    var delen = [['ahk', r.ahk], ['ok', r.ouderenkorting], ['aok', r.alleenstaand], ['ak', r.ak]].map(function (d) {
+      var k = Math.min(Math.round(d[1]), rest); rest -= k; return [d[0], k];
+    });
+    var verschuldigd = rest;
+    var ingehouden = Math.round(r.ingehouden);
+    var verschil = ingehouden - verschuldigd;
+    var heelJaar = keuze(box, 'aow_leeftijd') !== 'nee';
+    var terug = verschil >= 0;
+    zet(box, 'kop', !heelJaar ? 'Uw uitkomst' : terug ? 'U krijgt ongeveer terug' : 'U betaalt ongeveer bij');
+    zet(box, 'bedrag', !heelJaar ? '–' : euro(Math.abs(verschil)));
+    zet(box, 'heffing', euro(heffing));
+    zet(box, 'kortingen', '− ' + euro(heffing - verschuldigd));
+    zet(box, 'verschuldigd', euro(verschuldigd));
+    zet(box, 'ingehouden', euro(ingehouden));
+    var naam = { ahk: 'Algemene heffingskorting', ok: 'Ouderenkorting', aok: 'Alleenstaande ouderenkorting', ak: 'Arbeidskorting' };
+    zet(box, 'uitleg',
+      'Inkomen: ' + euro(r.inkomen) + '<br>' +
+      'Belasting: ' + pct(C.box1_aow_schijf1_tarief) + ' tot ' + euro(r.grens1) + ', ' + pct(C.box1_schijf2_tarief) + ' tot ' + euro(C.box1_schijf2_grens) +
+      ', daarboven ' + pct(C.box1_schijf3_tarief) + ' = ' + euro(heffing) + '<br>' +
+      delen.filter(function (d) { return d[1] > 0; }).map(function (d) { return naam[d[0]] + ': &minus; ' + euro(d[1]); }).join('<br>') +
+      (heffing ? '<br>' : '') +
+      'Een heffingskorting verlaagt alleen de belasting die er is, dus samen nooit meer dan ' + euro(heffing) + '<br>' +
+      'Belasting die u echt betaalt: ' + euro(verschuldigd) + '<br>' +
+      'Al ingehouden: ' + euro(ingehouden) + '; het verschil krijgt u terug of betaalt u bij.', true);
+    var melding = '';
+    if (!heelJaar) {
+      melding = 'Kreeg u pas in 2026 de AOW-leeftijd? Dan geldt het lagere tarief maar voor een deel van het jaar, en zijn de kortingen anders. Dat rekenen wij gratis voor u uit.';
+    } else if (ingehouden === 0 && r.inkomen > 0 && verschuldigd > 0) {
+      melding = 'Vul ook de ingehouden loonheffing in; die staat op de jaaropgaven van de SVB en uw pensioenfonds.';
+    } else if (!terug) {
+      melding = 'Er is minder ingehouden dan u verschuldigd bent. Dat komt vaak doordat de SVB en uw pensioenfonds allebei de loonheffingskorting toepassen, of doordat AOW en pensioen samen in een hogere schijf vallen. Met een voorlopige aanslag betaalt u het per maand in plaats van in één keer.';
+    } else if (verschil > 0) {
+      melding = 'Dit geld krijgt u alleen terug als u aangifte doet.';
+    }
+    zet(box, 'melding', melding);
+  };
+
   /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
   function zichtbaarheid(box) {
     var els = box.querySelectorAll('[data-rh-als]');
@@ -426,7 +475,7 @@
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
-    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten', 'box3', 'kindgebonden-budget'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
+    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten', 'box3', 'kindgebonden-budget', 'aow-pensioen'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
       zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
       return;
     }

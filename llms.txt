@@ -135,6 +135,7 @@ Alle rekentools rekenen met de cijfers van 2026. De berekening gebeurt in de bro
 
 - [Rekentools, overzicht](https://belastinghulpzaanstad.nl/rekentools/)
 - [Voorlopige teruggave berekenen](https://belastinghulpzaanstad.nl/rekentools/voorlopige-teruggave/), wat u elke maand terugkrijgt van uw hypotheekrenteaftrek, met beide tarieven (35,75% en 37,56%)
+- [Belasting op AOW en pensioen 2026](https://belastinghulpzaanstad.nl/rekentools/aow-pensioen/), voor wie het hele jaar de AOW-leeftijd heeft: 17,85% tot €38.883 (vóór 1946 geboren: tot €41.123), algemene heffingskorting €1.556, ouderenkorting €2.067, alleenstaande ouderenkorting €540, min de ingehouden loonheffing van SVB en pensioenfonds: terug of bijbetalen; met tabel per inkomen
 - [Ouderenkorting berekenen](https://belastinghulpzaanstad.nl/rekentools/ouderenkorting/), ouderenkorting en alleenstaande ouderenkorting 2026 bij uw inkomen
 - [Belastingteruggave berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/belastingteruggave/), voor wie alleen loon heeft (eerste baan, bijbaan, deel van het jaar gewerkt): ingehouden loonheffing min de belasting na algemene heffingskorting en arbeidskorting; met tabel belasting per loon
 - [Zorgtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/zorgtoeslag/), met de formule van Dienst Toeslagen (standaardpremie min normpremie); maximaal €129 per maand alleen, €246 met toeslagpartner; met tabel per inkomen

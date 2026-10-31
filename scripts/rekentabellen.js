@@ -220,6 +220,29 @@ function zorgkostenVoorbeeldEn(id) {
 }
 function pct(n) { return String(Math.round(n * 10000) / 100).replace('.', ',') + '%'; }
 
+/* ---------- belasting met AOW en pensioen ---------- */
+// eerst afronden, dan aftrekken, zoals de rekentool
+function aowVerschuldigd(inkomen, alleenstaand) {
+  const r = R.aowBelasting(C, { pensioen: inkomen, alleenstaand });
+  let rest = Math.round(r.heffing);
+  for (const k of [r.ahk, r.ouderenkorting, r.alleenstaand]) rest -= Math.min(Math.round(k), rest);
+  return rest;
+}
+function aowTabel(id) {
+  const rijen = [20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 75000].map((ink) => {
+    const a = aowVerschuldigd(ink, true), s = aowVerschuldigd(ink, false);
+    return [euro(ink), a ? euro(a) : GEEN, s ? euro(s) : GEEN];
+  });
+  return tabel(id, 'Inkomstenbelasting ' + JAAR + ' per jaar, het hele jaar de AOW-leeftijd',
+    ['AOW en pensioen samen', 'AOW voor alleenstaanden', 'AOW met partner'], rijen);
+}
+// tot welk inkomen u geen belasting betaalt, naar beneden afgerond op honderden
+function aowBelastingvrij(alleenstaand) {
+  let ink = 0;
+  while (aowVerschuldigd(ink + 100, alleenstaand) === 0) ink += 100;
+  return euro(ink);
+}
+
 /* ---------- kindgebonden budget ---------- */
 function kgbTabel(id, partner, inkomens) {
   const grens = partner ? C.kindgebonden_budget_inkomensgrens_partners : C.kindgebonden_budget_inkomensgrens_alleen;
@@ -244,6 +267,7 @@ function box3Tabel(id, partner) {
 }
 
 const TABELLEN = {
+  'aow-belasting': aowTabel,
   'kindgebonden-budget-alleen': (id) => kgbTabel(id, false, [35000, 40000, 45000, 50000, 60000, 70000, 80000, 100000]),
   'kindgebonden-budget-partners': (id) => kgbTabel(id, true, [45000, 50000, 55000, 60000, 70000, 80000, 90000, 110000]),
   'box3-alleen': (id) => box3Tabel(id, false),
@@ -274,6 +298,11 @@ const TABELLEN = {
 const erfschenk = (soort, relatie, bedrag) => euro(R.erfschenkbelasting(C, { soort, relatie, bedrag }).belasting);
 
 const WAARDEN = {
+  'aow-belastingvrij-alleen': () => aowBelastingvrij(true),
+  'aow-belastingvrij-samen': () => aowBelastingvrij(false),
+  'aow-30k-alleen': () => euro(aowVerschuldigd(30000, true)),
+  'aow-belastingvrij-alleen-en': () => euroEn(Number(aowBelastingvrij(true).replace(/\D/g, ''))),
+  'aow-belastingvrij-samen-en': () => euroEn(Number(aowBelastingvrij(false).replace(/\D/g, ''))),
   'kgb-max-maand-alleen-1': () => kgbMaand({ jong: 1 }),
   'kgb-max-maand-partners-1': () => kgbMaand({ partner: true, jong: 1 }),
   'kgb-max-maand-partners-2': () => kgbMaand({ partner: true, jong: 2 }),

@@ -375,7 +375,56 @@
     };
   }
 
+  /*
+   * BELASTING MET AOW EN PENSIOEN (het hele jaar de AOW-leeftijd)
+   * invoer: { aow, pensioen, loon: bruto per jaar (loon voor de loonheffing),
+   *           ingehouden: ingehouden loonheffing van alle jaaropgaven samen,
+   *           alleenstaand: AOW voor alleenstaanden, voor1946: geboren vóór 1946 }
+   * Tarief en kortingen uit de tabellen 2026 van de Belastingdienst voor wie
+   * het hele jaar de AOW-leeftijd heeft. Alleen box 1; het verzamelinkomen is
+   * hier dus het inkomen uit AOW, pensioen en loon.
+   */
+  function ouderenkorting(C, verzamelinkomen) {
+    // zoals rekentool ouderenkorting: rechte lijn naar nul bij het nulpunt (2026: 15%)
+    var max = C.ouderenkorting_max, grens = C.ouderenkorting_afbouwgrens, nul = C.ouderenkorting_nulpunt;
+    if (verzamelinkomen <= grens) return max;
+    return Math.max(0, max * (nul - verzamelinkomen) / (nul - grens));
+  }
+
+  function arbeidskortingAow(C, ai) {
+    // de tabel zet hem vanaf €132.921 op nul; de formule komt daar op €1,81
+    if (ai <= 0 || ai >= C.arbeidskorting_aow_nul_vanaf) return 0;
+    if (ai <= C.arbeidskorting_grens1) return C.arbeidskorting_aow_pct1 * ai;
+    if (ai <= C.arbeidskorting_grens2) return C.arbeidskorting_aow_bedrag2 + C.arbeidskorting_aow_pct2 * (ai - C.arbeidskorting_grens1);
+    if (ai <= C.arbeidskorting_grens3) return C.arbeidskorting_aow_bedrag3 + C.arbeidskorting_aow_pct3 * (ai - C.arbeidskorting_grens2);
+    return Math.max(0, C.arbeidskorting_aow_max - C.arbeidskorting_aow_afbouwpercentage * (ai - C.arbeidskorting_grens3));
+  }
+
+  function aowBelasting(C, inv) {
+    var aow = Math.max(0, Number(inv.aow) || 0);
+    var pensioen = Math.max(0, Number(inv.pensioen) || 0);
+    var loon = Math.max(0, Number(inv.loon) || 0);
+    var inkomen = aow + pensioen + loon;
+    var g1 = inv.voor1946 ? C.box1_aow_schijf1_grens_voor_1946 : C.box1_schijf1_grens, g2 = C.box1_schijf2_grens;
+    var heffing = Math.min(inkomen, g1) * C.box1_aow_schijf1_tarief +
+      Math.max(0, Math.min(inkomen, g2) - g1) * C.box1_schijf2_tarief +
+      Math.max(0, inkomen - g2) * C.box1_schijf3_tarief;
+    var ahk = inkomen <= C.ahk_afbouwgrens ? C.ahk_aow_max
+      : Math.max(0, C.ahk_aow_max - C.ahk_aow_afbouwpercentage * (inkomen - C.ahk_afbouwgrens));
+    var ok = ouderenkorting(C, inkomen);
+    var aok = inv.alleenstaand ? C.ouderenkorting_alleenstaande : 0;
+    var ak = arbeidskortingAow(C, loon);
+    var kortingen = Math.min(heffing, ahk + ok + aok + ak);
+    var verschuldigd = heffing - kortingen;
+    var ingehouden = Math.max(0, Number(inv.ingehouden) || 0);
+    return {
+      inkomen: inkomen, grens1: g1, heffing: heffing, ahk: ahk, ouderenkorting: ok, alleenstaand: aok, ak: ak,
+      kortingen: kortingen, verschuldigd: verschuldigd, ingehouden: ingehouden, verschil: ingehouden - verschuldigd
+    };
+  }
+
   return {
+    aowBelasting: aowBelasting, ouderenkorting: ouderenkorting, arbeidskortingAow: arbeidskortingAow,
     kindgebondenBudget: kindgebondenBudget,
     box3: box3,
     zorgkosten: zorgkosten, zorgkostenDrempel: zorgkostenDrempel,

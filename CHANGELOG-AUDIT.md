@@ -1027,3 +1027,24 @@ benadering, en voor de zorgtoeslag was er geen tool.
   gekoppeld aan dezelfde berekening als `/rekentools/voorlopige-teruggave/`, met de cijfers
   uit `fiscale-cijfers.json`. Zelfde opmaak en uitkomst; het gebruik telt nu ook mee in de
   tellingen, en er is een melding als de rente niet hoger is dan het eigenwoningforfait.
+
+### Rekentool belasting op AOW en pensioen (zelfde branch)
+
+- **Nieuw: `/rekentools/aow-pensioen/`**. Rekenregel `aowBelasting` in `js/rekenregels.js`
+  voor wie het hele jaar de AOW-leeftijd heeft: 17,85% tot €38.883 (vóór 1946 geboren:
+  €41.123), algemene heffingskorting €1.556 met 3,195% afbouw, ouderenkorting, alleenstaande
+  ouderenkorting en de arbeidskorting voor AOW'ers, min de ingehouden loonheffing van SVB,
+  pensioenfonds en werkgever: terugkrijgen of bijbetalen. Bij bijbetalen een melding over
+  de loonheffingskorting en de voorlopige aanslag.
+- 12 nieuwe waarden in `fiscale-cijfers.json` uit de tabellen 2026 "het hele jaar de
+  AOW-leeftijd". De arbeidskorting is volgens de tabel vanaf €132.921 nul; de formule komt
+  daar op €1,81, dus die grens staat er apart in.
+- Geen rekenvoorbeeld van de Belastingdienst; `check-rekenregels.js` controleert de randen
+  van de tabellen en met de hand uitgerekende gevallen.
+- **`/blog/aow-en-belasting/` en `/en/blog/aow-and-tax/`**: de algemene heffingskorting
+  stond als €3.115; met de AOW-leeftijd is die €1.556. De alleenstaande ouderenkorting
+  hangt af van AOW voor alleenstaanden, niet van "geen fiscale partner". De vuistregel
+  "AOW circa €1.400 per maand, €0 tot €50 inhouding" had geen bron; nu: belastingvrij tot
+  ongeveer €23.300 (alleenstaand), uitgerekend.
+- Links vanaf het overzicht, `/senioren/`, de rekentool ouderenkorting, drie
+  seniorenartikelen en `llms.txt`.

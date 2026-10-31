@@ -144,6 +144,41 @@ gelijk('zorgkosten: drempel boven €51.411', R.zorgkostenDrempel(C, false, 6141
 gelijk('zorgkosten: drempel sluit aan bij €51.411', R.zorgkostenDrempel(C, false, 51412), R.zorgkostenDrempel(C, false, 51411), 1);
 gelijk('zorgkosten: behandeling krijgt geen verhoging', R.zorgkosten(C, { drempelinkomen: 20000, behandeling: 1000 }).verhoging, 0);
 
+/* ---------- belasting met AOW en pensioen ----------
+   Geen rekenvoorbeeld van de Belastingdienst; wel de randen van de tabellen
+   2026 voor wie het hele jaar de AOW-leeftijd heeft, en met de hand
+   uitgerekende gevallen. */
+{
+  const ab = (i) => R.aowBelasting(C, i);
+  gelijk('aow: schijf 1 17,85%', ab({ pensioen: 30000 }).heffing, 30000 * 0.1785);
+  gelijk('aow: schijf 1 tot €38.883, daarna 37,56%', ab({ pensioen: 43000 }).heffing, 38883 * 0.1785 + (43000 - 38883) * 0.3756);
+  gelijk('aow: geboren voor 1946, schijf 1 tot €41.123', ab({ pensioen: 43000, voor1946: true }).heffing, 41123 * 0.1785 + (43000 - 41123) * 0.3756);
+  gelijk('aow: algemene heffingskorting tot €29.736', ab({ pensioen: 29736 }).ahk, 1556);
+  gelijk('aow: algemene heffingskorting afbouw', ab({ pensioen: 43000 }).ahk, 1556 - 0.03195 * (43000 - 29736));
+  gelijk('aow: algemene heffingskorting op €78.426 bijna nul', ab({ pensioen: 78426 }).ahk, 0, 1);
+  gelijk('aow: ouderenkorting tot €46.002', ab({ pensioen: 46002 }).ouderenkorting, 2067);
+  gelijk('aow: ouderenkorting 15% afbouw', ab({ pensioen: 50000 }).ouderenkorting, 2067 - 0.15 * (50000 - 46002), 0.01);
+  gelijk('aow: ouderenkorting nul vanaf €59.782', ab({ pensioen: 59782 }).ouderenkorting, 0);
+  gelijk('aow: alleenstaande ouderenkorting', ab({ aow: 19000, alleenstaand: true }).alleenstaand, 540);
+  gelijk('aow: arbeidskorting tot €11.965', R.arbeidskortingAow(C, 10000), 415.6);
+  gelijk('aow: arbeidskorting op €25.845', R.arbeidskortingAow(C, 25845), 498 + 0.15483 * (25845 - 11965));
+  gelijk('aow: arbeidskorting op €45.592', R.arbeidskortingAow(C, 45592), 2647 + 0.00974 * (45592 - 25845));
+  gelijk('aow: arbeidskorting nul vanaf €132.921', R.arbeidskortingAow(C, 132921), 0, 1);
+  // alleen AOW voor alleenstaanden van €19.000: de kortingen zijn hoger dan de belasting
+  gelijk('aow: alleen AOW, geen belasting', ab({ aow: 19000, alleenstaand: true }).verschuldigd, 0);
+  gelijk('aow: AOW €19.000 en pensioen €12.000, alleenstaand', ab({ aow: 19000, pensioen: 12000, alleenstaand: true }).verschuldigd,
+    31000 * 0.1785 - (1556 - 0.03195 * (31000 - 29736)) - 2067 - 540);
+  for (const voor1946 of [false, true]) {
+    let vorige = -1;
+    for (let ink = 0; ink <= 200000; ink += 250) {
+      const r = ab({ pensioen: ink, voor1946 });
+      eigenschap('aow: belasting negatief bij ' + ink, r.verschuldigd >= 0);
+      eigenschap('aow: meer inkomen, minder belasting bij ' + ink, r.verschuldigd >= vorige - 1e-9);
+      vorige = r.verschuldigd;
+    }
+  }
+}
+
 /* ---------- kindgebonden budget ----------
    "Berekening kindgebonden budget 2026" van Dienst Toeslagen. Voorbeeld 2 in die
    brochure noemt nog de uitkomst van 2025 (€510 per maand); met de bedragen van

@@ -82,6 +82,15 @@ percentages, de startbedragen van schijf 2 en 3 en het afbouwpercentage.
 aansluiten; staat er één cijfer verkeerd, dan faalt hij. `ahk_afbouwgrens` is in
 2026 even hoog als `zorgtoeslag_drempelinkomen` (€29.736); zet ze apart.
 
+### Stap 1b. Tarief en kortingen met de AOW-leeftijd (12 waarden, sinds oktober 2026)
+
+Bron: de pagina's [voorlopige aanslag: tarieven en heffingskortingen](https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen),
+en de tabellen algemene heffingskorting en arbeidskorting van het nieuwe jaar, onder
+"het hele jaar de AOW-leeftijd". De sleutels: `box1_aow_schijf1_tarief`,
+`box1_aow_schijf1_grens_voor_1946`, `ahk_aow_*` en `arbeidskorting_aow_*` (de grenzen van
+de arbeidskorting delen ze met stap 1). De rekentool `/rekentools/aow-pensioen/` en de
+tabel daar rekenen vanzelf mee; `check-rekenregels.js` heeft de randen van 2026 erin.
+
 ### Stap 2. Aftrektarief (1 waarde, 64 vermeldingen samen met stap 1)
 
 Bron: [tariefsaanpassing aftrekposten bij een hoog inkomen](https://www.belastingdienst.nl/wps/wcm/connect/nl/aftrek-en-kortingen/content/afbouw-tarief-aftrekposten-bij-hoog-inkomen)
@@ -264,7 +273,7 @@ elders op de pagina. Zoek na een update op het oude maandbedrag.
 `/rekentools/voorlopige-teruggave/`, `/rekentools/ouderenkorting/`, `/rekentools/zorgtoeslag/`,
 `/blog/huurtoeslag-berekenen/`, `/rekentools/belastingteruggave/`, `/rekentools/erfbelasting/`,
 `/rekentools/schenkbelasting/`, `/rekentools/zorgkosten/`, `/rekentools/box-3/`,
-`/rekentools/kindgebonden-budget/` en `/blog/hypotheekrenteaftrek-berekenen/` halen hun cijfers bij het laden uit
+`/rekentools/kindgebonden-budget/`, `/rekentools/aow-pensioen/` en `/blog/hypotheekrenteaftrek-berekenen/` halen hun cijfers bij het laden uit
 `data/fiscale-cijfers.json`. Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de
 nieuwe cijfers. De formules staan in `js/rekenregels.js` (zie stap 4, 5, 5b en 5c).
 
