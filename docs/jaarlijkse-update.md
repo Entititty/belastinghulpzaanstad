@@ -263,13 +263,14 @@ elders op de pagina. Zoek na een update op het oude maandbedrag.
 
 `/rekentools/voorlopige-teruggave/`, `/rekentools/ouderenkorting/`, `/rekentools/zorgtoeslag/`,
 `/blog/huurtoeslag-berekenen/`, `/rekentools/belastingteruggave/`, `/rekentools/erfbelasting/`,
-`/rekentools/schenkbelasting/`, `/rekentools/zorgkosten/` en `/rekentools/box-3/` halen hun cijfers bij het laden uit
+`/rekentools/schenkbelasting/`, `/rekentools/zorgkosten/`, `/rekentools/box-3/`,
+`/rekentools/kindgebonden-budget/` en `/blog/hypotheekrenteaftrek-berekenen/` halen hun cijfers bij het laden uit
 `data/fiscale-cijfers.json`. Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de
 nieuwe cijfers. De formules staan in `js/rekenregels.js` (zie stap 4, 5, 5b en 5c).
 
-De oudere rekentool op `blog/hypotheekrenteaftrek-berekenen/` niet: daar staan de cijfers
-in het script onderaan de pagina (`TARIEF_SCHIJF1`, `AFTREKTARIEF`, `EWF_PERCENTAGE`).
-Pas die met de hand aan.
+De rekentool op `blog/hypotheekrenteaftrek-berekenen/` had tot oktober 2026 zijn eigen
+cijfers in een script onderaan de pagina; hij gebruikt nu dezelfde berekening als
+`/rekentools/voorlopige-teruggave/` (`data-rekenhulp="voorlopige-teruggave"`).
 
 Controleer daarna met de hand of de uitkomst bij de standaardinvoer klopt met het
 rekenvoorbeeld op de site.

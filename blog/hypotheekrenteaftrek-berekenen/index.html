@@ -217,7 +217,7 @@
 
 
       <!-- REKENTOOL -->
-      <div class="hra-calc" data-rh-calc="Hypotheekrenteaftrek 2026" style="background:#fff;border:1px solid var(--clr-sand);border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(44,37,32,0.06);margin-bottom:32px;">
+      <div class="hra-calc" data-rekenhulp="voorlopige-teruggave" data-rh-calc="Hypotheekrenteaftrek 2026" style="background:#fff;border:1px solid var(--clr-sand);border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(44,37,32,0.06);margin-bottom:32px;">
         <h2 style="margin-top:0;">Bereken uw voordeel</h2>
 
         <div style="display:flex;flex-direction:column;gap:18px;margin-top:18px;">
@@ -225,7 +225,7 @@
             <span style="display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;">Hypotheekbedrag (openstaande schuld)</span>
             <span style="display:flex;align-items:center;gap:8px;">
               <span style="font-weight:700;color:var(--clr-bark);">€</span>
-              <input id="calc-hyp" type="number" inputmode="numeric" min="0" step="1000" value="300000"
+              <input id="calc-hyp" data-rh-in="hypotheek" type="number" inputmode="numeric" min="0" step="1000" value="300000"
                      style="flex:1;padding:12px 14px;border:1px solid var(--clr-sand);border-radius:10px;font-size:1rem;font-family:inherit;">
             </span>
           </label>
@@ -233,7 +233,7 @@
           <label style="display:block;">
             <span style="display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;">Hypotheekrente per jaar</span>
             <span style="display:flex;align-items:center;gap:8px;">
-              <input id="calc-rente" type="number" inputmode="decimal" min="0" step="0.1" value="4"
+              <input id="calc-rente" data-rh-in="rente" type="number" inputmode="decimal" min="0" step="0.1" value="4"
                      style="flex:1;padding:12px 14px;border:1px solid var(--clr-sand);border-radius:10px;font-size:1rem;font-family:inherit;">
               <span style="font-weight:700;color:var(--clr-bark);">%</span>
             </span>
@@ -243,7 +243,7 @@
             <span style="display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;">WOZ-waarde van uw woning</span>
             <span style="display:flex;align-items:center;gap:8px;">
               <span style="font-weight:700;color:var(--clr-bark);">€</span>
-              <input id="calc-woz" type="number" inputmode="numeric" min="0" step="1000" value="350000"
+              <input id="calc-woz" data-rh-in="woz" type="number" inputmode="numeric" min="0" step="1000" value="350000"
                      style="flex:1;padding:12px 14px;border:1px solid var(--clr-sand);border-radius:10px;font-size:1rem;font-family:inherit;">
             </span>
             <span style="display:block;font-size:0.9rem;color:var(--clr-bark);margin-top:4px;">Nodig voor het eigenwoningforfait dat van uw aftrek af gaat.</span>
@@ -251,7 +251,7 @@
 
           <label style="display:block;">
             <span style="display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;">Uw inkomen per jaar, na de aftrek</span>
-            <select id="calc-schijf" style="width:100%;padding:12px 14px;border:1px solid var(--clr-sand);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;min-height:48px;">
+            <select id="calc-schijf" data-rh-in="schijf" style="width:100%;padding:12px 14px;border:1px solid var(--clr-sand);border-radius:10px;font-size:1rem;font-family:inherit;background:#fff;min-height:48px;">
               <option value="beide" selected>Weet ik niet: toon beide</option>
               <option value="1">Tot €38.883 (35,75%)</option>
               <option value="2">Boven €38.883 (37,56%)</option>
@@ -263,13 +263,14 @@
         <!-- RESULTAAT -->
         <div style="margin-top:24px;background:var(--clr-teal-light);border-radius:14px;padding:22px 24px;text-align:center;">
           <div style="font-size:0.9rem;color:var(--clr-bark);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;">Geschat voordeel per maand</div>
-          <div id="calc-maand" data-rh-uitkomst="Per maand" style="font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--clr-teal);line-height:1.1;margin:6px 0;">€ 0</div>
-          <div style="font-size:0.95rem;color:var(--clr-bark);">≈ <span id="calc-jaar" data-rh-uitkomst="Per jaar" style="font-weight:700;">€ 0</span> per jaar belastingvoordeel</div>
+          <div id="calc-maand" data-rh-out="maand" data-rh-uitkomst="Per maand" style="font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--clr-teal);line-height:1.1;margin:6px 0;">€ 0</div>
+          <div style="font-size:0.95rem;color:var(--clr-bark);">≈ <span id="calc-jaar" data-rh-out="jaar" data-rh-uitkomst="Per jaar" style="font-weight:700;">€ 0</span> per jaar belastingvoordeel</div>
         </div>
+        <div class="rh-melding" data-rh-out="melding" role="status"></div>
 
         <details style="margin-top:16px;">
           <summary style="cursor:pointer;font-weight:700;color:var(--clr-teal);font-size:0.9rem;">Hoe is dit berekend?</summary>
-          <div id="calc-breakdown" style="font-size:0.9rem;color:var(--clr-bark);margin-top:10px;line-height:1.7;"></div>
+          <div id="calc-breakdown" data-rh-out="uitleg" style="font-size:0.9rem;color:var(--clr-bark);margin-top:10px;line-height:1.7;"></div>
         </details>
 
         <p style="font-size:0.9rem;color:var(--clr-bark);margin:14px 0 0;">
@@ -593,56 +594,6 @@ window.addEventListener('scroll', () => {
 </script>
 
 <!-- REKENTOOL SCRIPT -->
-<script>
-(function () {
-  // Indicatieve percentages 2026, pas hier aan als de tarieven wijzigen
-  var TARIEF_SCHIJF1 = 0.3575; // eerste schijf 2026, inkomen tot € 38.883 (35,75%)
-  var AFTREKTARIEF = 0.3756;   // maximaal aftrektarief eigen woning 2026 (37,56%, Belastingplan 2026)
-  var EWF_PERCENTAGE = 0.0035; // eigenwoningforfait 2026 (0,35% van WOZ)
-
-  function euro(n) {
-    return '€ ' + Math.round(n).toLocaleString('nl-NL');
-  }
-  function num(id) {
-    var v = parseFloat(document.getElementById(id).value);
-    return isNaN(v) || v < 0 ? 0 : v;
-  }
-  function bereken() {
-    var hyp = num('calc-hyp');
-    var rente = num('calc-rente');
-    var woz = num('calc-woz');
-
-    var renteBedrag = hyp * (rente / 100);
-    var ewf = woz * EWF_PERCENTAGE;
-    var aftrekbaar = Math.max(0, renteBedrag - ewf);
-    var schijf = document.getElementById('calc-schijf').value;
-    var jaar1 = aftrekbaar * TARIEF_SCHIJF1;
-    var jaar2 = aftrekbaar * AFTREKTARIEF;
-    var regel1 = 'Voordeel bij inkomen tot € 38.883 (35,75%): ' + euro(jaar1) + ' per jaar = ' + euro(jaar1 / 12) + ' per maand';
-    var regel2 = 'Voordeel bij inkomen boven € 38.883 (37,56%): ' + euro(jaar2) + ' per jaar = ' + euro(jaar2 / 12) + ' per maand';
-
-    if (schijf === 'beide') {
-      document.getElementById('calc-maand').textContent = euro(jaar1 / 12) + ' – ' + euro(jaar2 / 12).replace('€ ', '');
-      document.getElementById('calc-jaar').textContent = euro(jaar1) + ' – ' + euro(jaar2).replace('€ ', '');
-    } else {
-      var jaar = schijf === '1' ? jaar1 : jaar2;
-      document.getElementById('calc-maand').textContent = euro(jaar / 12);
-      document.getElementById('calc-jaar').textContent = euro(jaar);
-    }
-    document.getElementById('calc-breakdown').innerHTML =
-      'Betaalde hypotheekrente: ' + euro(renteBedrag) + ' per jaar<br>' +
-      'Min eigenwoningforfait (0,35% van WOZ): &minus; ' + euro(ewf) + '<br>' +
-      'Aftrekbaar bedrag: ' + euro(aftrekbaar) + '<br>' +
-      (schijf !== '2' ? regel1 + '<br>' : '') + (schijf !== '1' ? regel2 : '');
-  }
-
-  ['calc-hyp', 'calc-rente', 'calc-woz', 'calc-schijf'].forEach(function (id) {
-    var el = document.getElementById(id);
-    if (el) { el.addEventListener('input', bereken); el.addEventListener('change', bereken); }
-  });
-  bereken();
-})();
-</script>
 
 <script type="application/ld+json">
 {

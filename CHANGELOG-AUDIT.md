@@ -1019,3 +1019,11 @@ benadering, en voor de zorgtoeslag was er geen tool.
 - 11 nieuwe waarden in `fiscale-cijfers.json`, met de bedragen van 2025 als "verouderd".
 - Het blog `/blog/kindgebonden-budget/` noemde "rond de €2.500"; nu de echte bedragen en
   een tabel. Links vanaf het overzicht, `/diensten/toeslagen/` en `llms.txt`.
+
+### Rekentool hypotheekrenteaftrek op de gedeelde cijfers (zelfde branch)
+
+- `/blog/hypotheekrenteaftrek-berekenen/` rekende met drie vaste getallen in een eigen
+  script (35,75%, 37,56%, 0,35%), die elk jaar met de hand bij moesten. De velden zijn nu
+  gekoppeld aan dezelfde berekening als `/rekentools/voorlopige-teruggave/`, met de cijfers
+  uit `fiscale-cijfers.json`. Zelfde opmaak en uitkomst; het gebruik telt nu ook mee in de
+  tellingen, en er is een melding als de rente niet hoger is dan het eigenwoningforfait.
