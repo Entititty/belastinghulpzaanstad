@@ -144,6 +144,43 @@ gelijk('zorgkosten: drempel boven €51.411', R.zorgkostenDrempel(C, false, 6141
 gelijk('zorgkosten: drempel sluit aan bij €51.411', R.zorgkostenDrempel(C, false, 51412), R.zorgkostenDrempel(C, false, 51411), 1);
 gelijk('zorgkosten: behandeling krijgt geen verhoging', R.zorgkosten(C, { drempelinkomen: 20000, behandeling: 1000 }).verhoging, 0);
 
+/* ---------- kindgebonden budget ----------
+   "Berekening kindgebonden budget 2026" van Dienst Toeslagen. Voorbeeld 2 in die
+   brochure noemt nog de uitkomst van 2025 (€510 per maand); met de bedragen van
+   2026 uit dezelfde brochure (€5.160 + €1.688 - €445,28) is het €533. Voorbeeld
+   4 gaat over een kind in het buitenland (woonlandfactor); dat doet de rekentool
+   niet. */
+{
+  const kgb = (i) => R.kindgebondenBudget(C, i);
+  const k1 = kgb({ partner: true, inkomen: 45000, jong: 2 });
+  gelijk('kindgebonden budget vb 1: maximum', k1.max, 5160);
+  gelijk('kindgebonden budget vb 1: vermindering', k1.vermindering, 445.28, 0.005);
+  gelijk('kindgebonden budget vb 1: per maand', k1.maand, 392);
+  const k2 = kgb({ partner: true, inkomen: 45000, k12: 1, k16: 1 });
+  gelijk('kindgebonden budget vb 2: verhoging', k2.verhoging, 1688);
+  gelijk('kindgebonden budget vb 2: per jaar', k2.jaar, 6402.72);
+  const k3 = kgb({ inkomen: 30000, jong: 1 });
+  gelijk('kindgebonden budget vb 3: maximum', k3.max, 5996);
+  gelijk('kindgebonden budget vb 3: vermindering', k3.vermindering, 20.06, 0.005);
+  gelijk('kindgebonden budget vb 3: per maand', k3.maand, 497);
+  gelijk('kindgebonden budget: 3 kinderen alleen', kgb({ jong: 3 }).jaar, 8576 + 2580);
+  gelijk('kindgebonden budget: geen kinderen', kgb({ inkomen: 10000 }).jaar, 0);
+  gelijk('kindgebonden budget: te veel vermogen', kgb({ inkomen: 10000, jong: 1, vermogenTeHoog: true }).jaar, 0);
+  for (const partner of [false, true]) {
+    for (const k of [{ jong: 1 }, { jong: 2 }, { jong: 1, k12: 1, k16: 1 }, { jong: 4 }]) {
+      let vorige = Infinity;
+      const nul = kgb(Object.assign({ partner, inkomen: 0 }, k)).nulpunt;
+      for (let ink = 0; ink <= 150000; ink += 500) {
+        const r = kgb(Object.assign({ partner, inkomen: ink }, k));
+        eigenschap('kindgebonden budget negatief bij ' + ink, r.jaar >= 0);
+        eigenschap('kindgebonden budget stijgt met inkomen bij ' + ink, r.jaar <= vorige + 1e-9);
+        if (ink > nul + 1) eigenschap('kindgebonden budget boven het nulpunt bij ' + ink, r.jaar === 0);
+        vorige = r.jaar;
+      }
+    }
+  }
+}
+
 /* ---------- box 3 ----------
    De vijf voorbeelden van belastingdienst.nl, "Hoe is het box 3-inkomen op mijn
    voorlopige aanslag 2026 berekend?". Bij partners geeft de Belastingdienst

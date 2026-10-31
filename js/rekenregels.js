@@ -21,6 +21,8 @@
  * - Inkomstenbelasting: de tarieven box 1 en de tabellen algemene
  *   heffingskorting en arbeidskorting 2026 van de Belastingdienst.
  * - Box 3: de berekening van het box 3-inkomen 2026 van de Belastingdienst.
+ * - Kindgebonden budget: "Berekening kindgebonden budget 2026" van Dienst
+ *   Toeslagen.
  * De rekenvoorbeelden uit de brochures en de randen van de tabellen staan in
  * check-rekenregels.js.
  *
@@ -334,7 +336,47 @@
     };
   }
 
+  /*
+   * KINDGEBONDEN BUDGET
+   * invoer: { partner: toeslagpartner, inkomen: (gezamenlijk) toetsingsinkomen,
+   *           jong: kinderen tot 12, k12: kinderen van 12 t/m 15,
+   *           k16: kinderen van 16 en 17, vermogenTeHoog }
+   * De vijf stappen uit "Berekening kindgebonden budget 2026" van Dienst
+   * Toeslagen: het maximum uit de tabel (1 kind, 2 kinderen, plus een bedrag
+   * vanaf het 3e kind), de verhoging voor kinderen van 12 en ouder, en 7,6% van
+   * het inkomen boven de grens eraf. Per maand in hele euro's, naar beneden.
+   */
+  function kindgebondenBudget(C, inv) {
+    var partner = !!inv.partner;
+    var jong = Math.max(0, Math.floor(Number(inv.jong) || 0));
+    var k12 = Math.max(0, Math.floor(Number(inv.k12) || 0));
+    var k16 = Math.max(0, Math.floor(Number(inv.k16) || 0));
+    var kinderen = jong + k12 + k16;
+    var inkomen = Math.max(0, Number(inv.inkomen) || 0);
+    var max = 0;
+    if (kinderen === 1) max = partner ? C.kindgebonden_budget_1_kind_partner : C.kindgebonden_budget_1_kind_alleen;
+    if (kinderen >= 2) {
+      max = (partner ? C.kindgebonden_budget_2_kinderen_partner : C.kindgebonden_budget_2_kinderen_alleen) +
+        (kinderen - 2) * C.kindgebonden_budget_vanaf_3e_kind;
+    }
+    var verhoging = k12 * C.kindgebonden_budget_verhoging_12_15 + k16 * C.kindgebonden_budget_verhoging_16_17;
+    var grens = partner ? C.kindgebonden_budget_inkomensgrens_partners : C.kindgebonden_budget_inkomensgrens_alleen;
+    var vermindering = Math.max(0, inkomen - grens) * C.kindgebonden_budget_afbouw;
+    var jaar = Math.max(0, max + verhoging - vermindering);
+    var reden = '';
+    if (!kinderen) reden = 'kinderen';
+    else if (inv.vermogenTeHoog) { reden = 'vermogen'; jaar = 0; }
+    else if (!jaar) reden = 'inkomen';
+    return {
+      kinderen: kinderen, max: max, verhoging: verhoging, grens: grens, vermindering: vermindering,
+      jaar: jaar, maand: heleEuroOmlaag(jaar / 12), reden: reden,
+      // het inkomen waarboven er niets meer is
+      nulpunt: kinderen ? grens + (max + verhoging) / C.kindgebonden_budget_afbouw : 0
+    };
+  }
+
   return {
+    kindgebondenBudget: kindgebondenBudget,
     box3: box3,
     zorgkosten: zorgkosten, zorgkostenDrempel: zorgkostenDrempel,
     erfschenkbelasting: erfschenkbelasting,

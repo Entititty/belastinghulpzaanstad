@@ -378,6 +378,39 @@
     zet(box, 'melding', melding);
   };
 
+  /* Kindgebonden budget: maximum uit de tabel, plus de verhoging voor kinderen
+     van 12 en ouder, min 7,6% van het inkomen boven de grens (rekenregels.js). */
+  REKENHULPEN['kindgebonden-budget'] = function (box, C) {
+    var R = window.BHZRekenregels;
+    var partner = keuze(box, 'partner') === 'ja';
+    var inkomen = bedrag(box, 'inkomen') + (partner ? bedrag(box, 'inkomen_partner') : 0);
+    var r = R.kindgebondenBudget(C, {
+      partner: partner, inkomen: inkomen,
+      jong: bedrag(box, 'jong'), k12: bedrag(box, 'k12'), k16: bedrag(box, 'k16'),
+      vermogenTeHoog: keuze(box, 'vermogen') === 'ja'
+    });
+    zet(box, 'maand', euro(r.maand));
+    zet(box, 'jaar', euro(r.maand * 12));
+    zet(box, 'max', euroCent(r.max + r.verhoging));
+    zet(box, 'vermindering', r.vermindering ? '− ' + euroCent(r.vermindering) : euroCent(0));
+    zet(box, 'nulpunt', r.kinderen && r.reden !== 'vermogen'
+      ? 'Bij dit gezin krijgt u kindgebonden budget tot een inkomen van ongeveer <strong>' + euro(Math.floor(r.nulpunt / 100) * 100) + '</strong> per jaar.'
+      : '', true);
+    zet(box, 'uitleg',
+      'Maximum voor ' + r.kinderen + (r.kinderen === 1 ? ' kind' : ' kinderen') + (partner ? ' met toeslagpartner' : ' als alleenstaande ouder') + ': ' + euroCent(r.max) + '<br>' +
+      'Verhoging voor kinderen van 12 tot en met 15 (' + euro(C.kindgebonden_budget_verhoging_12_15) + ') en 16 en 17 jaar (' + euro(C.kindgebonden_budget_verhoging_16_17) + '): ' + euroCent(r.verhoging) + '<br>' +
+      'Vermindering: ' + (r.vermindering
+        ? pct(C.kindgebonden_budget_afbouw) + ' &times; (' + euro(inkomen) + ' &minus; ' + euro(r.grens) + ') = ' + euroCent(r.vermindering)
+        : 'geen, uw inkomen is niet hoger dan ' + euro(r.grens)) + '<br>' +
+      'Per jaar: ' + euroCent(r.jaar) + '; per maand ' + euroCent(r.jaar / 12) + ', naar beneden afgerond op hele euro\'s.', true);
+    var melding = '';
+    if (r.reden === 'kinderen') melding = 'Vul in hoeveel kinderen jonger dan 18 jaar u heeft.';
+    else if (r.reden === 'vermogen') melding = 'Met een vermogen boven ' + euro(partner ? C.kindgebonden_budget_vermogensgrens_partners : C.kindgebonden_budget_vermogensgrens_alleenstaand) + ' op 1 januari heeft u dat hele jaar geen recht op kindgebonden budget.';
+    else if (r.reden === 'inkomen') melding = 'Bij dit inkomen valt het kindgebonden budget weg: de vermindering (' + euroCent(r.vermindering) + ') is groter dan het maximum (' + euroCent(r.max + r.verhoging) + ').';
+    else melding = 'Krijgt u al zorgtoeslag, huurtoeslag of kinderopvangtoeslag? Dan krijgt u kindgebonden budget vanzelf. Anders vraagt u het aan bij Dienst Toeslagen.';
+    zet(box, 'melding', melding);
+  };
+
   /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
   function zichtbaarheid(box) {
     var els = box.querySelectorAll('[data-rh-als]');
@@ -393,7 +426,7 @@
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
-    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten', 'box3'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
+    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten', 'box3', 'kindgebonden-budget'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
       zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
       return;
     }

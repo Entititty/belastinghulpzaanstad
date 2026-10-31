@@ -1004,3 +1004,18 @@ benadering, en voor de zorgtoeslag was er geen tool.
   rendement; de aanvraag gaat naar de dienst Box 3.
 - Links vanaf het overzicht, de drie box 3-artikelen, `/diensten/box-3-bezwaar/`, de
   Engelse box 3-blog en `llms.txt`.
+
+### Rekentool kindgebonden budget (zelfde branch)
+
+- **Nieuw: `/rekentools/kindgebonden-budget/`**. Rekenregel `kindgebondenBudget` in
+  `js/rekenregels.js`, met de vijf stappen uit "Berekening kindgebonden budget 2026" van
+  Dienst Toeslagen: het maximum uit de tabel (1 kind €2.580 met partner / €5.996
+  alleenstaand, 2 kinderen €5.160 / €8.576, vanaf het 3e kind €2.580), €724 of €964 extra
+  voor kinderen van 12-15 en 16-17, en 7,6% van het inkomen boven €29.736 (alleenstaand)
+  of €39.141 (partners) eraf. Per maand naar beneden afgerond.
+- Rekenvoorbeeld 1 en 3 van de brochure komen op de cent uit (€392 en €497 per maand).
+  Voorbeeld 2 in de brochure van 2026 noemt nog de uitkomst van 2025 (€510); met de
+  bedragen van 2026 is het €533. Staat in `check-rekenregels.js`.
+- 11 nieuwe waarden in `fiscale-cijfers.json`, met de bedragen van 2025 als "verouderd".
+- Het blog `/blog/kindgebonden-budget/` noemde "rond de €2.500"; nu de echte bedragen en
+  een tabel. Links vanaf het overzicht, `/diensten/toeslagen/` en `llms.txt`.

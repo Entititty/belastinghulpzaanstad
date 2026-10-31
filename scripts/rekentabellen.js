@@ -220,6 +220,18 @@ function zorgkostenVoorbeeldEn(id) {
 }
 function pct(n) { return String(Math.round(n * 10000) / 100).replace('.', ',') + '%'; }
 
+/* ---------- kindgebonden budget ---------- */
+function kgbTabel(id, partner, inkomens) {
+  const grens = partner ? C.kindgebonden_budget_inkomensgrens_partners : C.kindgebonden_budget_inkomensgrens_alleen;
+  const rijen = [grens].concat(inkomens).map((ink, i) => [i === 0 ? euro(ink) + ' of minder' : euro(ink)].concat([1, 2, 3].map((n) => {
+    const m = R.kindgebondenBudget(C, { partner, inkomen: ink, jong: n }).maand;
+    return m ? euro(m) : GEEN;
+  })));
+  return tabel(id, 'Kindgebonden budget ' + JAAR + ' per maand' + (partner ? ', met toeslagpartner' : ', alleenstaande ouder') + ' (kinderen jonger dan 12)',
+    [partner ? 'Inkomen samen' : 'Inkomen', '1 kind', '2 kinderen', '3 kinderen'], rijen);
+}
+const kgbMaand = (i) => euro(R.kindgebondenBudget(C, i).maand);
+
 /* ---------- box 3 ---------- */
 const BOX3_VERMOGENS = [75000, 100000, 150000, 200000, 250000, 300000, 400000, 500000, 750000, 1000000];
 function box3Tabel(id, partner) {
@@ -232,6 +244,8 @@ function box3Tabel(id, partner) {
 }
 
 const TABELLEN = {
+  'kindgebonden-budget-alleen': (id) => kgbTabel(id, false, [35000, 40000, 45000, 50000, 60000, 70000, 80000, 100000]),
+  'kindgebonden-budget-partners': (id) => kgbTabel(id, true, [45000, 50000, 55000, 60000, 70000, 80000, 90000, 110000]),
   'box3-alleen': (id) => box3Tabel(id, false),
   'box3-partners': (id) => box3Tabel(id, true),
   'zorgkosten-drempel': zorgkostenDrempelTabel,
@@ -260,6 +274,15 @@ const TABELLEN = {
 const erfschenk = (soort, relatie, bedrag) => euro(R.erfschenkbelasting(C, { soort, relatie, bedrag }).belasting);
 
 const WAARDEN = {
+  'kgb-max-maand-alleen-1': () => kgbMaand({ jong: 1 }),
+  'kgb-max-maand-partners-1': () => kgbMaand({ partner: true, jong: 1 }),
+  'kgb-max-maand-partners-2': () => kgbMaand({ partner: true, jong: 2 }),
+  // de rekenvoorbeelden 1 en 3 van Dienst Toeslagen
+  'kgb-vb1-maand': () => kgbMaand({ partner: true, inkomen: 45000, jong: 2 }),
+  'kgb-vb3-maand': () => kgbMaand({ inkomen: 30000, jong: 1 }),
+  // tot welk inkomen er nog iets is, afgerond op honderden
+  'kgb-nulpunt-alleen-1': () => euro(Math.floor(R.kindgebondenBudget(C, { jong: 1 }).nulpunt / 100) * 100),
+  'kgb-nulpunt-partners-1': () => euro(Math.floor(R.kindgebondenBudget(C, { partner: true, jong: 1 }).nulpunt / 100) * 100),
   'box3-100k-spaargeld': () => euro(R.box3(C, { bank: 100000 }).belasting),
   'box3-100k-beleggingen': () => euro(R.box3(C, { overig: 100000 }).belasting),
   'box3-150k-spaargeld': () => euro(R.box3(C, { bank: 150000 }).belasting),

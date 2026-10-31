@@ -117,14 +117,15 @@ voorbeelden van het nieuwe jaar in. De afronding (percentage afgekapt op 2
 decimalen, bedragen naar beneden) komt uit die voorbeelden; kijk of de nieuwe
 voorbeelden nog zo rekenen.
 
-### Stap 5. Toeslagen (26 waarden)
+### Stap 5. Toeslagen (37 waarden)
 
 | Wat | Bron |
 | --- | --- |
 | Zorgtoeslag: inkomens- en vermogensgrenzen (4) | [kan ik zorgtoeslag krijgen](https://www.belastingdienst.nl/wps/wcm/connect/nl/zorgtoeslag/content/kan-ik-zorgtoeslag-krijgen) |
-| Kindgebonden budget: vermogensgrens (1) | [kan ik kindgebonden budget krijgen](https://www.belastingdienst.nl/wps/wcm/connect/nl/kindgebonden-budget/content/kan-ik-kindgebonden-budget-krijgen) |
+| Kindgebonden budget: vermogensgrenzen (2) | [kan ik kindgebonden budget krijgen](https://www.belastingdienst.nl/wps/wcm/connect/nl/kindgebonden-budget/content/kan-ik-kindgebonden-budget-krijgen) |
 | Zorgtoeslag: standaardpremie, drempelinkomen, de drie percentages en het maximum (7) | de brochure **Berekening zorgtoeslag 2027** van Dienst Toeslagen ([overzicht](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-zorgtoeslag)) |
 | Huurtoeslag: rekenhuur, huurgrens jongeren, basishuren, kwaliteitskortingsgrens, aftoppingsgrenzen, ijkpunten, afbouwpercentages, de vergoedingen 65% en 40%, vrijstelling kinderen (15) | de brochure **Berekening huurtoeslag 2027** ([overzicht](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-huurtoeslag)) |
+| Kindgebonden budget: de maxima voor 1 en 2 kinderen (alleen en met partner), vanaf het 3e kind, de verhogingen 12-15 en 16-17, de inkomensgrenzen en het afbouwpercentage (10) | de brochure **Berekening kindgebonden budget 2027** ([overzicht](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/themaoverstijgend/brochures_en_publicaties/berekening-kindgebonden-budget)). Let op: de cijfers in de tabel van die PDF zijn niet als tekst te kopiëren; neem ze over uit de rekenvoorbeelden of lees ze van het scherm |
 | Huurtoeslag: vermogensgrenzen (2) | [maximaal vermogen huurtoeslag](https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/maximaal-vermogen-huurtoeslag) |
 | Kinderopvang: drie uurtarieven (3) | [maximumuurprijs kinderopvangtoeslag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang) |
 
