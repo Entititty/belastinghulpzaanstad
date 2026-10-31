@@ -220,7 +220,20 @@ function zorgkostenVoorbeeldEn(id) {
 }
 function pct(n) { return String(Math.round(n * 10000) / 100).replace('.', ',') + '%'; }
 
+/* ---------- box 3 ---------- */
+const BOX3_VERMOGENS = [75000, 100000, 150000, 200000, 250000, 300000, 400000, 500000, 750000, 1000000];
+function box3Tabel(id, partner) {
+  const rijen = BOX3_VERMOGENS.map((v) => {
+    const s = R.box3(C, { partner, bank: v }).belasting, b = R.box3(C, { partner, overig: v }).belasting;
+    return [euro(v), s ? euro(s) : GEEN, b ? euro(b) : GEEN];
+  });
+  return tabel(id, 'Box 3-belasting ' + JAAR + (partner ? ' met een fiscale partner (samen)' : ' zonder fiscale partner'),
+    ['Vermogen op 1 januari', 'Alleen spaargeld', 'Alleen beleggingen'], rijen);
+}
+
 const TABELLEN = {
+  'box3-alleen': (id) => box3Tabel(id, false),
+  'box3-partners': (id) => box3Tabel(id, true),
   'zorgkosten-drempel': zorgkostenDrempelTabel,
   'zorgkosten-voorbeeld': zorgkostenVoorbeeld,
   'zorgkosten-voorbeeld-en': zorgkostenVoorbeeldEn,
@@ -247,6 +260,10 @@ const TABELLEN = {
 const erfschenk = (soort, relatie, bedrag) => euro(R.erfschenkbelasting(C, { soort, relatie, bedrag }).belasting);
 
 const WAARDEN = {
+  'box3-100k-spaargeld': () => euro(R.box3(C, { bank: 100000 }).belasting),
+  'box3-100k-beleggingen': () => euro(R.box3(C, { overig: 100000 }).belasting),
+  'box3-150k-spaargeld': () => euro(R.box3(C, { bank: 150000 }).belasting),
+  'box3-150k-spaargeld-partners': () => euro(R.box3(C, { partner: true, bank: 150000 }).belasting),
   'zorgkosten-drempel-35000': () => euro(R.zorgkostenDrempel(C, false, 35000)),
   'zorgkosten-voorbeeld-aftrek': () => euro(zorgVoorbeeld().aftrek),
   'zorgkosten-voorbeeld-voordeel': () => euro(zorgVoorbeeld().voordeel),

@@ -335,6 +335,49 @@
       : '');
   };
 
+  /* Box 3: fictief rendement over het vermogen op 1 januari, het deel boven
+     het heffingsvrij vermogen, 36% (rekenregels.js; afronding zoals in de
+     rekenvoorbeelden van de Belastingdienst). */
+  REKENHULPEN['box3'] = function (box, C) {
+    var R = window.BHZRekenregels;
+    var partner = keuze(box, 'partner') === 'ja';
+    var bank = bedrag(box, 'bank'), overig = bedrag(box, 'overig'), schulden = bedrag(box, 'schulden');
+    var r = R.box3(C, { partner: partner, bank: bank, overig: overig, schulden: schulden });
+    zet(box, 'belasting', euro(r.belasting));
+    zet(box, 'rendement', euro(Math.max(0, r.rendement)));
+    zet(box, 'heffingvrij', '− ' + euro(r.heffingvrij));
+    zet(box, 'voordeel', euro(r.voordeel));
+    var p = r.personen[0];
+    zet(box, 'uitleg',
+      'Spaargeld: ' + euro(bank) + ' &times; ' + pct(C.box3_forfait_spaargeld) + ' = ' + euro(bank * C.box3_forfait_spaargeld) + '<br>' +
+      'Beleggingen en andere bezittingen: ' + euro(overig) + ' &times; ' + pct(C.box3_forfait_beleggingen) + ' = ' + euro(overig * C.box3_forfait_beleggingen) + '<br>' +
+      (r.aftrekbareSchulden
+        ? 'Schulden boven de drempel van ' + euro(r.drempel) + ': ' + euro(r.aftrekbareSchulden) + ' &times; ' + pct(C.box3_forfait_schulden) + ' = &minus; ' + euro(r.aftrekbareSchulden * C.box3_forfait_schulden) + '<br>'
+        : 'Schulden: niet meer dan de drempel van ' + euro(r.drempel) + ', dus niets af<br>') +
+      'Fictief rendement: ' + euro(Math.max(0, r.rendement)) + '<br>' +
+      'Vermogen min schulden: ' + euro(r.grondslag) + '; min het heffingsvrij vermogen (' + euro(r.heffingvrij) + ') = ' + euro(r.boven) + '<br>' +
+      (r.belasting
+        ? (partner
+          ? 'Per partner de helft: ' + euro(p.grondslag) + ' is ' + p.pct.toLocaleString('nl-NL') + '% van ' + euro(r.grondslag) + '; ' +
+            p.pct.toLocaleString('nl-NL') + '% van het rendement = ' + euro(p.voordeel) + ' box 3-inkomen, ' + pct(C.box3_tarief) + ' daarover = ' + euro(p.belasting) + ' per partner<br>'
+          : euro(r.boven) + ' is ' + p.pct.toLocaleString('nl-NL') + '% van ' + euro(r.grondslag) + '; ' +
+            p.pct.toLocaleString('nl-NL') + '% van het rendement = ' + euro(p.voordeel) + ' box 3-inkomen<br>' +
+            pct(C.box3_tarief) + ' daarover = ' + euro(p.belasting) + '<br>')
+        : '') +
+      'Box 3-belasting: ' + euro(r.belasting), true);
+    var melding = '';
+    if (r.boven <= 0 && (bank || overig)) {
+      melding = 'Uw vermogen min schulden is niet hoger dan het heffingsvrij vermogen van ' + euro(r.heffingvrij) + '. Dan betaalt u geen box 3-belasting.';
+    } else if (r.boven > 0 && r.rendement <= 0) {
+      melding = 'Het fictieve rendement van uw schulden is hoger dan dat van uw bezittingen. Dan betaalt u geen box 3-belasting.';
+    } else if (r.belasting) {
+      melding = 'Was het echte rendement op uw vermogen in 2026 (rente, dividend en koerswinst of -verlies) lager dan uw box 3-inkomen van ' + euro(r.voordeel) +
+        '? Dan mag u in uw aangifte over 2026 uw werkelijk rendement opgeven. Wij rekenen gratis uit of dat loont.' +
+        (partner ? ' Met een fiscale partner mag u de grondslag ook anders verdelen; de rekentool doet het half om half.' : '');
+    }
+    zet(box, 'melding', melding);
+  };
+
   /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
   function zichtbaarheid(box) {
     var els = box.querySelectorAll('[data-rh-als]');
@@ -350,7 +393,7 @@
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
-    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
+    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten', 'box3'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
       zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
       return;
     }

@@ -110,6 +110,13 @@ schulden zijn in januari nog voorlopig; ze worden pas begin van het volgende jaa
 definitief vastgesteld. Zet in januari de voorlopige waarde, en zet een
 herinnering voor februari van het jaar daarna om ze definitief te maken.
 
+De rekentool `/rekentools/box-3/` rekent met deze waarden en met
+`box3_heffingvrij_*` en `box3_tarief`. `check-rekenregels.js` rekent de vijf
+voorbeelden van dezelfde Belastingdienst-pagina na, op de euro; zet daar de
+voorbeelden van het nieuwe jaar in. De afronding (percentage afgekapt op 2
+decimalen, bedragen naar beneden) komt uit die voorbeelden; kijk of de nieuwe
+voorbeelden nog zo rekenen.
+
 ### Stap 5. Toeslagen (26 waarden)
 
 | Wat | Bron |
@@ -255,9 +262,9 @@ elders op de pagina. Zoek na een update op het oude maandbedrag.
 
 `/rekentools/voorlopige-teruggave/`, `/rekentools/ouderenkorting/`, `/rekentools/zorgtoeslag/`,
 `/blog/huurtoeslag-berekenen/`, `/rekentools/belastingteruggave/`, `/rekentools/erfbelasting/`,
-`/rekentools/schenkbelasting/` en `/rekentools/zorgkosten/` halen hun cijfers bij het laden uit
+`/rekentools/schenkbelasting/`, `/rekentools/zorgkosten/` en `/rekentools/box-3/` halen hun cijfers bij het laden uit
 `data/fiscale-cijfers.json`. Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de
-nieuwe cijfers. De formules staan in `js/rekenregels.js` (zie stap 5, 5b en 5c).
+nieuwe cijfers. De formules staan in `js/rekenregels.js` (zie stap 4, 5, 5b en 5c).
 
 De oudere rekentool op `blog/hypotheekrenteaftrek-berekenen/` niet: daar staan de cijfers
 in het script onderaan de pagina (`TARIEF_SCHIJF1`, `AFTREKTARIEF`, `EWF_PERCENTAGE`).

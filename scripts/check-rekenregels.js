@@ -144,6 +144,58 @@ gelijk('zorgkosten: drempel boven €51.411', R.zorgkostenDrempel(C, false, 6141
 gelijk('zorgkosten: drempel sluit aan bij €51.411', R.zorgkostenDrempel(C, false, 51412), R.zorgkostenDrempel(C, false, 51411), 1);
 gelijk('zorgkosten: behandeling krijgt geen verhoging', R.zorgkosten(C, { drempelinkomen: 20000, behandeling: 1000 }).verhoging, 0);
 
+/* ---------- box 3 ----------
+   De vijf voorbeelden van belastingdienst.nl, "Hoe is het box 3-inkomen op mijn
+   voorlopige aanslag 2026 berekend?". Bij partners geeft de Belastingdienst
+   de belasting per partner. Voorbeeld 5 heeft €150.000 groene beleggingen met
+   €53.430 vrijstelling; die zitten hier als €96.570 in "overig". */
+{
+  const b3 = (i) => R.box3(C, i);
+  const v1 = b3({ bank: 150000 });
+  gelijk('box 3 vb 1: rendement', v1.rendement, 1920);
+  gelijk('box 3 vb 1: grondslag sparen en beleggen', v1.boven, 90643);
+  gelijk('box 3 vb 1: percentage', v1.personen[0].pct, 60.42);
+  gelijk('box 3 vb 1: voordeel', v1.voordeel, 1160);
+  gelijk('box 3 vb 1: belasting', v1.belasting, 417);
+  const v2 = b3({ partner: true, bank: 150000 });
+  gelijk('box 3 vb 2: grondslag per partner', v2.personen[0].grondslag, 15643);
+  gelijk('box 3 vb 2: percentage', v2.personen[0].pct, 10.42);
+  gelijk('box 3 vb 2: voordeel per partner', v2.personen[0].voordeel, 200);
+  gelijk('box 3 vb 2: belasting per partner', v2.personen[1].belasting, 72);
+  const v3 = b3({ bank: 150000, overig: 75000 + 200000, schulden: 100000 });
+  gelijk('box 3 vb 3: rendement', v3.rendement, 15822);
+  gelijk('box 3 vb 3: rendementsgrondslag', v3.grondslag, 328800);
+  gelijk('box 3 vb 3: percentage', v3.personen[0].pct, 81.94);
+  gelijk('box 3 vb 3: voordeel', v3.voordeel, 12964);
+  gelijk('box 3 vb 3: belasting', v3.belasting, 4667);
+  const v4 = b3({ partner: true, bank: 150000, overig: 75000 + 200000, schulden: 100000 });
+  gelijk('box 3 vb 4: rendement', v4.rendement, 15925);
+  gelijk('box 3 vb 4: rendementsgrondslag', v4.grondslag, 332600);
+  gelijk('box 3 vb 4: percentage', v4.personen[0].pct, 32.15);
+  gelijk('box 3 vb 4: voordeel per partner', v4.personen[0].voordeel, 5119);
+  gelijk('box 3 vb 4: belasting per partner', v4.personen[1].belasting, 1842);
+  const v5 = b3({ partner: true, verdeling: 1, bank: 5000, overig: 150000 - 53430 + 250000 });
+  gelijk('box 3 vb 5: rendement', v5.rendement, 20858);
+  gelijk('box 3 vb 5: percentage', v5.personen[0].pct, 66.23);
+  gelijk('box 3 vb 5: belasting', v5.belasting, 4973);
+  // onder het heffingsvrij vermogen, en meer schulden dan bezittingen: niets
+  gelijk('box 3: onder het heffingsvrij vermogen', b3({ bank: C.box3_heffingvrij_alleenstaand }).belasting, 0);
+  gelijk('box 3: schulden boven de bezittingen', b3({ bank: 70000, schulden: 200000 }).belasting, 0);
+  // meer spaargeld of beleggingen geeft nooit minder belasting
+  for (const soort of ['bank', 'overig']) {
+    for (const partner of [false, true]) {
+      let vorige = 0;
+      for (let v = 0; v <= 2000000; v += 2500) {
+        const r = b3({ partner, [soort]: v });
+        eigenschap('box 3 ' + soort + (partner ? ' partners' : '') + ': negatief bij ' + v, r.belasting >= 0);
+        // afronden per partner kan €1 schelen; meer dan dat is een fout
+        eigenschap('box 3 ' + soort + (partner ? ' partners' : '') + ': daalt bij ' + v, r.belasting >= vorige - 2);
+        vorige = r.belasting;
+      }
+    }
+  }
+}
+
 /* ---------- eigenschappen ---------- */
 {
   let vorige = -1;

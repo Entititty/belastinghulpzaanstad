@@ -987,3 +987,20 @@ benadering, en voor de zorgtoeslag was er geen tool.
 - Aanvragen via deze tool gaan naar de dienst Belastingaangifte. Links vanaf het blog, het
   overzicht, `/senioren/` en `llms.txt`. In `aanvraag.json` ook de dienst per pagina voor
   de nieuwe rekentools.
+
+### Rekentool box 3 (zelfde branch)
+
+- **Nieuw: `/rekentools/box-3/`**. Rekenregel `box3` in `js/rekenregels.js`, met de zes
+  stappen van belastingdienst.nl ("Hoe is het box 3-inkomen op mijn voorlopige aanslag
+  2026 berekend?"): fictief rendement (1,28% / 6,00% / 2,70% over schulden boven €3.800
+  per persoon), min het heffingsvrij vermogen, het aandeel in procenten, 36%. Met een
+  fiscale partner per partner de helft.
+- De tekst van de Belastingdienst zegt "rond af op 3 decimalen", maar alle vijf
+  rekenvoorbeelden kappen af op 2 decimalen en ronden de bedragen naar beneden af. De
+  rekentool doet het zoals de voorbeelden, en komt op alle vijf op de euro uit (ook de
+  tussenstappen); `check-rekenregels.js` controleert ze.
+- Tabellen: box 3-belasting per vermogen, alleen spaargeld of alleen beleggingen, zonder
+  en met fiscale partner. Wie belasting betaalt, krijgt een melding over het werkelijk
+  rendement; de aanvraag gaat naar de dienst Box 3.
+- Links vanaf het overzicht, de drie box 3-artikelen, `/diensten/box-3-bezwaar/`, de
+  Engelse box 3-blog en `llms.txt`.

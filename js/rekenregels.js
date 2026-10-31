@@ -20,6 +20,7 @@
  *   Wet op de huurtoeslag (art. 13, 20 en 21) waar de brochure kort is.
  * - Inkomstenbelasting: de tarieven box 1 en de tabellen algemene
  *   heffingskorting en arbeidskorting 2026 van de Belastingdienst.
+ * - Box 3: de berekening van het box 3-inkomen 2026 van de Belastingdienst.
  * De rekenvoorbeelden uit de brochures en de randen van de tabellen staan in
  * check-rekenregels.js.
  *
@@ -288,7 +289,53 @@
     };
   }
 
+  /*
+   * BOX 3 (forfaitair, vermogen op 1 januari)
+   * invoer: { partner: het hele jaar een fiscale partner, bank: banktegoeden,
+   *           overig: beleggingen en andere bezittingen, schulden: schulden in
+   *           box 3 (niet de eigenwoningschuld), verdeling: deel van de
+   *           grondslag bij de eerste partner (standaard de helft) }
+   * Stappen van belastingdienst.nl, "Hoe is het box 3-inkomen op mijn
+   * voorlopige aanslag 2026 berekend?". De tekst daar zegt "rond af op 3
+   * decimalen", maar alle vijf rekenvoorbeelden kappen het percentage af op 2
+   * decimalen en ronden de bedragen naar beneden af. Zo rekenen wij ook: dan
+   * komen we op de euro uit op hun voorbeelden (check-rekenregels.js).
+   */
+  function omlaag(n) { return Math.floor(n + 1e-6); }
+
+  function box3(C, inv) {
+    var partner = !!inv.partner;
+    var bank = Math.max(0, Number(inv.bank) || 0);
+    var overig = Math.max(0, Number(inv.overig) || 0);
+    var schulden = Math.max(0, Number(inv.schulden) || 0);
+    var drempel = C.box3_schuldendrempel_alleenstaand * (partner ? 2 : 1);
+    var aftrekbareSchulden = Math.max(0, schulden - drempel);
+    // stap 1: het fictieve rendement
+    var rendement = omlaag(bank * C.box3_forfait_spaargeld + overig * C.box3_forfait_beleggingen -
+      aftrekbareSchulden * C.box3_forfait_schulden);
+    // stap 2 en 3: de grondslag, en wat boven het heffingsvrij vermogen uitkomt
+    var grondslag = bank + overig - aftrekbareSchulden;
+    var heffingvrij = partner ? C.box3_heffingvrij_partners : C.box3_heffingvrij_alleenstaand;
+    var boven = Math.max(0, grondslag - heffingvrij);
+    // stap 4 tot 6, per persoon: aandeel in procenten, voordeel, belasting
+    var delen = partner ? [Number(inv.verdeling === undefined ? 0.5 : inv.verdeling)] : [1];
+    if (partner) delen.push(1 - delen[0]);
+    var personen = delen.map(function (d) {
+      if (rendement <= 0 || boven <= 0 || grondslag <= 0) return { grondslag: boven * d, pct: 0, voordeel: 0, belasting: 0 };
+      var pct = Math.floor(boven * d / grondslag * 10000 + 1e-6) / 100;
+      var voordeel = omlaag(rendement * pct / 100);
+      return { grondslag: boven * d, pct: pct, voordeel: voordeel, belasting: omlaag(voordeel * C.box3_tarief) };
+    });
+    return {
+      drempel: drempel, aftrekbareSchulden: aftrekbareSchulden, rendement: rendement,
+      grondslag: grondslag, heffingvrij: heffingvrij, boven: boven, personen: personen,
+      voordeel: personen.reduce(function (s, p) { return s + p.voordeel; }, 0),
+      belasting: personen.reduce(function (s, p) { return s + p.belasting; }, 0)
+    };
+  }
+
   return {
+    box3: box3,
     zorgkosten: zorgkosten, zorgkostenDrempel: zorgkostenDrempel,
     erfschenkbelasting: erfschenkbelasting,
     getal: getal, cijfers: cijfers, heleEuroOmlaag: heleEuroOmlaag,
