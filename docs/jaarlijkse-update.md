@@ -153,6 +153,18 @@ De tarieven (10%, 18%, 30%, 20%, 36%, 40%) veranderen zelden, de bedragen elk ja
 `check-rekenregels.js` rekent negen gevallen na met de bedragen van 2026 erin; zet daar
 de nieuwe bedragen in, dan faalt hij niet meer.
 
+### Stap 5c. Zorgkosten (15 waarden, sinds oktober 2026)
+
+Bron: [drempelbedrag](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026)
+(in de url staat het jaar), [verhoging](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/verhoging_specifieke_zorgkosten),
+en het overzicht zorgkosten voor [vervoer](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/overzicht_zorgkosten/vervoer)
+en [extra kleding en beddengoed](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/overzicht_zorgkosten/extra_kleding_en_beddengoed).
+De sleutels beginnen met `zorgkosten_`. De percentages (1,65%, 5,75%, 40%, 113%)
+veranderen zelden; de grensbedragen, het kilometerbedrag en de vaste bedragen wel.
+`check-rekenregels.js` rekent het voorbeeld uit het Handboek en de drempels van 2026
+na; zet daar de nieuwe bedragen in. De tabellen en de voorbeeldbedragen op het blog en de
+rekentool rekenen daarna vanzelf mee (`rekentabellen.js`).
+
 ### Stap 6. Boete en rente (3 waarden)
 
 | Sleutel | Bron |
@@ -241,11 +253,11 @@ elders op de pagina. Zoek na een update op het oude maandbedrag.
 
 ## Rekentools
 
-`/rekentools/voorlopige-teruggave/`, `/rekentools/ouderenkorting/`, `/rekentools/zorgtoeslag/`
-en `/blog/huurtoeslag-berekenen/` halen hun cijfers bij het laden uit
+`/rekentools/voorlopige-teruggave/`, `/rekentools/ouderenkorting/`, `/rekentools/zorgtoeslag/`,
+`/blog/huurtoeslag-berekenen/`, `/rekentools/belastingteruggave/`, `/rekentools/erfbelasting/`,
+`/rekentools/schenkbelasting/` en `/rekentools/zorgkosten/` halen hun cijfers bij het laden uit
 `data/fiscale-cijfers.json`. Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de
-nieuwe cijfers. De formules van de zorgtoeslag en de huurtoeslag staan in
-`js/rekenregels.js` (zie stap 5).
+nieuwe cijfers. De formules staan in `js/rekenregels.js` (zie stap 5, 5b en 5c).
 
 De oudere rekentool op `blog/hypotheekrenteaftrek-berekenen/` niet: daar staan de cijfers
 in het script onderaan de pagina (`TARIEF_SCHIJF1`, `AFTREKTARIEF`, `EWF_PERCENTAGE`).

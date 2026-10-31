@@ -297,6 +297,44 @@
   REKENHULPEN['erfbelasting'] = erfschenk('erf');
   REKENHULPEN['schenkbelasting'] = erfschenk('schenk');
 
+  /* Zorgkosten: verhoging over de verhoogbare kosten, dan de drempel eraf
+     (rekenregels.js, volgorde uit het Handboek 2026). */
+  REKENHULPEN['zorgkosten'] = function (box, C) {
+    var R = window.BHZRekenregels;
+    var aow = keuze(box, 'aow') === 'ja';
+    var r = R.zorgkosten(C, {
+      partner: keuze(box, 'partner') === 'ja',
+      drempelinkomen: bedrag(box, 'inkomen'),
+      aow: aow,
+      behandeling: bedrag(box, 'behandeling'),
+      verhoogbaar: bedrag(box, 'medicijnen') + bedrag(box, 'overig'),
+      ziekenbezoek: bedrag(box, 'ziekenbezoek')
+    });
+    // eerst afronden, dan optellen en aftrekken: dan klopt de som op het scherm
+    var kosten = Math.round(r.verhoogbaar + r.behandeling + r.ziekenbezoek);
+    var verhoging = Math.round(r.verhoging);
+    var drempel = Math.round(r.drempel);
+    var aftrek = Math.max(0, kosten + verhoging - drempel);
+    zet(box, 'aftrek', euro(aftrek));
+    zet(box, 'kosten', euro(kosten));
+    zet(box, 'verhoging', r.verhogingPct ? '+ ' + euro(verhoging) : 'geen');
+    zet(box, 'drempel', '− ' + euro(drempel));
+    zet(box, 'voordeel', aftrek && !aow
+      ? 'Valt uw inkomen in de eerste schijf, dan levert dit ongeveer <strong>' + euro(aftrek * C.box1_schijf1_tarief) + '</strong> op (' + pct(C.box1_schijf1_tarief) + ' van de aftrek).'
+      : aftrek ? 'Wat de aftrek oplevert, hangt af van uw belastingtarief; met de AOW-leeftijd is dat lager. Wij rekenen het gratis voor u uit.' : '', true);
+    zet(box, 'uitleg',
+      'Medicijnen, hulpmiddelen, vervoer en de rest: ' + euro(r.verhoogbaar) + '<br>' +
+      (r.verhogingPct
+        ? 'Verhoging: ' + pct(r.verhogingPct) + ' daarvan = ' + euro(r.verhoging) + ' (uw drempelinkomen is niet hoger dan ' + euro(C.zorgkosten_verhoging_grens) + ')<br>'
+        : 'Geen verhoging: uw drempelinkomen is hoger dan ' + euro(C.zorgkosten_verhoging_grens) + '<br>') +
+      'Behandelingen en ziekenbezoek, zonder verhoging: ' + euro(r.behandeling + r.ziekenbezoek) + '<br>' +
+      'Drempel bij een drempelinkomen van ' + euro(bedrag(box, 'inkomen')) + ': &minus; ' + euro(r.drempel) + '<br>' +
+      'Aftrek: ' + euro(aftrek), true);
+    zet(box, 'melding', aftrek === 0 && kosten > 0
+      ? 'Uw zorgkosten blijven onder de drempel van ' + euro(drempel) + '. Dan is er dit jaar geen aftrek. Heeft uw partner ook zorgkosten? Tel die mee als u het hele jaar fiscale partners bent.'
+      : '');
+  };
+
   /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
   function zichtbaarheid(box) {
     var els = box.querySelectorAll('[data-rh-als]');
@@ -312,7 +350,7 @@
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
-    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
+    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
       zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
       return;
     }

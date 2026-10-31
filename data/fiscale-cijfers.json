@@ -962,6 +962,219 @@
         "schenking",
         "erfgenam"
       ]
+    },
+    "zorgkosten_drempel_vast_alleen": {
+      "waarde": "€166",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026, zonder fiscale partner: drempelinkomen tot en met € 9.680, drempel € 166",
+      "verouderd": [
+        "€136"
+      ],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026",
+      "context": [
+        "zorgkosten",
+        "drempel",
+        "healthcare",
+        "threshold"
+      ]
+    },
+    "zorgkosten_drempel_grens_alleen": {
+      "waarde": "€9.680",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026: zonder fiscale partner € 166 tot en met € 9.680",
+      "verouderd": [
+        "€8.070",
+        "€8,070"
+      ],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026"
+    },
+    "zorgkosten_drempel_vast_partners": {
+      "waarde": "€332",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026, het hele jaar een fiscale partner: tot en met € 19.360, drempel € 332",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026",
+      "context": [
+        "zorgkosten",
+        "drempel",
+        "healthcare",
+        "threshold"
+      ]
+    },
+    "zorgkosten_drempel_grens_partners": {
+      "waarde": "€19.360",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026: met fiscale partner € 332 tot en met € 19.360",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026"
+    },
+    "zorgkosten_drempel_pct": {
+      "waarde": "1,65%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026: tot en met € 51.411 is de drempel 1,65% van het drempelinkomen",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026",
+      "context": [
+        "zorgkosten",
+        "drempel",
+        "healthcare",
+        "threshold"
+      ]
+    },
+    "zorgkosten_drempel_grens_hoog": {
+      "waarde": "€51.411",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026: vanaf € 51.412 is de drempel € 848 + 5,75% van het bedrag boven € 51.411",
+      "verouderd": [
+        "€40.345",
+        "€40,345"
+      ],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026"
+    },
+    "zorgkosten_drempel_bedrag_hoog": {
+      "waarde": "€848",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026: € 848 + 5,75% boven € 51.411",
+      "verouderd": [
+        "€666"
+      ],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026",
+      "context": [
+        "zorgkosten",
+        "drempel",
+        "healthcare",
+        "threshold"
+      ]
+    },
+    "zorgkosten_drempel_pct_hoog": {
+      "waarde": "5,75%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, drempelbedrag specifieke zorgkosten 2026: 5,75% van het drempelinkomen boven € 51.411",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/drempelbedrag_berekenen/drempelbedrag-2026",
+      "context": [
+        "zorgkosten",
+        "drempel",
+        "healthcare",
+        "threshold"
+      ]
+    },
+    "zorgkosten_verhoging_grens": {
+      "waarde": "€41.123",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, verhoging specifieke zorgkosten 2026: als het (gezamenlijke) drempelinkomen niet hoger is dan € 41.123",
+      "verouderd": [
+        "€35.375",
+        "€35,375",
+        "€46.440",
+        "€46,440"
+      ],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/verhoging_specifieke_zorgkosten"
+    },
+    "zorgkosten_verhoging_pct": {
+      "waarde": "40%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, verhoging specifieke zorgkosten 2026: 40% als u op 1 januari de AOW-leeftijd nog niet hebt; niet over genees- en heelkundige hulp en reiskosten ziekenbezoek",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/verhoging_specifieke_zorgkosten",
+      "context": [
+        "zorgkosten",
+        "verhoging",
+        "healthcare"
+      ]
+    },
+    "zorgkosten_verhoging_pct_aow": {
+      "waarde": "113%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, verhoging specifieke zorgkosten 2026: 113% als u (of uw partner) op 1 januari de AOW-leeftijd hebt",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-30",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/hoe_berekent_u_uw_aftrek/verhoging_specifieke_zorgkosten",
+      "context": [
+        "zorgkosten",
+        "verhoging",
+        "healthcare"
+      ]
+    },
+    "zorgkosten_km_auto": {
+      "waarde": "€0,25",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, vervoer en reiskosten ziekenbezoek: met de auto € 0,25 per kilometer in 2026 (€ 0,23 in 2025 en 2024)",
+      "verouderd": [
+        "€0,23",
+        "€0.23"
+      ],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/overzicht_zorgkosten/vervoer",
+      "context": [
+        "ziekenhuis",
+        "specialist",
+        "arts",
+        "zorg",
+        "ziekenbezoek",
+        "hospital",
+        "doctor",
+        "medical",
+        "healthcare"
+      ]
+    },
+    "zorgkosten_kleding_vast": {
+      "waarde": "€330",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, extra kleding en beddengoed: vast bedrag € 330 in 2026",
+      "verouderd": [
+        "€300",
+        "€340"
+      ],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/overzicht_zorgkosten/extra_kleding_en_beddengoed",
+      "context": [
+        "kleding",
+        "beddengoed",
+        "clothing",
+        "bedding"
+      ]
+    },
+    "zorgkosten_kleding_hoog": {
+      "waarde": "€825",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, extra kleding en beddengoed: € 825 in 2026 als de extra kosten hoger zijn dan € 660",
+      "verouderd": [
+        "€750",
+        "€850"
+      ],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/overzicht_zorgkosten/extra_kleding_en_beddengoed",
+      "context": [
+        "kleding",
+        "beddengoed",
+        "clothing",
+        "bedding"
+      ]
+    },
+    "zorgkosten_vervoer_vast": {
+      "waarde": "€925",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, vervoer: vast bedrag € 925 (2025 en 2026) als u niet meer dan 100 meter zelfstandig kunt lopen, min vergoedingen voor extra vervoerskosten",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/relatie_familie_en_gezondheid/gezondheid/aftrek_zorgkosten/overzicht_zorgkosten/vervoer",
+      "context": [
+        "vervoer",
+        "lopen",
+        "transport",
+        "walk"
+      ]
     }
   }
 }

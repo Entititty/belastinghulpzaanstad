@@ -382,7 +382,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .rekentabel td{text-align:right;white-space:nowrap}
 .rekentabel th:first-child{position:sticky;left:0;z-index:1}
 @media (max-width:600px){.rekentabel th,.rekentabel td{padding:8px 10px}.rekentabel thead th{text-transform:none;letter-spacing:0;font-size:0.85rem}}
-.rh-regels strong{white-space:nowrap}
+.rh-regels strong,[data-rh-out] strong{white-space:nowrap}
 .tabel-scroll{position:relative}
 .rekentabel-noot{font-size:0.9rem;color:var(--clr-bark);margin:0 0 28px;line-height:1.6}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

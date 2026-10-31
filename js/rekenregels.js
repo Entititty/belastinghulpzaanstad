@@ -252,7 +252,44 @@
     };
   }
 
+  /*
+   * AFTREK SPECIFIEKE ZORGKOSTEN
+   * invoer: { partner: hele jaar een fiscale partner, drempelinkomen (samen),
+   *           aow: u of uw partner op 1 januari de AOW-leeftijd,
+   *           behandeling: genees- en heelkundige hulp (huisarts, tandarts,
+   *             fysiotherapie...), ziekenbezoek: reiskosten ziekenbezoek,
+   *           verhoogbaar: medicijnen, hulpmiddelen, vervoer, dieet, extra
+   *             gezinshulp, kleding en beddengoed }
+   * Volgorde uit het Handboek (17.4): eerst de verhoging (40% of 113%) over
+   * de verhoogbare kosten, als het drempelinkomen niet hoger is dan de grens;
+   * dan behandeling en ziekenbezoek erbij; dan de drempel eraf.
+   */
+  function zorgkostenDrempel(C, partner, inkomen) {
+    if (inkomen <= (partner ? C.zorgkosten_drempel_grens_partners : C.zorgkosten_drempel_grens_alleen)) {
+      return partner ? C.zorgkosten_drempel_vast_partners : C.zorgkosten_drempel_vast_alleen;
+    }
+    if (inkomen <= C.zorgkosten_drempel_grens_hoog) return C.zorgkosten_drempel_pct * inkomen;
+    return C.zorgkosten_drempel_bedrag_hoog + C.zorgkosten_drempel_pct_hoog * (inkomen - C.zorgkosten_drempel_grens_hoog);
+  }
+
+  function zorgkosten(C, inv) {
+    var inkomen = Math.max(0, Number(inv.drempelinkomen) || 0);
+    var verhoogbaar = Math.max(0, Number(inv.verhoogbaar) || 0);
+    var behandeling = Math.max(0, Number(inv.behandeling) || 0);
+    var ziekenbezoek = Math.max(0, Number(inv.ziekenbezoek) || 0);
+    var verhogingPct = inkomen <= C.zorgkosten_verhoging_grens ? (inv.aow ? C.zorgkosten_verhoging_pct_aow : C.zorgkosten_verhoging_pct) : 0;
+    var verhoging = verhoogbaar * verhogingPct;
+    var totaal = verhoogbaar + verhoging + behandeling + ziekenbezoek;
+    var drempel = zorgkostenDrempel(C, !!inv.partner, inkomen);
+    return {
+      verhoogbaar: verhoogbaar, verhogingPct: verhogingPct, verhoging: verhoging,
+      behandeling: behandeling, ziekenbezoek: ziekenbezoek, totaal: totaal,
+      drempel: drempel, aftrek: Math.max(0, totaal - drempel)
+    };
+  }
+
   return {
+    zorgkosten: zorgkosten, zorgkostenDrempel: zorgkostenDrempel,
     erfschenkbelasting: erfschenkbelasting,
     getal: getal, cijfers: cijfers, heleEuroOmlaag: heleEuroOmlaag,
     zorgtoeslag: zorgtoeslag, huurtoeslag: huurtoeslag,

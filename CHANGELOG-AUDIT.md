@@ -964,3 +964,26 @@ benadering, en voor de zorgtoeslag was er geen tool.
   en dat de belasting nooit daalt bij een hoger bedrag en nooit hoger is dan het bedrag.
 - Aanvragen via deze tools gaan naar de dienst Erfbelasting (op offerte). Links vanaf
   `/diensten/erfbelasting-schenking/`, het overzicht en `llms.txt`.
+
+### Rekentool zorgkosten, en de zorgkostenregels op de blogs rechtgezet (zelfde branch)
+
+- **Nieuw: `/rekentools/zorgkosten/`**. Rekenregel `zorgkosten` in `js/rekenregels.js`, in
+  de volgorde van het Handboek 2026: eerst de verhoging (40%, of 113% als u of uw partner
+  op 1 januari de AOW-leeftijd had, alleen bij een drempelinkomen tot €41.123, en alleen
+  over medicijnen, hulpmiddelen, vervoer, dieet en kleding; niet over behandelingen en
+  ziekenbezoek), dan de drempel eraf (€166/€332 vast, 1,65%, boven €51.411 €848 + 5,75%).
+  Tabellen: de drempel per inkomen, en een rekenvoorbeeld (NL en EN).
+- 15 nieuwe waarden in `fiscale-cijfers.json`, met de oude bedragen als "verouderd":
+  drempel (€136, €8.070, €40.345, €666), grens verhoging (€35.375, €46.440), €0,23 per km
+  (2026: €0,25), kleding en beddengoed (€300/€750; 2026: €330/€825), en €925 vervoer.
+- **`/blog/zorgkosten-aftrekken/` en `/en/blog/healthcare-costs-deduction/`**: drempeltabel
+  van een oud jaar vervangen; de "vermenigvuldigingsfactor 2,13 / 1,40 voor 65+" bestond
+  niet (het is een verhoging van 113% of 40%, met één grens); rolstoel, krukken en bril
+  stonden als aftrekbaar, de tandartscontrole als niet aftrekbaar; ziekenbezoek "minstens 1
+  keer per week" vervangen door de echte voorwaarden. FAQ en JSON-LD mee.
+- Tip 2 en tip 8 in `/blog/belastingaangifte-tips/` en `/en/blog/tax-return-tips/` op
+  dezelfde manier. In zes andere artikelen stonden een bril, lenzen, woningaanpassingen of
+  de eigen bijdrage Wlz/Wmo als aftrekbaar; rechtgezet.
+- Aanvragen via deze tool gaan naar de dienst Belastingaangifte. Links vanaf het blog, het
+  overzicht, `/senioren/` en `llms.txt`. In `aanvraag.json` ook de dienst per pagina voor
+  de nieuwe rekentools.

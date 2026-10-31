@@ -1811,8 +1811,9 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
   .rekentabel th,.rekentabel td{padding:8px 10px}
   .rekentabel thead th{text-transform:none;letter-spacing:0;font-size:0.85rem}
 }
-/* een bedrag in de uitkomst van een rekentool niet over twee regels */
-.rh-regels strong{white-space:nowrap}
+/* een bedrag in de uitkomst van een rekentool niet over twee regels; de
+   uitkomstteksten (data-rh-out) zetten alleen een bedrag in <strong> */
+.rh-regels strong,[data-rh-out] strong{white-space:nowrap}
 /* De tekst "geen" voor schermlezers (.sr-only) staat absoluut. Zonder een
    gepositioneerd kader ontsnapt hij aan het schuifkader en maakt hij op een
    telefoon de hele pagina breder. */

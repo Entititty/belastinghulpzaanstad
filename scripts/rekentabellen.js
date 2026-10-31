@@ -154,7 +154,77 @@ function erfschenkTabel(id, soort, kop, kolommen, bedragen) {
   return tabel(id, kop, [soort === 'erf' ? 'Wat u erft' : 'Schenking'].concat(kolommen.map(([naam]) => naam)), rijen);
 }
 
+/* ---------- zorgkosten ---------- */
+function zorgkostenDrempelTabel(id) {
+  const g = C.zorgkosten_drempel_grens_alleen;
+  const inkomens = [g, 15000, 20000, 25000, 30000, 35000, 40000, 45000, C.zorgkosten_drempel_grens_hoog, 60000, 75000];
+  const rijen = inkomens.map((ink, i) => [i === 0 ? euro(ink) + ' of minder' : euro(ink),
+    euro(R.zorgkostenDrempel(C, false, ink)), euro(R.zorgkostenDrempel(C, true, ink))]);
+  return tabel(id, 'Drempel zorgkosten ' + JAAR + ' per drempelinkomen', ['Drempelinkomen', 'Zonder fiscale partner', 'Met fiscale partner'], rijen);
+}
+function zorgkostenDrempelTabelEn(id) {
+  const g = C.zorgkosten_drempel_grens_alleen;
+  const inkomens = [g, 15000, 20000, 25000, 30000, 35000, 40000, 45000, C.zorgkosten_drempel_grens_hoog, 60000, 75000];
+  const rijen = inkomens.map((ink, i) => [i === 0 ? euroEn(ink) + ' or less' : euroEn(ink),
+    euroEn(R.zorgkostenDrempel(C, false, ink)), euroEn(R.zorgkostenDrempel(C, true, ink))]);
+  return tabel(id, 'Healthcare costs threshold ' + JAAR + ' by threshold income', ['Threshold income', 'No tax partner', 'With tax partner'], rijen);
+}
+// Engelse notatie: €1,308 en 35.75%
+function euroEn(n) { return euro(n).replace(/\./g, ','); }
+function pctEn(n) { return pct(n).replace(',', '.'); }
+
+/* Het rekenvoorbeeld op /rekentools/zorgkosten/ en /blog/zorgkosten-aftrekken/:
+   drempelinkomen €35.000, geen partner, geen AOW. Eerst afronden, dan rekenen. */
+const ZORG_VB = { tandarts: 450, fysio: 320, medicijnen: 185, vervoer: 120, inkomen: 35000 };
+const ZORG_AOW = { drempelinkomen: 24000, aow: true, verhoogbaar: 800 };
+function zorgVoorbeeld() {
+  const v = ZORG_VB;
+  const r = R.zorgkosten(C, { drempelinkomen: v.inkomen, behandeling: v.tandarts + v.fysio, verhoogbaar: v.medicijnen + v.vervoer });
+  const verhoging = Math.round(r.verhoging), drempel = Math.round(r.drempel);
+  const totaal = v.tandarts + v.fysio + v.medicijnen + v.vervoer + verhoging;
+  const aftrek = Math.max(0, totaal - drempel);
+  return { v, r, verhoging, drempel, totaal, aftrek, voordeel: aftrek * C.box1_schijf1_tarief };
+}
+function zorgkostenVoorbeeld(id) {
+  const z = zorgVoorbeeld(), v = z.v;
+  const rijen = [
+    ['Tandarts, niet vergoed', euro(v.tandarts)],
+    ['Fysiotherapie op verwijzing, niet vergoed', euro(v.fysio)],
+    ['Medicijnen op recept', euro(v.medicijnen)],
+    ['Vervoer naar het ziekenhuis', euro(v.vervoer)],
+    ['Verhoging: ' + pct(z.r.verhogingPct) + ' over medicijnen en vervoer', euro(z.verhoging)],
+    ['Totaal', euro(z.totaal)],
+    ['Drempel: ' + pct(C.zorgkosten_drempel_pct) + ' van ' + euro(v.inkomen), '− ' + euro(z.drempel)],
+    ['Aftrek', euro(z.aftrek)],
+    ['Belastingvoordeel bij ' + pct(C.box1_schijf1_tarief), '± ' + euro(z.voordeel)]
+  ];
+  return tabel(id, 'Rekenvoorbeeld zorgkosten ' + JAAR + ': drempelinkomen ' + euro(v.inkomen) + ', zonder partner, jonger dan de AOW-leeftijd',
+    ['Post', 'Bedrag'], rijen);
+}
+// hetzelfde voorbeeld voor /en/blog/healthcare-costs-deduction/, met Engelse notatie
+function zorgkostenVoorbeeldEn(id) {
+  const z = zorgVoorbeeld(), v = z.v, en = euroEn;
+  const rijen = [
+    ['Dentist, not reimbursed', en(v.tandarts)],
+    ['Physiotherapy on referral, not reimbursed', en(v.fysio)],
+    ['Prescribed medicines', en(v.medicijnen)],
+    ['Transport to the hospital', en(v.vervoer)],
+    ['Increase: ' + pctEn(z.r.verhogingPct) + ' of medicines and transport', en(z.verhoging)],
+    ['Total', en(z.totaal)],
+    ['Threshold: ' + pctEn(C.zorgkosten_drempel_pct) + ' of ' + en(v.inkomen), '− ' + en(z.drempel)],
+    ['Deduction', en(z.aftrek)],
+    ['Tax saving at ' + pctEn(C.box1_schijf1_tarief), '± ' + en(z.voordeel)]
+  ];
+  return tabel(id, 'Healthcare costs example ' + JAAR + ': threshold income ' + en(v.inkomen) + ', no partner, below the state pension age',
+    ['Item', 'Amount'], rijen);
+}
+function pct(n) { return String(Math.round(n * 10000) / 100).replace('.', ',') + '%'; }
+
 const TABELLEN = {
+  'zorgkosten-drempel': zorgkostenDrempelTabel,
+  'zorgkosten-voorbeeld': zorgkostenVoorbeeld,
+  'zorgkosten-voorbeeld-en': zorgkostenVoorbeeldEn,
+  'zorgkosten-drempel-en': zorgkostenDrempelTabelEn,
   'erfbelasting-tabel': (id) => erfschenkTabel(id, 'erf', 'Erfbelasting ' + JAAR + ' per erfgenaam',
     [['Partner', 'partner'], ['Kind', 'kind'], ['Kleinkind', 'kleinkind'], ['Broer, zus, ander', 'overig']],
     [25000, 50000, 100000, 150000, 200000, 300000, 500000, 1000000]),
@@ -177,6 +247,14 @@ const TABELLEN = {
 const erfschenk = (soort, relatie, bedrag) => euro(R.erfschenkbelasting(C, { soort, relatie, bedrag }).belasting);
 
 const WAARDEN = {
+  'zorgkosten-drempel-35000': () => euro(R.zorgkostenDrempel(C, false, 35000)),
+  'zorgkosten-voorbeeld-aftrek': () => euro(zorgVoorbeeld().aftrek),
+  'zorgkosten-voorbeeld-voordeel': () => euro(zorgVoorbeeld().voordeel),
+  // het voorbeeld met de AOW-leeftijd: €800 medicijnen, drempelinkomen €24.000
+  'zorgkosten-aow-verhoging': () => euro(R.zorgkosten(C, ZORG_AOW).verhoging),
+  'zorgkosten-aow-drempel': () => euro(R.zorgkosten(C, ZORG_AOW).drempel),
+  'zorgkosten-aow-aftrek': () => euro(R.zorgkosten(C, ZORG_AOW).aftrek),
+  'zorgkosten-aow-aftrek-en': () => euroEn(R.zorgkosten(C, ZORG_AOW).aftrek),
   'erf-100k-kind': () => erfschenk('erf', 'kind', 100000),
   'erf-100k-kleinkind': () => erfschenk('erf', 'kleinkind', 100000),
   'erf-100k-overig': () => erfschenk('erf', 'overig', 100000),

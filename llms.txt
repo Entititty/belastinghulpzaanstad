@@ -113,7 +113,7 @@ Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over 
 
 - [Homepage – Belastinghulp Zaanstad](https://belastinghulpzaanstad.nl/)
 - [Tarieven, alle vaste prijzen op een rij](https://belastinghulpzaanstad.nl/tarieven/)
-- [Rekentools: voorlopige teruggave, ouderenkorting, huurtoeslag](https://belastinghulpzaanstad.nl/rekentools/)
+- [Rekentools: teruggave, toeslagen, zorgkosten, erf- en schenkbelasting](https://belastinghulpzaanstad.nl/rekentools/)
 - [Belastingaangifte voor senioren](https://belastinghulpzaanstad.nl/senioren/)
 - [Checklist: wat heb ik nodig?](https://belastinghulpzaanstad.nl/checklist/)
 - [Contact, bellen, WhatsApp of terugbelverzoek](https://belastinghulpzaanstad.nl/contact/)
@@ -141,6 +141,7 @@ Alle rekentools rekenen met de cijfers van 2026. De berekening gebeurt in de bro
 - [Huurtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/), met de formule van Dienst Toeslagen (basishuur, 100%, 65% en 40% vergoeding, inkomenscorrectie); maximaal €523 per maand alleen, €537 met 3 of meer personen; met tabellen per huur en inkomen
 - [Erfbelasting berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/erfbelasting/), vrijstelling en tarief per erfgenaam (partner €828.035, kind en kleinkind €26.230, anderen €2.769; 10/18/30% tot €158.669, daarboven 20/36/40%); met tabel per bedrag
 - [Schenkbelasting berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/schenkbelasting/), vrijstellingen 2026 (kind €6.908 per jaar, eenmalig €33.129 of €69.009 voor een dure studie, anderen €2.769) en tarieven; met tabel per bedrag
+- [Zorgkosten aftrekken 2026](https://belastinghulpzaanstad.nl/rekentools/zorgkosten/), aftrek specifieke zorgkosten: verhoging 40% (113% met de AOW-leeftijd) bij een drempelinkomen tot €41.123, dan de drempel eraf (1,65% van het drempelinkomen; €166 of €332 bij een laag inkomen); met tabel drempel per inkomen en een rekenvoorbeeld
 - [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/), maandelijks belastingvoordeel van de hypotheekrenteaftrek
 
 ## Blog artikelen

@@ -26,6 +26,11 @@
     "/senioren/": "aangifte-senioren",
     "/rekentools/ouderenkorting/": "aangifte-senioren",
     "/rekentools/voorlopige-teruggave/": "voorlopige-teruggave",
+    "/rekentools/zorgtoeslag/": "toeslagen",
+    "/rekentools/belastingteruggave/": "aangifte",
+    "/rekentools/erfbelasting/": "erfbelasting",
+    "/rekentools/schenkbelasting/": "erfbelasting",
+    "/rekentools/zorgkosten/": "aangifte",
     "/blog/hypotheekrenteaftrek-berekenen/": "voorlopige-teruggave",
     "/blog/huurtoeslag-berekenen/": "toeslagen"
   },
@@ -46,7 +51,8 @@
     "zorgtoeslag": "Zorgtoeslag",
     "belastingteruggave": "Belastingteruggave",
     "erfbelasting": "Erfbelasting",
-    "schenkbelasting": "Schenkbelasting"
+    "schenkbelasting": "Schenkbelasting",
+    "zorgkosten": "Zorgkosten"
   },
 
   "_doc_toestemming": "Elke tekst die naast een akkoordvinkje of boven een aanmeldknop staat, staat hier met een versie. Het formulier stuurt de versie mee; de app slaat de versie EN de tekst op bij de aanvraag. Verander je een tekst, maak dan een NIEUWE versie aan en laat de oude staan: oude aanvragen verwijzen ernaar. scripts/check-formulieren.js controleert dat de tekst op de pagina letterlijk gelijk is aan de tekst hier, en dat het aantal maanden klopt met bewaren.aanvraag_maanden.",

@@ -130,6 +130,20 @@ for (const soort of ['erf', 'schenk']) {
   }
 }
 
+/* ---------- zorgkosten ----------
+   De rekenvolgorde uit het Handboek 2026 (17.4). Het voorbeeld met medicijnen
+   €1.000, behandeling €500 en drempelinkomen €30.000 komt op €1.405. */
+gelijk('zorgkosten: voorbeeld €1.000 medicijnen, €500 behandeling, €30.000',
+  R.zorgkosten(C, { drempelinkomen: 30000, verhoogbaar: 1000, behandeling: 500 }).aftrek, 1405);
+gelijk('zorgkosten: AOW 113%', R.zorgkosten(C, { drempelinkomen: 24000, aow: true, verhoogbaar: 800 }).aftrek, 800 * 2.13 - 0.0165 * 24000);
+gelijk('zorgkosten: boven de verhogingsgrens geen verhoging', R.zorgkosten(C, { drempelinkomen: 45000, aow: true, verhoogbaar: 800 }).verhoging, 0);
+gelijk('zorgkosten: drempel tot €9.680', R.zorgkostenDrempel(C, false, 9680), 166);
+gelijk('zorgkosten: drempel partners tot €19.360', R.zorgkostenDrempel(C, true, 19360), 332);
+gelijk('zorgkosten: drempel bij €51.411', R.zorgkostenDrempel(C, false, 51411), 0.0165 * 51411);
+gelijk('zorgkosten: drempel boven €51.411', R.zorgkostenDrempel(C, false, 61411), 848 + 0.0575 * 10000);
+gelijk('zorgkosten: drempel sluit aan bij €51.411', R.zorgkostenDrempel(C, false, 51412), R.zorgkostenDrempel(C, false, 51411), 1);
+gelijk('zorgkosten: behandeling krijgt geen verhoging', R.zorgkosten(C, { drempelinkomen: 20000, behandeling: 1000 }).verhoging, 0);
+
 /* ---------- eigenschappen ---------- */
 {
   let vorige = -1;
