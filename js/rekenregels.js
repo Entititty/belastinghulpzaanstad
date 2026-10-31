@@ -423,7 +423,38 @@
     };
   }
 
+  /*
+   * GIFTENAFTREK
+   * invoer: { inkomen: (gezamenlijk) drempelinkomen, gewoon: gewone giften,
+   *           gewoonCultureel: daarvan aan een culturele ANBI, periodiek:
+   *           periodieke giften, periodiekCultureel: daarvan cultureel }
+   * Zoals de voorbeelden van belastingdienst.nl ("Voorbeelden berekening giften
+   * aan een culturele ANBI"): de verhoging van 25% (samen hoogstens €1.250, eerst
+   * over de periodieke giften) komt bij de giften én bij het maximum van 10%.
+   * Periodieke giften: geen drempel en geen maximum van 10%.
+   */
+  function giftenaftrek(C, inv) {
+    var inkomen = Math.max(0, Number(inv.inkomen) || 0);
+    var gewoon = Math.max(0, Number(inv.gewoon) || 0);
+    var periodiek = Math.max(0, Number(inv.periodiek) || 0);
+    var gc = Math.min(gewoon, Math.max(0, Number(inv.gewoonCultureel) || 0));
+    var pc = Math.min(periodiek, Math.max(0, Number(inv.periodiekCultureel) || 0));
+    var vp = Math.min(C.giften_cultureel_max, pc * C.giften_cultureel_pct);
+    var vg = Math.min(C.giften_cultureel_max - vp, gc * C.giften_cultureel_pct);
+    var drempel = Math.max(C.giften_drempel_minimum, inkomen * C.giften_drempel_pct);
+    var maximum = inkomen * C.giften_maximum_pct;
+    var gewoonAftrek = gewoon ? Math.max(0, Math.min(gewoon + vg - drempel, maximum + vg)) : 0;
+    var periodiekAftrek = Math.min(periodiek, C.giften_periodiek_max) + vp;
+    return {
+      drempel: drempel, maximum: maximum, verhogingGewoon: vg, verhogingPeriodiek: vp,
+      gewoonAftrek: gewoonAftrek, periodiekAftrek: periodiekAftrek,
+      boven: gewoon + vg - drempel > maximum + vg,
+      aftrek: gewoonAftrek + periodiekAftrek
+    };
+  }
+
   return {
+    giftenaftrek: giftenaftrek,
     aowBelasting: aowBelasting, ouderenkorting: ouderenkorting, arbeidskortingAow: arbeidskortingAow,
     kindgebondenBudget: kindgebondenBudget,
     box3: box3,

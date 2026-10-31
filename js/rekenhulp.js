@@ -460,6 +460,42 @@
     zet(box, 'melding', melding);
   };
 
+  /* Giftenaftrek: gewone giften boven de drempel en tot het maximum, periodieke
+     giften helemaal, plus 25% voor een culturele ANBI (rekenregels.js). */
+  REKENHULPEN['giftenaftrek'] = function (box, C) {
+    var R = window.BHZRekenregels;
+    var aow = keuze(box, 'aow') === 'ja';
+    var inkomen = bedrag(box, 'inkomen');
+    var r = R.giftenaftrek(C, {
+      inkomen: inkomen,
+      gewoon: bedrag(box, 'gewoon'), gewoonCultureel: bedrag(box, 'gewoon_cultureel'),
+      periodiek: bedrag(box, 'periodiek'), periodiekCultureel: bedrag(box, 'periodiek_cultureel')
+    });
+    var verhoging = r.verhogingGewoon + r.verhogingPeriodiek;
+    zet(box, 'aftrek', euro(r.aftrek));
+    zet(box, 'drempel', euro(r.drempel));
+    zet(box, 'maximum', euro(r.maximum));
+    zet(box, 'verhoging', verhoging ? '+ ' + euro(verhoging) : 'geen');
+    zet(box, 'voordeel', r.aftrek && !aow
+      ? 'Valt uw inkomen in de eerste schijf, dan levert dit ongeveer <strong>' + euro(r.aftrek * C.box1_schijf1_tarief) + '</strong> op (' + pct(C.box1_schijf1_tarief) + ' van de aftrek).'
+      : r.aftrek ? 'Wat de aftrek oplevert, hangt af van uw belastingtarief; met de AOW-leeftijd is dat lager. Wij rekenen het gratis voor u uit.' : '', true);
+    zet(box, 'uitleg',
+      'Gewone giften: ' + euro(bedrag(box, 'gewoon')) + (r.verhogingGewoon ? ' + verhoging culturele ANBI ' + euro(r.verhogingGewoon) : '') + '<br>' +
+      'Drempel: ' + pct(C.giften_drempel_pct) + ' van ' + euro(inkomen) + ', minimaal ' + euro(C.giften_drempel_minimum) + ' = &minus; ' + euro(r.drempel) + '<br>' +
+      'Maximum: ' + pct(C.giften_maximum_pct) + ' van ' + euro(inkomen) + ' = ' + euro(r.maximum) + (r.verhogingGewoon ? ', plus de verhoging' : '') + '<br>' +
+      'Aftrek gewone giften: ' + euro(r.gewoonAftrek) + '<br>' +
+      'Periodieke giften, zonder drempel en maximum: ' + euro(bedrag(box, 'periodiek')) + (r.verhogingPeriodiek ? ' + verhoging culturele ANBI ' + euro(r.verhogingPeriodiek) : '') + ' = ' + euro(r.periodiekAftrek) + '<br>' +
+      'Totale aftrek: ' + euro(r.aftrek), true);
+    var melding = '';
+    var gewoon = bedrag(box, 'gewoon');
+    if (gewoon && !r.gewoonAftrek) {
+      melding = 'Uw gewone giften blijven onder de drempel van ' + euro(r.drempel) + '. Legt u uw gift voor minstens 5 jaar vast in een periodieke gift, dan geldt er geen drempel.';
+    } else if (r.boven) {
+      melding = 'U geeft meer dan het maximum van 10% van uw drempelinkomen. Het deel daarboven is als gewone gift niet aftrekbaar; met een periodieke gift wel.';
+    }
+    zet(box, 'melding', melding);
+  };
+
   /* data-rh-als="veld=waarde" of "veld!=waarde": alleen tonen als dat geldt */
   function zichtbaarheid(box) {
     var els = box.querySelectorAll('[data-rh-als]');
@@ -475,7 +511,7 @@
     var naam = box.getAttribute('data-rekenhulp');
     var reken = REKENHULPEN[naam];
     if (!reken) return;
-    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten', 'box3', 'kindgebonden-budget', 'aow-pensioen'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
+    if (['zorgtoeslag', 'huurtoeslag', 'belastingteruggave', 'erfbelasting', 'schenkbelasting', 'zorgkosten', 'box3', 'kindgebonden-budget', 'aow-pensioen', 'giftenaftrek'].indexOf(naam) !== -1 && !window.BHZRekenregels) {
       zet(box, 'melding', 'De rekentool kan nu niet laden. Bel of app ons op 06 19 71 18 48, dan rekenen wij het voor u uit.');
       return;
     }

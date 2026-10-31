@@ -1487,6 +1487,90 @@
         "arbeidskorting",
         "AOW"
       ]
+    },
+    "giften_drempel_pct": {
+      "waarde": "1%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, giften: hoeveel aftrek krijgt u? (2026): \"Het drempelbedrag voor gewone giften is 1% van uw drempelinkomen met een minimum van € 60.\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek",
+      "context": [
+        "gift",
+        "giften",
+        "donation",
+        "ANBI"
+      ]
+    },
+    "giften_drempel_minimum": {
+      "waarde": "€60",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, giften: hoeveel aftrek krijgt u? (2026): drempel gewone giften minimaal € 60",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek",
+      "context": [
+        "gift",
+        "giften",
+        "donation",
+        "ANBI"
+      ]
+    },
+    "giften_maximum_pct": {
+      "waarde": "10%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, giften: hoeveel aftrek krijgt u? (2026): \"U mag niet meer aftrekken aan gewone giften dan het maximum: 10% van uw drempelinkomen.\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek",
+      "context": [
+        "gift",
+        "giften",
+        "donation",
+        "ANBI"
+      ]
+    },
+    "giften_cultureel_pct": {
+      "waarde": "25%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, giften: hoeveel aftrek krijgt u? (2026): \"Wanneer u uw aftrek berekent, mag u de gift aan een culturele ANBI verhogen met 25%.\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek",
+      "context": [
+        "gift",
+        "giften",
+        "donation",
+        "ANBI"
+      ]
+    },
+    "giften_cultureel_max": {
+      "waarde": "€1.250",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, giften: hoeveel aftrek krijgt u? (2026): \"Voor deze verhoging geldt een maximum van € 1.250.\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek",
+      "context": [
+        "gift",
+        "giften",
+        "donation",
+        "ANBI"
+      ]
+    },
+    "giften_periodiek_max": {
+      "waarde": "€1.500.000",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, giften: hoeveel aftrek krijgt u? (2026): \"Er geldt geen drempel voor periodieke giften, maar wel een maximum van € 1.500.000 in 2026.\"",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-10-31",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek",
+      "context": [
+        "gift",
+        "giften",
+        "donation",
+        "ANBI"
+      ]
     }
   }
 }

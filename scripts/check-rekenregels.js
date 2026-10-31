@@ -144,6 +144,32 @@ gelijk('zorgkosten: drempel boven €51.411', R.zorgkostenDrempel(C, false, 6141
 gelijk('zorgkosten: drempel sluit aan bij €51.411', R.zorgkostenDrempel(C, false, 51412), R.zorgkostenDrempel(C, false, 51411), 1);
 gelijk('zorgkosten: behandeling krijgt geen verhoging', R.zorgkosten(C, { drempelinkomen: 20000, behandeling: 1000 }).verhoging, 0);
 
+/* ---------- giftenaftrek ----------
+   De drie voorbeelden van belastingdienst.nl, "Voorbeelden berekening giften aan
+   een culturele ANBI". */
+{
+  const ga = (i) => R.giftenaftrek(C, i);
+  gelijk('giften vb 1: €5.000 gewoon, €200 cultureel, €35.000', ga({ inkomen: 35000, gewoon: 5000, gewoonCultureel: 200 }).aftrek, 3550);
+  gelijk('giften vb 2: €6.000 periodiek cultureel', ga({ periodiek: 6000, periodiekCultureel: 6000 }).aftrek, 7250);
+  gelijk('giften vb 3: €4.000 periodiek en €2.400 gewoon cultureel, €40.000',
+    ga({ inkomen: 40000, periodiek: 4000, periodiekCultureel: 4000, gewoon: 2400, gewoonCultureel: 2400 }).aftrek, 7250);
+  gelijk('giften: drempel minimaal €60', ga({ inkomen: 3000, gewoon: 100 }).drempel, 60);
+  gelijk('giften: onder de drempel niets', ga({ inkomen: 45000, gewoon: 400 }).aftrek, 0);
+  gelijk('giften: periodiek zonder drempel', ga({ inkomen: 45000, periodiek: 400 }).aftrek, 400);
+  // het rekenvoorbeeld op /blog/giften-aftrekken/: €900 bij €45.000
+  gelijk('giften: blogvoorbeeld €900 bij €45.000', ga({ inkomen: 45000, gewoon: 900 }).aftrek, 450);
+  for (const ink of [10000, 40000, 120000]) {
+    let vorige = -1;
+    for (let g = 0; g <= 30000; g += 50) {
+      const r = ga({ inkomen: ink, gewoon: g, gewoonCultureel: g / 2 });
+      eigenschap('giften: negatief bij ' + g, r.aftrek >= 0);
+      eigenschap('giften: meer geven, minder aftrek bij ' + g, r.aftrek >= vorige - 1e-9);
+      eigenschap('giften: boven het maximum bij ' + g, r.gewoonAftrek <= ink * 0.10 + C.giften_cultureel_max + 1e-9);
+      vorige = r.aftrek;
+    }
+  }
+}
+
 /* ---------- belasting met AOW en pensioen ----------
    Geen rekenvoorbeeld van de Belastingdienst; wel de randen van de tabellen
    2026 voor wie het hele jaar de AOW-leeftijd heeft, en met de hand

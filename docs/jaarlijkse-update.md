@@ -182,6 +182,14 @@ veranderen zelden; de grensbedragen, het kilometerbedrag en de vaste bedragen we
 na; zet daar de nieuwe bedragen in. De tabellen en de voorbeeldbedragen op het blog en de
 rekentool rekenen daarna vanzelf mee (`rekentabellen.js`).
 
+### Stap 5d. Giftenaftrek (6 waarden, sinds oktober 2026)
+
+Bron: [hoeveel aftrek krijgt u?](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek)
+en [voorbeelden culturele ANBI](https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/voorbeelden_berekening_giften).
+De sleutels beginnen met `giften_`. De percentages en de €60 veranderen zelden; het
+maximum voor periodieke giften (€1.500.000) en de €1.250 kunnen wel veranderen. De
+voorbeelden in `check-rekenregels.js` horen bij 2026; kijk of de Belastingdienst nieuwe heeft.
+
 ### Stap 6. Boete en rente (3 waarden)
 
 | Sleutel | Bron |
@@ -273,7 +281,8 @@ elders op de pagina. Zoek na een update op het oude maandbedrag.
 `/rekentools/voorlopige-teruggave/`, `/rekentools/ouderenkorting/`, `/rekentools/zorgtoeslag/`,
 `/blog/huurtoeslag-berekenen/`, `/rekentools/belastingteruggave/`, `/rekentools/erfbelasting/`,
 `/rekentools/schenkbelasting/`, `/rekentools/zorgkosten/`, `/rekentools/box-3/`,
-`/rekentools/kindgebonden-budget/`, `/rekentools/aow-pensioen/` en `/blog/hypotheekrenteaftrek-berekenen/` halen hun cijfers bij het laden uit
+`/rekentools/kindgebonden-budget/`, `/rekentools/aow-pensioen/`, `/rekentools/giftenaftrek/` en
+`/blog/hypotheekrenteaftrek-berekenen/` halen hun cijfers bij het laden uit
 `data/fiscale-cijfers.json`. Na `set-fiscale-cijfers.js` rekenen ze dus vanzelf met de
 nieuwe cijfers. De formules staan in `js/rekenregels.js` (zie stap 4, 5, 5b en 5c).
 

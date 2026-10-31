@@ -220,6 +220,16 @@ function zorgkostenVoorbeeldEn(id) {
 }
 function pct(n) { return String(Math.round(n * 10000) / 100).replace('.', ',') + '%'; }
 
+/* ---------- giftenaftrek ---------- */
+function giftenTabel(id) {
+  const rijen = [5000, 15000, 25000, 35000, 45000, 60000, 80000, 100000].map((ink) => {
+    const r = R.giftenaftrek(C, { inkomen: ink });
+    return [euro(ink), euro(r.drempel), euro(r.maximum)];
+  });
+  return tabel(id, 'Drempel en maximum giftenaftrek ' + JAAR + ' (gewone giften)', ['Drempelinkomen', 'Drempel', 'Maximum aftrek'], rijen);
+}
+const giften = (i) => euro(R.giftenaftrek(C, i).aftrek);
+
 /* ---------- belasting met AOW en pensioen ---------- */
 // eerst afronden, dan aftrekken, zoals de rekentool
 function aowVerschuldigd(inkomen, alleenstaand) {
@@ -267,6 +277,7 @@ function box3Tabel(id, partner) {
 }
 
 const TABELLEN = {
+  'giften-drempel': giftenTabel,
   'aow-belasting': aowTabel,
   'kindgebonden-budget-alleen': (id) => kgbTabel(id, false, [35000, 40000, 45000, 50000, 60000, 70000, 80000, 100000]),
   'kindgebonden-budget-partners': (id) => kgbTabel(id, true, [45000, 50000, 55000, 60000, 70000, 80000, 90000, 110000]),
@@ -298,6 +309,10 @@ const TABELLEN = {
 const erfschenk = (soort, relatie, bedrag) => euro(R.erfschenkbelasting(C, { soort, relatie, bedrag }).belasting);
 
 const WAARDEN = {
+  // de voorbeelden 1 en 3 van belastingdienst.nl (culturele ANBI)
+  'giften-vb1': () => giften({ inkomen: 35000, gewoon: 5000, gewoonCultureel: 200 }),
+  'giften-vb3': () => giften({ inkomen: 40000, periodiek: 4000, periodiekCultureel: 4000, gewoon: 2400, gewoonCultureel: 2400 }),
+  'giften-45k-900': () => giften({ inkomen: 45000, gewoon: 900 }),
   'aow-belastingvrij-alleen': () => aowBelastingvrij(true),
   'aow-belastingvrij-samen': () => aowBelastingvrij(false),
   'aow-30k-alleen': () => euro(aowVerschuldigd(30000, true)),

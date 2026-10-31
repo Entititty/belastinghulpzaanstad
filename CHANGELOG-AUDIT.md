@@ -1048,3 +1048,16 @@ benadering, en voor de zorgtoeslag was er geen tool.
   ongeveer €23.300 (alleenstaand), uitgerekend.
 - Links vanaf het overzicht, `/senioren/`, de rekentool ouderenkorting, drie
   seniorenartikelen en `llms.txt`.
+
+### Rekentool giftenaftrek (zelfde branch)
+
+- **Nieuw: `/rekentools/giftenaftrek/`**. Rekenregel `giftenaftrek` in `js/rekenregels.js`:
+  gewone giften boven de drempel (1% van het drempelinkomen, minimaal €60) en tot 10% van
+  het drempelinkomen; periodieke giften zonder drempel en maximum; 25% extra voor een
+  culturele ANBI, samen hoogstens €1.250 (eerst over de periodieke giften), opgeteld bij
+  de giften én bij het maximum.
+- De drie rekenvoorbeelden van belastingdienst.nl ("Voorbeelden berekening giften aan een
+  culturele ANBI": €3.550, €7.250, €7.250) en het voorbeeld op `/blog/giften-aftrekken/`
+  komen precies uit; `check-rekenregels.js` controleert ze.
+- 6 nieuwe waarden in `fiscale-cijfers.json`. Links vanaf het blog (NL en EN), het
+  overzicht en `llms.txt`.
