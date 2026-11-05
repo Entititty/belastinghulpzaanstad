@@ -1,10 +1,10 @@
 /*
  * tellingen.js — conversiemeting zonder cookies.
  *
- * Meet zeven dingen: een klik op WhatsApp, op een telefoonnummer, op een
- * e-mailadres, het versturen van een formulier, het afhaken halverwege een
- * formulier, een binnenkomst via een flyer of partner ("bezoek"), en het
- * gebruik van een rekentool.
+ * Meet acht dingen: een paginaweergave, een klik op WhatsApp, op een
+ * telefoonnummer, op een e-mailadres, het versturen van een formulier, het
+ * afhaken halverwege een formulier, een binnenkomst via een flyer of partner
+ * ("bezoek"), en het gebruik van een rekentool.
  *
  * Waarom naast Google Analytics: GA4 ziet alleen bezoekers die de
  * cookiebalk accepteren en geen adblocker draaien. Dat is een fractie, en
@@ -310,6 +310,11 @@
 
   function start() {
     schakelaar();
+
+    /* Eén paginaweergave per keer dat de pagina opent. Zonder bezoeker-ID: het
+     * geeft het aantal weergaven per pagina en bron, niet het aantal mensen.
+     * Zo is te zien hoeveel weergaven er nodig zijn voor één klik op bellen. */
+    stuur('pagina');
 
     /* binnengekomen via een flyer of partner: één keer per landing tellen */
     if (campagneLanding) {

@@ -72,7 +72,7 @@ function backup(ctx) {
 }
 
 /* ---------------- klikmeting inlezen ---------------- */
-const EVENTS = ['whatsapp', 'tel', 'mail', 'form_submit', 'form_abandon', 'bezoek', 'rekentool'];
+const EVENTS = ['pagina', 'whatsapp', 'tel', 'mail', 'form_submit', 'form_abandon', 'bezoek', 'rekentool'];
 const RE_UUR = /^\d{4}-\d{2}-\d{2}T\d{2}:00$/;
 const RE_PAD = /^\/[a-z0-9/._-]{0,80}$/;
 const RE_CODE = /^[a-z0-9-]{1,40}$/;

@@ -50,6 +50,8 @@ test('de pagina: kerncijfers, grafieken, bronnen, rekentools, flyers en knoppen'
     klik.run('2026-11-03', 'whatsapp', '/senioren/', 'balk', 'flyer', 'rosmolenwijk', 3);
     klik.run('2026-11-03', 'tel', '/', 'hero', 'direct', '', 2);
     klik.run('2026-11-01', 'rekentool', '/rekentools/voorlopige-teruggave/', 'voorlopige-teruggave', 'direct', '', 5);
+    klik.run('2026-11-03', 'pagina', '/', '', 'direct', '', 40);
+    klik.run('2026-11-03', 'pagina', '/senioren/', '', 'flyer', 'rosmolenwijk', 12);
     const b = await t.beheer();
     const r = await b.haal('/beheer/overzicht?periode=13');
     assert.equal(r.status, 200);
@@ -69,6 +71,10 @@ test('de pagina: kerncijfers, grafieken, bronnen, rekentools, flyers en knoppen'
     /* rekentool: 5 keer gebruikt, 1 aanvraag = 20% */
     assert.match(s, /<td>Voorlopige teruggave<\/td><td class="getal">5<\/td>[\s\S]*?<td class="getal">1<\/td><td class="getal">20%<\/td>/);
     assert.match(s, /Balk onderin \(telefoon\)/);
+    /* paginaweergaven: tegel, en per pagina tegenover de klikken op bellen of WhatsApp */
+    assert.match(s, /Paginaweergaven<\/div><div class="kpi-waarde">52</);
+    assert.match(s, /<td>\/<\/td><td class="getal">40<\/td>[\s\S]*?<td class="getal">2<\/td><td class="getal">5<\/td>/);
+    assert.match(s, /<td>\/senioren\/<\/td><td class="getal">12<\/td>[\s\S]*?<td class="getal">3<\/td><td class="getal">25<\/td>/);
     assert.match(s, /<td>Flyer<\/td><td class="getal">2<\/td>/);
     /* tot 26 weken per week; is er een oudere aanvraag, dan per maand */
     assert.match(await (await b.haal('/beheer/overzicht?periode=alles')).text(), /Aanvragen per week/);

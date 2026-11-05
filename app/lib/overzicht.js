@@ -221,6 +221,7 @@ function registreer(ctx) {
     const klant = (l) => l.filter((a) => a.status === 'klant');
     const omzet = (l) => klant(l).reduce((s, a) => s + (a.omzet_centen || 0), 0);
     const belApp = (l) => l.filter((k) => k.e === 'tel' || k.e === 'whatsapp').reduce((s, k) => s + k.n, 0);
+    const weergaven = (l) => l.filter((k) => k.e === 'pagina').reduce((s, k) => s + k.n, 0);
 
     /* kerncijfers */
     const kpi = h`<section class="kpi" aria-label="Kerncijfers">
@@ -229,6 +230,7 @@ function registreer(ctx) {
       ${tegel('Conversie', procent(klant(aanvragen).length, aanvragen.length), null, 'van de aanvragen uit deze periode')}
       ${tegel('Omzet', euro(omzet(aanvragen)), null, 'van klanten uit deze periode')}
       ${tegel('Klikken op bellen of WhatsApp', getal(belApp(klikken)), klikkenVorige ? belApp(klikken) - belApp(klikkenVorige) : null)}
+      ${tegel('Paginaweergaven', getal(weergaven(klikken)), klikkenVorige ? weergaven(klikken) - weergaven(klikkenVorige) : null, 'zonder cookies, ook van wie de cookiebalk weigert')}
     </section>`;
 
     /* aanvragen per week of maand */
@@ -323,6 +325,22 @@ function registreer(ctx) {
         <td class="getal">${getal(r.aanvragen)}</td><td class="getal">${getal(r.klanten)}</td><td class="getal">${euro(r.omzet)}</td></tr>`)}</tbody></table></div>`
       : h`<p class="klein">Nog geen flyerbezoek in deze periode. De QR-codes per buurt komen uit scripts/buurtscore.js.</p>`;
 
+    /* weergaven per pagina tegenover klikken op bellen en WhatsApp op die pagina */
+    const perPad = new Map();
+    for (const k of klikken) {
+      if (k.e !== 'pagina' && k.e !== 'tel' && k.e !== 'whatsapp') continue;
+      const x = perPad.get(k.p) || { weergaven: 0, klikken: 0 };
+      if (k.e === 'pagina') x.weergaven += k.n; else x.klikken += k.n;
+      perPad.set(k.p, x);
+    }
+    const padRijen = [...perPad.entries()].map(([pad, x]) => ({ pad, ...x })).sort((a, b) => b.weergaven - a.weergaven).slice(0, 15);
+    const maxPad = Math.max(1, ...padRijen.map((r) => r.weergaven));
+    const padTabel = padRijen.length ? h`<div class="tabel-wrap"><table class="tabel"><thead><tr><th>Pagina</th><th class="getal">Weergaven</th><th class="staaf-kol"></th>
+      <th class="getal">Bellen of WhatsApp</th><th class="getal">Per 100 weergaven</th></tr></thead><tbody>
+      ${padRijen.map((r) => h`<tr><td>${r.pad}</td><td class="getal">${getal(r.weergaven)}</td><td class="staaf-kol">${staafje(r.weergaven, maxPad)}</td>
+        <td class="getal">${getal(r.klikken)}</td><td class="getal">${r.weergaven ? (Math.round(r.klikken / r.weergaven * 1000) / 10).toLocaleString('nl-NL') : '–'}</td></tr>`)}</tbody></table></div>`
+      : h`<p class="klein">Nog geen paginaweergaven in deze periode. De telling loopt sinds november 2026.</p>`;
+
     const laatst = dbm.instelling(db, 'klikken-laatst');
     const inhoud = h`<h1>Overzicht</h1>
       <form method="get" action="/beheer/overzicht" class="kaart filters" data-direct>
@@ -339,6 +357,8 @@ function registreer(ctx) {
       <section class="kaart"><h2>Per partner</h2>${dimensieTabel(perPartner, 'Partner', 'Nog geen aanvragen via een partner in deze periode.')}</section>
       ${figK}
       <section class="kaart"><h2>Klikken per knop</h2>${knopTabel}</section>
+      <section class="kaart"><h2>Meest bekeken pagina's</h2>${padTabel}
+        <p class="klein">Weergaven tellen elke keer dat een pagina opent, niet het aantal mensen. Bots en uw eigen apparaten tellen niet mee.</p></section>
       <section class="kaart"><h2>Flyers per buurt</h2>${flyerTabel}
         <p class="klein">Scans: bezoek via de QR-code. Klikken: bellen of WhatsApp na zo'n bezoek. Wie de flyer leest en zonder de site belt, ziet u hier niet; vraag aan de telefoon hoe iemand u vond, en zet dat bij "+ Nieuw".</p></section>
       <form method="post" action="/beheer/overzicht/inlezen" class="kaart rij">${beheer.csrfVeld(sessie)}

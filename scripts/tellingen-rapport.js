@@ -34,10 +34,11 @@ const UIT      = path.resolve(arg('--uit', path.join(ROOT, 'intern', 'tellingen'
 const OPRUIMEN = process.argv.indexOf('--opruimen') !== -1;
 const BEWAAR   = 90;   /* dagen ruwe regels; daarna alleen nog dagtotalen */
 
-/* De zeven dingen die we meten. Andere waarden zijn ongeldig. "bezoek" en
+/* De acht dingen die we meten. "pagina" is erbij sinds 5 november 2026. Andere waarden zijn ongeldig. "bezoek" en
  * "rekentool" zijn er sinds november 2026 bij. */
-const EVENTS = ['whatsapp', 'tel', 'mail', 'form_submit', 'form_abandon', 'bezoek', 'rekentool'];
+const EVENTS = ['pagina', 'whatsapp', 'tel', 'mail', 'form_submit', 'form_abandon', 'bezoek', 'rekentool'];
 const LABEL = {
+  pagina:       'Pagina bekeken',
   whatsapp:     'WhatsApp aangeklikt',
   tel:          'Telefoonnummer aangeklikt',
   mail:         'E-mailadres aangeklikt',
@@ -47,6 +48,7 @@ const LABEL = {
   rekentool:    'Rekentool gebruikt'
 };
 const KORT = {
+  pagina: 'weergave',
   whatsapp: 'whatsapp', tel: 'telefoon', mail: 'e-mail',
   form_submit: 'verstuurd', form_abandon: 'afgehaakt', bezoek: 'bezoek', rekentool: 'rekentool'
 };
