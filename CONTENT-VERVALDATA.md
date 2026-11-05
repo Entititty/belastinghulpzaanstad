@@ -51,6 +51,20 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
   kan dat nog tot 31 december 2026"). Die staat niet in de config: met de hand aanpassen.
 - **Actie — 2027-01:** het jaartal één jaar opschuiven (2022) en de placeholder leegmaken.
 
+## 2c-bis. Deadlinecampagne 2021 — deels AUTO, verloopt **2026-12-31**
+*Toegevoegd 2026-11-05.*
+- **Pagina:** `deadline-2021/`. Na 31 december 2026 (Nederlandse tijd) toont een script bovenaan
+  de melding "De termijn voor 2021 is voorbij" (`#dl-verlopen`). De rest van de pagina blijft staan.
+- **Banners (AUTO weg na 31-12-2026):** bovenaan de hero van `index.html`, het gele 2021-blok op
+  `diensten/correctie-late-aangifte/` en onder het kruimelpad van `diensten/box-3-bezwaar/`. Elk blok
+  heeft het commentaar `deadline-2021` en een inline script dat het verbergt.
+- **HANDMATIG:** het eerste FAQ-item op de homepage ("Kan ik over 2021 nog geld terugvragen?"), de
+  links in `blog/te-laat-belastingaangifte/`, `blog/box-3-bezwaar-2026/`, `checklist/` en `llms.txt`.
+- **Actie — 2027-01:** banners en FAQ-item weghalen (daarna `node scripts/faq-sync.js index.html --schrijf`).
+  Kies voor de pagina: omzetten naar `/deadline-2022/` (zelfde regel: over 2022 tot en met 31 december 2027)
+  met een 301 van het oude adres, of noindex en de links weghalen.
+- **Bronnen:** staan als HTML-commentaar in `deadline-2021/index.html` (geraadpleegd 2026-11-01).
+
 ## 2c. Rekentools — deels AUTO
 - `/rekentools/voorlopige-teruggave/` en `/rekentools/ouderenkorting/` rekenen met
   `data/fiscale-cijfers.json` (via `js/rekenhulp.js`) en volgen de jaarlijkse update vanzelf.
