@@ -90,7 +90,7 @@
       "name": "Oostzaan"
     }
   ],
-  "serviceType": [
+  "knowsAbout": [
     "Belastingaangifte",
     "Eerste baan en bijbaan",
     "Voorlopige teruggave",
@@ -149,19 +149,93 @@
   "@type": "OfferCatalog",
   "name": "Tarieven Belastinghulp Zaanstad",
   "url": "https://belastinghulpzaanstad.nl/tarieven/",
-  "provider": {"@id": "https://belastinghulpzaanstad.nl/#business"},
   "itemListElement": [
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-eerste_baan","name":"Eerste baan, eerste aangifte","price":"49","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/eerste-baan/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-aangifte","name":"Belastingaangifte, alleenstaand","price":"59","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-aangifte-partner","name":"Belastingaangifte, met fiscaal partner","price":"89","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-voorlopige_teruggave","name":"Voorlopige teruggave","price":"109","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-voorlopige_teruggave-partner","name":"Voorlopige teruggave, met fiscaal partner","price":"149","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-correctie","name":"Correctie of late aangifte, per jaar","price":"69","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-correctie-partner","name":"Correctie of late aangifte, per jaar, met fiscaal partner","price":"99","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-toeslag","name":"Toeslag aanvragen of wijzigen","price":"30","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/toeslagen/"},
-    {"@type":"Offer","name":"Toeslagencheck","price":"0","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/toeslagen/"},
-    {"@type":"Offer","@id":"https://belastinghulpzaanstad.nl/tarieven/#prijs-spoed","name":"Spoedtoeslag: aangifte binnen 24 uur, bovenop de prijs","price":"25","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/tarieven/"},
-    {"@type":"Offer","name":"Check of de Opgaaf werkelijk rendement (box 3) loont","price":"0","priceCurrency":"EUR","url":"https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/"}
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-eerste_baan",
+      "name": "Eerste baan, eerste aangifte",
+      "price": "49",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/eerste-baan/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-aangifte",
+      "name": "Belastingaangifte, alleenstaand",
+      "price": "59",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-aangifte-partner",
+      "name": "Belastingaangifte, met fiscaal partner",
+      "price": "89",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-voorlopige_teruggave",
+      "name": "Voorlopige teruggave",
+      "price": "109",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-voorlopige_teruggave-partner",
+      "name": "Voorlopige teruggave, met fiscaal partner",
+      "price": "149",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-correctie",
+      "name": "Correctie of late aangifte, per jaar",
+      "price": "69",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-correctie-partner",
+      "name": "Correctie of late aangifte, per jaar, met fiscaal partner",
+      "price": "99",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-toeslag",
+      "name": "Toeslag aanvragen of wijzigen",
+      "price": "30",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/toeslagen/"
+    },
+    {
+      "@type": "Offer",
+      "name": "Toeslagencheck",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/toeslagen/"
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://belastinghulpzaanstad.nl/tarieven/#prijs-spoed",
+      "name": "Spoedtoeslag: aangifte binnen 24 uur, bovenop de prijs",
+      "price": "25",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/tarieven/"
+    },
+    {
+      "@type": "Offer",
+      "name": "Check of de Opgaaf werkelijk rendement (box 3) loont",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "url": "https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/"
+    }
   ]
 }
 </script>

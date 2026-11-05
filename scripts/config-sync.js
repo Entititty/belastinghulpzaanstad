@@ -257,7 +257,8 @@ function bedrijfsBlok() {
     foundingDate: L.oprichtingsjaar,
     founder: { '@id': BASIS_URL + '/over-ons/#stan' },
     areaServed: L.werkgebied.map(function (n) { return { '@type': 'City', name: n }; }),
-    serviceType: L.diensten,
+    /* knowsAbout en niet serviceType: dat veld bestaat niet op LocalBusiness (Schema Markup Validator). */
+    knowsAbout: L.diensten,
     sameAs: L.sameAs,
     openingHoursSpecification: L.openingstijden.map(function (t) {
       return { '@type': 'OpeningHoursSpecification', dayOfWeek: t.dagen, opens: t.open, closes: t.dicht };
