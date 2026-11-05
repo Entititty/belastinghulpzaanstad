@@ -216,6 +216,16 @@ const SJABLONEN = {
     /* een tekstlink, geen knop: knoppen zijn alleen "Bel of app" en "Bel mij terug" (check-knoppen.js) */
     return '<a href="' + esc(P.GOOGLE_REVIEW_URL) + '" class="tekstlink" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;font-size:1.05rem;">Schrijf een review op Google &rarr;</a>';
   },
+  /* /review/: kort adres voor de WhatsApp-tekst na een klus. Gaat naar Google
+     zodra GOOGLE_REVIEW_URL er is, en tot die tijd naar /beoordeling/. */
+  'review-doorsturen': function () {
+    var doel = leeg(P.GOOGLE_REVIEW_URL) ? 'https://belastinghulpzaanstad.nl/beoordeling/' : P.GOOGLE_REVIEW_URL;
+    return '<meta http-equiv="refresh" content="0; url=' + esc(doel) + '"><script>window.location.replace(' + JSON.stringify(doel) + ');</script>';
+  },
+  'review-doorsturen-link': function () {
+    var doel = leeg(P.GOOGLE_REVIEW_URL) ? 'https://belastinghulpzaanstad.nl/beoordeling/' : P.GOOGLE_REVIEW_URL;
+    return '<a href="' + esc(doel) + '">Verder naar de reviewpagina &rarr;</a>';
+  },
   'achtergrond-stan': function () {
     return leeg(P.ACHTERGROND_STAN) ? '' : '<p style="line-height:1.75;color:var(--clr-bark);font-size:1.02rem;margin-bottom:12px;">' + esc(P.ACHTERGROND_STAN) + '</p>';
   },

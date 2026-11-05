@@ -3,28 +3,34 @@
 Stuur dit bericht pas als de klus klaar is: de aangifte is ingediend of de
 voorlopige teruggave is aangevraagd. Eén keer sturen, niet herinneren.
 
-De link wijst naar `/beoordeling/`. Die pagina staat niet in het menu en
-niet in Google (noindex). Zolang `GOOGLE_REVIEW_URL` in `data/bedrijf.json`
-leeg is, staat daar geen knop naar Google maar een uitnodiging om via
-WhatsApp of e-mail te laten weten hoe het ging. Vul de link in en draai
-`node scripts/config-sync.js`; dan verschijnt de knop.
+De link is het korte adres `belastinghulpzaanstad.nl/review`. Dat stuurt
+door:
 
-Zo vind je de link: in je Google Bedrijfsprofiel, onder "Reviews vragen" of
+- zolang `GOOGLE_REVIEW_URL` in `data/bedrijf.json` leeg is: naar
+  `/beoordeling/`, met een uitnodiging om via WhatsApp of e-mail te laten
+  weten hoe het ging;
+- zodra de link is ingevuld: rechtstreeks naar het reviewformulier van
+  Google. `/beoordeling/` krijgt dan ook een knop naar Google.
+
+Invullen: zet de link in `GOOGLE_REVIEW_URL` en draai `node scripts/bouw.js`.
+U hoeft het bericht hieronder daarna niet aan te passen.
+
+Zo vindt u de link: in uw Google-bedrijfsprofiel, onder "Reviews vragen" of
 "Profiel delen". Hij ziet eruit als `https://g.page/r/.../review`.
 
-## Het bericht
+## Het bericht (WhatsApp)
 
 ```
 Beste [naam],
 
 Dank u wel dat ik u mocht helpen met [uw aangifte / uw voorlopige
-teruggave / uw toeslag]. Ik ben dit jaar begonnen en bouw alleen echte
-reviews op. Zou u in een paar zinnen willen vertellen hoe het ging?
-Dat kan via deze link:
+teruggave / uw toeslag].
 
-https://belastinghulpzaanstad.nl/beoordeling/
+Ik ben dit jaar begonnen en bouw alleen echte reviews op. Wilt u in een
+paar zinnen vertellen hoe het ging? Dat kan hier:
+belastinghulpzaanstad.nl/review
 
-Het is natuurlijk vrijwillig, en kritiek mag ook.
+Het is vrijwillig, en kritiek mag ook.
 
 Met vriendelijke groet,
 Stan van der Hoeven
@@ -33,12 +39,12 @@ Belastinghulp Zaanstad
 
 ## Wat wel en niet mag
 
-- Vraag het iedere klant op dezelfde manier, ook als je twijfelt of die
+- Vraag het iedere klant op dezelfde manier, ook als u twijfelt of die
   tevreden is. Alleen tevreden klanten vragen heet review gating; Google
   staat dat niet toe.
 - Geef niets in ruil voor een review: geen korting, geen cadeaubon. De
-  €20-startkorting staat daar los van en geldt voor iedere nieuwe klant
-  in 2026, met of zonder review.
+  startkorting staat daar los van en geldt voor iedere nieuwe klant, met of
+  zonder review.
 - Schrijf nooit zelf een review en laat geen familie of vrienden reviews
   schrijven over werk dat ze niet hebben afgenomen.
 - Reageer op elke review, ook op een kritische, kort en vriendelijk.
