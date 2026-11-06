@@ -84,7 +84,7 @@
   "planning": {
     "dagoverzicht_doordeweeks": "17:30",
     "dagoverzicht_weekend": "08:30",
-    "dagoverzicht_ook_als_leeg": true,
+    "dagoverzicht_alleen_bij_nieuw": true,
     "opruimen": "03:30",
     "backup": "03:45",
     "klikken_inlezen": "04:15"

@@ -3,8 +3,10 @@
  * dagelijks.js — de vaste taken van elke dag.
  *
  * - dagoverzicht: de open aanvragen per mail, vlak voor het belvenster
- *   (doordeweeks 17:30, in het weekend 08:30; zie data/aanvraag.json). Ook bij
- *   nul open aanvragen, als teken van leven: komt hij niet, dan is er iets mis.
+ *   (doordeweeks 17:30, in het weekend 08:30; zie data/aanvraag.json). Alleen
+ *   als er sinds het vorige overzicht een nieuwe aanvraag is, of als er iets mis
+ *   is (mail die niet weg kon, geen back-up). Met dagoverzicht_alleen_bij_nieuw
+ *   op false komt hij weer elke dag.
  * - back-up: elke nacht een kopie van de database (VACUUM INTO), 14 dagen
  *   bewaard. Een verwijderde aanvraag is dus na uiterlijk 14 dagen ook uit de
  *   back-ups weg; zo staat het in het privacybeleid.
@@ -23,8 +25,10 @@ function dagoverzicht(ctx) {
   if (!ctx.env.MAIL_MELDINGEN_AAN) return null;
   const open = db.prepare(`SELECT * FROM aanvragen WHERE status IN ('nieuw','gebeld','afspraak')
     ORDER BY CASE status WHEN 'nieuw' THEN 0 WHEN 'gebeld' THEN 1 ELSE 2 END, aangemaakt`).all();
-  if (!open.length && !cfg.planning.dagoverzicht_ook_als_leeg) return null;
   const nu = ctx.klok();
+  const vorige = dbm.instelling(db, 'dagoverzicht-laatst');
+  const nieuwSindsVorige = db.prepare('SELECT COUNT(*) AS n FROM aanvragen WHERE aangemaakt > ?')
+    .get(vorige || minDagen(nu, 1).toISOString()).n;
   const waarschuwingen = [];
   if (!ctx.mail.ingesteld()) waarschuwingen.push('De mail is niet ingesteld; meldingen blijven liggen.');
   const stand = ctx.mail.wachtrijStand();
@@ -33,13 +37,19 @@ function dagoverzicht(ctx) {
   if (!laatsteBackup || nu.getTime() - new Date(laatsteBackup).getTime() > 2 * 864e5) {
     waarschuwingen.push('Er is ' + (laatsteBackup ? 'al meer dan twee dagen' : 'nog') + ' geen back-up gemaakt. Kijk in /beheer/status.');
   }
+  /* Niets nieuw en niets mis: geen mail. Elke nieuwe aanvraag geeft al direct een melding. */
+  if (cfg.planning.dagoverzicht_alleen_bij_nieuw && !nieuwSindsVorige && !waarschuwingen.length) {
+    ctx.log('info', 'dagoverzicht: niets nieuw, geen mail');
+    return null;
+  }
   const extra = {
-    nieuwSindsGisteren: db.prepare('SELECT COUNT(*) AS n FROM aanvragen WHERE aangemaakt >= ?').get(minDagen(nu, 1).toISOString()).n,
+    nieuwSindsVorige,
     lijst: db.prepare("SELECT COUNT(*) AS n FROM herinneringen WHERE status = 'bevestigd'").get().n,
     waarschuwingen
   };
   const m = berichten.dagoverzicht(open, extra, cfg, ctx.basisUrl);
   ctx.mail.inWachtrij({ soort: 'dagoverzicht', aan: ctx.env.MAIL_MELDINGEN_AAN, onderwerp: m.onderwerp, tekst: m.tekst, html: m.html });
+  dbm.zetInstelling(db, 'dagoverzicht-laatst', nu.toISOString());
   ctx.log('info', 'dagoverzicht: ' + open.length + ' open');
   return m;
 }

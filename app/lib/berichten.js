@@ -218,7 +218,7 @@ function herinneringRonde(ronde, cfg, basisUrl, afmeldLink, aangemeld) {
 }
 
 /* ---------------- dagoverzicht aan Stan ----------------
- * open: de open aanvragen, nieuw eerst. extra: { nieuwSindsGisteren, lijst, waarschuwingen } */
+ * open: de open aanvragen, nieuw eerst. extra: { nieuwSindsVorige, lijst, waarschuwingen } */
 function dagoverzicht(open, extra, cfg, basisUrl) {
   const STATUS = { nieuw: 'Nieuw', gebeld: 'Gebeld', afspraak: 'Afspraak' };
   const nieuw = open.filter((a) => a.status === 'nieuw').length;
@@ -239,7 +239,7 @@ function dagoverzicht(open, extra, cfg, basisUrl) {
   const regels = open.map(regel);
   const kopTekst = [
     open.length ? open.length + ' open aanvra' + (open.length === 1 ? 'ag' : 'gen') + ', waarvan ' + nieuw + ' nieuw.' : 'Er staan geen open aanvragen. Alles werkt.',
-    extra.nieuwSindsGisteren ? extra.nieuwSindsGisteren + ' nieuwe aanvra' + (extra.nieuwSindsGisteren === 1 ? 'ag' : 'gen') + ' sinds gisteren.' : null,
+    extra.nieuwSindsVorige ? extra.nieuwSindsVorige + ' nieuwe aanvra' + (extra.nieuwSindsVorige === 1 ? 'ag' : 'gen') + ' sinds het vorige overzicht.' : null,
     'Herinneringslijst: ' + extra.lijst + ' bevestigde aanmelding(en).'
   ].filter(Boolean);
   const tekst = kopTekst.concat(extra.waarschuwingen.map((w) => 'LET OP: ' + w), [''],

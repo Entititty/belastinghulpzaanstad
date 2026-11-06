@@ -29,11 +29,23 @@ test('dagoverzicht: open aanvragen, nieuw eerst, zonder namen in het onderwerp',
     assert.ok(!tekst.includes('Kees Klant'), 'klanten staan er niet in');
     assert.match(tekst, /tel:\+31612000003/);
     assert.match(tekst, /LET OP: Er is nog geen back-up gemaakt/);
-    /* ook als er niets open staat, als teken van leven */
+    assert.match(tekst, /3 nieuwe aanvragen sinds het vorige overzicht/);
+    /* een dag later: niets nieuw sinds het vorige overzicht en niets mis, dus geen mail */
+    t.verder(864e5);
+    t.db.prepare("INSERT OR REPLACE INTO instellingen (sleutel, waarde) VALUES ('backup-laatste', ?)").run(t.ctx.klok().toISOString());
+    assert.equal(dagoverzicht(t.ctx), null);
+    /* wel weer zodra er een nieuwe aanvraag is, ook als die al afgehandeld is */
+    await t.post('/api/aanvraag', terugbellen({ telefoon: '0612000004', naam: 'Piet Later' }), { 'X-Real-IP': '198.51.100.4' });
     t.db.prepare("UPDATE aanvragen SET status = 'klant'").run();
+    await t.wachtrijLeeg();
+    const tussen = t.smtp.berichten.length;
     dagoverzicht(t.ctx);
-    const nu = await t.mails(voor + 2);
+    const nu = await t.mails(tussen + 1);
     assert.equal(nep.onderwerp(nu[nu.length - 1].data), 'Dagoverzicht: geen open aanvragen');
+    assert.match(nep.tekst(nu[nu.length - 1].data), /1 nieuwe aanvraag sinds het vorige overzicht/);
+    /* met de instelling uit komt hij weer elke dag */
+    t.ctx.config.planning.dagoverzicht_alleen_bij_nieuw = false;
+    assert.ok(dagoverzicht(t.ctx));
   } finally {
     await t.stop();
   }

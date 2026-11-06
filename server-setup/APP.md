@@ -338,11 +338,14 @@ iedereen dicht en krijgt u een mail.
 | 03:30 | opruimen: aanvragen zonder opdracht na 12 maanden, onbevestigde herinneringen na 7 dagen, klanten na 7 jaar, mails die niet weg konden na 9 dagen |
 | 03:45 | back-up van de database in `/var/backups/belastinghulp/`, 14 dagen bewaard |
 | 04:15 | de klikmeting inlezen voor het overzicht |
-| 17:30 (doordeweeks), 08:30 (weekend) | het dagoverzicht per mail: de open aanvragen, nieuw eerst |
+| 17:30 (doordeweeks), 08:30 (weekend) | het dagoverzicht per mail: de open aanvragen, nieuw eerst; alleen als er iets nieuw is |
 
-Het dagoverzicht komt ook als er niets open staat. Krijgt u hem een keer
-niet, kijk dan in /beheer/status of in het logboek. De tijden staan in
-`data/aanvraag.json`.
+Het dagoverzicht komt alleen als er sinds het vorige overzicht een nieuwe
+aanvraag is binnengekomen, of als er iets mis is (een mail die niet weg kon,
+geen back-up). Op een rustige dag krijgt u dus geen mail. Of alles werkt, ziet
+u in /beheer/status. Wilt u hem weer elke dag, zet dan
+`dagoverzicht_alleen_bij_nieuw` op `false`. De tijden en die instelling staan
+in `data/aanvraag.json`.
 
 **Back-ups buiten de server:** de back-ups staan op dezelfde server. Gaat de
 hele server verloren, dan zijn ze dat ook. DigitalOcean heeft daarvoor
