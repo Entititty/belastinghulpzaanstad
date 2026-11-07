@@ -326,6 +326,11 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .nav-links .boa-bel{padding:0 18px 0 14px}
 .nav-links .boa-app{padding:0 14px 0 18px}
 .nav-links .boa-nr{display:none}
+.nav-links .bmt{min-height:40px;padding:0 16px;font-size:0.85rem;border-width:2px}
+.nav-links .bmt::after{display:none!important}
+@media (min-width:1321px){.nav-inner{max-width:1320px}}
+@media (min-width:901px) and (max-width:1320px){.nav-logo{font-size:0;gap:0}.nav-logo-icon{font-size:1.1rem}}
+@media (min-width:901px) and (max-width:1180px){.nav-links .nav-extra{display:none}.nav-links{gap:14px}}
 .boa-zweef{position:fixed;right:24px;bottom:24px;z-index:9999}
 @media (max-width:768px){.boa-zweef{display:none!important}}
 @media (max-width:479px){.boa-nr{display:none}.cta-paar{flex-direction:column;align-items:stretch}.cta-paar .boa{width:100%}.cta-paar .boa a{flex:1;justify-content:center}}

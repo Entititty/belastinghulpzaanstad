@@ -445,6 +445,22 @@ for (const f of walk(ROOT, [])) {
     if (!(sleutel in JAREN)) { fouten.push(rel(f) + ': data-jaar="' + sleutel + '" staat niet in data/datums.json'); return heel; }
     return open + JAREN[sleutel] + sluit;
   });
+  /* 1b2. vaste teksten uit data/bedrijf.json (de reactietijd), in de taal van de pagina */
+  s = s.replace(/(<span\s[^>]*?data-tekst="([a-z_]+)"[^>]*>)([^<]*)(<\/span>)/g, function (heel, open, sleutel, inhoud, sluit) {
+    const R = cfg.reactietijd || {};
+    const taal = /^en\//.test(rel(f)) ? 'en' : 'nl';
+    const k = sleutel === 'reactietijd' ? taal : sleutel === 'reactietijd_kort' ? taal + '_kort' : null;
+    if (!k || leeg(R[k])) { fouten.push(rel(f) + ': data-tekst="' + sleutel + '" staat niet in data/bedrijf.json (reactietijd)'); return heel; }
+    return open + R[k] + sluit;
+  });
+  /* andere reactietijden dan de afgesproken: alleen waarschuwen (de spoedaangifte binnen 24 uur is een dienst, geen reactietijd) */
+  const tekstAlleen = s.replace(/<script[\s\S]*?<\/script>|<!--[\s\S]*?-->|<[^>]+>/g, ' ');
+  tekstAlleen.replace(/[^.!?\n]{0,80}\b(binnen 24 uur|binnen een dag|24u|within 24 hours|24h)\b[^.!?\n]{0,60}/gi, function (zin, x, i) {
+    if (/spoed|rush|urgent/i.test(tekstAlleen.slice(Math.max(0, i - 150), i + zin.length))) return zin;
+    waarschuwingen.push(rel(f) + ': andere reactietijd dan "' + ((cfg.reactietijd || {}).nl || '') + '": "' + zin.trim().slice(0, 90) + '"');
+    return zin;
+  });
+
   /* 1c. title en meta: een title of content="" kan geen <span> bevatten. Daarom staat
      het sjabloon in een commentaar direct ervoor, met {jaartal} en {prijs:sleutel}:
        <!-- tpl: Box 3 over {box3_van}–{box3_tot} -->
@@ -546,7 +562,7 @@ for (const f of walk(ROOT, [])) {
 if (!CHECK) {
   for (const f of walk(ROOT, [])) {
     const html = fs.readFileSync(f, 'utf8');
-    const jaarInFaq = /"FAQPage"/.test(html) && /<button class="faq-question"(?:(?!<\/button>)[\s\S])*data-jaar=|<div class="faq-answer">(?:(?!<\/div>)[\s\S])*data-jaar=/.test(html);
+    const jaarInFaq = /"FAQPage"/.test(html) && /<button class="faq-question"(?:(?!<\/button>)[\s\S])*data-(?:jaar|tekst)=|<div class="faq-answer">(?:(?!<\/div>)[\s\S])*data-(?:jaar|tekst)=/.test(html);
     if (!faqHerbouw.has(f) && !jaarInFaq && !/<div class="faq-answer">(?:(?!<\/div>)[\s\S])*<!-- cfg:/.test(html)) continue;
     const r = spawnSync(process.execPath, [path.join(__dirname, 'faq-sync.js'), f, '--schrijf'], { encoding: 'utf8' });
     if (r.status !== 0) fouten.push(rel(f) + ': faq-sync faalde: ' + String(r.stderr || r.stdout).trim().split('\n').pop());

@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- tpl: Tarieven belastinghulp: aangifte €{prijs:aangifte}, met partner €{prijs:aangifte.partner} -->
 <title>Tarieven belastinghulp: aangifte €59, met partner €89</title>
+<!-- tpl: Alle prijzen op een rij: aangifte €{prijs:aangifte}, met partner €{prijs:aangifte.partner}, eerste baan €{prijs:eerste_baan}, voorlopige teruggave €{prijs:voorlopige_teruggave}, toeslag €{prijs:toeslag}. Vaste prijs, u weet vooraf wat het kost. -->
 <meta name="description" content="Alle prijzen op een rij: aangifte €59, met partner €89, eerste baan €49, voorlopige teruggave €109, toeslag €30. Vaste prijs, u weet vooraf wat het kost.">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Belastinghulp Zaanstad">
+<!-- tpl: Tarieven belastinghulp: aangifte €{prijs:aangifte}, met partner €{prijs:aangifte.partner} -->
 <meta property="og:title" content="Tarieven belastinghulp: aangifte €59, met partner €89">
+<!-- tpl: Alle prijzen op een rij: aangifte €{prijs:aangifte}, met partner €{prijs:aangifte.partner}, eerste baan €{prijs:eerste_baan}, voorlopige teruggave €{prijs:voorlopige_teruggave}, toeslag €{prijs:toeslag}. Vaste prijs, u weet vooraf wat het kost. -->
 <meta property="og:description" content="Alle prijzen op een rij: aangifte €59, met partner €89, eerste baan €49, voorlopige teruggave €109, toeslag €30. Vaste prijs, u weet vooraf wat het kost.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://belastinghulpzaanstad.nl/tarieven/">
@@ -26,7 +30,7 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
-<link rel="stylesheet" href="../belasting.595f658f.min.css">
+<link rel="stylesheet" href="../belasting.ff5fb322.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">
@@ -267,9 +271,10 @@
       </li>
       <li><a href="/senioren/">Senioren</a></li>
       <li><a href="/tarieven/">Tarieven</a></li>
-      <li><a href="/#werkwijze">Hoe werkt het</a></li>
+      <li class="nav-extra"><a href="/#werkwijze">Hoe werkt het</a></li>
       <li><a href="/over-ons/">Over ons</a></li>
       <li><span class="boa" role="group" aria-label="Bel of app"><a href="tel:+31619711848" class="boa-bel" rel="nofollow"><span aria-hidden="true">&#128222;</span> Bel<span class="boa-nr"> 06&nbsp;&ndash;&nbsp;19&nbsp;71&nbsp;18&nbsp;48</span></a><span class="boa-of" aria-hidden="true">of</span><a href="https://wa.me/31619711848" class="boa-app" rel="nofollow" aria-label="App via WhatsApp"><span aria-hidden="true">&#128172;</span> App</a></span></li>
+      <li><a href="/contact/#terugbellen" class="bmt">Bel mij terug</a></li>
     </ul>
     <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="hoofdmenu">
       <span></span><span></span><span></span>
@@ -294,8 +299,8 @@
       Geen uurtarief, geen toeslag achteraf, geen kosten voor een gesprek dat niet doorgaat.
     </p>
     <p style="font-size:1.05rem;color:var(--clr-deep);font-weight:600;line-height:1.7;margin:0 0 6px;">
-      Woont u samen en doet u samen aangifte? Dan betaalt u <span data-prijs="aangifte.partner">€89</span> in plaats van <span data-prijs="aangifte">€59</span>.
-      Dat is <span data-prijs="aangifte.extra">€30</span> voor u samen, niet <span data-prijs="aangifte">€59</span> per persoon.
+      Woont u samen en doet u samen aangifte? Uw partner kost <span data-prijs="aangifte.extra">€30</span> extra:
+      samen betaalt u <span data-prijs="aangifte.partner">€89</span> in plaats van 2 &times; <span data-prijs="aangifte">€59</span>.
     </p>
   </div>
 </section>

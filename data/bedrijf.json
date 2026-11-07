@@ -115,6 +115,13 @@
     "geldig_tot": "2026-12-31",
     "_todo": "BESLISSING EIGENAAR: loopt de startkorting door in 2027 (bijvoorbeeld tot 1 mei 2027, het einde van het aangifteseizoen), ander bedrag, of stopt hij op 31 december 2026? Zonder antwoord stopt hij vanzelf."
   },
+  "reactietijd": {
+    "_doc": "De belofte hoe snel u reageert. config-sync.js vult elementen met data-tekst=\"reactietijd\" (in een zin) en data-tekst=\"reactietijd_kort\" (in een tegel), Nederlands of Engels naar de pagina. De overige zinnen op de site zeggen al letterlijk 'dezelfde dag' / 'the same day'; config-sync waarschuwt als ergens een andere reactietijd staat (zoals '24 uur'), behalve bij de spoedaangifte.",
+    "nl": "dezelfde dag",
+    "nl_kort": "Zelfde dag",
+    "en": "the same day",
+    "en_kort": "Same day"
+  },
   "placeholders": {
     "_doc": "Nog niet bekend. Leeg laten tot de eigenaar het bevestigt; config-sync.js waarschuwt zolang een waarde leeg is.",
     "KVK_NUMMER": "",
