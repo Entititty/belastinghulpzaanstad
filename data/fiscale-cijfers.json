@@ -1,7 +1,7 @@
 {
   "_doc": "Eén bron van waarheid voor de fiscale cijfers (belastingjaar 2026). De site genereert NIET automatisch uit dit bestand (statische HTML); scripts/check-fiscale-cijfers.js faalt als een VEROUDERDE waarde ergens in de HTML terugkomt. Werk je een cijfer bij: pas \"waarde\" aan, zet de oude waarde in \"verouderd\", en vul \"bron_url\" en \"gecontroleerd_op\" (JJJJ-MM-DD) in. Een waarde zonder bron_url mag alleen blijven staan met \"bron_url_todo\": true; het script telt die apart. Waarden ouder dan 12 maanden geven een waarschuwing. Korte waarden (\"36%\", \"€20\") hebben een \"context\": een van die woorden moet op dezelfde regel staan voordat set-fiscale-cijfers.js vervangt.",
   "belastingjaar": 2026,
-  "laatst_gecontroleerd": "2026-10-30",
+  "laatst_gecontroleerd": "2026-11-07",
   "bron_algemeen": "https://www.belastingdienst.nl",
   "cijfers": {
     "box1_schijf1_tarief": {
@@ -9,7 +9,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-10-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf1_grens": {
@@ -17,7 +17,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: de eerste schijf loopt tot € 38.883 (35,75%)",
       "verouderd": [],
-      "gecontroleerd_op": "2026-10-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf2_tarief": {
@@ -30,7 +30,7 @@
         "36,97%",
         "36.97%"
       ],
-      "gecontroleerd_op": "2026-10-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box1_schijf3_tarief": {
@@ -38,7 +38,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-10-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "max_aftrektarief_eigen_woning": {
@@ -46,7 +46,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl: \"krijgt u in 2026 over al uw aftrekposten in de hoogste belastingschijf maximaal 37,56% belasting terug\"",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/aftrek-en-kortingen/content/afbouw-tarief-aftrekposten-bij-hoog-inkomen"
     },
     "eigenwoningforfait_pct": {
@@ -54,7 +54,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, eigenwoningforfait: 0,35% van de WOZ-waarde (rekenvoorbeeld €280.000 x 0,0035 = €980)",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/koopwoning/content/hoe-werkt-eigenwoningforfait"
     },
     "algemene_heffingskorting_max": {
@@ -94,7 +94,7 @@
       "verouderd": [
         "€2.035"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "ouderenkorting_alleenstaande": {
@@ -104,7 +104,7 @@
       "verouderd": [
         "€478"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
       "context": [
         "ouderenkorting",
@@ -210,7 +210,7 @@
       "verouderd": [
         "€57.684"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box3_heffingvrij_partners": {
@@ -218,7 +218,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: tarieven en heffingskortingen",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "box3_forfait_spaargeld": {
@@ -228,7 +228,7 @@
       "verouderd": [
         "1,44%"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_forfait_beleggingen": {
@@ -238,7 +238,7 @@
       "verouderd": [
         "5,88%"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_forfait_schulden": {
@@ -248,7 +248,7 @@
       "verouderd": [
         "2,46%"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_schuldendrempel_alleenstaand": {
@@ -266,7 +266,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: 36% over het rendement",
       "verouderd": [],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
       "context": [
         "box 3",
@@ -288,7 +288,7 @@
       ],
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete",
       "bron_url_2": "https://wetten.overheid.nl/BWBR0038145/",
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "context": [
         "verzuimboete",
         "boete",
@@ -302,10 +302,12 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, \"Boete\": de boete loopt op tot €6.709 bij herhaald verzuim. Dit is het wettelijk maximum van art. 67a AWR.",
       "verouderd": [
-        "5.514"
+        "5.514",
+        "€1.659",
+        "€1,659"
       ],
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/boete",
-      "gecontroleerd_op": "2026-08-30"
+      "gecontroleerd_op": "2026-11-07"
     },
     "startkorting_eerste_klanten": {
       "waarde": "€20",
@@ -325,7 +327,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl: \"Iedere bewoner mag op 1 januari 2026 maximaal € 38.479 hebben.\"",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/maximaal-vermogen-huurtoeslag",
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "verouderd": [
         "€36.952",
         "€ 36.952",
@@ -337,7 +339,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl: \"Partners mogen samen op 1 januari 2026 maximaal € 76.958 hebben.\"",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/maximaal-vermogen-huurtoeslag",
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-07",
       "verouderd": [
         "€73.904",
         "€ 73.904",
@@ -444,7 +446,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: \"€ 2.067 - 15% x (verzamelinkomen - € 46.002)\"",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
-      "gecontroleerd_op": "2026-10-20",
+      "gecontroleerd_op": "2026-11-07",
       "verouderd": [
         "€44.770"
       ]
@@ -454,7 +456,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: de ouderenkorting is nul bij een verzamelinkomen van € 59.782 (2.067 / 15% = 13.780 boven € 46.002)",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
-      "gecontroleerd_op": "2026-10-20",
+      "gecontroleerd_op": "2026-11-07",
       "verouderd": [
         "€59.783",
         "€57.310"
@@ -652,7 +654,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: schijf 2 \"meer dan € 38.883 tot en met € 78.426\", 37,56%; daarboven 49,50% (niet AOW-leeftijd)",
       "verouderd": [],
-      "gecontroleerd_op": "2026-10-30",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "ahk_afbouwgrens": {
@@ -1348,7 +1350,7 @@
       "verouderd": [
         "17,92%"
       ],
-      "gecontroleerd_op": "2026-10-31",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
       "context": [
         "AOW",
@@ -1360,7 +1362,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, voorlopige aanslag 2026: geboren vóór 1 januari 1946, schijf 1 tot en met € 41.123 tegen 17,85%",
       "verouderd": [],
-      "gecontroleerd_op": "2026-10-31",
+      "gecontroleerd_op": "2026-11-07",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen",
       "context": [
         "1946"
