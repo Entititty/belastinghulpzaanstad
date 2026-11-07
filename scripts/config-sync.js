@@ -19,6 +19,10 @@
  * 2. Blokken tussen <!-- cfg:naam --> en <!-- /cfg:naam -->. De inhoud wordt
  *    opnieuw opgebouwd uit de sjablonen hieronder. Een lege placeholder geeft
  *    geen leeg veld op de site: het zinsdeel wordt weggelaten.
+ * 2b. Jaartallen en einddatums uit data/datums.json: elementen met
+ *    data-jaar="sleutel", titles en meta met data-tpl="sjabloon", en de
+ *    seizoensbanners en de startkorting, die zichzelf in de browser op de
+ *    juiste dag tonen of verbergen (data-van/data-tot).
  * 3. JSON-LD: een Offer met "@id" op #prijs-sleutel krijgt "price", een
  *    AggregateOffer op #prijzen-sleutel krijgt lowPrice/highPrice/offerCount,
  *    en elke "priceRange" wordt de laagste tot de hoogste prijs met
@@ -29,6 +33,7 @@
  * GEBRUIK
  *   node scripts/config-sync.js            schrijft, en waarschuwt voor lege placeholders
  *   node scripts/config-sync.js --check    schrijft niets; exit 1 als de HTML afwijkt
+ *   --datum=2027-01-01                     bouwt alsof het die dag is (jaarwissel vooraf bekijken)
  *
  * Lege placeholders zijn een waarschuwing, geen fout: de site klopt dan nog
  * steeds, er staat alleen minder op. Een placeholder in de verkeerde vorm
@@ -83,12 +88,74 @@ if (!leeg(P.ACHTERGROND_STAN) && leeg(P.ACHTERGROND_STAN_EN)) waarschuwingen.pus
 if (!leeg(P.FEE_BOX3) && leeg(P.FEE_BOX3_GRONDSLAG_EN)) waarschuwingen.push('FEE_BOX3_GRONDSLAG_EN is leeg: de Engelse box 3-pagina gebruikt een algemene formulering.');
 if (leeg(P.EINDDATUM_CORRECTIE_2021)) waarschuwingen.push('EINDDATUM_CORRECTIE_2021 is leeg: de correctiepagina noemt geen einddatum voor 2021.');
 
-const VANDAAG = new Date().toISOString().slice(0, 10);
+/* ---------- datums: data/datums.json ----------
+   De bouwdatum is vandaag in Nederland. Met --datum=JJJJ-MM-DD bouwt u de site
+   alsof het die dag is, om een jaarwissel vooraf te bekijken. */
+const DATUMS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'datums.json'), 'utf8'));
+const datumArg = (process.argv.find(function (a) { return a.indexOf('--datum=') === 0; }) || '').slice(8);
+if (datumArg && !/^\d{4}-\d{2}-\d{2}$/.test(datumArg)) { console.error('--datum moet JJJJ-MM-DD zijn'); process.exit(1); }
+const VANDAAG = datumArg || new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Amsterdam' }).format(new Date());
+const PERIODE = DATUMS.perioden.filter(function (p) { return p.vanaf <= VANDAAG; }).pop();
+if (!PERIODE) { console.error('data/datums.json: geen periode voor ' + VANDAAG); process.exit(1); }
+
+/* "2027-01-01" -> "2027-01-01T00:00+01:00": middernacht in Nederland, zomer- of wintertijd */
+function nlMiddernacht(datum) {
+  const uur = Number(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Amsterdam', hour: '2-digit', hourCycle: 'h23' })
+    .format(new Date(datum + 'T00:00:00Z')));
+  return datum + 'T00:00+0' + uur + ':00';
+}
+/* Toont of verbergt in de browser elk element met data-van/data-tot, ook als de
+   site op die dag niet opnieuw gebouwd is. Staat direct na de elementen. */
+const VERBERGER = '<script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll(\'[data-van],[data-tot]\'),function(e){var v=e.getAttribute(\'data-van\'),t=e.getAttribute(\'data-tot\');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script>';
+/* Een element dat alleen van..tot zichtbaar is. Al voorbij op de bouwdatum: weg.
+   Nog niet begonnen: wel in de HTML, maar hidden tot de browser het toont. */
+function tijdelijk(van, tot, html) {
+  if (tot && VANDAAG >= tot) return '';
+  const nog = van && VANDAAG < van;
+  return '<div' + (van ? ' data-van="' + nlMiddernacht(van) + '"' : '') + (tot ? ' data-tot="' + nlMiddernacht(tot) + '"' : '') +
+    (nog ? ' hidden' : '') + '>' + html + '</div>';
+}
+function dagErna(datum) {
+  const d = new Date(datum + 'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
+}
+const MAANDEN = { nl: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] };
+function datumTekst(datum, taal) {
+  const [j, m, d] = datum.split('-').map(Number);
+  return d + ' ' + MAANDEN[taal][m - 1] + ' ' + j;
+}
+
+/* Alle banners die nog komen of nu lopen, elk met hun eigen van/tot. Een banner
+   zonder tekst voor deze soort (nl, nl_box3, en) slaat die pagina over. */
+function banners(soort) {
+  const html = DATUMS.banners.map(function (b) {
+    const t = b[soort];
+    if (!t) return '';
+    return tijdelijk(b.van, b.tot, '<div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;">' +
+      '<span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">' + esc(t.tekst) + '</span>' +
+      '<a href="' + esc(t.link) + '" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">' + esc(t.linktekst) + ' &rarr;</a></div>');
+  }).join('');
+  return html ? html + VERBERGER : '';
+}
+
 const sk = cfg.startkorting || {};
 const startkortingLoopt = sk.actief === true && (!sk.geldig_tot || VANDAAG <= sk.geldig_tot);
+/* tot = de eerste dag zonder korting */
+const SK_TOT = sk.geldig_tot ? dagErna(sk.geldig_tot) : null;
 if (sk.actief === true && sk.geldig_tot && VANDAAG > sk.geldig_tot) {
-  waarschuwingen.push('startkorting is verlopen sinds ' + sk.geldig_tot + ': zet actief op false en haal de teksten op de site weg.');
+  waarschuwingen.push('startkorting is verlopen sinds ' + sk.geldig_tot + ': de teksten zijn verborgen. Verlengen? Zet een nieuwe geldig_tot in data/bedrijf.json.');
 }
+
+/* De jaartallen die op de bouwdatum gelden (data-jaar="sleutel" en {sleutel} in data-tpl) */
+const JAREN = Object.assign({}, PERIODE, {
+  correctie_einddatum: '31 december ' + PERIODE.jaar,
+  correctie_einddatum_en: '31 December ' + PERIODE.jaar,
+  startkorting_tot: sk.geldig_tot ? datumTekst(sk.geldig_tot, 'nl') : '',
+  startkorting_tot_en: sk.geldig_tot ? datumTekst(sk.geldig_tot, 'en') : ''
+});
+delete JAREN.vanaf;
 
 /* ---------- prijzen ---------- */
 const prijzen = cfg.prijzen;
@@ -197,18 +264,25 @@ const SJABLONEN = {
   'btw-vermelding': function () {
     return leeg(P.VAT_NOTE) ? '' : '<p class="btw-vermelding" style="font-size:0.95rem;color:var(--clr-bark);margin:10px 0 0;line-height:1.6;">' + esc(P.VAT_NOTE) + '</p>';
   },
+  /* De startkorting verdwijnt in de browser vanzelf na geldig_tot, en bij de eerstvolgende build ook uit de HTML */
   'startkorting-tarieven': function () {
     if (!startkortingLoopt) return '';
-    return '<p class="startkorting" style="font-size:1rem;color:var(--clr-deep);margin:14px 0 0;line-height:1.6;background:#FFF8E1;border:1px solid #F5B947;border-radius:10px;padding:12px 16px;">' +
-      '<strong>Nieuw in 2026:</strong> bent u een nieuwe klant, dan krijgt u ' + euro(sk.bedrag) +
-      ' korting op een aangifte of voorlopige teruggave. Dat gaat automatisch, u heeft geen code nodig.</p>';
+    return tijdelijk(null, SK_TOT, '<p class="startkorting" style="font-size:1rem;color:var(--clr-deep);margin:14px 0 0;line-height:1.6;background:#FFF8E1;border:1px solid #F5B947;border-radius:10px;padding:12px 16px;">' +
+      '<strong>Startkorting:</strong> bent u een nieuwe klant, dan krijgt u ' + euro(sk.bedrag) +
+      ' korting op een aangifte of voorlopige teruggave, tot en met ' + datumTekst(sk.geldig_tot, 'nl') + '. Dat gaat automatisch, u heeft geen code nodig.</p>') + VERBERGER;
   },
-  /* korte versie voor het slot van de plaatspagina's; verdwijnt vanzelf als de actie afloopt */
+  /* korte versie voor het slot van de plaatspagina's */
   'startkorting-kort': function () {
     if (!startkortingLoopt) return '';
-    return '<p class="slot-actie"><strong>Nieuw in 2026:</strong> bent u een nieuwe klant, dan krijgt u ' + euro(sk.bedrag) +
-      ' korting op een aangifte of voorlopige teruggave, automatisch en zonder code. Wij plaatsen geen verzonnen reviews; <a href="/over-ons/">lees waarom</a>.</p>';
+    return tijdelijk(null, SK_TOT, '<p class="slot-actie"><strong>Startkorting:</strong> bent u een nieuwe klant, dan krijgt u ' + euro(sk.bedrag) +
+      ' korting op een aangifte of voorlopige teruggave, tot en met ' + datumTekst(sk.geldig_tot, 'nl') + ', automatisch en zonder code. Wij plaatsen geen verzonnen reviews; <a href="/over-ons/">lees waarom</a>.</p>') + VERBERGER;
   },
+  /* De seizoensbanner bovenaan: per periode een andere tekst uit data/datums.json */
+  'seizoensbanner': function () { return banners('nl'); },
+  'seizoensbanner-box3': function () { return banners('nl_box3'); },
+  'seizoensbanner-en': function () { return banners('en'); },
+  /* het script dat data-van/data-tot uitvoert, voor elementen buiten een cfg-blok */
+  'verberger': function () { return VERBERGER; },
   'review-knop': function () {
     if (leeg(P.GOOGLE_REVIEW_URL)) {
       return '<p style="line-height:1.7;color:var(--clr-bark);margin:0;">Wilt u mij laten weten hoe het ging? Stuur een <a href="https://wa.me/31619711848" rel="nofollow" style="color:var(--clr-teal);font-weight:700;">WhatsApp</a> of een <a href="mailto:' + esc(B.email) + '" style="color:var(--clr-teal);font-weight:700;">e-mail</a>. Ik lees alles.</p>';
@@ -293,6 +367,8 @@ function walk(dir, acc) {
 const rel = (f) => path.relative(ROOT, f).split(path.sep).join('/');
 
 let geraakt = 0, prijsPlekken = 0, blokken = 0, ldPlekken = 0;
+/* pagina's waar een FAQ-item wegviel: het FAQPage-schema moet opnieuw */
+const faqHerbouw = new Set();
 const afwijkend = [];
 
 /* De inhoud van een plat JSON-object rond positie i: van de laatste { ervoor
@@ -325,6 +401,44 @@ for (const f of walk(ROOT, [])) {
       return '<' + tag + attrs + '>' + inhoud.replace(/\d+/, String(v)) + '</' + tag + '>';
     });
 
+  /* 1a. tijdelijke stukken. In de browser doet data-van/data-tot het werk (VERBERGER);
+     bij een build na de datum gaat het stuk ook uit de HTML.
+     <!-- tot:2027-01-01 -->...<!-- /tot -->           weg vanaf die dag
+     <!-- van:2027-01-01 --><el data-van=".." hidden> zichtbaar vanaf die dag
+     <!-- actie:startkorting -->...<!-- /actie -->    weg na startkorting.geldig_tot */
+  s = s.replace(/<!-- tot:(\d{4}-\d{2}-\d{2}) -->[\s\S]*?<!-- \/tot -->/g, function (heel, tot) {
+    if (VANDAAG < tot) return heel;
+    if (/"FAQPage"/.test(voor)) faqHerbouw.add(f);
+    return '';
+  });
+  s = s.replace(/<!-- actie:startkorting -->([\s\S]*?)<!-- \/actie -->/g, function (heel, x) {
+    if (!startkortingLoopt) { if (/"FAQPage"/.test(voor)) faqHerbouw.add(f); return ''; }
+    if (!/data-tot="/.test(x)) fouten.push(rel(f) + ': actie:startkorting zonder data-tot');
+    return '<!-- actie:startkorting -->' + x.replace(/data-tot="[^"]*"/g, 'data-tot="' + nlMiddernacht(SK_TOT) + '"') + '<!-- /actie -->';
+  });
+  s = s.replace(/<!-- van:(\d{4}-\d{2}-\d{2}) -->(\s*<[a-z0-9]+)([^>]*)>/g, function (heel, van, tag, attrs) {
+    return '<!-- van:' + van + ' -->' + tag + attrs.replace(/\shidden(?=\s|$)/, '') + (VANDAAG < van ? ' hidden' : '') + '>';
+  });
+
+  /* 1b. jaartallen: data-jaar="sleutel" krijgt de waarde uit de periode in data/datums.json */
+  s = s.replace(/(<span\s[^>]*?data-jaar="([a-z0-9_]+)"[^>]*>)([^<]*)(<\/span>)/g, function (heel, open, sleutel, inhoud, sluit) {
+    if (!(sleutel in JAREN)) { fouten.push(rel(f) + ': data-jaar="' + sleutel + '" staat niet in data/datums.json'); return heel; }
+    return open + JAREN[sleutel] + sluit;
+  });
+  /* 1c. title en meta: een title of content="" kan geen <span> bevatten. Daarom staat
+     het sjabloon in een commentaar direct ervoor, met {jaartal} en {prijs:sleutel}:
+       <!-- tpl: Box 3 over {box3_van}–{box3_tot} -->
+       <!-- tpl: tekst nu || vanaf 2027-01-01: tekst vanaf die dag --> */
+  s = s.replace(/(<!-- tpl: (.*?)(?: \|\| vanaf (\d{4}-\d{2}-\d{2}): (.*?))? -->\s*)(<title>[^<]*<\/title>|<meta [^>]*?content="[^"]*"[^>]*>)/g, function (heel, kop, tpl, tot, daarna, tag) {
+    const tekst = (tot && VANDAAG >= tot ? daarna : tpl).replace(/\{(prijs:)?([a-z0-9_.]+)\}/g, function (m, isPrijs, k) {
+      const v = isPrijs ? prijs(k) : JAREN[k];
+      if (v === undefined || v === null || v === '') { fouten.push(rel(f) + ': tpl kent {' + (isPrijs || '') + k + '} niet'); return m; }
+      return String(v);
+    });
+    if (/"/.test(tekst)) fouten.push(rel(f) + ': tpl bevat een aanhalingsteken');
+    return kop + (tag.indexOf('<title>') === 0 ? '<title>' + tekst + '</title>' : tag.replace(/\scontent="[^"]*"/, ' content="' + tekst + '"'));
+  });
+
   /* 2. cfg-blokken */
   s = s.replace(/<!-- cfg:([a-z0-9-]+) -->([\s\S]*?)<!-- \/cfg:\1 -->/g, function (heel, naam) {
     blokken++;
@@ -332,6 +446,13 @@ for (const f of walk(ROOT, [])) {
     if (!sjabloon) { fouten.push(rel(f) + ': onbekend cfg-blok "' + naam + '"'); return heel; }
     return '<!-- cfg:' + naam + ' -->' + sjabloon() + '<!-- /cfg:' + naam + ' -->';
   });
+
+  /* 2c. het verbergscript werkt alleen op wat er al staat: dus na het laatste tijdelijke stuk */
+  const laatsteTijd = Math.max(s.lastIndexOf('data-tot="'), s.lastIndexOf('data-van="'));
+  if (laatsteTijd > -1 && s.lastIndexOf('<!-- cfg:verberger -->') < laatsteTijd) {
+    if (!/<\/body>/.test(s)) fouten.push(rel(f) + ': tijdelijke stukken maar geen </body> voor het verbergscript');
+    s = s.replace(/\n?<\/body>/, '\n<!-- cfg:verberger -->' + VERBERGER + '<!-- /cfg:verberger -->\n</body>');
+  }
 
   /* 3. JSON-LD */
   s = s.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, function (heel, open, body, sluit) {
@@ -399,13 +520,14 @@ for (const f of walk(ROOT, [])) {
 }
 
 /* ---------- FAQ-schema waar een cfg-blok in een zichtbaar antwoord staat ----------
-   Het FAQPage-schema moet gelijk zijn aan de zichtbare FAQ. Staat er een cfg-blok in
-   een antwoord (het box 3-tarief op de box 3-pagina), dan verandert die tekst met de
+   Het FAQPage-schema moet gelijk zijn aan de zichtbare FAQ. Staat er een cfg-blok of
+   een data-jaar in een antwoord (het box 3-tarief op de box 3-pagina), dan verandert die tekst met de
    config. faq-sync.js zet het schema dan opnieuw. Niet in --check: dan schrijven we niets. */
 if (!CHECK) {
   for (const f of walk(ROOT, [])) {
     const html = fs.readFileSync(f, 'utf8');
-    if (!/<div class="faq-answer">(?:(?!<\/div>)[\s\S])*<!-- cfg:/.test(html)) continue;
+    const jaarInFaq = /"FAQPage"/.test(html) && /<button class="faq-question"(?:(?!<\/button>)[\s\S])*data-jaar=|<div class="faq-answer">(?:(?!<\/div>)[\s\S])*data-jaar=/.test(html);
+    if (!faqHerbouw.has(f) && !jaarInFaq && !/<div class="faq-answer">(?:(?!<\/div>)[\s\S])*<!-- cfg:/.test(html)) continue;
     const r = spawnSync(process.execPath, [path.join(__dirname, 'faq-sync.js'), f, '--schrijf'], { encoding: 'utf8' });
     if (r.status !== 0) fouten.push(rel(f) + ': faq-sync faalde: ' + String(r.stderr || r.stdout).trim().split('\n').pop());
   }
@@ -464,23 +586,15 @@ for (const [k, p] of Object.entries(prijzen)) {
     }
   });
 }
+/* jaartallen en startkorting: llms.txt heeft geen markers, dus waarschuwen na een jaarwissel */
+[['correctie', JAREN.correctie_van, JAREN.correctie_tot], ['box 3', JAREN.box3_van, JAREN.box3_tot]].forEach(function (r) {
+  if (llms.indexOf(r[1] + '–' + r[2]) === -1) waarschuwingen.push('llms.txt noemt de jaren voor ' + r[0] + ' (' + r[1] + '–' + r[2] + ') niet; werk llms.txt met de hand bij.');
+});
+if (!startkortingLoopt && /startkorting/i.test(llms)) waarschuwingen.push('llms.txt noemt de startkorting nog, maar die loopt niet meer; haal de regel weg.');
+if (startkortingLoopt && llms.indexOf(datumTekst(sk.geldig_tot, 'nl')) === -1) waarschuwingen.push('llms.txt noemt de einddatum van de startkorting (' + datumTekst(sk.geldig_tot, 'nl') + ') niet.');
 if (!leeg(P.FEE_BOX3) && llms.indexOf(String(P.FEE_BOX3).replace('.', ',') + '%') === -1) {
   waarschuwingen.push('llms.txt noemt het box 3-tarief (' + P.FEE_BOX3 + '%) niet; werk llms.txt met de hand bij.');
 }
-
-/* ---------- data/seizoen.json: teksten voor de seizoensbanner, alleen controleren ----------
-   Geen markers mogelijk in JSON-tekst. Na een prijswijziging blijft daar dus de
-   oude prijs staan; dit vangt elk bedrag tot €200 dat geen prijs meer is. Een
-   bestaande prijs bij de verkeerde dienst ("voorlopige teruggave vanaf €49")
-   ziet het niet: lees de teksten na bij elke prijswijziging. */
-const seizoen = fs.readFileSync(path.join(ROOT, 'data', 'seizoen.json'), 'utf8').replace(/&euro;\s?/g, '€');
-const gezienSeizoen = new Set();
-seizoen.replace(/€\s?(\d{2,3})(?!\d)(?![.,]\d)/g, function (heel, n) {
-  if (Number(n) <= 200 && !bekendePrijzen.has(n) && !gezienSeizoen.has(n)) {
-    gezienSeizoen.add(n);
-    waarschuwingen.push('data/seizoen.json noemt €' + n + ', dat is geen prijs uit data/bedrijf.json. Pas de tekst met de hand aan.');
-  }
-});
 
 /* ---------- uitkomst ---------- */
 console.log('config-sync: ' + prijsPlekken + ' prijsplekken, ' + blokken + ' cfg-blokken, ' + ldPlekken + ' JSON-LD-velden; priceRange ' + PRICE_RANGE);

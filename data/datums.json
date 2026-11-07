@@ -1,0 +1,90 @@
+{
+  "_doc": "Eén bron voor alles wat met een jaartal of einddatum op de site staat. scripts/config-sync.js leest dit bestand. (1) perioden: de jaartallen in de tekst. Elementen met data-jaar=\"sleutel\" krijgen de waarde uit de periode die op de bouwdatum geldt; titles en meta met data-tpl worden uit hun sjabloon opgebouwd. Die tekst verandert pas als de site opnieuw gebouwd wordt: draai op of na elke 'vanaf'-datum node scripts/bouw.js, commit en push. bouw.js --check faalt vanaf die datum tot dat gebeurd is. (2) banners: tonen en verbergen zichzelf in de browser op de juiste dag, ook zonder nieuwe build. 'tot' is de eerste dag dat de banner er NIET meer staat. Datums zijn Nederlandse tijd, 00:00. De startkorting staat in data/bedrijf.json (startkorting), omdat het een prijs is; ook die verdwijnt vanzelf na geldig_tot. Feiten alleen met bron: zie _bronnen.",
+  "_bronnen": {
+    "correctie": "Verzoek om vermindering: binnen 5 jaar na het einde van het belastingjaar, ontvangst telt. https://www.belastingdienst.nl/wps/wcm/connect/nl/aangifte-inkomstenbelasting/content/hoeveel-jaar-terug-aangifte-wijzigen (gecontroleerd 2026-11-01)",
+    "box3": "Opgaaf werkelijk rendement: formulier voor 2017 t/m 2024; vanaf 2025 in de aangifte. Te laat voor bezwaar: binnen 5 jaar na het jaar. https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/formulier-opgaaf-werkelijk-rendement (gecontroleerd 2026-11-07)",
+    "aangifte": "Aangifte over 2026: vanaf 1 maart 2027, uiterlijk 1 mei 2027. Zie de bronnen in blog/einddatum-belastingaangifte-2026/."
+  },
+  "perioden": [
+    {
+      "vanaf": "2026-01-01",
+      "jaar": 2026,
+      "correctie_van": 2021,
+      "correctie_tot": 2024,
+      "box3_van": 2021,
+      "box3_tot": 2024,
+      "te_laat_jaar": 2025
+    },
+    {
+      "vanaf": "2027-01-01",
+      "jaar": 2027,
+      "correctie_van": 2022,
+      "correctie_tot": 2025,
+      "box3_van": 2022,
+      "box3_tot": 2024,
+      "te_laat_jaar": 2025
+    },
+    {
+      "vanaf": "2027-05-01",
+      "jaar": 2027,
+      "correctie_van": 2022,
+      "correctie_tot": 2025,
+      "box3_van": 2022,
+      "box3_tot": 2024,
+      "te_laat_jaar": 2026
+    }
+  ],
+  "banners": [
+    {
+      "id": "deadline-2021",
+      "van": "2026-11-01",
+      "tot": "2027-01-01",
+      "nl": {
+        "tekst": "Gemiste aftrekposten over 2021? Uw verzoek moet uiterlijk 31 december binnen zijn.",
+        "link": "/deadline-2021/",
+        "linktekst": "Kijk of het loont"
+      },
+      "nl_box3": {
+        "tekst": "Box 3 over 2021: te laat voor bezwaar? Dan kan de opgaaf nog tot 31 december.",
+        "link": "/deadline-2021/",
+        "linktekst": "Lees wat er nog kan"
+      },
+      "en": {
+        "tekst": "Missed deductions in 2021? Your request must reach the tax authority by 31 December 2026.",
+        "link": "/en/services/late-tax-return/",
+        "linktekst": "See what is still possible"
+      }
+    },
+    {
+      "id": "aangifte-2026",
+      "van": "2027-01-01",
+      "tot": "2027-05-01",
+      "nl": {
+        "tekst": "Aangifte over 2026 kan vanaf 1 maart. Plan nu uw afspraak.",
+        "link": "/contact/#terugbellen",
+        "linktekst": "Bel mij terug"
+      },
+      "en": {
+        "tekst": "Tax return for 2026 can be filed from 1 March. Book your appointment now.",
+        "link": "/en/#contact",
+        "linktekst": "Contact us"
+      }
+    },
+    {
+      "id": "na-1-mei-2027",
+      "van": "2027-05-01",
+      "tot": "2028-01-01",
+      "nl": {
+        "tekst": "Iets vergeten in uw aangifte? Corrigeren kan tot 5 jaar terug. Koopwoning? Krijg uw hypotheekrenteaftrek elke maand met een voorlopige teruggave.",
+        "link": "/diensten/correctie-late-aangifte/",
+        "linktekst": "Laat het nakijken"
+      },
+      "en": {
+        "tekst": "Forgot something in your tax return? Corrections are possible up to 5 years back. Own a home? Get your mortgage interest deduction every month with a provisional refund.",
+        "link": "/en/services/late-tax-return/",
+        "linktekst": "Have it checked"
+      }
+    }
+  ],
+  "_doc_velden": "jaar: het kalenderjaar. correctie_van/tot: de jaren die u nog kunt corrigeren (de lopende aangifte niet meegeteld). box3_van/tot: de jaren voor het formulier Opgaaf werkelijk rendement (alleen t/m 2024; vanaf 2025 gaat het via de aangifte). te_laat_jaar: het jaar waarvan de aangifte nu te laat is (na 1 mei)."
+}

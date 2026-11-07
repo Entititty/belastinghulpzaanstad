@@ -29,7 +29,7 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="apple-touch-icon" href="../../favicon.png">
-<link rel="stylesheet" href="../../belasting.d023b2fb.min.css">
+<link rel="stylesheet" href="../../belasting.595f658f.min.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -503,7 +503,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Ik heb mijn aangifte 2025 nog niet gedaan. Kan dat nog?
+          Ik heb mijn aangifte <span data-jaar="te_laat_jaar">2025</span> nog niet gedaan. Kan dat nog?
           <span class="faq-arrow">+</span>
         </button>
         <div class="faq-answer">
@@ -516,7 +516,7 @@
           <span class="faq-arrow">+</span>
         </button>
         <div class="faq-answer">
-          <p>U kunt tot 5 jaar terug aangiften corrigeren. Wij kijken uw aangiften van 2021 tot en met 2024 gratis na op gemiste aftrekposten (zorgkosten, giften, partneralimentatie, en over 2021 ook studiekosten). Levert dat geld op? Dan kost de correctie <span data-prijs="correctie">€69</span> per jaar. Zo niet, dan kost het u niets.</p>
+          <p>U kunt tot 5 jaar terug aangiften corrigeren. Wij kijken uw aangiften van <span data-jaar="correctie_van">2021</span> tot en met <span data-jaar="correctie_tot">2024</span> gratis na op gemiste aftrekposten (zorgkosten, giften, partneralimentatie<!-- tot:2027-01-01 --><span data-tot="2027-01-01T00:00+01:00">, en over 2021 ook studiekosten</span><!-- /tot -->). Levert dat geld op? Dan kost de correctie <span data-prijs="correctie">€69</span> per jaar. Zo niet, dan kost het u niets.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -746,5 +746,6 @@ document.querySelectorAll('.tarief-card, .step, .faq-item').forEach(el => {
 <aside class="boa-zweef" aria-label="Contact"><span class="boa" role="group" aria-label="Bel of app"><a href="tel:+31619711848" class="boa-bel" rel="nofollow"><span aria-hidden="true">&#128222;</span> Bel<span class="boa-nr"> 06&nbsp;&ndash;&nbsp;19&nbsp;71&nbsp;18&nbsp;48</span></a><span class="boa-of" aria-hidden="true">of</span><a href="https://wa.me/31619711848" class="boa-app" rel="nofollow" aria-label="App via WhatsApp"><span aria-hidden="true">&#128172;</span> App</a></span></aside>
 
 
+<!-- cfg:verberger --><script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-van],[data-tot]'),function(e){var v=e.getAttribute('data-van'),t=e.getAttribute('data-tot');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script><!-- /cfg:verberger -->
 </body>
 </html>

@@ -9,7 +9,21 @@ herzien moeten worden, zodat niets stilletjes veroudert. Bijgehouden sinds ronde
 
 ---
 
-## 1. Strip "aangifte 2025 nog niet gedaan" op de Engelse homepage — HANDMATIG
+## 0. Jaarwissel: `data/datums.json` — AUTO, met één build per datum
+*Toegevoegd 2026-11-07.* Eén bron voor jaartallen, einddatums en seizoensbanners.
+- **In de browser (AUTO, ook zonder build):** de seizoensbanner bovenaan de homepage, de box 3-pagina en
+  de Engelse homepage wisselt op 1 januari en 1 mei. De startkorting, het gele 2021-blok, het FAQ-item over
+  2021, de studiekostenzinnen over 2021 en de Engelse strip "2025 return" verdwijnen op 1 januari 2027.
+  Techniek: `data-van`/`data-tot` en een klein script onderaan de pagina (cfg-blok `verberger`).
+- **Bij een build (`node scripts/bouw.js`):** de jaartallen in de tekst (`data-jaar`), titles en meta
+  (`<!-- tpl: ... -->`) en het FAQ-schema schuiven mee; verlopen stukken (`<!-- tot:... -->`) gaan uit de HTML.
+- **Wat u moet doen:** op of kort na **1 januari 2027** en **1 mei 2027**: `node scripts/bouw.js`, commit, push.
+  Vanaf die dag faalt `node scripts/bouw.js --check` tot dat gebeurd is: dat is het geheugensteuntje.
+  Vooraf bekijken: `node scripts/config-sync.js --datum=2027-01-01` in een kopie van de site.
+- **Met de hand blijft:** `llms.txt` (config-sync waarschuwt bij afwijkende jaren of een verlopen
+  startkorting), blogtekst die een jaar beschrijft, en een nieuwe periode in `perioden` voor 2028.
+
+## 1. Strip "aangifte 2025 nog niet gedaan" op de Engelse homepage — AUTO weg op 2027-01-01
 *Bijgewerkt 2026-10-20.* De Nederlandse homepage heeft geen uitstel-strip meer. De
 site noemt nergens een Beconregeling: die claim is eerder weggehaald, omdat niet
 vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de eigenaar).
@@ -17,8 +31,8 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
 - **Nu:** "Not filed your 2025 return yet? You can still file it", late aangifte €69
   (`data-prijs`). De oude tekst "extension until 1 September 2026" is per 2026-10-20 vervangen.
 - **Actie — 2027-01:** omzetten naar het aangifteseizoen 2026 (aangifte vóór 1 mei 2027).
-- `js/seizoen.js` en `data/seizoen.json` worden op dit moment door geen enkele pagina
-  geladen. Zet je ze weer aan, werk dan eerst de periodeteksten bij (jaartallen, prijzen).
+- Sinds 2026-11-07 verdwijnt de strip op 1 januari 2027 vanzelf (zie 0). `js/seizoen.js` en
+  `data/seizoen.json` zijn verwijderd: geen pagina laadde ze nog. De seizoensbanner komt uit `data/datums.json`.
 
 ## 2. "Uitstel tot 1 september 2026" (bodytekst blogs) — HANDMATIG
 - **Bestanden:** ~30 HTML-bestanden noemen "1 september" (uitstel-, deadline- en te-laat-blogs,
@@ -31,38 +45,36 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
 - **Actie — Q1 2027:** actualiseren naar de cyclus van belastingjaar 2026
   (uitstel aanvragen vóór 1 mei 2027, uitstel tot 1 september 2027). Zie `docs/seizoen-2027.md`.
 
-## 2a. Startkorting €20 — HANDMATIG, verloopt **2026-12-31**
+## 2a. Startkorting €20 — AUTO, verloopt **2026-12-31** (beslissing eigenaar open)
 - **Bron:** `data/bedrijf.json` → `startkorting` (`actief`, `bedrag`, `geldig_tot`), en
   `startkorting_eerste_klanten` in `data/fiscale-cijfers.json`.
 - **Tekst:** "nieuwe klanten krijgen in 2026 €20 korting op een aangifte of voorlopige
   teruggave, met of zonder review".
 - **Bestanden (22):** `tarieven/`, `over-ons/`, de negen NL-plaatspagina's, `en/`,
   `en/about-us/` en de negen EN-plaatspagina's; plus `llms.txt`.
-- **Actie — 2026-12-31:** loopt de actie af, zet `actief` op `false` (haalt de regel op
-  `/tarieven/` weg) en haal de overige vermeldingen met de hand weg. Verlengen: pas
-  `geldig_tot` en de jaartallen in de tekst aan.
+- **Sinds 2026-11-07:** de teksten noemen geen jaar meer maar "tot en met <geldig_tot>". Alle
+  vermeldingen staan in `<!-- actie:startkorting -->` of in de cfg-blokken `startkorting-*`; ze
+  verdwijnen in de browser na `geldig_tot` en bij de volgende build uit de HTML.
+- **Verlengen:** alleen `geldig_tot` aanpassen en bouwen, **vóór** de einddatum (daarna zijn de teksten
+  uit de HTML). `llms.txt` met de hand.
 
-## 2b. "In 2026 kunt u nog aftrekposten uit 2021 terugvragen" — HANDMATIG, verloopt eind 2026
+## 2b. "In 2026 kunt u nog aftrekposten uit 2021 terugvragen" — AUTO weg op 2027-01-01
 - **Bestand:** `diensten/correctie-late-aangifte/` (urgentieblok), placeholder
   `EINDDATUM_CORRECTIE_2021` in `data/bedrijf.json`: **31 december 2026** (ingevuld 2026-10-21;
   een verzoek om vermindering moet binnen 5 jaar na het einde van het belastingjaar binnen zijn,
   ontvangst telt). Ook in `llms.txt`.
-- **Let op:** de meta description van `diensten/correctie-late-aangifte/` noemt het ook ("over 2021
-  kan dat nog tot 31 december 2026"). Die staat niet in de config: met de hand aanpassen.
-- **Actie — 2027-01:** het jaartal één jaar opschuiven (2022) en de placeholder leegmaken.
+- **Sinds 2026-11-07:** het blok heeft `data-tot` en staat in `<!-- tot:2027-01-01 -->`. De meta
+  description komt uit een sjabloon ("over {correctie_van} kan dat nog tot {correctie_einddatum}").
+- **Actie — 2027-01:** alleen bouwen (zie 0). Wil je voor 2022 weer zo'n blok, maak het dan opnieuw.
 
-## 2c-bis. Deadlinecampagne 2021 — deels AUTO, verloopt **2026-12-31**
+## 2c-bis. Deadlinecampagne 2021 — AUTO, verloopt **2026-12-31**
 *Toegevoegd 2026-11-05.*
-- **Pagina:** `deadline-2021/`. Na 31 december 2026 (Nederlandse tijd) toont een script bovenaan
-  de melding "De termijn voor 2021 is voorbij" (`#dl-verlopen`). De rest van de pagina blijft staan.
-- **Banners (AUTO weg na 31-12-2026):** bovenaan de hero van `index.html`, het gele 2021-blok op
-  `diensten/correctie-late-aangifte/` en onder het kruimelpad van `diensten/box-3-bezwaar/`. Elk blok
-  heeft het commentaar `deadline-2021` en een inline script dat het verbergt.
-- **HANDMATIG:** het eerste FAQ-item op de homepage ("Kan ik over 2021 nog geld terugvragen?"), de
-  links in `blog/te-laat-belastingaangifte/`, `blog/box-3-bezwaar-2026/`, `checklist/` en `llms.txt`.
-- **Actie — 2027-01:** banners en FAQ-item weghalen (daarna `node scripts/faq-sync.js index.html --schrijf`).
-  Kies voor de pagina: omzetten naar `/deadline-2022/` (zelfde regel: over 2022 tot en met 31 december 2027)
-  met een 301 van het oude adres, of noindex en de links weghalen.
+- **Pagina:** `deadline-2021/` blijft bestaan (adres houden, geen 404). Vanaf 1 januari 2027 tonen de hero, het
+  label en (na een build) de title en meta "De termijn voor 2021 is voorbij" met de verwijzing naar correctie
+  over 2022 tot en met 2025. De rest van de pagina gaat nog over 2021: herschrijven in januari 2027 is netjes.
+- **Banners, gele blok, FAQ-item op de homepage:** AUTO, zie 0.
+- **HANDMATIG:** de links naar /deadline-2021/ in `blog/te-laat-belastingaangifte/`, `blog/box-3-bezwaar-2026/`,
+  `checklist/` en `llms.txt`: laten staan of weghalen in januari 2027.
 - **Bronnen:** staan als HTML-commentaar in `deadline-2021/index.html` (geraadpleegd 2026-11-01).
 
 ## 2c. Rekentools — deels AUTO
@@ -134,11 +146,13 @@ De **2026**-tarieven (beneden AOW) zijn:
 
 Het **maximale aftrektarief eigen woning** (tariefsaanpassing) 2026 = **37,56%**.
 
-## 6. Box 3: Opgaaf werkelijk rendement 2021–2024 — HANDMATIG
+## 6. Box 3: Opgaaf werkelijk rendement — jaartallen AUTO (zie 0)
 - **Bestanden:** `diensten/box-3-bezwaar/` (en de EN-versie), `tarieven/`, `blog/box-3-bezwaar-2026/`,
   `blog/box-3-sparen/`, `blog/hoeveel-spaargeld-belastingvrij/`, `en/blog/box-3-savings/`.
 - **Sinds 2026-10:** de dienst is hulp bij de Opgaaf werkelijk rendement (geen bezwaar), zelf doen
   kan gratis, wij werken op no cure no pay. Tarief: placeholder `FEE_BOX3` (zie `docs/TODO-no-cure-no-pay.md`).
+- **Jaren:** formulier voor 2017 t/m 2024; vanaf 2025 via de aangifte (belastingdienst.nl, formulier-opgaaf-werkelijk-rendement,
+  gecontroleerd 2026-11-07). In 2027 dus 2022 t/m 2024 (`box3_van`/`box3_tot` in `data/datums.json`).
 - **Actie:** bij elke nieuwe stap van de Belastingdienst (termijnen, aanslag 2025, Wet werkelijk
   rendement box 3) de jaren en de uitleg nalopen op belastingdienst.nl.
 

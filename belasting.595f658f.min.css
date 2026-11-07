@@ -387,3 +387,4 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .rekentabel-noot{font-size:0.9rem;color:var(--clr-bark);margin:0 0 28px;line-height:1.6}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-up{opacity:1;animation:none}.hero-badge-dot,.hero-float-badge{animation:none}.audience-card,.tarief-card,.step,.faq-item,.scroll-reveal{opacity:1!important;transform:none!important;transition:none!important}}
+[hidden]{display:none!important}

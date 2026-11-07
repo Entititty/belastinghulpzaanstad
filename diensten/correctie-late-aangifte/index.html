@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aangifte corrigeren tot 5 jaar terug | €69 per jaar</title>
+<!-- tpl: Aftrekposten gemist of te laat met uw aangifte? Wij corrigeren tot 5 jaar terug; over {correctie_van} kan dat nog tot {correctie_einddatum}. Vaste prijs €{prijs:correctie} per jaar. -->
 <meta name="description" content="Aftrekposten gemist of te laat met uw aangifte? Wij corrigeren tot 5 jaar terug; over 2021 kan dat nog tot 31 december 2026. Vaste prijs €69 per jaar.">
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Belastinghulp Zaanstad">
 <meta property="og:title" content="Aangifte corrigeren tot 5 jaar terug | €69 per jaar">
+<!-- tpl: Aftrekposten gemist of te laat met uw aangifte? Wij corrigeren tot 5 jaar terug; over {correctie_van} kan dat nog tot {correctie_einddatum}. Vaste prijs €{prijs:correctie} per jaar. -->
 <meta property="og:description" content="Aftrekposten gemist of te laat met uw aangifte? Wij corrigeren tot 5 jaar terug; over 2021 kan dat nog tot 31 december 2026. Vaste prijs €69 per jaar.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/">
@@ -22,6 +24,7 @@
 <meta property="og:image:alt" content="Belastinghulp Zaanstad: correctie &amp; late belastingaangifte alsnog goed geregeld">
 <meta name="twitter:image" content="https://belastinghulpzaanstad.nl/og/og-correctie-late-aangifte.png">
 <meta name="twitter:title" content="Aangifte corrigeren tot 5 jaar terug | €69 per jaar">
+<!-- tpl: Aftrekposten gemist of te laat met uw aangifte? Wij corrigeren tot 5 jaar terug; over {correctie_van} kan dat nog tot {correctie_einddatum}. Vaste prijs €{prijs:correctie} per jaar. -->
 <meta name="twitter:description" content="Aftrekposten gemist of te laat met uw aangifte? Wij corrigeren tot 5 jaar terug; over 2021 kan dat nog tot 31 december 2026. Vaste prijs €69 per jaar.">
 <link rel="canonical" href="https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/">
 <link rel="preload" href="/fonts/bhz-serif-2026-10.woff2" as="font" type="font/woff2" crossorigin>
@@ -29,7 +32,7 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="apple-touch-icon" href="../../favicon.png">
-<link rel="stylesheet" href="../../belasting.d023b2fb.min.css">
+<link rel="stylesheet" href="../../belasting.595f658f.min.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -262,7 +265,7 @@
       <div>
         <div class="hero-badge fade-up"><span class="hero-badge-dot"></span>Aftrekpost gemist of aangifte te laat?</div>
         <h1 class="fade-up fade-up-d1">Correctie &amp; <em>late aangifte</em></h1>
-        <p class="hero-sub fade-up fade-up-d2">Heeft u uw aangifte 2025 nog niet gedaan, of in eerdere jaren aftrekposten laten liggen? Wij corrigeren aangiften <strong>tot 5 jaar terug</strong> (2021 t/m 2024) en dienen een te late aangifte alsnog snel in. Vaste prijs <span data-prijs="correctie">€69</span> per jaaraangifte.</p>
+        <p class="hero-sub fade-up fade-up-d2">Heeft u uw aangifte <span data-jaar="te_laat_jaar">2025</span> nog niet gedaan, of in eerdere jaren aftrekposten laten liggen? Wij corrigeren aangiften <strong>tot 5 jaar terug</strong> (<span data-jaar="correctie_van">2021</span> t/m <span data-jaar="correctie_tot">2024</span>) en dienen een te late aangifte alsnog snel in. Vaste prijs <span data-prijs="correctie">€69</span> per jaaraangifte.</p>
         <div class="hero-buttons fade-up fade-up-d3">
           <span class="cta-paar"><span class="boa" role="group" aria-label="Bel of app"><a href="tel:+31619711848" class="boa-bel" rel="nofollow"><span aria-hidden="true">&#128222;</span> Bel<span class="boa-nr"> 06&nbsp;&ndash;&nbsp;19&nbsp;71&nbsp;18&nbsp;48</span></a><span class="boa-of" aria-hidden="true">of</span><a href="https://wa.me/31619711848?text=Hoi!%20Ik%20wil%20graag%20een%20aangifte%20laten%20corrigeren%20of%20alsnog%20indienen." class="boa-app" rel="nofollow" aria-label="App via WhatsApp"><span aria-hidden="true">&#128172;</span> App</a></span><a href="/contact/#terugbellen" class="bmt">Bel mij terug</a></span>
           
@@ -302,16 +305,14 @@
   </div>
 </section>
 
-<!-- URGENTIE 2021 -->
-<!-- deadline-2021: verdwijnt vanzelf na 31-12-2026; in januari 2027 weghalen (CONTENT-VERVALDATA.md) -->
-<div class="container" style="margin:28px auto 0;">
+<!-- URGENTIE 2021: verdwijnt vanzelf na 31-12-2026 (data-tot), en bij de eerste build daarna uit de HTML -->
+<!-- tot:2027-01-01 --><div class="container" data-tot="2027-01-01T00:00+01:00" style="margin:28px auto 0;">
   <div style="max-width:860px;margin:0 auto;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:20px 24px;">
     <h2 style="margin:0 0 6px;font-family:var(--font-display);font-size:1.25rem;color:var(--clr-deep);">In 2026 kunt u nog aftrekposten uit 2021 terugvragen</h2>
     <p style="margin:0;color:#4a3f35;line-height:1.65;">Een verzoek om vermindering moet binnen 5 jaar na het belastingjaar bij de Belastingdienst binnen zijn. Voor 2021 is dit dus het laatste jaar.<!-- cfg:correctie-2021-einddatum --> De uiterste datum is 31 december 2026: dan moet uw verzoek over 2021 bij de Belastingdienst binnen zijn. Wacht daarom niet tot de laatste week.<!-- /cfg:correctie-2021-einddatum --> Vergat u in 2021 zorgkosten, giften of een andere aftrekpost? Wij kijken gratis of een correctie iets oplevert. Levert het niets op, dan betaalt u niets.</p>
     <p style="margin:12px 0 0;"><a href="https://wa.me/31619711848?text=Hoi!%20Kunnen%20jullie%20kijken%20of%20ik%20over%202021%20nog%20iets%20kan%20terugvragen%3F" rel="nofollow" style="color:var(--clr-teal);font-weight:700;display:inline-flex;align-items:center;min-height:48px;">Laat 2021 gratis nakijken &rarr;</a> <a href="/deadline-2021/" style="color:var(--clr-teal);font-weight:700;display:inline-flex;align-items:center;min-height:48px;margin-left:12px;">Wat kan er over 2021 nog? &rarr;</a></p>
   </div>
-</div>
-<script>(function(){if(Date.now()>=Date.UTC(2026,11,31,23,0)){var b=document.currentScript.previousElementSibling;if(b)b.hidden=true;}})();</script>
+</div><!-- /tot -->
 
 <!-- INTRO -->
 <div class="local-intro">
@@ -321,7 +322,7 @@
         <h2>Aangifte corrigeren of alsnog indienen in Zaanstad</h2>
         <p>Bent u de deadline van 1 mei voorbij, of ontdekte u dat u in een eerder jaar zorgkosten, giften of andere aftrekposten bent vergeten? Dat is bijna altijd te herstellen. U hoeft er geen geld door te laten liggen. En een verzuimboete is te voorkomen.</p>
         <p>Bent u te laat? Wij dienen uw aangifte alsnog snel voor u in. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469 of meer). Hoe eerder u indient, hoe kleiner het risico.</p>
-        <p>Voor eerdere jaren corrigeren wij uw aangifte tot 5 jaar terug (2021 tot en met 2024). De controle op gemiste aftrekposten is gratis; een correctie indienen kost <span data-prijs="correctie">€69</span> per jaaraangifte. Aan huis in de Zaanstreek.</p>
+        <p>Voor eerdere jaren corrigeren wij uw aangifte tot 5 jaar terug (<span data-jaar="correctie_van">2021</span> tot en met <span data-jaar="correctie_tot">2024</span>). De controle op gemiste aftrekposten is gratis; een correctie indienen kost <span data-prijs="correctie">€69</span> per jaaraangifte. Aan huis in de Zaanstreek.</p>
       </div>
       <div class="local-stat-grid">
         <div class="local-stat">
@@ -362,7 +363,7 @@
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-orange);">
         <div style="font-size:1.6rem;margin-bottom:12px;">🔍</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Aftrekposten vergeten</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:0;">Zorgkosten, giften of partneralimentatie niet opgegeven, of over 2021 uw studiekosten? Wij corrigeren uw aangiften van 2021 t/m 2024 en halen die teruggave alsnog binnen.</p>
+        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:0;">Zorgkosten, giften of partneralimentatie niet opgegeven<!-- tot:2027-01-01 --><span data-tot="2027-01-01T00:00+01:00">, of over 2021 uw studiekosten</span><!-- /tot -->? Wij corrigeren uw aangiften van <span data-jaar="correctie_van">2021</span> t/m <span data-jaar="correctie_tot">2024</span> en halen die teruggave alsnog binnen.</p>
       </div>
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-green);">
         <div style="font-size:1.6rem;margin-bottom:12px;">✉️</div>
@@ -420,8 +421,8 @@
       <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;color:var(--clr-teal);margin:8px 0;"><span data-prijs="correctie">€69</span></div>
       <div style="font-size:0.85rem;color:var(--clr-bark);margin-bottom:18px;">per jaaraangifte · uitstel aanvragen kosteloos</div>
       <ul style="list-style:none;padding:0;margin:0 0 22px;text-align:left;display:inline-block;">
-        <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Correctie aangiften 2021–2024</li>
-        <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Te late aangifte 2025 alsnog indienen</li>
+        <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Correctie aangiften <span data-jaar="correctie_van">2021</span>–<span data-jaar="correctie_tot">2024</span></li>
+        <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Te late aangifte <span data-jaar="te_laat_jaar">2025</span> alsnog indienen</li>
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Ook te late aangifte alsnog ingediend</li>
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Alle gemiste aftrekposten meegenomen</li>
         <li style="padding:5px 0;color:#4a3f35;"><span style="color:#15756A;font-weight:800;">✓</span> Gratis controle vooraf</li>
@@ -492,10 +493,10 @@
     <div class="faq-grid">
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Hoe ver terug kan ik mijn aangifte corrigeren?<span class="faq-arrow">+</span></button>
-        <div class="faq-answer"><p>U kunt tot 5 jaar terug een correctie indienen bij de Belastingdienst. Concreet kijken wij nu naar de aangiften over 2021, 2022, 2023 en 2024 op gemiste aftrekposten.</p></div>
+        <div class="faq-answer"><p>U kunt tot 5 jaar terug een correctie indienen bij de Belastingdienst. Concreet kijken wij nu naar de aangiften over <span data-jaar="correctie_van">2021</span> tot en met <span data-jaar="correctie_tot">2024</span> op gemiste aftrekposten.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Ik heb mijn aangifte 2025 niet vóór 1 mei gedaan: wat nu?<span class="faq-arrow">+</span></button>
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Ik heb mijn aangifte <span data-jaar="te_laat_jaar">2025</span> niet vóór 1 mei gedaan: wat nu?<span class="faq-arrow">+</span></button>
         <div class="faq-answer"><p>Geen paniek. Wij dienen uw aangifte alsnog snel voor u in. De Belastingdienst stuurt eerst een herinnering en daarna een aanmaning; pas als u daar niet op reageert, volgt een verzuimboete (de eerste keer €469 of meer). Hoe eerder u indient, hoe kleiner het risico.</p></div>
       </div>
       <div class="faq-item">
@@ -601,7 +602,7 @@ document.querySelectorAll('.step, .faq-item').forEach(el=>{el.style.opacity='0';
       "name": "Hoe ver terug kan ik mijn aangifte corrigeren?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "U kunt tot 5 jaar terug een correctie indienen bij de Belastingdienst. Concreet kijken wij nu naar de aangiften over 2021, 2022, 2023 en 2024 op gemiste aftrekposten."
+        "text": "U kunt tot 5 jaar terug een correctie indienen bij de Belastingdienst. Concreet kijken wij nu naar de aangiften over 2021 tot en met 2024 op gemiste aftrekposten."
       }
     },
     {
@@ -642,5 +643,6 @@ document.querySelectorAll('.step, .faq-item').forEach(el=>{el.style.opacity='0';
 
 <aside class="boa-zweef" aria-label="Contact"><span class="boa" role="group" aria-label="Bel of app"><a href="tel:+31619711848" class="boa-bel" rel="nofollow"><span aria-hidden="true">&#128222;</span> Bel<span class="boa-nr"> 06&nbsp;&ndash;&nbsp;19&nbsp;71&nbsp;18&nbsp;48</span></a><span class="boa-of" aria-hidden="true">of</span><a href="https://wa.me/31619711848" class="boa-app" rel="nofollow" aria-label="App via WhatsApp"><span aria-hidden="true">&#128172;</span> App</a></span></aside>
 
+<!-- cfg:verberger --><script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-van],[data-tot]'),function(e){var v=e.getAttribute('data-van'),t=e.getAttribute('data-tot');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script><!-- /cfg:verberger -->
 </body>
 </html>

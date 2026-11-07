@@ -938,9 +938,8 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
 <!-- ======== 1. HERO ======== -->
 <section class="hero" id="home">
   <div class="container">
-    <!-- deadline-2021: verdwijnt vanzelf na 31-12-2026; in januari 2027 weghalen (CONTENT-VERVALDATA.md) -->
-    <div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;"><span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">Gemiste aftrekposten over 2021? Uw verzoek moet uiterlijk 31 december binnen zijn.</span><a href="/deadline-2021/" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Kijk of het loont &rarr;</a></div>
-    <script>(function(){if(Date.now()>=Date.UTC(2026,11,31,23,0)){var b=document.currentScript.previousElementSibling;if(b)b.hidden=true;}})();</script>
+    <!-- seizoensbanner: teksten en datums in data/datums.json -->
+    <!-- cfg:seizoensbanner --><div data-van="2026-11-01T00:00+01:00" data-tot="2027-01-01T00:00+01:00"><div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;"><span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">Gemiste aftrekposten over 2021? Uw verzoek moet uiterlijk 31 december binnen zijn.</span><a href="/deadline-2021/" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Kijk of het loont &rarr;</a></div></div><div data-van="2027-01-01T00:00+01:00" data-tot="2027-05-01T00:00+02:00" hidden><div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;"><span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">Aangifte over 2026 kan vanaf 1 maart. Plan nu uw afspraak.</span><a href="/contact/#terugbellen" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Bel mij terug &rarr;</a></div></div><div data-van="2027-05-01T00:00+02:00" data-tot="2028-01-01T00:00+01:00" hidden><div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;"><span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">Iets vergeten in uw aangifte? Corrigeren kan tot 5 jaar terug. Koopwoning? Krijg uw hypotheekrenteaftrek elke maand met een voorlopige teruggave.</span><a href="/diensten/correctie-late-aangifte/" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Laat het nakijken &rarr;</a></div></div><script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-van],[data-tot]'),function(e){var v=e.getAttribute('data-van'),t=e.getAttribute('data-tot');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script><!-- /cfg:seizoensbanner -->
     <div class="hero-grid">
       <div>
         <div class="hero-badge fade-up">
@@ -989,12 +988,12 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       </div>
       <div class="tegel" style="border-top-color:#B8421A;">
         <h3><a href="/diensten/correctie-late-aangifte/">Correctie en late aangifte</a></h3>
-        <p>Aftrekposten gemist in 2021 tot en met 2024, of te laat? Wij kijken gratis of het loont.</p>
+        <p>Aftrekposten gemist in <span data-jaar="correctie_van">2021</span> tot en met <span data-jaar="correctie_tot">2024</span>, of te laat? Wij kijken gratis of het loont.</p>
         <div class="tegel-prijs"><span data-prijs="correctie">&euro;69</span> per jaar <small>&middot; met partner <span data-prijs="correctie.partner">&euro;99</span></small></div>
       </div>
       <div class="tegel" style="border-top-color:var(--clr-teal);">
         <h3><a href="/diensten/box-3-bezwaar/">Box 3: werkelijk rendement</a></h3>
-        <p>Spaargeld of beleggingen in 2021 tot en met 2024? Wij kijken of uw werkelijk rendement opgeven loont.</p>
+        <p>Spaargeld of beleggingen in <span data-jaar="box3_van">2021</span> tot en met <span data-jaar="box3_tot">2024</span>? Wij kijken of uw werkelijk rendement opgeven loont.</p>
         <div class="tegel-prijs"><!-- cfg:box3-tarief-tegel -->check gratis &middot; daarna 15%, max. &euro;500<!-- /cfg:box3-tarief-tegel --></div>
       </div>
       <div class="tegel" style="border-top-color:var(--clr-green);">
@@ -1163,7 +1162,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
 
     <div class="faq-grid">
       <!-- deadline-2021: verdwijnt vanzelf na 31-12-2026; in januari 2027 weghalen (CONTENT-VERVALDATA.md) -->
-      <div class="faq-item">
+<!-- tot:2027-01-01 -->      <div class="faq-item" data-tot="2027-01-01T00:00+01:00">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           Kan ik over 2021 nog geld terugvragen?
           <span class="faq-arrow">+</span>
@@ -1171,10 +1170,10 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
         <div class="faq-answer">
           <p>Ja, als uw verzoek uiterlijk 31 december 2026 binnen is bij de Belastingdienst. Denk aan vergeten zorgkosten, giften of studiekosten. <a href="/deadline-2021/">Lees wat er over 2021 nog kan</a>.</p>
         </div>
-      </div>
+      </div><!-- /tot -->
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Ik heb mijn aangifte 2025 niet gedaan vóór 1 mei: wat nu?
+          Ik heb mijn aangifte <span data-jaar="te_laat_jaar">2025</span> niet gedaan vóór 1 mei: wat nu?
           <span class="faq-arrow">+</span>
         </button>
         <div class="faq-answer">
@@ -1210,7 +1209,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
           <span class="faq-arrow">+</span>
         </button>
         <div class="faq-answer">
-          <p>Tot 5 jaar terug. Wij kijken uw aangiften over 2021 tot en met 2024 gratis na op gemiste aftrekposten, zoals zorgkosten, giften of partneralimentatie (over 2021 ook studiekosten). Levert het iets op, dan dienen wij een verbeterde aangifte in voor <span data-prijs="correctie">€69</span> per jaar.</p>
+          <p>Tot 5 jaar terug. Wij kijken uw aangiften over <span data-jaar="correctie_van">2021</span> tot en met <span data-jaar="correctie_tot">2024</span> gratis na op gemiste aftrekposten, zoals zorgkosten, giften of partneralimentatie<!-- tot:2027-01-01 --><span data-tot="2027-01-01T00:00+01:00"> (over 2021 ook studiekosten)</span><!-- /tot -->. Levert het iets op, dan dienen wij een verbeterde aangifte in voor <span data-prijs="correctie">€69</span> per jaar.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -1462,14 +1461,6 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Kan ik over 2021 nog geld terugvragen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja, als uw verzoek uiterlijk 31 december 2026 binnen is bij de Belastingdienst. Denk aan vergeten zorgkosten, giften of studiekosten. Lees wat er over 2021 nog kan."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "Ik heb mijn aangifte 2025 niet gedaan vóór 1 mei: wat nu?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -1597,5 +1588,6 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
   <a href="#terugbellen"><span class="ic" aria-hidden="true">&#128197;</span>Bel mij terug</a>
 </nav>
 
+<!-- cfg:verberger --><script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-van],[data-tot]'),function(e){var v=e.getAttribute('data-van'),t=e.getAttribute('data-tot');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script><!-- /cfg:verberger -->
 </body>
 </html>

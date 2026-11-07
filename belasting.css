@@ -1839,3 +1839,8 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
     transition: none !important;
   }
 }
+
+/* Tijdelijke stukken (banners, startkorting, deadline 2021) krijgen het
+   attribuut hidden van config-sync en van het verbergscript. Een class met een
+   eigen display (zoals .hero-badge) zou dat anders overrulen. */
+[hidden] { display: none !important; }

@@ -1372,6 +1372,8 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
 <!-- ======== HERO ======== -->
 <section class="hero" id="home">
   <div class="container">
+    <!-- seasonal banner: texts and dates in data/datums.json -->
+    <!-- cfg:seizoensbanner-en --><div data-van="2026-11-01T00:00+01:00" data-tot="2027-01-01T00:00+01:00"><div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;"><span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">Missed deductions in 2021? Your request must reach the tax authority by 31 December 2026.</span><a href="/en/services/late-tax-return/" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">See what is still possible &rarr;</a></div></div><div data-van="2027-01-01T00:00+01:00" data-tot="2027-05-01T00:00+02:00" hidden><div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;"><span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">Tax return for 2026 can be filed from 1 March. Book your appointment now.</span><a href="/en/#contact" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Contact us &rarr;</a></div></div><div data-van="2027-05-01T00:00+02:00" data-tot="2028-01-01T00:00+01:00" hidden><div class="dl-banner" style="max-width:860px;margin:0 auto 22px;background:#FFF8E1;border:2px solid #F5B947;border-radius:14px;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;"><span style="color:var(--clr-deep);font-weight:700;line-height:1.5;">Forgot something in your tax return? Corrections are possible up to 5 years back. Own a home? Get your mortgage interest deduction every month with a provisional refund.</span><a href="/en/services/late-tax-return/" style="color:var(--clr-teal);font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;min-height:44px;">Have it checked &rarr;</a></div></div><script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-van],[data-tot]'),function(e){var v=e.getAttribute('data-van'),t=e.getAttribute('data-tot');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script><!-- /cfg:seizoensbanner-en -->
     <div class="hero-grid">
       <div>
         <div class="hero-badge fade-up">
@@ -1382,7 +1384,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
           Every month more<br><em>tax benefit</em> in Zaanstad
         </h1>
         <p class="hero-sub fade-up fade-up-d2">
-          Whether you own a home, haven't filed your 2025 return yet, or want to know if you're missing out on money: we'll take a free, no-obligation look with you. Personal, at home in the Zaan region, with fixed prices.
+          Whether you own a home, haven't filed your <span data-jaar="te_laat_jaar">2025</span> return yet, or want to know if you're missing out on money: we'll take a free, no-obligation look with you. Personal, at home in the Zaan region, with fixed prices.
         </p>
         <div class="hero-buttons cta-paar fade-up fade-up-d3"><span class="boa" role="group" aria-label="Call or WhatsApp"><a href="tel:+31619711848" class="boa-bel" rel="nofollow"><span aria-hidden="true">&#128222;</span> Call<span class="boa-nr"> 06&nbsp;&ndash;&nbsp;19&nbsp;71&nbsp;18&nbsp;48</span></a><span class="boa-of" aria-hidden="true">or</span><a href="https://wa.me/31619711848?text=Hi!%20I%20have%20a%20question%20about%20my%20Dutch%20taxes." class="boa-app" rel="nofollow" aria-label="WhatsApp"><span aria-hidden="true">&#128172;</span> WhatsApp</a></span><a href="/contact/#terugbellen" class="bmt">Call me back</a></div>
         <p class="fade-up fade-up-d3" style="margin:14px 0 0;display:flex;gap:18px;flex-wrap:wrap;"><a class="tekstlink" href="#wat-regelen">Discover what you can arrange now →</a> <a class="tekstlink" href="#tarieven">See prices</a></p>
@@ -1439,11 +1441,11 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
 </section>
 
 <!-- ======== LATE RETURN STRIP (aangifte 2025 nog niet gedaan) ======== -->
-<section id="uitstel-strip" style="padding:38px 0;background:linear-gradient(135deg,#B8421A 0%,#8E2F10 100%);border-top:3px solid #FFD166;">
+<!-- tot:2027-01-01 --><section id="uitstel-strip" data-tot="2027-01-01T00:00+01:00" style="padding:38px 0;background:linear-gradient(135deg,#B8421A 0%,#8E2F10 100%);border-top:3px solid #FFD166;">
   <div class="container">
     <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
       <div style="flex:1;min-width:min(280px,100%);">
-        <div style="display:inline-block;background:#FFD166;color:#3A1A0A;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:5px 12px;border-radius:4px;margin-bottom:12px;">⏰ NOT FILED YOUR 2025 RETURN YET?</div>
+        <div style="display:inline-block;background:#FFD166;color:#3A1A0A;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:5px 12px;border-radius:4px;margin-bottom:12px;">⏰ NOT FILED YOUR <span data-jaar="te_laat_jaar">2025</span> return YET?</div>
         <h2 style="color:#fff;font-family:var(--font-display);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.25;margin:0 0 10px 0;">
           You can still file it, <strong style="color:#FFF3D6;">for a fixed price of <span data-prijs="correctie">€69</span></strong>
         </h2>
@@ -1462,7 +1464,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       <span>✓ Return done together at your own pace</span>
     </div>
   </div>
-</section>
+</section><!-- /tot -->
 
 <!-- ======== WHAT CAN I ARRANGE NOW ======== -->
 <section id="wat-regelen" style="padding:80px 0;background:var(--clr-warm-white);">
@@ -1485,7 +1487,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid #B8421A;">
         <div style="font-size:1.6rem;margin-bottom:12px;">⏰</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Extension &amp; late filing 2025</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Not filed your 2025 return yet? That is still fixable. As long as you have not received a formal notice (aanmaning) from the Belastingdienst, a penalty is usually avoided, the sooner you file, the smaller the risk. We file it for you.</p>
+        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Not filed your <span data-jaar="te_laat_jaar">2025</span> return yet? That is still fixable. As long as you have not received a formal notice (aanmaning) from the Belastingdienst, a penalty is usually avoided, the sooner you file, the smaller the risk. We file it for you.</p>
         <p style="font-size:0.85rem;color:#B8421A;font-weight:700;margin-bottom:16px;">We apply for an extension free of charge and prevent a default fine of €469 or more.</p>
         <a href="#uitstel-strip" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Still file your return →</a>
       </div>
@@ -1493,7 +1495,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-green);">
         <div style="font-size:1.6rem;margin-bottom:12px;">🔍</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Correction of earlier returns (up to 5 years back)</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Missed deductions? Healthcare costs, donations or partner alimony (and for 2021 also study costs) are often overlooked. We'll review your 2021–2024 returns for free.</p>
+        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Missed deductions? Healthcare costs, donations or partner alimony<!-- tot:2027-01-01 --><span data-tot="2027-01-01T00:00+01:00"> (and for 2021 also study costs)</span><!-- /tot --> are often overlooked. We'll review your <span data-jaar="correctie_van">2021</span>–<span data-jaar="correctie_tot">2024</span> returns for free.</p>
         <p style="font-size:0.85rem;color:var(--clr-green);font-weight:700;margin-bottom:16px;">This may get you money back, depending on your situation.</p>
         <a href="#tarieven" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Free review →</a>
       </div>
@@ -1765,7 +1767,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
         <div class="tarief-price"><span data-prijs="correctie">&euro; 69</span></div>
         <div class="tarief-price-note">per return</div>
         <ul class="tarief-features">
-          <li>Correction of earlier returns (2021–2024)</li>
+          <li>Correction of earlier returns (<span data-jaar="correctie_van">2021</span>–<span data-jaar="correctie_tot">2024</span>)</li>
           <li>All missed deductions processed</li>
           <li>Box 3 wealth check</li>
           <li><strong>Extension application included free</strong></li>
@@ -1783,7 +1785,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       <div style="background:#fff;border-radius:12px;padding:24px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);text-align:center;">
         <div style="font-size:1.8rem;margin-bottom:8px;">⚖️</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Box 3: actual return</div>
-        <div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">We calculate your actual return for 2021–2024 and submit the form.</div>
+        <div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">We calculate your actual return for <span data-jaar="box3_van">2021</span>–<span data-jaar="box3_tot">2024</span> and submit the form.</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-teal);">No cure, no pay</div>
         <div style="font-size:0.78rem;color:var(--clr-bark);">free check · you only pay if it works</div>
         <a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;margin-top:14px;color:var(--clr-orange);font-weight:700;font-size:0.9rem;text-decoration:none;">Check if you qualify →</a>
@@ -1815,12 +1817,12 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
 <section id="ervaringen" style="padding:80px 0;background:var(--clr-warm-white);">
   <div class="container">
     <div style="max-width:780px;margin:0 auto;text-align:center;">
-      <div style="display:inline-block;background:#FFF3D6;color:#8B5A00;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:6px 14px;border-radius:100px;margin-bottom:20px;">★ NEW IN 2026</div>
+      <div style="display:inline-block;background:#FFF3D6;color:#8B5A00;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;padding:6px 14px;border-radius:100px;margin-bottom:20px;">★ STARTED IN 2026</div>
       <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.2;color:var(--clr-deep);margin-bottom:18px;">
-        Be one of our first clients, <em style="color:#A85E17;"><span data-prijs="startkorting">€20</span> discount</em>
+        Be one of our first clients<!-- actie:startkorting --><span data-tot="2027-01-01T00:00+01:00">, <em style="color:#A85E17;"><span data-prijs="startkorting">€20</span> discount</em></span><!-- /actie -->
       </h2>
       <p style="font-size:1.05rem;line-height:1.65;color:var(--clr-bark);margin-bottom:28px;">
-        Belastinghulp Zaanstad started this season. We choose not to post fabricated reviews, we prefer to build an honest practice. As thanks for your trust, our <strong>first clients of 2026 automatically get a <span data-prijs="startkorting">€20</span> discount</strong> on every tax return or preliminary refund. No code needed, applied automatically at sign-up.
+        Belastinghulp Zaanstad started in 2026. We choose not to post fabricated reviews, we prefer to build an honest practice. <!-- actie:startkorting --><span data-tot="2027-01-01T00:00+01:00">As thanks for your trust, <strong>new clients get a <span data-prijs="startkorting">€20</span> discount</strong> on a tax return or preliminary refund until <span data-jaar="startkorting_tot_en">31 December 2026</span>. No code needed, applied automatically at sign-up.</span><!-- /actie -->
       </p>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:28px 0 32px;text-align:left;">
@@ -2303,5 +2305,6 @@ document.querySelectorAll('.audience-card, .tarief-card, .step, .faq-item, .scro
 }
 </style>
 <aside class="boa-zweef" aria-label="Contact"><span class="boa" role="group" aria-label="Call or WhatsApp"><a href="tel:+31619711848" class="boa-bel" rel="nofollow"><span aria-hidden="true">&#128222;</span> Call<span class="boa-nr"> 06&nbsp;&ndash;&nbsp;19&nbsp;71&nbsp;18&nbsp;48</span></a><span class="boa-of" aria-hidden="true">or</span><a href="https://wa.me/31619711848" class="boa-app" rel="nofollow" aria-label="WhatsApp"><span aria-hidden="true">&#128172;</span> WhatsApp</a></span></aside>
+<!-- cfg:verberger --><script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-van],[data-tot]'),function(e){var v=e.getAttribute('data-van'),t=e.getAttribute('data-tot');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script><!-- /cfg:verberger -->
 </body>
 </html>
