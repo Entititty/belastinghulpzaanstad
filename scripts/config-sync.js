@@ -82,6 +82,8 @@ if (!leeg(P.FEE_BOX3_MIN) && !leeg(P.FEE_BOX3_MAX) && P.FEE_BOX3_MIN > P.FEE_BOX
 
 if (leeg(P.VAT_NOTE)) waarschuwingen.push('VAT_NOTE is leeg: bij de tarieven staat nog niet of de prijzen inclusief btw zijn.');
 if (leeg(P.GOOGLE_REVIEW_URL)) waarschuwingen.push('GOOGLE_REVIEW_URL is leeg: /beoordeling/ toont nog geen knop naar Google.');
+if (leeg(P.GOOGLE_REVIEWS_URL)) waarschuwingen.push('GOOGLE_REVIEWS_URL is leeg: de homepages tonen nog geen blok "Ervaringen". Pas invullen als er echte reviews zijn.');
+else if (P.GOOGLE_REVIEWS_URL.indexOf('https://') !== 0) fouten.push('GOOGLE_REVIEWS_URL moet met https:// beginnen, nu: ' + P.GOOGLE_REVIEWS_URL);
 else if (P.GOOGLE_REVIEW_URL.indexOf('https://') !== 0) fouten.push('GOOGLE_REVIEW_URL moet met https:// beginnen, nu: ' + P.GOOGLE_REVIEW_URL);
 if (leeg(P.ACHTERGROND_STAN)) waarschuwingen.push('ACHTERGROND_STAN is leeg: /over-ons/ toont nog geen achtergrond.');
 if (!leeg(P.ACHTERGROND_STAN) && leeg(P.ACHTERGROND_STAN_EN)) waarschuwingen.push('ACHTERGROND_STAN_EN is leeg: /en/about-us/ toont de achtergrond nog niet.');
@@ -238,9 +240,23 @@ function footerRegel(taal) {
   if (!leeg(P.KVK_NUMMER)) delen.push('KvK: ' + esc(P.KVK_NUMMER));
   if (!leeg(P.BTW_ID)) delen.push((nl ? 'btw: ' : 'VAT: ') + esc(P.BTW_ID));
   if (P.KOR === true) delen.push(nl ? 'kleineondernemersregeling: wij rekenen geen btw' : 'small business scheme (KOR): no VAT charged');
-  delen.push(nl ? 'Bezoek uitsluitend op afspraak. Wij komen bij u thuis' : 'By appointment only. We come to your home');
+  /* De afspraakregel apart en met punt: anders loopt hij door in de regel met het © eronder */
   return '<span class="footer-gegevens" style="display:block;margin-bottom:6px;color:rgba(255,255,255,0.72);">' +
-    delen.join(' &middot; ') + '</span>';
+    delen.join(' &middot; ') + '</span>' +
+    '<span class="footer-afspraak" style="display:block;margin-bottom:14px;color:rgba(255,255,255,0.72);">' +
+    (nl ? 'Bezoek uitsluitend op afspraak. Wij komen bij u thuis.' : 'By appointment only. We come to your home.') + '</span>';
+}
+
+function ervaringen(taal) {
+  if (leeg(P.GOOGLE_REVIEWS_URL)) return '';
+  const nl = taal === 'nl';
+  return '<section id="ervaringen-google" style="padding:56px 0;"><div class="container" style="max-width:860px;">' +
+    '<h2 style="font-family:var(--font-display);font-size:1.6rem;color:var(--clr-deep);margin:0 0 12px;">' + (nl ? 'Ervaringen van klanten' : 'What clients say') + '</h2>' +
+    '<p style="line-height:1.7;color:var(--clr-bark);font-size:1.05rem;margin:0 0 8px;">' +
+    (nl ? 'Wat klanten van Belastinghulp Zaanstad vinden, leest u op Google. Daar staan alleen echte reviews, en wij kunnen ze niet aanpassen.'
+      : 'You can read what clients think of Belastinghulp Zaanstad on Google. Only genuine reviews appear there, and we cannot edit them.') + '</p>' +
+    '<a href="' + esc(P.GOOGLE_REVIEWS_URL) + '" class="tekstlink" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;font-size:1.05rem;">' +
+    (nl ? 'Lees de reviews op Google' : 'Read the reviews on Google') + ' &rarr;</a></div></section>';
 }
 
 const SJABLONEN = {
@@ -290,6 +306,10 @@ const SJABLONEN = {
     /* een tekstlink, geen knop: knoppen zijn alleen "Bel of app" en "Bel mij terug" (check-knoppen.js) */
     return '<a href="' + esc(P.GOOGLE_REVIEW_URL) + '" class="tekstlink" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;font-size:1.05rem;">Schrijf een review op Google &rarr;</a>';
   },
+  /* Ervaringen op de homepages: alleen een link naar de echte reviews op Google, geen
+     citaten of sterren op de site zelf. Leeg tot GOOGLE_REVIEWS_URL is ingevuld. */
+  'ervaringen': function () { return ervaringen('nl'); },
+  'ervaringen-en': function () { return ervaringen('en'); },
   /* /review/: kort adres voor de WhatsApp-tekst na een klus. Gaat naar Google
      zodra GOOGLE_REVIEW_URL er is, en tot die tijd naar /beoordeling/. */
   'review-doorsturen': function () {

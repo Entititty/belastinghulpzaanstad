@@ -1153,6 +1153,8 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
 </section>
 
 <!-- ======== 6. VRAGEN ======== -->
+<!-- Ervaringen: alleen zichtbaar als GOOGLE_REVIEWS_URL in data/bedrijf.json is ingevuld (echte reviews op Google) -->
+<!-- cfg:ervaringen --><!-- /cfg:ervaringen -->
 <section class="faq" id="faq">
   <div class="container">
     <div class="section-header">
@@ -1173,7 +1175,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       </div><!-- /tot -->
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-          Ik heb mijn aangifte <span data-jaar="te_laat_jaar">2025</span> niet gedaan vóór 1 mei: wat nu?
+          <span>Ik heb mijn aangifte <span data-jaar="te_laat_jaar">2025</span> niet gedaan vóór 1 mei: wat nu?</span>
           <span class="faq-arrow">+</span>
         </button>
         <div class="faq-answer">
@@ -1302,7 +1304,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       </div>
     </div>
     <div class="footer-bottom">
-      <!-- cfg:footer-gegevens --><span class="footer-gegevens" style="display:block;margin-bottom:6px;color:rgba(255,255,255,0.72);">Belastinghulp Zaanstad &middot; gevestigd in Zaandam, gemeente Zaanstad &middot; <a href="mailto:info@belastinghulpzaanstad.nl" style="color:inherit;text-decoration:underline">info@belastinghulpzaanstad.nl</a> &middot; Bezoek uitsluitend op afspraak. Wij komen bij u thuis</span><!-- /cfg:footer-gegevens -->
+      <!-- cfg:footer-gegevens --><span class="footer-gegevens" style="display:block;margin-bottom:6px;color:rgba(255,255,255,0.72);">Belastinghulp Zaanstad &middot; gevestigd in Zaandam, gemeente Zaanstad &middot; <a href="mailto:info@belastinghulpzaanstad.nl" style="color:inherit;text-decoration:underline">info@belastinghulpzaanstad.nl</a></span><span class="footer-afspraak" style="display:block;margin-bottom:14px;color:rgba(255,255,255,0.72);">Bezoek uitsluitend op afspraak. Wij komen bij u thuis.</span><!-- /cfg:footer-gegevens -->
       &copy; 2026 Belastinghulp Zaanstad. Alle rechten voorbehouden. &middot; <a href="/privacy/" style="color:#fff;text-decoration:underline">Privacybeleid</a> &middot; <a href="/algemene-voorwaarden/" style="color:#fff;text-decoration:underline">Algemene voorwaarden</a>
     </div>
   </div>
