@@ -212,7 +212,7 @@ a { text-decoration: none; color: inherit; }
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 24px;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
 }
 
@@ -270,7 +270,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--clr-teal-dark);
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 20px;
   border: 1px solid rgba(26,138,125,0.15);
@@ -356,7 +356,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .hero-card-label {
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--clr-bark);
@@ -374,7 +374,7 @@ a { text-decoration: none; color: inherit; }
 
 .hero-card-period {
   color: var(--clr-bark);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 20px;
 }
 
@@ -387,10 +387,11 @@ a { text-decoration: none; color: inherit; }
 .hero-card-row {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid var(--clr-warm-white);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .hero-card-row:last-child { border: none; }
@@ -426,7 +427,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   font-weight: 600;
 }
@@ -461,7 +462,7 @@ a { text-decoration: none; color: inherit; }
 
 .local-intro p {
   color: var(--clr-bark);
-  font-size: 0.97rem;
+  font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 16px;
 }
@@ -488,7 +489,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .local-stat-label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   font-weight: 600;
 }
@@ -510,7 +511,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 700;
@@ -556,7 +557,7 @@ section {
   color: white;
   padding: 6px 16px;
   border-radius: var(--radius-pill);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -593,7 +594,7 @@ section {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--clr-deep);
   font-weight: 500;
 }
@@ -631,12 +632,14 @@ section {
 .teruggave-example-row {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   padding: 11px 0;
   border-bottom: 1px solid var(--clr-warm-white);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .teruggave-example-row:last-of-type { border: none; }
+.teruggave-example-row > :last-child, .hero-card-row > :last-child { white-space: nowrap; text-align: right; }
 
 .teruggave-example-total {
   display: flex;
@@ -659,7 +662,7 @@ section {
   padding: 12px 16px;
   background: var(--clr-green-light);
   border-radius: var(--radius);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--clr-teal-dark);
   font-weight: 600;
   text-align: center;
@@ -726,7 +729,7 @@ section {
 
 .audience-card p {
   color: var(--clr-bark);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 20px;
   line-height: 1.7;
 }
@@ -743,7 +746,7 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--clr-deep);
 }
 
@@ -812,7 +815,7 @@ section {
 }
 
 .step p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--clr-bark);
   line-height: 1.6;
 }
@@ -861,7 +864,7 @@ section {
 }
 
 .tarief-for {
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   font-weight: 600;
   margin-bottom: 16px;
@@ -878,7 +881,7 @@ section {
 .tarief-card--popular .tarief-price { color: var(--clr-orange); }
 
 .tarief-price-note {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   margin-bottom: 24px;
 }
@@ -895,7 +898,7 @@ section {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: var(--clr-deep);
 }
 
@@ -999,7 +1002,7 @@ section {
 .faq-answer p {
   padding-bottom: 22px;
   color: var(--clr-bark);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
@@ -1073,7 +1076,7 @@ section {
 }
 
 .footer-desc {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   line-height: 1.7;
   margin-bottom: 16px;
 }
@@ -1093,7 +1096,7 @@ section {
 }
 
 .footer-links a {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   transition: color 0.2s;
 }
 
@@ -1103,7 +1106,7 @@ section {
   padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,0.08);
   text-align: center;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
 }
 
 /* ========================================
@@ -1154,7 +1157,7 @@ section {
    BEREKENING DISCLAIMER
    ======================================== */
 .berekening-disclaimer {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   font-style: italic;
   margin-top: 10px;
@@ -1162,7 +1165,7 @@ section {
 }
 
 .hero-card-disclaimer {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   font-style: italic;
   margin-top: 10px;
@@ -1185,7 +1188,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1208,7 +1211,7 @@ section {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   margin-bottom: 28px;
 }
@@ -1311,7 +1314,7 @@ section {
   width: 100%;
   border-collapse: collapse;
   margin: 24px 0;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .income-table th {
@@ -1320,7 +1323,7 @@ section {
   text-align: left;
   padding: 10px 16px;
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -1373,7 +1376,7 @@ section {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  font-size: 0.88rem;
+  font-size: 1rem;
 }
 
 .toc li::before {
@@ -1415,7 +1418,7 @@ section {
 }
 
 .blog-cta-box p {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: rgba(255,255,255,0.7);
   margin-bottom: 16px;
 }
@@ -1427,7 +1430,7 @@ section {
 }
 
 .blog-share p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--clr-bark);
   margin-bottom: 12px;
 }
@@ -1441,7 +1444,7 @@ section {
 @media (max-width: 600px) {
   .blog-hero { padding: 40px 0 32px; }
   .blog-article h2 { font-size: 1.35rem; }
-  .income-table { font-size: 0.82rem; }
+  .income-table { font-size: 0.9rem; }
   .income-table td, .income-table th { padding: 8px 10px; }
 }
 
@@ -1574,14 +1577,14 @@ section {
   padding: 22px 24px;
   text-align: center;
   color: var(--clr-deep);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
   margin: 36px 0;
   border-radius: 12px;
 }
 @media(max-width:600px){
-  .mid-cta { font-size: 0.98rem; padding: 20px 16px; }
+  .mid-cta { font-size: 1rem; padding: 20px 16px; }
 }
 
 /* Self-hosted fonts (voorheen Google Fonts) */
@@ -1663,7 +1666,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
    Een open FAQ-antwoord was afgekapt op 300px; met 18px tekst op mobiel paste een lang antwoord daar niet meer in. */
 .faq-item.active .faq-answer{max-height:2000px}
 .form-field{margin-bottom:16px}
-.form-field label{display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;font-size:0.95rem}
+.form-field label{display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;font-size:1rem}
 .form-field input,.form-field select,.form-field textarea{width:100%;padding:13px 14px;border:1px solid rgba(44,37,32,0.25);border-radius:10px;font-family:var(--font-body);font-size:1rem;color:var(--clr-deep);background:#fff;min-height:48px}
 .form-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-consent{display:flex;gap:10px;align-items:flex-start;font-size:0.9rem;color:var(--clr-bark);line-height:1.5}
@@ -1682,12 +1685,12 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .rh-uitkomst{margin-top:24px;background:var(--clr-teal-light);border-radius:14px;padding:22px 24px;text-align:center}
 .rh-uitkomst-kop{font-size:0.9rem;color:var(--clr-bark);text-transform:uppercase;letter-spacing:0.05em;font-weight:700}
 .rh-bedrag{font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--clr-teal-dark);line-height:1.15;margin:6px 0}
-.rh-regels{display:grid;gap:6px;margin-top:10px;text-align:left;font-size:0.98rem;color:var(--clr-deep)}
+.rh-regels{display:grid;gap:6px;margin-top:10px;text-align:left;font-size:1rem;color:var(--clr-deep)}
 .rh-regels div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(44,37,32,0.08);padding:6px 0}
-.rh-melding:not(:empty){margin-top:14px;padding:12px 16px;border-radius:10px;background:#FFF8E1;border:1px solid #F5B947;color:#5a4300;font-size:0.95rem;line-height:1.5}
+.rh-melding:not(:empty){margin-top:14px;padding:12px 16px;border-radius:10px;background:#FFF8E1;border:1px solid #F5B947;color:#5a4300;font-size:1rem;line-height:1.5}
 .rh details{margin-top:16px}
 .rh summary{cursor:pointer;font-weight:700;color:var(--clr-teal);min-height:48px;display:flex;align-items:center}
-.rh-uitleg{font-size:0.95rem;color:var(--clr-bark);line-height:1.7;margin-top:6px}
+.rh-uitleg{font-size:1rem;color:var(--clr-bark);line-height:1.7;margin-top:6px}
 .rh-noot{font-size:0.9rem;color:var(--clr-bark);margin:14px 0 0;line-height:1.6}
 .rh-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px}
 .rh-tool{background:#fff;border-radius:14px;padding:24px;border:1px solid rgba(44,37,32,0.08);box-shadow:0 2px 12px rgba(44,37,32,0.05);display:flex;flex-direction:column;gap:10px}
@@ -1758,8 +1761,8 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .tegel h3 a{color:inherit;text-decoration:none}
 .tegel h3 a:focus-visible{outline:none}
 .tegel h3 a::after{content:'';position:absolute;inset:0;border-radius:14px}
-.tegel p{font-size:0.98rem;line-height:1.6;color:var(--clr-bark);margin:0 0 12px}
-.tegel .tegel-voorbeeld{font-size:0.92rem}
+.tegel p{font-size:1rem;line-height:1.6;color:var(--clr-bark);margin:0 0 12px}
+.tegel .tegel-voorbeeld{font-size:0.9rem}
 .tegel .tegel-voorbeeld a{position:relative;z-index:1;color:var(--clr-teal);font-weight:700}
 .tegel-prijs{margin-top:auto;font-weight:800;font-size:1rem;color:var(--clr-deep)}
 .tegel-prijs small{font-size:0.9rem;font-weight:600;color:var(--clr-bark)}
@@ -1768,7 +1771,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 
 /* ===== Vertrouwen: één strip onder "Wie er bij u langskomt" ===== */
 .vertrouwen{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:16px}
-.vertrouwen li{background:#fff;border-radius:12px;padding:18px 20px;border:1px solid rgba(44,37,32,0.08);border-left:4px solid var(--clr-teal);line-height:1.6;color:var(--clr-bark);font-size:0.95rem}
+.vertrouwen li{background:#fff;border-radius:12px;padding:18px 20px;border:1px solid rgba(44,37,32,0.08);border-left:4px solid var(--clr-teal);line-height:1.6;color:var(--clr-bark);font-size:1rem}
 .vertrouwen strong{display:block;color:var(--clr-deep);font-size:1.02rem;margin-bottom:4px}
 .vertrouwen a{color:var(--clr-teal)}
 .gratis-hulp{max-width:780px;margin:28px auto 0;text-align:center;color:var(--clr-bark);line-height:1.7}
@@ -1776,7 +1779,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 
 /* ===== Compact slot op de plaatspagina's ===== */
 .slot-stappen{list-style:none;counter-reset:stap;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:12px}
-.slot-stappen li{counter-increment:stap;background:#fff;border-radius:12px;padding:14px 16px 14px 52px;position:relative;line-height:1.5;color:var(--clr-bark);font-size:0.95rem;border:1px solid rgba(44,37,32,0.08)}
+.slot-stappen li{counter-increment:stap;background:#fff;border-radius:12px;padding:14px 16px 14px 52px;position:relative;line-height:1.5;color:var(--clr-bark);font-size:1rem;border:1px solid rgba(44,37,32,0.08)}
 .slot-stappen li::before{content:counter(stap);position:absolute;left:14px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--clr-teal);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.9rem}
 .slot-stappen strong{color:var(--clr-deep)}
 .slot-actie{margin:22px 0 0;background:#FFF8E1;border:1px solid #F5B947;border-radius:12px;padding:14px 18px;line-height:1.6;color:var(--clr-deep)}
@@ -1794,7 +1797,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .form-meer summary span{font-weight:600;color:var(--clr-bark)}
 .form-meer[open] summary{margin-bottom:8px}
 .form-meer summary:focus-visible{outline:3px solid var(--clr-orange);outline-offset:2px;border-radius:6px}
-.form-consent-tekst{font-size:0.95rem;color:var(--clr-bark);line-height:1.6;margin:0 0 16px}
+.form-consent-tekst{font-size:1rem;color:var(--clr-bark);line-height:1.6;margin:0 0 16px}
 .herinnering-kaart h2{font-family:var(--font-display);font-size:1.45rem;line-height:1.3;color:var(--clr-deep);margin:0 0 8px}
 .herinnering-kaart>p{color:var(--clr-bark);line-height:1.7;margin:0 0 16px}
 .tegels-herinnering{text-align:center;margin:14px auto 0;color:var(--clr-bark);line-height:1.7}
@@ -1809,7 +1812,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .rekentabel{margin:10px 0 8px}
 .rekentabel thead th{text-align:right;white-space:nowrap}
 .rekentabel thead th:first-child{text-align:left}
-.rekentabel tbody th{background:#fff;color:var(--clr-deep);text-transform:none;letter-spacing:0;font-size:0.92rem;font-weight:700;border-bottom:1px solid var(--clr-sand);border-radius:0}
+.rekentabel tbody th{background:#fff;color:var(--clr-deep);text-transform:none;letter-spacing:0;font-size:0.9rem;font-weight:700;border-bottom:1px solid var(--clr-sand);border-radius:0}
 .rekentabel tbody tr:nth-child(even) th{background:var(--clr-warm-white)}
 .rekentabel tbody tr:last-child th{border-bottom:none}
 .rekentabel td{text-align:right;white-space:nowrap}
@@ -1817,7 +1820,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}
 .rekentabel th:first-child{position:sticky;left:0;z-index:1}
 @media (max-width:600px){
   .rekentabel th,.rekentabel td{padding:8px 10px}
-  .rekentabel thead th{text-transform:none;letter-spacing:0;font-size:0.85rem}
+  .rekentabel thead th{text-transform:none;letter-spacing:0;font-size:0.9rem}
 }
 /* een bedrag in de uitkomst van een rekentool niet over twee regels; de
    uitkomstteksten (data-rh-out) zetten alleen een bedrag in <strong> */

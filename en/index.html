@@ -288,7 +288,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--clr-teal-dark);
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 20px;
   border: 1px solid rgba(26,138,125,0.15);
@@ -374,7 +374,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .hero-card-label {
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--clr-bark);
@@ -392,7 +392,7 @@ a { text-decoration: none; color: inherit; }
 
 .hero-card-period {
   color: var(--clr-bark);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 20px;
 }
 
@@ -405,10 +405,11 @@ a { text-decoration: none; color: inherit; }
 .hero-card-row {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid var(--clr-warm-white);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .hero-card-row:last-child { border: none; }
@@ -444,7 +445,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   font-weight: 600;
 }
@@ -470,7 +471,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 700;
@@ -516,7 +517,7 @@ section {
   color: white;
   padding: 6px 16px;
   border-radius: var(--radius-pill);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -553,7 +554,7 @@ section {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--clr-deep);
   font-weight: 500;
 }
@@ -592,12 +593,14 @@ section {
 .teruggave-example-row {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   padding: 11px 0;
   border-bottom: 1px solid var(--clr-warm-white);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .teruggave-example-row:last-of-type { border: none; }
+.teruggave-example-row > :last-child, .hero-card-row > :last-child { white-space: nowrap; text-align: right; }
 
 .teruggave-example-total {
   display: flex;
@@ -620,7 +623,7 @@ section {
   padding: 12px 16px;
   background: var(--clr-green-light);
   border-radius: var(--radius);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--clr-teal-dark);
   font-weight: 600;
   text-align: center;
@@ -692,7 +695,7 @@ section {
 
 .audience-card p {
   color: var(--clr-bark);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 20px;
   line-height: 1.7;
 }
@@ -709,7 +712,7 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--clr-deep);
 }
 
@@ -778,7 +781,7 @@ section {
 }
 
 .step p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--clr-bark);
   line-height: 1.6;
 }
@@ -830,7 +833,7 @@ section {
 }
 
 .tarief-for {
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   font-weight: 600;
   margin-bottom: 16px;
@@ -847,7 +850,7 @@ section {
 .tarief-card--popular .tarief-price { color: var(--clr-orange); }
 
 .tarief-price-note {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--clr-bark);
   margin-bottom: 24px;
 }
@@ -864,7 +867,7 @@ section {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: var(--clr-deep);
 }
 
@@ -961,7 +964,7 @@ section {
 .faq-answer p {
   padding-bottom: 22px;
   color: var(--clr-bark);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
@@ -1035,7 +1038,7 @@ section {
 }
 
 .footer-desc {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   line-height: 1.7;
   margin-bottom: 16px;
 }
@@ -1055,7 +1058,7 @@ section {
 }
 
 .footer-links a {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   transition: color 0.2s;
 }
 
@@ -1065,7 +1068,7 @@ section {
   padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,0.08);
   text-align: center;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
 }
 
 /* ========================================
@@ -1429,7 +1432,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
               <span>&euro; 11.390</span>
             </div>
             <div class="hero-card-row">
-              <span>Benefit, income up to &euro; 38.883 (35.75%)</span>
+              <span>Benefit, income up to &euro;&nbsp;38.883 (35.75%)</span>
               <span style="color: var(--clr-green)">&euro; 4.072 /year</span>
             </div>
             <div class="hero-card-row">
@@ -1466,7 +1469,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
         <a href="tel:+31619711848" style="background:rgba(255,255,255,0.12);color:#fff;text-decoration:none;padding:13px 26px;border-radius:100px;font-weight:700;text-align:center;border:2px solid rgba(255,255,255,0.35);display:inline-flex;align-items:center;justify-content:center;gap:8px;" rel="nofollow">📞 Call directly: 06 – 19 71 18 48</a>
       </div>
     </div>
-    <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:22px;color:rgba(255,255,255,0.88);font-size:0.88rem;">
+    <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:22px;color:rgba(255,255,255,0.88);font-size:0.9rem;">
       <span>✓ No obligation</span>
       <span>✓ Late return <span data-prijs="correctie">€69</span>, with partner <span data-prijs="correctie.partner">€99</span></span>
       <span>✓ Return done together at your own pace</span>
@@ -1487,48 +1490,48 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-teal);">
         <div style="font-size:1.6rem;margin-bottom:12px;">💰</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Apply for or adjust preliminary tax refund 2026</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Do you own a home? You can apply for a preliminary tax refund at any time of the year. Receive your mortgage benefit monthly; how much depends on your mortgage and income.</p>
-        <p style="font-size:0.85rem;color:var(--clr-teal);font-weight:700;margin-bottom:16px;">Also needed when moving house, new mortgage, salary change or expanding your family.</p>
+        <p style="font-size:1rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Do you own a home? You can apply for a preliminary tax refund at any time of the year. Receive your mortgage benefit monthly; how much depends on your mortgage and income.</p>
+        <p style="font-size:0.9rem;color:var(--clr-teal);font-weight:700;margin-bottom:16px;">Also needed when moving house, new mortgage, salary change or expanding your family.</p>
         <a href="#starters" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Arrange preliminary refund →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid #B8421A;">
         <div style="font-size:1.6rem;margin-bottom:12px;">⏰</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Extension &amp; late filing 2025</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Not filed your <span data-jaar="te_laat_jaar">2025</span> return yet? That is still fixable. As long as you have not received a formal notice (aanmaning) from the Belastingdienst, a penalty is usually avoided, the sooner you file, the smaller the risk. We file it for you.</p>
-        <p style="font-size:0.85rem;color:#B8421A;font-weight:700;margin-bottom:16px;">We apply for an extension free of charge and prevent a default fine of €469 or more.</p>
+        <p style="font-size:1rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Not filed your <span data-jaar="te_laat_jaar">2025</span> return yet? That is still fixable. As long as you have not received a formal notice (aanmaning) from the Belastingdienst, a penalty is usually avoided, the sooner you file, the smaller the risk. We file it for you.</p>
+        <p style="font-size:0.9rem;color:#B8421A;font-weight:700;margin-bottom:16px;">We apply for an extension free of charge and prevent a default fine of €469 or more.</p>
         <a href="#uitstel-strip" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Still file your return →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-green);">
         <div style="font-size:1.6rem;margin-bottom:12px;">🔍</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Correction of earlier returns (up to 5 years back)</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Missed deductions? Healthcare costs, donations or partner alimony<!-- tot:2027-01-01 --><span data-tot="2027-01-01T00:00+01:00"> (and for 2021 also study costs)</span><!-- /tot --> are often overlooked. We'll review your <span data-jaar="correctie_van">2021</span>–<span data-jaar="correctie_tot">2024</span> returns for free.</p>
-        <p style="font-size:0.85rem;color:var(--clr-green);font-weight:700;margin-bottom:16px;">This may get you money back, depending on your situation.</p>
+        <p style="font-size:1rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Missed deductions? Healthcare costs, donations or partner alimony<!-- tot:2027-01-01 --><span data-tot="2027-01-01T00:00+01:00"> (and for 2021 also study costs)</span><!-- /tot --> are often overlooked. We'll review your <span data-jaar="correctie_van">2021</span>–<span data-jaar="correctie_tot">2024</span> returns for free.</p>
+        <p style="font-size:0.9rem;color:var(--clr-green);font-weight:700;margin-bottom:16px;">This may get you money back, depending on your situation.</p>
         <a href="#tarieven" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Free review →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-orange);">
         <div style="font-size:1.6rem;margin-bottom:12px;">⚖️</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Box 3: report your actual return</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">For 2021 up to and including 2024 you may always report your actual return to the tax authority, even without a letter or an objection. If it was lower than the assumed return, this may get you money back.</p>
-        <p style="font-size:0.85rem;color:var(--clr-orange);font-weight:700;margin-bottom:16px;">Free check. We calculate it and submit the form on a no cure, no pay basis. Doing it yourself is free too.</p>
+        <p style="font-size:1rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">For 2021 up to and including 2024 you may always report your actual return to the tax authority, even without a letter or an objection. If it was lower than the assumed return, this may get you money back.</p>
+        <p style="font-size:0.9rem;color:var(--clr-orange);font-weight:700;margin-bottom:16px;">Free check. We calculate it and submit the form on a no cure, no pay basis. Doing it yourself is free too.</p>
         <a href="/en/services/box-3-objection/" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Check whether it pays off →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-teal);">
         <div style="font-size:1.6rem;margin-bottom:12px;">📜</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Inheritance tax &amp; gift tax</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Are you thinking of gifting money to children or grandchildren? Or do you need to file an inheritance tax return after a death? We'll help you calmly and carefully.</p>
-        <p style="font-size:0.85rem;color:var(--clr-teal);font-weight:700;margin-bottom:16px;">Gifts up to the annual exemption are tax-free, we'll calculate it for you.</p>
+        <p style="font-size:1rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Are you thinking of gifting money to children or grandchildren? Or do you need to file an inheritance tax return after a death? We'll help you calmly and carefully.</p>
+        <p style="font-size:0.9rem;color:var(--clr-teal);font-weight:700;margin-bottom:16px;">Gifts up to the annual exemption are tax-free, we'll calculate it for you.</p>
         <a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Free advice →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:28px 24px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 12px rgba(44,37,32,0.06);border-top:4px solid var(--clr-green);">
         <div style="font-size:1.6rem;margin-bottom:12px;">📋</div>
         <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--clr-deep);margin-bottom:8px;">Apply for, adjust or prevent benefit reclaims</h3>
-        <p style="font-size:0.92rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Healthcare benefit, rent benefit, child benefit or childcare benefit, relevant all year round. Changes in your income or situation must be reported immediately.</p>
-        <p style="font-size:0.85rem;color:var(--clr-green);font-weight:700;margin-bottom:16px;">Prevent unpleasant reclaims, we'll check your benefits for free.</p>
+        <p style="font-size:1rem;color:var(--clr-bark);line-height:1.6;margin-bottom:10px;">Healthcare benefit, rent benefit, child benefit or childcare benefit, relevant all year round. Changes in your income or situation must be reported immediately.</p>
+        <p style="font-size:0.9rem;color:var(--clr-green);font-weight:700;margin-bottom:16px;">Prevent unpleasant reclaims, we'll check your benefits for free.</p>
         <a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;color:var(--clr-orange);font-weight:700;font-size:0.92rem;text-decoration:none;">Free benefit check →</a>
       </div>
 
@@ -1560,7 +1563,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
           <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:8px;margin-bottom:8px;"><span>Single income</span><strong>€ 22,000</strong></div>
           <div style="display:flex;justify-content:space-between;padding-top:10px;font-size:1.1rem;"><span style="color:#FFF3D6;">Rent benefit per month</span><strong style="color:#FFF3D6;font-size:1.3rem;">± €450</strong></div>
         </div>
-        <div style="margin-top:14px;font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.5;">Indicative. Actual amount depends on your situation.</div>
+        <div style="margin-top:14px;font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.5;">Indicative. Actual amount depends on your situation.</div>
       </div>
     </div>
     <style>
@@ -1625,7 +1628,7 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
             <span>Deductible balance</span><span style="font-weight:600">&euro; 11.390</span>
           </div>
           <div class="teruggave-example-row">
-            <span>Benefit, income up to &euro; 38.883 (35.75%)</span><span style="font-weight:600; color: var(--clr-green)">&euro; 4.072 /year</span>
+            <span>Benefit, income up to &euro;&nbsp;38.883 (35.75%)</span><span style="font-weight:600; color: var(--clr-green)">&euro; 4.072 /year</span>
           </div>
           <div class="teruggave-example-row">
             <span>Benefit, income in 2nd bracket (37.56%)</span><span style="font-weight:600; color: var(--clr-green)">&euro; 4.278 /year</span>
@@ -1793,27 +1796,27 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       <div style="background:#fff;border-radius:12px;padding:24px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);text-align:center;">
         <div style="font-size:1.8rem;margin-bottom:8px;">⚖️</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Box 3: actual return</div>
-        <div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">We calculate your actual return for <span data-jaar="box3_van">2021</span>–<span data-jaar="box3_tot">2024</span> and submit the form.</div>
+        <div style="font-size:0.9rem;color:var(--clr-bark);margin-bottom:12px;">We calculate your actual return for <span data-jaar="box3_van">2021</span>–<span data-jaar="box3_tot">2024</span> and submit the form.</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-teal);">No cure, no pay</div>
-        <div style="font-size:0.78rem;color:var(--clr-bark);">free check · you only pay if it works</div>
+        <div style="font-size:0.9rem;color:var(--clr-bark);">free check · you only pay if it works</div>
         <a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;margin-top:14px;color:var(--clr-orange);font-weight:700;font-size:0.9rem;text-decoration:none;">Check if you qualify →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:24px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);text-align:center;">
         <div style="font-size:1.8rem;margin-bottom:8px;">📋</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Benefits Application</div>
-        <div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">Rent benefit, healthcare benefit, child benefit. We check your entitlement and help with the application.</div>
+        <div style="font-size:0.9rem;color:var(--clr-bark);margin-bottom:12px;">Rent benefit, healthcare benefit, child benefit. We check your entitlement and help with the application.</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-teal);"><span data-prijs="toeslag">€30</span></div>
-        <div style="font-size:0.78rem;color:var(--clr-bark);">per application</div>
+        <div style="font-size:0.9rem;color:var(--clr-bark);">per application</div>
         <a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;margin-top:14px;color:var(--clr-orange);font-weight:700;font-size:0.9rem;text-decoration:none;">Free benefit check →</a>
       </div>
 
       <div style="background:#fff;border-radius:12px;padding:24px 22px;border:1px solid rgba(44,37,32,0.06);box-shadow:0 2px 10px rgba(44,37,32,0.05);text-align:center;">
         <div style="font-size:1.8rem;margin-bottom:8px;">⏱️</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--clr-deep);margin-bottom:6px;">Rush Tax Return (24h)</div>
-        <div style="font-size:0.88rem;color:var(--clr-bark);margin-bottom:12px;">Need it done urgently? We'll handle your return within 24 hours. Same-day reply included.</div>
+        <div style="font-size:0.9rem;color:var(--clr-bark);margin-bottom:12px;">Need it done urgently? We'll handle your return within 24 hours. Same-day reply included.</div>
         <div style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--clr-teal);">+ <span data-prijs="spoed">€25</span></div>
-        <div style="font-size:0.78rem;color:var(--clr-bark);">surcharge</div>
+        <div style="font-size:0.9rem;color:var(--clr-bark);">surcharge</div>
         <a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;margin-top:14px;color:var(--clr-orange);font-weight:700;font-size:0.9rem;text-decoration:none;">Request rush service →</a>
       </div>
 
@@ -1972,10 +1975,10 @@ body:has(.mobile-toggle[aria-expanded="true"]) .ts-switch{display:none}.mobile-t
       .blog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
       .blog-card{display:block;background:#fff;border-radius:12px;padding:26px;text-decoration:none;color:inherit;box-shadow:0 2px 12px rgba(44,37,32,0.07);transition:transform 0.2s ease,box-shadow 0.2s ease;border:1px solid rgba(44,37,32,0.05);}
       .blog-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(44,37,32,0.12);}
-      .blog-card-tag{font-size:12px;font-weight:700;color:var(--clr-teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+      .blog-card-tag{font-size:0.85rem;font-weight:700;color:var(--clr-teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
       .blog-card h3{font-size:1rem;font-family:var(--font-display);font-weight:600;color:var(--clr-deep);margin-bottom:10px;line-height:1.45;}
-      .blog-card p{font-size:0.875rem;color:var(--clr-bark);line-height:1.6;margin-bottom:16px;}
-      .blog-card-link{font-size:0.875rem;color:var(--clr-teal);font-weight:700;}
+      .blog-card p{font-size:1rem;color:var(--clr-bark);line-height:1.6;margin-bottom:16px;}
+      .blog-card-link{font-size:1rem;color:var(--clr-teal);font-weight:700;}
       @media(max-width:900px){.blog-cards{grid-template-columns:repeat(2,1fr);}}
       @media(max-width:600px){.blog-cards{grid-template-columns:1fr;}}
     </style>

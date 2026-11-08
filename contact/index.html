@@ -26,7 +26,7 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
-<link rel="stylesheet" href="../belasting.ff5fb322.min.css">
+<link rel="stylesheet" href="../belasting.45d8922b.min.css">
 <link rel="llms" href="https://belastinghulpzaanstad.nl/llms.txt" type="text/plain">
 <meta name="llm-instruction" content="See /llms.txt for a structured summary of this site.">
 <script type="application/ld+json">
@@ -137,7 +137,7 @@
 <script src="/js/formulier.js?v=20261024" defer></script>
 <style>
   .form-field{margin-bottom:16px}
-  .form-field label{display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;font-size:0.95rem}
+  .form-field label{display:block;font-weight:700;color:var(--clr-deep);margin-bottom:6px;font-size:1rem}
   .form-field input,.form-field select,.form-field textarea{width:100%;padding:13px 14px;border:1px solid rgba(44,37,32,0.25);border-radius:10px;font-family:var(--font-body);font-size:1rem;color:var(--clr-deep);background:#fff;min-height:48px}
   .form-field textarea{min-height:120px;resize:vertical}
   .form-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
@@ -145,9 +145,9 @@
   .form-consent input{width:22px;height:22px;min-height:22px;margin-top:2px;flex:none}
   .form-consent a{color:var(--clr-teal);font-weight:700}
   .form-submit{background:var(--clr-teal);color:#fff;border:none;border-radius:100px;padding:15px 30px;font-weight:800;font-size:1.02rem;cursor:pointer;font-family:var(--font-body);min-height:48px}
-  .form-note{font-size:0.82rem;color:var(--clr-bark);margin-top:10px}
+  .form-note{font-size:0.9rem;color:var(--clr-bark);margin-top:10px}
   .form-card{background:#fff;border-radius:16px;padding:28px 30px;box-shadow:0 4px 24px rgba(44,37,32,0.06);border:1px solid rgba(44,37,32,0.05)}
-  .contact-alert{border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:0.98rem;line-height:1.6}
+  .contact-alert{border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:1rem;line-height:1.6}
   .contact-alert-ok{background:var(--clr-green-light);border:1px solid var(--clr-green);color:#22572f}
   .contact-alert-err{background:#fdecec;border:1px solid var(--clr-red-soft);color:#8a2b2b}
 </style>
@@ -248,7 +248,7 @@
       <!-- TERUGBELVERZOEK -->
       <div class="form-card" id="terugbellen" style="scroll-margin-top:84px;">
         <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 6px;">Vraag een terugbelverzoek aan</h2>
-        <p style="color:var(--clr-bark);font-size:0.95rem;margin:0 0 18px;">Laat uw naam en nummer achter, wij bellen u terug. Meer hoeft niet.</p>
+        <p style="color:var(--clr-bark);font-size:1rem;margin:0 0 18px;">Laat uw naam en nummer achter, wij bellen u terug. Meer hoeft niet.</p>
         <form action="/api/aanvraag" method="POST">
           <input type="hidden" name="formulier" value="terugbellen">
           <input type="hidden" name="toestemming_versie" value="terugbellen-2026-10">
@@ -305,7 +305,7 @@
       <!-- VOLLEDIG BERICHT -->
       <div class="form-card" id="bericht">
         <h2 style="font-family:var(--font-display);font-size:1.4rem;color:var(--clr-deep);margin:0 0 6px;">Of stuur een bericht</h2>
-        <p style="color:var(--clr-bark);font-size:0.95rem;margin:0 0 18px;">Vertel kort waar het over gaat. Wij nemen dezelfde dag contact met u op.</p>
+        <p style="color:var(--clr-bark);font-size:1rem;margin:0 0 18px;">Vertel kort waar het over gaat. Wij nemen dezelfde dag contact met u op.</p>
         <form action="/api/aanvraag" method="POST">
           <input type="hidden" name="formulier" value="bericht">
           <input type="hidden" name="toestemming_versie" value="bericht-2026-10">
