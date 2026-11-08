@@ -45,7 +45,7 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
 - **Actie — Q1 2027:** actualiseren naar de cyclus van belastingjaar 2026
   (uitstel aanvragen vóór 1 mei 2027, uitstel tot 1 september 2027). Zie `docs/seizoen-2027.md`.
 
-## 2a. Startkorting €20 — AUTO, verloopt **2026-12-31** (beslissing eigenaar open)
+## 2a. Startkorting €20 — AUTO, verloopt **2026-12-31** (besloten 2026-11-08: niet verlengen)
 - **Bron:** `data/bedrijf.json` → `startkorting` (`actief`, `bedrag`, `geldig_tot`), en
   `startkorting_eerste_klanten` in `data/fiscale-cijfers.json`.
 - **Tekst:** "nieuwe klanten krijgen in 2026 €20 korting op een aangifte of voorlopige
@@ -188,7 +188,7 @@ sitebreed doorgevoerd (NL + EN). Gebruik ze als ijkpunt bij de volgende jaarupda
 | Wanneer | Wat nalopen |
 |---|---|
 | **2026-12** | 2027-toeslag-/tariefcijfers (§5); prijzen (§7) |
-| **2026-12-31** | startkorting afgelopen of verlengd (§2a); 2021-correctietekst (§2b) |
+| **2026-12-31** | startkorting afgelopen (§2a; daarna de regel in llms.txt met de hand weghalen); 2021-correctietekst (§2b) |
 | **2027-01** | belastingjaar-framing 2025→2026 (§3); deadline-2027-artikel aanmaken (§4); EN-strip naar aangifteseizoen 2026 (§1); uitstelteksten naar 2027 (§2); 2021 → 2022 (§2b) |
 | **jaarlijks mei** | na afloop aangifteseizoen: hero/strip/blogs herijken |
 
