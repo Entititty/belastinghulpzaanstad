@@ -84,7 +84,7 @@
       "verouderd": [
         "€2.950"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/voorlopige-aanslag/content/voorlopige-aanslag-tarieven-en-heffingskortingen"
     },
     "ouderenkorting_max": {
@@ -170,7 +170,7 @@
       "verouderd": [
         "€10,25"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang"
     },
     "kinderopvang_uurtarief_bso": {
@@ -180,7 +180,7 @@
       "verouderd": [
         "€8,80"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang"
     },
     "kinderopvang_uurtarief_gastouder": {
@@ -190,7 +190,7 @@
       "verouderd": [
         "€7,53"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/kinderopvangtoeslag/hoeveel-kinderopvangtoeslag-kan-ik-krijgen/maximaal-uurtarief-voor-de-kinderopvang"
     },
     "kindgebonden_budget_vermogensgrens_alleenstaand": {
@@ -200,7 +200,7 @@
       "verouderd": [
         "€152.000"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/kindgebonden-budget/content/kan-ik-kindgebonden-budget-krijgen"
     },
     "box3_heffingvrij_alleenstaand": {
@@ -258,7 +258,7 @@
       "verouderd": [
         "€3.700"
       ],
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026"
     },
     "box3_tarief": {
@@ -351,7 +351,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, overzicht percentages belastingrente: vanaf 1 januari 2026 is het percentage 5 voor alle belastingen behalve toeslagen en vennootschapsbelasting",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/standaard_functies/prive/contact/rechten_en_plichten_bij_de_belastingdienst/belastingrente/overzicht_percentages_belastingrente",
-      "gecontroleerd_op": "2026-08-30",
+      "gecontroleerd_op": "2026-11-11",
       "context": [
         "belastingrente",
         "rente"
@@ -374,7 +374,7 @@
         "€454,47",
         "€454.47"
       ],
-      "gecontroleerd_op": "2026-10-30",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/huurtoeslag-verandert-vanaf-2026"
     },
     "huurtoeslag_jongeren_leeftijd": {
@@ -382,7 +382,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, huurtoeslag verandert vanaf 2026: \"Vanaf 2026 doen we dat alleen nog bij jongeren tot 21 jaar\". Tot en met 2025 lag de grens op 23 jaar.",
       "verouderd": [],
-      "gecontroleerd_op": "2026-09-02",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/huurtoeslag/content/huurtoeslag-verandert-vanaf-2026",
       "context": [
         "huurtoeslag",
@@ -395,7 +395,7 @@
       "geverifieerd": true,
       "bron": "rijksoverheid.nl, bedragen minimumloon 2026: bruto minimumuurloon vanaf 21 jaar per 1 juli 2026. LET OP: wijzigt elk half jaar, per 1 januari en 1 juli. Per 1 januari 2026 was het €14,71.",
       "verouderd": [],
-      "gecontroleerd_op": "2026-09-02",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.rijksoverheid.nl/onderwerpen/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026",
       "context": [
         "minimumloon",
@@ -408,7 +408,7 @@
       "geverifieerd": true,
       "bron": "rijksoverheid.nl, bedragen minimumloon 2026: minimumjeugdloon 18 jaar per uur per 1 juli 2026. LET OP: wijzigt elk half jaar, per 1 januari en 1 juli. Per 1 januari 2026 was het €7,36.",
       "verouderd": [],
-      "gecontroleerd_op": "2026-09-02",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.rijksoverheid.nl/onderwerpen/minimumloon/bedragen-minimumloon/bedragen-minimumloon-2026",
       "context": [
         "minimumjeugdloon",
@@ -1509,7 +1509,7 @@
       "geverifieerd": true,
       "bron": "belastingdienst.nl, giften: hoeveel aftrek krijgt u? (2026): drempel gewone giften minimaal € 60",
       "verouderd": [],
-      "gecontroleerd_op": "2026-10-31",
+      "gecontroleerd_op": "2026-11-11",
       "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/inkomstenbelasting/aftrekposten/persoonsgebonden-aftrek/giften_aan_goede_doelen/hoeveel_aftrek_krijg_u/hoeveel_aftrek",
       "context": [
         "gift",

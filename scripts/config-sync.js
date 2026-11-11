@@ -186,6 +186,24 @@ for (const [k, p] of Object.entries(prijzen)) {
 }
 const PRICE_RANGE = '€' + Math.min.apply(null, inRange) + '–€' + Math.max.apply(null, inRange);
 
+/* ---------- fiscale cijfers: voor de regel "gecontroleerd op" ---------- */
+const FISCAAL = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'fiscale-cijfers.json'), 'utf8'));
+/* Een leesbare naam voor een bron: de organisatie plus het onderwerp uit het adres.
+   ".../huurtoeslag/content/maximaal-vermogen-huurtoeslag" -> "Belastingdienst: maximaal vermogen huurtoeslag" */
+function bronLabel(c) {
+  let u;
+  try { u = new URL(c.bron_url); } catch (e) { return c.bron.split(/[:"“,]/)[0].trim(); }
+  const host = u.hostname.replace(/^www\./, '');
+  const org = /belastingdienst\.nl$/.test(host) ? 'Belastingdienst' : /rijksoverheid\.nl$/.test(host) ? 'Rijksoverheid'
+    : /wetten\.overheid\.nl$/.test(host) ? 'wetten.overheid.nl' : host;
+  const delen = u.pathname.split('/').filter(Boolean);
+  let onderwerp = (delen[delen.length - 1] || '').replace(/\.(pdf|html?)$/i, '');
+  if (/\.pdf$/i.test(u.pathname) || !/[a-z]{3}/i.test(onderwerp)) onderwerp = c.bron.split(/[:"“]/)[0].replace(/^[^,]*,\s*/, '').replace(/,\s*stap \d+.*$/i, '');
+  /* een interne code aan het eind ("_tg0831z62fd") weg, een jaartal ("-2026") laten staan */
+  onderwerp = onderwerp.replace(/[_-](?=[a-z0-9]*\d)[a-z0-9]*[a-z]$/i, '').replace(/[-_]+/g, ' ').replace(/[,;.\s]+$/, '').trim();
+  return onderwerp ? org + ': ' + onderwerp.charAt(0).toLowerCase() + onderwerp.slice(1) : org;
+}
+
 /* ---------- plaatscijfers: data/plaatsen.json (CBS) ---------- */
 const PLAATSEN = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'plaatsen.json'), 'utf8'));
 
@@ -522,6 +540,43 @@ for (const f of walk(ROOT, [])) {
     if (/"/.test(tekst)) fouten.push(rel(f) + ': tpl bevat een aanhalingsteken');
     return kop + (tag.indexOf('<title>') === 0 ? '<title>' + tekst + '</title>' : tag.replace(/\scontent="[^"]*"/, ' content="' + tekst + '"'));
   });
+
+  /* 1d. "Gecontroleerd op": onder elk Nederlands artikel met fiscale bedragen.
+     Welke cijfers uit data/fiscale-cijfers.json op de pagina staan, bepaalt de
+     datum (de oudste controle) en de bronnen. Zo kan de regel nooit meer
+     beloven dan er echt is nagekeken. */
+  if (/^blog\/[^/]+\/index\.html$/.test(rel(f)) && /class="disclaimer-box"/.test(s)) {
+    if (s.indexOf('<!-- cfg-pagina:gecontroleerd -->') === -1) {
+      s = s.replace(/(<div class="disclaimer-box"[^>]*>\s*<p[^>]*>[\s\S]*?<\/p>)/, '$1\n  <!-- cfg-pagina:gecontroleerd --><!-- /cfg-pagina:gecontroleerd -->');
+    }
+    const zicht = s.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<!--[\s\S]*?-->/g, ' ').split(/\n/).map(function (r) { return r.replace(/<[^>]+>/g, ' ').replace(/&euro;/g, '€').replace(/&nbsp;/g, ' '); });
+    const gevonden = Object.entries(FISCAAL.cijfers).filter(function (kv) {
+      const c = kv[1];
+      if (kv[0] === 'startkorting_eerste_klanten' || !c.waarde || !c.bron_url) return false;
+      /* het bedrag als los getal: "5%" mag niet matchen in "35,75%" */
+      const re = new RegExp('(?<![\\d.,])' + c.waarde.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\d]|[.,]\\d)');
+      return zicht.some(function (r) {
+        if (!re.test(r)) return false;
+        return !c.context || c.context.some(function (w) { return r.toLowerCase().indexOf(w.toLowerCase()) !== -1; });
+      });
+    });
+    let blok = '';
+    if (gevonden.length) {
+      const datum = gevonden.map(function (kv) { return kv[1].gecontroleerd_op; }).sort()[0];
+      const bronnen = [];
+      gevonden.forEach(function (kv) {
+        const c = kv[1];
+        if (bronnen.some(function (b) { return b.url === c.bron_url; })) return;
+        const label = bronLabel(c);
+        bronnen.push({ url: c.bron_url, label: label });
+      });
+      const getoond = bronnen.slice(0, 5).map(function (b) { return '<a href="' + esc(b.url) + '" target="_blank" rel="noopener noreferrer">' + esc(b.label) + '</a>'; });
+      blok = '<p style="font-size:0.9rem;color:var(--clr-bark);margin:12px 0 0;"><strong>Gecontroleerd:</strong> de bedragen op deze pagina hebben wij op ' +
+        datumTekst(datum, 'nl') + ' nagekeken bij ' + (getoond.length > 1 ? getoond.slice(0, -1).join(', ') + ' en ' + getoond[getoond.length - 1] : getoond[0]) +
+        (bronnen.length > 5 ? ', en nog ' + (bronnen.length - 5) + ' andere officiële bron' + (bronnen.length - 5 > 1 ? 'nen' : '') : '') + '.</p>';
+    }
+    s = s.replace(/<!-- cfg-pagina:gecontroleerd -->[\s\S]*?<!-- \/cfg-pagina:gecontroleerd -->/, '<!-- cfg-pagina:gecontroleerd -->' + blok + '<!-- /cfg-pagina:gecontroleerd -->');
+  }
 
   /* 2. cfg-blokken */
   s = s.replace(/<!-- cfg:([a-z0-9-]+) -->([\s\S]*?)<!-- \/cfg:\1 -->/g, function (heel, naam) {
