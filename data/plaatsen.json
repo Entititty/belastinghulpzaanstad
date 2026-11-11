@@ -1,79 +1,101 @@
 {
-  "_doc": "Per kern: inwoners (2026), gemiddelde WOZ-waarde (2025) en het aandeel koop- of huurwoningen. Dezelfde cijfers staan in de statistiekblokken van de Nederlandse en Engelse plaatspagina's. Geen script leest dit bestand; het is het naslagpunt bij een update.",
-  "bron": "CBS / AlleCijfers.nl, zie CHANGELOG-AUDIT.md (ronde lokale pagina's)",
-  "bijgewerkt": "2026-10-20",
+  "_doc": "Per kern: inwoners op 1 januari 2025, gemiddelde WOZ-waarde (afgerond op duizenden) en het aandeel koop- of huurwoningen, uit CBS Kerncijfers wijken en buurten 2025 (86165NED). Een kern is de som van zijn CBS-wijken, gewogen naar het aantal woningen. scripts/config-sync.js vult hiermee elk element met data-plaats=\"slug.veld\" (inwoners, woz, koop_pct, huur_pct), Nederlands of Engels naar de pagina. De afgeronde getallen in lopende tekst (\"ruim 25.000\") staan met de hand; controleer ze bij een update.",
+  "bron": "CBS, Kerncijfers wijken en buurten 2025 (tabel 86165NED)",
+  "bron_url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/86165NED/table",
+  "peildatum_inwoners": "2025-01-01",
+  "bijgewerkt": "2026-11-11",
+  "wijken": {
+    "zaandam": "WK047911-16, WK047921-23",
+    "krommenie": "WK047961-62",
+    "assendelft": "WK047971-72",
+    "wormerveer": "WK047951",
+    "koog-aan-de-zaan": "WK047931-32",
+    "zaandijk": "WK047941-42",
+    "westzaan": "WK047981",
+    "wormerland": "GM0880 (gemeente)",
+    "oostzaan": "GM0431 (gemeente)"
+  },
   "kernen": [
     {
       "slug": "zaandam",
       "naam": "Zaandam",
-      "inwoners_2026": 84461,
-      "gem_woz_2025": 370266,
-      "huurwoningen_pct": 52,
-      "omschrijving": "Grootste kern en centrum van de gemeente Zaanstad."
+      "omschrijving": "Grootste kern en centrum van de gemeente Zaanstad.",
+      "inwoners": 82410,
+      "woz": 370000,
+      "koop_pct": 48,
+      "huur_pct": 52
     },
     {
       "slug": "krommenie",
       "naam": "Krommenie",
-      "inwoners_2026": 17237,
-      "gem_woz_2025": 386390,
-      "koopwoningen_pct": 53,
-      "omschrijving": "Kern in het noorden van Zaanstad, grenzend aan Assendelft."
+      "omschrijving": "Kern in het noorden van Zaanstad, grenzend aan Assendelft.",
+      "inwoners": 17140,
+      "woz": 386000,
+      "koop_pct": 53,
+      "huur_pct": 47
     },
     {
       "slug": "assendelft",
       "naam": "Assendelft",
-      "inwoners_2026": 25460,
-      "gem_woz_2025": 470045,
-      "koopwoningen_pct": 72,
-      "omschrijving": "Langgerekt dorp in het noordwesten van Zaanstad."
+      "omschrijving": "Langgerekt dorp in het noordwesten van Zaanstad.",
+      "inwoners": 25310,
+      "woz": 470000,
+      "koop_pct": 72,
+      "huur_pct": 28
     },
     {
       "slug": "wormerveer",
       "naam": "Wormerveer",
-      "inwoners_2026": 12735,
-      "gem_woz_2025": 338000,
-      "koopwoningen_pct": 51,
-      "omschrijving": "Kern langs de Zaan in het noorden van de gemeente."
+      "omschrijving": "Kern langs de Zaan in het noorden van de gemeente.",
+      "inwoners": 12800,
+      "woz": 338000,
+      "koop_pct": 51,
+      "huur_pct": 49
     },
     {
       "slug": "koog-aan-de-zaan",
       "naam": "Koog aan de Zaan",
-      "inwoners_2026": 11306,
-      "gem_woz_2025": 388878,
-      "koopwoningen_pct": 61,
-      "omschrijving": "Compacte kern tussen Zaandam en Zaandijk."
+      "omschrijving": "Compacte kern tussen Zaandam en Zaandijk.",
+      "inwoners": 11340,
+      "woz": 389000,
+      "koop_pct": 61,
+      "huur_pct": 39
     },
     {
       "slug": "zaandijk",
       "naam": "Zaandijk",
-      "inwoners_2026": 8868,
-      "gem_woz_2025": 382923,
-      "koopwoningen_pct": 53,
-      "omschrijving": "Kern bij de Zaanse Schans aan de Zaan."
+      "omschrijving": "Kern bij de Zaanse Schans aan de Zaan.",
+      "inwoners": 8700,
+      "woz": 383000,
+      "koop_pct": 53,
+      "huur_pct": 47
     },
     {
       "slug": "westzaan",
       "naam": "Westzaan",
-      "inwoners_2026": 5131,
-      "gem_woz_2025": 510000,
-      "koopwoningen_pct": 79,
-      "omschrijving": "Dorp met veel vrijstaande woningen ten westen van Zaandam."
+      "omschrijving": "Dorp met veel vrijstaande woningen ten westen van Zaandam.",
+      "inwoners": 5130,
+      "woz": 510000,
+      "koop_pct": 79,
+      "huur_pct": 21
     },
     {
       "slug": "wormerland",
       "naam": "Wormerland",
-      "inwoners_2026": 16328,
-      "gem_woz_2025": 441000,
-      "koopwoningen_pct": 63,
-      "omschrijving": "Aangrenzende gemeente met o.a. Wormer en Jisp."
+      "omschrijving": "Aangrenzende gemeente met o.a. Wormer en Jisp.",
+      "inwoners": 16421,
+      "woz": 441000,
+      "koop_pct": 63,
+      "huur_pct": 37
     },
     {
       "slug": "oostzaan",
       "naam": "Oostzaan",
-      "inwoners_2026": 9778,
-      "gem_woz_2025": 522000,
-      "koopwoningen_pct": 67,
-      "omschrijving": "Aangrenzende gemeente ten zuiden van Zaandam."
+      "omschrijving": "Aangrenzende gemeente ten zuiden van Zaandam.",
+      "inwoners": 9733,
+      "woz": 522000,
+      "koop_pct": 67,
+      "huur_pct": 33
     }
   ]
 }

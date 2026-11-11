@@ -179,6 +179,9 @@ for (const [k, p] of Object.entries(prijzen)) {
 }
 const PRICE_RANGE = '€' + Math.min.apply(null, inRange) + '–€' + Math.max.apply(null, inRange);
 
+/* ---------- plaatscijfers: data/plaatsen.json (CBS) ---------- */
+const PLAATSEN = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'plaatsen.json'), 'utf8'));
+
 /* ---------- aanvragen: data/aanvraag.json (formulieren, herinneringslijst) ---------- */
 const AANVRAAG = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'aanvraag.json'), 'utf8'));
 const RONDES = (AANVRAAG.herinnering && AANVRAAG.herinnering.rondes) || [];
@@ -452,6 +455,15 @@ for (const f of walk(ROOT, [])) {
     const k = sleutel === 'reactietijd' ? taal : sleutel === 'reactietijd_kort' ? taal + '_kort' : null;
     if (!k || leeg(R[k])) { fouten.push(rel(f) + ': data-tekst="' + sleutel + '" staat niet in data/bedrijf.json (reactietijd)'); return heel; }
     return open + R[k] + sluit;
+  });
+  /* 1b3. plaatscijfers uit data/plaatsen.json (CBS): data-plaats="slug.veld" */
+  s = s.replace(/(<span\s[^>]*?data-plaats="([a-z-]+)\.([a-z_]+)"[^>]*>)([^<]*)(<\/span>)/g, function (heel, open, slug, veld, inhoud, sluit) {
+    const k = PLAATSEN.kernen.find(function (x) { return x.slug === slug; });
+    const v = k && k[veld];
+    if (typeof v !== 'number') { fouten.push(rel(f) + ': data-plaats="' + slug + '.' + veld + '" staat niet in data/plaatsen.json'); return heel; }
+    const sep = /^en\//.test(rel(f)) ? ',' : '.';
+    const getal = String(v).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+    return open + (veld === 'woz' ? '€' + getal : /_pct$/.test(veld) ? v + '%' : getal) + sluit;
   });
   /* andere reactietijden dan de afgesproken: alleen waarschuwen (de spoedaangifte binnen 24 uur is een dienst, geen reactietijd) */
   const tekstAlleen = s.replace(/<script[\s\S]*?<\/script>|<!--[\s\S]*?-->|<[^>]+>/g, ' ');
