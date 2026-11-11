@@ -162,7 +162,7 @@ Alle rekentools rekenen met de cijfers van 2026. De berekening gebeurt in de bro
 ### Aangifte & deadlines
 - [Wat kost belastingaangifte laten doen? Prijzen 2026](https://belastinghulpzaanstad.nl/blog/belastingaangifte-laten-doen-kosten/)
 - [Aangifte inkomstenbelasting doen: stap voor stap uitgelegd](https://belastinghulpzaanstad.nl/blog/aangifte-inkomstenbelasting/)
-- [Belastingaangifte 2026: deadline 1 mei 2027 (+ uitstel)](https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte-2026/), alle data (1 maart, 1 april, 1 mei en 1 september 2027), waarom vóór 1 april, uitstel en boetes
+- [Belastingaangifte 2026: deadline 1 mei 2027 (+ uitstel)](https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte/), alle data (1 maart, 1 april, 1 mei en 1 september {lopende_deadline_jaar}), waarom vóór 1 april, uitstel en boetes
 - [Uitstel belastingaangifte aanvragen: gratis, tot 1 september](https://belastinghulpzaanstad.nl/blog/uitstel-belastingaangifte-aanvragen/)
 - [Belastingaangifte te laat? Boete en wat u nu kunt doen](https://belastinghulpzaanstad.nl/blog/te-laat-belastingaangifte/)
 - [10 tips om meer belasting terug te krijgen in 2026](https://belastinghulpzaanstad.nl/blog/belastingaangifte-tips/)

@@ -608,7 +608,7 @@ Sinds 23 oktober 2026 ook voor het samengevoegde deadline-artikel:
 
 ```bash
 curl -sI https://belastinghulpzaanstad.nl/blog/belastingaangifte-voor-1-april/ | grep -i "^location"
-# location: https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte-2026/
+# location: https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte/
 ```
 
 ---

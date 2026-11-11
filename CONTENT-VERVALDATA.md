@@ -90,13 +90,13 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
   te-laat-/uitstel-blogs).
 - **Actie — vanaf 2027-01 (start aangifteseizoen 2026):** verschuif naar "aangifte 2026".
   Let ook op de hero-subtekst "…uw aangifte 2025 nog niet deed…".
-- **Al gedaan 2026-10-22:** `blog/einddatum-belastingaangifte-2026/` (sinds 2026-10-23 samen met het
+- **Al gedaan 2026-10-22:** `blog/einddatum-belastingaangifte/` (sinds 2026-10-23 samen met het
   voormalige `belastingaangifte-voor-1-april`) en `blog/aangifte-inkomstenbelasting/` staan op de aangifte over 2026 (aangifte van 1 maart tot 1 mei 2027). Over: de homepage-FAQ
   "Ik heb mijn aangifte 2025 niet gedaan", de te-laat-blog en de strip op de Engelse homepage.
 
 ## 4. Deadline-artikelen — HANDMATIG
 - `blog/einddatum-belastingaangifte-2025/` = **noindex redirect** naar de 2026-versie (OK, laten staan).
-- `blog/einddatum-belastingaangifte-2026/` = live, **deadline 1 mei 2027**. Deze pagina is het hele
+- `blog/einddatum-belastingaangifte/` = live, **deadline 1 mei 2027**. Deze pagina is het hele
   seizoen 2026 actueel (tot 1 mei 2027, met uitstel 1 september 2027).
   **Actie — na 1 mei 2027:** werk dezelfde pagina bij naar het seizoen 2027 (titel, H1, tabellen, FAQ,
   `dateModified`). Het jaartal in het adres blijft dan staan; een nieuwe URL per jaar kost telkens
@@ -120,7 +120,7 @@ vaststaat dat Belastinghulp Zaanstad een Beconnummer heeft (open vraag aan de ei
 - **Terugwerkende kracht toeslagen:** `blog/huurtoeslag-aanvragen/`, `en/blog/rent-benefit/`,
   `blog/zorgtoeslag-grens/` noemen "over 2026 tot 1 september 2027". **Actie — na 1 september
   2027:** een jaar opschuiven.
-- **Seizoensdata:** `blog/einddatum-belastingaangifte-2026/` (tabel 1 maart / 1 april / 1 mei /
+- **Seizoensdata:** `blog/einddatum-belastingaangifte/` (tabel 1 maart / 1 april / 1 mei /
   1 september 2027, titel "Belastingaangifte 2026: deadline 1 mei 2027 (+ uitstel)"). **Actie — na 1 mei 2027:** naar het seizoen 2027.
 - **Gemeentebelastingen:** titel en kop van `blog/kwijtschelding-gemeentelijke-belasting/` en
   `en/blog/municipal-tax-waiver/` noemen 2026. **Actie — februari 2027**, als de nieuwe aanslag komt:
