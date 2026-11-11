@@ -7,6 +7,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://belastinghulpzaanstad.nl/belastingdienst-zaandam/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://belastinghulpzaanstad.nl/checklist/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>yearly</changefreq>
@@ -39,6 +45,12 @@
   <url>
     <loc>https://belastinghulpzaanstad.nl/en/privacy/</loc>
     <lastmod>2026-10-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://belastinghulpzaanstad.nl/gratis-of-betaalde-hulp-belastingaangifte/</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
