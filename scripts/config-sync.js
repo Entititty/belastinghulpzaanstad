@@ -154,6 +154,10 @@ if (sk.actief === true && sk.geldig_tot && VANDAAG > sk.geldig_tot) {
 const JAREN = Object.assign({}, PERIODE, {
   correctie_einddatum: '31 december ' + PERIODE.jaar,
   correctie_einddatum_en: '31 December ' + PERIODE.jaar,
+  /* het jaar waarin de aangifte over te_laat_jaar uiterlijk binnen moest (1 mei, met uitstel 1 september) */
+  te_laat_deadline_jaar: PERIODE.te_laat_jaar + 1,
+  /* het belastingjaar waarover u nu aangifte doet: het vorige kalenderjaar */
+  vorig_jaar: PERIODE.jaar - 1,
   startkorting_tot: sk.geldig_tot ? datumTekst(sk.geldig_tot, 'nl') : '',
   startkorting_tot_en: sk.geldig_tot ? datumTekst(sk.geldig_tot, 'en') : ''
 });

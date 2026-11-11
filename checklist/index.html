@@ -275,7 +275,7 @@
         <li><span class="cl-box" aria-hidden="true"></span> Zorgkosten die u zelf betaalde en niet vergoed kreeg</li>
         <li><span class="cl-box" aria-hidden="true"></span> Giften aan een goed doel (ANBI) of aan de kerk, en de akte bij een periodieke gift</li>
         <li><span class="cl-box" aria-hidden="true"></span> Betaalde partneralimentatie, met het rekeningnummer van de ontvanger</li>
-        <li><span class="cl-box" aria-hidden="true"></span> Studiekosten: alleen voor een correctie over 2021, daarna niet meer aftrekbaar (<a href="/deadline-2021/">nog tot 31 december 2026</a>)</li>
+        <!-- tot:2027-01-01 --><li data-tot="2027-01-01T00:00+01:00"><span class="cl-box" aria-hidden="true"></span> Studiekosten: alleen voor een correctie over 2021, daarna niet meer aftrekbaar (<a href="/deadline-2021/">nog tot 31 december 2026</a>)</li><!-- /tot -->
         <li><span class="cl-box" aria-hidden="true"></span> Overzicht ontvangen partneralimentatie, als u die krijgt</li>
       </ul>
     </div>
@@ -350,5 +350,6 @@ function toggleMenu(){const links=document.querySelector('.nav-links');const kno
 window.addEventListener('scroll',()=>{const nav=document.getElementById('nav');nav.style.boxShadow=window.scrollY>60?'0 2px 16px rgba(44,37,32,0.08)':'none';});
 </script>
 
+<!-- cfg:verberger --><script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-van],[data-tot]'),function(e){var v=e.getAttribute('data-van'),t=e.getAttribute('data-tot');e.hidden=!!(v&&n<Date.parse(v))||!!(t&&n>=Date.parse(t));});})();</script><!-- /cfg:verberger -->
 </body>
 </html>
