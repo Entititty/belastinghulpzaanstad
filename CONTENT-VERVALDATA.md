@@ -20,8 +20,19 @@ herzien moeten worden, zodat niets stilletjes veroudert. Bijgehouden sinds ronde
 - **Wat u moet doen:** op of kort na **1 januari 2027** en **1 mei 2027**: `node scripts/bouw.js`, commit, push.
   Vanaf die dag faalt `node scripts/bouw.js --check` tot dat gebeurd is: dat is het geheugensteuntje.
   Vooraf bekijken: `node scripts/config-sync.js --datum=2027-01-01` in een kopie van de site.
-- **Met de hand blijft:** `llms.txt` (config-sync waarschuwt bij afwijkende jaren of een verlopen
-  startkorting), blogtekst die een jaar beschrijft, en een nieuwe periode in `perioden` voor 2028.
+- **Sinds 2026-11-11 ook AUTO bij een build:**
+  - `llms.txt` wordt opgebouwd uit `data/llms-sjabloon.txt` (jaartallen, startkorting, de 2021-regel).
+    Bewerk het sjabloon, niet `llms.txt`.
+  - `/deadline-2021/` wordt vanaf 2027-01-01 een vangnet (`vervallen` in `data/datums.json`).
+    **Daarna met de hand:** het uitgecommentarieerde blok voor `/deadline-2021/` in
+    `server-setup/nginx-belastinghulpzaanstad.conf` aanzetten en `nginx-bijwerken.sh` draaien.
+  - Het deadline-artikel staat op een vast adres (`/blog/einddatum-belastingaangifte/`) en de
+    te-laat- en tipsartikelen (NL en EN) schuiven op 1 mei mee (`te_laat_jaar`, `lopende_aangifte_jaar` e.d.).
+  - Plaatscijfers komen uit `data/plaatsen.json` (CBS), via `data-plaats`.
+  - Onder elk artikel met fiscale bedragen staat "Gecontroleerd op" met de oudste controledatum uit
+    `data/fiscale-cijfers.json`; een nieuwe controle daar werkt de regel vanzelf bij.
+- **Met de hand blijft:** blogtekst die een belastingjaar beschrijft (bedragen 2026), de toeslag-
+  aanvraagtermijnen (tot 1 september 2027 kloppen ze), en een nieuwe periode in `perioden` voor 2028.
 
 ## 1. Strip "aangifte 2025 nog niet gedaan" op de Engelse homepage — AUTO weg op 2027-01-01
 *Bijgewerkt 2026-10-20.* De Nederlandse homepage heeft geen uitstel-strip meer. De
