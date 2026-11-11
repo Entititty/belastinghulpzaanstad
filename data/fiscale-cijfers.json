@@ -1573,6 +1573,30 @@
         "donation",
         "ANBI"
       ]
+    },
+    "toeslag_terugbetalen_drempel": {
+      "waarde": "€121",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, klein bedrag aan toeslag terugbetalen: definitieve berekening ontvangen in 2026, niet terugbetalen als het bedrag € 121 of minder is, per toeslag",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-11-11",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/toeslag-terugbetalen/content/klein-bedrag-aan-toeslag-terugbetalen",
+      "context": [
+        "terug",
+        "toeslag",
+        "definitieve"
+      ]
+    },
+    "toeslag_rente_betalingsregeling": {
+      "waarde": "4,3%",
+      "geverifieerd": true,
+      "bron": "belastingdienst.nl, kan ik een betalingsregeling krijgen: rente 4,3% vanaf 1 januari 2026 als u toeslag per maand terugbetaalt",
+      "verouderd": [],
+      "gecontroleerd_op": "2026-11-11",
+      "bron_url": "https://www.belastingdienst.nl/wps/wcm/connect/nl/toeslag-terugbetalen/content/kan-ik-een-betalingsregeling-krijgen",
+      "context": [
+        "rente"
+      ]
     }
   }
 }
