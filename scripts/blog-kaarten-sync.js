@@ -67,7 +67,8 @@ function platteTekst(s) {
   return s.replace(/&amp;/g, '&').replace(/&euro;/g, '€').replace(/&rsquo;/g, '’').replace(/&ndash;/g, '–')
     .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').trim();
 }
-const LLMS = path.join(ROOT, 'llms.txt');
+/* Het sjabloon, niet llms.txt zelf: config-sync bouwt llms.txt uit data/llms-sjabloon.txt. */
+const LLMS = path.join(ROOT, 'data', 'llms-sjabloon.txt');
 let llmsLinks = 0;
 if (fs.existsSync(LLMS)) {
   const voor = fs.readFileSync(LLMS, 'utf8');

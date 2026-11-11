@@ -158,6 +158,9 @@ const JAREN = Object.assign({}, PERIODE, {
   te_laat_deadline_jaar: PERIODE.te_laat_jaar + 1,
   /* het belastingjaar waarover u nu aangifte doet: het vorige kalenderjaar */
   vorig_jaar: PERIODE.jaar - 1,
+  /* de eerstvolgende aangifte die nog op tijd kan, en het jaar waarin die binnen moet (1 mei) */
+  lopende_aangifte_jaar: PERIODE.te_laat_jaar + 1,
+  lopende_deadline_jaar: PERIODE.te_laat_jaar + 2,
   startkorting_tot: sk.geldig_tot ? datumTekst(sk.geldig_tot, 'nl') : '',
   startkorting_tot_en: sk.geldig_tot ? datumTekst(sk.geldig_tot, 'en') : ''
 });
@@ -393,6 +396,35 @@ function walk(dir, acc) {
 }
 const rel = (f) => path.relative(ROOT, f).split(path.sep).join('/');
 
+/* ---------- verlopen pagina's: data/datums.json (vervallen) ----------
+   Vanaf de datum wordt de pagina een vangnet: noindex, canonical en doorsturen.
+   Zo blijft een oude link werken en verdwijnt de pagina uit de sitemap
+   (build-sitemap.js slaat pagina's met een meta-refresh over). */
+const vervallenNu = [];
+(DATUMS.vervallen || []).forEach(function (v) {
+  const f = path.join(ROOT, v.pad);
+  if (!fs.existsSync(f)) { fouten.push('data/datums.json: vervallen pagina ' + v.pad + ' bestaat niet'); return; }
+  if (VANDAAG < v.vanaf) return;
+  if (/http-equiv="refresh"/.test(fs.readFileSync(f, 'utf8'))) return;
+  const doel = BASIS_URL + v.naar;
+  const diepte = v.pad.split('/').length - 1;
+  const op = '../'.repeat(diepte);
+  const html = '<!DOCTYPE html>\n<html lang="nl">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+    '<meta http-equiv="refresh" content="0; url=' + doel + '">\n<meta name="robots" content="noindex, follow">\n' +
+    '<title>' + esc(v.titel) + ' | Belastinghulp Zaanstad</title>\n<link rel="canonical" href="' + doel + '">\n' +
+    '<link rel="icon" type="image/svg+xml" href="' + op + 'favicon.svg">\n<link rel="icon" type="image/png" href="' + op + 'favicon.png">\n' +
+    '<script>window.location.replace("' + doel + '");</script>\n' +
+    '<style>\nbody{font-family:-apple-system,BlinkMacSystemFont,"Nunito Sans",sans-serif;background:#faf8f4;color:#2c2520;line-height:1.6;margin:0;padding:60px 24px;text-align:center;}\n' +
+    '.box{max-width:520px;margin:0 auto;background:#fff;border:1px solid rgba(200,185,168,0.5);border-radius:14px;padding:32px 28px;box-shadow:0 2px 10px rgba(44,37,32,0.06);}\n' +
+    'h1{font-size:1.4rem;margin:0 0 12px;}\np{margin:0 0 18px;color:#6b5e50;}\n' +
+    'a{display:inline-block;background:#15756A;color:#fff;text-decoration:none;padding:12px 22px;border-radius:100px;font-weight:700;}\n</style>\n' +
+    '<script type="application/ld+json">\n{"@id": "' + BASIS_URL + '/#business"}\n</script>\n' +
+    '<script src="/js/consent.js"></script>\n<script src="/js/tellingen.js" defer></script>\n</head>\n<body>\n  <div class="box">\n' +
+    '    <h1>' + esc(v.titel) + '</h1>\n    <p>' + esc(v.tekst) + '</p>\n    <a href="' + doel + '">' + esc(v.linktekst) + ' &rarr;</a>\n  </div>\n</body>\n</html>\n';
+  vervallenNu.push(v.pad);
+  if (!CHECK) fs.writeFileSync(f, html);
+});
+
 let geraakt = 0, prijsPlekken = 0, blokken = 0, ldPlekken = 0;
 /* pagina's waar een FAQ-item wegviel: het FAQPage-schema moet opnieuw */
 const faqHerbouw = new Set();
@@ -571,6 +603,8 @@ for (const f of walk(ROOT, [])) {
   }
 }
 
+vervallenNu.forEach(function (p) { if (afwijkend.indexOf(p) === -1) { geraakt++; afwijkend.push(p); } });
+
 /* ---------- FAQ-schema waar een cfg-blok in een zichtbaar antwoord staat ----------
    Het FAQPage-schema moet gelijk zijn aan de zichtbare FAQ. Staat er een cfg-blok of
    een data-jaar in een antwoord (het box 3-tarief op de box 3-pagina), dan verandert die tekst met de
@@ -629,6 +663,29 @@ if (!btwKlopt) {
 }
 
 /* ---------- llms.txt: geen markers mogelijk, dus alleen controleren ---------- */
+/* llms.txt wordt opgebouwd uit data/llms-sjabloon.txt: {sleutel} uit de jaartallen,
+   [[tot:JJJJ-MM-DD]]...[[/tot]] verdwijnt op die dag, [[actie:startkorting]]...[[/actie]]
+   na de startkorting. Bewerk dus het sjabloon, niet llms.txt zelf. */
+const SJABLOON_LLMS = path.join(ROOT, 'data', 'llms-sjabloon.txt');
+if (fs.existsSync(SJABLOON_LLMS)) {
+  const FC = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'fiscale-cijfers.json'), 'utf8'));
+  const sleutels = Object.assign({}, JAREN, {
+    fiscaal_gecontroleerd: datumTekst(FC.laatst_gecontroleerd, 'nl'),
+    fiscaal_jaar: FC.belastingjaar,
+    startkorting_bedrag: sk.bedrag
+  });
+  const tekst = fs.readFileSync(SJABLOON_LLMS, 'utf8')
+    .replace(/\[\[tot:(\d{4}-\d{2}-\d{2})\]\]([\s\S]*?)\[\[\/tot\]\]/g, function (h, tot, x) { return VANDAAG < tot ? x : ''; })
+    .replace(/\[\[actie:startkorting\]\]([\s\S]*?)\[\[\/actie\]\]\r?\n?/g, function (h, x) { return startkortingLoopt ? x + (/\n$/.test(h) ? '\n' : '') : ''; })
+    .replace(/\{([a-z0-9_]+)\}/g, function (m, k) {
+      if (sleutels[k] === undefined || sleutels[k] === null || sleutels[k] === '') { fouten.push('data/llms-sjabloon.txt: {' + k + '} is onbekend'); return m; }
+      return String(sleutels[k]);
+    });
+  const LLMS_PAD = path.join(ROOT, 'llms.txt');
+  if (tekst !== fs.readFileSync(LLMS_PAD, 'utf8')) {
+    if (CHECK) { geraakt++; afwijkend.push('llms.txt (uit data/llms-sjabloon.txt)'); } else { fs.writeFileSync(LLMS_PAD, tekst); geraakt++; }
+  }
+}
 const llms = fs.readFileSync(path.join(ROOT, 'llms.txt'), 'utf8');
 for (const [k, p] of Object.entries(prijzen)) {
   if (k === '_doc') continue;

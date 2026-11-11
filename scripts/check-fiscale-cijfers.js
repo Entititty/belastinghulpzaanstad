@@ -81,7 +81,8 @@ function walk(dir, acc) {
   return acc;
 }
 
-const files = walk(ROOT, []);
+/* ook het sjabloon van llms.txt: daar staan dezelfde bedragen */
+const files = walk(ROOT, []).concat(path.join(ROOT, 'data', 'llms-sjabloon.txt'));
 let hits = 0;
 for (const f of files) {
   const lines = fs.readFileSync(f, 'utf8').split(/\r?\n/);

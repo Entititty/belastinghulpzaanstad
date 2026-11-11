@@ -90,7 +90,8 @@ function walk(dir, acc) {
   }
   return acc;
 }
-const files = walk(ROOT, []);
+/* ook het sjabloon van llms.txt: daar staan dezelfde bedragen */
+const files = walk(ROOT, []).concat(path.join(ROOT, 'data', 'llms-sjabloon.txt'));
 
 /* ---------- vervangen ---------- */
 function vervang(oudeWaarde, nieuweWaarde, context, sleutel) {

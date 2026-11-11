@@ -86,5 +86,16 @@
       }
     }
   ],
+  "vervallen": [
+    {
+      "_doc": "Een pagina die vanaf een datum niet meer klopt. Bij een build op of na vanaf maakt config-sync er een vangnetpagina van (noindex, canonical en doorsturen naar naar). De 301 in nginx zet de eigenaar zelf aan: zie server-setup/nginx-belastinghulpzaanstad.conf (uitgecommentarieerd blok).",
+      "pad": "deadline-2021/index.html",
+      "vanaf": "2027-01-01",
+      "naar": "/diensten/correctie-late-aangifte/",
+      "titel": "Correctie over 2021 kan niet meer",
+      "tekst": "Een verzoek om vermindering over 2021 moest uiterlijk 31 december 2026 bij de Belastingdienst binnen zijn. Over de jaren daarna kan het nog wel: wij kijken uw oude aangiften gratis na.",
+      "linktekst": "Naar correctie en late aangifte"
+    }
+  ],
   "_doc_velden": "jaar: het kalenderjaar. correctie_van/tot: de jaren die u nog kunt corrigeren (de lopende aangifte niet meegeteld). box3_van/tot: de jaren voor het formulier Opgaaf werkelijk rendement (alleen t/m 2024; vanaf 2025 gaat het via de aangifte). te_laat_jaar: het jaar waarvan de aangifte nu te laat is (na 1 mei)."
 }

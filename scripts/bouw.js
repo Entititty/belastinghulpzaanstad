@@ -45,6 +45,9 @@ const STAPPEN = [
   ['check-contrast', []],
   ['crawl-audit', []]
 ];
+/* blog-kaarten-sync werkt het sjabloon van llms.txt bij; config-sync bouwt daar
+   llms.txt uit. Bij schrijven daarom config-sync nog een keer erna. */
+if (!CHECK) STAPPEN.splice(2, 0, ['config-sync', []]);
 
 const mislukt = [];
 let placeholders = [];

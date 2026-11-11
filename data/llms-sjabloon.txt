@@ -1,0 +1,190 @@
+# Belastinghulp Zaanstad
+
+> Belastinghulp Zaanstad helpt senioren, starters, woningbezitters en mensen met een eerste baan bij belastingaangifte, voorlopige teruggave, toeslagen, de Opgaaf werkelijk rendement in box 3, correctie van oude aangiften en erf-/schenkbelasting in de gemeente Zaanstad. Vaste prijs vanaf €49, hulp aan huis of online, zelfde dag reactie.
+
+Bedragen gecontroleerd op {fiscaal_gecontroleerd} bij belastingdienst.nl en rijksoverheid.nl; ze gelden voor belastingjaar {fiscaal_jaar}.
+
+## Over ons
+
+Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisaties zijn:
+- Belastingaangifte invullen (vaste prijs vanaf €59, inclusief toeslagencontrole)
+- Eerste baan of bijbaan: loonheffingskorting rechtzetten en te veel betaalde loonbelasting terugvragen (€49, online)
+- Voorlopige teruggave aanvragen voor woningbezitters (hypotheekrenteaftrek elke maand in plaats van achteraf; hoeveel hangt af van hypotheek en inkomen)
+- Toeslagen aanvragen en controleren: huurtoeslag, zorgtoeslag, kinderopvangtoeslag, kindgebonden budget
+- Ouderenkorting en AOW-aangifte voor senioren
+- Box 3: hulp bij de Opgaaf werkelijk rendement over {box3_van}–{box3_tot} (gratis check, daarna no cure no pay: 15% van de box 3-belasting die u terugkrijgt, maximaal €500 voor alle jaren samen; zelf doen kan ook, gratis)
+- Correctie en late aangifte tot 5 jaar terug ({correctie_van}–{correctie_tot}), uitstel kosteloos inbegrepen.[[tot:2027-01-01]] Over 2021 kan dat nog tot en met 31 december 2026: dan moet het verzoek bij de Belastingdienst binnen zijn. Uitleg: https://belastinghulpzaanstad.nl/deadline-2021/[[/tot]]
+- Aangifte erfbelasting en schenkbelasting (prijs op maat)
+
+## Diensten
+
+Vaste servicepagina's met uitgebreide uitleg per dienst:
+- [Belastingaangifte laten doen](https://belastinghulpzaanstad.nl/diensten/belastingaangifte-laten-doen/), volledige aangifte inkomstenbelasting, vaste prijs vanaf €59, aan huis in Zaanstad
+- [Eerste baan](https://belastinghulpzaanstad.nl/diensten/eerste-baan/), eerste aangifte bij een eerste baan of bijbaan; loonheffingskorting bij één werkgever, teruggave van te veel betaalde loonbelasting, zorg- en huurtoeslag nagekeken; €49, geen partnertarief, via WhatsApp of beeldbellen
+- [Voorlopige teruggave aanvragen](https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/), hypotheekrenteaftrek maandelijks laten uitbetalen; pakket €109, met partner €149
+- [Box 3: werkelijk rendement](https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/), werkelijk rendement opgeven over {box3_van}–{box3_tot}, ook zonder bezwaar: gegevens verzamelen, werkelijk rendement uitrekenen, opgaaf indienen; gratis check, daarna no cure no pay (15%, maximaal €500 voor alle jaren samen)
+- [Correctie & late aangifte](https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/), gemiste aftrekposten alsnog terugvragen tot 5 jaar terug; €69, uitstel gratis inbegrepen
+- [Erfbelasting & schenkbelasting](https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/), aangifte en advies bij nalaten en schenken; prijs op maat, vrijblijvend gesprek
+- [Toeslagen aanvragen](https://belastinghulpzaanstad.nl/diensten/toeslagen/), huurtoeslag, zorgtoeslag, kindgebonden budget en kinderopvangtoeslag; controle gratis, aanvraag €30
+
+Engelstalige servicepagina's (voor expats): [Tax return](https://belastinghulpzaanstad.nl/en/services/tax-return/) · [First job](https://belastinghulpzaanstad.nl/en/services/first-job/) · [Preliminary refund](https://belastinghulpzaanstad.nl/en/services/preliminary-refund/) · [Box 3: actual return](https://belastinghulpzaanstad.nl/en/services/box-3-objection/) · [Correction & late return](https://belastinghulpzaanstad.nl/en/services/late-tax-return/) · [Inheritance & gift tax](https://belastinghulpzaanstad.nl/en/services/inheritance-gift-tax/)
+
+## Werkgebied
+
+Zaandam, Krommenie, Assendelft, Wormerveer, Koog aan de Zaan, Zaandijk en Westzaan (gemeente Zaanstad), en de gemeenten Wormerland en Oostzaan. Aan huis, of online via WhatsApp en beeldbellen.
+
+## Prijzen en praktisch
+
+Alle bedragen zijn vast vooraf (geen verborgen kosten):
+- Eerste baan (eerste aangifte, bijbaan of deeljaar gewerkt): **€49** per aangifte · geen partnertarief
+- Aangifte, ook voor senioren (AOW): **€59** per aangifte · met partner €89
+- Correctie & late aangifte: **€69** per aangifte · met partner €99 · uitstel-aanvraag gratis inbegrepen
+- Voorlopige teruggave pakket (woningbezitters, hele jaar): **€109** eenmalig · met partner €149
+- Toeslagen check: **gratis** · toeslagen aanvragen: **€30**
+- Box 3, Opgaaf werkelijk rendement: check **gratis**, daarna **no cure no pay**: 15% van de box 3-belasting die u terugkrijgt of minder betaalt, maximaal €500 voor alle jaren samen. U betaalt alleen als de Belastingdienst uw box 3-belasting verlaagt, en pas na die beslissing
+- Alle prijzen zijn inclusief btw; er komen geen kosten bij
+- Erfbelasting & schenkbelasting: prijs op maat (vrijblijvend gesprek)
+- Spoedaanvraag (binnen 24 uur): **+€25**
+[[actie:startkorting]]- Startkorting: nieuwe klanten krijgen tot en met {startkorting_tot} **€{startkorting_bedrag} korting** op een aangifte of voorlopige teruggave (automatisch, geen code, los van een review)[[/actie]]
+
+Praktisch:
+- Service: wij komen bij u thuis (geen kantoorbezoek nodig), of online
+- Reactietijd: zelfde dag na contact · doorgaans binnen een week geregeld
+- Benodigde documenten: DigiD, jaaropgaven werkgever/uitkering, hypotheekopgave (indien van toepassing), WOZ-beschikking, toeslagbeschikking
+
+## Contact
+
+- Telefoon / WhatsApp: +31 6 19 71 18 48
+- E-mail: info@belastinghulpzaanstad.nl
+- Website: https://belastinghulpzaanstad.nl
+- Facebook: https://www.facebook.com/profile.php?id=61574368775029
+- Vestigingsplaats: Zaandam (gemeente Zaanstad), geen bezoekadres; op afspraak aan huis
+- Eigenaar: Stan van der Hoeven (https://belastinghulpzaanstad.nl/over-ons/), acht jaar ervaring met aangiften inkomstenbelasting, meer dan honderd gedaan; het bedrijf bestaat sinds 2026
+- Privacybeleid: https://belastinghulpzaanstad.nl/privacy/
+
+## Veelgestelde vragen
+
+### Wat kost belastingaangifte hulp bij Belastinghulp Zaanstad?
+€59 vaste prijs voor de aangifte, inclusief controle van uw huur- en zorgtoeslag. Een toeslag daadwerkelijk aanvragen of wijzigen kost €30. Geen andere kosten.
+
+### Komen jullie bij mij thuis?
+Ja, op afspraak in Zaandam, Krommenie, Assendelft, Wormerveer, Koog aan de Zaan, Zaandijk, Westzaan, Wormerland en Oostzaan. Geen reiskosten. Liever online? Dat kan ook, via WhatsApp of beeldbellen. De aangifte voor een eerste baan doen wij online.
+
+### Kunnen jullie ook toeslagen aanvragen?
+Ja, wij controleren en regelen huurtoeslag, zorgtoeslag en kinderopvangtoeslag.
+
+### Hoe snel wordt mijn belastingaangifte ingediend?
+Doorgaans binnen een week: wij plannen u meestal binnen een week in en dienen de aangifte daarna digitaal in.
+
+### Voor wie zijn jullie geschikt?
+Senioren met AOW, gepensioneerden, starters met een eerste koopwoning die hun hypotheekrenteaftrek maandelijks willen ontvangen, en mensen met een eerste baan of bijbaan.
+
+### Wat is voorlopige teruggave?
+Met een voorlopige teruggave betaalt de Belastingdienst uw hypotheekrenteaftrek maandelijks uit in plaats van na de aangifte. Hoeveel dat is, hangt af van hypotheek en inkomen. Rekenvoorbeeld 2026: bij een hypotheek van €340.000 tegen 3,7% rente (aftrekbaar saldo €11.390) is het circa €339 per maand bij een inkomen tot €38.883 (35,75%) en circa €357 per maand in de tweede schijf (37,56%).
+
+### Wat is de zorgtoeslag grens in 2026?
+In 2026 is de inkomensgrens voor zorgtoeslag circa €40.857 voor alleenstaanden en €51.142 voor toeslagpartners.
+
+### Wat is de huurtoeslag grens in 2026?
+In 2026 wordt huurtoeslag berekend tot een maximale rekenhuur van €932,93. De vermogensgrens is circa €38.479 (alleenstaand) of €76.958 (met toeslagpartner). Er is geen harde inkomensgrens meer; de toeslag bouwt af naarmate het inkomen stijgt. Servicekosten tellen vanaf 2026 niet meer mee.
+
+### Wat is de ouderenkorting in 2026?
+De ouderenkorting in 2026 bedraagt €2.067 voor personen met een inkomen tot €46.002 (daarboven bouwt de korting met 15% af tot nul bij €59.782). De alleenstaande ouderenkorting is €540.
+
+### Hoeveel belasting krijg ik terug?
+Dat hangt af van uw situatie. Woningbezitters kunnen hun hypotheekrenteaftrek via een voorlopige teruggave elke maand ontvangen; hoeveel hangt af van hypotheek en inkomen. Senioren kunnen geld terugkrijgen als de ouderenkorting niet volledig is verrekend of als zij aftrekbare zorgkosten hebben.
+
+### Ik heb mijn aangifte over {te_laat_jaar} nog niet gedaan. Wat nu?
+De uiterste datum was 1 mei {te_laat_deadline_jaar}, met uitstel 1 september {te_laat_deadline_jaar}. U kunt de aangifte nog steeds indienen. Een verzuimboete (de eerste keer €469) volgt pas als u niet reageert op een aanmaning. Wij dienen een late aangifte in voor €69 per jaar.
+
+### Hoe vraag ik uitstel aan voor de belastingaangifte?
+Voor de aangifte over {lopende_aangifte_jaar} (in te dienen in {lopende_deadline_jaar}) vraagt u uitstel gratis aan via Mijn Belastingdienst of de BelastingTelefoon (0800 - 0543), vóór 1 mei {lopende_deadline_jaar}.
+
+### Wat gebeurt er als ik te laat ben met de aangifte?
+U krijgt eerst een herinnering en daarna een aanmaning. Reageert u daar niet op, dan kan een verzuimboete volgen: €469 bij eerste verzuim, oplopend tot €6.709 bij herhaling. Moet u bijbetalen, dan rekent de Belastingdienst ook belastingrente (5% in 2026) vanaf 1 juli na het belastingjaar.
+
+### Moet ik bezwaar maken om te veel betaalde box 3-belasting terug te krijgen?
+Over {box3_van} tot en met {box3_tot} niet. De Belastingdienst laat iedereen met box 3-inkomen over die jaren altijd het werkelijk rendement opgeven met het formulier Opgaaf werkelijk rendement, ook zonder brief. Bezwaar tegen een definitieve aanslag moet binnen 6 weken na de datum op de aanslag; een pro forma bezwaar heeft alleen zin zolang die termijn loopt. De uitspraak van de Hoge Raad van 25 juni 2026 gaat over niet-bezwaarmakers over 2017–2020, niet over {box3_van}–{box3_tot}. Wij rekenen het werkelijk rendement uit en dienen de opgaaf in op basis van no cure no pay (15% van wat het oplevert, maximaal €500 voor alle jaren samen); zelf doen kan ook, gratis. Bron: belastingdienst.nl, Massaal Bezwaar Plus.
+
+### Kunnen jullie helpen met erfbelasting of schenkbelasting?
+Ja, wij verzorgen de aangifte erfbelasting en schenkbelasting en adviseren over nalaten en schenken. De prijs is op maat; een eerste gesprek is vrijblijvend.
+
+## Pagina's
+
+- [Homepage – Belastinghulp Zaanstad](https://belastinghulpzaanstad.nl/)
+- [Tarieven, alle vaste prijzen op een rij](https://belastinghulpzaanstad.nl/tarieven/)
+- [Rekentools: teruggave, toeslagen, zorgkosten, box 3, erf- en schenkbelasting](https://belastinghulpzaanstad.nl/rekentools/)
+- [Belastingaangifte voor senioren](https://belastinghulpzaanstad.nl/senioren/)
+- [Checklist: wat heb ik nodig?](https://belastinghulpzaanstad.nl/checklist/)
+- [Contact, bellen, WhatsApp of terugbelverzoek](https://belastinghulpzaanstad.nl/contact/)
+- [Over ons, wie de aangifte doet](https://belastinghulpzaanstad.nl/over-ons/)
+- [Kennisbank, alle artikelen](https://belastinghulpzaanstad.nl/blog/)
+- [Belastinghulp Zaandam](https://belastinghulpzaanstad.nl/zaandam/)
+- [Belastinghulp Krommenie](https://belastinghulpzaanstad.nl/krommenie/)
+- [Belastinghulp Assendelft](https://belastinghulpzaanstad.nl/assendelft/)
+- [Belastinghulp Wormerveer](https://belastinghulpzaanstad.nl/wormerveer/)
+- [Belastinghulp Koog aan de Zaan](https://belastinghulpzaanstad.nl/koog-aan-de-zaan/)
+- [Belastinghulp Zaandijk](https://belastinghulpzaanstad.nl/zaandijk/)
+- [Belastinghulp Westzaan](https://belastinghulpzaanstad.nl/westzaan/)
+- [Belastinghulp Wormerland](https://belastinghulpzaanstad.nl/wormerland/)
+- [Belastinghulp Oostzaan](https://belastinghulpzaanstad.nl/oostzaan/)
+
+## Rekentools
+
+Alle rekentools rekenen met de cijfers van 2026. De berekening gebeurt in de browser; alleen wie het formulier onder een rekentool verstuurt, stuurt gegevens naar ons.
+
+- [Rekentools, overzicht](https://belastinghulpzaanstad.nl/rekentools/)
+- [Voorlopige teruggave berekenen](https://belastinghulpzaanstad.nl/rekentools/voorlopige-teruggave/), wat u elke maand terugkrijgt van uw hypotheekrenteaftrek, met beide tarieven (35,75% en 37,56%)
+- [Belasting op AOW en pensioen 2026](https://belastinghulpzaanstad.nl/rekentools/aow-pensioen/), voor wie het hele jaar de AOW-leeftijd heeft: 17,85% tot €38.883 (vóór 1946 geboren: tot €41.123), algemene heffingskorting €1.556, ouderenkorting €2.067, alleenstaande ouderenkorting €540, min de ingehouden loonheffing van SVB en pensioenfonds: terug of bijbetalen; met tabel per inkomen
+- [Ouderenkorting berekenen](https://belastinghulpzaanstad.nl/rekentools/ouderenkorting/), ouderenkorting en alleenstaande ouderenkorting 2026 bij uw inkomen
+- [Belastingteruggave berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/belastingteruggave/), voor wie alleen loon heeft (eerste baan, bijbaan, deel van het jaar gewerkt): ingehouden loonheffing min de belasting na algemene heffingskorting en arbeidskorting; met tabel belasting per loon
+- [Zorgtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/zorgtoeslag/), met de formule van Dienst Toeslagen (standaardpremie min normpremie); maximaal €129 per maand alleen, €246 met toeslagpartner; met tabel per inkomen
+- [Kindgebonden budget berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/kindgebonden-budget/), met de stappen van Dienst Toeslagen: maximaal €2.580 per kind met toeslagpartner (€5.996 voor 1 kind als alleenstaande ouder), €724/€964 extra voor kinderen van 12-15/16-17, 7,6% afbouw boven €29.736 (alleenstaand) of €39.141 (partners); met tabellen per inkomen
+- [Huurtoeslag berekenen 2026](https://belastinghulpzaanstad.nl/blog/huurtoeslag-berekenen/), met de formule van Dienst Toeslagen (basishuur, 100%, 65% en 40% vergoeding, inkomenscorrectie); maximaal €523 per maand alleen, €537 met 3 of meer personen; met tabellen per huur en inkomen
+- [Erfbelasting berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/erfbelasting/), vrijstelling en tarief per erfgenaam (partner €828.035, kind en kleinkind €26.230, anderen €2.769; 10/18/30% tot €158.669, daarboven 20/36/40%); met tabel per bedrag
+- [Schenkbelasting berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/schenkbelasting/), vrijstellingen 2026 (kind €6.908 per jaar, eenmalig €33.129 of €69.009 voor een dure studie, anderen €2.769) en tarieven; met tabel per bedrag
+- [Box 3 berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/box-3/), box 3-belasting over spaargeld, beleggingen en schulden op 1 januari 2026, stap voor stap zoals de Belastingdienst (1,28% / 6,00% / 2,70%, heffingsvrij vermogen €59.357, tarief 36%); komt op de euro uit op de rekenvoorbeelden van de Belastingdienst; met tabel per vermogen
+- [Giftenaftrek berekenen 2026](https://belastinghulpzaanstad.nl/rekentools/giftenaftrek/), gewone giften boven de drempel (1% van het drempelinkomen, minimaal €60) tot 10%, periodieke giften zonder drempel, 25% extra voor een culturele ANBI (max €1.250); komt uit op de rekenvoorbeelden van de Belastingdienst
+- [Zorgkosten aftrekken 2026](https://belastinghulpzaanstad.nl/rekentools/zorgkosten/), aftrek specifieke zorgkosten: verhoging 40% (113% met de AOW-leeftijd) bij een drempelinkomen tot €41.123, dan de drempel eraf (1,65% van het drempelinkomen; €166 of €332 bij een laag inkomen); met tabel drempel per inkomen en een rekenvoorbeeld
+- [Hypotheekrenteaftrek berekenen](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek-berekenen/), maandelijks belastingvoordeel van de hypotheekrenteaftrek
+
+## Blog artikelen
+
+### Toeslagen
+- [Huurtoeslag 2026: heeft u recht en hoeveel krijgt u?](https://belastinghulpzaanstad.nl/blog/huurtoeslag-aanvragen/)
+- [Huurtoeslag grens 2026: inkomen, huur en vermogen](https://belastinghulpzaanstad.nl/blog/huurtoeslag-grens/)
+- [Maximaal inkomen zorgtoeslag 2026: €40.857 of €51.142](https://belastinghulpzaanstad.nl/blog/zorgtoeslag-grens/)
+- [Zorgtoeslag vanaf 18 jaar: wanneer en hoe vraagt u het aan?](https://belastinghulpzaanstad.nl/blog/zorgtoeslag-aanvragen/)
+- [Kindgebonden budget 2026: wat is het en heeft u recht?](https://belastinghulpzaanstad.nl/blog/kindgebonden-budget/)
+- [Kinderopvangtoeslag 2026: voorwaarden en hoeveel u krijgt](https://belastinghulpzaanstad.nl/blog/kinderopvangtoeslag/)
+- [Gemeentelijke belastingen Zaanstad 2026: kwijtschelding](https://belastinghulpzaanstad.nl/blog/kwijtschelding-gemeentelijke-belasting/)
+
+### Aangifte & deadlines
+- [Wat kost belastingaangifte laten doen? Prijzen 2026](https://belastinghulpzaanstad.nl/blog/belastingaangifte-laten-doen-kosten/)
+- [Aangifte inkomstenbelasting doen: stap voor stap uitgelegd](https://belastinghulpzaanstad.nl/blog/aangifte-inkomstenbelasting/)
+- [Belastingaangifte 2026: deadline 1 mei 2027 (+ uitstel)](https://belastinghulpzaanstad.nl/blog/einddatum-belastingaangifte-2026/), alle data (1 maart, 1 april, 1 mei en 1 september 2027), waarom vóór 1 april, uitstel en boetes
+- [Uitstel belastingaangifte aanvragen: gratis, tot 1 september](https://belastinghulpzaanstad.nl/blog/uitstel-belastingaangifte-aanvragen/)
+- [Belastingaangifte te laat? Boete en wat u nu kunt doen](https://belastinghulpzaanstad.nl/blog/te-laat-belastingaangifte/)
+- [10 tips om meer belasting terug te krijgen in 2026](https://belastinghulpzaanstad.nl/blog/belastingaangifte-tips/)
+
+### Woning & vermogen
+- [Hoeveel spaargeld mag u belastingvrij hebben in 2026?](https://belastinghulpzaanstad.nl/blog/hoeveel-spaargeld-belastingvrij/)
+- [Box 3 bezwaar of werkelijk rendement opgeven? Uitleg 2026](https://belastinghulpzaanstad.nl/blog/box-3-bezwaar-2026/)
+- [Box 3 spaargeld 2026: hoeveel belasting betaalt u?](https://belastinghulpzaanstad.nl/blog/box-3-sparen/)
+- [Hypotheekrenteaftrek 2026: zo werkt het, met rekenvoorbeeld](https://belastinghulpzaanstad.nl/blog/hypotheekrenteaftrek/)
+- [WOZ-waarde Zaanstad te hoog? Zo maakt u bezwaar](https://belastinghulpzaanstad.nl/blog/woz-bezwaar-zaanstad/)
+
+### Senioren & kortingen
+- [Ouderenkorting 2026: €2.067 + €540 alleenstaand | rekentool](https://belastinghulpzaanstad.nl/blog/ouderenkorting/)
+- [Heffingskortingen 2026: welke krijgt u en hoeveel?](https://belastinghulpzaanstad.nl/blog/heffingskortingen/)
+- [AOW en belasting 2026: hoeveel belasting betaalt u?](https://belastinghulpzaanstad.nl/blog/aow-en-belasting/)
+- [Belastingaangifte voor senioren 2026: gids voor AOW’ers](https://belastinghulpzaanstad.nl/blog/belastingaangifte-senioren/)
+
+### Aftrekposten
+- [Giften aftrekken 2026: drempel, maximum en rekenvoorbeeld](https://belastinghulpzaanstad.nl/blog/giften-aftrekken/)
+- [Zorgkosten aftrekken en terugvragen: wat mag in 2026?](https://belastinghulpzaanstad.nl/blog/zorgkosten-aftrekken/)
+- [Belastingteruggave 2026: wanneer en hoeveel krijgt u terug?](https://belastinghulpzaanstad.nl/blog/belastingteruggave/)
+
+## Engelstalige informatie
+
+Een Engelstalige versie van de belangrijkste pagina's staat op [/en/](https://belastinghulpzaanstad.nl/en/), met een eigen [kennisbank](https://belastinghulpzaanstad.nl/en/blog/) en een pagina [over ons](https://belastinghulpzaanstad.nl/en/about-us/). De Engelse dienstenpagina's staan hierboven bij Diensten.
