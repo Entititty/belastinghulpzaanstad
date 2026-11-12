@@ -14,6 +14,7 @@ Wij zijn een lokale belastinghulpdienst in de regio Zaanstad. Onze specialisatie
 - Ouderenkorting en AOW-aangifte voor senioren
 - Box 3: hulp bij de Opgaaf werkelijk rendement over {box3_van}–{box3_tot} (gratis check, daarna no cure no pay: 15% van de box 3-belasting die u terugkrijgt, maximaal €500 voor alle jaren samen; zelf doen kan ook, gratis)
 - Correctie en late aangifte tot 5 jaar terug ({correctie_van}–{correctie_tot}), uitstel kosteloos inbegrepen.[[tot:2027-01-01]] Over 2021 kan dat nog tot en met 31 december 2026: dan moet het verzoek bij de Belastingdienst binnen zijn. Uitleg: https://belastinghulpzaanstad.nl/deadline-2021/[[/tot]]
+- Aangifte na overlijden: de laatste aangifte inkomstenbelasting voor de overledene (F-aangifte), vaste prijs €150, aan huis
 - Aangifte erfbelasting en schenkbelasting (prijs op maat)
 
 ## Diensten
@@ -24,6 +25,7 @@ Vaste servicepagina's met uitgebreide uitleg per dienst:
 - [Voorlopige teruggave aanvragen](https://belastinghulpzaanstad.nl/diensten/voorlopige-teruggave/), hypotheekrenteaftrek maandelijks laten uitbetalen; pakket €109, met partner €149
 - [Box 3: werkelijk rendement](https://belastinghulpzaanstad.nl/diensten/box-3-bezwaar/), werkelijk rendement opgeven over {box3_van}–{box3_tot}, ook zonder bezwaar: gegevens verzamelen, werkelijk rendement uitrekenen, opgaaf indienen; gratis check, daarna no cure no pay (15%, maximaal €500 voor alle jaren samen)
 - [Correctie & late aangifte](https://belastinghulpzaanstad.nl/diensten/correctie-late-aangifte/), gemiste aftrekposten alsnog terugvragen tot 5 jaar terug; €69, uitstel gratis inbegrepen
+- [Aangifte na overlijden](https://belastinghulpzaanstad.nl/diensten/aangifte-na-overlijden/), de F-aangifte over het jaar van overlijden: vóór 1 mei van het jaar erna, 4 maanden uitstel mogelijk, ondertekend door de vertegenwoordiger van de erfgenamen en de fiscale partner; €150
 - [Erfbelasting & schenkbelasting](https://belastinghulpzaanstad.nl/diensten/erfbelasting-schenking/), aangifte en advies bij nalaten en schenken; prijs op maat, vrijblijvend gesprek
 - [Toeslagen aanvragen](https://belastinghulpzaanstad.nl/diensten/toeslagen/), huurtoeslag, zorgtoeslag, kindgebonden budget en kinderopvangtoeslag; controle gratis, aanvraag €30
 
@@ -43,6 +45,7 @@ Alle bedragen zijn vast vooraf (geen verborgen kosten):
 - Toeslagen check: **gratis** · toeslagen aanvragen: **€30**
 - Box 3, Opgaaf werkelijk rendement: check **gratis**, daarna **no cure no pay**: 15% van de box 3-belasting die u terugkrijgt of minder betaalt, maximaal €500 voor alle jaren samen. U betaalt alleen als de Belastingdienst uw box 3-belasting verlaagt, en pas na die beslissing
 - Alle prijzen zijn inclusief btw; er komen geen kosten bij
+- Aangifte na overlijden (F-aangifte): **€150** · eigen aangifte van de partner €59
 - Erfbelasting & schenkbelasting: prijs op maat (vrijblijvend gesprek)
 - Spoedaanvraag (binnen 24 uur): **+€25**
 [[actie:startkorting]]- Startkorting: nieuwe klanten krijgen tot en met {startkorting_tot} **€{startkorting_bedrag} korting** op een aangifte of voorlopige teruggave (automatisch, geen code, los van een review)[[/actie]]

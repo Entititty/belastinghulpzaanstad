@@ -101,6 +101,13 @@
       "omschrijving": "Spoedtoeslag: aangifte binnen 24 uur, bovenop de prijs",
       "in_prijsrange": false
     },
+    "f_aangifte": {
+      "bedrag": 150,
+      "partner": null,
+      "omschrijving": "Aangifte na overlijden (F-aangifte), de laatste aangifte voor de overledene",
+      "in_prijsrange": true,
+      "_besluit": "Besloten door Stan op 2026-11-12."
+    },
     "erfbelasting": {
       "bedrag": null,
       "partner": null,
